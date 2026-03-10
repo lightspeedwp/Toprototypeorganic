@@ -1,0 +1,9 @@
+/* Google Fonts - Lora (Serif) and Noto Sans */
+/* 
+ * Optimized font loading strategy:
+ * - display=swap prevents invisible text during font loading
+ * - Preconnect to fonts.googleapis.com for faster DNS resolution
+ * - Only load weights actually used in the design system (300, 400, 500, 600, 700)
+ * - Font subsetting handled by Google Fonts automatically
+ */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap');

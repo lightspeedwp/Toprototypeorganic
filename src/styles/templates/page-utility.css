@@ -1,0 +1,473 @@
+/**
+ * Generic Utility Page Template Styles
+ * WordPress template: page (default)
+ * 
+ * Component: Generic utility pages (About, Privacy, Terms, etc.)
+ * Corresponds to: templates/page.html in WordPress
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * Reusable for: Privacy Policy, Terms & Conditions, Sitemap, etc.
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   UTILITY PAGE CONTAINER
+   Base utility page wrapper
+   ============================================ */
+
+.wp-template-page-utility {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ============================================
+   HERO SECTION
+   Simple page header
+   ============================================ */
+
+.wp-template-page-utility__hero {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.wp-template-page-utility__title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-utility__title {
+    font-size: var(--text-5xl);
+  }
+}
+
+.wp-template-page-utility__subtitle {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--muted-foreground);
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-utility__subtitle {
+    font-size: var(--text-xl);
+  }
+}
+
+.wp-template-page-utility__meta {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin-top: 1rem;
+}
+
+/* ============================================
+   CONTENT SECTION
+   Main editorial content
+   ============================================ */
+
+.wp-template-page-utility__content {
+  padding-block: var(--spacing-section-md);
+}
+
+.wp-template-page-utility__wrapper {
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+/* Editorial prose styling */
+.wp-template-page-utility__prose {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground);
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-utility__prose {
+    font-size: var(--text-lg);
+  }
+}
+
+.wp-template-page-utility__prose h2 {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.wp-template-page-utility__prose h3 {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.wp-template-page-utility__prose h4 {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.wp-template-page-utility__prose h5 {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.wp-template-page-utility__prose p {
+  margin-bottom: 1.5rem;
+}
+
+.wp-template-page-utility__prose ul,
+.wp-template-page-utility__prose ol {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+
+.wp-template-page-utility__prose li {
+  margin-bottom: 0.5rem;
+}
+
+.wp-template-page-utility__prose ul li {
+  list-style-type: disc;
+}
+
+.wp-template-page-utility__prose ol li {
+  list-style-type: decimal;
+}
+
+.wp-template-page-utility__prose blockquote {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-xl);
+  font-style: italic;
+  color: var(--muted-foreground);
+  border-left: 4px solid var(--primary);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+}
+
+.wp-template-page-utility__prose a {
+  color: var(--primary);
+  text-decoration: underline;
+  transition: color 150ms;
+}
+
+.wp-template-page-utility__prose a:hover {
+  color: var(--foreground);
+}
+
+.wp-template-page-utility__prose strong {
+  font-weight: var(--font-weight-semibold);
+}
+
+.wp-template-page-utility__prose em {
+  font-style: italic;
+}
+
+.wp-template-page-utility__prose code {
+  font-family: var(--font-family-mono);
+  font-size: 0.875em;
+  background-color: var(--muted);
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--radius-sm);
+}
+
+.wp-template-page-utility__prose pre {
+  background-color: var(--muted);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.wp-template-page-utility__prose pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+.wp-template-page-utility__prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.wp-template-page-utility__prose th,
+.wp-template-page-utility__prose td {
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+.wp-template-page-utility__prose th {
+  background-color: var(--muted);
+  font-weight: var(--font-weight-semibold);
+}
+
+.wp-template-page-utility__prose img {
+  border-radius: var(--radius-lg);
+  width: 100%;
+  height: auto;
+  margin: 2rem 0;
+}
+
+.wp-template-page-utility__prose hr {
+  border: none;
+  border-top: 2px solid var(--border);
+  margin: 3rem 0;
+}
+
+/* ============================================
+   TABLE OF CONTENTS
+   Optional TOC sidebar or sticky nav
+   ============================================ */
+
+.wp-template-page-utility__toc {
+  background-color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.wp-template-page-utility__toc-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.wp-template-page-utility__toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wp-template-page-utility__toc-item {
+  /* TOC list item */
+}
+
+.wp-template-page-utility__toc-link {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+  text-decoration: none;
+  transition: color 150ms;
+  display: block;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.wp-template-page-utility__toc-link:hover {
+  color: var(--primary);
+  background-color: var(--background);
+}
+
+.wp-template-page-utility__toc-link--active {
+  color: var(--primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Nested TOC items */
+.wp-template-page-utility__toc-sublist {
+  list-style: none;
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* ============================================
+   BREADCRUMBS
+   Page navigation breadcrumbs
+   ============================================ */
+
+.wp-template-page-utility__breadcrumbs {
+  padding-block: 1rem;
+  background-color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ============================================
+   LAST UPDATED
+   Document last updated date
+   ============================================ */
+
+.wp-template-page-utility__last-updated {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--border);
+  text-align: center;
+}
+
+.wp-template-page-utility__last-updated-text {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   SIDEBAR LAYOUT
+   Two-column layout with sidebar
+   ============================================ */
+
+.wp-template-page-utility__layout--with-sidebar {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .wp-template-page-utility__layout--with-sidebar {
+    grid-template-columns: 1fr 300px;
+  }
+}
+
+.wp-template-page-utility__sidebar {
+  order: -1; /* Sidebar above content on mobile */
+}
+
+@media (min-width: 1024px) {
+  .wp-template-page-utility__sidebar {
+    order: 0;
+  }
+}
+
+.wp-template-page-utility__sidebar-sticky {
+  position: static;
+}
+
+@media (min-width: 1024px) {
+  .wp-template-page-utility__sidebar-sticky {
+    position: sticky;
+    top: calc(80px + 1rem);
+  }
+}
+
+.wp-template-page-utility__sidebar-widget {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.wp-template-page-utility__sidebar-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+/* ============================================
+   CALLOUT BOXES
+   Highlighted information boxes
+   ============================================ */
+
+.wp-template-page-utility__callout {
+  background-color: var(--muted);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.wp-template-page-utility__callout--info {
+  border-left-color: var(--primary);
+}
+
+.wp-template-page-utility__callout--warning {
+  border-left-color: var(--destructive);
+  background-color: rgba(var(--destructive-rgb), 0.1);
+}
+
+.wp-template-page-utility__callout--success {
+  border-left-color: var(--primary);
+  background-color: rgba(var(--primary-rgb), 0.1);
+}
+
+.wp-template-page-utility__callout-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+}
+
+.wp-template-page-utility__callout-content {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground);
+}
+
+/* ============================================
+   CTA SECTION
+   Optional bottom CTA
+   ============================================ */
+
+.wp-template-page-utility__cta {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   Mobile-first — base styles are mobile, enhanced at breakpoints above
+   ============================================ */
+
+/* ============================================
+   SPECIFIC PAGE VARIANTS
+   Extend base styles for specific utility pages
+   ============================================ */
+
+/* Privacy Policy Page */
+.wp-template-page-privacy {
+  /* Inherits from .wp-template-page-utility */
+}
+
+/* Terms & Conditions Page */
+.wp-template-page-terms {
+  /* Inherits from .wp-template-page-utility */
+}
+
+/* Sitemap Page */
+.wp-template-page-sitemap {
+  /* Inherits from .wp-template-page-utility */
+}
+
+/* Why Book With Us Page */
+.wp-template-page-why-book {
+  /* Inherits from .wp-template-page-utility */
+}
+
+/* ============================================
+   END OF UTILITY PAGE STYLES
+   ============================================ */

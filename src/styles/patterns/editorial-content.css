@@ -1,0 +1,395 @@
+/**
+ * Editorial Content Pattern Styles
+ * WordPress Pattern: lightspeed/editorial-content
+ * 
+ * Component: /src/app/components/patterns/EditorialContent.tsx
+ * Corresponds to: patterns/editorial-content-*.php in WordPress
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif - headings), Noto Sans (sans-serif - body)
+ * 
+ * Includes prose styling for rich HTML content (headings, lists, quotes, tables, etc.)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   EDITORIAL CONTENT BASE STYLES
+   Foundation for long-form content sections
+   ============================================ */
+
+.wp-pattern-editorial {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--background);
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-editorial {
+    padding-block: var(--spacing-section-md);
+  }
+}
+
+/* ============================================
+   CONTENT CONTAINER
+   Centered with width variants
+   ============================================ */
+
+.wp-pattern-editorial__container {
+  margin-inline: auto;
+}
+
+/* Default variant (optimal reading width: 768px) */
+.wp-pattern-editorial__container--default {
+  max-width: 48rem; /* 768px - 3xl */
+}
+
+/* Wide variant (content-heavy: 896px) */
+.wp-pattern-editorial__container--wide {
+  max-width: 56rem; /* 896px - 4xl */
+}
+
+/* Narrow variant (focused reading: 672px) */
+.wp-pattern-editorial__container--narrow {
+  max-width: 42rem; /* 672px - 2xl */
+}
+
+/* Featured variant (full-width: 1024px) */
+.wp-pattern-editorial__container--featured {
+  max-width: 64rem; /* 1024px - 5xl */
+}
+
+/* ============================================
+   HEADER SECTION
+   Optional title, subtitle, reading time
+   ============================================ */
+
+.wp-pattern-editorial__header {
+  margin-block-end: 2rem;
+}
+
+.wp-pattern-editorial__title {
+  margin-block-end: 0.5rem;
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.wp-pattern-editorial__subtitle {
+  margin-block-end: 1rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+}
+
+.wp-pattern-editorial__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.wp-pattern-editorial__reading-time {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* ============================================
+   PROSE CONTENT
+   Rich HTML content with typography styles
+   ============================================ */
+
+.wp-pattern-editorial__prose {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground);
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-editorial__prose {
+    font-size: var(--text-base);
+  }
+}
+
+/* Headings within prose */
+.wp-pattern-editorial__prose h2 {
+  margin-block-start: 2rem;
+  margin-block-end: 1rem;
+  font-family: var(--font-family-lora);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-editorial__prose h2 {
+    font-size: var(--text-2xl);
+  }
+}
+
+.wp-pattern-editorial__prose h3 {
+  margin-block-start: 1.5rem;
+  margin-block-end: 0.75rem;
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-editorial__prose h3 {
+    font-size: var(--text-xl);
+  }
+}
+
+.wp-pattern-editorial__prose h4 {
+  margin-block-start: 1.5rem;
+  margin-block-end: 0.75rem;
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+}
+
+/* Paragraphs */
+.wp-pattern-editorial__prose p {
+  margin-block-end: 1.25rem;
+}
+
+.wp-pattern-editorial__prose p:last-child {
+  margin-block-end: 0;
+}
+
+/* Links */
+.wp-pattern-editorial__prose a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 200ms ease;
+}
+
+.wp-pattern-editorial__prose a:hover {
+  color: var(--primary-hover);
+}
+
+/* Lists */
+.wp-pattern-editorial__prose ul,
+.wp-pattern-editorial__prose ol {
+  margin-block-end: 1.25rem;
+  padding-inline-start: 1.5rem;
+}
+
+.wp-pattern-editorial__prose li {
+  margin-block-end: 0.5rem;
+}
+
+.wp-pattern-editorial__prose li:last-child {
+  margin-block-end: 0;
+}
+
+/* Blockquotes */
+.wp-pattern-editorial__prose blockquote {
+  margin-block: 1.5rem;
+  padding-inline-start: var(--spacing-element-sm);
+  border-inline-start: 4px solid var(--primary);
+  font-family: var(--font-family-lora);
+  font-size: var(--text-base);
+  font-style: italic;
+  color: var(--muted-foreground);
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-editorial__prose blockquote {
+    font-size: var(--text-lg);
+    padding-inline-start: var(--spacing-element-md);
+  }
+}
+
+.wp-pattern-editorial__prose blockquote cite {
+  display: block;
+  margin-block-start: 0.5rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-style: normal;
+  color: var(--muted-foreground);
+}
+
+/* Images */
+.wp-pattern-editorial__prose img {
+  max-width: 100%;
+  height: auto;
+  margin-block: 1.5rem;
+  border-radius: var(--radius-md);
+}
+
+.wp-pattern-editorial__prose figure {
+  margin-block: 1.5rem;
+}
+
+.wp-pattern-editorial__prose figcaption {
+  margin-block-start: 0.5rem;
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  text-align: center;
+}
+
+/* Code blocks */
+.wp-pattern-editorial__prose code {
+  padding-inline: 0.25rem;
+  padding-block: 0.125rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--muted);
+  font-family: var(--font-family-courier);
+  font-size: 0.875em;
+  color: var(--foreground);
+}
+
+.wp-pattern-editorial__prose pre {
+  margin-block: 1.5rem;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  background-color: var(--muted);
+  overflow-x: auto;
+}
+
+.wp-pattern-editorial__prose pre code {
+  padding: 0;
+  background-color: transparent;
+}
+
+/* Tables */
+.wp-pattern-editorial__prose table {
+  width: 100%;
+  margin-block: 1.5rem;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.wp-pattern-editorial__prose th {
+  padding: 0.75rem;
+  border-block-end: 2px solid var(--border);
+  font-family: var(--font-family-lora);
+  font-weight: var(--font-weight-semibold);
+  text-align: left;
+  color: var(--foreground);
+}
+
+.wp-pattern-editorial__prose td {
+  padding: 0.75rem;
+  border-block-end: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+/* Horizontal rule */
+.wp-pattern-editorial__prose hr {
+  margin-block: 2rem;
+  border: none;
+  border-block-start: 1px solid var(--border);
+}
+
+/* Strong and emphasis */
+.wp-pattern-editorial__prose strong {
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.wp-pattern-editorial__prose em {
+  font-style: italic;
+}
+
+/* ============================================
+   PULL QUOTES
+   Featured quotes within content
+   ============================================ */
+
+.wp-pattern-editorial__pullquote {
+  margin-block: 2rem;
+  padding: 2rem;
+  background-color: var(--muted);
+  border-inline-start: 4px solid var(--primary);
+  border-radius: var(--radius-md);
+}
+
+.wp-pattern-editorial__pullquote-text {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-snug);
+  color: var(--foreground);
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-editorial__pullquote-text {
+    font-size: var(--text-2xl);
+  }
+}
+
+.wp-pattern-editorial__pullquote-cite {
+  display: block;
+  margin-block-start: 1rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   CALLOUT BOXES
+   Info, warning, success boxes
+   ============================================ */
+
+.wp-pattern-editorial__callout {
+  margin-block: 1.5rem;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background-color: var(--card);
+}
+
+.wp-pattern-editorial__callout--info {
+  border-color: var(--primary);
+  background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.wp-pattern-editorial__callout--warning {
+  border-color: var(--destructive);
+  background-color: color-mix(in srgb, var(--destructive) 10%, transparent);
+}
+
+.wp-pattern-editorial__callout--success {
+  border-color: var(--success);
+  background-color: color-mix(in srgb, var(--success) 10%, transparent);
+}
+
+.wp-pattern-editorial__callout-title {
+  margin-block-end: 0.5rem;
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.wp-pattern-editorial__callout-content {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--foreground);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   Mobile-first — base styles are mobile, enhanced at breakpoints above
+   ============================================ */
+
+/* ============================================
+   ANIMATION STATES
+   Scroll-triggered animations (handled by Motion)
+   ============================================ */
+
+/* These are handled by Motion in the component */
+
+/* ============================================
+   END OF EDITORIAL CONTENT PATTERN STYLES
+   ============================================ */

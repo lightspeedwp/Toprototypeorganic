@@ -1,0 +1,625 @@
+/**
+ * Generic Archive Template Styles
+ * WordPress template: archive (destinations, accommodation, blog, etc.)
+ * 
+ * Component: /src/app/pages/*Archive.tsx
+ * Corresponds to: templates/archive-*.html in WordPress
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * Reusable for: destinations, accommodation, blog, reviews, specials
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   GENERIC ARCHIVE CONTAINER
+   Base archive page wrapper
+   ============================================ */
+
+.wp-template-archive {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ============================================
+   ARCHIVE HERO / HEADER
+   Page title, description, and featured image
+   ============================================ */
+
+.wp-template-archive__hero {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.wp-template-archive__hero--with-image {
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.wp-template-archive__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.wp-template-archive__hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+.wp-template-archive__title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-sm);
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive__title {
+    font-size: var(--text-5xl);
+  }
+}
+
+.wp-template-archive__hero--with-image .wp-template-archive__title {
+  color: var(--overlay-text);
+}
+
+.wp-template-archive__description {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--muted-foreground);
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive__description {
+    font-size: var(--text-lg);
+  }
+}
+
+.wp-template-archive__hero--with-image .wp-template-archive__description {
+  color: var(--overlay-text-muted);
+}
+
+.wp-template-archive__count {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  padding-top: var(--spacing-element-sm);
+}
+
+/* ============================================
+   FILTERS / TAXONOMY NAVIGATION
+   Filter bar and taxonomy links
+   ============================================ */
+
+.wp-template-archive__filters {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: var(--header-bar-height); /* Mobile header height as base */
+  z-index: var(--z-sticky);
+  backdrop-filter: blur(8px);
+  background-color: rgba(var(--background-rgb), 0.95);
+}
+
+@media (min-width: 1024px) {
+  .wp-template-archive__filters {
+    top: var(--header-bar-height);
+  }
+}
+
+/* Filters Wrapper - Contains padding and spacing */
+.wp-template-archive__filters-wrapper {
+  padding-block: var(--spacing-element-sm);
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive__filters-wrapper {
+    padding-block: var(--spacing-element-md);
+  }
+}
+
+/* Filters Grid - Responsive grid layout */
+.wp-template-archive__filters-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-element-sm);
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive__filters-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* Filter Search - Takes 2 columns on desktop */
+.wp-template-archive__filter-search {
+  grid-column: span 1;
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive__filter-search {
+    grid-column: span 1;
+  }
+}
+
+/* Filter Form Elements */
+.wp-template-archive__filter-label {
+  display: block;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-xs);
+}
+
+.wp-template-archive__filter-input-wrapper {
+  position: relative;
+}
+
+.wp-template-archive__filter-input-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  color: var(--muted-foreground);
+  pointer-events: none;
+}
+
+.wp-template-archive__filter-input {
+  width: 100%;
+  padding-left: 2.5rem;
+  padding-right: 1rem;
+  padding-block: 0.5rem;
+  background-color: var(--input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  transition: all var(--transition-fast);
+}
+
+.wp-template-archive__filter-input::placeholder {
+  color: var(--muted-foreground);
+}
+
+.wp-template-archive__filter-input:focus {
+  outline: none;
+  ring: 2px solid var(--ring);
+  ring-offset: 2px;
+}
+
+.wp-template-archive__filter-select {
+  width: 100%;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  background-color: var(--input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.wp-template-archive__filter-select:focus {
+  outline: none;
+  ring: 2px solid var(--ring);
+  ring-offset: 2px;
+}
+
+.wp-template-archive__filter-clear {
+  padding-top: var(--spacing-element-sm);
+}
+
+.wp-template-archive__filter-clear-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-element-xs);
+  padding-inline: var(--spacing-element-sm);
+  padding-block: var(--spacing-element-xs);
+  background-color: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.wp-template-archive__filter-clear-button:hover {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.wp-template-archive__filter-clear-button:focus {
+  outline: none;
+  ring: 2px solid var(--ring);
+  ring-offset: 2px;
+}
+
+/* ============================================
+   TOOLBAR
+   Results count, view switcher, sort controls
+   ============================================ */
+
+.wp-template-archive__toolbar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-block: var(--spacing-element-sm);
+  gap: var(--spacing-element-sm);
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive__toolbar {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.wp-template-archive__results-info {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.wp-template-archive__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-element-sm);
+  width: 100%;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive__controls {
+    width: auto;
+    justify-content: flex-end;
+  }
+}
+
+/* View switcher (grid/list) */
+.wp-template-archive__view-switcher {
+  display: flex;
+  gap: 0.25rem;
+  background-color: var(--muted);
+  padding: 0.25rem;
+  border-radius: var(--radius-md);
+}
+
+.wp-template-archive__view-button {
+  padding: 0.5rem;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--muted-foreground);
+  transition: all 150ms;
+}
+
+.wp-template-archive__view-button--active {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.wp-template-archive__view-button:hover:not(.wp-template-archive__view-button--active) {
+  color: var(--foreground);
+}
+
+/* ============================================
+   CONTENT AREA
+   Main content with grid or list layout
+   ============================================ */
+
+.wp-template-archive__content {
+  padding-block: var(--spacing-section-md);
+}
+
+/* Grid layout (default) - responsive columns */
+.wp-template-archive__grid {
+  display: grid;
+  gap: var(--spacing-gap-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .wp-template-archive__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive__grid--cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-template-archive__grid--cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* List layout - single column, horizontal cards */
+.wp-template-archive__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-md);
+}
+
+/* ============================================
+   PAGINATION
+   Bottom pagination controls
+   ============================================ */
+
+.wp-template-archive__pagination {
+  padding-top: var(--spacing-section-sm);
+  padding-block: var(--spacing-element-lg);
+  border-top: 1px solid var(--border);
+}
+
+/* ============================================
+   SIDEBAR (OPTIONAL)
+   Two-column layout with sidebar on desktop
+   ============================================ */
+
+.wp-template-archive__layout--with-sidebar {
+  display: grid;
+  gap: var(--spacing-gap-lg);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .wp-template-archive__layout--with-sidebar {
+    grid-template-columns: 1fr 300px;
+    gap: var(--spacing-gap-xl);
+  }
+}
+
+.wp-template-archive__sidebar {
+  order: -1; /* Sidebar above content on mobile */
+}
+
+@media (min-width: 1024px) {
+  .wp-template-archive__sidebar {
+    order: 0;
+  }
+}
+
+.wp-template-archive__sidebar-sticky {
+  position: static;
+}
+
+@media (min-width: 1024px) {
+  .wp-template-archive__sidebar-sticky {
+    position: sticky;
+    top: calc(var(--header-bar-height) + var(--spacing-element-sm));
+  }
+}
+
+.wp-template-archive__sidebar-widget {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-element-md);
+  margin-bottom: var(--spacing-element-md);
+}
+
+.wp-template-archive__sidebar-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-sm);
+}
+
+/* ============================================
+   EMPTY STATE
+   No results found
+   ============================================ */
+
+.wp-template-archive__empty {
+  padding-block: 4rem;
+  text-align: center;
+}
+
+.wp-template-archive__empty-icon {
+  width: 4rem;
+  height: 4rem;
+  margin-inline: auto;
+  margin-bottom: var(--spacing-element-md);
+  color: var(--muted-foreground);
+}
+
+.wp-template-archive__empty-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-xs);
+}
+
+.wp-template-archive__empty-description {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  max-width: 28rem;
+  margin-inline: auto;
+  margin-bottom: var(--spacing-element-md);
+}
+
+.wp-template-archive__empty-button {
+  padding-inline: var(--spacing-element-md);
+  padding-block: var(--spacing-element-sm);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-element-xs);
+  min-height: 44px;
+}
+
+.wp-template-archive__empty-button:hover {
+  background-color: rgba(var(--primary-rgb), 0.9);
+}
+
+/* ============================================
+   LOADING STATE
+   Skeleton/spinner while loading
+   ============================================ */
+
+.wp-template-archive__loading {
+  padding-block: 4rem;
+  text-align: center;
+}
+
+.wp-template-archive__spinner {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid var(--muted);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* ============================================
+   FAQ SECTION
+   Archive-specific FAQ
+   ============================================ */
+
+.wp-template-archive__faq {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+/* ============================================
+   CTA SECTION
+   Bottom call-to-action
+   ============================================ */
+
+.wp-template-archive__cta {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   Mobile-first — base styles are mobile, enhanced at breakpoints above
+   ============================================ */
+
+/* ============================================
+   SPECIFIC ARCHIVE VARIANTS
+   Extend base styles for specific content types
+   ============================================ */
+
+/* Destinations Archive */
+.wp-template-archive-destinations {
+  /* Inherits from .wp-template-archive */
+}
+
+/* Accommodation Archive */
+.wp-template-archive-accommodation {
+  /* Inherits from .wp-template-archive */
+}
+
+/* Blog Archive */
+.wp-template-archive-blog {
+  /* Inherits from .wp-template-archive */
+}
+
+/* Reviews Archive */
+.wp-template-archive-reviews {
+  /* Inherits from .wp-template-archive */
+}
+
+/* Specials Archive */
+.wp-template-archive-specials {
+  /* Inherits from .wp-template-archive */
+}
+
+/* ============================================
+   ADDITIONAL ARCHIVE SECTIONS (Wave 2 additions)
+   Sections used by specific archive pages
+   ============================================ */
+
+/* Results Header - Contains count and sort controls */
+.wp-template-archive__results-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-element-sm);
+  padding-block: var(--spacing-element-sm);
+  margin-block-end: var(--spacing-element-md);
+  border-bottom: 1px solid var(--border);
+}
+
+@media (min-width: 641px) {
+  .wp-template-archive__results-header {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* Results Count - Shows total number of results */
+.wp-template-archive__results-count {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+/* Sort Controls - Dropdown or buttons for sorting */
+.wp-template-archive__sort-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-element-xs);
+}
+
+/* Stats Section - Key statistics or metrics */
+.wp-template-archive__stats {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--muted);
+  border-block: 1px solid var(--border);
+}
+
+/* ============================================
+   END OF ARCHIVE STYLES
+   ============================================ */

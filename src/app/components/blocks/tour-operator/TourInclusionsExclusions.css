@@ -1,0 +1,108 @@
+/**
+ * Tour Inclusions & Exclusions Block Styles
+ * 
+ * WordPress Block: lsx-tour-operator/inclusions-exclusions
+ * Displays what's included and excluded in a tour price.
+ * 
+ * All values reference CSS custom properties from the design system.
+ */
+
+/* ============================================
+   ROOT CONTAINER
+   ============================================ */
+
+.lsx-tour-inclusions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-gap-lg);
+}
+
+@media (min-width: 768px) {
+  .lsx-tour-inclusions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ============================================
+   COLUMN (Included / Excluded)
+   ============================================ */
+
+.lsx-tour-inclusions__column {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-element-md);
+}
+
+/* ============================================
+   COLUMN HEADER
+   ============================================ */
+
+.lsx-tour-inclusions__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: var(--spacing-element-sm);
+  padding-bottom: var(--spacing-element-sm);
+  border-bottom: 1px solid var(--border);
+}
+
+.lsx-tour-inclusions__header-icon--included {
+  color: var(--success);
+  flex-shrink: 0;
+}
+
+.lsx-tour-inclusions__header-icon--excluded {
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   LIST ITEMS
+   ============================================ */
+
+.lsx-tour-inclusions__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.lsx-tour-inclusions__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--muted-foreground);
+  margin-bottom: 0;
+}
+
+.lsx-tour-inclusions__item-icon--included {
+  color: var(--success);
+  flex-shrink: 0;
+  margin-top: 0.1875rem;
+}
+
+.lsx-tour-inclusions__item-icon--excluded {
+  color: var(--destructive);
+  flex-shrink: 0;
+  margin-top: 0.1875rem;
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+
+.lsx-tour-inclusions__empty {
+  text-align: center;
+  padding: var(--spacing-element-md);
+  color: var(--muted-foreground);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+}

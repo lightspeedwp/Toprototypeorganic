@@ -1,0 +1,482 @@
+/**
+ * Hero Pattern Styles
+ * WordPress Pattern: lightspeed/hero-standard
+ * 
+ * Component: /src/app/components/patterns/Hero.tsx
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif)
+ */
+
+/* ============================================
+   HERO BASE STYLES
+   ============================================ */
+
+.wp-pattern-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--spacing-section-md);
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .wp-pattern-hero {
+    padding-block: var(--spacing-section-lg);
+  }
+}
+
+/* ============================================
+   HEIGHT VARIANTS
+   ============================================ */
+
+.wp-pattern-hero--small {
+  min-height: 400px;
+  padding-block: var(--spacing-section-sm);
+}
+
+.wp-pattern-hero--medium {
+  min-height: 500px;
+  padding-block: var(--spacing-section-md);
+}
+
+@media (min-width: 768px) {
+  .wp-pattern-hero--medium {
+    min-height: 600px;
+    padding-block: var(--spacing-section-lg);
+  }
+}
+
+.wp-pattern-hero--large {
+  min-height: 600px;
+  padding-block: var(--spacing-section-lg);
+}
+
+@media (min-width: 768px) {
+  .wp-pattern-hero--large {
+    min-height: 700px;
+    padding-block: var(--spacing-section-xl);
+  }
+}
+
+.wp-pattern-hero--full {
+  min-height: 100vh;
+  padding-block: var(--spacing-section-xl);
+}
+
+/* ============================================
+   BACKGROUND MEDIA
+   ============================================ */
+
+.wp-pattern-hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.wp-pattern-hero__background-image,
+.wp-pattern-hero__background-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* ============================================
+   GRADIENT OVERLAYS
+   ============================================ */
+
+.wp-pattern-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--hero-overlay-bg);
+}
+
+.wp-pattern-hero__overlay--light {
+  opacity: 0.5;
+}
+
+.wp-pattern-hero__overlay--medium {
+  opacity: 0.75;
+}
+
+.wp-pattern-hero__overlay--dark {
+  opacity: 0.9;
+}
+
+/* ============================================
+   CONTENT LAYOUTS
+   ============================================ */
+
+.wp-pattern-hero__content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+.wp-pattern-hero__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-md);
+}
+
+.wp-pattern-hero__inner--centered {
+  text-align: center;
+  max-width: var(--container-max-width-narrow);
+  margin-inline: auto;
+}
+
+.wp-pattern-hero__inner--split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-gap-lg);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .wp-pattern-hero__inner--split {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.wp-pattern-hero__main {
+  max-width: 52rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-sm);
+}
+
+.wp-pattern-hero__inner--centered .wp-pattern-hero__main {
+  margin-inline: auto;
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.wp-pattern-hero__context {
+  /* Margin eliminated - uses parent gap */
+}
+
+.wp-pattern-hero__context-text {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+}
+
+.wp-pattern-hero__title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--foreground);
+  text-shadow: var(--hero-text-shadow);
+}
+
+.wp-pattern-hero--with-background .wp-pattern-hero__title {
+  color: var(--hero-text-color, var(--overlay-text));
+  text-shadow: var(--hero-text-shadow);
+}
+
+.wp-pattern-hero__intro {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  line-height: var(--leading-relaxed);
+  max-width: 48rem;
+  text-shadow: var(--hero-text-shadow-subtle);
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-hero__intro {
+    font-size: var(--text-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-pattern-hero__intro {
+    font-size: var(--text-xl);
+  }
+}
+
+.wp-pattern-hero--with-background .wp-pattern-hero__intro {
+  color: var(--hero-intro-color, var(--overlay-text-muted));
+  text-shadow: var(--hero-text-shadow-subtle);
+}
+
+.wp-pattern-hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-gap-xs);
+}
+
+.wp-pattern-hero__inner--centered .wp-pattern-hero__badges {
+  justify-content: center;
+}
+
+.wp-pattern-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  white-space: nowrap;
+  box-shadow: var(--elevation-md);
+}
+
+.wp-pattern-hero__badge svg {
+  flex-shrink: 0;
+}
+
+.wp-pattern-hero__badge-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  transition: transform 300ms ease;
+}
+
+.wp-pattern-hero__badge:hover .wp-pattern-hero__badge-icon {
+  transform: rotate(-12deg) scale(1.2);
+}
+
+@keyframes wp-badge-icon-pulse {
+  0%, 100% { transform: rotate(-12deg) scale(1.2); }
+  50%      { transform: rotate(0deg) scale(1.35); }
+}
+
+.wp-pattern-hero__badge:hover .wp-pattern-hero__badge-icon {
+  animation: wp-badge-icon-pulse 600ms ease forwards;
+}
+
+.wp-pattern-hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-sm);
+}
+
+@media (min-width: 640px) {
+  .wp-pattern-hero__actions {
+    flex-direction: row;
+  }
+}
+
+.wp-pattern-hero__inner--centered .wp-pattern-hero__actions {
+  justify-content: center;
+}
+
+.wp-pattern-hero__button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-medium);
+  transition: all 200ms ease;
+  box-shadow: var(--elevation-md), var(--glass-ring);
+  cursor: pointer;
+  border: none;
+  min-height: 56px;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.wp-pattern-hero__button-primary svg {
+  flex-shrink: 0;
+}
+
+.wp-pattern-hero__button-primary:hover {
+  opacity: 0.9;
+  box-shadow: var(--elevation-lg), var(--glass-ring);
+}
+
+.wp-pattern-hero__button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: var(--glass-bg);
+  color: var(--foreground);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-medium);
+  transition: all 200ms ease;
+  cursor: pointer;
+  min-height: 56px;
+  width: 100%;
+  white-space: nowrap;
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--elevation-sm), var(--glass-inset-glow);
+}
+
+.wp-pattern-hero__button-secondary svg {
+  flex-shrink: 0;
+}
+
+.wp-pattern-hero--with-background .wp-pattern-hero__button-secondary {
+  color: var(--hero-button-secondary-text, var(--overlay-text));
+  border-color: var(--hero-button-secondary-border, var(--glass-border));
+  background-color: var(--glass-bg-subtle);
+  box-shadow: var(--elevation-sm), var(--glass-inset-glow-md);
+}
+
+.wp-pattern-hero__button-secondary--ghost {
+  border-color: transparent;
+}
+
+.wp-pattern-hero__button-secondary:hover {
+  background-color: var(--glass-bg-hover);
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: var(--elevation-md), var(--glass-inset-glow-md);
+}
+
+/* ============================================
+   STATS
+   ============================================ */
+
+.wp-pattern-hero__stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-gap-sm);
+}
+
+.wp-pattern-hero__stat-card {
+  padding: var(--spacing-element-md);
+  background-color: rgba(var(--card-rgb), 0.8);
+  backdrop-filter: blur(var(--glass-blur-sm));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-gap-xs);
+}
+
+.wp-pattern-hero__stat-icon {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--muted);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+}
+
+.wp-pattern-hero__stat-value {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
+
+.wp-pattern-hero__stat-label {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.wp-pattern-hero__stats-row {
+  margin-block-start: var(--spacing-section-sm);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-gap-md);
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .wp-pattern-hero__stats-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.wp-pattern-hero__stat-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-xs);
+}
+
+.wp-pattern-hero__stat-icon-wrap {
+  display: flex;
+  justify-content: center;
+  color: var(--primary);
+}
+
+.wp-pattern-hero__stat-item .wp-pattern-hero__stat-value {
+  font-size: var(--text-2xl);
+  color: var(--foreground);
+}
+
+.wp-pattern-hero--with-background .wp-pattern-hero__stat-item .wp-pattern-hero__stat-value {
+  color: var(--overlay-text);
+}
+
+/* ============================================
+   SCROLL INDICATOR
+   ============================================ */
+
+.wp-pattern-hero__scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  color: var(--primary-foreground);
+}
+
+.wp-pattern-hero--with-background .wp-pattern-hero__scroll {
+  color: var(--overlay-text, var(--primary-foreground));
+}
+
+.wp-pattern-hero__button-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (min-width: 641px) {
+  .wp-pattern-hero__title {
+    font-size: var(--text-5xl);
+  }
+
+  .wp-pattern-hero__button-primary,
+  .wp-pattern-hero__button-secondary {
+    width: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-pattern-hero__title {
+    font-size: var(--text-6xl);
+  }
+}

@@ -1,0 +1,228 @@
+/**
+ * Form Component Styles
+ * 
+ * BEM Structure: .form__label, .form__input, .form__textarea, etc.
+ * 
+ * Form element styles using CSS variables for complete customization.
+ * All colors, typography, and spacing use design system tokens.
+ * 
+ * @version 1.0
+ * @see /src/styles/theme-light.css
+ * @see /src/styles/theme-dark.css
+ */
+
+/* ============================================
+   FORM LABEL
+   ============================================ */
+
+.form__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+}
+
+.form__label--required::after {
+  content: " *";
+  color: var(--destructive);
+}
+
+/* ============================================
+   FORM INPUT
+   ============================================ */
+
+.form__input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--input-background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  color: var(--foreground);
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+  outline: none;
+}
+
+.form__input::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form__input:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+}
+
+.form__input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--muted);
+}
+
+.form__input--error {
+  border-color: var(--destructive);
+}
+
+.form__input--error:focus {
+  box-shadow: 0 0 0 3px rgba(var(--destructive-rgb), 0.1);
+}
+
+/* ============================================
+   FORM TEXTAREA
+   ============================================ */
+
+.form__textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--input-background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--foreground);
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+  outline: none;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form__textarea::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form__textarea:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+}
+
+.form__textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--muted);
+}
+
+.form__textarea--error {
+  border-color: var(--destructive);
+}
+
+/* ============================================
+   FORM SELECT
+   ============================================ */
+
+.form__select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  padding-right: 2.5rem;
+  background-color: var(--input-background);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  color: var(--foreground);
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.form__select:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+}
+
+.form__select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--muted);
+}
+
+/* ============================================
+   FORM CHECKBOX
+   ============================================ */
+
+.form__checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 200ms ease;
+  accent-color: var(--primary);
+}
+
+.form__checkbox:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   FORM RADIO
+   ============================================ */
+
+.form__radio {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 200ms ease;
+  accent-color: var(--primary);
+}
+
+.form__radio:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   FORM ERROR MESSAGE
+   ============================================ */
+
+.form__error {
+  margin-top: 0.5rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--destructive);
+}
+
+/* ============================================
+   FORM HELP TEXT
+   ============================================ */
+
+.form__help {
+  margin-top: 0.5rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   FORM GROUP
+   ============================================ */
+
+.form__group {
+  margin-bottom: 1.5rem;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .form__input,
+  .form__textarea,
+  .form__select,
+  .form__checkbox,
+  .form__radio {
+    transition: none;
+  }
+}

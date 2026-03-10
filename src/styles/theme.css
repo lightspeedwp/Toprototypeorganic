@@ -1,0 +1,340 @@
+/**
+ * theme.css
+ * LSX Design System — Theme Orchestration Entry Point
+ *
+ * This file's ONLY job is to import the theme layers in the correct
+ * cascade order. No styles are defined here.
+ *
+ * Import order matters:
+ *   1. theme-base.css     — Shared tokens: typography, spacing, radius, animation
+ *   2. theme-light.css    — Light-mode colours, shadows, logos (:root)
+ *   3. theme-dark.css     — Dark-mode overrides (.dark)
+ *   4. theme-variables.css — WordPress --wp--preset--* namespace mapping
+ *   5. theme-funky.css    — Optional vibrant theme (.theme-funky)
+ *
+ * Tailwind compatibility (the @theme inline block, @custom-variant, and
+ * any @apply directives) lives exclusively in tailwind.css to keep this
+ * file Tailwind-free and purely composable CSS.
+ *
+ * @see tailwind.css      — Tailwind compatibility layer (do not add UI styles there)
+ * @see global.css        — WordPress-aligned utility and component classes
+ * @see fonts.css         — Font-face declarations
+ * @version 5.0
+ */
+
+/* ── 1. Base tokens (typography, spacing, radius, animation) ─────── */
+@import './theme-base.css';
+
+/* ── 2. Light mode colours (default :root) ───────────────────────── */
+@import './theme-light.css';
+
+/* ── 3. Dark mode colour overrides (.dark) ───────────────────────── */
+@import './theme-dark.css';
+
+/* ── 4. WordPress preset namespace variables ─────────────────────── */
+@import './theme-variables.css';
+
+/* ── 5. Optional alternative theme (.theme-funky) ───────────────── */
+@import './theme-funky.css';
+
+/* ================================================================
+   CSS RESET — Border & Outline Defaults
+   Applied to ALL elements. Uses CSS variables so the values
+   automatically update when the theme switches.
+
+   Note: @layer base is native CSS Cascade Layers (CSS Level 5),
+   not a Tailwind feature. It ensures these rules sit below any
+   higher-specificity CSS in component stylesheets.
+   ================================================================ */
+
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+    border-color: var(--border);
+    outline-color: color-mix(in srgb, var(--ring) 50%, transparent);
+    box-sizing: border-box;
+  }
+
+  /* ── Body defaults ──────────────────────────────────────────── */
+  body {
+    position: relative;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-family-noto-sans);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-normal);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    position: relative;
+    font-size: var(--font-size);
+  }
+
+  /* ================================================================
+     SEMANTIC HTML TYPOGRAPHY
+     These rules apply to bare HTML elements across the entire site.
+     They establish the baseline from which all components inherit.
+     Do NOT use Tailwind size/weight classes on these elements —
+     override only when a specific deviation is intentional.
+     ================================================================ */
+
+  /* H1 — Primary page title */
+  h1 {
+    font-family: var(--font-family-lora);
+    font-size: var(--text-6xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tighter);
+    margin-bottom: 1.5rem;
+  }
+
+  /* H2 — Section headings */
+  h2 {
+    font-family: var(--font-family-lora);
+    font-size: var(--text-4xl);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: 1.25rem;
+  }
+
+  /* H3 — Sub-section headings */
+  h3 {
+    font-family: var(--font-family-lora);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: 1rem;
+  }
+
+  /* H4 — Card / block headings */
+  h4 {
+    font-family: var(--font-family-lora);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-normal);
+    margin-bottom: 0.75rem;
+  }
+
+  /* H5 — Minor headings */
+  h5 {
+    font-family: var(--font-family-lora);
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-normal);
+    margin-bottom: 0.5rem;
+  }
+
+  /* H6 — Smallest heading */
+  h6 {
+    font-family: var(--font-family-lora);
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--leading-normal);
+    letter-spacing: var(--tracking-normal);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Body paragraph */
+  p {
+    font-family: var(--font-family-noto-sans);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-normal);
+    letter-spacing: var(--tracking-normal);
+    margin-bottom: 1rem;
+  }
+
+  /* Labels */
+  label {
+    font-family: var(--font-family-lora);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--leading-normal);
+    letter-spacing: var(--tracking-normal);
+  }
+
+  /* Buttons */
+  button {
+    font-family: var(--font-family-noto-sans);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--leading-normal);
+    letter-spacing: var(--tracking-normal);
+  }
+
+  /* Form fields */
+  input,
+  textarea,
+  select {
+    font-family: var(--font-family-noto-sans);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-normal);
+    letter-spacing: var(--tracking-normal);
+  }
+
+  /* Small text */
+  small {
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  /* Bold / strong */
+  strong,
+  b {
+    font-weight: var(--font-weight-semibold);
+  }
+
+  /* Italic */
+  em,
+  i {
+    font-style: italic;
+  }
+
+  /* Blockquote */
+  blockquote {
+    font-family: var(--font-family-lora);
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-normal);
+    font-style: italic;
+    line-height: var(--leading-relaxed);
+    padding-left: 1.5rem;
+    border-left: 4px solid var(--primary);
+    margin: 1.5rem 0;
+  }
+
+  /* Inline code */
+  code {
+    font-family: var(--font-family-mono);
+    font-size: 0.9em;
+    line-height: var(--leading-normal);
+    background-color: var(--muted);
+    color: var(--foreground);
+    padding: 0.125rem 0.25rem;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Code block */
+  pre {
+    font-family: var(--font-family-mono);
+    font-size: 0.875rem;
+    line-height: var(--leading-relaxed);
+    background-color: var(--muted);
+    color: var(--foreground);
+    padding: 1rem;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  /* Lists */
+  ul,
+  ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: var(--leading-normal);
+  }
+
+  /* Links */
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color var(--transition-base);
+  }
+
+  a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Horizontal rule */
+  hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 2rem 0;
+  }
+
+  /* Images */
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+/* ================================================================
+   DESIGN-SYSTEM UTILITY CLASSES
+
+   These are our OWN utility classes — not Tailwind utilities.
+   They use CSS Cascade Layers so component-level selectors can
+   still override them without specificity battles.
+   ================================================================ */
+
+@layer utilities {
+
+  /* — Fluid typography size overrides — */
+  .text-fluid-6xl  { font-size: var(--text-6xl); }
+  .text-fluid-5xl  { font-size: var(--text-5xl); }
+  .text-fluid-4xl  { font-size: var(--text-4xl); }
+  .text-fluid-3xl  { font-size: var(--text-3xl); }
+  .text-fluid-2xl  { font-size: var(--text-2xl); }
+  .text-fluid-xl   { font-size: var(--text-xl);  }
+  .text-fluid-lg   { font-size: var(--text-lg);  }
+  .text-fluid-base { font-size: var(--text-base);}
+  .text-fluid-sm   { font-size: var(--text-sm);  }
+  .text-fluid-xs   { font-size: var(--text-xs);  }
+
+  /* — Fluid section spacing — */
+  .py-section-sm { padding-top: var(--spacing-section-sm); padding-bottom: var(--spacing-section-sm); }
+  .py-section-md { padding-top: var(--spacing-section-md); padding-bottom: var(--spacing-section-md); }
+  .py-section-lg { padding-top: var(--spacing-section-lg); padding-bottom: var(--spacing-section-lg); }
+  .py-section-xl { padding-top: var(--spacing-section-xl); padding-bottom: var(--spacing-section-xl); }
+
+  /* — Fluid gap utilities — */
+  .gap-fluid-xs { gap: var(--spacing-gap-xs); }
+  .gap-fluid-sm { gap: var(--spacing-gap-sm); }
+  .gap-fluid-md { gap: var(--spacing-gap-md); }
+  .gap-fluid-lg { gap: var(--spacing-gap-lg); }
+
+  /* — Font weight overrides — */
+  .font-light    { font-weight: var(--font-weight-light);    }
+  .font-normal   { font-weight: var(--font-weight-normal);   }
+  .font-medium   { font-weight: var(--font-weight-medium);   }
+  .font-semibold { font-weight: var(--font-weight-semibold); }
+  .font-bold     { font-weight: var(--font-weight-bold);     }
+
+  /* — Line-height overrides — */
+  .leading-tight   { line-height: var(--leading-tight);   }
+  .leading-snug    { line-height: var(--leading-snug);    }
+  .leading-normal  { line-height: var(--leading-normal);  }
+  .leading-relaxed { line-height: var(--leading-relaxed); }
+  .leading-loose   { line-height: var(--leading-loose);   }
+
+  /* — Letter-spacing overrides — */
+  .tracking-tighter { letter-spacing: var(--tracking-tighter); }
+  .tracking-tight   { letter-spacing: var(--tracking-tight);   }
+  .tracking-normal  { letter-spacing: var(--tracking-normal);  }
+  .tracking-wide    { letter-spacing: var(--tracking-wide);    }
+  .tracking-wider   { letter-spacing: var(--tracking-wider);   }
+}

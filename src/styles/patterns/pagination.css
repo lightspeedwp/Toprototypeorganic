@@ -1,0 +1,172 @@
+/**
+ * Pagination Pattern Styles
+ * WordPress Block: core/query-pagination
+ * 
+ * Component: /src/app/components/patterns/Pagination.tsx
+ * Corresponds to: core/query-pagination block in WordPress
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Noto Sans (sans-serif)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   PAGINATION BASE STYLES
+   Foundation for pagination controls
+   ============================================ */
+
+.wp-pattern-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding-block: var(--spacing-section-sm);
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-pagination {
+    gap: 0.5rem;
+  }
+}
+
+/* ============================================
+   PAGINATION BUTTON
+   Individual page number or nav button
+   ============================================ */
+
+.wp-pattern-pagination__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding-inline: 0.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all 200ms ease;
+  text-decoration: none;
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-pagination__button {
+    min-width: 2.5rem;
+    height: 2.5rem;
+    padding-inline: 0.75rem;
+    font-size: var(--text-sm);
+  }
+}
+
+.wp-pattern-pagination__button:hover:not(.wp-pattern-pagination__button--active):not(.wp-pattern-pagination__button--disabled) {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.wp-pattern-pagination__button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+/* Active state */
+.wp-pattern-pagination__button--active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  cursor: default;
+}
+
+/* Disabled state */
+.wp-pattern-pagination__button--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   PAGINATION ICONS
+   Previous/next/first/last icons
+   ============================================ */
+
+.wp-pattern-pagination__icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ============================================
+   PAGINATION ELLIPSIS
+   "..." separator for skipped pages
+   ============================================ */
+
+.wp-pattern-pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding-inline: 0.75rem;
+  color: var(--muted-foreground);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  user-select: none;
+}
+
+/* ============================================
+   PAGINATION INFO
+   "Showing X of Y" text
+   ============================================ */
+
+.wp-pattern-pagination__info {
+  display: none;
+  align-items: center;
+  padding-inline: 1rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+@media (min-width: 768px) {
+  .wp-pattern-pagination__info {
+    display: flex;
+  }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   Mobile-first — base styles are mobile, enhanced at breakpoints above
+   ============================================ */
+
+/* Hide some page numbers on mobile, show first/last 2 */
+.wp-pattern-pagination__button:not(.wp-pattern-pagination__button--active):not(.wp-pattern-pagination__button--prev):not(.wp-pattern-pagination__button--next) {
+  display: none;
+}
+
+.wp-pattern-pagination__button:not(.wp-pattern-pagination__button--active):not(.wp-pattern-pagination__button--prev):not(.wp-pattern-pagination__button--next):nth-child(-n+2),
+.wp-pattern-pagination__button:not(.wp-pattern-pagination__button--active):not(.wp-pattern-pagination__button--prev):not(.wp-pattern-pagination__button--next):nth-last-child(-n+2) {
+  display: inline-flex;
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-pagination__button:not(.wp-pattern-pagination__button--active):not(.wp-pattern-pagination__button--prev):not(.wp-pattern-pagination__button--next) {
+    display: inline-flex;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   Focus and keyboard navigation
+   ============================================ */
+
+.wp-pattern-pagination__button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   END OF PAGINATION PATTERN STYLES
+   ============================================ */

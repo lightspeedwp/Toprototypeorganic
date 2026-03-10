@@ -1,0 +1,716 @@
+/**
+ * Generic Single Post Template Styles
+ * WordPress template: single (destination, accommodation, blog, etc.)
+ * 
+ * Component: /src/app/pages/*Single.tsx
+ * Corresponds to: templates/single-*.html in WordPress
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * Reusable for: destinations, accommodation, blog posts, reviews, team members
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   GENERIC SINGLE CONTAINER
+   Base single post page wrapper
+   ============================================ */
+
+.wp-template-single {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ============================================
+   BREADCRUMBS
+   Top navigation breadcrumbs
+   ============================================ */
+
+.wp-template-single__breadcrumbs {
+  padding-block: var(--spacing-element-sm);
+  background-color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ============================================
+   HERO SECTION
+   Featured image and title
+   ============================================ */
+
+.wp-template-single__hero {
+  min-height: 40vh;
+  display: flex;
+  align-items: flex-end;
+  padding-block: var(--spacing-section-lg);
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (min-width: 768px) {
+  .wp-template-single__hero {
+    min-height: 50vh;
+  }
+}
+
+.wp-template-single__hero--no-image {
+  min-height: auto;
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+  align-items: center;
+}
+
+.wp-template-single__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  z-index: 1;
+}
+
+.wp-template-single__hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.wp-template-single__hero--no-image .wp-template-single__hero-content {
+  text-align: center;
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+.wp-template-single__title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--overlay-text);
+  margin-bottom: var(--spacing-element-sm);
+}
+
+@media (min-width: 768px) {
+  .wp-template-single__title {
+    font-size: var(--text-5xl);
+  }
+}
+
+.wp-template-single__hero--no-image .wp-template-single__title {
+  color: var(--foreground);
+}
+
+.wp-template-single__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-element-sm);
+  flex-wrap: wrap;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--overlay-text-muted);
+}
+
+.wp-template-single__hero--no-image .wp-template-single__meta {
+  color: var(--muted-foreground);
+  justify-content: center;
+}
+
+.wp-template-single__meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-element-xs);
+}
+
+.wp-template-single__meta-separator {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: currentColor;
+  opacity: 0.5;
+}
+
+/* ============================================
+   MAIN CONTENT AREA
+   Two-column layout on desktop
+   ============================================ */
+
+.wp-template-single__content {
+  padding-block: var(--spacing-section-md);
+}
+
+/* Content Inner Wrapper - Max-width container for readable text */
+.wp-template-single__content-inner {
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+/* Content Heading */
+.wp-template-single__content-heading {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-md);
+}
+
+/* Content Subheading */
+.wp-template-single__content-subheading {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-sm);
+}
+
+/* Content Paragraph */
+.wp-template-single__content-paragraph {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-md);
+}
+
+/* Content Section (within content area) */
+.wp-template-single__content-section {
+  margin-bottom: var(--spacing-element-lg);
+}
+
+.wp-template-single__layout {
+  display: grid;
+  gap: var(--spacing-gap-lg);
+  grid-template-columns: 1fr;
+}
+
+/* Desktop: 2/3 content + 1/3 sidebar */
+@media (min-width: 1024px) {
+  .wp-template-single__layout {
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-gap-xl);
+  }
+}
+
+/* Full-width layout (no sidebar) */
+.wp-template-single__layout--full-width {
+  grid-template-columns: 1fr;
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+/* ============================================
+   MAIN COLUMN
+   Article content
+   ============================================ */
+
+.wp-template-single__main {
+  /* Main content column */
+}
+
+/* Article content (editorial prose) */
+.wp-template-single__article {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground);
+}
+
+@media (min-width: 768px) {
+  .wp-template-single__article {
+    font-size: var(--text-lg);
+  }
+
+  .wp-template-single__article h2 {
+    font-size: var(--text-3xl);
+  }
+
+  .wp-template-single__article h3 {
+    font-size: var(--text-2xl);
+  }
+}
+
+/* Article content - editorial prose margins (EXEMPT per human-review 3.3) */
+.wp-template-single__article h2 {
+  font-family: var(--font-family-lora);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-block: var(--spacing-element-lg) var(--spacing-element-sm);
+}
+
+.wp-template-single__article h3 {
+  font-family: var(--font-family-lora);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-block: var(--spacing-element-lg) var(--spacing-element-sm);
+}
+
+.wp-template-single__article h4 {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-block: var(--spacing-element-md) var(--spacing-element-xs);
+}
+
+.wp-template-single__article p {
+  margin-bottom: var(--spacing-element-md);
+}
+
+.wp-template-single__article ul,
+.wp-template-single__article ol {
+  margin-bottom: var(--spacing-element-md);
+  padding-left: var(--spacing-element-md);
+}
+
+.wp-template-single__article li {
+  margin-bottom: var(--spacing-element-xs);
+}
+
+.wp-template-single__article blockquote {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-xl);
+  font-style: italic;
+  color: var(--muted-foreground);
+  border-left: 4px solid var(--primary);
+  padding-left: var(--spacing-element-md);
+  margin-block: var(--spacing-element-lg);
+}
+
+.wp-template-single__article img {
+  border-radius: var(--radius-lg);
+  width: 100%;
+  height: auto;
+  margin-block: var(--spacing-element-lg);
+}
+
+/* Content wrapper for centered prose sections */
+.wp-template-single__content-wrapper {
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+.wp-template-single__content-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-md);
+}
+
+.wp-template-single__content-text {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-md);
+}
+
+/* Highlights Section */
+.wp-template-single__highlights {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--background);
+}
+
+.wp-template-single__highlights-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-sm);
+}
+
+.wp-template-single__highlights-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-element-xs);
+}
+
+.wp-template-single__highlights-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-element-xs);
+}
+
+.wp-template-single__highlights-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+  padding-top: var(--spacing-element-xxs);
+}
+
+.wp-template-single__highlights-text {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--foreground);
+}
+
+/* ============================================
+   SIDEBAR
+   Sticky sidebar with widgets
+   ============================================ */
+
+.wp-template-single__sidebar {
+  order: -1; /* Sidebar above content on mobile */
+}
+
+@media (min-width: 1024px) {
+  .wp-template-single__sidebar {
+    order: 0;
+  }
+}
+
+.wp-template-single__sidebar-sticky {
+  position: static;
+}
+
+@media (min-width: 1024px) {
+  .wp-template-single__sidebar-sticky {
+    position: sticky;
+    top: calc(var(--header-bar-height) + var(--spacing-element-sm));
+  }
+}
+
+.wp-template-single__sidebar-widget {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-element-md);
+  margin-bottom: var(--spacing-element-md);
+}
+
+.wp-template-single__sidebar-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-sm);
+}
+
+/* ============================================
+   GALLERY SECTION
+   Image gallery grid
+   ============================================ */
+
+.wp-template-single__gallery {
+  margin-block: var(--spacing-section-sm);
+}
+
+.wp-template-single__gallery-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-md);
+  text-align: center;
+}
+
+.wp-template-single__gallery-grid {
+  display: grid;
+  gap: var(--spacing-element-sm);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 768px) {
+  .wp-template-single__gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-template-single__gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.wp-template-single__gallery-image {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform var(--transition-base);
+}
+
+.wp-template-single__gallery-image:hover {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   RELATED CONTENT
+   Related posts/items section
+   ============================================ */
+
+.wp-template-single__related {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+.wp-template-single__related-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-lg);
+  text-align: center;
+}
+
+.wp-template-single__related-grid {
+  display: grid;
+  gap: var(--spacing-gap-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .wp-template-single__related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-template-single__related-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   AUTHOR BIO
+   Post author information
+   ============================================ */
+
+.wp-template-single__author {
+  background-color: var(--muted);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-element-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-element-md);
+  align-items: flex-start;
+}
+
+@media (min-width: 768px) {
+  .wp-template-single__author {
+    flex-direction: row;
+  }
+}
+
+.wp-template-single__author-avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.wp-template-single__author-info {
+  flex: 1;
+}
+
+.wp-template-single__author-name {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-xxs);
+}
+
+.wp-template-single__author-bio {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--leading-relaxed);
+}
+
+/* ============================================
+   CTA SECTION
+   Bottom call-to-action
+   ============================================ */
+
+.wp-template-single__cta {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   Mobile-first — base styles are mobile, enhanced at breakpoints above
+   ============================================ */
+
+/* ============================================
+   SPECIFIC SINGLE VARIANTS
+   Extend base styles for specific content types
+   ============================================ */
+
+/* Destination Single */
+.wp-template-single-destination {
+  /* Inherits from .wp-template-single */
+}
+
+/* Accommodation Single */
+.wp-template-single-accommodation {
+  /* Inherits from .wp-template-single */
+}
+
+/* Blog Single */
+.wp-template-single-blog {
+  /* Inherits from .wp-template-single */
+}
+
+/* Review Single */
+.wp-template-single-review {
+  /* Inherits from .wp-template-single */
+}
+
+/* Team Member Single */
+.wp-template-single-team {
+  /* Inherits from .wp-template-single */
+}
+
+/* ============================================
+   SPECIALIZED SECTIONS (Wave 3 additions)
+   Content-specific sections for different single types
+   ============================================ */
+
+/* Facts Section - Quick information grid */
+.wp-template-single__facts {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+}
+
+/* Highlights Section - Key features or attractions */
+.wp-template-single__highlights {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--background);
+}
+
+/* Climate Section - Weather information for destinations */
+.wp-template-single__climate {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Tours Section - Related tours grid */
+.wp-template-single__tours {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--background);
+}
+
+/* Regions Section - Sub-regions or areas */
+.wp-template-single__regions {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+}
+
+/* Reviews Section - Customer reviews and ratings */
+.wp-template-single__reviews {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--background);
+}
+
+/* Map Section - Location map */
+.wp-template-single__map {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--card);
+}
+
+/* Pricing Section - Tour/accommodation pricing */
+.wp-template-single__pricing {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-lg);
+}
+
+/* Inclusions Section - What's included in tour */
+.wp-template-single__inclusions {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--background);
+}
+
+/* Countdown Section - Special offer countdown */
+.wp-template-single__countdown {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--accent);
+  text-align: center;
+}
+
+/* Rooms Section - Accommodation room types */
+.wp-template-single__rooms {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--background);
+}
+
+/* Stats Section - Team member or destination stats */
+.wp-template-single__stats {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+}
+
+/* Table of Contents Section - Long-form content navigation */
+.wp-template-single__toc {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-block-end: var(--spacing-section-sm);
+  position: sticky;
+  top: var(--header-bar-height);
+  z-index: var(--z-sticky);
+}
+
+/* Newsletter Section - Newsletter signup */
+.wp-template-single__newsletter {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  text-align: center;
+}
+
+/* Meta Items Grid - Structured metadata display */
+.wp-template-single__meta-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-gap-md);
+  padding-block: var(--spacing-section-sm);
+}
+
+.wp-template-single__meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-element-xs);
+  padding: var(--spacing-element-sm);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+/* Facilities Grid - Two-column grid for amenities/features */
+.wp-template-single__facilities-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-element-sm);
+}
+
+@media (min-width: 768px) {
+  .wp-template-single__facilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Trip Details Grid - Three-column grid for review trip metadata */
+.wp-template-single__trip-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-element-sm);
+}
+
+@media (min-width: 768px) {
+  .wp-template-single__trip-details-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   END OF SINGLE POST STYLES
+   ============================================ */

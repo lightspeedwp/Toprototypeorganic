@@ -1,0 +1,116 @@
+/**
+ * Tour Contact CTA Block Styles
+ * 
+ * WordPress Block: lsx-tour-operator/contact-cta
+ * Sidebar contact widget with phone and email links.
+ * 
+ * All values reference CSS custom properties from the design system.
+ */
+
+/* ============================================
+   ROOT CONTAINER
+   ============================================ */
+
+.lsx-tour-contact-cta {
+  background-color: var(--muted);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-element-md);
+}
+
+/* ============================================
+   CONTENT
+   ============================================ */
+
+.lsx-tour-contact-cta__description {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--leading-relaxed);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-element-sm);
+}
+
+/* ============================================
+   CONTACT LINKS
+   ============================================ */
+
+.lsx-tour-contact-cta__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.lsx-tour-contact-cta__link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--primary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  min-height: 44px;
+  padding: 0.25rem 0;
+}
+
+.lsx-tour-contact-cta__link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.lsx-tour-contact-cta__link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.lsx-tour-contact-cta__link-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+
+.lsx-tour-contact-cta__divider {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: var(--spacing-element-sm) 0;
+}
+
+/* ============================================
+   ENQUIRY BUTTON
+   ============================================ */
+
+.lsx-tour-contact-cta__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.625rem 1rem;
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  min-height: 44px;
+}
+
+.lsx-tour-contact-cta__button:hover {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.lsx-tour-contact-cta__button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}

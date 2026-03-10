@@ -1,0 +1,385 @@
+/**
+ * Print Styles
+ * 
+ * Optimized print styles for printing itineraries, packing lists, and other content.
+ * Hides non-essential elements and formats content for paper.
+ * 
+ * **Features:**
+ * - Hide navigation, header, footer when printing
+ * - Optimize typography for print
+ * - Add page breaks where appropriate
+ * - Show URLs for links
+ * - Optimize colors for print (black & white)
+ * - Ensure images fit on page
+ * 
+ * **Usage:**
+ * Import this file in your main CSS file to apply print styles automatically.
+ */
+
+@media print {
+  /* ================================================================
+     HIDE NON-ESSENTIAL ELEMENTS
+     ================================================================ */
+  
+  /* Hide navigation, header, footer */
+  header,
+  footer,
+  nav,
+  [role="navigation"],
+  [aria-label="Site navigation"],
+  [data-print-hide="true"] {
+    display: none !important;
+  }
+  
+  /* Hide interactive elements */
+  button:not(.print-show),
+  .template-browser,
+  .back-to-top,
+  .mobile-menu-toggle,
+  .theme-switcher,
+  .search-bar,
+  .filter-controls,
+  .pagination,
+  .cta-section,
+  .social-share,
+  [data-testid="template-browser"] {
+    display: none !important;
+  }
+  
+  /* Hide dark mode toggle */
+  [aria-label="Toggle theme"] {
+    display: none !important;
+  }
+
+  /* ================================================================
+     PAGE SETUP
+     ================================================================ */
+  
+  @page {
+    margin: 2cm;
+    size: A4;
+  }
+  
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* ================================================================
+     OPTIMIZE CONTENT FOR PRINT
+     ================================================================ */
+  
+  body {
+    font-family: var(--font-family-noto-sans), sans-serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+  
+  /* Container adjustments */
+  .container,
+  [class*="container"] {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* ================================================================
+     TYPOGRAPHY
+     ================================================================ */
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-lora), serif;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    color: #000;
+  }
+  
+  h1 {
+    font-size: 24pt;
+    margin-top: 0;
+    margin-bottom: 12pt;
+  }
+  
+  h2 {
+    font-size: 18pt;
+    margin-top: 18pt;
+    margin-bottom: 10pt;
+  }
+  
+  h3 {
+    font-size: 14pt;
+    margin-top: 14pt;
+    margin-bottom: 8pt;
+  }
+  
+  p {
+    margin-bottom: 8pt;
+    orphans: 3;
+    widows: 3;
+  }
+  
+  /* Avoid breaking these elements */
+  ul, ol, dl,
+  blockquote,
+  pre,
+  table {
+    page-break-inside: avoid;
+  }
+  
+  /* ================================================================
+     LINKS
+     ================================================================ */
+  
+  /* Show URLs after links */
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 90%;
+    color: #666;
+  }
+  
+  /* Don't show URLs for internal links or anchors */
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after,
+  a[href*="localhost"]:after {
+    content: "";
+  }
+  
+  /* ================================================================
+     IMAGES
+     ================================================================ */
+  
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+    page-break-after: avoid;
+  }
+  
+  /* Hero images */
+  .hero img,
+  [class*="hero"] img {
+    max-height: 300px;
+    object-fit: cover;
+  }
+  
+  /* Card images */
+  .card img,
+  [class*="card"] img {
+    max-height: 200px;
+    object-fit: cover;
+  }
+
+  /* ================================================================
+     LAYOUT
+     ================================================================ */
+  
+  /* Remove shadows and borders */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  /* Keep borders for tables */
+  table,
+  th,
+  td {
+    border: 1px solid #ddd !important;
+  }
+  
+  /* Remove background colors (except for semantic purposes) */
+  section,
+  div,
+  aside {
+    background: transparent !important;
+  }
+  
+  /* Keep semantic background colors */
+  .highlight,
+  .callout,
+  .alert,
+  .notice {
+    background: #f5f5f5 !important;
+    border: 1px solid #ddd !important;
+  }
+
+  /* ================================================================
+     SECTIONS
+     ================================================================ */
+  
+  /* Add page breaks before major sections */
+  .page-break,
+  [data-page-break="true"],
+  h1 {
+    page-break-before: always;
+  }
+  
+  /* Don't page break after first h1 */
+  h1:first-of-type {
+    page-break-before: avoid;
+  }
+  
+  /* Sections */
+  section {
+    page-break-inside: avoid;
+    margin-bottom: 20pt;
+  }
+  
+  /* ================================================================
+     CARDS & GRIDS
+     ================================================================ */
+  
+  /* Card grids */
+  .card-grid,
+  [class*="grid"] {
+    display: block !important;
+  }
+  
+  .card,
+  [class*="card"] {
+    display: block;
+    page-break-inside: avoid;
+    margin-bottom: 16pt;
+    border: 1px solid #ddd;
+    padding: 12pt;
+  }
+
+  /* ================================================================
+     FORMS
+     ================================================================ */
+  
+  /* Hide form inputs (not useful in print) */
+  form,
+  input,
+  textarea,
+  select,
+  button {
+    display: none !important;
+  }
+  
+  /* Show form data if marked */
+  .print-form-data {
+    display: block !important;
+  }
+
+  /* ================================================================
+     TABLES
+     ================================================================ */
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    page-break-inside: auto;
+  }
+  
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+  
+  thead {
+    display: table-header-group;
+  }
+  
+  tfoot {
+    display: table-footer-group;
+  }
+  
+  th,
+  td {
+    padding: 6pt;
+    text-align: left;
+    vertical-align: top;
+  }
+  
+  th {
+    font-weight: 600;
+    background: #f5f5f5 !important;
+  }
+
+  /* ================================================================
+     BREADCRUMBS
+     ================================================================ */
+  
+  /* Show breadcrumbs but simplify */
+  .breadcrumbs,
+  [aria-label="Breadcrumb"] {
+    display: block !important;
+    margin-bottom: 12pt;
+    padding-bottom: 6pt;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* ================================================================
+     FAST FACTS / META INFO
+     ================================================================ */
+  
+  .fast-facts,
+  .meta-info,
+  [class*="fast-facts"] {
+    page-break-inside: avoid;
+    margin: 12pt 0;
+    padding: 12pt;
+    border: 1px solid #ddd;
+    background: #f9f9f9 !important;
+  }
+
+  /* ================================================================
+     ITINERARIES
+     ================================================================ */
+  
+  .itinerary,
+  [class*="itinerary"] {
+    page-break-inside: avoid;
+    margin-bottom: 12pt;
+  }
+  
+  .itinerary-day {
+    page-break-inside: avoid;
+    margin-bottom: 12pt;
+    padding-bottom: 12pt;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* ================================================================
+     FOOTER TEXT
+     ================================================================ */
+  
+  /* Add print footer */
+  body:after {
+    content: "Printed from " attr(data-site-name) " on " counter(page);
+    display: block;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: 9pt;
+    color: #666;
+  }
+
+  /* ================================================================
+     UTILITY CLASSES
+     ================================================================ */
+  
+  /* Force page break */
+  .page-break-before {
+    page-break-before: always;
+  }
+  
+  .page-break-after {
+    page-break-after: always;
+  }
+  
+  .page-break-inside-avoid {
+    page-break-inside: avoid;
+  }
+  
+  /* Show/hide in print */
+  .print-only {
+    display: block !important;
+  }
+  
+  .print-hide,
+  .no-print {
+    display: none !important;
+  }
+}

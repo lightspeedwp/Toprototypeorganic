@@ -1,0 +1,57 @@
+/**
+ * Booking Wizard Pattern Styles
+ * WordPress pattern: booking-wizard
+ * 
+ * Component: /src/app/components/patterns/BookingWizard.tsx
+ * Multi-step booking flow with form validation
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   BOOKING WIZARD GRIDS
+   Form field layouts
+   ============================================ */
+
+/* Passengers Grid - Adults, Children, Infants */
+.wp-pattern-booking-wizard__passengers-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-pattern-booking-wizard__passengers-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Contact Grid - Name, Email, Phone fields */
+.wp-pattern-booking-wizard__contact-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-pattern-booking-wizard__contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Payment Grid - Payment method options */
+.wp-pattern-booking-wizard__payment-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .wp-pattern-booking-wizard__payment-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   END OF BOOKING WIZARD STYLES
+   ============================================ */

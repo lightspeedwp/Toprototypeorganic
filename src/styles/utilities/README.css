@@ -1,0 +1,23 @@
+/**
+ * Utility Styles Directory
+ * 
+ * This directory contains CSS files for utility components
+ * that don't fit into blocks, parts, or patterns categories.
+ * 
+ * Each utility should have its own CSS file following BEM naming:
+ * 
+ * .wp-block-lts-{utility-name}
+ * .wp-block-lts-{utility-name}__element
+ * .wp-block-lts-{utility-name}--modifier
+ * 
+ * Example files:
+ * - container.css
+ * - logo.css
+ * - back-to-top.css
+ * - scroll-arrow.css
+ * - breadcrumbs.css
+ * 
+ * All styles must use CSS custom properties from theme.css
+ */
+
+/* This file serves as a directory marker and documentation */

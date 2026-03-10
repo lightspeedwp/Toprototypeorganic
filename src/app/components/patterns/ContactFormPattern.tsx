@@ -1,0 +1,213 @@
+/**
+ * Contact Form Pattern Component
+ * 
+ * A comprehensive contact form pattern with validation and feedback.
+ * Strictly adheres to design system tokens and BEM naming.
+ */
+
+import { useState } from "react";
+import { HeadingBlock } from "../blocks/core/HeadingBlock";
+import { ParagraphBlock } from "../blocks/core/ParagraphBlock";
+import { Container } from "../common/Container";
+import { PaperPlaneRight as Send, CheckCircle as CircleCheck, WarningCircle as AlertCircle, Spinner as LoaderCircle } from "@phosphor-icons/react";
+import { cn } from "../../lib/utils";
+
+export interface ContactFormData {
+  name: string;
+  email: string;
+  phone?: string;
+  subject: string;
+  message: string;
+}
+
+export interface ContactFormPatternProps {
+  title?: string;
+  description?: string;
+  onSubmit?: (data: ContactFormData) => Promise<void>;
+  showPhoneField?: boolean;
+  successMessage?: string;
+  errorMessage?: string;
+  variant?: "default" | "compact";
+}
+
+export function ContactFormPattern({
+  title = "Send Us a Message",
+  description = "Fill out the form below and we'll get back to you within 24 hours",
+  onSubmit,
+  showPhoneField = true,
+  successMessage = "Thank you! Your message has been sent successfully. We'll be in touch soon.",
+  errorMessage = "Oops! Something went wrong. Please try again or contact us directly.",
+  variant = "default",
+}: ContactFormPatternProps) {
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const validateForm = (): boolean => {
+    const newErrors: Partial<Record<keyof ContactFormData, string>> = {};
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = "Invalid email address";
+    if (!formData.subject.trim()) newErrors.subject = "Subject is required";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    try {
+      if (onSubmit) await onSubmit(formData);
+      else await new Promise((resolve) => setTimeout(resolve, 1500));
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+      setErrors({});
+    } catch (error) {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name as keyof ContactFormData]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  return (
+    <div className={cn("wp-pattern-lts-contact-form", variant === "compact" ? "max-w-2xl" : "max-w-3xl")}>
+      {title && <HeadingBlock level={2} className="mb-4">{title}</HeadingBlock>}
+      {description && <ParagraphBlock className="text-muted-foreground mb-8">{description}</ParagraphBlock>}
+
+      {submitStatus === "success" && (
+        <div className="p-6 rounded-xl bg-primary/10 border border-primary/20 flex items-start gap-4 mb-8">
+          <CircleCheck className="size-6 text-primary shrink-0" />
+          <p className="text-primary font-bold m-0">{successMessage}</p>
+        </div>
+      )}
+
+      {submitStatus === "error" && (
+        <div className="p-6 rounded-xl bg-destructive/10 border border-destructive/20 flex items-start gap-4 mb-8">
+          <AlertCircle className="size-6 text-destructive shrink-0" />
+          <p className="text-destructive font-bold m-0">{errorMessage}</p>
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="form__group">
+            <label htmlFor="name" className="form__label form__label--required">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className={cn("form__input", errors.name && "form__input--error")}
+              placeholder="Your name"
+              required
+            />
+            {errors.name && <p className="form__error">{errors.name}</p>}
+          </div>
+
+          <div className="form__group">
+            <label htmlFor="email" className="form__label form__label--required">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className={cn("form__input", errors.email && "form__input--error")}
+              placeholder="email@example.com"
+              required
+            />
+            {errors.email && <p className="form__error">{errors.email}</p>}
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {showPhoneField && (
+            <div className="form__group">
+              <label htmlFor="phone" className="form__label">Phone Number (Optional)</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="form__input"
+                placeholder="+27..."
+              />
+            </div>
+          )}
+
+          <div className="form__group">
+            <label htmlFor="subject" className="form__label form__label--required">Subject</label>
+            <select
+              id="subject"
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+              className={cn("form__select", errors.subject && "form__input--error")}
+              required
+            >
+              <option value="">Select a subject</option>
+              <option value="general">General Enquiry</option>
+              <option value="booking">Tour Booking</option>
+              <option value="custom">Custom Itinerary</option>
+              <option value="support">Existing Booking</option>
+            </select>
+            {errors.subject && <p className="form__error">{errors.subject}</p>}
+          </div>
+        </div>
+
+        <div className="form__group">
+          <label htmlFor="message" className="form__label form__label--required">Your Message</label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            className={cn("form__textarea", errors.message && "form__textarea--error")}
+            placeholder="How can we help you design your perfect safari?"
+            required
+          />
+          {errors.message && <p className="form__error">{errors.message}</p>}
+        </div>
+
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full flex items-center justify-center gap-3 bg-primary text-primary-foreground font-bold py-4 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50"
+        >
+          {isSubmitting ? (
+            <>
+              <LoaderCircle className="size-5 animate-spin" />
+              <span>Transmitting...</span>
+            </>
+          ) : (
+            <>
+              <Send className="size-5" />
+              <span>Send Enquiry</span>
+            </>
+          )}
+        </button>
+      </form>
+    </div>
+  );
+}

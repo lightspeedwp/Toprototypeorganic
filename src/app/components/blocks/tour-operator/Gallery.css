@@ -1,0 +1,103 @@
+/**
+ * Gallery Block Styles
+ * 
+ * WordPress Block: lsx-tour-operator/gallery
+ * Responsive image gallery with hover captions.
+ * 
+ * All values reference CSS custom properties from the design system.
+ */
+
+/* ============================================
+   GALLERY GRID
+   ============================================ */
+
+.lsx-gallery {
+  display: grid;
+  gap: var(--spacing-gap-sm);
+}
+
+@media (min-width: 768px) {
+  .lsx-gallery {
+    gap: var(--spacing-gap-md);
+  }
+}
+
+.lsx-gallery--cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.lsx-gallery--cols-3 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 768px) {
+  .lsx-gallery--cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.lsx-gallery--cols-4 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 768px) {
+  .lsx-gallery--cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   GALLERY ITEM
+   ============================================ */
+
+.lsx-gallery__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background-color: var(--muted);
+}
+
+.lsx-gallery__image {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.lsx-gallery__image--cover {
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+.lsx-gallery__image--contain {
+  object-fit: contain;
+}
+
+.lsx-gallery__item:hover .lsx-gallery__image {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   CAPTION
+   ============================================ */
+
+.lsx-gallery__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* bg-black/60 and text-white are documented exceptions for media overlays */
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--leading-normal);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-bottom: 0;
+}
+
+.lsx-gallery__item:hover .lsx-gallery__caption {
+  opacity: 1;
+}

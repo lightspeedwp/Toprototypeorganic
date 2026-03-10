@@ -1,0 +1,89 @@
+/**
+ * Quote Request Page - WordPress BEM CSS
+ * 
+ * Custom grid layouts for QuoteRequestPage converted from Tailwind responsive classes
+ * to WordPress BEM naming convention with CSS variable-based styling.
+ * 
+ * All layouts use CSS Grid with mobile-first responsive breakpoints:
+ * - Mobile: Single column
+ * - Tablet (md): 2-4 columns depending on content
+ * - Desktop (lg): Maintained or expanded grid
+ * 
+ * @since 2026-02-27
+ */
+
+/* ==========================================================================
+   Trust Signals Grid - 2/4 column responsive grid
+   ========================================================================== */
+
+/**
+ * Trust signals grid (stats bar)
+ * Mobile: 2 columns, Tablet+: 4 columns
+ * Used for: Response time, quotes, rating, repeat customers
+ */
+.wp-pattern-quote-request__trust-signals {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-6, 1.5rem);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .wp-pattern-quote-request__trust-signals {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ==========================================================================
+   Form Grid - 2 column responsive grid for form inputs
+   ========================================================================== */
+
+/**
+ * Form input grid (email/phone, departure/travelers/duration)
+ * Mobile: 1 column, Tablet+: 2-3 columns
+ * Used for: Personal info, trip details
+ */
+.wp-pattern-quote-request__form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-4, 1rem);
+}
+
+@media (min-width: 640px) {
+  .wp-pattern-quote-request__form-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.wp-pattern-quote-request__form-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-4, 1rem);
+}
+
+@media (min-width: 640px) {
+  .wp-pattern-quote-request__form-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ==========================================================================
+   Main Layout Grid - 2/3 column layout for form + sidebar
+   ========================================================================== */
+
+/**
+ * Main page layout (form + sidebar)
+ * Mobile: 1 column, Desktop (lg): 3 column with 2/3 split
+ * Used for: Form content and sidebar widgets
+ */
+.wp-pattern-quote-request__main-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-12, 3rem);
+}
+
+@media (min-width: 1024px) {
+  .wp-pattern-quote-request__main-layout {
+    grid-template-columns: 2fr 1fr;
+  }
+}

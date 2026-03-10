@@ -1,0 +1,520 @@
+/**
+ * Tours Archive Template Styles
+ * WordPress template: archive-tour
+ * 
+ * Component: /src/app/pages/ToursArchive.tsx
+ * Corresponds to: templates/archive-tour.html in WordPress
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   ARCHIVE CONTAINER
+   Main archive page wrapper
+   ============================================ */
+
+.wp-template-archive-tours {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ============================================
+   HERO / HEADER SECTION
+   Archive page header with title and description
+   ============================================ */
+
+.wp-template-archive-tours__hero {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ============================================
+   FILTERS SECTION
+   Taxonomy filters and search bar
+   ============================================ */
+
+.wp-template-archive-tours__filters {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--background);
+  border-bottom: 2px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(12px);
+  background-color: rgba(var(--background-rgb), 0.85);
+}
+
+.wp-template-archive-tours__filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-sm);
+  padding-block: var(--spacing-gap-sm);
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive-tours__filter-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.wp-template-archive-tours__filter-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-gap-xs, 1rem);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive-tours__filter-group {
+    width: auto;
+  }
+}
+
+.wp-template-archive-tours__filter-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-2xl);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  transition: all 200ms ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.wp-template-archive-tours__filter-trigger:hover {
+  border-color: var(--primary);
+  background-color: rgba(var(--primary-rgb), 0.05);
+}
+
+.wp-template-archive-tours__filter-trigger--active {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+.wp-template-archive-tours__filter-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  border-radius: var(--radius-full);
+  font-size: 0.625rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.wp-template-archive-tours__search-wrapper {
+  position: relative;
+  flex: 1;
+  max-width: none;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive-tours__search-wrapper {
+    max-width: 20rem;
+    width: auto;
+  }
+}
+
+.wp-template-archive-tours__search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  color: var(--muted-foreground);
+  pointer-events: none;
+  transition: color 200ms ease;
+}
+
+.wp-template-archive-tours__search-input {
+  width: 100%;
+  padding-block: 0.75rem;
+  padding-inline-start: 3rem;
+  padding-inline-end: 1rem;
+  background-color: var(--muted);
+  border: 2px solid transparent;
+  border-radius: var(--radius-2xl);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+  color: var(--foreground);
+  transition: all 200ms ease;
+  outline: none;
+}
+
+.wp-template-archive-tours__search-input::placeholder {
+  color: var(--muted-foreground);
+  font-weight: var(--font-weight-normal);
+}
+
+.wp-template-archive-tours__search-input:focus {
+  background-color: var(--background);
+  border-color: rgba(var(--primary-rgb), 0.3);
+  box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.08);
+}
+
+.wp-template-archive-tours__search-wrapper:focus-within .wp-template-archive-tours__search-icon {
+  color: var(--primary);
+}
+
+.wp-template-archive-tours__sort-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-gap-xs, 1rem);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive-tours__sort-group {
+    width: auto;
+  }
+}
+
+.wp-template-archive-tours__sort-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+
+.wp-template-archive-tours__sort-select {
+  padding: 0.625rem 1rem;
+  background-color: var(--card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-xl);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 200ms ease;
+  outline: none;
+}
+
+.wp-template-archive-tours__sort-select:hover {
+  border-color: rgba(var(--primary-rgb), 0.4);
+}
+
+.wp-template-archive-tours__sort-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.08);
+}
+
+/* ============================================
+   EXPANDABLE FILTERS PANEL
+   ============================================ */
+
+.wp-template-archive-tours__panel {
+  overflow: hidden;
+  border-top: 1px solid var(--border-subtle);
+  padding-block: var(--spacing-gap-md, 2rem);
+}
+
+.wp-template-archive-tours__panel-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-gap-lg, 3rem);
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive-tours__panel-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.wp-template-archive-tours__panel-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+}
+
+.wp-template-archive-tours__panel-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-sm);
+}
+
+.wp-template-archive-tours__chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-gap-xs, 0.5rem);
+}
+
+.wp-template-archive-tours__chip {
+  padding: 0.5rem 1rem;
+  background-color: var(--card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-xl);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  transition: all 200ms ease;
+  cursor: pointer;
+}
+
+.wp-template-archive-tours__chip:hover {
+  border-color: rgba(var(--primary-rgb), 0.4);
+  color: var(--foreground);
+  background-color: rgba(var(--primary-rgb), 0.03);
+}
+
+.wp-template-archive-tours__chip--active {
+  background-color: rgba(var(--primary-rgb), 0.1);
+  border-color: var(--primary);
+  color: var(--primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.wp-template-archive-tours__reset-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: none;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--destructive);
+  cursor: pointer;
+  transition: all 200ms ease;
+  border-radius: var(--radius-lg);
+  align-self: flex-start;
+}
+
+.wp-template-archive-tours__reset-button:hover {
+  background-color: rgba(var(--destructive-rgb), 0.08);
+}
+
+.wp-template-archive-tours__reset-button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   RESULTS HEADER
+   Count and sort controls
+   ============================================ */
+
+.wp-template-archive-tours__results-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive-tours__results-header {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.wp-template-archive-tours__results-count {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.wp-template-archive-tours__sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive-tours__sort-controls {
+    width: auto;
+  }
+}
+
+/* ============================================
+   CONTENT AREA
+   Main content with cards grid
+   ============================================ */
+
+.wp-template-archive-tours__content {
+  padding-block: var(--spacing-section-md);
+}
+
+.wp-template-archive-tours__grid {
+  display: grid;
+  gap: var(--spacing-gap-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive-tours__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-template-archive-tours__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   PAGINATION
+   Bottom pagination controls
+   ============================================ */
+
+.wp-template-archive-tours__pagination {
+  padding-block: var(--spacing-section-sm);
+  border-top: 1px solid var(--border);
+}
+
+/* ============================================
+   FAQ SECTION
+   Archive-specific FAQ
+   ============================================ */
+
+.wp-template-archive-tours__faq {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+/* ============================================
+   CTA SECTION
+   Bottom call-to-action
+   ============================================ */
+
+.wp-template-archive-tours__cta {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* ============================================
+   EMPTY STATE
+   No results found message
+   ============================================ */
+
+.wp-template-archive-tours__empty-icon {
+  width: 4rem;
+  height: 4rem;
+  margin-inline: auto;
+  color: var(--muted-foreground);
+}
+
+.wp-template-archive-tours__empty-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.wp-template-archive-tours__empty-description {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  max-width: 28rem;
+  margin-inline: auto;
+}
+
+.wp-template-archive-tours__empty {
+  padding-block: var(--spacing-section-md);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-gap-md);
+}
+
+.wp-template-archive-tours__empty-button {
+  padding-inline: 1.5rem;
+  padding-block: 0.75rem;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+}
+
+.wp-template-archive-tours__empty-button:hover {
+  background-color: rgba(var(--primary-rgb), 0.9);
+}
+
+/* ============================================
+   LOADING STATE
+   Skeleton/spinner while loading
+   ============================================ */
+
+.wp-template-archive-tours__loading {
+  padding-block: 4rem;
+  text-align: center;
+}
+
+.wp-template-archive-tours__spinner {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid var(--muted);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   Mobile-first — base styles are mobile, enhanced at breakpoints above
+   ============================================ */
+
+/* ============================================
+   END OF TOURS ARCHIVE STYLES
+   ============================================ */

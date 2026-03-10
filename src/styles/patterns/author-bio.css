@@ -1,0 +1,15 @@
+/**
+ * Author Bio Pattern Styles
+ */
+
+.wp-pattern-author-bio {
+  /* Inherits styles from inline classes for now */
+}
+
+.wp-pattern-author-bio--compact {
+  /* Specific compact overrides */
+}
+
+.wp-pattern-author-bio--inline {
+  /* Specific inline overrides */
+}

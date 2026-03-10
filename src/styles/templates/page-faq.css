@@ -1,0 +1,512 @@
+/**
+ * FAQ Page Template Styles
+ * WordPress template: page-faq
+ * 
+ * Component: /src/app/pages/FAQPage.tsx
+ * Corresponds to: templates/page-faq.html in WordPress
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   FAQ PAGE CONTAINER
+   Main FAQ page wrapper
+   ============================================ */
+
+.wp-template-page-faq {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ============================================
+   HERO SECTION
+   Page header with title and search
+   ============================================ */
+
+.wp-template-page-faq__hero {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.wp-template-page-faq__title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-faq__title {
+    font-size: var(--text-5xl);
+  }
+}
+
+.wp-template-page-faq__subtitle {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--muted-foreground);
+  max-width: 42rem;
+  margin-inline: auto;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-faq__subtitle {
+    font-size: var(--text-xl);
+  }
+}
+
+/* Search bar */
+.wp-template-page-faq__search {
+  max-width: 32rem;
+  margin-inline: auto;
+}
+
+.wp-template-page-faq__search-wrapper {
+  position: relative;
+}
+
+.wp-template-page-faq__search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-foreground);
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.wp-template-page-faq__search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 3rem;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  transition: all 150ms;
+}
+
+.wp-template-page-faq__search-input:focus {
+  outline: none;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px rgba(var(--ring-rgb), 0.1);
+}
+
+.wp-template-page-faq__search-input::placeholder {
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   CATEGORY NAVIGATION
+   FAQ category tabs/pills
+   ============================================ */
+
+.wp-template-page-faq__categories {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 64px; /* Mobile header height as base */
+  z-index: 30;
+  backdrop-filter: blur(8px);
+  background-color: rgba(var(--background-rgb), 0.95);
+}
+
+@media (min-width: 1024px) {
+  .wp-template-page-faq__categories {
+    top: 80px;
+  }
+}
+
+.wp-template-page-faq__categories-list {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.wp-template-page-faq__categories-list::-webkit-scrollbar {
+  height: 4px;
+}
+
+.wp-template-page-faq__categories-list::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.wp-template-page-faq__category-button {
+  padding-inline: 1.5rem;
+  padding-block: 0.5rem;
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 150ms;
+  white-space: nowrap;
+  min-height: 44px;
+}
+
+.wp-template-page-faq__category-button:hover {
+  background-color: var(--muted);
+}
+
+.wp-template-page-faq__category-button--active {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+/* ============================================
+   CONTENT SECTION
+   Two-column layout with categories sidebar
+   ============================================ */
+
+.wp-template-page-faq__content {
+  padding-block: var(--spacing-section-md);
+}
+
+.wp-template-page-faq__layout {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .wp-template-page-faq__layout {
+    grid-template-columns: 300px 1fr;
+  }
+}
+
+/* ============================================
+   SIDEBAR
+   Category navigation sidebar (desktop)
+   ============================================ */
+
+.wp-template-page-faq__sidebar {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .wp-template-page-faq__sidebar {
+    display: block;
+  }
+}
+
+.wp-template-page-faq__sidebar-sticky {
+  position: sticky;
+  top: calc(80px + 1rem);
+}
+
+.wp-template-page-faq__sidebar-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.wp-template-page-faq__sidebar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wp-template-page-faq__sidebar-item {
+  padding: 0.75rem;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 150ms;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wp-template-page-faq__sidebar-item:hover {
+  background-color: var(--muted);
+}
+
+.wp-template-page-faq__sidebar-item--active {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.wp-template-page-faq__sidebar-count {
+  font-size: var(--text-xs);
+  opacity: 0.8;
+}
+
+/* ============================================
+   FAQ SECTIONS
+   Main FAQ accordion sections
+   ============================================ */
+
+.wp-template-page-faq__main {
+  /* Main content area */
+}
+
+.wp-template-page-faq__section {
+  margin-bottom: 3rem;
+}
+
+.wp-template-page-faq__section-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border);
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-faq__section-title {
+    font-size: var(--text-3xl);
+  }
+}
+
+.wp-template-page-faq__section-description {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  margin-bottom: 1.5rem;
+}
+
+/* Accordion items */
+.wp-template-page-faq__accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wp-template-page-faq__accordion-item {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.wp-template-page-faq__accordion-trigger {
+  width: 100%;
+  padding: 1.25rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+  transition: background-color 150ms;
+}
+
+.wp-template-page-faq__accordion-trigger:hover {
+  background-color: var(--muted);
+}
+
+.wp-template-page-faq__accordion-question {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-faq__accordion-question {
+    font-size: var(--text-lg);
+  }
+}
+
+.wp-template-page-faq__accordion-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--muted-foreground);
+  transition: transform 200ms;
+  flex-shrink: 0;
+}
+
+.wp-template-page-faq__accordion-item--open .wp-template-page-faq__accordion-icon {
+  transform: rotate(180deg);
+}
+
+.wp-template-page-faq__accordion-content {
+  padding: 0 1.25rem 1.25rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground);
+}
+
+/* ============================================
+   EMPTY STATE
+   No results found
+   ============================================ */
+
+.wp-template-page-faq__empty {
+  padding-block: 4rem;
+  text-align: center;
+}
+
+.wp-template-page-faq__empty-wrapper {
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.wp-template-page-faq__empty-icon {
+  width: 4rem;
+  height: 4rem;
+  margin-inline: auto;
+  margin-bottom: 1.5rem;
+  color: var(--muted-foreground);
+}
+
+.wp-template-page-faq__empty-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.wp-template-page-faq__empty-description {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  margin-bottom: 1.5rem;
+}
+
+.wp-template-page-faq__empty-button {
+  padding-inline: 1.5rem;
+  padding-block: 0.75rem;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms;
+  display: inline-block;
+  min-height: 48px;
+}
+
+.wp-template-page-faq__empty-button:hover {
+  opacity: 0.9;
+}
+
+/* ============================================
+   CTA SECTION
+   Still have questions CTA
+   ============================================ */
+
+.wp-template-page-faq__cta {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.wp-template-page-faq__cta-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.wp-template-page-faq__cta-description {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  max-width: 42rem;
+  margin-inline: auto;
+  margin-bottom: 2rem;
+}
+
+.wp-template-page-faq__cta-button {
+  padding-inline: 2rem;
+  padding-block: 0.75rem;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+}
+
+.wp-template-page-faq__cta-button:hover {
+  background-color: rgba(var(--primary-rgb), 0.9);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   POPULAR QUESTIONS
+   Highlighted/featured questions
+   ============================================ */
+
+.wp-template-page-faq__popular {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--background);
+}
+
+.wp-template-page-faq__popular-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.wp-template-page-faq__popular-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-faq__popular-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   Mobile-first — base styles are mobile, enhanced at breakpoints above
+   ============================================ */
+
+/* ============================================
+   END OF FAQ PAGE STYLES
+   ============================================ */

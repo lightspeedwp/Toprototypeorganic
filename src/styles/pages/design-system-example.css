@@ -1,0 +1,375 @@
+/**
+ * Design System Example Page Styles
+ * 
+ * Demonstrates proper use of CSS variables and BEM naming.
+ * Every style uses design system tokens - no hardcoded values.
+ * 
+ * @see /src/app/pages/DesignSystemExample.tsx
+ * @see /src/styles/theme-light.css
+ * @see /src/styles/theme-dark.css
+ * @see /src/styles/theme.css
+ */
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.wp-section-hero {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 769px) {
+  .wp-section-hero {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+.wp-section-hero h1 {
+  color: var(--primary-foreground);
+}
+
+.wp-section-hero p {
+  color: var(--primary-foreground);
+}
+
+/* Badge */
+.wp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--primary-foreground);
+}
+
+.dark .wp-badge {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Button variant for primary background */
+.wp-button-outline-on-primary {
+  border-color: var(--primary-foreground);
+  color: var(--primary-foreground);
+}
+
+.wp-button-outline-on-primary:hover {
+  background-color: var(--primary-foreground);
+  color: var(--primary);
+}
+
+/* ============================================
+   STATS SECTION
+   ============================================ */
+
+.wp-section-stats {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background-color: var(--muted);
+}
+
+.wp-stat-number {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 769px) {
+  .wp-stat-number {
+    font-size: var(--text-6xl);
+  }
+}
+
+.wp-stat-label {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   HOW IT WORKS SECTION
+   ============================================ */
+
+.wp-how-it-works-card {
+  padding: 1.5rem;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all 200ms ease;
+}
+
+@media (min-width: 769px) {
+  .wp-how-it-works-card {
+    padding: 2rem;
+  }
+}
+
+.wp-how-it-works-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--elevation-md);
+  transform: translateY(-4px);
+}
+
+.wp-how-it-works-card__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-lora);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.wp-how-it-works-card__title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--card-foreground);
+  margin-bottom: 0.75rem;
+}
+
+.wp-how-it-works-card__description {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--leading-normal);
+  margin-bottom: 1rem;
+}
+
+.wp-code-example {
+  padding: 0.75rem 1rem;
+  background-color: var(--muted);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-mono);
+  font-size: var(--text-sm);
+  color: var(--primary);
+  overflow-x: auto;
+}
+
+/* ============================================
+   FEATURES LIST SECTION
+   ============================================ */
+
+.wp-section-features-list {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.wp-section-features-list h2 {
+  color: var(--accent-foreground);
+}
+
+.wp-feature-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--accent-foreground);
+}
+
+/* Code Showcase */
+.wp-code-showcase {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.dark .wp-code-showcase {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.wp-code-showcase__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .wp-code-showcase__header {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.wp-code-showcase__dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-full);
+}
+
+.wp-code-showcase__content {
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: var(--text-xs);
+}
+
+@media (min-width: 769px) {
+  .wp-code-showcase__content {
+    padding: 1.5rem;
+    font-size: var(--text-sm);
+  }
+}
+
+.wp-code-showcase__content pre {
+  margin: 0;
+  font-family: var(--font-family-mono);
+  color: var(--accent-foreground);
+}
+
+.wp-code-showcase__content code {
+  background: none;
+  padding: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+/* ============================================
+   CTA BOX
+   ============================================ */
+
+.wp-cta-box {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-rgb), 0.1) 0%,
+    rgba(var(--success-rgb), 0.1) 100%
+  );
+  border: 2px solid var(--border);
+  border-radius: var(--radius-xl);
+}
+
+@media (min-width: 769px) {
+  .wp-cta-box {
+    padding: 4rem 2rem;
+  }
+}
+
+.wp-cta-box h2 {
+  color: var(--foreground);
+}
+
+.wp-cta-box p {
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   TESTIMONIAL
+   ============================================ */
+
+.wp-testimonial {
+  padding: 2rem;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--elevation-lg);
+}
+
+@media (min-width: 769px) {
+  .wp-testimonial {
+    padding: 3rem;
+  }
+}
+
+.wp-testimonial__quote {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--leading-relaxed);
+  color: var(--card-foreground);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+@media (min-width: 769px) {
+  .wp-testimonial__quote {
+    font-size: var(--text-xl);
+  }
+}
+
+.wp-testimonial__quote::before {
+  content: '"';
+  font-size: 4rem;
+  color: var(--primary);
+  opacity: 0.2;
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  font-family: var(--font-family-lora);
+}
+
+.wp-testimonial__author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.wp-testimonial__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  flex-shrink: 0;
+}
+
+.wp-testimonial__name {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--card-foreground);
+  margin-bottom: 0.25rem;
+}
+
+.wp-testimonial__title {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   RESPONSIVE
+   Mobile-first — base styles are mobile, enhanced at breakpoints above
+   ============================================ */
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-how-it-works-card {
+    transition: none;
+  }
+  
+  .wp-how-it-works-card:hover {
+    transform: none;
+  }
+}

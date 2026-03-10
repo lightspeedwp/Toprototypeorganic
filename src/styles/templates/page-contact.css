@@ -1,0 +1,499 @@
+/**
+ * Contact Page Template Styles
+ * WordPress template: page-contact
+ * 
+ * Component: /src/app/pages/ContactPage.tsx
+ * Corresponds to: templates/page-contact.html in WordPress
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   CONTACT PAGE CONTAINER
+   Main contact page wrapper
+   ============================================ */
+
+.wp-template-page-contact {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ============================================
+   HERO SECTION
+   Page header with title
+   ============================================ */
+
+.wp-template-page-contact__hero {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.wp-template-page-contact__title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-contact__title {
+    font-size: var(--text-5xl);
+  }
+}
+
+.wp-template-page-contact__subtitle {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--muted-foreground);
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-contact__subtitle {
+    font-size: var(--text-xl);
+  }
+}
+
+/* ============================================
+   STATS SECTION
+   Quick contact stats with 3 cards
+   ============================================ */
+
+.wp-template-page-contact__stats {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--background);
+}
+
+.wp-template-page-contact__stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-contact__stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.wp-template-page-contact__stat-card {
+  padding: 1.5rem;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all 200ms;
+}
+
+.wp-template-page-contact__stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   CONTENT SECTION
+   Two-column layout with form and info
+   ============================================ */
+
+.wp-template-page-contact__content {
+  padding-block: var(--spacing-section-md);
+}
+
+.wp-template-page-contact__layout {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .wp-template-page-contact__layout {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* ============================================
+   CONTACT FORM
+   Main contact form
+   ============================================ */
+
+.wp-template-page-contact__form-wrapper {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-contact__form-wrapper {
+    padding: 2rem;
+  }
+}
+
+.wp-template-page-contact__form-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: 1.5rem;
+}
+
+.wp-template-page-contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Form groups */
+.wp-template-page-contact__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wp-template-page-contact__form-label {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+}
+
+.wp-template-page-contact__form-label--required::after {
+  content: ' *';
+  color: var(--destructive);
+}
+
+.wp-template-page-contact__form-input,
+.wp-template-page-contact__form-textarea,
+.wp-template-page-contact__form-select {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  transition: all 150ms;
+}
+
+.wp-template-page-contact__form-input:focus,
+.wp-template-page-contact__form-textarea:focus,
+.wp-template-page-contact__form-select:focus {
+  outline: none;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px rgba(var(--ring-rgb), 0.1);
+}
+
+.wp-template-page-contact__form-textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.wp-template-page-contact__form-hint {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+.wp-template-page-contact__form-error {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--destructive);
+}
+
+/* Submit button */
+.wp-template-page-contact__form-submit {
+  padding-inline: 2rem;
+  padding-block: 0.75rem;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms;
+  min-height: 48px; /* Touch target */
+}
+
+.wp-template-page-contact__form-submit:hover {
+  background-color: rgba(var(--primary-rgb), 0.9);
+  transform: translateY(-1px);
+}
+
+.wp-template-page-contact__form-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============================================
+   CONTACT INFO SIDEBAR
+   Contact details, social links, map
+   ============================================ */
+
+.wp-template-page-contact__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  order: -1; /* Sidebar above form on mobile */
+}
+
+@media (min-width: 1024px) {
+  .wp-template-page-contact__sidebar {
+    order: 0;
+  }
+}
+
+/* Info card */
+.wp-template-page-contact__info-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.wp-template-page-contact__info-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.wp-template-page-contact__info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wp-template-page-contact__info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.wp-template-page-contact__info-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.wp-template-page-contact__info-content {
+  flex: 1;
+}
+
+.wp-template-page-contact__info-label {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  margin-bottom: 0.25rem;
+}
+
+.wp-template-page-contact__info-value {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--foreground);
+}
+
+.wp-template-page-contact__info-link {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 150ms;
+}
+
+.wp-template-page-contact__info-link:hover {
+  text-decoration: underline;
+}
+
+/* Social links */
+.wp-template-page-contact__social {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.wp-template-page-contact__social-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.wp-template-page-contact__social-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.wp-template-page-contact__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--muted);
+  border-radius: 50%;
+  color: var(--foreground);
+  transition: all 200ms;
+  text-decoration: none;
+}
+
+.wp-template-page-contact__social-link:hover {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  transform: translateY(-2px);
+}
+
+.wp-template-page-contact__social-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Business hours */
+.wp-template-page-contact__hours {
+  background-color: var(--muted);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.wp-template-page-contact__hours-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.wp-template-page-contact__hours-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wp-template-page-contact__hours-item {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+}
+
+.wp-template-page-contact__hours-day {
+  color: var(--foreground);
+  font-weight: var(--font-weight-medium);
+}
+
+.wp-template-page-contact__hours-time {
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   MAP SECTION
+   Embedded map
+   ============================================ */
+
+.wp-template-page-contact__map {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+.wp-template-page-contact__map-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.wp-template-page-contact__map-wrapper {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  height: 300px;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-contact__map-wrapper {
+    height: 400px;
+  }
+}
+
+.wp-template-page-contact__map-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ============================================
+   FAQ SECTION
+   Contact-related FAQs
+   ============================================ */
+
+.wp-template-page-contact__faq {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--background);
+}
+
+/* ============================================
+   SUCCESS MESSAGE
+   Form submission success state
+   ============================================ */
+
+.wp-template-page-contact__success {
+  background-color: var(--card);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  text-align: center;
+}
+
+.wp-template-page-contact__success-icon {
+  width: 3rem;
+  height: 3rem;
+  margin-inline: auto;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.wp-template-page-contact__success-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+}
+
+.wp-template-page-contact__success-message {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   Mobile-first — base styles are mobile, enhanced at breakpoints above
+   ============================================ */
+
+/* ============================================
+   END OF CONTACT PAGE STYLES
+   ============================================ */

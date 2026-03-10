@@ -1,0 +1,39 @@
+/**
+ * Page Shell — WordPress Template Part Wrapper
+ *
+ * Provides the standard page structure:
+ *   breadcrumbs → hero → content slot
+ *
+ * Component: /src/app/components/parts/PageShell.tsx
+ * WordPress BEM Naming: .wp-part-page-shell__*
+ *
+ * @version 1.0.0
+ */
+
+/* ============================================
+   PAGE SHELL ROOT
+   ============================================ */
+
+.wp-part-page-shell {
+  /* No visual styles — purely structural wrapper */
+}
+
+/* ============================================
+   BREADCRUMB BAR
+   Sits between header and hero.
+   ============================================ */
+
+.wp-part-page-shell__breadcrumbs {
+  background-color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  padding-block: var(--spacing-element-xs);
+}
+
+/* ============================================
+   CONTENT SLOT
+   Everything below the hero.
+   ============================================ */
+
+.wp-part-page-shell__content {
+  /* Structural wrapper — children control their own spacing */
+}

@@ -1,0 +1,481 @@
+/**
+ * About Page Template Styles
+ * WordPress template: page-about
+ * 
+ * Component: /src/app/pages/AboutPage.tsx
+ * Corresponds to: templates/page-about.html in WordPress
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   ABOUT PAGE CONTAINER
+   Main about page wrapper
+   ============================================ */
+
+.wp-template-page-about {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ============================================
+   HERO SECTION
+   Page header with title and introduction
+   ============================================ */
+
+.wp-template-page-about__hero {
+  padding-block: var(--spacing-section-lg);
+  background-color: var(--muted);
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.wp-template-page-about__hero--with-image {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.wp-template-page-about__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.wp-template-page-about__hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+.wp-template-page-about__title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--foreground);
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-about__title {
+    font-size: var(--text-5xl);
+  }
+}
+
+.wp-template-page-about__hero--with-image .wp-template-page-about__title {
+  color: var(--overlay-text);
+}
+
+.wp-template-page-about__subtitle {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--muted-foreground);
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-about__subtitle {
+    font-size: var(--text-xl);
+  }
+}
+
+.wp-template-page-about__hero--with-image .wp-template-page-about__subtitle {
+  color: var(--overlay-text-muted);
+}
+
+/* ============================================
+   INTRODUCTION SECTION
+   Primary narrative content
+   ============================================ */
+
+.wp-template-page-about__introduction {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--background);
+}
+
+.wp-template-page-about__introduction-content {
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+.wp-template-page-about__introduction-text {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground);
+}
+
+.wp-template-page-about__introduction-text p {
+  margin-bottom: 1.5rem;
+}
+
+/* ============================================
+   MISSION/VISION SECTION
+   Two-column layout for mission and vision
+   ============================================ */
+
+.wp-template-page-about__mission-vision {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+}
+
+.wp-template-page-about__mission-vision-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-about__mission-vision-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.wp-template-page-about__mission,
+.wp-template-page-about__vision {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+
+.wp-template-page-about__mission-title,
+.wp-template-page-about__vision-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.wp-template-page-about__mission-text,
+.wp-template-page-about__vision-text {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground);
+}
+
+/* ============================================
+   VALUES SECTION
+   Grid of company values
+   ============================================ */
+
+.wp-template-page-about__values {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--background);
+}
+
+.wp-template-page-about__values-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-about__values-title {
+    font-size: var(--text-4xl);
+  }
+}
+
+.wp-template-page-about__values-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .wp-template-page-about__values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-template-page-about__values-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.wp-template-page-about__value-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 200ms;
+}
+
+.wp-template-page-about__value-card:hover {
+  transform: translateY(-4px);
+}
+
+.wp-template-page-about__value-icon {
+  width: 3rem;
+  height: 3rem;
+  margin-inline: auto;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.wp-template-page-about__value-name {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+}
+
+.wp-template-page-about__value-description {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   TEAM SECTION
+   Team members grid
+   ============================================ */
+
+.wp-template-page-about__team {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+}
+
+.wp-template-page-about__team-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-about__team-title {
+    font-size: var(--text-4xl);
+  }
+}
+
+.wp-template-page-about__team-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .wp-template-page-about__team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-about__team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-template-page-about__team-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   STATISTICS SECTION
+   Key metrics/achievements
+   ============================================ */
+
+.wp-template-page-about__statistics {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.wp-template-page-about__statistics-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .wp-template-page-about__statistics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-template-page-about__statistics-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.wp-template-page-about__statistic {
+  text-align: center;
+}
+
+.wp-template-page-about__statistic-value {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-foreground);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-about__statistic-value {
+    font-size: var(--text-5xl);
+  }
+}
+
+.wp-template-page-about__statistic-label {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--primary-foreground);
+  opacity: 0.9;
+}
+
+/* ============================================
+   TIMELINE SECTION
+   Company history timeline
+   ============================================ */
+
+.wp-template-page-about__timeline {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--background);
+}
+
+.wp-template-page-about__timeline-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-about__timeline-title {
+    font-size: var(--text-4xl);
+  }
+}
+
+.wp-template-page-about__timeline-list {
+  max-width: 48rem;
+  margin-inline: auto;
+  position: relative;
+}
+
+/* Timeline vertical line */
+.wp-template-page-about__timeline-list::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--border);
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-about__timeline-list::before {
+    left: 50%;
+    transform: translateX(-1px);
+  }
+}
+
+.wp-template-page-about__timeline-item {
+  position: relative;
+  padding-left: 3rem;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-about__timeline-item {
+    padding-left: 0;
+    width: 50%;
+    padding-right: 2rem;
+  }
+
+  .wp-template-page-about__timeline-item:nth-child(even) {
+    margin-left: 50%;
+    padding-right: 0;
+    padding-left: 2rem;
+  }
+}
+
+.wp-template-page-about__timeline-year {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.wp-template-page-about__timeline-event {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground);
+}
+
+/* Timeline dots */
+.wp-template-page-about__timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0.625rem;
+  top: 0.25rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: var(--primary);
+  border: 2px solid var(--background);
+}
+
+@media (min-width: 768px) {
+  .wp-template-page-about__timeline-item::before {
+    left: auto;
+    right: -0.4375rem;
+  }
+
+  .wp-template-page-about__timeline-item:nth-child(even)::before {
+    right: auto;
+    left: -0.4375rem;
+  }
+}
+
+/* ============================================
+   CTA SECTION
+   Call-to-action
+   ============================================ */
+
+.wp-template-page-about__cta {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+  text-align: center;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   Mobile-first — base styles are mobile, enhanced at breakpoints above
+   ============================================ */
+
+/* ============================================
+   END OF ABOUT PAGE STYLES
+   ============================================ */

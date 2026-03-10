@@ -1,0 +1,22 @@
+/**
+ * Template Parts Styles Directory
+ * 
+ * This directory contains CSS files for WordPress template parts.
+ * Template parts are structural elements like header, footer, sidebar.
+ * 
+ * Each part should have its own CSS file following BEM naming:
+ * 
+ * .wp-block-lts-{part-name}
+ * .wp-block-lts-{part-name}__element
+ * .wp-block-lts-{part-name}--modifier
+ * 
+ * Example files:
+ * - header.css
+ * - footer.css
+ * - mobile-menu.css
+ * - sidebar.css
+ * 
+ * All styles must use CSS custom properties from theme.css
+ */
+
+/* This file serves as a directory marker and documentation */

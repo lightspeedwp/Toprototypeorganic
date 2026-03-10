@@ -1,0 +1,242 @@
+/**
+ * Fast Facts Pattern Styles
+ * WordPress Pattern: lightspeed/fast-facts
+ * 
+ * Component: /src/app/components/patterns/FastFacts.tsx
+ * Corresponds to: patterns/fast-facts.php in WordPress
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif - labels), Noto Sans (sans-serif - values)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   FAST FACTS BASE STYLES
+   Foundation for quick facts/meta grids
+   ============================================ */
+
+.wp-pattern-fast-facts {
+  padding-block: var(--spacing-section-xs);
+  background-color: var(--card);
+  border-block: 1px solid var(--border);
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-fast-facts {
+    padding-block: var(--spacing-section-sm);
+  }
+}
+
+@media (min-width: 768px) {
+  .wp-pattern-fast-facts {
+    padding-block: var(--spacing-section-md);
+  }
+}
+
+/* ============================================
+   HEADER SECTION
+   Optional title
+   ============================================ */
+
+.wp-pattern-fast-facts__header {
+  margin-block-end: 2rem;
+  text-align: center;
+}
+
+.wp-pattern-fast-facts__title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+/* ============================================
+   FACTS GRID
+   Responsive grid of fact items
+   ============================================ */
+
+.wp-pattern-fast-facts__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-element-sm);
+}
+
+@media (min-width: 640px) {
+  .wp-pattern-fast-facts__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-gap-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-pattern-fast-facts__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 4-column variant for more compact facts */
+.wp-pattern-fast-facts__grid--cols-4 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .wp-pattern-fast-facts__grid--cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-pattern-fast-facts__grid--cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   FACT ITEM
+   Individual fact card
+   ============================================ */
+
+.wp-pattern-fast-facts__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: var(--spacing-element-sm);
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: all 200ms ease;
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-fast-facts__item {
+    padding: var(--spacing-element-md);
+  }
+}
+
+.wp-pattern-fast-facts__item:hover {
+  border-color: var(--primary);
+  box-shadow: var(--elevation-sm);
+}
+
+/* ============================================
+   FACT ICON
+   Optional icon for visual interest
+   ============================================ */
+
+.wp-pattern-fast-facts__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-fast-facts__icon {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+/* ============================================
+   FACT LABEL
+   Key/label for the fact
+   ============================================ */
+
+.wp-pattern-fast-facts__label {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   FACT VALUE
+   Value/data for the fact
+   ============================================ */
+
+.wp-pattern-fast-facts__value {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-tight);
+  color: var(--foreground);
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-fast-facts__value {
+    font-size: var(--text-2xl);
+  }
+}
+
+/* Smaller value variant */
+.wp-pattern-fast-facts__value--small {
+  font-size: var(--text-xl);
+}
+
+/* ============================================
+   FACT DESCRIPTION
+   Optional additional detail text
+   ============================================ */
+
+.wp-pattern-fast-facts__description {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   LAYOUT VARIANTS
+   Horizontal, vertical, icon-position
+   ============================================ */
+
+/* Horizontal layout (icon beside text) */
+.wp-pattern-fast-facts__item--horizontal {
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.wp-pattern-fast-facts__item--horizontal .wp-pattern-fast-facts__icon {
+  margin-block-end: 0;
+}
+
+.wp-pattern-fast-facts__item--horizontal .wp-pattern-fast-facts__text {
+  flex: 1;
+}
+
+/* Centered layout */
+.wp-pattern-fast-facts__item--centered {
+  text-align: center;
+  align-items: center;
+}
+
+/* ============================================
+   EMPTY STATE
+   No facts to display
+   ============================================ */
+
+.wp-pattern-fast-facts__empty {
+  padding-block: var(--spacing-section-md);
+  text-align: center;
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   Mobile-first — base styles are mobile, enhanced at breakpoints above
+   ============================================ */
+
+/* ============================================
+   ANIMATION STATES
+   Stagger animations (handled by Motion)
+   ============================================ */
+
+/* These are handled by Motion in the component */
+
+/* ============================================
+   END OF FAST FACTS PATTERN STYLES
+   ============================================ */

@@ -1,0 +1,134 @@
+/**
+ * Why Choose Us Pattern Styles
+ * WordPress Patterns: Value propositions / benefits grid
+ *
+ * Component: /src/app/components/patterns/WhyChooseUsPattern.tsx
+ *
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Adheres to BEM naming convention.
+ *
+ * @version 1.0.0
+ */
+
+/* ============================================
+   SECTION WRAPPER
+   ============================================ */
+
+.wp-pattern-why-choose-us {
+  /* Pattern does not set its own padding — the parent section wrapper handles it */
+}
+
+/* ============================================
+   SECTION HEADER
+   ============================================ */
+
+.wp-pattern-why-choose-us__header {
+  text-align: center;
+  padding-block-end: var(--spacing-section-sm);
+}
+
+.wp-pattern-why-choose-us__description {
+  color: var(--muted-foreground);
+  max-width: 42rem;
+  margin-inline: auto;
+  padding-block-start: var(--spacing-element-xs);
+}
+
+/* ============================================
+   FEATURES GRID
+   ============================================ */
+
+.wp-pattern-why-choose-us__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-gap-lg);
+}
+
+@media (min-width: 768px) {
+  .wp-pattern-why-choose-us__grid--cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wp-pattern-why-choose-us__grid--cols-3,
+  .wp-pattern-why-choose-us__grid--cols-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .wp-pattern-why-choose-us__grid {
+    gap: var(--spacing-gap-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-pattern-why-choose-us__grid--cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   FEATURE ITEM
+   ============================================ */
+
+.wp-pattern-why-choose-us__feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ============================================
+   FEATURE ICON
+   ============================================ */
+
+.wp-pattern-why-choose-us__icon-wrapper {
+  position: relative;
+  margin-block-end: var(--spacing-element-sm);
+}
+
+.wp-pattern-why-choose-us__icon {
+  width: 5rem;
+  height: 5rem;
+  border-radius: var(--radius-2xl);
+  background-color: color-mix(in srgb, var(--primary) 5%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  transition: background-color var(--transition-slow), color var(--transition-slow), transform var(--transition-slow);
+}
+
+.wp-pattern-why-choose-us__feature:hover .wp-pattern-why-choose-us__icon {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  transform: rotate(6deg);
+}
+
+/* Decorative backdrop on hover */
+.wp-pattern-why-choose-us__icon-decoration {
+  position: absolute;
+  inset: -0.5rem;
+  background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+  border-radius: var(--radius-2xl);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.wp-pattern-why-choose-us__feature:hover .wp-pattern-why-choose-us__icon-decoration {
+  opacity: 1;
+  transform: rotate(12deg);
+}
+
+/* ============================================
+   FEATURE TEXT
+   ============================================ */
+
+.wp-pattern-why-choose-us__feature-title {
+  padding-block-end: 0.75rem;
+}
+
+.wp-pattern-why-choose-us__feature-description {
+  color: var(--muted-foreground);
+}

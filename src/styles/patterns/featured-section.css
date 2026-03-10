@@ -1,0 +1,55 @@
+/**
+ * Featured Section Component Styles
+ * WordPress Patterns: Any section featuring a grid of cards
+ * 
+ * Component: /src/app/components/patterns/FeaturedSection.tsx
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Adheres to BEM naming convention.
+ * 
+ * @version 1.0.0
+ */
+
+.wp-featured-section {
+  padding-top: var(--spacing-section-md);
+  padding-bottom: var(--spacing-section-md);
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+}
+
+.wp-featured-section:last-of-type {
+  border-bottom: 0;
+}
+
+.wp-featured-section__grid {
+  display: grid;
+  gap: var(--spacing-gap-md);
+  grid-template-columns: 1fr;
+}
+
+.wp-featured-section__item {
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .wp-featured-section__grid--cols-2,
+  .wp-featured-section__grid--cols-3,
+  .wp-featured-section__grid--cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-featured-section__grid--cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .wp-featured-section__grid--cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.wp-featured-section__footer {
+  padding-block-start: var(--spacing-element-lg);
+  display: flex;
+  justify-content: center;
+}

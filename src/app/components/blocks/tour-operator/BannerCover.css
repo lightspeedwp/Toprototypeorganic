@@ -1,0 +1,159 @@
+/**
+ * Banner Cover Block Styles
+ * 
+ * WordPress Block: lsx-tour-operator/banner-cover
+ * Full-width cover section using banner images from custom fields.
+ * 
+ * All values reference CSS custom properties from the design system.
+ * bg-black overlay and text-white content are documented exceptions
+ * for media overlays per project guidelines.
+ */
+
+/* ============================================
+   ROOT CONTAINER
+   ============================================ */
+
+.lsx-banner-cover {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: var(--banner-min-height, 400px);
+}
+
+.lsx-banner-cover--wide {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================
+   BACKGROUND IMAGE
+   ============================================ */
+
+.lsx-banner-cover__background {
+  position: absolute;
+  inset: 0;
+  background-image: var(--banner-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ============================================
+   OVERLAY
+   ============================================ */
+
+.lsx-banner-cover__overlay {
+  position: absolute;
+  inset: 0;
+  /* bg-black is a documented exception for media overlays */
+  background-color: #000;
+  opacity: var(--banner-dim, 0.5);
+}
+
+/* ============================================
+   CONTENT
+   ============================================ */
+
+.lsx-banner-cover__content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: var(--spacing-section-sm) var(--spacing-container-sm);
+}
+
+@media (min-width: 768px) {
+  .lsx-banner-cover__content {
+    padding: var(--spacing-section-md) var(--spacing-container-md);
+  }
+}
+
+.lsx-banner-cover__inner {
+  width: 100%;
+  max-width: 56rem;
+  text-align: center;
+  /* text-white is a documented exception for media overlays */
+  color: #fff;
+}
+
+/* Override heading colours inside the banner */
+.lsx-banner-cover__inner h1,
+.lsx-banner-cover__inner h2,
+.lsx-banner-cover__inner h3,
+.lsx-banner-cover__inner p {
+  color: inherit;
+}
+
+/* ============================================
+   CTA BUTTONS
+   ============================================ */
+
+.lsx-banner-cover__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-gap-sm);
+  justify-content: center;
+  margin-top: var(--spacing-element-md);
+}
+
+.lsx-banner-cover__cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: opacity 0.2s ease, box-shadow 0.2s ease;
+  min-height: 44px;
+  text-decoration: none;
+}
+
+.lsx-banner-cover__cta-primary:hover {
+  opacity: 0.9;
+  box-shadow: var(--elevation-md);
+  color: var(--primary-foreground);
+  text-decoration: none;
+}
+
+.lsx-banner-cover__cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background-color: transparent;
+  /* white text/border for media overlay context */
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  min-height: 44px;
+  text-decoration: none;
+}
+
+.lsx-banner-cover__cta-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #fff;
+  color: #fff;
+  text-decoration: none;
+}
+
+.lsx-banner-cover__cta-primary:focus-visible,
+.lsx-banner-cover__cta-secondary:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}

@@ -1,0 +1,133 @@
+/**
+ * index.css
+ * LSX Design System — Master CSS Entry Point
+ *
+ * Import order is CRITICAL. Do not reorder without understanding
+ * the cascade implications documented below.
+ *
+ * Layer order:
+ *   1. fonts.css        — @font-face declarations (no cascade conflicts)
+ *   2. tailwind.css     — Build pipeline + Tailwind compatibility bridge
+ *   3. theme.css        — Design tokens (base → light → dark → variables → funky)
+ *   4. global.css       — WordPress-aligned utility and block classes
+ *   5. sections.css     — Section layout presets
+ *   6. breadcrumbs.css  — Breadcrumb component
+ *   7. print.css        — Print media overrides
+ *   8. parts/           — Template part styles (header, footer)
+ *   9. templates/       — Page template styles
+ *  10. pages/           — Page-specific overrides
+ *  11. patterns/        — Block pattern styles
+ *  12. components/      — Common component styles
+ *
+ * @see /docs/CSS-FILE-STRUCTURE.md — Full CSS architecture guidelines
+ */
+
+/* ── 1. Font face declarations ───────────────────────────────────── */
+@import './fonts.css';
+
+/* ── 2. Tailwind compatibility bridge (build pipeline only) ──────── */
+@import './tailwind.css';
+
+/* ── 3. Design token system ──────────────────────────────────────── */
+/*      theme.css internally imports:                                  */
+/*        theme-base.css, theme-light.css, theme-dark.css,             */
+/*        theme-variables.css, theme-funky.css                         */
+@import './theme.css';
+
+/* ── 4. WordPress-aligned utility and block classes ──────────────── */
+@import './global.css';
+
+/* ── 5. Section layout presets ───────────────────────────────────── */
+@import './sections.css';
+
+/* ── 6. Breadcrumb pattern ───────────────────────────────────────── */
+@import './breadcrumbs.css';
+
+/* ── 7. Print styles ─────────────────────────────────────────────── */
+@import './print.css';
+
+/* ── 8. Template Parts ───────────────────────────────────────────── */
+@import './parts/header.css';
+@import './parts/footer.css';
+
+/* ── 9. Page Templates ───────────────────────────────────────────── */
+@import './templates/home.css';
+@import './templates/archive.css';
+@import './templates/archive-tours.css';
+@import './templates/archive-destinations.css';
+@import './templates/single.css';
+@import './templates/single-tour.css';
+@import './templates/page.css';
+@import './templates/page-about.css';
+@import './templates/page-contact.css';
+@import './templates/page-faq.css';
+@import './templates/page-utility.css';
+@import './templates/template-tester.css';
+@import './templates/devtools.css';
+
+/* ── 10. Page-specific styles ────────────────────────────────────── */
+@import './pages/quote-request.css';
+@import './pages/profile.css';
+@import './pages/sitemap.css';
+@import './pages/not-found.css';
+@import './pages/trip-planner.css';
+@import './pages/destination-guides.css';
+@import './pages/why-book.css';
+@import './pages/newsletter.css';
+@import './pages/wishlist.css';
+@import './pages/packing-guides.css';
+@import './pages/travel-insurance.css';
+@import './pages/booking.css';
+@import './pages/reviews-hub.css';
+@import './pages/saved-passengers.css';
+@import './pages/tour-comparison.css';
+@import './pages/design-system-showcase.css';
+@import './pages/design-system-example.css';
+@import './pages/component-library.css';
+
+/* ── 11. Block pattern styles ────────────────────────────────────── */
+@import './patterns/mobile-menu.css';
+@import './patterns/breadcrumbs.css';
+@import './patterns/taxonomy-nav.css';
+@import './patterns/hero.css';
+@import './patterns/archive-header.css';
+@import './patterns/card-grid.css';
+@import './patterns/cards.css';
+@import './patterns/editorial-content.css';
+@import './patterns/fast-facts.css';
+@import './patterns/related-content.css';
+@import './patterns/pagination.css';
+@import './patterns/faq.css';
+@import './patterns/cta.css';
+@import './patterns/author-bio.css';
+@import './patterns/search-filter.css';
+@import './patterns/sitemap-grid.css';
+@import './patterns/feature-card.css';
+@import './patterns/notification-banner.css';
+@import './patterns/featured-section.css';
+@import './patterns/team-card.css';
+@import './patterns/blog-card.css';
+@import './patterns/conservation-section.css';
+@import './patterns/why-choose-us.css';
+@import './patterns/statistics.css';
+@import './patterns/newsletter.css';
+@import './patterns/inclusions.css';
+@import './patterns/pricing.css';
+@import './patterns/view-switcher.css';
+@import './patterns/sort-dropdown.css';
+
+/* ── 12. Common component styles ─────────────────────────────────── */
+@import './common/logo.css';
+@import './common/template-browser.css';
+@import './common/back-to-top.css';
+@import './common/page-nav.css';
+@import './common/view-all.css';
+@import './common/section-header.css';
+@import './blocks/ui-components.css';
+@import './components/button.css';
+@import './components/form.css';
+@import './components/card.css';
+@import './components/alert.css';
+@import './components/badge.css';
+@import './components/reviews-section.css';
+@import './components/stats-display.css';

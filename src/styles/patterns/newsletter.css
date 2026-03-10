@@ -1,0 +1,181 @@
+/**
+ * Newsletter Signup Pattern Styles
+ * WordPress Patterns: Email capture form
+ *
+ * Component: /src/app/components/patterns/NewsletterSignupPattern.tsx
+ *
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Adheres to BEM naming convention.
+ *
+ * @version 1.0.0
+ */
+
+/* ============================================
+   PATTERN WRAPPER
+   ============================================ */
+
+.wp-pattern-newsletter {
+  /* Container for the newsletter form content */
+}
+
+/* ============================================
+   SUCCESS STATE
+   ============================================ */
+
+.wp-pattern-newsletter__success {
+  text-align: center;
+  padding-block: var(--spacing-element-lg);
+}
+
+.wp-pattern-newsletter__success-icon-wrapper {
+  width: 5rem;
+  height: 5rem;
+  border-radius: var(--radius-3xl);
+  background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  margin-inline: auto;
+  margin-block-end: var(--spacing-element-md);
+  box-shadow: var(--elevation-sm);
+}
+
+.wp-pattern-newsletter__success-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.wp-pattern-newsletter__success-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-block-end: 1rem;
+}
+
+.wp-pattern-newsletter__success-message {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   FORM HEADER
+   ============================================ */
+
+.wp-pattern-newsletter__header {
+  text-align: center;
+  padding-block-end: var(--spacing-element-lg);
+}
+
+.wp-pattern-newsletter__description {
+  color: var(--muted-foreground);
+  max-width: 32rem;
+  margin-inline: auto;
+  padding-block-start: var(--spacing-element-xs);
+}
+
+/* ============================================
+   FORM
+   ============================================ */
+
+.wp-pattern-newsletter__form {
+  position: relative;
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.wp-pattern-newsletter__input-wrapper {
+  position: relative;
+}
+
+.wp-pattern-newsletter__input-icon {
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--muted-foreground);
+  transition: color var(--transition-base);
+}
+
+.wp-pattern-newsletter__form:focus-within .wp-pattern-newsletter__input-icon {
+  color: var(--primary);
+}
+
+.wp-pattern-newsletter__input {
+  width: 100%;
+  padding-inline-start: 4rem;
+  padding-inline-end: 1.5rem;
+  padding-block: 1rem;
+  border-radius: var(--radius-2xl);
+  background-color: var(--card);
+  border: 2px solid var(--border);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  box-shadow: var(--elevation-sm);
+  transition: border-color var(--transition-base);
+  outline: none;
+}
+
+.wp-pattern-newsletter__input:focus {
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.wp-pattern-newsletter__input::placeholder {
+  color: var(--muted-foreground);
+  font-weight: var(--font-weight-normal);
+}
+
+.wp-pattern-newsletter__submit-wrapper {
+  position: static;
+  margin-block-start: var(--spacing-element-xs);
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-newsletter__input {
+    padding-inline-end: 12rem;
+    padding-block: 1.25rem;
+  }
+
+  .wp-pattern-newsletter__submit-wrapper {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    margin-block-start: 0;
+  }
+}
+
+.wp-pattern-newsletter__submit-wrapper .wp-block-button {
+  width: 100%;
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-newsletter__submit-wrapper .wp-block-button {
+    width: auto;
+  }
+}
+
+/* ============================================
+   PRIVACY NOTE
+   ============================================ */
+
+.wp-pattern-newsletter__privacy {
+  text-align: center;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: color-mix(in srgb, var(--muted-foreground) 60%, transparent);
+  padding-block-start: var(--spacing-element-md);
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE: Mobile-first — base styles are mobile, enhanced at breakpoints above
+   ============================================ */

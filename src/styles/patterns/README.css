@@ -1,0 +1,23 @@
+/**
+ * Pattern Styles Directory
+ * 
+ * This directory contains CSS files for WordPress block patterns.
+ * Patterns are composed groups of blocks (e.g., hero section, card grid).
+ * 
+ * Each pattern should have its own CSS file following BEM naming:
+ * 
+ * .wp-block-lts-{pattern-name}
+ * .wp-block-lts-{pattern-name}__element
+ * .wp-block-lts-{pattern-name}--modifier
+ * 
+ * Example files:
+ * - hero.css
+ * - card-grid.css
+ * - cta.css
+ * - archive-header.css
+ * - editorial-content.css
+ * 
+ * All styles must use CSS custom properties from theme.css
+ */
+
+/* This file serves as a directory marker and documentation */

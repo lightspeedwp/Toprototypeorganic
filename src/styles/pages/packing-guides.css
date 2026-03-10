@@ -1,0 +1,56 @@
+/**
+ * Packing Guides Page Styles
+ * WordPress template: page-packing-guides
+ * 
+ * Component: /src/app/pages/PackingGuidesPage.tsx
+ * Styles for the packing lists and guides hub page.
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   FEATURED PACKING LISTS GRID
+   Three-column grid for featured packing lists
+   ============================================ */
+
+.wp-page-packing-guides__featured-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-packing-guides__featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-page-packing-guides__featured-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   ALL PACKING LISTS GRID
+   Two-column grid for all packing lists
+   ============================================ */
+
+.wp-page-packing-guides__all-lists-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-packing-guides__all-lists-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   END OF PACKING GUIDES PAGE STYLES
+   ============================================ */

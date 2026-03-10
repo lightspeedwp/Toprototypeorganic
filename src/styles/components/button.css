@@ -1,0 +1,160 @@
+/**
+ * Button Component Styles
+ * 
+ * BEM Structure: .button, .button--{variant}
+ * 
+ * Provides button variants using CSS variables for complete customization.
+ * All colors, typography, and spacing use design system tokens.
+ * 
+ * @version 1.0
+ * @see /src/styles/theme-light.css
+ * @see /src/styles/theme-dark.css
+ */
+
+/* ============================================
+   BASE BUTTON
+   ============================================ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity 200ms ease, transform 100ms ease;
+  border: none;
+  outline: none;
+}
+
+.button svg,
+.button [data-icon] {
+  flex-shrink: 0;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ============================================
+   PRIMARY BUTTON
+   ============================================ */
+
+.button--primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* ============================================
+   SECONDARY BUTTON
+   ============================================ */
+
+.button--secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+/* ============================================
+   OUTLINE BUTTON
+   ============================================ */
+
+.button--outline {
+  background-color: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.button--outline:hover {
+  background-color: var(--muted);
+  opacity: 1;
+}
+
+/* ============================================
+   GHOST BUTTON
+   ============================================ */
+
+.button--ghost {
+  background-color: transparent;
+  color: var(--foreground);
+}
+
+.button--ghost:hover {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  opacity: 1;
+}
+
+/* ============================================
+   DESTRUCTIVE BUTTON
+   ============================================ */
+
+.button--destructive {
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+/* ============================================
+   LINK BUTTON
+   ============================================ */
+
+.button--link {
+  background-color: transparent;
+  color: var(--primary);
+  padding: 0;
+  text-decoration: underline;
+}
+
+.button--link:hover {
+  text-decoration: none;
+  opacity: 1;
+}
+
+/* ============================================
+   SIZES
+   ============================================ */
+
+.button--sm {
+  padding: 0.5rem 1rem;
+  font-size: var(--text-sm);
+}
+
+.button--lg {
+  padding: 1rem 2rem;
+  font-size: var(--text-lg);
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+  
+  .button:active {
+    transform: none;
+  }
+}

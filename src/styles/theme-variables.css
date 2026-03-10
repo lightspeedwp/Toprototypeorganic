@@ -1,0 +1,137 @@
+/**
+ * theme-variables.css
+ * LSX Design System — WordPress Preset Namespace Variables
+ *
+ * Exposes the LSX design system colours and gradients under the
+ * WordPress theme.json --wp--preset--* namespace. This ensures
+ * that when the prototype transitions to a real WordPress block
+ * theme, the preset names are already correct and no renaming
+ * is required.
+ *
+ * Reference:
+ *   https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-json/
+ *
+ * Naming convention:
+ *   --wp--preset--color--{slug}
+ *   --wp--preset--gradient--{slug}
+ *   --wp--preset--font-size--{slug}
+ *   --wp--preset--spacing--{slug}
+ *
+ * @requires theme-base.css  — Base tokens (values are referenced here)
+ * @requires theme-light.css — Semantic colour tokens
+ */
+
+:root {
+
+  /* ============================================================
+     COLOUR PRESETS — WordPress theme.json "palette" equivalents
+     These mirror the semantic tokens in theme-light.css so that
+     the WordPress block editor colour picker shows LSX brand colours.
+     ============================================================ */
+
+  /* Core brand */
+  --wp--preset--color--primary:            var(--primary);
+  --wp--preset--color--primary-foreground: var(--primary-foreground);
+
+  --wp--preset--color--secondary:            var(--secondary);
+  --wp--preset--color--secondary-foreground: var(--secondary-foreground);
+
+  --wp--preset--color--accent:            var(--accent);
+  --wp--preset--color--accent-foreground: var(--accent-foreground);
+
+  /* Base surfaces */
+  --wp--preset--color--background: var(--background);
+  --wp--preset--color--foreground:  var(--foreground);
+
+  /* Content surfaces */
+  --wp--preset--color--base:           var(--card);
+  --wp--preset--color--base-foreground:var(--card-foreground);
+
+  --wp--preset--color--subtle:           var(--muted);
+  --wp--preset--color--subtle-foreground:var(--muted-foreground);
+
+  /* State colours */
+  --wp--preset--color--destructive: var(--destructive);
+  --wp--preset--color--success:     var(--success);
+  --wp--preset--color--warning:     var(--warning);
+  --wp--preset--color--info:        var(--info);
+
+  /* Utility */
+  --wp--preset--color--border: var(--border);
+
+  /* Explicit raw palette entries (for editor palette swatches) */
+  --wp--preset--color--black:       #000000;
+  --wp--preset--color--white:       #FFFFFF;
+  --wp--preset--color--olive-dark:  #2D5C0A;
+  --wp--preset--color--olive:       #4A7311;
+  --wp--preset--color--olive-light: #6E9E30;
+  --wp--preset--color--amber-dark:  #8C5A00;
+  --wp--preset--color--amber:       #B87A00;
+  --wp--preset--color--amber-light: #E6A800;
+  --wp--preset--color--beige-dark:  #5C5340;
+  --wp--preset--color--beige:       #8C7E66;
+  --wp--preset--color--beige-light: #F5F0E8;
+  --wp--preset--color--grey-dark:   #595959;
+  --wp--preset--color--grey-mid:    #BDBDBD;
+  --wp--preset--color--grey-light:  #F5F5F5;
+
+  /* ============================================================
+     GRADIENT PRESETS — WordPress theme.json "gradients"
+     ============================================================ */
+
+  --wp--preset--gradient--primary-fade:
+    linear-gradient(
+      135deg,
+      var(--primary) 0%,
+      var(--accent) 100%
+    );
+
+  --wp--preset--gradient--hero-overlay:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+
+  --wp--preset--gradient--muted-fade:
+    linear-gradient(
+      180deg,
+      var(--background) 0%,
+      var(--muted) 100%
+    );
+
+  /* ============================================================
+     FONT SIZE PRESETS — WordPress theme.json "fontSizes"
+     Maps to the fluid type scale in theme-base.css.
+     ============================================================ */
+
+  --wp--preset--font-size--small:       var(--text-sm);
+  --wp--preset--font-size--medium:      var(--text-base);
+  --wp--preset--font-size--large:       var(--text-lg);
+  --wp--preset--font-size--x-large:     var(--text-xl);
+  --wp--preset--font-size--xx-large:    var(--text-2xl);
+  --wp--preset--font-size--heading-3:   var(--text-3xl);
+  --wp--preset--font-size--heading-2:   var(--text-4xl);
+  --wp--preset--font-size--heading-1:   var(--text-6xl);
+
+  /* ============================================================
+     SPACING PRESETS — WordPress theme.json "spacing"
+     Maps to the fluid spacing scale in theme-base.css.
+     ============================================================ */
+
+  --wp--preset--spacing--20: var(--spacing-gap-xs);   /* XS gap */
+  --wp--preset--spacing--30: var(--spacing-gap-sm);   /* SM gap */
+  --wp--preset--spacing--40: var(--spacing-gap-md);   /* MD gap */
+  --wp--preset--spacing--50: var(--spacing-gap-lg);   /* LG gap */
+  --wp--preset--spacing--60: var(--spacing-section-sm);
+  --wp--preset--spacing--70: var(--spacing-section-md);
+  --wp--preset--spacing--80: var(--spacing-section-lg);
+
+  /* ============================================================
+     FONT FAMILY PRESETS — WordPress theme.json "fontFamilies"
+     ============================================================ */
+
+  --wp--preset--font-family--lora:      var(--font-family-lora);
+  --wp--preset--font-family--noto-sans: var(--font-family-noto-sans);
+  --wp--preset--font-family--mono:      var(--font-family-mono);
+}

@@ -1,0 +1,33 @@
+/**
+ * 404 Not Found Page - WordPress BEM CSS
+ * 
+ * Custom grid layouts for NotFoundPage converted from Tailwind responsive classes
+ * to WordPress BEM naming convention with CSS variable-based styling.
+ * 
+ * All layouts use CSS Grid with mobile-first responsive breakpoints:
+ * - Mobile: 1 column
+ * - Tablet (md): 2 columns
+ * 
+ * @since 2026-02-27
+ */
+
+/* ==========================================================================
+   Action Buttons Grid - 1/2 column responsive grid
+   ========================================================================== */
+
+/**
+ * Action buttons grid
+ * Mobile: 1 column, Tablet+: 2 columns
+ * Used for: Primary action buttons (Back to Home, Browse Tours, etc.)
+ */
+.wp-pattern-not-found__actions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-3, 0.75rem);
+}
+
+@media (min-width: 768px) {
+  .wp-pattern-not-found__actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

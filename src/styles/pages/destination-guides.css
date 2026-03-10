@@ -1,0 +1,79 @@
+/**
+ * Destination Guides Hub Page Styles
+ * WordPress template: page-destination-guides
+ * 
+ * Component: /src/app/pages/DestinationGuidesHubPage.tsx
+ * Styles for the destination guides hub/archive page.
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   STATISTICS GRID
+   Four-column grid for guide statistics
+   ============================================ */
+
+.wp-page-destination-guides__stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-destination-guides__stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   FEATURED GUIDES GRID
+   Four-column grid for featured destination guides
+   ============================================ */
+
+.wp-page-destination-guides__featured-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-destination-guides__featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-page-destination-guides__featured-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   ALL GUIDES GRID
+   Three-column grid for all destination guides
+   ============================================ */
+
+.wp-page-destination-guides__all-guides-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-destination-guides__all-guides-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-page-destination-guides__all-guides-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   END OF DESTINATION GUIDES HUB PAGE STYLES
+   ============================================ */

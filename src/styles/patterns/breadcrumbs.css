@@ -1,0 +1,190 @@
+/**
+ * Breadcrumbs Pattern — WordPress BEM CSS
+ *
+ * Hierarchical navigation trail showing current page location.
+ * Component: /src/app/components/patterns/BreadcrumbsPattern.tsx
+ *
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Typography: Noto Sans (sans-serif) - breadcrumbs are UI navigation
+ *
+ * WordPress BEM Naming: .wp-pattern-breadcrumbs__*
+ *
+ * @version 1.0.0
+ */
+
+/* ============================================
+   BREADCRUMBS CONTAINER
+   Full-width navigation bar
+   ============================================ */
+
+.wp-pattern-breadcrumbs {
+  padding-block: 1rem;
+  background-color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.wp-pattern-breadcrumbs--full-width {
+  padding: 0;
+  border-bottom: none;
+}
+
+.wp-pattern-breadcrumbs--full-width .wp-pattern-breadcrumbs__list {
+  padding-inline: var(--spacing-container-sm);
+}
+
+@media (min-width: 768px) {
+  .wp-pattern-breadcrumbs--full-width .wp-pattern-breadcrumbs__list {
+    padding-inline: var(--spacing-container-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-pattern-breadcrumbs--full-width .wp-pattern-breadcrumbs__list {
+    padding-inline: var(--spacing-container-lg);
+  }
+}
+
+/* ============================================
+   BREADCRUMBS LIST
+   Horizontal list with separators
+   ============================================ */
+
+.wp-pattern-breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-breadcrumbs__list {
+    font-size: var(--text-sm);
+  }
+}
+
+/* ============================================
+   BREADCRUMB ITEM
+   Individual breadcrumb
+   ============================================ */
+
+.wp-pattern-breadcrumbs__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ============================================
+   BREADCRUMB LINK
+   Clickable breadcrumb links
+   ============================================ */
+
+.wp-pattern-breadcrumbs__link {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+}
+
+.wp-pattern-breadcrumbs__link:hover {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.wp-pattern-breadcrumbs__link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================
+   CURRENT PAGE
+   Non-clickable current page indicator
+   ============================================ */
+
+.wp-pattern-breadcrumbs__current {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--foreground);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+}
+
+.wp-pattern-breadcrumbs__current--active {
+  font-weight: var(--font-weight-medium);
+}
+
+/* ============================================
+   HOME ICON
+   Optional home icon for first breadcrumb
+   ============================================ */
+
+.wp-pattern-breadcrumbs__home {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.wp-pattern-breadcrumbs__home-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+  color: currentColor;
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-breadcrumbs__home-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+/* ============================================
+   SEPARATOR
+   Divider between breadcrumbs
+   ============================================ */
+
+.wp-pattern-breadcrumbs__separator {
+  color: var(--muted-foreground);
+  opacity: 0.5;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  user-select: none;
+}
+
+.wp-pattern-breadcrumbs__separator-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+  color: var(--muted-foreground);
+  opacity: 0.5;
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-breadcrumbs__separator-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVE BEHAVIOR
+   Mobile-first — base styles are mobile, enhanced at breakpoints above
+   ============================================ */
+
+/* ============================================
+   DARK MODE
+   Handled automatically via CSS custom properties
+   ============================================ */
+
+/* No explicit dark mode classes needed - CSS variables handle this */

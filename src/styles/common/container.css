@@ -1,0 +1,79 @@
+/**
+ * Container — WordPress-Aligned Layout Constraint
+ *
+ * Mirrors WordPress block theme's `wp-block-group__inner-container`
+ * and `alignwide` / `alignfull` conventions.
+ *
+ * Component: /src/app/components/common/Container.tsx
+ *
+ * Uses fluid `--spacing-container-*` variables from theme-base.css
+ * so padding scales responsively without media-query breakpoints.
+ *
+ * WordPress BEM Naming: .wp-container*
+ *
+ * @version 1.0.0
+ */
+
+/* ============================================
+   BASE CONTAINER
+   Horizontal centering + fluid inline padding.
+   Maps to WordPress wp-block-group__inner-container.
+   ============================================ */
+
+.wp-container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--spacing-container-sm);
+}
+
+/* ============================================
+   MAX-WIDTH VARIANTS
+   Maps to WordPress layout.contentSize / wideSize
+   ============================================ */
+
+.wp-container--sm {
+  max-width: 640px;
+}
+
+.wp-container--md {
+  max-width: 768px;
+}
+
+.wp-container--lg {
+  max-width: 1024px;
+}
+
+.wp-container--xl {
+  max-width: 1440px;
+}
+
+.wp-container--2xl {
+  max-width: 1536px;
+}
+
+/** WordPress alignwide equivalent */
+.wp-container--wide {
+  max-width: var(--container-max-width-wide);
+}
+
+/** WordPress alignfull equivalent — no max-width constraint */
+.wp-container--full {
+  max-width: none;
+}
+
+/** Narrow content column (editorial / long-form) */
+.wp-container--narrow {
+  max-width: var(--container-max-width-narrow);
+}
+
+/* ============================================
+   RESPONSIVE PADDING SCALE
+   On wider viewports, increase the inline padding
+   using the next tier of the spacing scale.
+   ============================================ */
+
+@media (min-width: 768px) {
+  .wp-container {
+    padding-inline: var(--spacing-container-md);
+  }
+}

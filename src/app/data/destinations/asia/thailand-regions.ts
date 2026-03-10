@@ -1,0 +1,106 @@
+/**
+ * Thailand - Regions and Cities
+ * @module asia/thailand-regions
+ * @category data/destinations
+ */
+
+import type { Destination } from "../../types";
+
+export const THAILAND_REGIONS: Destination[] = [
+  {
+    id: "dest-25",
+    slug: "bangkok",
+    title: "Bangkok",
+    excerpt: "A dizzying, delicious, electric metropolis where ancient temples shimmer beside neon-lit skyscrapers and every street corner offers culinary adventure.",
+    content: "Bangkok is one of the world's most exhilarating cities — a sensory overload in the best possible way. The sprawling Thai capital blends centuries of royal history with cutting-edge modernity, creating a cityscape where golden spires pierce through concrete canyons and tuk-tuks weave between luxury sedans.\n\nThe historic heart centers on Rattanakosin Island, home to the dazzling Grand Palace and Wat Phra Kaew (Temple of the Emerald Buddha), the reclining Buddha of Wat Pho, and the Khmer-style towers of Wat Arun across the Chao Phraya River. Modern Bangkok offers rooftop bars with panoramic skyline views, world-class shopping at Siam district malls, and a contemporary art scene centered around the MOCA and Bangkok Art & Culture Centre.\n\nBut it is Bangkok's food scene that truly defines the city. From the legendary Yaowarat (Chinatown) street stalls to Jay Fai's Michelin-starred crab omelette, Bangkok offers arguably the best street food on Earth. The city's floating markets, night bazaars, and food courts provide endless culinary exploration at extraordinary value.",
+    featuredImage: "https://images.unsplash.com/photo-1672471668240-5e18799e145c?w=800",
+    parentId: "dest-20",
+    continentId: "continent-2",
+    tourIds: ["tour-9"],
+    accommodationIds: ["acc-12", "acc-13"],
+    travelStyles: ["cultural", "luxury", "family"],
+    bestTime: "November - February (cool season)",
+    climate: "Tropical; hot and humid year-round (27-35°C)",
+    currency: "Thai Baht (THB)",
+    language: "Thai, English",
+    timezone: "Indochina Time (ICT, UTC+7)",
+    highlights: [
+      "Grand Palace & Wat Phra Kaew — Thailand's most sacred site",
+      "Wat Pho — massive reclining Buddha and traditional massage school",
+      "Yaowarat (Chinatown) — legendary street food after dark",
+      "Chatuchak Weekend Market — 15,000+ stalls",
+      "Rooftop bars — Sky Bar, Octave, Vertigo",
+      "Chao Phraya River — temple-hopping by longtail boat",
+    ],
+    type: "city",
+    experiences: [
+      "Grand Palace & Temple Tour",
+      "Chinatown Street Food Tour",
+      "Floating Market Day Trip",
+      "Thai Cooking Class",
+      "Rooftop Bar Sunset Cocktails",
+      "Tuk-Tuk City Tour",
+      "Traditional Thai Massage at Wat Pho",
+      "Chatuchak Market Shopping",
+    ],
+    videos: [
+      { id: "vid-bk-1", title: "Bangkok — City of Angels", url: "https://youtube.com/watch?v=example-bk1", thumbnail: "https://images.unsplash.com/photo-1672471668240-5e18799e145c?w=400" },
+    ],
+    gallery: [
+      "https://images.unsplash.com/photo-1672471668240-5e18799e145c?w=800",
+      "https://images.unsplash.com/photo-1672826947970-c8462da30c48?w=800",
+    ],
+    relatedSpecialIds: ["special-4"],
+    relatedBlogIds: ["blog-4"],
+    relatedReviewIds: ["review-6"],
+    dedicatedConsultantId: "team-4",
+  },
+  {
+    id: "dest-26",
+    slug: "phuket",
+    title: "Phuket",
+    excerpt: "Thailand's largest island blends pristine Andaman beaches, dramatic limestone cliffs, vibrant nightlife, and luxurious resorts into a tropical paradise.",
+    content: "Phuket is Thailand's premier beach destination, an island jewel set in the warm Andaman Sea. Its western coast is lined with a string of stunning beaches — from the buzzing Patong to the serene Kata Noi and the exclusive Bangtao. The dramatic limestone karsts, crystal-clear waters, and hidden coves of Phang Nga Bay provide one of Thailand's most iconic landscapes.\n\nBeyond the beaches, Phuket offers cultural depth in its Old Town, where Sino-Portuguese shophouses line atmospheric streets filled with galleries, cafes, and shrines. The Big Buddha statue provides panoramic island views, while Wat Chalong is Phuket's most important Buddhist temple. Day trips to the Phi Phi Islands, James Bond Island, and the Similan Islands open up world-class snorkeling and diving.\n\nPhuket caters to every traveler — from five-star cliff-edge resorts and championship golf courses to budget backpacker hostels and raucous nightlife. The island's dining scene spans beachfront seafood barbecues, authentic Thai street food, and innovative fine dining.",
+    featuredImage: "https://images.unsplash.com/photo-1559882203-fa7d5f167422?w=800",
+    parentId: "dest-20",
+    continentId: "continent-2",
+    tourIds: ["tour-9"],
+    accommodationIds: ["acc-14", "acc-15"],
+    travelStyles: ["luxury", "family", "honeymoon"],
+    bestTime: "November - April (dry season)",
+    climate: "Tropical monsoon; hot year-round (25-33°C); wet May-October",
+    currency: "Thai Baht (THB)",
+    language: "Thai, English",
+    timezone: "Indochina Time (ICT, UTC+7)",
+    highlights: [
+      "Patong Beach — Phuket's liveliest beach and nightlife hub",
+      "Phang Nga Bay — limestone karsts and James Bond Island",
+      "Old Phuket Town — Sino-Portuguese heritage architecture",
+      "Phi Phi Islands day trip — snorkeling and Maya Bay",
+      "Big Buddha — panoramic views from 45m hilltop statue",
+      "Similan Islands — pristine diving and snorkeling",
+    ],
+    type: "region",
+    experiences: [
+      "Phang Nga Bay Long-tail Boat Tour",
+      "Phi Phi Island Snorkeling Trip",
+      "Old Town Walking & Food Tour",
+      "Thai Boxing Show",
+      "Scuba Diving at Similan Islands",
+      "Sunset Sailing Cruise",
+      "Elephant Sanctuary Visit",
+      "Zip-line Jungle Adventure",
+    ],
+    videos: [
+      { id: "vid-pk-1", title: "Phuket — Thailand's Island Paradise", url: "https://youtube.com/watch?v=example-pk1", thumbnail: "https://images.unsplash.com/photo-1559882203-fa7d5f167422?w=400" },
+    ],
+    gallery: [
+      "https://images.unsplash.com/photo-1559882203-fa7d5f167422?w=800",
+      "https://images.unsplash.com/photo-1672826947970-c8462da30c48?w=800",
+    ],
+    relatedSpecialIds: ["special-4"],
+    relatedBlogIds: ["blog-4"],
+    relatedReviewIds: ["review-6"],
+    dedicatedConsultantId: "team-4",
+  },
+];

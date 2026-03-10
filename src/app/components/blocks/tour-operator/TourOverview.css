@@ -1,0 +1,98 @@
+/**
+ * Tour Overview Block Styles
+ * 
+ * WordPress Block: lsx-tour-operator/overview
+ * Editorial content block for tour descriptions, highlights, and narrative.
+ * 
+ * All values reference CSS custom properties from the design system.
+ */
+
+/* ============================================
+   ROOT CONTAINER
+   ============================================ */
+
+.lsx-tour-overview {
+  /* Root is a simple wrapper; semantic HTML handles typography */
+}
+
+/* ============================================
+   CONTENT BODY
+   ============================================ */
+
+.lsx-tour-overview__content {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground);
+}
+
+.lsx-tour-overview__content p {
+  margin-bottom: 1rem;
+}
+
+.lsx-tour-overview__content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   HIGHLIGHTS
+   ============================================ */
+
+.lsx-tour-overview__highlights {
+  margin-top: var(--spacing-element-md);
+  padding-top: var(--spacing-element-md);
+  border-top: 1px solid var(--border);
+}
+
+.lsx-tour-overview__highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.625rem;
+}
+
+@media (min-width: 768px) {
+  .lsx-tour-overview__highlights-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.lsx-tour-overview__highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--foreground);
+  margin-bottom: 0;
+}
+
+.lsx-tour-overview__highlight-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 0.1875rem;
+}
+
+/* ============================================
+   FEATURE CALLOUT
+   ============================================ */
+
+.lsx-tour-overview__callout {
+  margin-top: var(--spacing-element-md);
+  padding: var(--spacing-element-md);
+  background-color: var(--muted);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--primary);
+}
+
+.lsx-tour-overview__callout p {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--muted-foreground);
+  margin-bottom: 0;
+}

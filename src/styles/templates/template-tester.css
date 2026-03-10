@@ -1,0 +1,44 @@
+/**
+ * Template Tester Page - WordPress Template Page
+ * 
+ * BEM Structure: .wp-template-tester__*
+ * 
+ * Handles light/dark mode using CSS variables aligned with WordPress theme.json.
+ * NO dark: Tailwind classes - uses .dark selector instead.
+ * 
+ * All colors, typography, spacing, borders, and radius values use CSS variables
+ * from theme-light.css and theme-dark.css for complete design system compliance.
+ * 
+ * @version 1.0
+ * @see /src/styles/theme-light.css
+ * @see /src/styles/theme-dark.css
+ */
+
+/* ============================================
+   DECORATIVE PATTERN BACKGROUND
+   ============================================ */
+
+.wp-template-tester__dots-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+/* ============================================
+   BADGE
+   ============================================ */
+
+.wp-template-tester__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(var(--primary-rgb), 0.2);
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--primary);
+  background-color: rgba(var(--primary-rgb), 0.06);
+}

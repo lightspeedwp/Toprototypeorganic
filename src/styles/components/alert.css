@@ -1,0 +1,93 @@
+/**
+ * Alert Component Styles
+ * 
+ * Alert/notification components with semantic variants.
+ * Uses CSS variables for all styling.
+ */
+
+.wp-alert {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-family-noto-sans);
+}
+
+.wp-alert__title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--card-foreground);
+  margin-bottom: 0.25rem;
+}
+
+.wp-alert__description {
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--leading-normal);
+}
+
+/* Info variant */
+.wp-alert--info {
+  background-color: var(--info);
+  color: var(--info-foreground);
+  border-color: var(--info);
+}
+
+.wp-alert--info .wp-alert__title {
+  color: var(--info-foreground);
+}
+
+.wp-alert--info .wp-alert__description {
+  color: var(--info-foreground);
+  opacity: 0.9;
+}
+
+/* Success variant */
+.wp-alert--success {
+  background-color: var(--success);
+  color: var(--success-foreground);
+  border-color: var(--success);
+}
+
+.wp-alert--success .wp-alert__title {
+  color: var(--success-foreground);
+}
+
+.wp-alert--success .wp-alert__description {
+  color: var(--success-foreground);
+  opacity: 0.9;
+}
+
+/* Warning variant */
+.wp-alert--warning {
+  background-color: var(--warning);
+  color: var(--warning-foreground);
+  border-color: var(--warning);
+}
+
+.wp-alert--warning .wp-alert__title {
+  color: var(--warning-foreground);
+}
+
+.wp-alert--warning .wp-alert__description {
+  color: var(--warning-foreground);
+  opacity: 0.9;
+}
+
+/* Destructive variant */
+.wp-alert--destructive {
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
+  border-color: var(--destructive);
+}
+
+.wp-alert--destructive .wp-alert__title {
+  color: var(--destructive-foreground);
+}
+
+.wp-alert--destructive .wp-alert__description {
+  color: var(--destructive-foreground);
+  opacity: 0.9;
+}

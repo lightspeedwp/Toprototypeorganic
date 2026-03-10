@@ -1,0 +1,117 @@
+/**
+ * Stats Display Component — Dedicated Stylesheet
+ *
+ * Styling for the StatsDisplay component used across multiple pages.
+ * All values reference CSS custom properties from theme-light.css / theme-dark.css.
+ *
+ * BEM Naming: .stats-display__element
+ */
+
+/* ================================================================
+   STATS DISPLAY WRAPPER
+   ================================================================ */
+.stats-display {
+  /* Container spacing handled by parent */
+}
+
+/* ================================================================
+   STATS GRID
+   ================================================================ */
+.stats-display__grid {
+  max-width: 64rem; /* 1024px */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ================================================================
+   STAT CARD
+   ================================================================ */
+.stats-display__card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl, 8px);
+  padding: var(--spacing-element-lg, 1.5rem);
+  text-align: center;
+  box-shadow: var(--elevation-sm);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-element-xs, 0.5rem);
+}
+
+.stats-display__card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* ================================================================
+   STAT ICON
+   ================================================================ */
+.stats-display__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-lg, 6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+  opacity: 0.9;
+}
+
+.stats-display__icon svg {
+  flex-shrink: 0;
+}
+
+/* Icon color variants */
+.stats-display__icon--accent {
+  background-color: var(--color-accent);
+  color: var(--color-accent-foreground);
+}
+
+.stats-display__icon--secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-foreground);
+}
+
+.stats-display__icon--muted {
+  background-color: var(--color-muted);
+  color: var(--color-muted-foreground);
+}
+
+/* ================================================================
+   STAT VALUE
+   ================================================================ */
+.stats-display__value {
+  font-family: var(--font-family-lora, serif);
+  font-size: var(--text-fluid-2xl, 1.875rem);
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--color-primary);
+  line-height: var(--leading-tight, 1.25);
+  margin: 0;
+}
+
+/* ================================================================
+   STAT LABEL
+   ================================================================ */
+.stats-display__label {
+  font-family: var(--font-family-noto-sans, sans-serif);
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: var(--font-weight-medium, 500);
+  color: var(--color-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* ================================================================
+   STAT DESCRIPTION (optional)
+   ================================================================ */
+.stats-display__description {
+  font-family: var(--font-family-noto-sans, sans-serif);
+  font-size: var(--text-xs, 0.75rem);
+  color: var(--color-muted-foreground);
+  margin: 0;
+  line-height: var(--leading-normal, 1.5);
+}

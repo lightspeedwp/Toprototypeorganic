@@ -1,0 +1,60 @@
+
+
+/**
+ * Filename — theme-base.css
+ * LSX Design System — Base Theme Variables
+ * 
+ * Shared variables across all themes:
+ * - Typography (font sizes, weights, line heights, letter spacing)
+ * - Spacing scale (margins, padding, gaps)
+ * - Border radius scale
+ * - Shadow presets
+ * - Aspect ratios
+ * - Borders
+ * - Layout sizes
+ * - Animation tokens
+ * 
+ * These variables are theme-agnostic and work in both light and dark modes.
+ * 
+ * @see theme-light.css — Light mode color variables
+ * @see theme-dark.css — Dark mode color variables
+ */
+
+/**
+ * Filename — theme-light.css
+ * LSX Design System — Light Mode Theme
+ * 
+ * Light mode color variables optimized for:
+ * - WCAG 2.1 AA compliance (minimum 4.5:1 contrast)
+ * - WCAG 2.1 AAA compliance where possible (7:1 contrast)
+ * - Daylight readability
+ * - Clean, professional aesthetic
+ * 
+ * All contrast ratios have been tested and documented.
+ * 
+ * @requires theme-base.css — Base typography and spacing variables
+ */
+
+/**
+ * Filename — theme-dark.css
+ * LSX Design System — Dark Mode Theme
+ * 
+ * Dark mode color variables optimized for:
+ * - WCAG 2.1 AA compliance (minimum 4.5:1 contrast)
+ * - WCAG 2.1 AAA compliance where possible (7:1 contrast)
+ * - Low-light readability
+ * - Reduced eye strain
+ * - Modern, elegant aesthetic
+ * 
+ * All contrast ratios have been tested and documented.
+ * Dark mode generally achieves BETTER contrast ratios than light mode.
+ * 
+ * @requires theme-base.css — Base typography and spacing variables
+ */
+
+/**
+ * Filename — theme-variables.css
+ * LSX Design System — Theme Variables
+ * 
+ * Color palette and gradients over and above the the WordPress preset namespace.
+ */

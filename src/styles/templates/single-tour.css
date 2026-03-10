@@ -1,0 +1,362 @@
+/**
+ * Tour Single Template Styles
+ * WordPress template: single-tour
+ * 
+ * Component: /src/app/pages/TourSingle.tsx
+ * Corresponds to: templates/single-tour.html in WordPress
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   SINGLE TOUR CONTAINER
+   Main single tour page wrapper
+   ============================================ */
+
+.wp-template-single-tour {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ============================================
+   HERO SECTION
+   Large hero image with tour title
+   ============================================ */
+
+.wp-template-single-tour__hero {
+  min-height: 50vh;
+  display: flex;
+  align-items: flex-end;
+  padding-block: var(--spacing-section-lg);
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.wp-template-single-tour__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  z-index: 1;
+}
+
+.wp-template-single-tour__hero-content {
+  position: relative;
+  z-index: 2;
+  color: var(--overlay-text);
+}
+
+@media (min-width: 768px) {
+  .wp-template-single-tour__hero {
+    min-height: 60vh;
+  }
+}
+
+/* ============================================
+   QUICK FACTS / META
+   Tour metadata (duration, price, difficulty)
+   ============================================ */
+
+.wp-template-single-tour__quick-facts {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ============================================
+   MAIN CONTENT AREA
+   Two-column layout on desktop
+   ============================================ */
+
+.wp-template-single-tour__content {
+  padding-block: var(--spacing-section-md);
+}
+
+.wp-template-single-tour__layout {
+  display: grid;
+  gap: var(--spacing-gap-lg);
+  grid-template-columns: 1fr;
+}
+
+/* Desktop: 2/3 content + 1/3 sidebar */
+@media (min-width: 1024px) {
+  .wp-template-single-tour__layout {
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-gap-xl);
+  }
+}
+
+/* ============================================
+   MAIN COLUMN
+   Tour description, itinerary, etc.
+   ============================================ */
+
+.wp-template-single-tour__main {
+  /* Main content column */
+}
+
+/* Overview section */
+.wp-template-single-tour__overview {
+  padding-bottom: var(--spacing-section-sm);
+}
+
+.wp-template-single-tour__overview-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-md);
+}
+
+@media (min-width: 768px) {
+  .wp-template-single-tour__overview-title {
+    font-size: var(--text-3xl);
+  }
+}
+
+.wp-template-single-tour__overview-content {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground);
+}
+
+/* Itinerary section */
+.wp-template-single-tour__itinerary {
+  padding-bottom: var(--spacing-section-sm);
+}
+
+.wp-template-single-tour__itinerary-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-md);
+}
+
+/* Inclusions/Exclusions */
+.wp-template-single-tour__inclusions {
+  padding-bottom: var(--spacing-section-sm);
+}
+
+.wp-template-single-tour__inclusions-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-md);
+}
+
+/* Gallery section */
+.wp-template-single-tour__gallery {
+  padding-bottom: var(--spacing-section-sm);
+}
+
+.wp-template-single-tour__gallery-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-md);
+}
+
+/* ============================================
+   SIDEBAR
+   Sticky booking widget + additional info
+   ============================================ */
+
+.wp-template-single-tour__sidebar {
+  order: -1; /* Sidebar above content on mobile */
+}
+
+@media (min-width: 1024px) {
+  .wp-template-single-tour__sidebar {
+    order: 0; /* Normal order on desktop */
+  }
+}
+
+/* Sticky wrapper for booking card */
+.wp-template-single-tour__sidebar-sticky {
+  position: static; /* Not sticky on mobile */
+}
+
+@media (min-width: 1024px) {
+  .wp-template-single-tour__sidebar-sticky {
+    position: sticky;
+    top: calc(var(--header-bar-height) + var(--spacing-element-sm));
+  }
+}
+
+/* Booking card */
+.wp-template-single-tour__booking-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-element-md);
+  box-shadow: var(--elevation-sm);
+  margin-bottom: var(--spacing-element-md);
+}
+
+.wp-template-single-tour__booking-price {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  margin-bottom: var(--spacing-element-xs);
+}
+
+.wp-template-single-tour__booking-price-label {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-element-md);
+}
+
+.wp-template-single-tour__booking-button {
+  width: 100%;
+  padding-block: var(--spacing-element-sm);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-element-xs);
+  min-height: 48px;
+}
+
+.wp-template-single-tour__booking-button:hover {
+  background-color: rgba(var(--primary-rgb), 0.9);
+  transform: translateY(-1px);
+}
+
+/* Additional info card */
+.wp-template-single-tour__info-card {
+  background-color: var(--muted);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-element-md);
+  margin-bottom: var(--spacing-element-md);
+}
+
+.wp-template-single-tour__info-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-sm);
+}
+
+.wp-template-single-tour__info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-element-sm);
+}
+
+.wp-template-single-tour__info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-element-sm);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+}
+
+.wp-template-single-tour__info-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+  padding-top: var(--spacing-element-xxs);
+}
+
+/* ============================================
+   RELATED TOURS SECTION
+   Horizontal scrolling related tours
+   ============================================ */
+
+.wp-template-single-tour__related {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+.wp-template-single-tour__related-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-lg);
+  text-align: center;
+}
+
+.wp-template-single-tour__related-grid {
+  display: grid;
+  gap: var(--spacing-gap-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .wp-template-single-tour__related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-template-single-tour__related-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   FAQ SECTION
+   Tour-specific FAQ
+   ============================================ */
+
+.wp-template-single-tour__faq {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--background);
+}
+
+/* ============================================
+   CTA SECTION
+   Bottom booking CTA
+   ============================================ */
+
+.wp-template-single-tour__cta {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  text-align: center;
+}
+
+/* ============================================
+   BREADCRUMBS
+   Top navigation breadcrumbs
+   ============================================ */
+
+.wp-template-single-tour__breadcrumbs {
+  padding-block: var(--spacing-element-sm);
+  background-color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   Mobile-first — base styles are mobile, enhanced at breakpoints above
+   ============================================ */
+
+/* ============================================
+   END OF TOUR SINGLE STYLES
+   ============================================ */

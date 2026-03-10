@@ -1,0 +1,56 @@
+/**
+ * Health Block Styles
+ * 
+ * WordPress Block: lsx-tour-operator/health
+ * Displays health advisories and medical information.
+ * 
+ * All values reference CSS custom properties from the design system.
+ */
+
+.lsx-tour-health {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-element-sm);
+  margin-block-end: var(--spacing-element-md);
+  padding: var(--spacing-element-sm);
+  background-color: var(--muted);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+@media (min-width: 641px) {
+  .lsx-tour-health {
+    padding: var(--spacing-element-md);
+  }
+}
+
+.lsx-tour-health__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-element-sm);
+}
+
+.lsx-tour-health__icon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.lsx-tour-health__header h3 {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: 0;
+}
+
+.lsx-tour-health__content {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   RESPONSIVE
+   Mobile-first — base styles are mobile, enhanced at breakpoints above
+   ============================================ */

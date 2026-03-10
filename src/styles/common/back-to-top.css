@@ -1,0 +1,64 @@
+/**
+ * Back to Top Button - WordPress Utility Component
+ * 
+ * BEM Structure: .wp-common-back-to-top
+ * 
+ * Handles light/dark mode using CSS variables aligned with WordPress theme.json.
+ * NO dark: Tailwind classes - uses .dark selector instead.
+ * 
+ * All colors, typography, spacing, borders, and radius values use CSS variables
+ * from theme-light.css and theme-dark.css for complete design system compliance.
+ * 
+ * @version 1.0
+ * @see /src/styles/theme-light.css
+ * @see /src/styles/theme-dark.css
+ */
+
+/* ============================================
+   BACK TO TOP BUTTON
+   ============================================ */
+
+.wp-common-back-to-top {
+  position: fixed;
+  bottom: 1rem; /* 16px - mobile base */
+  right: 1rem; /* 16px - mobile base */
+  z-index: 60;
+  display: flex;
+  height: 3rem; /* 48px */
+  width: 3rem; /* 48px */
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: var(--elevation-sm);
+  transition: opacity 200ms ease;
+  outline: none;
+}
+
+.wp-common-back-to-top:hover {
+  background-color: color-mix(in srgb, var(--primary) 90%, transparent);
+}
+
+.wp-common-back-to-top:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Desktop positioning */
+@media (min-width: 640px) {
+  .wp-common-back-to-top {
+    bottom: 1.5rem; /* 24px */
+    right: 1.5rem; /* 24px */
+  }
+}
+
+/* Visibility states */
+.wp-common-back-to-top--visible {
+  opacity: 1;
+}
+
+.wp-common-back-to-top--hidden {
+  opacity: 0;
+  pointer-events: none;
+}

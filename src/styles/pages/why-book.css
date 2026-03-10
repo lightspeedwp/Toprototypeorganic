@@ -1,0 +1,112 @@
+/**
+ * Why Book With Us Page Styles
+ * WordPress template: page-why-book
+ * 
+ * Component: /src/app/pages/WhyBookWithUsPage.tsx
+ * Styles for the trust-building and conversion-focused page.
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   TRUST BADGES SECTION
+   Four-column grid for trust badges/certifications
+   ============================================ */
+
+.wp-page-why-book__trust-badges {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  align-items: center;
+  justify-items: center;
+}
+
+@media (min-width: 768px) {
+  .wp-page-why-book__trust-badges {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   BENEFITS GRID
+   Three-column grid for key benefits/features
+   ============================================ */
+
+.wp-page-why-book__benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-why-book__benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-page-why-book__benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   STATISTICS GRID
+   Four-column grid for key statistics
+   ============================================ */
+
+.wp-page-why-book__stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-why-book__stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+  }
+}
+
+/* ============================================
+   TESTIMONIALS GRID
+   Three-column grid for customer testimonials
+   ============================================ */
+
+.wp-page-why-book__testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-why-book__testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   CERTIFICATIONS GRID
+   Four-column grid for certifications/accreditations
+   ============================================ */
+
+.wp-page-why-book__certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .wp-page-why-book__certifications-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   END OF WHY BOOK WITH US PAGE STYLES
+   ============================================ */

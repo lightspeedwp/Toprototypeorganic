@@ -1,0 +1,157 @@
+/**
+ * Generic Page Template Styles
+ * WordPress template: page.html (generic utility pages)
+ * 
+ * Component: /src/app/pages/*Page.tsx (ContactPage, FAQPage, PrivacyPage, TermsPage)
+ * Corresponds to: templates/page.html in WordPress
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * Reusable for: Contact, FAQ, Privacy Policy, Terms & Conditions, and other utility pages
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   GENERIC PAGE CONTAINER
+   Base page wrapper
+   ============================================ */
+
+.wp-template-page {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ============================================
+   TABLE OF CONTENTS SECTION
+   Quick navigation for long-form content
+   ============================================ */
+
+.wp-template-page__toc {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--card);
+  border-block: 1px solid var(--border);
+  position: static; /* Not sticky on mobile */
+}
+
+@media (min-width: 769px) {
+  .wp-template-page__toc {
+    position: sticky;
+    top: var(--header-bar-height);
+  }
+}
+
+/* ============================================
+   SEARCH & FILTER SECTION
+   Search bar and filter controls
+   ============================================ */
+
+.wp-template-page__search {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ============================================
+   STATS SECTION
+   Quick stats or USP cards
+   ============================================ */
+
+.wp-template-page__stats {
+  padding-block: var(--spacing-section-xs);
+  background-color: var(--background);
+}
+
+@media (min-width: 769px) {
+  .wp-template-page__stats {
+    padding-block: var(--spacing-section-sm);
+  }
+}
+
+/* ============================================
+   FORM SECTION
+   Contact forms or other input forms
+   ============================================ */
+
+.wp-template-page__form {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--card);
+  border-block: 1px solid var(--border);
+}
+
+@media (min-width: 769px) {
+  .wp-template-page__form {
+    padding-block: var(--spacing-section-md);
+  }
+}
+
+/* ============================================
+   INFO SECTION
+   Contact information, office details
+   ============================================ */
+
+.wp-template-page__info {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--muted);
+}
+
+@media (min-width: 769px) {
+  .wp-template-page__info {
+    padding-block: var(--spacing-section-md);
+  }
+}
+
+/* ============================================
+   CONTENT SECTION
+   Main editorial content (privacy policy, terms, etc.)
+   ============================================ */
+
+.wp-template-page__content {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--background);
+}
+
+@media (min-width: 769px) {
+  .wp-template-page__content {
+    padding-block: var(--spacing-section-lg);
+  }
+}
+
+/* ============================================
+   MAP SECTION
+   Embedded maps (Google Maps, etc.)
+   ============================================ */
+
+.wp-template-page__map {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--card);
+  border-block: 1px solid var(--border);
+}
+
+@media (min-width: 769px) {
+  .wp-template-page__map {
+    padding-block: var(--spacing-section-md);
+  }
+}
+
+/* ============================================
+   EMPTY STATE SECTION
+   No results or empty content state
+   ============================================ */
+
+.wp-template-page__empty {
+  padding-block: var(--spacing-section-lg);
+  background-color: var(--muted);
+  text-align: center;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   Mobile-first — base styles are mobile, enhanced at breakpoints above
+   ============================================ */
+
+/* ============================================
+   END OF PAGE STYLES
+   ============================================ */

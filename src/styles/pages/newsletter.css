@@ -1,0 +1,90 @@
+/**
+ * Newsletter Signup Page Styles
+ * WordPress template: page-newsletter
+ * 
+ * Component: /src/app/pages/NewsletterSignupPage.tsx
+ * Styles for the newsletter subscription page with social proof.
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   STATISTICS GRID
+   Four-column grid for newsletter stats
+   ============================================ */
+
+.wp-page-newsletter__stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-newsletter__stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   BENEFITS GRID
+   Three-column grid for newsletter benefits
+   ============================================ */
+
+.wp-page-newsletter__benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-newsletter__benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-page-newsletter__benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   RECENT NEWSLETTERS GRID
+   Three-column grid for recent newsletter issues
+   ============================================ */
+
+.wp-page-newsletter__recent-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-newsletter__recent-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   TESTIMONIALS GRID
+   Three-column grid for subscriber testimonials
+   ============================================ */
+
+.wp-page-newsletter__testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-newsletter__testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   END OF NEWSLETTER SIGNUP PAGE STYLES
+   ============================================ */

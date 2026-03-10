@@ -1,0 +1,159 @@
+/**
+ * Related Regions Block Styles
+ * WordPress Block: lsx-tour-operator/related-regions
+ *
+ * Uses CSS custom property --grid-columns for dynamic column count.
+ * All values reference CSS custom properties from the design system.
+ *
+ * @see /src/app/components/blocks/tour-operator/RelatedRegionsBlock.tsx
+ */
+
+.wp-block-lts-related-regions__header {
+  text-align: center;
+  margin-block-end: var(--spacing-section-sm); /* mb-12 */
+}
+
+.wp-block-lts-related-regions__title {
+  /* Inherits from heading styles */
+}
+
+.wp-block-lts-related-regions__divider {
+  margin-block-start: var(--spacing-element-md); /* mt-4 */
+  width: 5rem; /* w-20 */
+  height: 0.125rem; /* h-0.5 */
+  background-color: var(--border);
+  margin-inline: auto; /* mx-auto */
+}
+
+.wp-block-lts-related-regions__subtitle {
+  margin-block-start: var(--spacing-element-md); /* mt-4 */
+  color: var(--muted-foreground);
+}
+
+.wp-block-lts-related-regions__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-element-md); /* space-y-4 */
+  max-width: 48rem; /* max-w-3xl */
+  margin-inline: auto; /* mx-auto */
+  padding: 0;
+  list-style: none;
+}
+
+.wp-block-lts-related-regions__list-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-element-md); /* gap-3 */
+  width: 100%;
+  padding: var(--spacing-element-md); /* p-4 */
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all 150ms;
+}
+
+.wp-block-lts-related-regions__list-btn:hover {
+  border-color: var(--primary);
+  background-color: rgba(var(--primary-rgb), 0.05);
+}
+
+.wp-block-lts-related-regions__list-content {
+  flex: 1;
+  text-align: left;
+}
+
+.wp-block-lts-related-regions__list-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  transition: color 150ms;
+}
+
+.wp-block-lts-related-regions__list-btn:hover .wp-block-lts-related-regions__list-title {
+  color: var(--primary);
+}
+
+.wp-block-lts-related-regions__list-tagline {
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-block-start: var(--spacing-element-xs);
+}
+
+.wp-block-lts-related-regions__list-arrow {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--muted-foreground);
+  transition: all 150ms;
+}
+
+.wp-block-lts-related-regions__list-btn:hover .wp-block-lts-related-regions__list-arrow {
+  color: var(--primary);
+  transform: translateX(0.25rem);
+}
+
+.wp-block-lts-related-regions__grid {
+  display: grid;
+  gap: var(--spacing-element-xl); /* gap-6 */
+  /* Mobile-first: single column base */
+  grid-template-columns: 1fr;
+}
+
+/* Desktop: use dynamic column count */
+@media (min-width: 641px) {
+  .wp-block-lts-related-regions__grid[style*="--grid-columns"] {
+    grid-template-columns: repeat(var(--grid-columns, 3), minmax(0, 1fr));
+  }
+}
+
+.wp-block-lts-related-regions__grid-btn {
+  width: 100%;
+  height: 100%;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-element-xl); /* p-6 */
+  text-align: left;
+  transition: all 150ms;
+}
+
+.wp-block-lts-related-regions__grid-btn:hover {
+  border-color: var(--primary);
+  box-shadow: var(--elevation-md);
+}
+
+.wp-block-lts-related-regions__grid-content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-element-md); /* gap-4 */
+}
+
+.wp-block-lts-related-regions__grid-content {
+  flex: 1;
+}
+
+.wp-block-lts-related-regions__grid-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-medium);
+  margin-block-end: var(--spacing-element-sm); /* mb-2 */
+  color: var(--foreground);
+  transition: color 150ms;
+}
+
+.wp-block-lts-related-regions__grid-btn:hover .wp-block-lts-related-regions__grid-title {
+  color: var(--primary);
+}
+
+.wp-block-lts-related-regions__grid-tagline {
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

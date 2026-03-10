@@ -1,0 +1,21 @@
+/**
+ * Block-Specific Styles Directory
+ * 
+ * This directory contains CSS files for individual WordPress blocks.
+ * Each block should have its own CSS file following BEM naming:
+ * 
+ * .wp-block-lts-{block-name}
+ * .wp-block-lts-{block-name}__element
+ * .wp-block-lts-{block-name}--modifier
+ * 
+ * Example files:
+ * - hero.css
+ * - card-grid.css
+ * - tour-card.css
+ * - destination-card.css
+ * - cta.css
+ * 
+ * All styles must use CSS custom properties from theme.css
+ */
+
+/* This file serves as a directory marker and documentation */

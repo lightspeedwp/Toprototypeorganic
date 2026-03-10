@@ -1,0 +1,71 @@
+/**
+ * Single Tour Template Styles
+ * 
+ * WordPress Template: templates/single-tour.html
+ * Layout-level styling for the tour detail page.
+ * 
+ * All values reference CSS custom properties from the design system.
+ */
+
+/* ============================================
+   MAIN CONTENT SECTION
+   ============================================ */
+
+.single-tour__content-section {
+  padding-top: var(--spacing-section-md);
+  padding-bottom: var(--spacing-section-md);
+}
+
+/* ============================================
+   CONTENT GRID (Main + Sidebar)
+   ============================================ */
+
+.single-tour__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-gap-lg);
+}
+
+@media (min-width: 1024px) {
+  .single-tour__grid {
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-gap-lg);
+  }
+}
+
+/* ============================================
+   MAIN COLUMN
+   ============================================ */
+
+.single-tour__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-section-sm);
+}
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
+
+.single-tour__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-md);
+}
+
+.single-tour__sidebar-sticky {
+  position: sticky;
+  top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-md);
+}
+
+/* ============================================
+   BREADCRUMBS CONTAINER
+   ============================================ */
+
+.single-tour__breadcrumbs {
+  padding-top: var(--spacing-element-sm);
+  padding-bottom: var(--spacing-element-sm);
+}

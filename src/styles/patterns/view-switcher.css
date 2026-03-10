@@ -1,0 +1,69 @@
+/**
+ * View Switcher Component Styles
+ * 
+ * BEM Structure: .wp-pattern-lts-view-switcher
+ * Follows WordPress block theme conventions.
+ */
+
+.wp-pattern-lts-view-switcher {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-gap-md); /* gap-4 */
+}
+
+.wp-pattern-lts-view-switcher__label {
+  display: none;
+  font-size: 10px; /* text-[10px] */
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em; /* tracking-widest */
+  color: var(--muted-foreground);
+}
+
+@media (min-width: 640px) {
+  .wp-pattern-lts-view-switcher__label {
+    display: block;
+  }
+}
+
+.wp-pattern-lts-view-switcher__group {
+  display: inline-flex;
+  border-radius: var(--radius-xl);
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--border);
+  background-color: var(--card);
+  padding: 0.25rem; /* p-1 */
+  box-shadow: var(--elevation-sm);
+}
+
+.wp-pattern-lts-view-switcher__btn {
+  width: 2.5rem; /* size-10 */
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  transition: all 300ms;
+}
+
+.wp-pattern-lts-view-switcher__btn > svg {
+  width: 1rem; /* size-4 */
+  height: 1rem;
+}
+
+.wp-pattern-lts-view-switcher__btn--active {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: var(--elevation-lg);
+  transform: scale(1.05);
+}
+
+.wp-pattern-lts-view-switcher__btn--inactive {
+  color: var(--muted-foreground);
+}
+
+.wp-pattern-lts-view-switcher__btn--inactive:hover {
+  background-color: var(--muted);
+  color: var(--foreground);
+}

@@ -1,0 +1,28 @@
+/**
+ * View All Button Styles
+ * WordPress-aligned common pattern
+ *
+ * Component: /src/app/components/common/ViewAllButton.tsx
+ *
+ * Used at the bottom of featured sections to link to archive pages.
+ */
+
+.wp-view-all {
+  text-align: center;
+  margin-top: var(--spacing-element-md);
+}
+
+@media (min-width: 768px) {
+  .wp-view-all {
+    margin-top: var(--spacing-element-lg);
+  }
+}
+
+.wp-view-all__button {
+  /* Layout handled by Button component, spacing and alignment here */
+}
+
+.wp-view-all__icon {
+  width: 1rem;
+  height: 1rem;
+}

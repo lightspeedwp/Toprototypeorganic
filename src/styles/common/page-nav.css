@@ -1,0 +1,61 @@
+/**
+ * Page Navigation - WordPress Prototype Component
+ * 
+ * BEM Structure: .wp-common-page-nav__*
+ * 
+ * All colors, typography, spacing, borders, and radius values use CSS variables
+ * from theme-light.css and theme-dark.css for complete design system compliance.
+ * RGB companion tokens auto-switch between light and dark modes.
+ * 
+ * @version 2.0 — Eliminated .dark overrides; uses RGB companion tokens
+ * @see /src/styles/theme-light.css
+ * @see /src/styles/theme-dark.css
+ */
+
+/* ============================================
+   SECTION CONTAINER
+   ============================================ */
+
+.wp-common-page-nav {
+  padding: 2rem 0;
+  background-color: rgba(var(--accent-rgb), 0.1);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ============================================
+   PAGE CARD
+   ============================================ */
+
+.wp-common-page-nav__card {
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background-color: var(--card);
+  text-align: left;
+  transition: all 200ms ease;
+  outline: none;
+}
+
+/* Inactive card hover state */
+.wp-common-page-nav__card--inactive:hover {
+  border-color: var(--primary);
+  background-color: rgba(var(--background-rgb), 0.8);
+}
+
+/* Active card state */
+.wp-common-page-nav__card--active {
+  border-color: var(--primary);
+  background-color: rgba(var(--primary-rgb), 0.06);
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+/* ============================================
+   CARD LABEL
+   ============================================ */
+
+.wp-common-page-nav__label {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 0.5rem;
+}

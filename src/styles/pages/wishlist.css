@@ -1,0 +1,50 @@
+/**
+ * Wishlist Page Styles
+ * WordPress template: page-wishlist
+ * 
+ * Component: /src/app/pages/WishlistPage.tsx
+ * Styles for the saved tours wishlist page.
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   WISHLIST ITEMS GRID
+   Two-column grid for saved wishlist items
+   ============================================ */
+
+.wp-page-wishlist__items-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-wishlist__items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   RECOMMENDED TOURS GRID
+   Three-column grid for recommended tours
+   ============================================ */
+
+.wp-page-wishlist__recommended-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-wishlist__recommended-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   END OF WISHLIST PAGE STYLES
+   ============================================ */

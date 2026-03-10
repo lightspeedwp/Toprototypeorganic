@@ -1,0 +1,94 @@
+/**
+ * Booking Page Styles
+ * WordPress template: page-booking
+ * 
+ * Component: /src/app/pages/BookingPage.tsx
+ * Styles for the multi-step booking wizard and trust indicators.
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   TRUST INDICATORS SECTION
+   Four-column grid for security badges
+   ============================================ */
+
+.wp-booking-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-booking-trust-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   BOOKING DETAILS GRID
+   Two-column grid for booking information cards
+   ============================================ */
+
+.wp-booking-details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-booking-details-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   BOOKING WIZARD GRIDS
+   Various responsive grids for booking form steps
+   ============================================ */
+
+/* Passengers Grid - Three columns for adult/child/infant counts */
+.wp-booking-wizard__passengers-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-booking-wizard__passengers-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Contact Grid - Two columns for name/email/phone fields */
+.wp-booking-wizard__contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-booking-wizard__contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Payment Grid - Two columns for payment method selection */
+.wp-booking-wizard__payment-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .wp-booking-wizard__payment-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   END OF BOOKING PAGE STYLES
+   ============================================ */

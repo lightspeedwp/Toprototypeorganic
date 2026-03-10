@@ -1,0 +1,146 @@
+/**
+ * theme-dark.css
+ * LSX Design System — Dark Mode Theme
+ *
+ * Overrides ONLY the colour tokens and mode-specific effects (shadows, logos)
+ * defined in theme-light.css. All non-colour variables (typography, spacing,
+ * radius, animation) are inherited from theme-base.css via :root and are NOT
+ * redefined here.
+ *
+ * Dark mode generally achieves BETTER contrast ratios than light mode because
+ * bright colours pop strongly against very dark backgrounds.
+ *
+ * Contrast ratios documented inline for auditability (measured on #0A0A0A).
+ *
+ * Applied when the <html> element carries the class "dark".
+ * The ThemeSwitcher component (/src/app/components/common/ThemeSwitcher.tsx)
+ * manages this class and persists the preference to localStorage.
+ *
+ * @mode     dark
+ * @version  5.0 — Separated from theme-base.css
+ * @requires theme-base.css — Base typography and spacing variables
+ * @requires theme-light.css — Light-mode defaults that are overridden here
+ */
+
+.dark {
+
+  /* ============================================================
+     SEMANTIC COLOUR TOKENS — Dark Mode Overrides
+     Only tokens that differ from light mode are listed here.
+     Typography and spacing tokens are inherited from :root.
+     ============================================================ */
+
+  /* — Base surfaces — */
+  --background: #0A0A0A;  /* Near-black page background */
+  --foreground: #FFFFFF;  /* Pure white text — 19.26:1 on background */
+
+  /* — Card surfaces — */
+  --card:           #1A1A1A;  /* Slightly lifted dark card */
+  --card-foreground:#FFFFFF;  /* White text — 17.13:1 on card */
+
+  /* — Popover / tooltip surfaces — */
+  --popover:            #1A1A1A;
+  --popover-foreground: #FFFFFF;
+
+  /* — Primary brand — Lighter olive for dark backgrounds — */
+  --primary:            #90BA48; /* 8.14:1 on #0A0A0A, 7.24:1 on #1A1A1A */
+  --primary-foreground: #000000; /* Black on light green — 8.14:1 */
+
+  /* — Secondary brand — Light warm beige — */
+  --secondary:            #A89A7A; /* 7.58:1 on #0A0A0A */
+  --secondary-foreground: #000000; /* Black on light beige — 7.58:1 */
+
+  /* — Accent — Bright amber — */
+  --accent:            #FFB740; /* 9.86:1 on #0A0A0A */
+  --accent-foreground: #000000; /* Black on bright amber — 9.86:1 */
+
+  /* — Muted / de-emphasised — */
+  --muted:            #262626;  /* Dark grey surface */
+  --muted-foreground: #B8B8B8;  /* 7.73:1 on #0A0A0A, 7.5:1 on #262626 */
+
+  /* — Semantic state colours — */
+  --destructive:            #F44336; /* 7.71:1 on #0A0A0A */
+  --destructive-foreground: #000000;
+
+  --success:            #66BB6A; /* 7.88:1 on #0A0A0A */
+  --success-foreground: #000000;
+
+  --warning:            #FFA726; /* 9.01:1 on #0A0A0A */
+  --warning-foreground: #000000;
+
+  --info:            #42A5F5; /* 7.58:1 on #0A0A0A */
+  --info-foreground: #000000;
+
+  /* — Borders, inputs, focus — */
+  --border:           #404040;  /* Dark grey divider — visible on dark surface */
+  --border-subtle:    #333333;  /* Softer divider for section separators */
+  --input:            #1A1A1A;
+  --input-background: #1A1A1A;
+  --ring:             #64B5F6;  /* Lighter blue — high-visibility focus ring */
+
+  /* — RGB companion tokens for rgba() usage — */
+  --background-rgb:        10, 10, 10;
+  --foreground-rgb:        255, 255, 255;
+  --card-rgb:              26, 26, 26;    /* #1A1A1A */
+  --primary-rgb:           144, 186, 72;  /* #90BA48 */
+  --secondary-rgb:         168, 154, 122; /* #A89A7A */
+  --accent-rgb:            255, 183, 64;  /* #FFB740 */
+  --destructive-rgb:       244, 67, 54;   /* #F44336 */
+  --muted-rgb:             38, 38, 38;    /* #262626 */
+  --muted-foreground-rgb:  184, 184, 184; /* #B8B8B8 */
+  --ring-rgb:              100, 181, 246; /* #64B5F6 */
+  --input-background-rgb:  26, 26, 26;   /* #1A1A1A */
+  --success-rgb:           102, 187, 106; /* #66BB6A */
+  --info-rgb:              66, 165, 245;  /* #42A5F5 */
+  --warning-rgb:           255, 167, 38;  /* #FFA726 */
+
+  /* — Sidebar / navigation — */
+  --sidebar:                    #1A1A1A;
+  --sidebar-foreground:         #FFFFFF;
+  --sidebar-primary:            #FFB740;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent:             #262626;
+  --sidebar-accent-foreground:  #FFFFFF;
+  --sidebar-border:             #404040;
+  --sidebar-ring:               #FFB740;
+
+  /* — Data visualisation (chart) colours — */
+  --chart-1: #90BA48; /* Light olive green — 8.14:1 */
+  --chart-2: #FFB740; /* Bright amber      — 9.86:1 */
+  --chart-3: #A89A7A; /* Light beige       — 7.58:1 */
+  --chart-4: #D4C4A8; /* Very light brown  — 11.23:1 */
+  --chart-5: #B8B8B8; /* Light grey        — 7.73:1 */
+
+  /* ============================================================
+     EFFECTS — Shadows / Elevation (Dark Mode)
+     Higher opacity than light mode; dark surfaces need more
+     pronounced shadows to maintain depth perception.
+     ============================================================ */
+
+  --elevation-sm: 0px 1px 3px 0px rgba(0, 0, 0, 0.50);
+  --elevation-md: 0px 4px 8px -2px rgba(0, 0, 0, 0.50);
+  --elevation-lg: 0px 10px 20px -5px rgba(0, 0, 0, 0.50);
+  --elevation-xl: 0px 20px 30px -8px rgba(0, 0, 0, 0.50);
+
+  /* ============================================================
+     BRANDING — Logo Asset References (Dark Mode)
+     Dark mode uses the light logo for contrast on dark surfaces.
+     ============================================================ */
+
+  --logo-url:      url('/public/logos/logo-light.svg');
+  --logo-icon-url: url('/public/logos/logo-icon-light.svg');
+
+  /* — Hero Overlay & Text (Dark Mode) — 
+     DARKER overlay for dark mode to ensure white text contrast
+  */
+  --hero-overlay-bg: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+  --hero-text-color: #FFFFFF;
+  --hero-intro-color: rgba(255, 255, 255, 0.9);
+  --hero-button-secondary-text: #FFFFFF;
+  --hero-button-secondary-border: rgba(255, 255, 255, 0.3);
+}

@@ -1,0 +1,954 @@
+/**
+ * Section Styles — WordPress-Aligned Section Presets
+ * 
+ * Defines consistent section styling for all page archetypes.
+ * Maps directly to WordPress block patterns and template parts.
+ * 
+ * **Section Types:**
+ * - Hero sections (primary, secondary, minimal)
+ * - CTA sections (primary, secondary, inline)
+ * - Content sections (default, editorial, supporting)
+ * - Archive headers (taxonomy, listing)
+ * - Feature sections (with/without background)
+ * - Card grid sections (default, featured)
+ * - FAQ sections
+ * - Meta/Quick-facts sections
+ * 
+ * **Design System:**
+ * - All spacing uses fluid CSS variables from theme-light.css
+ * - All colors use semantic tokens
+ * - Automatic dark mode support
+ * - WCAG AA compliant
+ * 
+ * @see /src/styles/theme-light.css for spacing/typography token definitions
+ * @see /src/styles/theme.css for Tailwind integration
+ */
+
+/* ============================================================================
+   SECTION BASE STYLES
+   ========================================================================= */
+
+/**
+ * Base section class - applies to all sections
+ * Provides consistent spacing and structure
+ */
+.section-base {
+  width: 100%;
+  position: relative;
+}
+
+/**
+ * Section spacing variants - use fluid spacing tokens from theme-light.css
+ */
+.section-spacing-sm {
+  padding-top: var(--spacing-section-sm);
+  padding-bottom: var(--spacing-section-sm);
+}
+
+.section-spacing-md {
+  padding-top: var(--spacing-section-md);
+  padding-bottom: var(--spacing-section-md);
+}
+
+.section-spacing-lg {
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+}
+
+.section-spacing-xl {
+  padding-top: var(--spacing-section-xl);
+  padding-bottom: var(--spacing-section-xl);
+}
+
+/* ============================================================================
+   HERO SECTIONS
+   ========================================================================= */
+
+/**
+ * Hero Primary - Main hero for homepage and key landing pages
+ * 
+ * Usage: Homepage, tour detail, destination detail
+ * Background: Muted with border
+ * Spacing: Extra large
+ * 
+ * Use with: <section className="section-hero-primary">
+ */
+.section-hero-primary {
+  background-color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+}
+
+@media (min-width: 769px) {
+  .section-hero-primary {
+    padding-top: var(--spacing-section-xl);
+    padding-bottom: var(--spacing-section-xl);
+  }
+}
+
+/**
+ * Hero Secondary - Secondary hero for content pages
+ * 
+ * Usage: About, contact, FAQ pages
+ * Background: Background color with border
+ * Spacing: Large
+ * 
+ * Use with: <section className="section-hero-secondary">
+ */
+.section-hero-secondary {
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+  padding-top: var(--spacing-section-md);
+  padding-bottom: var(--spacing-section-md);
+}
+
+@media (min-width: 769px) {
+  .section-hero-secondary {
+    padding-top: var(--spacing-section-lg);
+    padding-bottom: var(--spacing-section-lg);
+  }
+}
+
+/**
+ * Hero Minimal - Minimal hero for archives
+ * 
+ * Usage: Blog archive, team archive
+ * Background: Muted/30 with border
+ * Spacing: Medium
+ * 
+ * Use with: <section className="section-hero-minimal">
+ */
+.section-hero-minimal {
+  position: relative;
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+  padding-top: var(--spacing-section-md);
+  padding-bottom: var(--spacing-section-md);
+}
+
+.section-hero-minimal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--muted);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-hero-minimal > * {
+  position: relative;
+  z-index: 1;
+}
+
+/**
+ * Hero Image - Hero with background image overlay
+ * 
+ * Usage: Campaign pages, special promotions
+ * Background: Dark overlay on image
+ * Spacing: Extra large
+ * 
+ * NOTE: The overlay gradient uses color-mix() with --foreground to
+ * create a theme-aware dark overlay that works in both light and dark modes.
+ * 
+ * Use with: <section className="section-hero-image" style={{ backgroundImage: 'url(...)' }}>
+ */
+.section-hero-image {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+}
+
+@media (min-width: 769px) {
+  .section-hero-image {
+    padding-top: var(--spacing-section-xl);
+    padding-bottom: var(--spacing-section-xl);
+  }
+}
+
+.section-hero-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--foreground) 40%, transparent),
+    color-mix(in srgb, var(--foreground) 60%, transparent)
+  );
+  z-index: 1;
+}
+
+.section-hero-image > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================================
+   ARCHIVE HEADER SECTIONS
+   ========================================================================= */
+
+/**
+ * Archive Header - Taxonomy archive headers
+ * 
+ * Usage: Travel style archives, continent archives
+ * Background: Muted/40 with border
+ * Spacing: Medium
+ * 
+ * Use with: <section className="section-archive-header">
+ */
+.section-archive-header {
+  position: relative;
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+  padding-top: var(--spacing-section-md);
+  padding-bottom: var(--spacing-section-md);
+}
+
+.section-archive-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--muted);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-archive-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+/**
+ * Listing Header - Blog/post listing headers
+ * 
+ * Usage: Blog archive, news archive
+ * Background: Background with border
+ * Spacing: Medium
+ * 
+ * Use with: <section className="section-listing-header">
+ */
+.section-listing-header {
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+  padding-top: var(--spacing-section-md);
+  padding-bottom: var(--spacing-section-md);
+}
+
+/* ============================================================================
+   CTA SECTIONS
+   ========================================================================= */
+
+/**
+ * CTA Default - Default call-to-action section
+ * 
+ * Usage: Standard CTAs at end of pages
+ * Background: Primary/5 with subtle tint
+ * Spacing: Large
+ * 
+ * Use with: <section className="section-cta">
+ */
+.section-cta {
+  position: relative;
+  background-color: var(--background);
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+  border-top: 1px solid var(--border);
+}
+
+.section-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--primary);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-cta > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* CTA button styles that inherit from section */
+.section-cta .cta-button-primary,
+.section-cta .cta-button-secondary {
+  min-width: 200px;
+  width: 100%;
+}
+
+@media (min-width: 641px) {
+  .section-cta .cta-button-primary,
+  .section-cta .cta-button-secondary {
+    width: auto;
+  }
+}
+
+/**
+ * CTA Primary - Primary call-to-action sections
+ * 
+ * Usage: End of pages, conversion points
+ * Background: Primary color
+ * Spacing: Large
+ * Text: Primary foreground
+ * 
+ * Use with: <section className="section-cta-primary">
+ */
+.section-cta-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+  border-top: 1px solid color-mix(in srgb, var(--primary-foreground) 10%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--primary-foreground) 10%, transparent);
+}
+
+.section-cta-primary h1,
+.section-cta-primary h2,
+.section-cta-primary h3,
+.section-cta-primary h4,
+.section-cta-primary h5,
+.section-cta-primary h6 {
+  color: var(--primary-foreground);
+}
+
+.section-cta-primary p {
+  color: var(--primary-foreground);
+  opacity: 0.95;
+}
+
+/**
+ * CTA Secondary - Secondary call-to-action sections
+ * 
+ * Usage: Mid-page CTAs, softer conversion points
+ * Background: Accent color
+ * Spacing: Large
+ * Text: Accent foreground
+ * 
+ * Use with: <section className="section-cta-secondary">
+ */
+.section-cta-secondary {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-cta-secondary h1,
+.section-cta-secondary h2,
+.section-cta-secondary h3,
+.section-cta-secondary h4,
+.section-cta-secondary h5,
+.section-cta-secondary h6 {
+  color: var(--accent-foreground);
+}
+
+/**
+ * CTA Subtle - Subtle call-to-action sections
+ * 
+ * Usage: Inline CTAs, newsletter signups
+ * Background: Muted
+ * Spacing: Medium
+ * Text: Foreground
+ * 
+ * Use with: <section className="section-cta-subtle">
+ */
+.section-cta-subtle {
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+  padding-top: var(--spacing-section-md);
+  padding-bottom: var(--spacing-section-md);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/**
+ * CTA Inline - Inline CTA within content
+ * 
+ * Usage: Within editorial content, sidebars
+ * Background: Card
+ * Spacing: Small
+ * Border: All sides
+ * 
+ * Use with: <div className="section-cta-inline">
+ */
+.section-cta-inline {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  padding: var(--spacing-element-lg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+/**
+ * View Switcher Bar - Results count and view mode toggle sections
+ * 
+ * Usage: Archive pages view switcher with results count
+ * Background: Background with bottom border
+ * Spacing: Minimal (16px vertical)
+ * 
+ * Use with: <GroupBlock sectionStyle="section-view-switcher-default">
+ */
+.section-view-switcher-default {
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+}
+
+/* ============================================================================
+   CONTENT SECTIONS
+   ========================================================================= */
+
+/**
+ * Content Default - Standard content sections
+ * 
+ * Usage: Main content areas, default sections
+ * Background: Background
+ * Spacing: Large
+ * 
+ * Use with: <section className="section-content-default">
+ */
+.section-content-default {
+  background-color: var(--background);
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+}
+
+/**
+ * Content Editorial - Long-form editorial content
+ * 
+ * Usage: Blog posts, destination guides, tour descriptions
+ * Background: Background
+ * Spacing: Large
+ * Max-width: Narrower for readability
+ * 
+ * Use with: <section className="section-content-editorial">
+ */
+.section-content-editorial {
+  background-color: var(--background);
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+}
+
+.section-content-editorial .content-wrapper {
+  max-width: 65ch; /* Optimal reading width */
+  margin: 0 auto;
+}
+
+/**
+ * Content Supporting - Supporting content sections
+ * 
+ * Usage: Additional information, supplementary content
+ * Background: Muted/20
+ * Spacing: Medium
+ * 
+ * Use with: <section className="section-content-supporting">
+ */
+.section-content-supporting {
+  position: relative;
+  background-color: var(--background);
+  padding-top: var(--spacing-section-md);
+  padding-bottom: var(--spacing-section-md);
+}
+
+.section-content-supporting::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--muted);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-content-supporting > * {
+  position: relative;
+  z-index: 1;
+}
+
+/**
+ * Content Alternate - Alternating background content
+ * 
+ * Usage: Breaking up long pages
+ * Background: Muted/30
+ * Spacing: Large
+ * 
+ * Use with: <section className="section-content-alternate">
+ */
+.section-content-alternate {
+  position: relative;
+  background-color: var(--background);
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+}
+
+.section-content-alternate::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--muted);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-content-alternate > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================================
+   FEATURE SECTIONS
+   ========================================================================= */
+
+/**
+ * Feature Default - Standard feature sections
+ * 
+ * Usage: Key features, benefits, highlights
+ * Background: Background
+ * Spacing: Large
+ * 
+ * Use with: <section className="section-feature-default">
+ */
+.section-feature-default {
+  background-color: var(--background);
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+}
+
+/**
+ * Feature Highlighted - Highlighted feature sections
+ * 
+ * Usage: Premium features, important highlights
+ * Background: Card with border
+ * Spacing: Large
+ * 
+ * Use with: <section className="section-feature-highlighted">
+ */
+.section-feature-highlighted {
+  background-color: var(--card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+}
+
+/**
+ * Feature Accent - Accent feature sections
+ * 
+ * Usage: Special features, standout content
+ * Background: Accent/10
+ * Spacing: Large
+ * 
+ * Use with: <section className="section-feature-accent">
+ */
+.section-feature-accent {
+  position: relative;
+  background-color: var(--background);
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+}
+
+.section-feature-accent::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--accent);
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-feature-accent > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================================
+   CARD GRID SECTIONS
+   ========================================================================= */
+
+/**
+ * Card Grid Default - Standard card grid sections
+ * 
+ * Usage: Tours, destinations, accommodation listings
+ * Background: Background
+ * Spacing: Large
+ * 
+ * Use with: <section className="section-card-grid-default">
+ */
+.section-card-grid-default {
+  background-color: var(--background);
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+}
+
+/**
+ * Card Grid Alternate - Alternating background card grids
+ * 
+ * Usage: Breaking up multiple card grids
+ * Background: Muted/20
+ * Spacing: Large
+ * 
+ * Use with: <section className="section-card-grid-alternate">
+ */
+.section-card-grid-alternate {
+  position: relative;
+  background-color: var(--background);
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+}
+
+.section-card-grid-alternate::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--muted);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-card-grid-alternate > * {
+  position: relative;
+  z-index: 1;
+}
+
+/**
+ * Card Grid Featured - Featured card grid sections
+ * 
+ * Usage: Premium listings, featured content
+ * Background: Card with borders
+ * Spacing: Large
+ * 
+ * Use with: <section className="section-card-grid-featured">
+ */
+.section-card-grid-featured {
+  background-color: var(--card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+}
+
+/* ============================================================================
+   FAQ SECTIONS
+   ========================================================================= */
+
+/**
+ * FAQ Default - Standard FAQ sections
+ * 
+ * Usage: All FAQ sections
+ * Background: Muted/30 with border
+ * Spacing: Large
+ * 
+ * Use with: <section className="section-faq-default">
+ */
+.section-faq-default {
+  position: relative;
+  background-color: var(--background);
+  border-top: 1px solid var(--border);
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+}
+
+.section-faq-default::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--muted);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-faq-default > * {
+  position: relative;
+  z-index: 1;
+}
+
+/**
+ * FAQ Compact - Compact FAQ sections
+ * 
+ * Usage: Inline FAQs, sidebar FAQs
+ * Background: Card
+ * Spacing: Medium
+ * Border: All sides
+ * 
+ * Use with: <div className="section-faq-compact">
+ */
+.section-faq-compact {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-element-lg);
+}
+
+/* ============================================================================
+   META / QUICK-FACTS SECTIONS
+   ========================================================================= */
+
+/**
+ * Meta Default - Standard meta/quick-facts sections
+ * 
+ * Usage: Tour details, destination facts
+ * Background: Card with border
+ * Spacing: Medium
+ * 
+ * Use with: <section className="section-meta-default">
+ */
+.section-meta-default {
+  background-color: var(--card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding-top: var(--spacing-section-md);
+  padding-bottom: var(--spacing-section-md);
+}
+
+/**
+ * Meta Sidebar - Sidebar meta sections
+ * 
+ * Usage: Sidebar quick facts, at-a-glance info
+ * Background: Muted
+ * Spacing: Small
+ * Border: All sides
+ * 
+ * Use with: <aside className="section-meta-sidebar">
+ */
+.section-meta-sidebar {
+  background-color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-element-lg);
+}
+
+/**
+ * Meta Highlighted - Highlighted meta sections
+ * 
+ * Usage: Important facts, key information
+ * Background: Primary/10
+ * Spacing: Medium
+ * Border: Primary color
+ * 
+ * Use with: <div className="section-meta-highlighted">
+ */
+.section-meta-highlighted {
+  position: relative;
+  background-color: var(--background);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-element-lg);
+}
+
+.section-meta-highlighted::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--primary);
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: var(--radius-lg);
+}
+
+.section-meta-highlighted > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================================
+   RELATED CONTENT SECTIONS
+   ========================================================================= */
+
+/**
+ * Related Default - Standard related content sections
+ * 
+ * Usage: Related tours, similar destinations
+ * Background: Muted/20
+ * Spacing: Large
+ * 
+ * Use with: <section className="section-related-default">
+ */
+.section-related-default {
+  position: relative;
+  background-color: var(--background);
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+}
+
+.section-related-default::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--muted);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-related-default > * {
+  position: relative;
+  z-index: 1;
+}
+
+/**
+ * Related Highlighted - Highlighted related sections
+ * 
+ * Usage: Featured recommendations
+ * Background: Card with border
+ * Spacing: Large
+ * 
+ * Use with: <section className="section-related-highlighted">
+ */
+.section-related-highlighted {
+  background-color: var(--card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+}
+
+/* ============================================================================
+   FILTER / NAVIGATION SECTIONS
+   ========================================================================= */
+
+/**
+ * Filter Bar - Filter and navigation sections
+ * 
+ * Usage: Taxonomy filters, search filters
+ * Background: Background with border
+ * Spacing: Small
+ * 
+ * Use with: <section className="section-filter-bar">
+ */
+.section-filter-bar {
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+  padding-top: var(--spacing-element-sm);
+  padding-bottom: var(--spacing-element-sm);
+}
+
+/**
+ * Filter Sticky - Sticky filter sections
+ * 
+ * Usage: Sticky filters on scroll
+ * Background: Background/95 with blur
+ * Spacing: Small
+ * Backdrop: Blur effect
+ * 
+ * Use with: <section className="section-filter-sticky">
+ */
+.section-filter-sticky {
+  background-color: var(--background);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding-top: var(--spacing-element-sm);
+  padding-bottom: var(--spacing-element-sm);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  opacity: 0.95;
+}
+
+/* ============================================================================
+   UTILITY SECTIONS
+   ========================================================================= */
+
+/**
+ * Section Divider - Visual section dividers
+ * 
+ * Usage: Between major sections
+ * 
+ * Use with: <hr className="section-divider" />
+ */
+.section-divider {
+  height: 1px;
+  background-color: var(--border);
+  margin: var(--spacing-section-sm) 0;
+  border: none;
+}
+
+.section-divider-thick {
+  height: 2px;
+  background-color: var(--border);
+  margin: var(--spacing-section-md) 0;
+  border: none;
+}
+
+/**
+ * Section Border Top/Bottom - Utility border classes
+ * 
+ * Use with: <section className="section-border-top">
+ */
+.section-border-top {
+  border-top: 1px solid var(--border);
+}
+
+.section-border-bottom {
+  border-bottom: 1px solid var(--border);
+}
+
+.section-border-both {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ============================================================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================================================= */
+
+/**
+ * Responsive Hero Spacing
+ * Mobile-first — base styles are mobile, enhanced at breakpoints above.
+ * The fluid clamp() in the --spacing-section-* variables handles
+ * most responsive scaling, but hero sections get explicit
+ * upgrades at larger screens.
+ */
+
+/* ============================================================================
+   DARK MODE ENHANCEMENTS
+   ========================================================================= */
+
+/**
+ * Dark mode automatically inherits from CSS variables
+ * No additional dark mode classes needed - all handled by theme.css
+ * 
+ * All semi-transparent overlays (::before elements with opacity) work
+ * automatically in both light and dark modes.
+ */
+
+/* ============================================================================
+   PRINT STYLES
+   ========================================================================= */
+
+@media print {
+  .section-hero-primary,
+  .section-hero-secondary,
+  .section-hero-minimal,
+  .section-cta-primary,
+  .section-cta-secondary {
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid var(--border);
+  }
+  
+  .section-hero-primary::before,
+  .section-hero-minimal::before,
+  .section-archive-header::before,
+  .section-content-supporting::before,
+  .section-content-alternate::before,
+  .section-feature-accent::before,
+  .section-card-grid-alternate::before,
+  .section-faq-default::before,
+  .section-meta-highlighted::before,
+  .section-related-default::before {
+    display: none;
+  }
+}

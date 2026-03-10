@@ -1,0 +1,76 @@
+/**
+ * Tour Related Section Block Styles
+ * 
+ * WordPress Block: lsx-tour-operator/related-section
+ * Section wrapper for displaying related content
+ * (destinations, accommodations, tours, reviews).
+ * 
+ * All values reference CSS custom properties from the design system.
+ */
+
+/* ============================================
+   ROOT CONTAINER
+   ============================================ */
+
+.lsx-tour-related-section {
+  padding-top: var(--spacing-section-md);
+  padding-bottom: var(--spacing-section-md);
+}
+
+.lsx-tour-related-section--alt {
+  background-color: var(--muted);
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.lsx-tour-related-section__header {
+  text-align: center;
+  margin-bottom: var(--spacing-element-lg);
+}
+
+.lsx-tour-related-section__subtitle {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  color: var(--muted-foreground);
+  line-height: var(--leading-relaxed);
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================
+   CARD GRID
+   ============================================ */
+
+.lsx-tour-related-section__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-gap-md);
+}
+
+@media (min-width: 768px) {
+  .lsx-tour-related-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .lsx-tour-related-section__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+
+.lsx-tour-related-section__empty {
+  text-align: center;
+  padding: var(--spacing-element-lg) var(--spacing-element-md);
+  color: var(--muted-foreground);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+}

@@ -1,0 +1,31 @@
+/**
+ * Saved Passengers Page Styles
+ * WordPress BEM naming: .wp-page-saved-passengers__*
+ * 
+ * Page Purpose: Manage saved passenger details for bookings
+ * WordPress Mapping: page-saved-passengers.html
+ */
+
+/**
+ * Passenger Information Grid
+ * Mobile: 1 column
+ * Tablet: 2 columns (640px+)
+ * Desktop: 3 columns (768px+)
+ */
+.wp-page-saved-passengers__info-grid {
+  display: grid;
+  gap: var(--spacing-3);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .wp-page-saved-passengers__info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .wp-page-saved-passengers__info-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

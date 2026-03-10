@@ -1,0 +1,19 @@
+<!-- Add theme class support for dark mode testing -->
+<script>
+  // Apply theme from Storybook toolbar
+  window.addEventListener('DOMContentLoaded', () => {
+    const observer = new MutationObserver(() => {
+      const theme = window.localStorage.getItem('sb-addon-themes-3') || 'light';
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    });
+    
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+  });
+</script>

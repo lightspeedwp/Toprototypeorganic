@@ -1,0 +1,722 @@
+/**
+ * WordPress-Aligned Global Styles
+ * 
+ * This file provides WordPress block editor compatible CSS classes
+ * with full light/dark mode support using CSS custom properties.
+ * 
+ * Naming Convention: Uses WordPress block editor patterns
+ * - .wp-block-* for block-level elements
+ * - .has-* for utility modifiers
+ * - .is-* for state modifiers
+ * - Semantic class names for common patterns
+ * 
+ * NOTE: All component, pattern, template, page, and common CSS
+ * imports are managed centrally by index.css (sections 8-12).
+ * This file only imports CSS files that are NOT in index.css.
+ * Do NOT add @import statements here that duplicate index.css.
+ * 
+ * @version 3.0 - Deduped imports (all managed by index.css)
+ */
+
+/* ============================================
+   IMPORTS UNIQUE TO THIS FILE
+   (Not present in index.css — safe to keep here)
+   ============================================ */
+@import './wordpress-classes.css';
+@import './wordpress-color-utilities.css';
+@import './common/container.css';
+@import './parts/page-shell.css';
+@import './patterns/enquiry-modal.css';
+@import './common/social-links.css';
+
+/* ============================================
+   CSS RESET & BASE STYLES
+   NOTE: Tailwind preflight handles box-sizing, margin, padding resets.
+   Only html/body base styles are set here.
+   ============================================ */
+
+html {
+  position: relative;
+  font-size: var(--font-size);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  position: relative;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  min-height: 100vh;
+}
+
+/* ============================================
+   TYPOGRAPHY - WordPress Block Editor Selectors
+   
+   Bare element typography (h1-h6, p, a, blockquote, code, etc.)
+   is handled by theme.css @layer base. Do NOT redefine bare
+   elements here — un-layered CSS beats @layer and would prevent
+   Tailwind utility overrides from working (e.g. text-sm on a <p>).
+   
+   This section only adds .wp-block-* selectors for WordPress
+   block editor compatibility.
+   ============================================ */
+
+/* WordPress Block Editor Heading Classes */
+.wp-block-heading.is-style-h1 {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-6xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tighter);
+  color: var(--foreground);
+  margin-bottom: 1.5rem;
+}
+
+.wp-block-heading.is-style-h2 {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--foreground);
+  margin-bottom: 1.25rem;
+}
+
+.wp-block-heading.is-style-h3 {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.wp-block-heading.is-style-h4 {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-snug);
+  color: var(--foreground);
+  margin-bottom: 0.75rem;
+}
+
+.wp-block-heading.is-style-h5 {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-normal);
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+}
+
+.wp-block-heading.is-style-h6 {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-normal);
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+}
+
+/* WordPress Block Editor Paragraph Classes */
+.wp-block-paragraph {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.wp-block-paragraph.has-small-font-size {
+  font-size: var(--text-sm);
+}
+
+.wp-block-paragraph.has-large-font-size {
+  font-size: var(--text-lg);
+}
+
+/* WordPress Block Editor Link Classes */
+.wp-element-link {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.wp-element-link:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.wp-element-link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* WordPress Block Editor Quote Classes */
+.wp-block-quote {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-normal);
+  font-style: italic;
+  line-height: var(--leading-relaxed);
+  color: var(--muted-foreground);
+  border-left: 4px solid var(--primary);
+  padding-left: var(--spacing-element-md);
+  margin: var(--spacing-element-md) 0;
+}
+
+/* WordPress Block Editor Code Classes */
+.wp-block-code {
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
+  background-color: var(--muted);
+  color: var(--foreground);
+  padding: 0.125rem 0.25rem;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================
+   LAYOUT UTILITIES
+   ============================================ */
+
+/* Container */
+.container, .wp-block-container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-container-sm);
+  padding-right: var(--spacing-container-sm);
+}
+
+.container--narrow {
+  max-width: var(--container-max-width-narrow);
+}
+
+.container--wide {
+  max-width: var(--container-max-width-wide);
+}
+
+/* Section */
+.section {
+  padding-top: var(--spacing-section-md);
+  padding-bottom: var(--spacing-section-md);
+}
+
+.section--sm {
+  padding-top: var(--spacing-section-sm);
+  padding-bottom: var(--spacing-section-sm);
+}
+
+.section--lg {
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-lg);
+}
+
+/* Grid */
+.wp-block-grid {
+  display: grid;
+  gap: var(--spacing-gap-md);
+}
+
+.grid--cols-1 { grid-template-columns: repeat(1, 1fr); }
+.grid--cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid--cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid--cols-4 { grid-template-columns: repeat(4, 1fr); }
+.grid--cols-5 { grid-template-columns: repeat(5, 1fr); }
+.grid--cols-6 { grid-template-columns: repeat(6, 1fr); }
+
+.grid--gap-sm { gap: var(--spacing-gap-sm); }
+.grid--gap-md { gap: var(--spacing-gap-md); }
+.grid--gap-lg { gap: var(--spacing-gap-lg); }
+
+/* Flexbox (WordPress BEM-style modifiers only — base .flex handled by Tailwind) */
+.flex--row { flex-direction: row; }
+.flex--col { flex-direction: column; }
+.flex--wrap { flex-wrap: wrap; }
+
+.flex--justify-start { justify-content: flex-start; }
+.flex--justify-center { justify-content: center; }
+.flex--justify-end { justify-content: flex-end; }
+.flex--justify-between { justify-content: space-between; }
+
+.flex--items-start { align-items: flex-start; }
+.flex--items-center { align-items: center; }
+.flex--items-end { align-items: flex-end; }
+
+.flex--gap-sm { gap: var(--spacing-gap-sm); }
+.flex--gap-md { gap: var(--spacing-gap-md); }
+.flex--gap-lg { gap: var(--spacing-gap-lg); }
+
+/* ============================================
+   BACKGROUND & TEXT COLOR UTILITIES
+   ============================================ */
+
+/* Backgrounds */
+.has-background { background-color: var(--background); }
+.has-primary-background { background-color: var(--primary); color: var(--primary-foreground); }
+.has-secondary-background { background-color: var(--secondary); color: var(--secondary-foreground); }
+.has-accent-background { background-color: var(--accent); color: var(--accent-foreground); }
+.has-muted-background { background-color: var(--muted); color: var(--muted-foreground); }
+.has-card-background { background-color: var(--card); color: var(--card-foreground); }
+
+/* Text Colors */
+.has-foreground-color { color: var(--foreground); }
+.has-primary-color { color: var(--primary); }
+.has-secondary-color { color: var(--secondary); }
+.has-accent-color { color: var(--accent); }
+.has-muted-foreground-color { color: var(--muted-foreground); }
+.has-destructive-color { color: var(--destructive); }
+.has-success-color { color: var(--success); }
+.has-warning-color { color: var(--warning); }
+
+/* ============================================
+   BUTTONS - WordPress Block Editor Style
+   ============================================ */
+
+.wp-block-button, .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: var(--spacing-element-xs);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  padding: var(--spacing-element-sm) var(--spacing-element-md);
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  min-height: 44px; /* WCAG touch target */
+}
+
+.wp-block-button svg, .button svg {
+  flex-shrink: 0;
+}
+
+.wp-block-button__link,
+.button--primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.wp-block-button__link:hover,
+.button--primary:hover {
+  background-color: var(--primary);
+  opacity: 0.9;
+}
+
+.button--secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+.button--secondary:hover {
+  background-color: var(--secondary);
+  opacity: 0.9;
+}
+
+.button--outline {
+  background-color: transparent;
+  color: var(--foreground);
+  border: 2px solid var(--border);
+}
+
+.button--outline:hover {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  border-color: var(--accent);
+}
+
+.button--ghost {
+  background-color: transparent;
+  color: var(--foreground);
+}
+
+.button--ghost:hover {
+  background-color: var(--muted);
+}
+
+.button--destructive {
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+.button--sm {
+  padding: var(--spacing-element-xs) var(--spacing-element-sm);
+  font-size: var(--text-sm);
+  min-height: 36px;
+}
+
+.button--lg {
+  padding: var(--spacing-element-sm) var(--spacing-element-md);
+  font-size: var(--text-lg);
+  min-height: 52px;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   CARDS - WordPress Block Pattern
+   NOTE: Only .wp-block-card is styled here.
+   The bare .card class was removed to avoid conflicts with shadcn/ui.
+   Use Tailwind classes (bg-card, border-border, etc.) for React components.
+   ============================================ */
+
+.wp-block-card {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-element-md);
+  box-shadow: var(--elevation-sm);
+  transition: box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.wp-block-card:hover {
+  border-color: var(--primary);
+}
+
+.card__header {
+  margin-bottom: var(--spacing-element-sm);
+}
+
+.card__title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-xs);
+}
+
+.card__description {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  margin-bottom: 0;
+}
+
+.card__content {
+  margin-bottom: var(--spacing-element-sm);
+}
+
+.card__footer {
+  border-top: 1px solid var(--border);
+  padding-top: var(--spacing-element-sm);
+  margin-top: var(--spacing-element-sm);
+}
+
+/* ============================================
+   FORMS - WordPress Compatible
+   ============================================ */
+
+.wp-block-form, .form {
+  width: 100%;
+}
+
+.form__group {
+  margin-bottom: var(--spacing-element-md);
+}
+
+.form__label {
+  display: block;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-element-xs);
+}
+
+.form__input,
+.form__textarea,
+.form__select {
+  width: 100%;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  background-color: var(--input-background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--spacing-element-sm) var(--spacing-element-sm);
+  min-height: 44px;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.form__input:focus,
+.form__textarea:focus,
+.form__select:focus {
+  outline: none;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 15%, transparent);
+}
+
+.form__input::placeholder,
+.form__textarea::placeholder {
+  color: var(--muted-foreground);
+  opacity: 0.6;
+}
+
+.form__textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form__helper {
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  margin-top: 0.25rem;
+}
+
+.form__error {
+  font-size: var(--text-xs);
+  color: var(--destructive);
+  margin-top: 0.25rem;
+}
+
+/* Checkbox & Radio */
+.form__checkbox,
+.form__radio {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color var(--transition-base), background-color var(--transition-base);
+}
+
+.form__radio {
+  border-radius: 50%;
+}
+
+.form__checkbox:checked,
+.form__radio:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.form__checkbox:focus-visible,
+.form__radio:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   IMAGES - WordPress Media
+   ============================================ */
+
+.wp-block-image, .image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.wp-block-image img {
+  border-radius: var(--radius);
+  width: 100%;
+  height: auto;
+}
+
+.image--rounded {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.image--circle {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.image__caption {
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  text-align: center;
+  margin-top: var(--spacing-element-xs);
+}
+
+/* ============================================
+   BORDERS & SHADOWS
+   ============================================ */
+
+.has-border { border: 1px solid var(--border); }
+.has-border-top { border-top: 1px solid var(--border); }
+.has-border-bottom { border-bottom: 1px solid var(--border); }
+.has-border-left { border-left: 1px solid var(--border); }
+.has-border-right { border-right: 1px solid var(--border); }
+
+.has-shadow-sm { box-shadow: var(--elevation-sm); }
+.has-rounded { border-radius: var(--radius); }
+.has-rounded-lg { border-radius: var(--radius-lg); }
+.has-rounded-xl { border-radius: var(--radius-xl); }
+
+/* ============================================
+   SPACING UTILITIES
+   NOTE: Removed static spacing utilities (.p-*, .py-*, .mt-*, .mb-*, .mx-auto)
+   that conflicted with Tailwind. Use Tailwind classes or fluid py-section-* tokens.
+   ============================================ */
+
+/* ============================================
+   TEXT UTILITIES
+   NOTE: Removed .text-left, .text-center, .text-right, .font-*, .tracking-*
+   that conflicted with Tailwind. Use Tailwind utility classes directly.
+   WordPress-specific text transform utilities retained below.
+   ============================================ */
+
+.text-uppercase { text-transform: uppercase; }
+.text-lowercase { text-transform: lowercase; }
+.text-capitalize { text-transform: capitalize; }
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  .button,
+  .wp-block-button {
+    border: 1px solid black;
+  }
+}
+
+/* ============================================
+   HEADER NAVIGATION - Responsive
+   
+   These CSS classes guarantee header nav visibility
+   independent of Tailwind class scanning. Maps to
+   WordPress `core/navigation` block behaviour.
+   ============================================ */
+
+/* Desktop navigation: hidden on mobile, flex on lg+ */
+.header-desktop-nav {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .header-desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-element-xs);
+  }
+}
+
+/* Desktop search: hidden on mobile, flex on md+ */
+.header-desktop-search {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header-desktop-search {
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Mobile search button: visible on mobile, hidden on md+ */
+.header-mobile-search {
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .header-mobile-search {
+    display: none;
+  }
+}
+
+/* Hamburger: visible on mobile, hidden on lg+ */
+.header-hamburger {
+  display: flex;
+}
+
+@media (min-width: 1024px) {
+  .header-hamburger {
+    display: none;
+  }
+}
+
+/* Mega menu dropdown panel */
+.header-mega-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: var(--spacing-element-xs);
+  width: max-content;
+  min-width: 400px;
+  max-width: 42rem;
+  z-index: var(--z-dropdown);
+}
+
+/* Right-aligned variant for items near the right edge (e.g. About) */
+.header-mega-menu--end {
+  left: auto;
+  right: 0;
+}
+
+/* Header bar height — fluid between mobile (64px) and desktop (80px) */
+.header-bar-height {
+  height: var(--header-bar-height, clamp(64px, 5vw, 80px));
+}
+
+/* ============================================
+   MOBILE MENU - Below Header Panel
+   
+   Positions the mobile menu panel directly below
+   the sticky header bar. Uses the same fluid height
+   token so they stay in sync.
+   ============================================ */
+
+/* Shared header height token */
+:root {
+  --header-bar-height: clamp(64px, 5vw, 80px);
+}
+
+/* Backdrop starts below the header */
+.mobile-menu-backdrop {
+  position: fixed;
+  top: var(--header-bar-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-overlay);
+}
+
+/* Panel fills from below header to bottom of viewport */
+.mobile-menu-panel {
+  position: fixed;
+  top: var(--header-bar-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-overlay);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}

@@ -1,0 +1,33 @@
+/**
+ * Travel Insurance Page Styles
+ * WordPress template: page-travel-insurance
+ * 
+ * Component: /src/app/pages/TravelInsurancePage.tsx
+ * Styles for the travel insurance information page.
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   INSURANCE PROVIDERS GRID
+   Three-column grid for insurance provider cards
+   ============================================ */
+
+.wp-page-travel-insurance__providers-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-travel-insurance__providers-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   END OF TRAVEL INSURANCE PAGE STYLES
+   ============================================ */

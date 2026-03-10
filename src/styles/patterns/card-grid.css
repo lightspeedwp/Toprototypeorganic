@@ -1,0 +1,230 @@
+/**
+ * Card Grid Pattern Styles
+ * WordPress Pattern: lightspeed/card-grid
+ * 
+ * Component: /src/app/components/patterns/CardGrid.tsx
+ * Corresponds to: patterns/card-grid-*.php in WordPress
+ * 
+ * Column Progression Contract (design-system-contract):
+ *   1 col: < 640px  (mobile)
+ *   2 col: >= 640px (tablet portrait)
+ *   3 col: >= 1024px (desktop)
+ *   4 col: >= 1280px (wide desktop)
+ *   5 col: >= 1440px (ultrawide)
+ *   6 col: >= 1680px (max)
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * 
+ * @version 2.0.0
+ */
+
+/* ============================================
+   CARD GRID BASE STYLES
+   Mobile-first foundation for responsive grid layouts
+   ============================================ */
+
+.wp-pattern-card-grid {
+  padding-block: var(--spacing-section-xs);
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-card-grid {
+    padding-block: var(--spacing-section-md);
+  }
+}
+
+/* ============================================
+   GRID CONTAINER — Base
+   Single column mobile-first, with gap tokens
+   ============================================ */
+
+.wp-pattern-card-grid__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-gap-sm);
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-card-grid__container {
+    gap: var(--spacing-gap-md);
+  }
+}
+
+/* ============================================
+   GRID ITEM
+   Individual card wrapper
+   ============================================ */
+
+.wp-pattern-card-grid__item {
+  min-width: 0; /* Prevent grid blowout */
+}
+
+/* ============================================
+   LIST LAYOUT
+   Single column, full-width cards
+   ============================================ */
+
+.wp-pattern-card-grid__container--list {
+  grid-template-columns: 1fr;
+}
+
+/* ============================================
+   GAP MODIFIERS
+   Override default gap with size variants
+   ============================================ */
+
+.wp-pattern-card-grid__container--gap-sm {
+  gap: var(--spacing-gap-xs, 0.5rem);
+}
+
+.wp-pattern-card-grid__container--gap-md {
+  gap: var(--spacing-gap-sm);
+}
+
+.wp-pattern-card-grid__container--gap-lg {
+  gap: var(--spacing-gap-lg);
+}
+
+@media (min-width: 641px) {
+  .wp-pattern-card-grid__container--gap-sm {
+    gap: var(--spacing-gap-sm);
+  }
+  
+  .wp-pattern-card-grid__container--gap-md {
+    gap: var(--spacing-gap-md);
+  }
+  
+  .wp-pattern-card-grid__container--gap-lg {
+    gap: var(--spacing-gap-xl, 3rem);
+  }
+}
+
+/* ============================================
+   COLUMN VARIANTS — 2 Columns
+   Progression: 1 → 2
+   ============================================ */
+
+/* 2 cols at 640px+ */
+@media (min-width: 640px) {
+  .wp-pattern-card-grid__container--cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   COLUMN VARIANTS — 3 Columns
+   Progression: 1 → 2 → 3
+   ============================================ */
+
+/* 2 cols at 640px+ */
+@media (min-width: 640px) {
+  .wp-pattern-card-grid__container--cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 3 cols at 1024px+ */
+@media (min-width: 1024px) {
+  .wp-pattern-card-grid__container--cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   COLUMN VARIANTS — 4 Columns
+   Progression: 1 → 2 → 3 → 4
+   ============================================ */
+
+/* 2 cols at 640px+ */
+@media (min-width: 640px) {
+  .wp-pattern-card-grid__container--cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 3 cols at 1024px+ */
+@media (min-width: 1024px) {
+  .wp-pattern-card-grid__container--cols-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 4 cols at 1280px+ */
+@media (min-width: 1280px) {
+  .wp-pattern-card-grid__container--cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   COLUMN VARIANTS — 5 Columns
+   Progression: 1 → 2 → 3 → 4 → 5
+   ============================================ */
+
+/* 2 cols at 640px+ */
+@media (min-width: 640px) {
+  .wp-pattern-card-grid__container--cols-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 3 cols at 1024px+ */
+@media (min-width: 1024px) {
+  .wp-pattern-card-grid__container--cols-5 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 4 cols at 1280px+ */
+@media (min-width: 1280px) {
+  .wp-pattern-card-grid__container--cols-5 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* 5 cols at 1440px+ */
+@media (min-width: 1440px) {
+  .wp-pattern-card-grid__container--cols-5 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* ============================================
+   COLUMN VARIANTS — 6 Columns
+   Progression: 1 → 2 → 3 → 4 → 5 → 6
+   ============================================ */
+
+/* 2 cols at 640px+ */
+@media (min-width: 640px) {
+  .wp-pattern-card-grid__container--cols-6 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 3 cols at 1024px+ */
+@media (min-width: 1024px) {
+  .wp-pattern-card-grid__container--cols-6 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 4 cols at 1280px+ */
+@media (min-width: 1280px) {
+  .wp-pattern-card-grid__container--cols-6 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* 5 cols at 1440px+ */
+@media (min-width: 1440px) {
+  .wp-pattern-card-grid__container--cols-6 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* 6 cols at 1680px+ */
+@media (min-width: 1680px) {
+  .wp-pattern-card-grid__container--cols-6 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

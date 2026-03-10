@@ -1,0 +1,121 @@
+/**
+ * Logo Component - WordPress Common Component
+ * 
+ * BEM Structure: .wp-common-logo__*
+ * 
+ * Handles light/dark mode logo switching using CSS variables.
+ * NO dark: Tailwind classes - uses .dark selector instead.
+ */
+
+/* ============================================
+   BASE LOGO
+   ============================================ */
+
+.wp-common-logo {
+  width: var(--logo-width, auto);
+  color: var(--color-foreground);
+  object-fit: contain;
+}
+
+/* ============================================
+   LIGHT MODE LOGO
+   (Visible in light mode, hidden in dark mode)
+   ============================================ */
+
+.wp-common-logo--light {
+  display: block;
+}
+
+.dark .wp-common-logo--light {
+  display: none;
+}
+
+/* ============================================
+   DARK MODE LOGO
+   (Hidden in light mode, visible in dark mode)
+   ============================================ */
+
+.wp-common-logo--dark {
+  display: none;
+}
+
+.dark .wp-common-logo--dark {
+  display: block;
+}
+
+/* ============================================
+   SIZE VARIANTS
+   ============================================ */
+
+/* Small - Mobile: 40px, Desktop: 48px */
+.wp-common-logo--sm {
+  height: 2.5rem; /* 40px */
+}
+
+@media (min-width: 768px) {
+  .wp-common-logo--sm {
+    height: 3rem; /* 48px */
+  }
+}
+
+/* Medium - Mobile: 48px, Desktop: 56px */
+.wp-common-logo--md {
+  height: 3rem; /* 48px */
+}
+
+@media (min-width: 768px) {
+  .wp-common-logo--md {
+    height: 3.5rem; /* 56px */
+  }
+}
+
+/* Large - Mobile: 64px, Desktop: 80px */
+.wp-common-logo--lg {
+  height: 4rem; /* 64px */
+}
+
+@media (min-width: 768px) {
+  .wp-common-logo--lg {
+    height: 5rem; /* 80px */
+  }
+}
+
+/* Extra Large - Mobile: 80px, Desktop: 96px */
+.wp-common-logo--xl {
+  height: 5rem; /* 80px */
+}
+
+@media (min-width: 768px) {
+  .wp-common-logo--xl {
+    height: 6rem; /* 96px */
+  }
+}
+
+/* ============================================
+   LOGO WRAPPER
+   ============================================ */
+
+.wp-common-logo-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ============================================
+   LOGO LINK
+   ============================================ */
+
+.wp-common-logo-link {
+  display: block;
+  border-radius: var(--radius-sm);
+  transition: opacity 200ms ease;
+}
+
+.wp-common-logo-link:hover {
+  opacity: 0.8;
+}
+
+.wp-common-logo-link:focus-visible {
+  outline: none;
+  ring: 2px solid var(--color-ring);
+  ring-offset: 2px;
+}

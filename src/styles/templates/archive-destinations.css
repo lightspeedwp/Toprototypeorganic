@@ -1,0 +1,262 @@
+/**
+ * Destinations Archive Template Styles
+ * WordPress template: archive-destination
+ * 
+ * Component: /src/app/pages/DestinationsArchive.tsx
+ * Corresponds to: templates/archive-destination.html in WordPress
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ */
+
+.wp-template-archive-destination {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ============================================
+   TERRITORY NAVIGATION BAR
+   Sticky bar for continent/region filtering
+   ============================================ */
+
+.wp-template-archive-destination__nav-bar {
+  padding-block: 0;
+  background-color: var(--background);
+  border-bottom: 2px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(12px);
+  background-color: rgba(var(--background-rgb), 0.85);
+}
+
+.wp-template-archive-destination__nav-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-md, 2rem);
+  padding-block: var(--spacing-gap-sm, 1.5rem);
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive-destination__nav-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.wp-template-archive-destination__territory-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive-destination__territory-group {
+    width: auto;
+  }
+}
+
+.wp-template-archive-destination__nav-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: 0.625rem;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.wp-template-archive-destination__nav-list {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+}
+
+.wp-template-archive-destination__nav-list::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive-destination__nav-list {
+    padding-bottom: 0;
+  }
+}
+
+.wp-template-archive-destination__nav-btn {
+  padding: 0.5rem 1.25rem;
+  background-color: var(--card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-xl);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.wp-template-archive-destination__nav-btn:hover {
+  border-color: rgba(var(--primary-rgb), 0.4);
+  color: var(--foreground);
+  background-color: rgba(var(--primary-rgb), 0.03);
+}
+
+.wp-template-archive-destination__nav-btn--active {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+  box-shadow: 0 10px 15px -3px rgba(var(--primary-rgb), 0.2);
+  transform: scale(1.05);
+  font-weight: var(--font-weight-semibold);
+}
+
+.wp-template-archive-destination__nav-btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.wp-template-archive-destination__search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive-destination__search-wrapper {
+    width: 18rem;
+  }
+}
+
+.wp-template-archive-destination__search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  color: var(--muted-foreground);
+  pointer-events: none;
+  transition: color 200ms ease;
+}
+
+.wp-template-archive-destination__search-input {
+  width: 100%;
+  padding-block: 0.75rem;
+  padding-inline-start: 3rem;
+  padding-inline-end: 1rem;
+  background-color: var(--muted);
+  border: 2px solid transparent;
+  border-radius: var(--radius-2xl);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+  color: var(--foreground);
+  transition: all 200ms ease;
+  outline: none;
+}
+
+.wp-template-archive-destination__search-input::placeholder {
+  color: var(--muted-foreground);
+  font-weight: var(--font-weight-normal);
+}
+
+.wp-template-archive-destination__search-input:focus {
+  background-color: var(--background);
+  border-color: rgba(var(--primary-rgb), 0.3);
+  box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.08);
+}
+
+.wp-template-archive-destination__search-wrapper:focus-within .wp-template-archive-destination__search-icon {
+  color: var(--primary);
+}
+
+/* ============================================
+   ARCHETYPES SECTION
+   Visual category grid
+   ============================================ */
+
+.wp-template-archive-destination__archetypes {
+  padding-block: var(--spacing-section-lg);
+  background-color: rgba(var(--muted-rgb), 0.3);
+  border-top: 2px solid var(--border-subtle);
+  border-bottom: 2px solid var(--border-subtle);
+}
+
+.wp-template-archive-destination__archetypes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-gap-md, 2rem);
+}
+
+@media (min-width: 768px) {
+  .wp-template-archive-destination__archetypes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-template-archive-destination__archetypes-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.wp-template-archive-destination__archetype-card {
+  padding: 2.5rem;
+  background-color: var(--background);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-3xl);
+  transition: all 500ms ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.wp-template-archive-destination__archetype-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--elevation-xl);
+  transform: translateY(-4px);
+}
+
+.wp-template-archive-destination__archetype-icon-wrapper {
+  width: 4rem;
+  height: 4rem;
+  border-radius: var(--radius-2xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-4xl);
+  margin-bottom: 2rem;
+  box-shadow: var(--elevation-sm);
+  transition: transform 500ms ease;
+}
+
+.wp-template-archive-destination__archetype-card:hover .wp-template-archive-destination__archetype-icon-wrapper {
+  transform: scale(1.1);
+}
+
+.wp-template-archive-destination__archetype-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 0.75rem;
+  transition: color 200ms ease;
+}
+
+.wp-template-archive-destination__archetype-card:hover .wp-template-archive-destination__archetype-title {
+  color: var(--primary);
+}
+
+.wp-template-archive-destination__archetype-desc {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}

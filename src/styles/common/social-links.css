@@ -1,0 +1,63 @@
+/**
+ * Social Links Component Styles
+ * WordPress Block: core/social-links
+ * 
+ * Component: /src/app/components/common/SocialLinks.tsx
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ */
+
+.wp-block-social-links {
+  /* Container for social links */
+  display: block;
+}
+
+.wp-block-social-links__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-element-sm);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.wp-block-social-links--vertical .wp-block-social-links__list {
+  flex-direction: column;
+}
+
+.wp-block-social-links__item {
+  margin: 0;
+  padding: 0;
+}
+
+.wp-block-social-links__link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-element-sm);
+  padding: var(--spacing-element-xs);
+  border-radius: var(--radius-full);
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.wp-block-social-links__link--with-label {
+  padding-inline-end: var(--spacing-element-md);
+}
+
+.wp-block-social-links__link:hover,
+.wp-block-social-links__link:focus-visible {
+  color: var(--primary);
+  background-color: color-mix(in srgb, var(--primary) 5%, transparent);
+}
+
+.wp-block-social-links__icon {
+  flex-shrink: 0;
+}
+
+.wp-block-social-links__label {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: capitalize;
+}

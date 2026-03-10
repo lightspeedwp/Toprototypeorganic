@@ -1,0 +1,442 @@
+/**
+ * Mobile Menu Pattern Styles
+ * WordPress pattern: mobile-menu
+ * 
+ * Component: /src/app/components/patterns/MobileMenuPattern.tsx
+ * Corresponds to: Registered pattern for mobile navigation
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   MOBILE MENU BACKDROP
+   Full-screen overlay behind menu panel
+   ============================================ */
+
+.wp-block-lts-mobile-menu__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background-color: rgba(var(--background-rgb), 0.6);
+  backdrop-filter: blur(4px);
+}
+
+/* Legacy class support */
+.mobile-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background-color: rgba(var(--background-rgb), 0.6);
+  backdrop-filter: blur(4px);
+}
+
+/* ============================================
+   MOBILE MENU PANEL
+   Sliding menu panel below header
+   ============================================ */
+
+.wp-block-lts-mobile-menu__panel {
+  position: fixed;
+  top: 64px; /* Below header (header height) */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 45;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--elevation-md);
+}
+
+/* Legacy class support */
+.mobile-menu-panel {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 45;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--elevation-md);
+}
+
+/* ============================================
+   SEARCH BAR
+   Top search section with border
+   ============================================ */
+
+.wp-block-lts-mobile-menu__search {
+  padding-inline: 1rem;
+  padding-block: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--background);
+}
+
+/* Search input wrapper */
+.wp-block-lts-mobile-menu__search-wrapper {
+  position: relative;
+}
+
+/* Search icon */
+.wp-block-lts-mobile-menu__search-icon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-foreground);
+  pointer-events: none;
+}
+
+/* Search input */
+.wp-block-lts-mobile-menu__search-input {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 2.5rem;
+  padding-block: 0.75rem;
+  border-radius: var(--radius-md);
+  background-color: var(--input-background);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.wp-block-lts-mobile-menu__search-input:focus {
+  outline: none;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px rgba(var(--ring-rgb), 0.1);
+}
+
+.wp-block-lts-mobile-menu__search-input::placeholder {
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   NAVIGATION
+   Scrollable navigation section
+   ============================================ */
+
+.wp-block-lts-mobile-menu__nav {
+  flex: 1;
+  overflow-y: auto;
+  padding-inline: 1rem;
+  padding-block: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* ============================================
+   SECTION (TOP-LEVEL)
+   Expandable accordion section
+   ============================================ */
+
+.wp-block-lts-mobile-menu__section {}
+
+/* Section button (accordion trigger) */
+.wp-block-lts-mobile-menu__section-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 1rem;
+  padding-block: 0.75rem;
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  text-align: left;
+  min-height: 48px; /* Touch target */
+}
+
+.wp-block-lts-mobile-menu__section-button:hover {
+  background-color: var(--accent);
+}
+
+.wp-block-lts-mobile-menu__section-button--active {
+  background-color: var(--accent);
+}
+
+/* Section button label (icon + text) */
+.wp-block-lts-mobile-menu__section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Section icon */
+.wp-block-lts-mobile-menu__section-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* Section chevron */
+.wp-block-lts-mobile-menu__section-chevron {
+  color: var(--muted-foreground);
+  transition: transform var(--transition-base);
+}
+
+.wp-block-lts-mobile-menu__section-chevron--open {
+  transform: rotate(180deg);
+}
+
+/* ============================================
+   SECTION CHILDREN (SUBMENU)
+   Expandable child links
+   ============================================ */
+
+.wp-block-lts-mobile-menu__submenu {
+  overflow: hidden;
+}
+
+/* Submenu list */
+.wp-block-lts-mobile-menu__submenu-list {
+  padding-top: var(--spacing-element-xxs);
+  padding-left: var(--spacing-element-sm);
+  margin-left: var(--spacing-element-sm);
+  border-left: 2px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-element-xxs);
+}
+
+/* ============================================
+   CHILD LINK
+   Individual submenu item
+   ============================================ */
+
+.wp-block-lts-mobile-menu__link {
+  width: 100%;
+  text-align: left;
+  padding-inline: 1rem;
+  padding-block: 0.75rem;
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-noto-sans);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  min-height: 48px; /* Touch target */
+}
+
+.wp-block-lts-mobile-menu__link:hover {
+  background-color: var(--accent);
+}
+
+.wp-block-lts-mobile-menu__link--active {
+  background-color: var(--accent);
+  color: var(--primary);
+}
+
+/* Link icon */
+.wp-block-lts-mobile-menu__link-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+/* Link content */
+.wp-block-lts-mobile-menu__link-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Link label row */
+.wp-block-lts-mobile-menu__link-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Link text */
+.wp-block-lts-mobile-menu__link-text {
+  font-size: var(--text-base);
+  color: var(--foreground);
+}
+
+.wp-block-lts-mobile-menu__link:hover .wp-block-lts-mobile-menu__link-text {
+  color: var(--foreground);
+}
+
+.wp-block-lts-mobile-menu__link--active .wp-block-lts-mobile-menu__link-text {
+  color: var(--primary);
+}
+
+/* Link badge */
+.wp-block-lts-mobile-menu__link-badge {
+  padding-inline: 0.5rem;
+  padding-block: 0.125rem;
+  font-size: var(--text-xs);
+  border-radius: 9999px;
+  background-color: rgba(var(--primary-rgb), 0.1);
+  color: var(--primary);
+}
+
+/* Link description */
+.wp-block-lts-mobile-menu__link-description {
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+  padding-top: var(--spacing-element-xxs);
+}
+
+/* ============================================
+   FOOTER CTA
+   Bottom call-to-action section
+   ============================================ */
+
+.wp-block-lts-mobile-menu__footer {
+  padding-inline: 1rem;
+  padding-block: 1rem;
+  border-top: 1px solid var(--border);
+  background-color: var(--muted);
+}
+
+/* CTA button */
+.wp-block-lts-mobile-menu__cta-button {
+  width: 100%;
+  padding-inline: 1.5rem;
+  padding-block: 0.875rem;
+  border-radius: var(--radius-md);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  transition: all var(--transition-base);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: var(--box-shadow-sm);
+  min-height: 48px; /* Touch target */
+}
+
+.wp-block-lts-mobile-menu__cta-button:hover {
+  background-color: rgba(var(--primary-rgb), 0.9);
+  box-shadow: var(--elevation-md);
+}
+
+.wp-block-lts-mobile-menu__cta-button:active {
+  transform: translateY(1px);
+}
+
+/* ============================================
+   QUICK CONTACT
+   Footer contact information
+   ============================================ */
+
+.wp-block-lts-mobile-menu__contact {
+  padding-top: var(--spacing-element-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+
+/* Contact link */
+.wp-block-lts-mobile-menu__contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.wp-block-lts-mobile-menu__contact-link:hover {
+  color: var(--foreground);
+}
+
+/* Contact separator */
+.wp-block-lts-mobile-menu__contact-separator {
+  color: var(--border);
+}
+
+/* ============================================
+   ANIMATIONS
+   Motion/Framer Motion overrides
+   ============================================ */
+
+/* Ensure smooth animations work with motion library */
+.wp-block-lts-mobile-menu__backdrop,
+.wp-block-lts-mobile-menu__panel,
+.wp-block-lts-mobile-menu__submenu {
+  will-change: transform, opacity;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   Focus states and keyboard navigation
+   ============================================ */
+
+.wp-block-lts-mobile-menu__section-button:focus-visible,
+.wp-block-lts-mobile-menu__link:focus-visible,
+.wp-block-lts-mobile-menu__cta-button:focus-visible,
+.wp-block-lts-mobile-menu__contact-link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.wp-block-lts-mobile-menu__search-input:focus-visible {
+  outline: none;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px rgba(var(--ring-rgb), 0.1);
+}
+
+/* ============================================
+   RESPONSIVE (SAFETY)
+   Hide mobile menu on desktop
+   ============================================ */
+
+@media (min-width: 1024px) {
+  .wp-block-lts-mobile-menu__backdrop,
+  .wp-block-lts-mobile-menu__panel,
+  .mobile-menu-backdrop,
+  .mobile-menu-panel {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   Custom scrollbar for nav area
+   ============================================ */
+
+.wp-block-lts-mobile-menu__nav::-webkit-scrollbar {
+  width: 8px;
+}
+
+.wp-block-lts-mobile-menu__nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.wp-block-lts-mobile-menu__nav::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 4px;
+}
+
+.wp-block-lts-mobile-menu__nav::-webkit-scrollbar-thumb:hover {
+  background-color: var(--muted-foreground);
+}
+
+/* ============================================
+   END OF MOBILE MENU STYLES
+   ============================================ */

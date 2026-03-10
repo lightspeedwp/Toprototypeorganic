@@ -1,0 +1,78 @@
+/**
+ * Trip Planner Page Styles
+ * WordPress template: page-trip-planner
+ * 
+ * Component: /src/app/pages/TripPlannerPage.tsx
+ * Styles for the multi-step trip planning wizard.
+ * 
+ * All styles use CSS custom properties from theme.css for design system compliance.
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   DESTINATIONS GRID
+   Three-column grid for destination selection
+   ============================================ */
+
+.wp-page-trip-planner__destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-trip-planner__destinations-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   MONTHS GRID
+   Four-column grid for month selection
+   ============================================ */
+
+.wp-page-trip-planner__months-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-trip-planner__months-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   TRAVEL STYLES GRID
+   Three-column grid for travel style selection
+   ============================================ */
+
+.wp-page-trip-planner__styles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .wp-page-trip-planner__styles-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   INTERESTS GRID
+   Two-column grid for interest selection
+   ============================================ */
+
+.wp-page-trip-planner__interests-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+/* ============================================
+   END OF TRIP PLANNER PAGE STYLES
+   ============================================ */

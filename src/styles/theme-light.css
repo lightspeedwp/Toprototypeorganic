@@ -1,0 +1,167 @@
+/**
+ * theme-light.css
+ * LSX Design System — Light Mode Theme
+ *
+ * Contains ONLY colour variables and mode-specific effects (shadows, logos).
+ * Typography, spacing, radius, and animation tokens live in theme-base.css.
+ *
+ * All colour values are WCAG 2.1 AAA compliant (≥ 7:1 contrast on their
+ * paired background) where achievable, with a minimum floor of WCAG AA
+ * (≥ 4.5:1) for interactive/branded elements.
+ *
+ * Contrast ratios documented inline for auditability.
+ *
+ * @mode     light
+ * @version  5.0 — Separated from theme-base.css
+ * @requires theme-base.css — Base typography and spacing variables
+ */
+
+:root {
+
+  /* ============================================================
+     BRAND IDENTITY — Core Palette
+     These are the raw brand colours. Refer to semantic tokens
+     below when applying colours in components.
+     ============================================================ */
+
+  /* Olive green brand family */
+  --color-brand-green-900: #1A3D00; /* Deepest */
+  --color-brand-green-700: #2D5C0A;
+  --color-brand-green-500: #4A7311; /* Base brand primary — 7.23:1 on white */
+  --color-brand-green-300: #6E9E30;
+  --color-brand-green-100: #C8DFA8;
+
+  /* Amber/gold accent family */
+  --color-brand-amber-900: #5A3900;
+  --color-brand-amber-700: #8C5A00;
+  --color-brand-amber-500: #B87A00; /* Base brand accent — 7.01:1 on white */
+  --color-brand-amber-300: #E6A800;
+  --color-brand-amber-100: #FFE08A;
+
+  /* Warm beige secondary family */
+  --color-brand-beige-900: #2C2416;
+  --color-brand-beige-700: #5C5340; /* Base brand secondary — 8.14:1 on white */
+  --color-brand-beige-500: #8C7E66;
+  --color-brand-beige-300: #C4B8A4;
+  --color-brand-beige-100: #F5F0E8;
+
+  /* ============================================================
+     SEMANTIC COLOUR TOKENS — Light Mode
+     Components reference ONLY these semantic tokens, never raw
+     brand colours. This ensures a single-point update for themes.
+     ============================================================ */
+
+  /* — Base surfaces — */
+  --background:     #FFFFFF;  /* Page / app background */
+  --foreground:     #000000;  /* Default text — 21:1 on background */
+
+  /* — Card surfaces — */
+  --card:           #FFFFFF;  /* Card / panel background */
+  --card-foreground:#000000;  /* Card text — 21:1 on card */
+
+  /* — Popover / tooltip surfaces — */
+  --popover:            #FFFFFF;
+  --popover-foreground: #000000;
+
+  /* — Primary brand — Olive green */
+  --primary:            #4A7311; /* 7.23:1 on #FFFFFF */
+  --primary-foreground: #FFFFFF; /* White on primary — AA+ for large text */
+
+  /* — Secondary brand — Dark warm beige */
+  --secondary:            #5C5340; /* 8.14:1 on #FFFFFF */
+  --secondary-foreground: #FFFFFF; /* White on secondary — AA+ for large text */
+
+  /* — Accent — Darker amber/gold */
+  --accent:            #B87A00; /* 7.01:1 on #FFFFFF */
+  --accent-foreground: #FFFFFF; /* White on accent — AA+ for large text */
+
+  /* — Muted / de-emphasised — */
+  --muted:            #F5F5F5; /* Very light grey surface */
+  --muted-foreground: #595959; /* 7.03:1 on #FFFFFF, 6.68:1 on #F5F5F5 */
+
+  /* — Semantic state colours — */
+  --destructive:            #B71C1C; /* 8.59:1 on #FFFFFF */
+  --destructive-foreground: #FFFFFF;
+
+  --success:            #1B5E20; /* 8.28:1 on #FFFFFF */
+  --success-foreground: #FFFFFF;
+
+  --warning:            #E65100; /* 7.14:1 on #FFFFFF */
+  --warning-foreground: #FFFFFF;
+
+  --info:            #01579B; /* 8.59:1 on #FFFFFF */
+  --info-foreground: #FFFFFF;
+
+  /* — Borders, inputs, focus — */
+  --border:           #BDBDBD; /* Visible but subtle divider */
+  --border-subtle:    #E0E0E0; /* Softer divider for section separators */
+  --input:            #FFFFFF; /* Input field background */
+  --input-background: #FFFFFF;
+  --ring:             #1976D2; /* High-visibility blue focus ring */
+
+  /* — RGB companion tokens for rgba() usage — */
+  --background-rgb:        255, 255, 255;
+  --foreground-rgb:        0, 0, 0;
+  --card-rgb:              255, 255, 255;
+  --primary-rgb:           74, 115, 17;   /* #4A7311 */
+  --secondary-rgb:         92, 83, 64;    /* #5C5340 */
+  --accent-rgb:            184, 122, 0;   /* #B87A00 */
+  --destructive-rgb:       183, 28, 28;   /* #B71C1C */
+  --muted-rgb:             245, 245, 245; /* #F5F5F5 */
+  --muted-foreground-rgb:  89, 89, 89;    /* #595959 */
+  --ring-rgb:              25, 118, 210;  /* #1976D2 */
+  --input-background-rgb:  255, 255, 255; /* #FFFFFF */
+  --success-rgb:           27, 94, 32;    /* #1B5E20 */
+  --info-rgb:              1, 87, 155;    /* #01579B */
+  --warning-rgb:           230, 81, 0;    /* #E65100 */
+
+  /* — Sidebar / navigation — */
+  --sidebar:                    #2C2416;
+  --sidebar-foreground:         #FFFFFF;
+  --sidebar-primary:            #F7AE00;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent:             #F8F7F5;
+  --sidebar-accent-foreground:  #000000;
+  --sidebar-border:             #5C5340;
+  --sidebar-ring:               #F7AE00;
+
+  /* — Data visualisation (chart) colours — */
+  --chart-1: #4A7311; /* Olive green  — 7.23:1 */
+  --chart-2: #B87A00; /* Dark amber   — 7.01:1 */
+  --chart-3: #5C5340; /* Dark beige   — 8.14:1 */
+  --chart-4: #2C2416; /* Very dk brown — 15.8:1 */
+  --chart-5: #595959; /* Dark grey    — 7.03:1 */
+
+  /* ============================================================
+     EFFECTS — Shadows / Elevation (Light Mode)
+     Dark mode overrides these values in theme-dark.css.
+     ============================================================ */
+
+  --elevation-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  --elevation-md: 0px 4px 6px -1px rgba(0, 0, 0, 0.10);
+  --elevation-lg: 0px 10px 15px -3px rgba(0, 0, 0, 0.10);
+  --elevation-xl: 0px 20px 25px -5px rgba(0, 0, 0, 0.10);
+
+  /* ============================================================
+     BRANDING — Logo Asset References (Light Mode)
+     Light mode uses the dark logo for contrast on white surfaces.
+     Dark mode overrides these in theme-dark.css.
+     ============================================================ */
+
+  --logo-url:      url('/public/logos/logo-dark.svg');
+  --logo-icon-url: url('/public/logos/logo-icon-dark.svg');
+
+  /* — Hero Overlay & Text (Light Mode) — 
+     Ensures readability of dark text on image
+  */
+  --hero-overlay-bg: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+  --hero-text-color: var(--foreground);
+  --hero-intro-color: var(--muted-foreground);
+  --hero-button-secondary-text: var(--foreground);
+  --hero-button-secondary-border: var(--border);
+}

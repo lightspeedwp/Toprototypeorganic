@@ -1,0 +1,163 @@
+/**
+ * Review Card Component Styles
+ * 
+ * BEM Structure: .review-card__*
+ * 
+ * All colors, typography, spacing, borders, and radius values use CSS variables
+ * from theme-light.css and theme-dark.css for complete design system compliance.
+ * 
+ * @version 1.0
+ * @see /src/styles/theme-light.css
+ * @see /src/styles/theme-dark.css
+ */
+
+/* ============================================
+   REVIEW CARD BASE
+   ============================================ */
+
+.review-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all 200ms ease;
+}
+
+.review-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--elevation-sm);
+}
+
+/* ============================================
+   QUOTE ICON
+   ============================================ */
+
+.review-card__quote-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-full);
+  background-color: var(--muted);
+  color: var(--primary);
+}
+
+.dark .review-card__quote-icon {
+  background-color: rgba(var(--primary-rgb), 0.1);
+}
+
+/* ============================================
+   RATING STARS
+   ============================================ */
+
+.review-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.review-card__star--filled {
+  fill: var(--primary);
+  stroke: var(--primary);
+}
+
+.review-card__star--empty {
+  fill: none;
+  stroke: var(--muted-foreground);
+}
+
+/* ============================================
+   CONTENT
+   ============================================ */
+
+.review-card__content {
+  flex: 1;
+}
+
+.review-card__text {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground);
+  margin-bottom: 0;
+}
+
+/* ============================================
+   AUTHOR INFO
+   ============================================ */
+
+.review-card__author {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.review-card__author-info {
+  flex: 1;
+}
+
+.review-card__author-name {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--foreground);
+  margin-bottom: 0.25rem;
+}
+
+.review-card__author-location {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+  color: var(--muted-foreground);
+  margin-bottom: 0;
+}
+
+/* ============================================
+   VERIFIED BADGE
+   ============================================ */
+
+.review-card__verified-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--success);
+  background-color: rgba(var(--success-rgb), 0.1);
+  border: 1px solid var(--success);
+  border-radius: var(--radius-full);
+}
+
+/* ============================================
+   READ MORE LINK
+   ============================================ */
+
+.review-card__link {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.review-card__link:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.review-card__link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}

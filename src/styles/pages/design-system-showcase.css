@@ -1,0 +1,44 @@
+/**
+ * Design System Showcase Page Styles
+ * 
+ * Custom styles for the design system showcase page.
+ * Demonstrates proper use of CSS variables and BEM naming.
+ * 
+ * @see /src/app/pages/DesignSystemShowcase.tsx
+ */
+
+/* ============================================
+   SECTION PATTERNS
+   ============================================ */
+
+.wp-pattern-section {
+  padding-top: var(--spacing-section-sm);
+  padding-bottom: var(--spacing-section-sm);
+}
+
+@media (min-width: 769px) {
+  .wp-pattern-section {
+    padding-top: var(--spacing-section-md);
+    padding-bottom: var(--spacing-section-md);
+  }
+}
+
+.wp-pattern-section--primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.wp-pattern-section--primary h1,
+.wp-pattern-section--primary h2,
+.wp-pattern-section--primary h3 {
+  color: var(--primary-foreground);
+}
+
+.wp-pattern-section--primary code {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--primary-foreground);
+}
+
+.dark .wp-pattern-section--primary code {
+  background-color: rgba(0, 0, 0, 0.2);
+}
