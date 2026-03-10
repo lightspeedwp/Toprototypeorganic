@@ -1,9 +1,15 @@
-/* Google Fonts - Lora (Serif) and Noto Sans */
+/* Google Fonts - Organic Redesign Typography */
 /* 
  * Optimized font loading strategy:
  * - display=swap prevents invisible text during font loading
  * - Preconnect to fonts.googleapis.com for faster DNS resolution
- * - Only load weights actually used in the design system (300, 400, 500, 600, 700)
+ * - Only load weights actually used in the design system
  * - Font subsetting handled by Google Fonts automatically
+ * 
+ * Typography System:
+ * - Lora (Serif) - Headings, editorial content (300, 400, 500, 600, 700)
+ * - Noto Sans (Sans-serif) - Body text, UI elements (300, 400, 500, 600, 700)
+ * - Caveat (Handwritten) - Accent/display text, sparingly (400, 700)
+ * - Shadows Into Light (Handwritten) - Decorative accents, very sparingly (400)
  */
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&family=Caveat:wght@400;700&family=Shadows+Into+Light&display=swap');

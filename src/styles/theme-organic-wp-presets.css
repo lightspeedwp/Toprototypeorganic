@@ -1,0 +1,5 @@
+/* theme-organic-wp-presets.css */
+/* Optional: remaps --wp--preset--* under .theme-organic without changing preset structure */
+.theme-organic {
+  /* Re-map core wp presets if necessary for organic context */
+}

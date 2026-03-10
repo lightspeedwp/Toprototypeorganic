@@ -1,0 +1,17 @@
+/* parts.footer.css */
+.theme-organic .wp-part-footer {
+  /* Footer / end-of-journey feels calm */
+  --background: var(--o-surface-linen);
+  background-color: var(--background);
+  background-image: var(--texture-linen-light);
+  background-blend-mode: multiply;
+  color: var(--foreground);
+  border-top: var(--border-width-thin) solid var(--o-earth);
+}
+
+.dark.theme-organic .wp-part-footer {
+  --background: var(--organic-earth-bg-primary);
+  background-color: var(--background);
+  color: var(--organic-earth-text);
+  border-top: var(--border-width-thin) solid var(--organic-earth-bg-secondary);
+}

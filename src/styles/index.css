@@ -131,3 +131,6 @@
 @import './components/badge.css';
 @import './components/reviews-section.css';
 @import './components/stats-display.css';
+
+/* ── 13. Organic theme overrides (scoped; safe to import last) ─────── */
+@import './organic/organic.css';

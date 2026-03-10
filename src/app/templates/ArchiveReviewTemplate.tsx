@@ -70,45 +70,46 @@ export function ArchiveReviewTemplate() {
   };
 
   return (
-    <PageShell context="reviews-archive" as="article" className="wp-template-archive-review">
-      {/* Statistics */}
-      <StatisticsMetricsPattern
-        title="Trusted by Travelers"
-        description="Our commitment to excellence is reflected in the stories of those who journey with us."
-        statistics={[
-          { value: totalReviewsCount.toString(), label: "Verified Reviews", icon: MessageSquare },
-          { value: averageRatingValue, label: "Average Rating", icon: Star, suffix: "/5" },
-          { value: `${fiveStarPercentage}%`, label: "5-Star Experiences", icon: ThumbsUp },
-          { value: "15+", label: "Years of Service", icon: Award },
-        ]}
-      />
+    <PageShell context="reviews-archive" as="article" className="wp-template-archive-review theme-organic">
+      <div className="organic-section-top">
+        {/* Statistics */}
+        <StatisticsMetricsPattern
+          title="Trusted by Travelers"
+          description="Our commitment to excellence is reflected in the stories of those who journey with us."
+          statistics={[
+            { value: totalReviewsCount.toString(), label: "Verified Reviews", icon: MessageSquare },
+            { value: averageRatingValue, label: "Average Rating", icon: Star, suffix: "/5" },
+            { value: `${fiveStarPercentage}%`, label: "5-Star Experiences", icon: ThumbsUp },
+            { value: "15+", label: "Years of Service", icon: Award },
+          ]}
+        />
 
-      {/* Filters */}
-      <SearchFilterPattern
-        filters={[
-          {
-            id: "search",
-            type: "search",
-            label: "Search",
-            placeholder: "Content or author...",
-            value: searchQuery
-          },
-          {
-            id: "rating",
-            label: "Rating",
-            type: "select",
-            placeholder: "All Ratings",
-            value: selectedRating,
-            options: [
-              { value: "5", label: "5 Stars" },
-              { value: "4", label: "4 Stars" },
-              { value: "3", label: "3 Stars" },
-              { value: "2", label: "2 Stars" },
-              { value: "1", label: "1 Star" },
-            ]
-          },
-          {
-            id: "type",
+        {/* Filters */}
+        <SearchFilterPattern
+          filters={[
+            {
+              id: "search",
+              type: "search",
+              label: "Search",
+              placeholder: "Content or author...",
+              value: searchQuery
+            },
+            {
+              id: "rating",
+              label: "Rating",
+              type: "select",
+              placeholder: "All Ratings",
+              value: selectedRating,
+              options: [
+                { value: "5", label: "5 Stars" },
+                { value: "4", label: "4 Stars" },
+                { value: "3", label: "3 Stars" },
+                { value: "2", label: "2 Stars" },
+                { value: "1", label: "1 Star" },
+              ]
+            },
+            {
+              id: "type",
             label: "Category",
             type: "select",
             placeholder: "All Reviews",
@@ -125,9 +126,11 @@ export function ArchiveReviewTemplate() {
         onClearAll={resetFilters}
         collapsible={true}
       />
+      </div>
 
-      {/* Main Content */}
-      <section className="wp-template-archive__content py-section-lg">
+      <div className="organic-section-middle">
+        {/* Main Content */}
+        <section className="wp-template-archive__content py-section-lg">
         <Container>
           {/* Results Header */}
           <div className="wp-template-archive__results-header">
@@ -179,28 +182,31 @@ export function ArchiveReviewTemplate() {
           )}
         </Container>
       </section>
+      </div>
 
-      {/* FAQ */}
-      <FAQ
-        items={faqData?.items || []}
-        title={faqData?.sectionTitle || "Review Guidelines & FAQ"}
-        intro={faqData?.sectionDescription || "Everything you need to know about our customer feedback process."}
-      />
+      <div className="organic-section-bottom">
+        {/* FAQ */}
+        <FAQ
+          items={faqData?.items || []}
+          title={faqData?.sectionTitle || "Review Guidelines & FAQ"}
+          intro={faqData?.sectionDescription || "Everything you need to know about our customer feedback process."}
+        />
 
-      {/* CTA */}
-      <CTA
-        title="Share Your Safari Adventure"
-        description="Just returned from the wild? We'd love to hear about your experience and share your story with our community."
-        variant="gradient"
-        primaryAction={{
-          label: "Submit a Review",
-          onClick: () => navigateTo("/contact"),
-        }}
-        secondaryAction={{
-          label: "Browse Tours",
-          onClick: () => navigateTo("/tours"),
-        }}
-      />
+        {/* CTA */}
+        <CTA
+          title="Share Your Safari Adventure"
+          description="Just returned from the wild? We'd love to hear about your experience and share your story with our community."
+          variant="default"
+          primaryAction={{
+            label: "Submit a Review",
+            onClick: () => navigateTo("/contact"),
+          }}
+          secondaryAction={{
+            label: "Browse Tours",
+            onClick: () => navigateTo("/tours"),
+          }}
+        />
+      </div>
     </PageShell>
   );
 }

@@ -1,0 +1,27 @@
+/* utilities.typography.css */
+.theme-organic .is-style-handwritten,
+.theme-organic .wp-text--hand {
+  font-family: var(--font-family-caveat, 'Caveat', cursive);
+  letter-spacing: 0.01em;
+}
+
+/* Alternative handwriting style */
+.theme-organic .wp-text--hand-alt {
+  font-family: var(--font-family-shadows, 'Shadows Into Light', cursive);
+  letter-spacing: 0.02em;
+}
+
+/* Organic theme typography utilities */
+.theme-organic .organic-typography-heading,
+.theme-organic h1, .theme-organic h2, .theme-organic h3, .theme-organic h4, .theme-organic h5, .theme-organic h6 {
+  font-family: var(--font-family-lora);
+}
+
+.theme-organic .organic-typography-body,
+.theme-organic p, .theme-organic span, .theme-organic div {
+  font-family: var(--font-family-noto-sans);
+}
+
+.theme-organic code, .theme-organic pre {
+  font-family: var(--font-family-mono);
+}

@@ -50,105 +50,113 @@ export function ArchiveBlogTemplate() {
   const { navigateToBlogPost, navigateTo } = useNavigation();
 
   return (
-    <PageShell context="blog-archive" as="main" className="wp-template-archive-blog">
-      <TaxonomyNav
-        label="Subject"
-        terms={ALL_BLOG_CATEGORIES}
-        activeId={selectedCategory === "all" ? undefined : selectedCategory}
-        onTermClick={(id) => { setSelectedCategory(id || "all"); setCurrentPage(1); }}
-      />
+    <PageShell context="blog-archive" as="main" className="wp-template-archive-blog theme-organic">
+      <div className="organic-section-top">
+        <TaxonomyNav
+          label="Subject"
+          terms={ALL_BLOG_CATEGORIES}
+          activeId={selectedCategory === "all" ? undefined : selectedCategory}
+          onTermClick={(id) => { setSelectedCategory(id || "all"); setCurrentPage(1); }}
+        />
 
-      <SearchFilterPattern
-        searchPlaceholder="Explore stories..."
-        onSearchChange={(q) => { setSearchQuery(q); setCurrentPage(1); }}
-        onClearAll={resetFilters}
-        collapsible={true}
-      />
+        <SearchFilterPattern
+          searchPlaceholder="Explore stories..."
+          onSearchChange={(q) => { setSearchQuery(q); setCurrentPage(1); }}
+          onClearAll={resetFilters}
+          collapsible={true}
+        />
+      </div>
 
-      <section className="wp-template-archive__content">
-        <Container>
-          <div className="wp-template-archive__results-header">
-            <SectionHeader
-              section={{
-                eyebrow: "Latest Updates",
-                title: "Editorial Collection",
-                description: `Discover ${filteredPosts.length} expert insights and traveler stories.`
-              }}
-              centered={false}
-              className="m-0"
-            />
-            <ViewSwitcher currentView={viewMode} onViewChange={setViewMode} />
-          </div>
-
-          {paginatedPosts.length > 0 ? (
-            <div className={viewMode === "list" ? "wp-template-archive__list" : "wp-template-archive__grid wp-template-archive__grid--cols-3"}>
-              {paginatedPosts.map((post) => (
-                <BlogCard
-                  key={post.id}
-                  post={post}
-                  layout={viewMode === "list" ? "horizontal" : "card"}
-                  onClick={() => navigateToBlogPost(post.slug)}
-                />
-              ))}
+      <div className="organic-section-middle">
+        <section className="wp-template-archive__content">
+          <Container>
+            <div className="wp-template-archive__results-header">
+              <SectionHeader
+                section={{
+                  eyebrow: "Latest Updates",
+                  title: "Editorial Collection",
+                  description: `Discover ${filteredPosts.length} expert insights and traveler stories.`
+                }}
+                centered={false}
+                className="m-0"
+              />
+              <ViewSwitcher currentView={viewMode} onViewChange={setViewMode} />
             </div>
-          ) : (
-            <EmptyStatePattern
-              icon="search"
-              title="No Stories Found"
-              message="We couldn't find any articles matching your search. Try different keywords or browse a different category."
-              primaryAction={{
-                label: "Browse All Stories",
-                onClick: resetFilters,
-              }}
-            />
-          )}
 
-          {filteredPosts.length > ITEMS_PER_PAGE && (
-            <div className="wp-template-archive__pagination">
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={setCurrentPage}
+            {paginatedPosts.length > 0 ? (
+              <div className={viewMode === "list" ? "wp-template-archive__list" : "wp-template-archive__grid wp-template-archive__grid--cols-3"}>
+                {paginatedPosts.map((post) => (
+                  <BlogCard
+                    key={post.id}
+                    post={post}
+                    layout={viewMode === "list" ? "horizontal" : "card"}
+                    onClick={() => navigateToBlogPost(post.slug)}
+                  />
+                ))}
+              </div>
+            ) : (
+              <EmptyStatePattern
+                icon="search"
+                title="No Stories Found"
+                message="We couldn't find any articles matching your search. Try different keywords or browse a different category."
+                primaryAction={{
+                  label: "Browse All Stories",
+                  onClick: resetFilters,
+                }}
+              />
+            )}
+
+            {filteredPosts.length > ITEMS_PER_PAGE && (
+              <div className="wp-template-archive__pagination">
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={setCurrentPage}
+                />
+              </div>
+            )}
+          </Container>
+        </section>
+      </div>
+
+      <div className="organic-section-middle-alt">
+        <section className="py-section-lg bg-muted/30 border-y border-border/50">
+          <Container maxWidth="narrow">
+            <div className="p-10 md:p-16 organic-radius-lg bg-background border-2 border-border shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-8 opacity-5">
+                <Newspaper className="size-48" />
+              </div>
+              <NewsletterSignupPattern
+                title="The Safari Insider"
+                description="Join 15,000+ explorers. Get monthly destination guides, conservation news, and exclusive early-access to seasonal offers."
+                variant="minimal"
               />
             </div>
-          )}
-        </Container>
-      </section>
+          </Container>
+        </section>
+      </div>
 
-      <section className="py-section-lg bg-muted/30 border-y border-border/50">
-        <Container maxWidth="narrow">
-          <div className="p-10 md:p-16 rounded-3xl bg-background border-2 border-border shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-8 opacity-5">
-              <Newspaper className="size-48" />
-            </div>
-            <NewsletterSignupPattern
-              title="The Safari Insider"
-              description="Join 15,000+ explorers. Get monthly destination guides, conservation news, and exclusive early-access to seasonal offers."
-              variant="minimal"
-            />
-          </div>
-        </Container>
-      </section>
+      <div className="organic-section-bottom">
+        <FAQ
+          items={faqData?.items}
+          title="Travel Wisdom"
+          intro="Common questions about planning your journey and what to expect on the ground."
+        />
 
-      <FAQ
-        items={faqData?.items}
-        title="Travel Wisdom"
-        intro="Common questions about planning your journey and what to expect on the ground."
-      />
-
-      <CTA
-        title="Ready to Start Your Journey?"
-        description="Our specialists are available to help you design a bespoke itinerary that matches your curiosity and pace."
-        variant="gradient"
-        primaryAction={{ 
-          label: "Request a Proposal", 
-          onClick: () => navigateTo("/contact") 
-        }}
-        secondaryAction={{
-          label: "Try Trip Planner",
-          onClick: () => navigateTo("/trip-planner"),
-        }}
-      />
+        <CTA
+          title="Ready to Start Your Journey?"
+          description="Our specialists are available to help you design a bespoke itinerary that matches your curiosity and pace."
+          variant="default"
+          primaryAction={{ 
+            label: "Request a Proposal", 
+            onClick: () => navigateTo("/contact") 
+          }}
+          secondaryAction={{
+            label: "Try Trip Planner",
+            onClick: () => navigateTo("/trip-planner"),
+          }}
+        />
+      </div>
     </PageShell>
   );
 }

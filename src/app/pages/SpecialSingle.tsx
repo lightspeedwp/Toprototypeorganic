@@ -38,28 +38,31 @@ export function SpecialSingle() {
   ];
 
   return (
-    <article className="wp-template-single-special bg-background">
-      <BreadcrumbsPattern
-        items={[
-          { label: "Home", href: "/", onClick: () => navigateTo("/") },
-          { label: "Exclusive Offers", href: "/specials", onClick: () => navigateTo("/specials") },
-          { label: special.title, isCurrent: true },
-        ]}
-        fullWidth={true}
-      />
+    <article className="wp-template-single-special bg-background theme-organic">
+      <div className="organic-section-top">
+        <BreadcrumbsPattern
+          items={[
+            { label: "Home", href: "/", onClick: () => navigateTo("/") },
+            { label: "Exclusive Offers", href: "/specials", onClick: () => navigateTo("/specials") },
+            { label: special.title, isCurrent: true },
+          ]}
+          fullWidth={true}
+        />
 
-      <Hero
-        title={special.title}
-        intro={special.excerpt}
-        image={special.featuredImage}
-        context="A Moment of Opportunity"
-        height="large"
-        primaryCTA={{ label: "Claim Exclusive Offer", onClick: () => document.getElementById('offer-details')?.scrollIntoView({ behavior: 'smooth' }) }}
-        secondaryCTA={{ label: "View All Specials", onClick: () => navigateTo("/specials"), variant: "outline" }}
-        animated
-      />
+        <Hero
+          title={special.title}
+          intro={special.excerpt}
+          image={special.featuredImage}
+          context="A Moment of Opportunity"
+          height="large"
+          primaryCTA={{ label: "Claim Exclusive Offer", onClick: () => document.getElementById('offer-details')?.scrollIntoView({ behavior: 'smooth' }) }}
+          secondaryCTA={{ label: "View All Specials", onClick: () => navigateTo("/specials"), variant: "outline" }}
+          animated
+        />
+      </div>
 
-      {/* Urgency Strip */}
+      <div className="organic-section-middle">
+        {/* Urgency Strip */}
       <section className="bg-accent py-8 text-accent-foreground shadow-2xl relative z-10 overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 animate-pulse" />
         <Container>
@@ -148,20 +151,23 @@ export function SpecialSingle() {
           </CardGrid>
         </Container>
       </section>
+      </div>
 
-      <FAQ
-        items={faqData?.items || []}
-        title="Protocol FAQ"
-        intro="Technical details regarding our seasonal incentives and acquisition terms."
-      />
+      <div className="organic-section-bottom">
+        <FAQ
+          items={faqData?.items || []}
+          title="Protocol FAQ"
+          intro="Technical details regarding our seasonal incentives and acquisition terms."
+        />
 
-      <CTA
-        title="Command Your Experience"
-        description="Limited availability dictates that these offers are secured on a first-come basis. Ensure your place in the wilderness today."
-        variant="gradient"
-        primaryAction={{ label: "Request Allocation", onClick: () => navigateTo("/contact") }}
-        secondaryAction={{ label: "Talk to a Specialist", onClick: () => navigateTo("/contact") }}
-      />
+        <CTA
+          title="Command Your Experience"
+          description="Limited availability dictates that these offers are secured on a first-come basis. Ensure your place in the wilderness today."
+          variant="default"
+          primaryAction={{ label: "Request Allocation", onClick: () => navigateTo("/contact") }}
+          secondaryAction={{ label: "Talk to a Specialist", onClick: () => navigateTo("/contact") }}
+        />
+      </div>
     </article>
   );
 }

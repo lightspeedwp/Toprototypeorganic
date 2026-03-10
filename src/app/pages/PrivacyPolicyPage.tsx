@@ -66,44 +66,50 @@ export function PrivacyPolicyPage() {
   `;
 
   return (
-    <PageShell context="privacy-policy">
-      <TableOfContentsPattern
-        title="Policy Sections"
-        sections={sections}
-        variant="default"
-      />
+    <PageShell context="privacy-policy" className="theme-organic">
+      <div className="organic-section-top">
+        <TableOfContentsPattern
+          title="Policy Sections"
+          sections={sections}
+          variant="default"
+        />
+      </div>
 
-      <EditorialContent
-        variant="narrow"
-        content={content}
-        animated
-      />
+      <div className="organic-section-middle">
+        <EditorialContent
+          variant="narrow"
+          content={content}
+          animated
+        />
 
-      <ContactInfoPattern
-        title="Privacy Officer"
-        description="Direct line for data protection inquiries."
-        items={[
-          { type: 'email', label: 'Privacy Support', value: 'privacy@touroperator.com', href: 'mailto:privacy@touroperator.com' },
-          { type: 'phone', label: 'Direct Line', value: '+27 21 123 4567', href: 'tel:+27211234567' }
-        ]}
-        columns={2}
-        variant="card"
-        className="bg-muted/30 py-section-md border-y border-border/50"
-      />
+        <ContactInfoPattern
+          title="Privacy Officer"
+          description="Direct line for data protection inquiries."
+          items={[
+            { type: 'email', label: 'Privacy Support', value: 'privacy@touroperator.com', href: 'mailto:privacy@touroperator.com' },
+            { type: 'phone', label: 'Direct Line', value: '+27 21 123 4567', href: 'tel:+27211234567' }
+          ]}
+          columns={2}
+          variant="card"
+          className="bg-muted/30 py-section-md border-y border-border/50"
+        />
+      </div>
 
-      <CTA
-        title="Have Concerns?"
-        description="We are here to help you understand our policies and how your data is handled."
-        variant="gradient"
-        primaryAction={{
-          label: "Contact Support",
-          onClick: () => navigateTo("/contact"),
-        }}
-        secondaryAction={{
-          label: "Terms of Service",
-          onClick: () => navigateTo("/terms-conditions"),
-        }}
-      />
+      <div className="organic-section-bottom">
+        <CTA
+          title="Have Concerns?"
+          description="We are here to help you understand our policies and how your data is handled."
+          variant="default"
+          primaryAction={{
+            label: "Contact Support",
+            onClick: () => navigateTo("/contact"),
+          }}
+          secondaryAction={{
+            label: "Terms of Service",
+            onClick: () => navigateTo("/terms-conditions"),
+          }}
+        />
+      </div>
     </PageShell>
   );
 }

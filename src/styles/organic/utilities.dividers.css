@@ -1,0 +1,6 @@
+/* utilities.dividers.css */
+/* Hand-drawn dividers, section separators */
+.theme-organic hr,
+.theme-organic .wp-block-separator {
+  /* Override styles here */
+}

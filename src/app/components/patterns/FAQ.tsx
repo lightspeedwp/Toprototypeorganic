@@ -27,8 +27,11 @@ interface FAQProps {
 }
 
 export function FAQ({ items, questions, title, intro, subtitle, className }: FAQProps) {
-  const resolvedItems: FAQItem[] | undefined = items || (questions ? questions.map((q, i) => ({
-    id: q.id || `faq-${i}`,
+  const resolvedItems: FAQItem[] | undefined = items?.map((item, i) => ({
+    ...item,
+    id: item.id || `faq-item-${i}`
+  })) || (questions ? questions.map((q, i) => ({
+    id: q.id || `faq-q-${i}`,
     question: q.question,
     answer: q.answer,
     category: q.category || 'general',
@@ -66,7 +69,7 @@ export function FAQ({ items, questions, title, intro, subtitle, className }: FAQ
                   value={item.id}
                   className="wp-pattern-faq__item"
                 >
-                  <AccordionTrigger className="wp-pattern-faq__trigger">
+                  <AccordionTrigger className="wp-pattern-faq__trigger px-[0px] pt-[16px] pb-[0px]">
                     <span className="wp-pattern-faq__question">
                       {item.question}
                     </span>

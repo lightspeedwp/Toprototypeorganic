@@ -66,44 +66,50 @@ export function TermsConditionsPage() {
   `;
 
   return (
-    <PageShell context="terms-conditions">
-      <TableOfContentsPattern
-        title="Agreement Details"
-        sections={sections}
-        variant="default"
-      />
+    <PageShell context="terms-conditions" className="theme-organic">
+      <div className="organic-section-top">
+        <TableOfContentsPattern
+          title="Agreement Details"
+          sections={sections}
+          variant="default"
+        />
+      </div>
 
-      <EditorialContent
-        variant="narrow"
-        content={content}
-        animated
-      />
+      <div className="organic-section-middle">
+        <EditorialContent
+          variant="narrow"
+          content={content}
+          animated
+        />
 
-      <ContactInfoPattern
-        title="Legal Inquiries"
-        description="For clarification on any of our terms or conditions."
-        items={[
-          { type: 'email', label: 'Legal Team', value: 'legal@touroperator.com', href: 'mailto:legal@touroperator.com' },
-          { type: 'address', label: 'Registered Office', value: '123 Main Road, Cape Town, 8001, SA' }
-        ]}
-        columns={2}
-        variant="card"
-        className="bg-muted/30 py-section-md border-y border-border/50"
-      />
+        <ContactInfoPattern
+          title="Legal Inquiries"
+          description="For clarification on any of our terms or conditions."
+          items={[
+            { type: 'email', label: 'Legal Team', value: 'legal@touroperator.com', href: 'mailto:legal@touroperator.com' },
+            { type: 'address', label: 'Registered Office', value: '123 Main Road, Cape Town, 8001, SA' }
+          ]}
+          columns={2}
+          variant="card"
+          className="bg-muted/30 py-section-md border-y border-border/50"
+        />
+      </div>
 
-      <CTA
-        title="Ready to Agree?"
-        description="If you understand and accept our terms, you're one step closer to your dream safari."
-        variant="gradient"
-        primaryAction={{
-          label: "Start Booking",
-          onClick: () => navigateTo("/tours"),
-        }}
-        secondaryAction={{
-          label: "Privacy Policy",
-          onClick: () => navigateTo("/privacy-policy"),
-        }}
-      />
+      <div className="organic-section-bottom">
+        <CTA
+          title="Ready to Agree?"
+          description="If you understand and accept our terms, you're one step closer to your dream safari."
+          variant="default"
+          primaryAction={{
+            label: "Start Booking",
+            onClick: () => navigateTo("/tours"),
+          }}
+          secondaryAction={{
+            label: "Privacy Policy",
+            onClick: () => navigateTo("/privacy-policy"),
+          }}
+        />
+      </div>
     </PageShell>
   );
 }

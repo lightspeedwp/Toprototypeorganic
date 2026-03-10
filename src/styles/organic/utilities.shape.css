@@ -1,0 +1,44 @@
+/* utilities.shape.css */
+/* ORGANIC SHAPE UTILITIES — Blob/pebble shapes for key elements */
+
+.theme-organic .organic-blob-sm {
+  border-radius: var(--organic-radius-blob-sm);
+}
+
+.theme-organic .organic-blob-md {
+  border-radius: var(--organic-radius-blob-md);
+}
+
+.theme-organic .organic-blob-lg {
+  border-radius: var(--organic-radius-blob-lg);
+}
+
+.theme-organic .organic-pebble {
+  border-radius: var(--organic-radius-pebble);
+}
+
+/* Apply organic radius to standard elements */
+.theme-organic .organic-radius-sm {
+  border-radius: var(--organic-radius-sm);
+}
+
+.theme-organic .organic-radius-md {
+  border-radius: var(--organic-radius-md);
+}
+
+.theme-organic .organic-radius-lg {
+  border-radius: var(--organic-radius-lg);
+}
+
+.theme-organic .organic-radius-xl {
+  border-radius: var(--organic-radius-xl);
+}
+
+.theme-organic .organic-radius-2xl {
+  border-radius: var(--organic-radius-2xl);
+}
+
+/* Organic blobs with WebGL/Texture fallback */
+.theme-organic .organic-blob-container {
+  overflow: hidden;
+}

@@ -128,99 +128,116 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
   return (
     <main className="wp-template-home">
-      {/* Hero Section */}
-      <Hero context="home" />
+      {/* Hero Section (Savanna Sunset) */}
+      <div className="organic-section-top">
+        <Hero context="home" />
+      </div>
 
-      {/* Featured Tours */}
-      <FeaturedToursSection
-        tours={featuredTours}
-        section={toursSection}
-        onNavigate={nav}
-      />
-
-      {/* Destinations */}
-      <DestinationsSection
-        destinations={featuredDestinations}
-        section={destinationsSection}
-        onNavigate={nav}
-      />
-
-      {/* Why Choose Us */}
-      <WhyChooseUsSection
-        features={features.map((f) => ({
-          icon: resolveIcon(f.iconName),
-          title: f.title,
-          description: f.description,
-        }))}
-        section={whySection}
-      />
-
-      {/* Conservation Spotlight (NEW) */}
-      <ConservationSection onNavigate={nav} />
-
-      {/* Statistics */}
-      <StatisticsSection
-        statistics={statistics.map((s) => ({
-          value: s.value,
-          suffix: s.suffix,
-          label: s.label,
-          icon: resolveIcon(s.iconName),
-        }))}
-        section={statsSection}
-      />
-
-      {/* Accommodation */}
-      <AccommodationSection
-        accommodation={featuredAccommodation}
-        section={accommodationSection}
-        onNavigate={nav}
-      />
-
-      {/* Team */}
-      <TeamSection
-        team={featuredTeam}
-        section={teamSection}
-        onNavigate={nav}
-      />
-
-      {/* Testimonials */}
-      <TestimonialsSection
-        reviews={featuredTestimonials}
-        section={testimonialsSection}
-        onNavigate={nav}
-      />
-
-      {/* Blog */}
-      <BlogSection
-        posts={featuredBlogPosts}
-        section={blogSection}
-        onNavigate={nav}
-      />
-
-      {/* FAQ Section */}
-      {faqData && faqData.items.length > 0 && (
-        <FAQ
-          items={faqData.items}
-          title={faqData.sectionTitle}
-          intro={faqData.sectionDescription}
+      {/* Primary Content (Acacia & Clay) */}
+      <div className="organic-section-middle">
+        {/* Featured Tours */}
+        <FeaturedToursSection
+          tours={featuredTours}
+          section={toursSection}
+          onNavigate={nav}
         />
-      )}
 
-      {/* Newsletter */}
-      <NewsletterSection
-        newsletter={newsletter}
-        onSubmit={async (email) => {
-          console.log("Newsletter signup:", email);
-          await new Promise((resolve) => setTimeout(resolve, 1000));
-          return true;
-        }}
-      />
+        {/* Destinations */}
+        <DestinationsSection
+          destinations={featuredDestinations}
+          section={destinationsSection}
+          onNavigate={nav}
+        />
+      </div>
 
-      {/* Final CTA */}
-      <FinalCTASection
-        cta={cta}
-        onNavigate={nav}
-      />
+      {/* Feature/Alternative Content (Acacia & Clay - Alt) */}
+      <div className="organic-section-middle-alt">
+        {/* Why Choose Us */}
+        <WhyChooseUsSection
+          features={features.map((f) => ({
+            icon: resolveIcon(f.iconName),
+            title: f.title,
+            description: f.description,
+          }))}
+          section={whySection}
+        />
+
+        {/* Conservation Spotlight (NEW) */}
+        <ConservationSection onNavigate={nav} />
+
+        {/* Statistics */}
+        <StatisticsSection
+          statistics={statistics.map((s) => ({
+            value: s.value,
+            suffix: s.suffix,
+            label: s.label,
+            icon: resolveIcon(s.iconName),
+          }))}
+          section={statsSection}
+        />
+      </div>
+
+      {/* Secondary Content (Acacia & Clay) */}
+      <div className="organic-section-middle">
+        {/* Accommodation */}
+        <AccommodationSection
+          accommodation={featuredAccommodation}
+          section={accommodationSection}
+          onNavigate={nav}
+        />
+
+        {/* Team */}
+        <TeamSection
+          team={featuredTeam}
+          section={teamSection}
+          onNavigate={nav}
+        />
+
+        {/* Testimonials */}
+        <TestimonialsSection
+          reviews={featuredTestimonials}
+          section={testimonialsSection}
+          onNavigate={nav}
+        />
+      </div>
+
+      {/* Minimal Earth for Bottom Sections */}
+      <div className="organic-section-bottom">
+        {/* Blog */}
+        <BlogSection
+          posts={featuredBlogPosts}
+          section={blogSection}
+          onNavigate={nav}
+        />
+
+        {/* FAQ Section */}
+        {faqData && faqData.items.length > 0 && (
+          <FAQ
+            items={faqData.items}
+            title={faqData.sectionTitle}
+            intro={faqData.sectionDescription}
+          />
+        )}
+      </div>
+
+      {/* Newsletter and CTA (Minimal Earth Alt) */}
+      <div className="organic-section-bottom-alt">
+        {/* Newsletter */}
+        <NewsletterSection
+          newsletter={newsletter}
+          onSubmit={async (email) => {
+            console.log("Newsletter signup:", email);
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+            return true;
+          }}
+        />
+
+        {/* Final CTA */}
+        <FinalCTASection
+          cta={cta}
+          onNavigate={nav}
+        />
+      </div>
     </main>
   );
 }

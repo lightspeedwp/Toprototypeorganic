@@ -68,44 +68,47 @@ export function TeamSingle() {
   ];
 
   return (
-    <article className="wp-template-single">
-      {/* Breadcrumbs */}
-      <BreadcrumbsPattern
-        items={[
-          { label: "Home", href: "/", onClick: () => navigateTo("/") },
-          { label: "Our Team", href: "/team", onClick: () => navigateTo("/team") },
-          { label: teamMember.name, isCurrent: true },
-        ]}
-        fullWidth={true}
-      />
+    <article className="wp-template-single theme-organic">
+      <div className="organic-section-top">
+        {/* Breadcrumbs */}
+        <BreadcrumbsPattern
+          items={[
+            { label: "Home", href: "/", onClick: () => navigateTo("/") },
+            { label: "Our Team", href: "/team", onClick: () => navigateTo("/team") },
+            { label: teamMember.name, isCurrent: true },
+          ]}
+          fullWidth={true}
+        />
 
-      {/* Hero */}
-      <Hero
-        title={teamMember.name}
-        intro={teamMember.excerpt}
-        image={teamMember.featuredImage}
-        context={teamMember.role}
-        primaryCTA={{ 
-          label: "Contact Me",
-          onClick: () => navigateTo("/contact")
-        }}
-        secondaryCTA={{
-          label: "View All Team",
-          onClick: () => navigateTo("/team"),
-          variant: "outline"
-        }}
-      />
+        {/* Hero */}
+        <Hero
+          title={teamMember.name}
+          intro={teamMember.excerpt}
+          image={teamMember.featuredImage}
+          context={teamMember.role}
+          primaryCTA={{ 
+            label: "Contact Me",
+            onClick: () => navigateTo("/contact")
+          }}
+          secondaryCTA={{
+            label: "View All Team",
+            onClick: () => navigateTo("/team"),
+            variant: "outline"
+          }}
+        />
 
-      {/* Fast Facts */}
-      <FastFacts facts={fastFacts} />
+        {/* Fast Facts */}
+        <FastFacts facts={fastFacts} />
+      </div>
 
-      {/* Biography */}
-      <EditorialContent
-        title={`Meet ${teamMember.name.split(' ')[0]}`}
-        subtitle={teamMember.role}
-        content={teamMember.bio}
-        animated
-      />
+      <div className="organic-section-middle">
+        {/* Biography */}
+        <EditorialContent
+          title={`Meet ${teamMember.name.split(' ')[0]}`}
+          subtitle={teamMember.role}
+          content={teamMember.bio}
+          animated
+        />
 
       {/* Statistics */}
       <StatisticsMetricsPattern
@@ -138,28 +141,31 @@ export function TeamSingle() {
           />
         ))}
       </RelatedContent>
+      </div>
 
-      {/* FAQ */}
-      <FAQ
-        title="Travel Consultant FAQ"
-        intro="Common questions about working with our specialists"
-        items={getPageSectionFAQs("team-single")?.items || FAQ_GENERAL.slice(0, 4)}
-      />
+      <div className="organic-section-bottom">
+        {/* FAQ */}
+        <FAQ
+          title="Travel Consultant FAQ"
+          intro="Common questions about working with our specialists"
+          items={getPageSectionFAQs("team-single")?.items || FAQ_GENERAL.slice(0, 4)}
+        />
 
-      {/* Final CTA */}
-      <CTA
-        title={`Ready to Plan Your Dream Trip with ${teamMember.name.split(' ')[0]}?`}
-        description={`Let me help you create an unforgettable travel experience tailored to your interests.`}
-        variant="gradient"
-        primaryAction={{
-          label: "Request a Consultation",
-          onClick: () => navigateTo("/contact"),
-        }}
-        secondaryAction={{
-          label: "View All Tours",
-          onClick: () => navigateTo("/tours"),
-        }}
-      />
+        {/* Final CTA */}
+        <CTA
+          title={`Ready to Plan Your Dream Trip with ${teamMember.name.split(' ')[0]}?`}
+          description={`Let me help you create an unforgettable travel experience tailored to your interests.`}
+          variant="default"
+          primaryAction={{
+            label: "Request a Consultation",
+            onClick: () => navigateTo("/contact"),
+          }}
+          secondaryAction={{
+            label: "View All Tours",
+            onClick: () => navigateTo("/tours"),
+          }}
+        />
+      </div>
     </article>
   );
 }

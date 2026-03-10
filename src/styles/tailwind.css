@@ -79,6 +79,8 @@
   --font-sans:  var(--font-family-noto-sans);
   --font-serif: var(--font-family-lora);
   --font-mono:  var(--font-family-mono);
+  --font-hand:  var(--font-family-caveat);
+  --font-hand-alt: var(--font-family-shadows);
 
   /* Font sizes — mapped to our fluid clamp scale */
   --font-size-xs:   var(--text-xs);

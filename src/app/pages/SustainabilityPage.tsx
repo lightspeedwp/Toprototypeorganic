@@ -31,45 +31,50 @@ export default function SustainabilityPage() {
   ];
 
   return (
-    <PageShell context="sustainability">
-      {/* Impact Statistics */}
-      <section className="py-section-lg border-b border-border/50 bg-muted/20">
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            {impactStats.map((stat, idx) => {
-              const Icon = stat.icon;
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="size-16 rounded-3xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-8 shadow-sm">
-                    <Icon className="size-8" />
-                  </div>
-                  <p className="text-fluid-4xl text-primary mb-2">{stat.value}</p>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground m-0">{stat.suffix}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </Container>
-      </section>
+    <PageShell context="sustainability" className="theme-organic">
+      <div className="organic-section-top">
+        {/* Impact Statistics */}
+        <section className="py-section-lg border-b border-border/50 bg-muted/20">
+          <Container>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+              {impactStats.map((stat, idx) => {
+                const Icon = stat.icon;
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="text-center"
+                  >
+                    <div className="size-16 organic-radius-lg bg-primary/10 text-primary flex items-center justify-center mx-auto mb-8 shadow-sm">
+                      <Icon className="size-8" />
+                    </div>
+                    <p className="text-fluid-4xl text-primary mb-2 wp-text--hand">{stat.value}</p>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground m-0">{stat.suffix}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </Container>
+        </section>
+      </div>
 
-      {/* Core Sustainability Content */}
-      <SustainabilityPattern
-        projects={CONSERVATION_PROJECTS}
-        commitments={SUSTAINABILITY_COMMITMENTS}
-      />
+      <div className="organic-section-middle">
+        {/* Core Sustainability Content */}
+        <SustainabilityPattern
+          projects={CONSERVATION_PROJECTS}
+          commitments={SUSTAINABILITY_COMMITMENTS}
+        />
+      </div>
 
-      {/* Narrative Section */}
-      <section className="py-section-lg bg-card border-y-2 border-border/50">
-        <Container maxWidth="narrow">
-          <div className="text-center mb-16">
-            <h2 className="mb-8">Traveling with Purpose</h2>
+      <div className="organic-section-middle-alt">
+        {/* Narrative Section */}
+        <section className="py-section-lg bg-card border-y-2 border-border/50">
+          <Container maxWidth="narrow">
+            <div className="text-center mb-16">
+              <h2 className="mb-8 wp-text--hand">Traveling with Purpose</h2>
             <div className="space-y-6 text-muted-foreground text-left">
               <p>
                 We believe that travel is more than just seeing new places; it's about connecting with 
@@ -106,26 +111,29 @@ export default function SustainabilityPage() {
           </div>
         </Container>
       </section>
+      </div>
 
-      <FAQ
-        title="Responsible Travel FAQ"
-        subtitle="Learn how you can contribute to conservation during your expedition."
-        items={faqData?.items}
-      />
+      <div className="organic-section-bottom">
+        <FAQ
+          title="Responsible Travel FAQ"
+          subtitle="Learn how you can contribute to conservation during your expedition."
+          items={faqData?.items}
+        />
 
-      <CTA
-        variant="gradient"
-        title="Be Part of the Solution"
-        description="Every safari booked with us directly funds a conservation project of your choice. Join us in making a difference while exploring the wild heart of Africa."
-        primaryAction={{
-          label: "Start Planning Your Purposeful Journey",
-          onClick: () => navigateTo("/contact")
-        }}
-        secondaryAction={{
-          label: "View All Destinations",
-          onClick: () => navigateTo("/destinations")
-        }}
-      />
+        <CTA
+          variant="default"
+          title="Be Part of the Solution"
+          description="Every safari booked with us directly funds a conservation project of your choice. Join us in making a difference while exploring the wild heart of Africa."
+          primaryAction={{
+            label: "Start Planning Your Purposeful Journey",
+            onClick: () => navigateTo("/contact")
+          }}
+          secondaryAction={{
+            label: "View All Destinations",
+            onClick: () => navigateTo("/destinations")
+          }}
+        />
+      </div>
     </PageShell>
   );
 }

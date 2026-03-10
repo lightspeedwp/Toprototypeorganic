@@ -31,59 +31,63 @@ export function ArchiveTeamTemplate() {
   const faqData = getPageSectionFAQs("team-archive");
 
   return (
-    <PageShell context="team-archive" as="article" className="wp-template-archive-team">
-      {/* Content Section */}
-      <section className="wp-template-archive__content py-section-lg">
-        <Container>
-          {/* Results Header */}
-          <div className="wp-template-archive__results-header">
-            <SectionHeader
-              section={{
-                eyebrow: "Expertise",
-                title: "Our Specialists",
-                description: `Showing ${ALL_TEAM.length} experts ready to help you plan your legendary journey.`
-              }}
-              centered={false}
-              className="m-0"
-            />
-            <ViewSwitcher currentView={viewMode} onViewChange={setViewMode} />
-          </div>
-
-          {/* Team Grid */}
-          <div className={viewMode === "list" ? "wp-template-archive__list" : "wp-template-archive__grid wp-template-archive__grid--cols-3"}>
-            {ALL_TEAM.map((member) => (
-              <TeamCard
-                key={member.id}
-                member={member}
-                layout={viewMode === "list" ? "horizontal" : "card"}
-                onClick={() => navigateToTeamMember(member.slug)}
+    <PageShell context="team-archive" as="article" className="wp-template-archive-team theme-organic">
+      <div className="organic-section-middle">
+        {/* Content Section */}
+        <section className="wp-template-archive__content py-section-lg">
+          <Container>
+            {/* Results Header */}
+            <div className="wp-template-archive__results-header">
+              <SectionHeader
+                section={{
+                  eyebrow: "Expertise",
+                  title: "Our Specialists",
+                  description: `Showing ${ALL_TEAM.length} experts ready to help you plan your legendary journey.`
+                }}
+                centered={false}
+                className="m-0"
               />
-            ))}
-          </div>
-        </Container>
-      </section>
+              <ViewSwitcher currentView={viewMode} onViewChange={setViewMode} />
+            </div>
 
-      {/* FAQ */}
-      <FAQ
-        items={faqData?.items}
-        title={faqData?.sectionTitle || "Expert Guidance FAQ"}
-        intro={faqData?.sectionDescription || "How our specialists can help you plan the perfect safari"}
-      />
+            {/* Team Grid */}
+            <div className={viewMode === "list" ? "wp-template-archive__list" : "wp-template-archive__grid wp-template-archive__grid--cols-3"}>
+              {ALL_TEAM.map((member) => (
+                <TeamCard
+                  key={member.id}
+                  member={member}
+                  layout={viewMode === "list" ? "horizontal" : "card"}
+                  onClick={() => navigateToTeamMember(member.slug)}
+                />
+              ))}
+            </div>
+          </Container>
+        </section>
+      </div>
 
-      {/* CTA */}
-      <CTA
-        title={CTA_TEAM_ARCHIVE.title}
-        description={CTA_TEAM_ARCHIVE.description}
-        variant="gradient"
-        primaryAction={{ 
-          label: "Talk to an Expert",
-          onClick: () => navigateTo("/contact")
-        }}
-        secondaryAction={{ 
-          label: "View All Tours",
-          onClick: () => navigateTo("/tours")
-        }}
-      />
+      <div className="organic-section-bottom">
+        {/* FAQ */}
+        <FAQ
+          items={faqData?.items}
+          title={faqData?.sectionTitle || "Expert Guidance FAQ"}
+          intro={faqData?.sectionDescription || "How our specialists can help you plan the perfect safari"}
+        />
+
+        {/* CTA */}
+        <CTA
+          title={CTA_TEAM_ARCHIVE.title}
+          description={CTA_TEAM_ARCHIVE.description}
+          variant="default"
+          primaryAction={{ 
+            label: "Talk to an Expert",
+            onClick: () => navigateTo("/contact")
+          }}
+          secondaryAction={{ 
+            label: "View All Tours",
+            onClick: () => navigateTo("/tours")
+          }}
+        />
+      </div>
     </PageShell>
   );
 }

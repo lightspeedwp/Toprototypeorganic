@@ -1,0 +1,14 @@
+/* theme-organic-motion.css */
+.theme-organic {
+  /* Organic easing + animation keyframes */
+  --ease-organic: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --duration-organic-short: 200ms;
+  --duration-organic-long: 500ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-organic {
+    --duration-organic-short: 0ms;
+    --duration-organic-long: 0ms;
+  }
+}

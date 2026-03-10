@@ -89,45 +89,48 @@ export function SpecialsArchive() {
   };
 
   return (
-    <PageShell context="specials-archive">
-      {/* Advanced Filters */}
-      <SearchFilterPattern
-        filters={[
-          {
-            id: "category",
-            label: "Offer Category",
-            type: "select",
-            placeholder: "Filter by type",
-            value: activeFilter,
-            options: FILTER_OPTIONS
-          },
-          {
-            id: "sort",
-            label: "Sort By",
-            type: "select",
-            placeholder: "Sort deals",
-            value: sortBy,
-            options: SORT_OPTIONS
-          }
-        ]}
-        onFilterChange={(values) => {
-          if (values.category) setActiveFilter(values.category);
-          if (values.sort) setSortBy(values.sort);
-        }}
-        onClearAll={() => {
-          setActiveFilter('all');
-          setSortBy('savings');
-        }}
-        activeFiltersCount={activeFilter !== 'all' ? 1 : 0}
-        collapsible={true}
-      />
+    <PageShell context="specials-archive" className="theme-organic">
+      <div className="organic-section-top">
+        {/* Advanced Filters */}
+        <SearchFilterPattern
+          filters={[
+            {
+              id: "category",
+              label: "Offer Category",
+              type: "select",
+              placeholder: "Filter by type",
+              value: activeFilter,
+              options: FILTER_OPTIONS
+            },
+            {
+              id: "sort",
+              label: "Sort By",
+              type: "select",
+              placeholder: "Sort deals",
+              value: sortBy,
+              options: SORT_OPTIONS
+            }
+          ]}
+          onFilterChange={(values) => {
+            if (values.category) setActiveFilter(values.category);
+            if (values.sort) setSortBy(values.sort);
+          }}
+          onClearAll={() => {
+            setActiveFilter('all');
+            setSortBy('savings');
+          }}
+          activeFiltersCount={activeFilter !== 'all' ? 1 : 0}
+          collapsible={true}
+        />
+      </div>
 
-      {/* Main Content */}
-      <section className="wp-template-archive__content">
-        <Container>
-          {/* Results Header */}
-          <div className="wp-template-archive__results-header">
-            <div className="flex items-center gap-3">
+      <div className="organic-section-middle">
+        {/* Main Content */}
+        <section className="wp-template-archive__content">
+          <Container>
+            {/* Results Header */}
+            <div className="wp-template-archive__results-header">
+              <div className="flex items-center gap-3">
               <div className="p-2 rounded-full bg-accent/10">
                 <Percent size={20} className="text-accent" />
               </div>
@@ -176,28 +179,31 @@ export function SpecialsArchive() {
           )}
         </Container>
       </section>
+      </div>
 
-      {/* FAQ */}
-      <FAQ
-        items={faqData?.items || []}
-        title={faqData?.sectionTitle || "Booking Specials FAQ"}
-        intro={faqData?.sectionDescription || "Everything you need to know about our special offers and booking conditions"}
-      />
+      <div className="organic-section-bottom">
+        {/* FAQ */}
+        <FAQ
+          items={faqData?.items || []}
+          title={faqData?.sectionTitle || "Booking Specials FAQ"}
+          intro={faqData?.sectionDescription || "Everything you need to know about our special offers and booking conditions"}
+        />
 
-      {/* CTA */}
-      <CTA
-        title={CTA_SPECIALS_ARCHIVE.title}
-        description={CTA_SPECIALS_ARCHIVE.description}
-        variant="gradient"
-        primaryAction={{ 
-          label: "Request a Special Quote",
-          onClick: () => navigateTo("/contact")
-        }}
-        secondaryAction={{
-          label: "View All Tours",
-          onClick: () => navigateTo("/tours"),
-        }}
-      />
+        {/* CTA */}
+        <CTA
+          title={CTA_SPECIALS_ARCHIVE.title}
+          description={CTA_SPECIALS_ARCHIVE.description}
+          variant="default"
+          primaryAction={{ 
+            label: "Request a Special Quote",
+            onClick: () => navigateTo("/contact")
+          }}
+          secondaryAction={{
+            label: "View All Tours",
+            onClick: () => navigateTo("/tours"),
+          }}
+        />
+      </div>
     </PageShell>
   );
 }

@@ -82,9 +82,9 @@ export function Footer({ onNavigate }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="wp-part-footer">
+    <footer className="wp-part-footer theme-organic">
       {/* Newsletter Section */}
-      <section className="bg-primary/5 py-section-sm border-t border-border/50">
+      <section className="wp-part-footer__newsletter-wrapper">
         <NewsletterSignupPattern
           title="Join Our Adventure"
           description="Get the latest safari tips, destination guides, and exclusive offers delivered to your inbox."
@@ -98,118 +98,119 @@ export function Footer({ onNavigate }: FooterProps) {
 
       <Container>
         {/* Main Footer Content */}
-        <div className="wp-part-footer__main py-section-md border-t border-border/50">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-fluid-lg">
-            {/* Column 1: Brand */}
-            <div className="wp-part-footer__brand flex flex-col gap-6">
-              <button
-                onClick={() => handleNavigate("/")}
-                className="wp-part-footer__logo inline-flex"
-                aria-label={`${SITE_CONFIG.name} - Home`}
-              >
-                <Logo className="h-10" bare />
-              </button>
-              
-              <p className="wp-part-footer__description text-muted-foreground leading-relaxed">
-                {SITE_CONFIG.description}
-              </p>
+        <div className="wp-part-footer__main">
+          {/* Column 1: Brand */}
+          <div className="wp-part-footer__brand">
+            <button
+              onClick={() => handleNavigate("/")}
+              className="wp-part-footer__logo"
+              aria-label={`${SITE_CONFIG.name} - Home`}
+            >
+              <Logo className="h-10" bare />
+            </button>
+            
+            <p className="wp-part-footer__description">
+              {SITE_CONFIG.description}
+            </p>
 
+            <div className="wp-part-footer__social">
               <SocialLinks links={SOCIAL_LINKS} size="md" />
             </div>
+          </div>
 
-            {/* Column 2: Explore */}
-            <div className="wp-part-footer__column flex flex-col gap-6">
-              <h4 className="wp-part-footer__column-title font-serif font-semibold text-fluid-lg">
-                Explore
-              </h4>
-              <ul className="wp-part-footer__nav-list flex flex-col gap-3 list-none p-0 m-0">
-                {FOOTER_NAV.explore.map((link) => (
-                  <li key={link.href} className="m-0">
-                    <button
-                      onClick={() => handleNavigate(link.href)}
-                      className="wp-part-footer__nav-link text-muted-foreground hover:text-primary transition-colors text-left flex items-center gap-2"
-                    >
-                      <span>{link.label}</span>
-                      {link.badge && (
-                        <span className="px-1.5 py-0.5 rounded-sm bg-accent/10 text-accent text-fluid-xs font-bold uppercase tracking-wider">
-                          {link.badge}
-                        </span>
-                      )}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Column 3: Company */}
-            <div className="wp-part-footer__column flex flex-col gap-6">
-              <h4 className="wp-part-footer__column-title font-serif font-semibold text-fluid-lg">
-                Company
-              </h4>
-              <ul className="wp-part-footer__nav-list flex flex-col gap-3 list-none p-0 m-0">
-                {FOOTER_NAV.company.map((link) => (
-                  <li key={link.href} className="m-0">
-                    <button
-                      onClick={() => handleNavigate(link.href)}
-                      className="wp-part-footer__nav-link text-muted-foreground hover:text-primary transition-colors text-left"
-                    >
-                      {link.label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Column 4: Contact */}
-            <div className="wp-part-footer__column flex flex-col gap-6">
-              <h4 className="wp-part-footer__column-title font-serif font-semibold text-fluid-lg">
-                Contact
-              </h4>
-              <ul className="wp-part-footer__contact-list flex flex-col gap-4 list-none p-0 m-0">
-                <li className="flex items-start gap-3 text-muted-foreground text-fluid-sm">
-                  <MapPin size={18} className="text-primary shrink-0 mt-0.5" />
-                  <span>{SITE_CONFIG.contact.address}</span>
-                </li>
-                <li className="m-0">
-                  <a
-                    href={`tel:${SITE_CONFIG.contact.phone.replace(/\s+/g, "")}`}
-                    className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors text-fluid-sm"
+          {/* Column 2: Explore */}
+          <div className="wp-part-footer__column">
+            <h4 className="wp-part-footer__column-title">
+              Explore
+            </h4>
+            <ul className="wp-part-footer__nav-list">
+              {FOOTER_NAV.explore.map((link) => (
+                <li key={link.href}>
+                  <button
+                    onClick={() => handleNavigate(link.href)}
+                    className="wp-part-footer__nav-link"
                   >
-                    <Phone size={18} className="text-primary" />
-                    <span>{SITE_CONFIG.contact.phone}</span>
-                  </a>
+                    <span>{link.label}</span>
+                    {link.badge && (
+                      <span className="wp-part-footer__nav-badge">
+                        {link.badge}
+                      </span>
+                    )}
+                  </button>
                 </li>
-                <li className="m-0">
-                  <a
-                    href={`mailto:${SITE_CONFIG.contact.email}`}
-                    className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors text-fluid-sm"
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Company */}
+          <div className="wp-part-footer__column">
+            <h4 className="wp-part-footer__column-title">
+              Company
+            </h4>
+            <ul className="wp-part-footer__nav-list">
+              {FOOTER_NAV.company.map((link) => (
+                <li key={link.href}>
+                  <button
+                    onClick={() => handleNavigate(link.href)}
+                    className="wp-part-footer__nav-link"
                   >
-                    <Envelope size={18} className="text-primary" />
-                    <span>{SITE_CONFIG.contact.email}</span>
-                  </a>
+                    {link.label}
+                  </button>
                 </li>
-                <li className="flex items-center gap-3 text-muted-foreground text-fluid-sm">
-                  <Clock size={18} className="text-primary" />
-                  <span>Mon-Fri: 9am-5pm SAST</span>
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Contact */}
+          <div className="wp-part-footer__column">
+            <h4 className="wp-part-footer__column-title">
+              Contact
+            </h4>
+            <ul className="wp-part-footer__contact-list">
+              <li className="wp-part-footer__contact-item">
+                <MapPin className="wp-part-footer__contact-icon" />
+                <span>{SITE_CONFIG.contact.address}</span>
+              </li>
+              <li>
+                <a
+                  href={`tel:${SITE_CONFIG.contact.phone.replace(/\s+/g, "")}`}
+                  className="wp-part-footer__contact-link"
+                >
+                  <Phone className="wp-part-footer__contact-icon" />
+                  <span>{SITE_CONFIG.contact.phone}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${SITE_CONFIG.contact.email}`}
+                  className="wp-part-footer__contact-link"
+                >
+                  <Envelope className="wp-part-footer__contact-icon" />
+                  <span>{SITE_CONFIG.contact.email}</span>
+                </a>
+              </li>
+              <li className="wp-part-footer__contact-item">
+                <Clock className="wp-part-footer__contact-icon" />
+                <span>Mon-Fri: 9am-5pm SAST</span>
+              </li>
+            </ul>
           </div>
         </div>
 
         {/* Footer Bottom Bar */}
-        <div className="wp-part-footer__bottom py-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-6 text-fluid-xs text-muted-foreground">
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
-            <span>&copy; {currentYear} {SITE_CONFIG.name}. All rights reserved.</span>
-            <div className="flex items-center gap-4">
-              <button onClick={() => handleNavigate("/dev-tools/template-tester")} className="hover:text-primary transition-colors underline decoration-dotted">Test Templates</button>
-              <button onClick={() => handleNavigate("/dev-tools")} className="hover:text-primary transition-colors underline decoration-dotted">Dev Tools</button>
+        <div className="wp-part-footer__bottom">
+          <div className="wp-part-footer__copyright">
+            <span className="wp-part-footer__copyright-text">&copy; {currentYear} {SITE_CONFIG.name}. All rights reserved.</span>
+            <div className="wp-part-footer__dev-tools">
+              <span className="wp-part-footer__separator">|</span>
+              <button onClick={() => handleNavigate("/dev-tools/template-tester")} className="wp-part-footer__dev-link">Test Templates</button>
+              <button onClick={() => handleNavigate("/dev-tools")} className="wp-part-footer__dev-link">Dev Tools</button>
             </div>
           </div>
 
-          <div className="flex items-center gap-6">
-            <button onClick={() => handleNavigate("/privacy-policy")} className="hover:text-primary transition-colors">Privacy Policy</button>
-            <button onClick={() => handleNavigate("/terms-conditions")} className="hover:text-primary transition-colors">Terms of Service</button>
+          <div className="wp-part-footer__legal">
+            <button onClick={() => handleNavigate("/privacy-policy")} className="wp-part-footer__legal-link">Privacy Policy</button>
+            <button onClick={() => handleNavigate("/terms-conditions")} className="wp-part-footer__legal-link">Terms of Service</button>
           </div>
         </div>
       </Container>

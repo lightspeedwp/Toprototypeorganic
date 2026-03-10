@@ -198,25 +198,26 @@ export default function TripPlannerPage() {
 
   if (submitted) {
     return (
-      <main className="min-h-[80vh] flex items-center py-section-lg">
-        <Container maxWidth="sm">
-          <div className="text-center">
-            <div className="size-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-8">
-              <CircleCheck className="size-10 text-primary" />
-            </div>
-            <HeadingBlock level={1}>Request Received</HeadingBlock>
-            <ParagraphBlock className="text-muted-foreground mb-12">
-              Our specialists are already reviewing your preferences. We'll send a personalized proposal 
-              to <strong>{formData.email}</strong> shortly.
-            </ParagraphBlock>
+      <main className="theme-organic">
+        <div className="organic-section-middle min-h-[80vh] flex items-center py-section-lg">
+          <Container maxWidth="sm">
+            <div className="text-center">
+              <div className="size-20 organic-radius-full bg-primary/10 flex items-center justify-center mx-auto mb-8">
+                <CircleCheck className="size-10 text-primary" />
+              </div>
+              <HeadingBlock level={1}>Request Received</HeadingBlock>
+              <ParagraphBlock className="text-muted-foreground mb-12">
+                Our specialists are already reviewing your preferences. We'll send a personalized proposal 
+                to <strong>{formData.email}</strong> shortly.
+              </ParagraphBlock>
 
-            <div className="bg-muted/30 p-8 rounded-2xl text-left border border-border/50 mb-12">
-              <h3 className="text-xl mb-6">Your Planning Roadmap</h3>
-              <ul className="space-y-6 list-none p-0">
-                <li className="flex gap-4">
-                  <div className="size-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold shrink-0">1</div>
-                  <div>
-                    <p className="font-bold text-sm">Expert Analysis</p>
+              <div className="bg-muted/30 p-8 organic-radius-lg text-left border border-border/50 mb-12">
+                <h3 className="text-xl mb-6 wp-text--hand">Your Planning Roadmap</h3>
+                <ul className="space-y-6 list-none p-0">
+                  <li className="flex gap-4">
+                    <div className="size-6 organic-radius-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold shrink-0">1</div>
+                    <div>
+                      <p className="font-bold text-sm">Expert Analysis</p>
                     <p className="text-xs text-muted-foreground">A safari specialist is matching your interests with the best locations.</p>
                   </div>
                 </li>
@@ -247,23 +248,25 @@ export default function TripPlannerPage() {
             </div>
           </div>
         </Container>
+        </div>
       </main>
     );
   }
 
   return (
-    <main className="py-section-lg bg-muted/10 min-h-screen">
-      <Container maxWidth="md">
-        <div className="text-center mb-12">
-          <HeadingBlock level={1}>The Safari Designer</HeadingBlock>
-          <ParagraphBlock className="text-muted-foreground max-w-xl mx-auto">
-            Design your dream African adventure in less than 2 minutes. 
-            Our experts will turn your vision into a reality.
-          </ParagraphBlock>
-        </div>
+    <main className="theme-organic">
+      <div className="organic-section-middle py-section-lg min-h-screen">
+        <Container maxWidth="md">
+          <div className="text-center mb-12">
+            <HeadingBlock level={1}>The Safari Designer</HeadingBlock>
+            <ParagraphBlock className="text-muted-foreground max-w-xl mx-auto">
+              Design your dream African adventure in less than 2 minutes. 
+              Our experts will turn your vision into a reality.
+            </ParagraphBlock>
+          </div>
 
-        <div className="bg-card p-8 md:p-12 rounded-2xl shadow-xl border border-border/50">
-          {renderProgress()}
+          <div className="bg-card p-8 md:p-12 organic-radius-lg shadow-xl border border-border/50">
+            {renderProgress()}
 
           {/* Step 1: Destinations */}
           {currentStep === 1 && (
@@ -528,6 +531,7 @@ export default function TripPlannerPage() {
           </div>
         </div>
       </Container>
+      </div>
     </main>
   );
 }

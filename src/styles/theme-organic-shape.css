@@ -1,0 +1,14 @@
+/* theme-organic-shape.css */
+.theme-organic {
+  --organic-radius-blob-sm:  42% 58% 70% 30% / 45% 55% 45% 55%;
+  --organic-radius-blob-md:  40% 60% 65% 35% / 50% 40% 60% 50%;
+  --organic-radius-blob-lg:  35% 65% 55% 45% / 60% 30% 70% 40%;
+  --organic-radius-pebble:   45% 55% 50% 50% / 48% 52% 48% 52%;
+
+  /* Increased standard radius for organic feel */
+  --organic-radius-sm:   4px;
+  --organic-radius-md:   8px;
+  --organic-radius-lg:   12px;
+  --organic-radius-xl:   16px;
+  --organic-radius-2xl:  20px;
+}

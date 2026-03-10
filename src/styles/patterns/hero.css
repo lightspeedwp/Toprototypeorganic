@@ -1,15 +1,21 @@
 /**
- * Hero Pattern Styles
+ * Hero Pattern Styles — Organic Redesign
  * WordPress Pattern: lightspeed/hero-standard
  * 
  * Component: /src/app/components/patterns/Hero.tsx
  * 
  * All styles use CSS custom properties from theme.css for design system compliance.
- * Fonts: Lora (serif), Noto Sans (sans-serif)
+ * Fonts: Lora (serif), Noto Sans (sans-serif), Caveat (handwritten accent)
+ * 
+ * ORGANIC REDESIGN:
+ * - Uses Savanna Sunset palette (TOP section of progressive gradient)
+ * - Rich texture overlay (Level 3)
+ * - Organic blob shapes for featured elements
+ * - Increased border radius for soft, organic feel
  */
 
 /* ============================================
-   HERO BASE STYLES
+   HERO BASE STYLES — Organic Redesign
    ============================================ */
 
 .wp-pattern-hero {
@@ -18,6 +24,14 @@
   padding-block: var(--spacing-section-md);
   display: flex;
   align-items: center;
+  
+  /* ORGANIC: Savanna Sunset palette (top section) */
+  background-color: var(--organic-sunset-bg-primary);
+  color: var(--organic-sunset-text);
+  
+  /* ORGANIC: Rich texture (Level 3) for hero impact */
+  background-image: var(--texture-paper-rich);
+  background-blend-mode: multiply;
 }
 
 @media (min-width: 768px) {

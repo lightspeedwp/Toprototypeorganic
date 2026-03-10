@@ -1,0 +1,14 @@
+/* parts.header.css */
+.theme-organic .wp-part-header {
+  /* Override header styles here */
+  background-color: var(--background);
+  background-image: var(--texture-grain-micro);
+  background-blend-mode: multiply;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.dark.theme-organic .wp-part-header {
+  background-color: rgba(31, 29, 26, 0.85); /* o-night with opacity */
+  border-bottom: 1px solid rgba(247, 243, 234, 0.1); /* o-night-ink with opacity */
+}

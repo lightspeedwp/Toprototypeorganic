@@ -1,0 +1,24 @@
+/* components.cards.css */
+/* Card surfaces, borders, subtle grain */
+.theme-organic .card,
+.theme-organic .wp-card,
+.theme-organic .wp-block-group {
+  border-radius: var(--organic-radius-lg);
+  background-image: var(--texture-grain-micro);
+  background-blend-mode: multiply;
+  overflow: hidden;
+  box-shadow: var(--elevation-sm);
+  transition: all var(--duration-organic-long) var(--ease-organic);
+}
+
+.theme-organic .wp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--elevation-md);
+}
+
+/* Ensure inner image maintains radius */
+.theme-organic .wp-card__image-wrapper,
+.theme-organic .wp-card__image {
+  border-top-left-radius: var(--organic-radius-lg);
+  border-top-right-radius: var(--organic-radius-lg);
+}

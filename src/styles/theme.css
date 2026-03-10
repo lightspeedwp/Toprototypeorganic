@@ -11,6 +11,7 @@
  *   3. theme-dark.css     — Dark-mode overrides (.dark)
  *   4. theme-variables.css — WordPress --wp--preset--* namespace mapping
  *   5. theme-funky.css    — Optional vibrant theme (.theme-funky)
+ *   6. theme-organic.css  — Organic Redesign Color Palette (progressive gradient)
  *
  * Tailwind compatibility (the @theme inline block, @custom-variant, and
  * any @apply directives) lives exclusively in tailwind.css to keep this
@@ -34,8 +35,11 @@
 /* ── 4. WordPress preset namespace variables ─────────────────────── */
 @import './theme-variables.css';
 
-/* ── 5. Optional alternative theme (.theme-funky) ───────────────── */
+/* ── 5. Optional alternative theme (.theme-funky) ───────────── */
 @import './theme-funky.css';
+
+/* ── 6. Organic Redesign Color Palette (progressive gradient) ── */
+@import './theme-organic.css';
 
 /* ================================================================
    CSS RESET — Border & Outline Defaults

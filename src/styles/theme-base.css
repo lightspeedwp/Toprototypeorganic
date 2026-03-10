@@ -35,11 +35,20 @@
   /* ============================================================
      TYPOGRAPHY — Font Families
      Only these three font stacks are permitted in this project.
+     
+     Organic Redesign Typography:
+     - Lora: Headings, editorial content (warm serif)
+     - Noto Sans: Body text, UI elements (humanist sans)
+     - Caveat: Accent/display text (handwritten, use sparingly)
+     - Shadows Into Light: Decorative accents (handwritten, very sparingly)
+     - Courier New: Monospace (code, technical content)
      ============================================================ */
 
-  --font-family-lora:      'Lora', Georgia, 'Times New Roman', serif;
-  --font-family-noto-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
-  --font-family-mono:      'Courier New', Courier, monospace;
+  --font-family-lora:          'Lora', Georgia, 'Times New Roman', serif;
+  --font-family-noto-sans:     'Noto Sans', Arial, Helvetica, sans-serif;
+  --font-family-caveat:        'Caveat', 'Brush Script MT', cursive;
+  --font-family-shadows:       'Shadows Into Light', 'Comic Sans MS', cursive;
+  --font-family-mono:          'Courier New', Courier, monospace;
 
   /* ============================================================
      TYPOGRAPHY — Base Font Size

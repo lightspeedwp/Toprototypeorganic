@@ -13,6 +13,8 @@
 
 .wp-common-logo {
   width: var(--logo-width, auto);
+  height: auto;
+  aspect-ratio: 828 / 232;
   color: var(--color-foreground);
   object-fit: contain;
 }

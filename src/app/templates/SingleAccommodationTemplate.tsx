@@ -59,188 +59,196 @@ export function SingleAccommodationTemplate() {
   ];
 
   return (
-    <main className="wp-template-single-accommodation bg-background">
-      <BreadcrumbsPattern
-        items={[
-          { label: "Home", href: "/", onClick: () => navigateTo("/") },
-          { label: "Our Sanctuaries", href: "/accommodation", onClick: () => navigateTo("/accommodation") },
-          ...(destination ? [{ label: destination.title, href: `/destinations/${destination.slug}`, onClick: () => navigateToDestination(destination.slug) }] : []),
-          { label: accommodation.title, isCurrent: true },
-        ]}
-        fullWidth={true}
-      />
+    <main className="wp-template-single-accommodation theme-organic">
+      <div className="organic-section-top">
+        <BreadcrumbsPattern
+          items={[
+            { label: "Home", href: "/", onClick: () => navigateTo("/") },
+            { label: "Our Sanctuaries", href: "/accommodation", onClick: () => navigateTo("/accommodation") },
+            ...(destination ? [{ label: destination.title, href: `/destinations/${destination.slug}`, onClick: () => navigateToDestination(destination.slug) }] : []),
+            { label: accommodation.title, isCurrent: true },
+          ]}
+          fullWidth={true}
+        />
 
-      <Hero
-        title={accommodation.title}
-        intro={accommodation.excerpt}
-        context={accType?.name}
-        image={accommodation.featuredImage}
-        height="large"
-        primaryCTA={{
-          label: "Inquire About Availability",
-          onClick: () => document.getElementById('rooms-section')?.scrollIntoView({ behavior: 'smooth' })
-        }}
-        secondaryCTA={{
-          label: "Personalized Concierge",
-          onClick: () => navigateTo("/contact"),
-          variant: "outline"
-        }}
-        animated
-      />
+        <Hero
+          title={accommodation.title}
+          intro={accommodation.excerpt}
+          context={accType?.name}
+          image={accommodation.featuredImage}
+          height="large"
+          primaryCTA={{
+            label: "Inquire About Availability",
+            onClick: () => document.getElementById('rooms-section')?.scrollIntoView({ behavior: 'smooth' })
+          }}
+          secondaryCTA={{
+            label: "Personalized Concierge",
+            onClick: () => navigateTo("/contact"),
+            variant: "outline"
+          }}
+          animated
+        />
 
-      <FastFacts facts={fastFacts} />
+        <FastFacts facts={fastFacts} />
+      </div>
 
-      <section className="py-section-lg border-b border-border/50">
-        <Container>
-          <div className="grid lg:grid-cols-12 gap-16">
-            <div className="lg:col-span-8">
-              <EditorialContent
-                title={`Portrait of ${accommodation.title}`}
-                subtitle="The definitive wilderness estate experience"
-                content={accommodation.content}
-                className="p-0 border-0 bg-transparent"
-              />
-              
-              <div className="mt-16 pt-16 border-t border-border/50">
-                <GallerySectionPattern 
-                  images={galleryImages}
-                  title="Estate Visuals"
-                  description="A glimpse into the refined atmosphere and raw natural beauty of this legendary property."
+      <div className="organic-section-middle">
+        <section className="py-section-lg border-b border-border/50">
+          <Container>
+            <div className="grid lg:grid-cols-12 gap-16">
+              <div className="lg:col-span-8">
+                <EditorialContent
+                  title={`Portrait of ${accommodation.title}`}
+                  subtitle="The definitive wilderness estate experience"
+                  content={accommodation.content}
+                  className="p-0 border-0 bg-transparent"
                 />
-              </div>
-
-              <div id="rooms-section" className="mt-16 pt-16 border-t border-border/50">
-                <RoomTypesPattern
-                  title="Your Personal Sanctuary"
-                  description="Select from our meticulously designed suites and canvas villas."
-                  rooms={[
-                    {
-                      id: "1",
-                      name: "Signature Wilderness Suite",
-                      description: "Panoramic vistas, private plunge pool, and bespoke artisanal furnishings.",
-                      price: "850",
-                      capacity: 2,
-                      amenities: ["Private Pool", "Canvas Views", "Concierge"],
-                      image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800",
-                      availability: "available"
-                    },
-                    {
-                      id: "2",
-                      name: "Heritage Lodge Estate",
-                      description: "Expansive living spaces featuring local stone architecture and profound intimacy.",
-                      price: "1,200",
-                      capacity: 4,
-                      amenities: ["Gourmet Kitchen", "Private Guide", "Sun Deck"],
-                      image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800",
-                      availability: "limited"
-                    }
-                  ]}
-                  cta={{ label: "Reserve Suite", onClick: () => navigateTo("/booking") }}
-                />
-              </div>
-            </div>
-
-            <aside className="lg:col-span-4">
-              <div className="sticky top-32 space-y-8">
-                <div className="p-8 rounded-3xl bg-card border-2 border-border shadow-xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <ShieldCheck className="size-5 text-primary" />
-                    <span className="text-xs font-bold uppercase tracking-widest text-primary">Certified Sanctuary</span>
-                  </div>
-                  <h3 className="text-2xl font-bold font-serif mb-6">Estate Intelligence</h3>
-                  <ul className="space-y-6 m-0 p-0 list-none">
-                    <li className="flex items-start gap-4">
-                      <div className="p-2 rounded-lg bg-primary/5 text-primary shrink-0"><Shield className="size-4" /></div>
-                      <div>
-                        <p className="text-sm font-bold mb-1">Discrete Protection</p>
-                        <p className="text-xs text-muted-foreground m-0">24/7 specialist-led security protocols.</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-4">
-                      <div className="p-2 rounded-lg bg-primary/5 text-primary shrink-0"><Heart className="size-4" /></div>
-                      <div>
-                        <p className="text-sm font-bold mb-1">Regenerative Luxury</p>
-                        <p className="text-xs text-muted-foreground m-0">Zero-footprint operations and community equity.</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-4">
-                      <div className="p-2 rounded-lg bg-primary/5 text-primary shrink-0"><Award className="size-4" /></div>
-                      <div>
-                        <p className="text-sm font-bold mb-1">Global Distinction</p>
-                        <p className="text-xs text-muted-foreground m-0">Voted Top Wilderness Lodge 2025.</p>
-                      </div>
-                    </li>
-                  </ul>
-                  
-                  <button 
-                    onClick={() => navigateTo("/contact")}
-                    className="w-full mt-10 py-4 rounded-xl bg-primary text-primary-foreground font-bold hover:shadow-2xl transition-all"
-                  >
-                    Contact Estate Concierge
-                  </button>
+                
+                <div className="mt-16 pt-16 border-t border-border/50">
+                  <GallerySectionPattern 
+                    images={galleryImages}
+                    title="Estate Visuals"
+                    description="A glimpse into the refined atmosphere and raw natural beauty of this legendary property."
+                  />
                 </div>
 
-                {accommodation.facilities && (
-                  <div className="p-8 rounded-3xl bg-muted/30 border-2 border-border/50">
-                    <h4 className="text-xs font-bold uppercase tracking-widest text-foreground mb-6">Estate Facilities</h4>
-                    <div className="grid grid-cols-2 gap-4">
-                      {accommodation.facilities.slice(0, 6).map(id => {
-                        const Icon = facilityIcons[id.toLowerCase()] || Compass;
-                        return (
-                          <div key={id} className="flex items-center gap-2 text-xs font-bold text-muted-foreground">
-                            <Icon className="size-3 text-primary" /> {id}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
+                <div id="rooms-section" className="mt-16 pt-16 border-t border-border/50">
+                  <RoomTypesPattern
+                    title="Your Personal Sanctuary"
+                    description="Select from our meticulously designed suites and canvas villas."
+                    rooms={[
+                      {
+                        id: "1",
+                        name: "Signature Wilderness Suite",
+                        description: "Panoramic vistas, private plunge pool, and bespoke artisanal furnishings.",
+                        price: "850",
+                        capacity: 2,
+                        amenities: ["Private Pool", "Canvas Views", "Concierge"],
+                        image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800",
+                        availability: "available"
+                      },
+                      {
+                        id: "2",
+                        name: "Heritage Lodge Estate",
+                        description: "Expansive living spaces featuring local stone architecture and profound intimacy.",
+                        price: "1,200",
+                        capacity: 4,
+                        amenities: ["Gourmet Kitchen", "Private Guide", "Sun Deck"],
+                        image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800",
+                        availability: "limited"
+                      }
+                    ]}
+                    cta={{ label: "Reserve Suite", onClick: () => navigateTo("/booking") }}
+                  />
+                </div>
               </div>
-            </aside>
-          </div>
-        </Container>
-      </section>
 
-      <PricingSectionPattern
-        title="Investment Portfolio"
-        description="Rates are curated by travel period to reflect the peak rhythms of the wilderness."
-        prices={[
-          { period: "Prime Crossing (Dec-Feb)", price: "1,200", availability: "limited" },
-          { period: "Wildflower Rhythm (Jun-Aug)", price: "850", availability: "available", note: "Value Season" },
-        ]}
-        variant="table"
-      />
+              <aside className="lg:col-span-4">
+                <div className="sticky top-32 space-y-8">
+                  <div className="p-8 organic-radius-lg bg-card border-2 border-border shadow-xl">
+                    <div className="flex items-center gap-3 mb-6">
+                      <ShieldCheck className="size-5 text-primary" />
+                      <span className="text-xs font-bold uppercase tracking-widest text-primary">Certified Sanctuary</span>
+                    </div>
+                    <h3 className="text-2xl font-bold font-serif mb-6 wp-text--hand">Estate Intelligence</h3>
+                    <ul className="space-y-6 m-0 p-0 list-none">
+                      <li className="flex items-start gap-4">
+                        <div className="p-2 rounded-lg bg-primary/5 text-primary shrink-0"><Shield className="size-4" /></div>
+                        <div>
+                          <p className="text-sm font-bold mb-1">Discrete Protection</p>
+                          <p className="text-xs text-muted-foreground m-0">24/7 specialist-led security protocols.</p>
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-4">
+                        <div className="p-2 rounded-lg bg-primary/5 text-primary shrink-0"><Heart className="size-4" /></div>
+                        <div>
+                          <p className="text-sm font-bold mb-1">Regenerative Luxury</p>
+                          <p className="text-xs text-muted-foreground m-0">Zero-footprint operations and community equity.</p>
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-4">
+                        <div className="p-2 rounded-lg bg-primary/5 text-primary shrink-0"><Award className="size-4" /></div>
+                        <div>
+                          <p className="text-sm font-bold mb-1">Global Distinction</p>
+                          <p className="text-xs text-muted-foreground m-0">Voted Top Wilderness Lodge 2025.</p>
+                        </div>
+                      </li>
+                    </ul>
+                    
+                    <button 
+                      onClick={() => navigateTo("/contact")}
+                      className="w-full mt-10 py-4 organic-radius-md bg-primary text-primary-foreground font-bold hover:shadow-2xl transition-all"
+                    >
+                      Contact Estate Concierge
+                    </button>
+                  </div>
 
-      <ReviewsSectionPattern
-        title="Guest Testimonials"
-        description="Profound reflections from those who have immersed themselves in our sanctuary."
-        reviews={ALL_REVIEWS.filter(r => r.accommodationId === accommodation.id).map(r => ({
-          id: r.id, author: r.author, content: r.content, rating: r.rating, date: r.date, location: r.authorLocation, avatar: r.featuredImage
-        }))}
-      />
+                  {accommodation.facilities && (
+                    <div className="p-8 organic-radius-lg bg-muted/30 border-2 border-border/50">
+                      <h4 className="text-xs font-bold uppercase tracking-widest text-foreground mb-6">Estate Facilities</h4>
+                      <div className="grid grid-cols-2 gap-4">
+                        {accommodation.facilities.slice(0, 6).map(id => {
+                          const Icon = facilityIcons[id.toLowerCase()] || Compass;
+                          return (
+                            <div key={id} className="flex items-center gap-2 text-xs font-bold text-muted-foreground">
+                              <Icon className="size-3 text-primary" /> {id}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </aside>
+            </div>
+          </Container>
+        </section>
+      </div>
 
-      <Container className="py-section-lg border-t border-border/50">
-        <RelatedAccommodationsBlock
-          currentAccommodationId={accommodation.id}
-          destinationId={accommodation.destinations?.[0]}
-          postsPerPage={3}
-          onNavigate={(slug) => navigateToAccommodation(slug)}
+      <div className="organic-section-middle-alt">
+        <PricingSectionPattern
+          title="Investment Portfolio"
+          description="Rates are curated by travel period to reflect the peak rhythms of the wilderness."
+          prices={[
+            { period: "Prime Crossing (Dec-Feb)", price: "1,200", availability: "limited" },
+            { period: "Wildflower Rhythm (Jun-Aug)", price: "850", availability: "available", note: "Value Season" },
+          ]}
+          variant="table"
         />
-      </Container>
 
-      <FAQ
-        items={FAQ_ACCOMMODATION}
-        title="Estate Protocols"
-        intro="Technical details regarding your stay, from private aviation arrivals to dietary mastery."
-      />
+        <ReviewsSectionPattern
+          title="Guest Testimonials"
+          description="Profound reflections from those who have immersed themselves in our sanctuary."
+          reviews={ALL_REVIEWS.filter(r => r.accommodationId === accommodation.id).map(r => ({
+            id: r.id, author: r.author, content: r.content, rating: r.rating, date: r.date, location: r.authorLocation, avatar: r.featuredImage
+          }))}
+        />
+      </div>
 
-      <CTA
-        title="Answer the Echo of the Wilderness"
-        description={`Secure your immersive stay at ${accommodation.title}. The heart of Africa is waiting to welcome you.`}
-        variant="gradient"
-        primaryAction={{ label: "Begin Reservation", onClick: () => navigateTo("/booking") }}
-        secondaryAction={{ label: "View All Sanctuaries", onClick: () => navigateTo("/accommodation") }}
-      />
+      <div className="organic-section-bottom">
+        <Container className="py-section-lg border-t border-border/50">
+          <RelatedAccommodationsBlock
+            currentAccommodationId={accommodation.id}
+            destinationId={accommodation.destinations?.[0]}
+            postsPerPage={3}
+            onNavigate={(slug) => navigateToAccommodation(slug)}
+          />
+        </Container>
+
+        <FAQ
+          items={FAQ_ACCOMMODATION}
+          title="Estate Protocols"
+          intro="Technical details regarding your stay, from private aviation arrivals to dietary mastery."
+        />
+
+        <CTA
+          title="Answer the Echo of the Wilderness"
+          description={`Secure your immersive stay at ${accommodation.title}. The heart of Africa is waiting to welcome you.`}
+          variant="default"
+          primaryAction={{ label: "Begin Reservation", onClick: () => navigateTo("/booking") }}
+          secondaryAction={{ label: "View All Sanctuaries", onClick: () => navigateTo("/accommodation") }}
+        />
+      </div>
     </main>
   );
 }

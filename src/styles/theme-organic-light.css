@@ -1,0 +1,51 @@
+/* theme-organic-light.css */
+.theme-organic {
+  /* Stage surfaces (light) */
+  --o-surface-sun:   #F5F1E8; /* Savanna sand */
+  --o-surface-clay:  #F0EDE3; /* Paper beige */
+  --o-surface-linen: #FAF8F3; /* Minimal linen */
+
+  /* Global organic ink */
+  --o-ink: #2B2520; /* warm charcoal */
+
+  /* Brand actions */
+  --primary: #5C733E;          /* deeper acacia green */
+  --primary-foreground: #FFFFFF;
+
+  --accent: #A75820;           /* darker terracotta for legible accents */
+  --accent-foreground: #FFFFFF;
+
+  /* Base semantics default to “linen chapter” unless overridden per section */
+  --background: var(--o-surface-linen);
+  --foreground: var(--o-ink);
+  
+  --font-family-hand: 'Caveat', 'Comic Sans MS', cursive;
+
+  /* Legacy organic aliases (for compatibility if used elsewhere) */
+  --organic-sunset-bg-primary:     var(--o-surface-sun);
+  --organic-sunset-bg-secondary:   #EDE7DC;
+  --organic-sunset-primary:        #C87941;
+  --organic-sunset-primary-alt:    #D4915C;
+  --organic-sunset-accent:         #7A9B76;
+  --organic-sunset-accent-alt:     #8FA985;
+  --organic-sunset-text:           #3D3331;
+  --organic-sunset-text-muted:     #6B5D56;
+
+  --organic-clay-bg-primary:       var(--o-surface-clay);
+  --organic-clay-bg-secondary:     #E8E3D6;
+  --organic-clay-primary:          #6E8550;
+  --organic-clay-primary-alt:      #7A9663;
+  --organic-clay-accent:           #B8704F;
+  --organic-clay-accent-alt:       #C17A52;
+  --organic-clay-text:             #2C2824;
+  --organic-clay-text-muted:       #5C554E;
+
+  --organic-earth-bg-primary:      var(--o-surface-linen);
+  --organic-earth-bg-secondary:    #F2EFE8;
+  --organic-earth-primary:         #848B6F;
+  --organic-earth-primary-alt:     #989F84;
+  --organic-earth-accent:          #D89975;
+  --organic-earth-accent-alt:      #E0A87E;
+  --organic-earth-text:            #2A2722;
+  --organic-earth-text-muted:      #53504A;
+}

@@ -47,11 +47,12 @@ export function ArchiveTourTemplate() {
   const filterCount = selectedStyles.length + selectedDurations.length;
 
   return (
-    <PageShell context="tours-archive" as="main" className="wp-template-archive-tours">
-      {/* Advanced Control Bar */}
-      <section className="wp-template-archive-tours__filters px-[24px] py-[0px]">
-        <Container>
-          <div className="wp-template-archive-tours__filter-bar">
+    <PageShell context="tours-archive" as="main" className="wp-template-archive-tours theme-organic">
+      <div className="organic-section-top">
+        {/* Advanced Control Bar */}
+        <section className="wp-template-archive-tours__filters px-[24px] py-[0px]">
+          <Container>
+            <div className="wp-template-archive-tours__filter-bar">
             <div className="wp-template-archive-tours__filter-group">
               <button
                 onClick={() => setShowFilters(!showFilters)}
@@ -156,39 +157,44 @@ export function ArchiveTourTemplate() {
           </AnimatePresence>
         </Container>
       </section>
+      </div>
 
-      {/* Main Results */}
-      <section className="wp-template-archive-tours__content px-[24px] py-[64px]">
-        <Container className="flex flex-col gap-gap-lg">
-          <SectionHeader
-            section={{
-              title: "Curated Collection",
-              description: `Discover ${filteredAndSortedTours.length} exclusive expeditions tailored for the modern explorer.`
-            }}
-            centered={false}
-          />
+      <div className="organic-section-middle">
+        {/* Main Results */}
+        <section className="wp-template-archive-tours__content px-[24px] py-[64px]">
+          <Container className="flex flex-col gap-gap-lg">
+            <SectionHeader
+              section={{
+                title: "Curated Collection",
+                description: `Discover ${filteredAndSortedTours.length} exclusive expeditions tailored for the modern explorer.`
+              }}
+              centered={false}
+            />
 
-          <TourCollectionBlock 
-            tours={filteredAndSortedTours}
-            showSearch={false}
-            onSelect={(tour) => navigateToTour(tour.slug)}
-          />
-        </Container>
-      </section>
+            <TourCollectionBlock 
+              tours={filteredAndSortedTours}
+              showSearch={false}
+              onSelect={(tour) => navigateToTour(tour.slug)}
+            />
+          </Container>
+        </section>
+      </div>
 
-      <FAQ
-        title="Expedition Guidance"
-        subtitle="Insights and answers to prepare you for your legendary journey."
-        items={faqData?.items}
-      />
+      <div className="organic-section-bottom">
+        <FAQ
+          title="Expedition Guidance"
+          subtitle="Insights and answers to prepare you for your legendary journey."
+          items={faqData?.items}
+        />
 
-      <CTA
-        variant="gradient"
-        title="Seeking Something Truly Unique?"
-        description="Our master architects can design a completely bespoke itinerary that mirrors your distinct vision. Private jets, exclusive access, and unparalleled service."
-        primaryAction={{ label: "Request Bespoke Design", onClick: () => navigateTo("/contact") }}
-        secondaryAction={{ label: "Speak to an Expert", onClick: () => navigateTo("/contact") }}
-      />
+        <CTA
+          variant="default"
+          title="Seeking Something Truly Unique?"
+          description="Our master architects can design a completely bespoke itinerary that mirrors your distinct vision. Private jets, exclusive access, and unparalleled service."
+          primaryAction={{ label: "Request Bespoke Design", onClick: () => navigateTo("/contact") }}
+          secondaryAction={{ label: "Speak to an Expert", onClick: () => navigateTo("/contact") }}
+        />
+      </div>
     </PageShell>
   );
 }

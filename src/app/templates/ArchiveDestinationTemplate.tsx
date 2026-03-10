@@ -46,7 +46,7 @@ export function ArchiveDestinationTemplate() {
     <PageShell
       context="destinations-archive"
       as="main"
-      className="wp-template-archive-destination"
+      className="wp-template-archive-destination theme-organic"
       heroProps={{
         primaryCTA: {
           label: "Browse Destinations",
@@ -59,120 +59,128 @@ export function ArchiveDestinationTemplate() {
         }
       }}
     >
-      {/* Continent Navigation Bar */}
-      <section className="wp-template-archive-destination__nav-bar">
-        <Container>
-          <div className="wp-template-archive-destination__nav-inner">
-            <nav className="wp-template-archive-destination__territory-group" aria-label="Territory filter">
-              <div className="wp-template-archive-destination__nav-label">
-                <Globe className="size-3" /> Explore By Territory
-              </div>
-              <div className="wp-template-archive-destination__nav-list">
-                <button
-                  onClick={() => setSelectedContinent("all")}
-                  className={`wp-template-archive-destination__nav-btn ${selectedContinent === "all" ? 'wp-template-archive-destination__nav-btn--active' : ''}`}
-                >
-                  All Regions
-                </button>
-                {ALL_CONTINENTS.map(continent => (
-                  <button
-                    key={continent.id}
-                    onClick={() => setSelectedContinent(continent.id)}
-                    className={`wp-template-archive-destination__nav-btn ${selectedContinent === continent.id ? 'wp-template-archive-destination__nav-btn--active' : ''}`}
-                  >
-                    {continent.name}
-                  </button>
-                ))}
-              </div>
-            </nav>
-
-            <div className="wp-template-archive-destination__search-wrapper">
-              <Search className="wp-template-archive-destination__search-icon" />
-              <input
-                type="text"
-                placeholder="Find a territory..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="wp-template-archive-destination__search-input"
-              />
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* Results Grid */}
-      <section className="py-section-lg">
-        <Container>
-          <SectionHeader
-            section={{
-              title: "The Collection",
-              description: `Discover ${filteredDestinations.length} profound destinations across the globe.`
-            }}
-            centered={false}
-            className="mb-16"
-          />
-
-          <DestinationCollectionBlock 
-            destinations={filteredDestinations}
-            showSearch={false}
-            onSelect={(dest) => navigateToDestination(dest.slug)}
-          />
-        </Container>
-      </section>
-
-      {/* Inspiration Blocks */}
-      <section className="wp-template-archive-destination__archetypes">
-        <Container>
-          <SectionHeader
-            section={{
-              eyebrow: "Curation",
-              title: "Expedition Archetypes",
-              description: "Carefully categorized experiences to match your travel philosophy."
-            }}
-            centered={true}
-            className="mb-16"
-          />
-
-          <div className="wp-template-archive-destination__archetypes-grid">
-            {archetypes.map((cat, i) => (
-              <Motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="wp-template-archive-destination__archetype-card"
-              >
-                <div className={`wp-template-archive-destination__archetype-icon-wrapper ${cat.color}`}>
-                  {cat.icon}
+      <div className="organic-section-top">
+        {/* Continent Navigation Bar */}
+        <section className="wp-template-archive-destination__nav-bar">
+          <Container>
+            <div className="wp-template-archive-destination__nav-inner">
+              <nav className="wp-template-archive-destination__territory-group" aria-label="Territory filter">
+                <div className="wp-template-archive-destination__nav-label">
+                  <Globe className="size-3" /> Explore By Territory
                 </div>
-                <h3 className="wp-template-archive-destination__archetype-title">{cat.title}</h3>
-                <p className="wp-template-archive-destination__archetype-desc">{cat.desc}</p>
-              </Motion.div>
-            ))}
-          </div>
-        </Container>
-      </section>
+                <div className="wp-template-archive-destination__nav-list">
+                  <button
+                    onClick={() => setSelectedContinent("all")}
+                    className={`wp-template-archive-destination__nav-btn ${selectedContinent === "all" ? 'wp-template-archive-destination__nav-btn--active' : ''}`}
+                  >
+                    All Regions
+                  </button>
+                  {ALL_CONTINENTS.map(continent => (
+                    <button
+                      key={continent.id}
+                      onClick={() => setSelectedContinent(continent.id)}
+                      className={`wp-template-archive-destination__nav-btn ${selectedContinent === continent.id ? 'wp-template-archive-destination__nav-btn--active' : ''}`}
+                    >
+                      {continent.name}
+                    </button>
+                  ))}
+                </div>
+              </nav>
 
-      <FAQ
-        title="Territory Insights"
-        subtitle="Common inquiries regarding our destinations and travel protocols."
-        items={faqData?.items}
-      />
+              <div className="wp-template-archive-destination__search-wrapper">
+                <Search className="wp-template-archive-destination__search-icon" />
+                <input
+                  type="text"
+                  placeholder="Find a territory..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="wp-template-archive-destination__search-input"
+                />
+              </div>
+            </div>
+          </Container>
+        </section>
+      </div>
 
-      <CTA
-        variant="gradient"
-        title="Your Journey Begins Here"
-        description="Our master architects are waiting to craft your legendary expedition. From private conservancies to exclusive heritage sites, your vision is our blueprint."
-        primaryAction={{
-          label: "Request Custom Design",
-          onClick: () => navigateTo("/contact"),
-        }}
-        secondaryAction={{
-          label: "Browse All Tours",
-          onClick: () => navigateTo("/tours"),
-        }}
-      />
+      <div className="organic-section-middle">
+        {/* Results Grid */}
+        <section className="py-section-lg">
+          <Container>
+            <SectionHeader
+              section={{
+                title: "The Collection",
+                description: `Discover ${filteredDestinations.length} profound destinations across the globe.`
+              }}
+              centered={false}
+              className="mb-16"
+            />
+
+            <DestinationCollectionBlock 
+              destinations={filteredDestinations}
+              showSearch={false}
+              onSelect={(dest) => navigateToDestination(dest.slug)}
+            />
+          </Container>
+        </section>
+      </div>
+
+      <div className="organic-section-middle-alt">
+        {/* Inspiration Blocks */}
+        <section className="wp-template-archive-destination__archetypes">
+          <Container>
+            <SectionHeader
+              section={{
+                eyebrow: "Curation",
+                title: "Expedition Archetypes",
+                description: "Carefully categorized experiences to match your travel philosophy."
+              }}
+              centered={true}
+              className="mb-16"
+            />
+
+            <div className="wp-template-archive-destination__archetypes-grid">
+              {archetypes.map((cat, i) => (
+                <Motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="wp-template-archive-destination__archetype-card"
+                >
+                  <div className={`wp-template-archive-destination__archetype-icon-wrapper ${cat.color}`}>
+                    {cat.icon}
+                  </div>
+                  <h3 className="wp-template-archive-destination__archetype-title wp-text--hand">{cat.title}</h3>
+                  <p className="wp-template-archive-destination__archetype-desc">{cat.desc}</p>
+                </Motion.div>
+              ))}
+            </div>
+          </Container>
+        </section>
+      </div>
+
+      <div className="organic-section-bottom">
+        <FAQ
+          title="Territory Insights"
+          subtitle="Common inquiries regarding our destinations and travel protocols."
+          items={faqData?.items}
+        />
+
+        <CTA
+          variant="default"
+          title="Your Journey Begins Here"
+          description="Our master architects are waiting to craft your legendary expedition. From private conservancies to exclusive heritage sites, your vision is our blueprint."
+          primaryAction={{
+            label: "Request Custom Design",
+            onClick: () => navigateTo("/contact"),
+          }}
+          secondaryAction={{
+            label: "Browse All Tours",
+            onClick: () => navigateTo("/tours"),
+          }}
+        />
+      </div>
     </PageShell>
   );
 }

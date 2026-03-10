@@ -199,45 +199,48 @@ function SingleDestinationTemplate() {
   };
 
   return (
-    <main>
-      {/* Breadcrumbs */}
-      <BreadcrumbsPattern
-        items={[
-          { label: "Home", href: "/", onClick: () => navigateTo("/") },
-          { label: "Destinations", href: "/destinations", onClick: () => navigateTo("/destinations") },
-          ...(parentDestination ? [{ label: parentDestination.title, href: `/destinations/${parentDestination.slug}`, onClick: () => navigateToDestination(parentDestination.slug) }] : []),
-          { label: destination.title, isCurrent: true },
-        ]}
-        fullWidth={true}
-      />
+    <main className="theme-organic">
+      <div className="organic-section-top">
+        {/* Breadcrumbs */}
+        <BreadcrumbsPattern
+          items={[
+            { label: "Home", href: "/", onClick: () => navigateTo("/") },
+            { label: "Destinations", href: "/destinations", onClick: () => navigateTo("/destinations") },
+            ...(parentDestination ? [{ label: parentDestination.title, href: `/destinations/${parentDestination.slug}`, onClick: () => navigateToDestination(parentDestination.slug) }] : []),
+            { label: destination.title, isCurrent: true },
+          ]}
+          fullWidth={true}
+        />
 
-      {/* Hero Section */}
-      <Hero
-        title={destination.title}
-        intro={destination.excerpt}
-        image={destination.featuredImage}
-        overlay="medium"
-        height="large"
-        primaryCTA={{
-          label: "Explore Tours",
-          onClick: () => {
-            const el = document.getElementById('related-tours');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          },
-        }}
-        secondaryCTA={{
-          label: "Plan My Trip",
-          onClick: () => navigateTo("/trip-planner"),
-        }}
-        animated
-      />
+        {/* Hero Section */}
+        <Hero
+          title={destination.title}
+          intro={destination.excerpt}
+          image={destination.featuredImage}
+          overlay="medium"
+          height="large"
+          primaryCTA={{
+            label: "Explore Tours",
+            onClick: () => {
+              const el = document.getElementById('related-tours');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            },
+          }}
+          secondaryCTA={{
+            label: "Plan My Trip",
+            onClick: () => navigateTo("/trip-planner"),
+          }}
+          animated
+        />
+      </div>
 
-      {/* Main Content Grid */}
-      <section className="py-section-sm md:py-section-md">
-        <Container>
-          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
-            {/* Main Content - 2 columns */}
-            <div className="lg:col-span-2 space-y-12">
+      <div className="organic-section-middle">
+        {/* Main Content Grid */}
+        <section className="py-section-sm md:py-section-md">
+          <Container>
+            <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+              {/* Main Content - 2 columns */}
+              <div className="lg:col-span-2 space-y-12">
               {/* Destination Overview */}
               <EditorialContent
                 title={`About ${destination.name}`}
@@ -452,29 +455,32 @@ function SingleDestinationTemplate() {
         accommodations={relatedAccommodations}
         onSelect={(acc) => console.log('Selected accommodation:', acc.slug)}
       />
+      </div>
 
-      {/* FAQ Section */}
-      <FAQ
-        title="Planning Your Trip"
-        subtitle="Everything you need to know before you go"
-        faqs={destinationFAQs}
-      />
+      <div className="organic-section-bottom">
+        {/* FAQ Section */}
+        <FAQ
+          title="Planning Your Trip"
+          subtitle="Everything you need to know before you go"
+          faqs={destinationFAQs}
+        />
 
-      {/* CTA Section */}
-      <CTA
-        variant="gradient"
-        title={`Ready to Explore ${destination.name}?`}
-        description="Start planning your unforgettable journey today. Our travel experts are here to create the perfect itinerary for you."
-        primaryAction={{
-          label: "View Tours",
-          icon: Compass,
-        }}
-        secondaryAction={{
-          label: "Custom Itinerary",
-          icon: Mail,
-          onClick: () => console.log("Open custom itinerary form"),
-        }}
-      />
+        {/* CTA Section */}
+        <CTA
+          variant="default"
+          title={`Ready to Explore ${destination.name}?`}
+          description="Start planning your unforgettable journey today. Our travel experts are here to create the perfect itinerary for you."
+          primaryAction={{
+            label: "View Tours",
+            icon: Compass,
+          }}
+          secondaryAction={{
+            label: "Custom Itinerary",
+            icon: Mail,
+            onClick: () => console.log("Open custom itinerary form"),
+          }}
+        />
+      </div>
     </main>
   );
 }

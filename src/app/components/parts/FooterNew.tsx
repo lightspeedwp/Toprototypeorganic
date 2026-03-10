@@ -46,7 +46,7 @@ export function FooterNew({ currentPage, onNavigate }: FooterNewProps) {
             {/* Brand Manifesto */}
             <div className="lg:col-span-2 space-y-10">
               <div className="space-y-4">
-                <SiteLogo width="220px" onClick={() => onNavigate?.('/')} />
+                <SiteLogo width="160px" onClick={() => onNavigate?.('/')} />
                 <p className="text-muted-foreground text-lg leading-relaxed max-w-sm m-0 italic font-serif">
                   "Defining the intersection of profound wilderness and refined architecture."
                 </p>

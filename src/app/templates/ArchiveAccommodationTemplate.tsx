@@ -51,114 +51,120 @@ export function ArchiveAccommodationTemplate() {
   const { navigateToAccommodation, navigateTo } = useNavigation();
 
   return (
-    <PageShell context="accommodation-archive" as="main" className="wp-template-archive-accommodation">
-      <TaxonomyNav
-        label="Property Type"
-        terms={ALL_ACCOMMODATION_TYPES}
-        activeId={activeType}
-        onTermClick={(id) => { setActiveType(id); setCurrentPage(1); }}
-      />
+    <PageShell context="accommodation-archive" as="main" className="wp-template-archive-accommodation theme-organic">
+      <div className="organic-section-top">
+        <TaxonomyNav
+          label="Property Type"
+          terms={ALL_ACCOMMODATION_TYPES}
+          activeId={activeType}
+          onTermClick={(id) => { setActiveType(id); setCurrentPage(1); }}
+        />
 
-      <SearchFilterPattern
-        filters={[
-          {
-            id: "destination",
-            type: "select",
-            label: "Destination",
-            placeholder: "All Locations",
-            value: selectedDestination,
-            options: ALL_DESTINATIONS.filter(d => !d.parentId).map(d => ({ value: d.id, label: d.title }))
-          },
-          {
-            id: "rating",
-            type: "select",
-            label: "Star Rating",
-            placeholder: "Any Rating",
-            options: [
-              { value: "5", label: "5 Star Luxury" },
-              { value: "4", label: "4 Star Premium" },
-              { value: "3", label: "3 Star Comfort" }
-            ]
-          }
-        ]}
-        onSearchChange={(q) => { setSearchQuery(q); setCurrentPage(1); }}
-        onFilterChange={(f) => { setSelectedDestination(f.destination || ""); setCurrentPage(1); }}
-        onClearAll={resetFilters}
-        collapsible={true}
-      />
+        <SearchFilterPattern
+          filters={[
+            {
+              id: "destination",
+              type: "select",
+              label: "Destination",
+              placeholder: "All Locations",
+              value: selectedDestination,
+              options: ALL_DESTINATIONS.filter(d => !d.parentId).map(d => ({ value: d.id, label: d.title }))
+            },
+            {
+              id: "rating",
+              type: "select",
+              label: "Star Rating",
+              placeholder: "Any Rating",
+              options: [
+                { value: "5", label: "5 Star Luxury" },
+                { value: "4", label: "4 Star Premium" },
+                { value: "3", label: "3 Star Comfort" }
+              ]
+            }
+          ]}
+          onSearchChange={(q) => { setSearchQuery(q); setCurrentPage(1); }}
+          onFilterChange={(f) => { setSelectedDestination(f.destination || ""); setCurrentPage(1); }}
+          onClearAll={resetFilters}
+          collapsible={true}
+        />
+      </div>
 
-      <section className="wp-template-archive__content">
-        <Container>
-          <div className="wp-template-archive__results-header">
-            <SectionHeader
-              section={{
-                eyebrow: "Our Collection",
-                title: "Hand-Picked Retreats",
-                description: `Displaying ${paginatedProperties.length} of ${filteredProperties.length} elite properties matching your criteria.`
-              }}
-              centered={false}
-              className="m-0"
-            />
-            <ViewSwitcher
-              currentView={viewMode}
-              onViewChange={setViewMode}
-            />
-          </div>
-
-          {paginatedProperties.length > 0 ? (
-            <div className={viewMode === "list" ? "wp-template-archive__list" : "wp-template-archive__grid wp-template-archive__grid--cols-3"}>
-              {paginatedProperties.map((property) => (
-                <AccommodationCard 
-                  key={property.id} 
-                  accommodation={property}
-                  layout={viewMode === "list" ? "horizontal" : "card"}
-                  onClick={() => navigateToAccommodation(property.slug)}
-                />
-              ))}
-            </div>
-          ) : (
-            <EmptyStatePattern
-              icon="empty"
-              title="No Sanctuaries Found"
-              message="We couldn't find any properties matching your current filters. Try expanding your search area or selecting a different type."
-              primaryAction={{
-                label: "Reset All Filters",
-                onClick: resetFilters
-              }}
-            />
-          )}
-
-          {filteredProperties.length > ITEMS_PER_PAGE && (
-            <div className="wp-template-archive__pagination">
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={setCurrentPage}
+      <div className="organic-section-middle">
+        <section className="wp-template-archive__content">
+          <Container>
+            <div className="wp-template-archive__results-header">
+              <SectionHeader
+                section={{
+                  eyebrow: "Our Collection",
+                  title: "Hand-Picked Retreats",
+                  description: `Displaying ${paginatedProperties.length} of ${filteredProperties.length} elite properties matching your criteria.`
+                }}
+                centered={false}
+                className="m-0"
+              />
+              <ViewSwitcher
+                currentView={viewMode}
+                onViewChange={setViewMode}
               />
             </div>
-          )}
-        </Container>
-      </section>
 
-      <FAQ
-        items={faqData?.items}
-        title="Stay Insights"
-        intro="Answers to common questions about safari accommodation standards and booking."
-      />
+            {paginatedProperties.length > 0 ? (
+              <div className={viewMode === "list" ? "wp-template-archive__list" : "wp-template-archive__grid wp-template-archive__grid--cols-3"}>
+                {paginatedProperties.map((property) => (
+                  <AccommodationCard 
+                    key={property.id} 
+                    accommodation={property}
+                    layout={viewMode === "list" ? "horizontal" : "card"}
+                    onClick={() => navigateToAccommodation(property.slug)}
+                  />
+                ))}
+              </div>
+            ) : (
+              <EmptyStatePattern
+                icon="empty"
+                title="No Sanctuaries Found"
+                message="We couldn't find any properties matching your current filters. Try expanding your search area or selecting a different type."
+                primaryAction={{
+                  label: "Reset All Filters",
+                  onClick: resetFilters
+                }}
+              />
+            )}
 
-      <CTA
-        title="Need a Recommendation?"
-        description="Our travel specialists have personally stayed at every property in our collection. Let us find the one that fits you perfectly."
-        variant="gradient"
-        primaryAction={{ 
-          label: "Talk to a Specialist", 
-          onClick: () => navigateTo("/contact") 
-        }}
-        secondaryAction={{
-          label: "Start Trip Planner",
-          onClick: () => navigateTo("/trip-planner"),
-        }}
-      />
+            {filteredProperties.length > ITEMS_PER_PAGE && (
+              <div className="wp-template-archive__pagination">
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={setCurrentPage}
+                />
+              </div>
+            )}
+          </Container>
+        </section>
+      </div>
+
+      <div className="organic-section-bottom">
+        <FAQ
+          items={faqData?.items}
+          title="Stay Insights"
+          intro="Answers to common questions about safari accommodation standards and booking."
+        />
+
+        <CTA
+          title="Need a Recommendation?"
+          description="Our travel specialists have personally stayed at every property in our collection. Let us find the one that fits you perfectly."
+          variant="default"
+          primaryAction={{ 
+            label: "Talk to a Specialist", 
+            onClick: () => navigateTo("/contact") 
+          }}
+          secondaryAction={{
+            label: "Start Trip Planner",
+            onClick: () => navigateTo("/trip-planner"),
+          }}
+        />
+      </div>
     </PageShell>
   );
 }

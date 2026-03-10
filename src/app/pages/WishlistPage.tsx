@@ -31,6 +31,7 @@
  */
 
 import { useState } from "react";
+import { PageShell } from "../components/parts/PageShell";
 import { Container } from "../components/common/Container";
 import { Heart, ShareNetwork as Share2, X, Calendar, CurrencyDollar as DollarSign, MapPin, Users, TrendDown as TrendingDown, CheckCircle as CircleCheck, ArrowRight } from "@phosphor-icons/react";
 import { cn } from "../lib/utils";
@@ -170,43 +171,47 @@ export default function WishlistPage({ onNavigate }: WishlistPageProps) {
   const priceDropCount = wishlistItems.filter((item) => item.priceDropAlert).length;
 
   return (
-    <>
-      {/* ================================================================
-          HERO - Wishlist introduction
-          ================================================================ */}
-      <section className="py-section-sm md:py-section-md bg-muted">
-        <Container>
-          <div className="max-w-4xl">
-            <div className="flex items-center gap-3 mb-4">
-              <Heart className="w-8 h-8 text-primary fill-current" />
-              <h1>My Wishlist</h1>
-            </div>
-            <p className="text-lg text-muted-foreground mb-6">
-              Save your favorite tours and get notified when prices drop
-            </p>
+    <PageShell context="wishlist" className="theme-organic">
+      <div className="organic-section-top">
+        {/* ================================================================
+            HERO - Wishlist introduction
+            ================================================================ */}
+        <section className="py-section-sm md:py-section-md bg-muted">
+          <Container>
+            <div className="max-w-4xl">
+              <div className="flex items-center gap-3 mb-4">
+                <Heart className="w-8 h-8 text-primary fill-current" />
+                <h1>My Wishlist</h1>
+              </div>
+              <p className="text-lg text-muted-foreground mb-6">
+                Save your favorite tours and get notified when prices drop
+              </p>
 
-            {/* Stats */}
-            {hasItems && (
-              <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
-                  <Heart className="w-4 h-4 text-primary" />
-                  <span className="text-sm font-medium">
-                    {wishlistItems.length} saved tour{wishlistItems.length !== 1 ? "s" : ""}
-                  </span>
-                </div>
-                {priceDropCount > 0 && (
-                  <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
-                    <TrendingDown className="w-4 h-4 text-primary" />
-                    <span className="text-sm font-medium text-primary">
-                      {priceDropCount} price drop{priceDropCount !== 1 ? "s" : ""}!
+              {/* Stats */}
+              {hasItems && (
+                <div className="flex flex-wrap items-center gap-4">
+                  <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
+                    <Heart className="w-4 h-4 text-primary" />
+                    <span className="text-sm font-medium">
+                      {wishlistItems.length} saved tour{wishlistItems.length !== 1 ? "s" : ""}
                     </span>
                   </div>
-                )}
-              </div>
-            )}
-          </div>
-        </Container>
-      </section>
+                  {priceDropCount > 0 && (
+                    <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+                      <TrendingDown className="w-4 h-4 text-primary" />
+                      <span className="text-sm font-medium text-primary">
+                        {priceDropCount} price drop{priceDropCount !== 1 ? "s" : ""}!
+                      </span>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </Container>
+        </section>
+      </div>
+
+      <div className="organic-section-middle">
 
       {/* ================================================================
           MAIN CONTENT - Wishlist items
@@ -515,6 +520,7 @@ export default function WishlistPage({ onNavigate }: WishlistPageProps) {
           </Container>
         </section>
       )}
-    </>
+      </div>
+    </PageShell>
   );
 }

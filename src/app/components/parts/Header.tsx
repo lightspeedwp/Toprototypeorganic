@@ -41,64 +41,64 @@ export function Header({ currentPage = "/", onNavigate }: { currentPage?: string
 
   return (
     <>
-      <header className={cn("wp-part-header fixed top-0 left-0 right-0 z-[50] transition-all duration-500", isScrolled
-    ? "bg-background/80 backdrop-blur-xl border-b-2 border-border/50 shadow-xl"
-    : "bg-transparent")}>
-        <Container>
-          <div className="flex items-center justify-between gap-12">
+      <header className={cn("wp-part-header", isScrolled && "wp-part-header--scrolled")}>
+        <div className="wp-part-header__inner">
+          <div className="wp-part-header__bar">
             {/* Brand Section */}
-            <Logo 
-              size="sm" 
-              onClick={() => handleNav("/")}
-              className="h-8 md:h-10 transition-transform duration-500 hover:scale-105 cursor-pointer relative z-10 block" 
-            />
+            <div className="wp-part-header__logo">
+              <Logo 
+                size="sm" 
+                onClick={() => handleNav("/")}
+                className="cursor-pointer" 
+              />
+            </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-10">
-              {PRIMARY_NAV.filter(link => link.id !== "nav-about").map(link => (
-                <button
-                  key={link.id}
-                  onClick={() => handleNav(link.href)}
-                  className={cn(
-                    "text-xs font-bold uppercase tracking-wider transition-all relative py-2 group",
-                    currentPage === link.href ? "text-primary" : "text-foreground hover:text-primary"
-                  )}
-                >
-                  {link.label}
-                  <span className={cn(
-                    "absolute bottom-0 left-0 right-0 h-0.5 bg-primary transition-all duration-500 origin-left scale-x-0 group-hover:scale-x-100",
-                    currentPage === link.href && "scale-x-100"
-                  )} />
-                </button>
-              ))}
+            <nav className="wp-part-header__nav" aria-label="Primary Navigation">
+              <ul className="wp-part-header__nav-list">
+                {PRIMARY_NAV.filter(link => link.id !== "nav-about").map(link => (
+                  <li key={link.id} className="wp-part-header__nav-item">
+                    <button
+                      onClick={() => handleNav(link.href)}
+                      className={cn(
+                        "wp-part-header__nav-link",
+                        currentPage === link.href && "wp-part-header__nav-link--active"
+                      )}
+                    >
+                      {link.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </nav>
 
             {/* Action Cluster */}
-            <div className="flex items-center gap-4 md:gap-6 relative z-10">
+            <div className="wp-part-header__actions">
               <button 
                 onClick={toggleTheme}
-                className="size-10 rounded-md bg-card border-2 border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all shadow-sm"
+                className="wp-part-header__theme-toggle"
                 aria-label="Toggle Atmosphere"
               >
-                {theme === "light" ? <Moon className="size-4" /> : <Sun className="size-4" />}
+                {theme === "light" ? <Moon /> : <Sun />}
               </button>
 
               <button 
                 onClick={() => handleNav(HEADER_CTA.href)}
-                className="hidden md:flex items-center gap-3 px-6 py-2.5 rounded-md bg-primary text-primary-foreground font-bold text-xs uppercase tracking-widest shadow-md hover:shadow-primary/20 transition-all hover:-translate-y-0.5 active:translate-y-0"
+                className="wp-part-header__search-button hidden md:flex"
               >
                 <Compass className="size-4" /> {HEADER_CTA.label}
               </button>
 
               <button 
                 onClick={() => setMobileMenuOpen(true)}
-                className="lg:hidden size-10 rounded-md bg-primary text-primary-foreground flex items-center justify-center shadow-md"
+                className="wp-part-header__mobile-toggle"
+                aria-label="Open mobile menu"
               >
-                <List className="size-5" />
+                <List />
               </button>
             </div>
           </div>
-        </Container>
+        </div>
       </header>
 
       <AnimatePresence>
@@ -112,8 +112,8 @@ export function Header({ currentPage = "/", onNavigate }: { currentPage?: string
           >
             <Container className="flex-1 flex flex-col py-8">
               <div className="flex items-center justify-between mb-16">
-                <Logo size="sm" bare className="h-8" />
-                <button onClick={() => setMobileMenuOpen(false)} className="size-12 rounded-lg bg-muted flex items-center justify-center">
+                <Logo size="sm" bare className="h-8 cursor-pointer" onClick={() => handleNav("/")} />
+                <button onClick={() => setMobileMenuOpen(false)} className="size-12 rounded-lg bg-muted flex items-center justify-center text-foreground hover:bg-accent hover:text-primary transition-colors">
                   <X className="size-6" />
                 </button>
               </div>
@@ -137,7 +137,7 @@ export function Header({ currentPage = "/", onNavigate }: { currentPage?: string
               <div className="mt-auto pt-12 border-t border-border/50">
                 <button 
                   onClick={() => handleNav("/trip-planner")}
-                  className="w-full py-4 rounded-lg bg-primary text-primary-foreground font-bold text-fluid-lg shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all"
+                  className="w-full py-4 organic-radius-md bg-primary text-primary-foreground font-bold text-fluid-lg shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all"
                 >
                   Start Trip Planner
                 </button>

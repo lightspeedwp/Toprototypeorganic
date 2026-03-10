@@ -1,0 +1,111 @@
+/* utilities.sections.css */
+/* Hero feels like “arrival” */
+.theme-organic .section-hero-primary {
+  --background: var(--o-surface-sun);
+}
+.dark.theme-organic .section-hero-primary {
+  --background: var(--organic-sunset-bg-primary);
+}
+
+/* Mid-page feels greener / more grounded */
+.theme-organic .section-content-default,
+.theme-organic .section-card-grid-default {
+  --background: var(--o-surface-clay);
+}
+.dark.theme-organic .section-content-default,
+.dark.theme-organic .section-card-grid-default {
+  --background: var(--organic-clay-bg-primary);
+}
+
+/* Apply section-specific organic styling utilities for progressive gradient */
+
+/* TOP SECTIONS (Hero, first impression) — Savanna Sunset */
+.theme-organic .organic-section-top {
+  background-color: var(--organic-sunset-bg-primary);
+  color: var(--organic-sunset-text);
+  --background: var(--organic-sunset-bg-primary);
+  --foreground: var(--organic-sunset-text);
+  --muted-foreground: var(--organic-sunset-text-muted);
+  --card: var(--organic-sunset-bg-secondary);
+  --primary: var(--organic-sunset-primary);
+  --primary-foreground: #FFFFFF;
+  background-image: var(--texture-paper-rich);
+  background-blend-mode: multiply;
+}
+
+.theme-organic .organic-section-top-alt {
+  background-color: var(--organic-sunset-bg-secondary);
+  color: var(--organic-sunset-text);
+  --background: var(--organic-sunset-bg-secondary);
+  --foreground: var(--organic-sunset-text);
+  --muted-foreground: var(--organic-sunset-text-muted);
+  --card: var(--organic-sunset-bg-primary);
+  --primary: var(--organic-sunset-primary);
+  --primary-foreground: #FFFFFF;
+  background-image: var(--texture-paper-rich);
+  background-blend-mode: multiply;
+}
+
+/* MIDDLE SECTIONS (Main content) — Acacia & Clay */
+.theme-organic .organic-section-middle {
+  background-color: var(--organic-clay-bg-primary);
+  color: var(--organic-clay-text);
+  --background: var(--organic-clay-bg-primary);
+  --foreground: var(--organic-clay-text);
+  --muted-foreground: var(--organic-clay-text-muted);
+  --card: var(--organic-clay-bg-secondary);
+  --primary: var(--organic-clay-primary);
+  --primary-foreground: #FFFFFF;
+  background-image: var(--texture-linen-light);
+  background-blend-mode: multiply;
+}
+
+.theme-organic .organic-section-middle-alt {
+  background-color: var(--organic-clay-bg-secondary);
+  color: var(--organic-clay-text);
+  --background: var(--organic-clay-bg-secondary);
+  --foreground: var(--organic-clay-text);
+  --muted-foreground: var(--organic-clay-text-muted);
+  --card: var(--organic-clay-bg-primary);
+  --primary: var(--organic-clay-primary);
+  --primary-foreground: #FFFFFF;
+  background-image: var(--texture-linen-light);
+  background-blend-mode: multiply;
+}
+
+/* BOTTOM SECTIONS (Footer, conclusion) — Minimal Earth */
+.theme-organic .organic-section-bottom {
+  background-color: var(--organic-earth-bg-primary);
+  color: var(--organic-earth-text);
+  --background: var(--organic-earth-bg-primary);
+  --foreground: var(--organic-earth-text);
+  --muted-foreground: var(--organic-earth-text-muted);
+  --card: var(--organic-earth-bg-secondary);
+  --primary: var(--organic-earth-accent);
+  --primary-foreground: #FFFFFF;
+  background-image: var(--texture-grain-micro);
+  background-blend-mode: multiply;
+}
+
+.theme-organic .organic-section-bottom-alt {
+  background-color: var(--organic-earth-bg-secondary);
+  color: var(--organic-earth-text);
+  --background: var(--organic-earth-bg-secondary);
+  --foreground: var(--organic-earth-text);
+  --muted-foreground: var(--organic-earth-text-muted);
+  --card: var(--organic-earth-bg-primary);
+  --primary: var(--organic-earth-accent);
+  --primary-foreground: #FFFFFF;
+  background-image: var(--texture-grain-micro);
+  background-blend-mode: multiply;
+}
+
+/* Dark mode specific foreground overrides for primary buttons */
+.dark.theme-organic .organic-section-top,
+.dark.theme-organic .organic-section-top-alt,
+.dark.theme-organic .organic-section-middle,
+.dark.theme-organic .organic-section-middle-alt,
+.dark.theme-organic .organic-section-bottom,
+.dark.theme-organic .organic-section-bottom-alt {
+  --primary-foreground: var(--o-night);
+}

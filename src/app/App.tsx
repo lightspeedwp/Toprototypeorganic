@@ -14,35 +14,6 @@
 import { memo } from "react";
 import { RouterProvider } from "react-router";
 import { router } from "./routes";
-import React from "react";
-
-class ErrorBoundary extends React.Component<{children: React.ReactNode}, {hasError: boolean, error: Error | null}> {
-  constructor(props: {children: React.ReactNode}) {
-    super(props);
-    this.state = { hasError: false, error: null };
-  }
-
-  static getDerivedStateFromError(error: Error) {
-    return { hasError: true, error };
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div className="section container">
-          <div className="wp-block-card">
-            <h2 className="wp-block-heading is-style-h2 has-destructive-color">Something went wrong.</h2>
-            <pre className="wp-block-code text-fluid-sm whitespace-pre-wrap">{this.state.error?.toString()}</pre>
-            <div className="py-section-sm">
-              <pre className="wp-block-code text-fluid-xs whitespace-pre-wrap">{this.state.error?.stack}</pre>
-            </div>
-          </div>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
 
 /**
  * Loading fallback component displayed while lazy-loaded
@@ -73,11 +44,9 @@ PageLoadingFallback.displayName = "PageLoadingFallback";
  */
 export default function App() {
   return (
-    <ErrorBoundary>
-      <RouterProvider
-        router={router}
-        fallbackElement={<PageLoadingFallback />}
-      />
-    </ErrorBoundary>
+    <RouterProvider
+      router={router}
+      fallbackElement={<PageLoadingFallback />}
+    />
   );
 }

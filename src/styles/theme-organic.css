@@ -1,0 +1,13 @@
+/**
+ * theme-organic.css
+ * LSX Design System — Organic Redesign Color Palette
+ *
+ * This file orchestrates the organic theme tokens.
+ */
+
+@import './theme-organic-light.css';
+@import './theme-organic-dark.css';
+@import './theme-organic-texture.css';
+@import './theme-organic-shape.css';
+@import './theme-organic-motion.css';
+@import './theme-organic-wp-presets.css';

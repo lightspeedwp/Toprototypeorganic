@@ -1,0 +1,45 @@
+/* theme-organic-dark.css */
+.dark.theme-organic {
+  --o-night: #1F1D1A;
+  --o-night-card: #2C2824;
+  --o-night-ink: #F7F3EA;
+
+  --background: var(--o-night);
+  --card: var(--o-night-card);
+  --foreground: var(--o-night-ink);
+
+  /* Keep primary luminous; use dark text on it */
+  --primary: #9BB27A;
+  --primary-foreground: var(--o-night);
+
+  --accent: #E0A87E;
+  --accent-foreground: var(--o-night);
+
+  /* Legacy aliases for compatibility */
+  --organic-sunset-bg-primary:     #2C2824;
+  --organic-sunset-bg-secondary:   #3D3631;
+  --organic-sunset-primary:        #B8704F;
+  --organic-sunset-primary-alt:    #C17A52;
+  --organic-sunset-accent:         #8FA985;
+  --organic-sunset-accent-alt:     #9FB595;
+  --organic-sunset-text:           #F5F1E8;
+  --organic-sunset-text-muted:     #C4B8A4;
+
+  --organic-clay-bg-primary:       #1F1D1A;
+  --organic-clay-bg-secondary:     #2C2824;
+  --organic-clay-primary:          #7A9663;
+  --organic-clay-primary-alt:      #8FA477;
+  --organic-clay-accent:           #C17A52;
+  --organic-clay-accent-alt:       #D4915C;
+  --organic-clay-text:             #FAF8F3;
+  --organic-clay-text-muted:       #C4B8A4;
+
+  --organic-earth-bg-primary:      #1F1D1A;
+  --organic-earth-bg-secondary:    #2A2722;
+  --organic-earth-primary:         #989F84;
+  --organic-earth-primary-alt:     #A6AD93;
+  --organic-earth-accent:          #E0A87E;
+  --organic-earth-accent-alt:      #EBB88D;
+  --organic-earth-text:            #FAF8F3;
+  --organic-earth-text-muted:      #C4B8A4;
+}

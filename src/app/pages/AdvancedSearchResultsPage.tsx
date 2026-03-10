@@ -22,6 +22,7 @@
  */
 
 import { useState, useEffect, useMemo } from "react";
+import { PageShell } from "../components/parts/PageShell";
 import { Container } from "../components/common/Container";
 import { GroupBlock } from "../components/blocks/design/GroupBlock";
 import { SearchBar } from "../components/patterns/SearchBar";
@@ -161,45 +162,48 @@ export function AdvancedSearchResultsPage() {
   };
 
   return (
-    <>
-      {/* Hero Section */}
-      <GroupBlock sectionStyle="section-hero-default">
-        <Container>
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm text-primary">
-              <Search size={16} />
-              Advanced Search
+    <PageShell context="search" className="theme-organic">
+      <div className="organic-section-top">
+        {/* Hero Section */}
+        <GroupBlock sectionStyle="section-hero-default">
+          <Container>
+            <div className="mx-auto max-w-3xl text-center">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm text-primary">
+                <Search size={16} />
+                Advanced Search
+              </div>
+
+              <h1 className="mb-4 text-foreground">Find Your Perfect Tour</h1>
+              <p className="mb-8 text-lg text-muted-foreground">
+                Use our advanced filters to discover tours tailored to your preferences
+              </p>
+
+              {/* Search Bar */}
+              <SearchBar
+                value={searchQuery}
+                onChange={setSearchQuery}
+                placeholder="Search tours, destinations, activities..."
+                showSuggestions={false}
+              />
             </div>
+          </Container>
+        </GroupBlock>
+      </div>
 
-            <h1 className="mb-4 text-foreground">Find Your Perfect Tour</h1>
-            <p className="mb-8 text-lg text-muted-foreground">
-              Use our advanced filters to discover tours tailored to your preferences
-            </p>
-
-            {/* Search Bar */}
-            <SearchBar
-              value={searchQuery}
-              onChange={setSearchQuery}
-              placeholder="Search tours, destinations, activities..."
-              showSuggestions={false}
-            />
-          </div>
-        </Container>
-      </GroupBlock>
-
-      {/* Filter & Results Section */}
-      <GroupBlock sectionStyle="section-default">
-        <Container>
-          {/* Filter Toggle (Mobile) */}
-          <div className="mb-6 flex items-center justify-between lg:hidden">
-            <h2 className="text-foreground">Search Results</h2>
-            <button
-              onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-2 rounded-md border border-border bg-background px-4 py-2 text-sm font-medium text-foreground hover:bg-muted"
-            >
-              <SlidersHorizontal size={16} />
-              {showFilters ? 'Hide' : 'Show'} Filters
-            </button>
+      <div className="organic-section-middle">
+        {/* Filter & Results Section */}
+        <GroupBlock sectionStyle="section-default">
+          <Container>
+            {/* Filter Toggle (Mobile) */}
+            <div className="mb-6 flex items-center justify-between lg:hidden">
+              <h2 className="text-foreground">Search Results</h2>
+              <button
+                onClick={() => setShowFilters(!showFilters)}
+                className="flex items-center gap-2 rounded-md border border-border bg-background px-4 py-2 text-sm font-medium text-foreground hover:bg-muted"
+              >
+                <SlidersHorizontal size={16} />
+                {showFilters ? 'Hide' : 'Show'} Filters
+              </button>
           </div>
 
           <div className="grid gap-8 lg:grid-cols-[280px,1fr]">
@@ -342,7 +346,8 @@ export function AdvancedSearchResultsPage() {
           </div>
         </Container>
       </GroupBlock>
-    </>
+      </div>
+    </PageShell>
   );
 }
 

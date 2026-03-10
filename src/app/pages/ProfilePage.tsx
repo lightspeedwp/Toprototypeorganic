@@ -30,6 +30,7 @@
 
 import "../../styles/pages/profile.css";
 import { useState } from "react";
+import { PageShell } from "../components/parts/PageShell";
 import { Container } from "../components/common/Container";
 import {
   User,

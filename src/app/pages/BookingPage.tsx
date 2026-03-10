@@ -74,33 +74,34 @@ export default function BookingPage({ tourId, onNavigate }: BookingPageProps) {
   };
 
   return (
-    <>
-      {/* Hero Section */}
-      <section className="py-section-sm md:py-section-md bg-muted">
-        <Container>
-          <div className="max-w-3xl">
-            <h1 className="mb-4">Book Your Adventure</h1>
-            <p className="text-lg text-muted-foreground">
-              You're just a few steps away from an unforgettable journey. Complete the booking
-              process below to secure your spot on <span className="font-medium text-foreground">{tour.title}</span>.
-            </p>
-          </div>
-        </Container>
-      </section>
-
-      {/* Trust Indicators */}
-      <section className="py-8 bg-background border-y border-border">
-        <Container>
-          <div className="wp-booking-trust-grid">
-            <div className="flex items-center gap-3">
-              <div className="flex-shrink-0">
-                <Shield className="w-8 h-8 text-primary" />
-              </div>
-              <div>
-                <p className="text-sm font-medium">Secure Booking</p>
-                <p className="text-xs text-muted-foreground">256-bit SSL</p>
-              </div>
+    <main className="theme-organic">
+      <div className="organic-section-top">
+        {/* Hero Section */}
+        <section className="py-section-sm md:py-section-md">
+          <Container>
+            <div className="max-w-3xl">
+              <h1 className="mb-4">Book Your Adventure</h1>
+              <p className="text-lg text-muted-foreground">
+                You're just a few steps away from an unforgettable journey. Complete the booking
+                process below to secure your spot on <span className="font-medium text-foreground">{tour.title}</span>.
+              </p>
             </div>
+          </Container>
+        </section>
+
+        {/* Trust Indicators */}
+        <section className="py-8 bg-background/50 border-y border-border/20">
+          <Container>
+            <div className="wp-booking-trust-grid">
+              <div className="flex items-center gap-3">
+                <div className="flex-shrink-0">
+                  <Shield className="w-8 h-8 text-primary" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium">Secure Booking</p>
+                  <p className="text-xs text-muted-foreground">256-bit SSL</p>
+                </div>
+              </div>
 
             <div className="flex items-center gap-3">
               <div className="flex-shrink-0">
@@ -134,15 +135,19 @@ export default function BookingPage({ tourId, onNavigate }: BookingPageProps) {
           </div>
         </Container>
       </section>
+      </div>
 
-      {/* Booking Wizard */}
-      <BookingWizard
-        tour={tour}
-        onComplete={handleBookingComplete}
-        onCancel={handleBookingCancel}
-      />
+      <div className="organic-section-middle">
+        {/* Booking Wizard */}
+        <BookingWizard
+          tour={tour}
+          onComplete={handleBookingComplete}
+          onCancel={handleBookingCancel}
+        />
+      </div>
 
-      {/* FAQ Section */}
+      <div className="organic-section-bottom">
+        {/* FAQ Section */}
       <section className="py-section-sm md:py-section-md bg-muted">
         <Container>
           <div className="max-w-3xl mx-auto">
@@ -239,6 +244,7 @@ export default function BookingPage({ tourId, onNavigate }: BookingPageProps) {
           </div>
         </Container>
       </section>
-    </>
+      </div>
+    </main>
   );
 }

@@ -21,7 +21,10 @@ if (typeof window !== 'undefined') {
         str.includes('message port was destroyed') ||
         str.includes('setupMessageChannel') ||
         str.includes('Failed to execute \'postMessage\' on \'DOMWindow\'') ||
-        str.includes('The target origin provided does not match the recipient window\'s origin')
+        str.includes('The target origin provided does not match the recipient window\'s origin') ||
+        str.includes('webpack-artifacts') ||
+        str.includes('figma_app-') ||
+        str.includes('Message aborted')
       );
     });
   };
@@ -49,6 +52,7 @@ if (typeof window !== 'undefined') {
     if (event.reason && isFigmaError([event.reason])) {
       event.preventDefault();
       event.stopPropagation();
+      return;
     }
   });
 
@@ -57,11 +61,27 @@ if (typeof window !== 'undefined') {
     if (event.error && isFigmaError([event.error])) {
       event.preventDefault();
       event.stopPropagation();
+      return;
     } else if (event.message && isFigmaError([event.message])) {
       event.preventDefault();
       event.stopPropagation();
+      return;
     }
-  });
+  }, true); // Use capture phase to catch errors earlier
+
+  // Override global Error constructor temporarily to catch these during construction
+  const OriginalError = window.Error;
+  window.Error = class extends OriginalError {
+    constructor(message?: string) {
+      if (message && isFigmaError([message])) {
+        super(''); // Replace with empty message
+        this.message = ''; // Clear the message
+        this.stack = ''; // Clear the stack
+      } else {
+        super(message);
+      }
+    }
+  } as ErrorConstructor;
 }
 
 export {};

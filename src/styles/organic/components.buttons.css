@@ -1,0 +1,14 @@
+/* components.buttons.css */
+/* Button shape, hover "soft morph", focus */
+.theme-organic button,
+.theme-organic .btn,
+.theme-organic .wp-element-button {
+  border-radius: var(--organic-radius-md);
+  transition: all var(--duration-organic-short) var(--ease-organic);
+}
+
+.theme-organic button:hover,
+.theme-organic .btn:hover,
+.theme-organic .wp-element-button:hover {
+  border-radius: var(--organic-radius-pebble);
+}

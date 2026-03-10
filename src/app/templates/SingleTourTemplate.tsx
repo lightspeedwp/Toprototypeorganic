@@ -291,7 +291,7 @@ function SingleTourTemplate() {
   `;
 
   return (
-    <main>
+    <main className="theme-organic">
       {/* Breadcrumbs */}
       <BreadcrumbsPattern
         items={[
@@ -302,121 +302,132 @@ function SingleTourTemplate() {
         fullWidth={true}
       />
 
-      {/* Hero Section */}
-      <Hero
-        title={tour.title}
-        subtitle={tour.excerpt || tour.content?.substring(0, 120)}
-        image={tour.featuredImage}
-        overlay="medium"
-        height="large"
-        primaryCTA={{
-          label: "Book This Tour",
-          href: "#book",
-          onClick: () => navigateTo("/booking"),
-        }}
-        secondaryCTA={{
-          label: "Request Info",
-          href: "#inquiry",
-          onClick: () => navigateTo("/contact"),
-        }}
-        animated
-      />
+      {/* Top Section - Savanna Sunset */}
+      <div className="organic-section-top">
+        {/* Hero Section */}
+        <Hero
+          title={tour.title}
+          subtitle={tour.excerpt || tour.content?.substring(0, 120)}
+          image={tour.featuredImage}
+          overlay="medium"
+          height="large"
+          primaryCTA={{
+            label: "Book This Tour",
+            href: "#book",
+            onClick: () => navigateTo("/booking"),
+          }}
+          secondaryCTA={{
+            label: "Request Info",
+            href: "#inquiry",
+            onClick: () => navigateTo("/contact"),
+          }}
+          animated
+        />
+      </div>
 
-      {/* Main Content Grid */}
-      <section className="single-tour__content-section">
-        <Container>
-          <div className="single-tour__grid">
-            {/* Main Content Column */}
-            <div className="single-tour__main">
-              {/* Tour Overview Block */}
-              <TourOverview
-                title="Tour Overview"
-                content={overviewContent}
-                highlights={tour.highlights}
-                callout="Unlike typical group tours, we keep our groups small to ensure a personalized experience. Your accommodation is hand-selected for quality and location, and our guides are passionate locals who love sharing their city with visitors."
-              />
-
-              {/* Itinerary Block */}
-              <TourItinerary days={itineraryDays} />
-
-              {/* Inclusions / Exclusions Block */}
-              <TourInclusionsExclusions
-                included={tour.included}
-                excluded={tour.excluded}
-              />
-
-              {/* Sustainability Block */}
-              <TourSustainability
-                projects={CONSERVATION_PROJECTS.slice(0, 2)}
-                commitments={SUSTAINABILITY_COMMITMENTS}
-              />
-
-              {/* Gallery Block */}
-              <TourGallerySection images={galleryImages} />
-            </div>
-
-            {/* Sidebar Column */}
-            <div className="single-tour__sidebar">
-              <div className="single-tour__sidebar-sticky">
-                {/* Quick Facts Block */}
-                <TourQuickFacts
-                  price={tour.price}
-                  facts={quickFacts}
-                  ctaLabel="Book This Tour"
-                  onCtaClick={() => navigateTo("/booking")}
+      {/* Main Content Grid - Acacia & Clay */}
+      <div className="organic-section-middle">
+        <section className="single-tour__content-section">
+          <Container>
+            <div className="single-tour__grid">
+              {/* Main Content Column */}
+              <div className="single-tour__main">
+                {/* Tour Overview Block */}
+                <TourOverview
+                  title="Tour Overview"
+                  content={overviewContent}
+                  highlights={tour.highlights}
+                  callout="Unlike typical group tours, we keep our groups small to ensure a personalized experience. Your accommodation is hand-selected for quality and location, and our guides are passionate locals who love sharing their city with visitors."
                 />
 
-                {/* Trust Badges Block */}
-                <TourTrustBadges badges={trustBadges} />
+                {/* Itinerary Block */}
+                <TourItinerary days={itineraryDays} />
 
-                {/* Contact CTA Block */}
-                <TourContactCTA
-                  phone={SITE_CONFIG.contact.phone}
-                  email={SITE_CONFIG.contact.email}
-                  onEnquiry={() => navigateTo("/contact")}
+                {/* Inclusions / Exclusions Block */}
+                <TourInclusionsExclusions
+                  included={tour.included}
+                  excluded={tour.excluded}
                 />
+
+                {/* Sustainability Block */}
+                <TourSustainability
+                  projects={CONSERVATION_PROJECTS.slice(0, 2)}
+                  commitments={SUSTAINABILITY_COMMITMENTS}
+                />
+
+                {/* Gallery Block */}
+                <TourGallerySection images={galleryImages} />
+              </div>
+
+              {/* Sidebar Column */}
+              <div className="single-tour__sidebar">
+                <div className="single-tour__sidebar-sticky">
+                  {/* Quick Facts Block */}
+                  <TourQuickFacts
+                    price={tour.price}
+                    facts={quickFacts}
+                    ctaLabel="Book This Tour"
+                    onCtaClick={() => navigateTo("/booking")}
+                  />
+
+                  {/* Trust Badges Block */}
+                  <TourTrustBadges badges={trustBadges} />
+
+                  {/* Contact CTA Block */}
+                  <TourContactCTA
+                    phone={SITE_CONFIG.contact.phone}
+                    email={SITE_CONFIG.contact.email}
+                    onEnquiry={() => navigateTo("/contact")}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </Container>
-      </section>
+          </Container>
+        </section>
+      </div>
 
-      {/* Related Destinations */}
-      <TourRelatedDestinationBlock 
-        destinations={relatedDestinations} 
-        onSelect={(dest) => navigateToDestination(dest.slug)}
-      />
+      {/* Middle Alt - Acacia & Clay Alt */}
+      <div className="organic-section-middle-alt">
+        {/* Related Destinations */}
+        <TourRelatedDestinationBlock 
+          destinations={relatedDestinations} 
+          onSelect={(dest) => navigateToDestination(dest.slug)}
+        />
 
-      {/* Related Accommodation */}
-      <TourRelatedAccommodationBlock 
-        accommodations={relatedAccommodations}
-        onSelect={(acc) => navigateToAccommodation(acc.slug)}
-      />
+        {/* Related Accommodation */}
+        <TourRelatedAccommodationBlock 
+          accommodations={relatedAccommodations}
+          onSelect={(acc) => navigateToAccommodation(acc.slug)}
+        />
+      </div>
 
-      {/* FAQ Section */}
-      <FAQ
-        title={faqData?.sectionTitle || "Frequently Asked Questions"}
-        subtitle={faqData?.sectionDescription || "Everything you need to know about this tour"}
-        questions={tourFAQs}
-        items={faqData?.items}
-      />
+      {/* Bottom Section - Minimal Earth */}
+      <div className="organic-section-bottom">
+        {/* FAQ Section */}
+        <FAQ
+          title={faqData?.sectionTitle || "Frequently Asked Questions"}
+          subtitle={faqData?.sectionDescription || "Everything you need to know about this tour"}
+          questions={tourFAQs}
+          items={faqData?.items}
+        />
 
-      {/* CTA Booking Section */}
-      <CTA
-        variant="gradient"
-        title={`Ready to Experience ${tour.destination || "Africa"}?`}
-        description="Book this tour today and create memories that will last a lifetime. Our team is here to help you every step of the way."
-        primaryAction={{
-          label: "Book This Tour",
-          icon: Heart,
-          onClick: () => navigateTo("/booking"),
-        }}
-        secondaryAction={{
-          label: "Request Custom Itinerary",
-          icon: Mail,
-          onClick: () => navigateTo("/contact"),
-        }}
-      />
+        {/* CTA Booking Section */}
+        <CTA
+          variant="default"
+          title={`Ready to Experience ${tour.destination || "Africa"}?`}
+          description="Book this tour today and create memories that will last a lifetime. Our team is here to help you every step of the way."
+          primaryAction={{
+            label: "Book This Tour",
+            icon: Heart,
+            onClick: () => navigateTo("/booking"),
+          }}
+          secondaryAction={{
+            label: "Request Custom Itinerary",
+            icon: Mail,
+            onClick: () => navigateTo("/contact"),
+          }}
+        />
+      </div>
     </main>
   );
 }

@@ -52,83 +52,89 @@ export function FAQPage() {
   }, [categories, searchQuery, selectedCategory]);
 
   return (
-    <PageShell context="faq">
-      <TableOfContentsPattern
-        title="Browse by Category"
-        sections={categories.map(c => ({ id: c.id, label: c.title }))}
-        variant="minimal"
-        className="pb-0"
-      />
+    <PageShell context="faq" className="theme-organic">
+      <div className="organic-section-top">
+        <TableOfContentsPattern
+          title="Browse by Category"
+          sections={categories.map(c => ({ id: c.id, label: c.title }))}
+          variant="minimal"
+          className="pb-0"
+        />
 
-      <SearchFilterPattern
-        filters={[
-          {
-            id: "search",
-            type: "search",
-            label: "Search Questions",
-            placeholder: "Keywords (e.g. visa, weather, booking)...",
-            value: searchQuery
-          },
-          {
-            id: "category",
-            label: "Filter by Category",
-            type: "select",
-            placeholder: "All Categories",
-            value: selectedCategory,
-            options: categories.map(c => ({ value: c.id, label: c.title }))
-          }
-        ]}
-        onFilterChange={(f) => {
-          setSearchQuery(f.search || "");
-          setSelectedCategory(f.category || "");
-        }}
-        onClearAll={() => {
-          setSearchQuery("");
-          setSelectedCategory("");
-        }}
-        activeFiltersCount={(searchQuery ? 1 : 0) + (selectedCategory ? 1 : 0)}
-        collapsible={true}
-      />
+        <SearchFilterPattern
+          filters={[
+            {
+              id: "search",
+              type: "search",
+              label: "Search Questions",
+              placeholder: "Keywords (e.g. visa, weather, booking)...",
+              value: searchQuery
+            },
+            {
+              id: "category",
+              label: "Filter by Category",
+              type: "select",
+              placeholder: "All Categories",
+              value: selectedCategory,
+              options: categories.map(c => ({ value: c.id, label: c.title }))
+            }
+          ]}
+          onFilterChange={(f) => {
+            setSearchQuery(f.search || "");
+            setSelectedCategory(f.category || "");
+          }}
+          onClearAll={() => {
+            setSearchQuery("");
+            setSelectedCategory("");
+          }}
+          activeFiltersCount={(searchQuery ? 1 : 0) + (selectedCategory ? 1 : 0)}
+          collapsible={true}
+        />
+      </div>
 
-      <section className="wp-template-page__content">
-        <Container>
-          {filteredSections.length > 0 ? (
-            filteredSections.map((sec) => (
-              <div key={sec.id} id={sec.id} className="scroll-mt-32 mb-16 last:mb-0">
-                <FAQ 
-                  items={sec.items} 
-                  title={sec.title}
-                  className="bg-transparent! border-none!"
-                />
-              </div>
-            ))
-          ) : (
-            <EmptyStatePattern
-              icon="search"
-              title="No Results Found"
-              message="We couldn't find any questions matching your criteria. Try different keywords or contact us directly."
-              primaryAction={{
-                label: "Clear Filters",
-                onClick: () => { setSearchQuery(""); setSelectedCategory(""); }
-              }}
-            />
-          )}
-        </Container>
-      </section>
+      <div className="organic-section-middle">
+        <section className="wp-template-page__content">
+          <Container>
+            {filteredSections.length > 0 ? (
+              filteredSections.map((sec) => (
+                <div key={sec.id} id={sec.id} className="scroll-mt-32 mb-16 last:mb-0">
+                  <FAQ 
+                    items={sec.items} 
+                    title={sec.title}
+                    className="bg-transparent! border-none!"
+                  />
+                </div>
+              ))
+            ) : (
+              <EmptyStatePattern
+                icon="search"
+                title="No Results Found"
+                message="We couldn't find any questions matching your criteria. Try different keywords or contact us directly."
+                primaryAction={{
+                  label: "Clear Filters",
+                  onClick: () => { setSearchQuery(""); setSelectedCategory(""); }
+                }}
+              />
+            )}
+          </Container>
+        </section>
+      </div>
 
-      <CTA
-        title="Expert Advice is Just a Call Away"
-        description="Our safari specialists are available to answer any unique questions you may have about your upcoming trip."
-        variant="gradient"
-        primaryAction={{ 
-          label: "Contact a Specialist", 
-          onClick: () => navigateTo("/contact")
-        }}
-        secondaryAction={{ 
-          label: "Start Trip Planner", 
-          onClick: () => navigateTo("/trip-planner")
-        }}
-      />
+      <div className="organic-section-bottom">
+        <CTA
+          title="Expert Advice is Just a Call Away"
+          description="Our safari specialists are available to answer any unique questions you may have about your upcoming trip."
+          variant="default"
+          primaryAction={{ 
+            label: "Contact a Specialist", 
+            onClick: () => navigateTo("/contact")
+          }}
+          secondaryAction={{ 
+            label: "Start Trip Planner", 
+            onClick: () => navigateTo("/trip-planner")
+          }}
+        />
+      </div>
     </PageShell>
   );
 }

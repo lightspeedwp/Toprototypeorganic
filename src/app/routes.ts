@@ -113,6 +113,7 @@ import DesignSystemVerification from "./pages/DesignSystemVerification";
 import ComponentLibrary from "./pages/ComponentLibrary";
 import NotificationBannerExamples from "./pages/NotificationBannerExamples";
 import Diagnostic from "./pages/Diagnostic";
+import OrganicDemo from "./pages/OrganicDemo"; // NEW - Organic Redesign Demo
 
 // Dev Tools Sub-pages
 import AccessibilityAudit from "./pages/dev-tools/AccessibilityAudit";
@@ -275,6 +276,7 @@ const routes: RouteObject[] = [
         ],
       },
       { path: "diagnostic", Component: Diagnostic },
+      { path: "organic-demo", Component: OrganicDemo }, // NEW - Organic Redesign Demo
       { path: "*", Component: NotFoundPage },
     ],
   },

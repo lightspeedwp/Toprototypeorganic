@@ -118,6 +118,9 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
   // Apply the HTML class on mount and whenever theme changes
   useEffect(() => {
+    // ALWAYS ACTIVATE ORGANIC REDESIGN
+    document.documentElement.classList.add("theme-organic");
+    
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
