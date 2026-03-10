@@ -59,7 +59,7 @@ export function EnquiryModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className={cn("sm:max-w-[800px] p-0 overflow-hidden border-none rounded-[2rem] bg-background shadow-2xl")}>
+      <DialogContent className={cn("sm:max-w-[800px] p-0 overflow-hidden border-none rounded-4xl bg-background shadow-2xl")}>
         <div className="wp-pattern-enquiry">
           {/* Visual Sidebar */}
           <div className="wp-pattern-enquiry__sidebar">

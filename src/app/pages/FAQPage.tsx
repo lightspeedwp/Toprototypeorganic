@@ -95,27 +95,29 @@ export function FAQPage() {
       <div className="organic-section-middle">
         <section className="wp-template-page__content">
           <Container>
-            {filteredSections.length > 0 ? (
-              filteredSections.map((sec) => (
-                <div key={sec.id} id={sec.id} className="scroll-mt-32 mb-16 last:mb-0">
-                  <FAQ 
-                    items={sec.items} 
-                    title={sec.title}
-                    className="bg-transparent! border-none!"
-                  />
-                </div>
-              ))
-            ) : (
-              <EmptyStatePattern
-                icon="search"
-                title="No Results Found"
-                message="We couldn't find any questions matching your criteria. Try different keywords or contact us directly."
-                primaryAction={{
-                  label: "Clear Filters",
-                  onClick: () => { setSearchQuery(""); setSelectedCategory(""); }
-                }}
-              />
-            )}
+            <div className="flex flex-col gap-[var(--spacing-gap-2xl)]">
+              {filteredSections.length > 0 ? (
+                filteredSections.map((sec) => (
+                  <div key={sec.id} id={sec.id} className="scroll-mt-[var(--header-bar-height,100px)]">
+                    <FAQ 
+                      items={sec.items} 
+                      title={sec.title}
+                      className="bg-transparent! border-none!"
+                    />
+                  </div>
+                ))
+              ) : (
+                <EmptyStatePattern
+                  icon="search"
+                  title="No Results Found"
+                  message="We couldn't find any questions matching your criteria. Try different keywords or contact us directly."
+                  primaryAction={{
+                    label: "Clear Filters",
+                    onClick: () => { setSearchQuery(""); setSelectedCategory(""); }
+                  }}
+                />
+              )}
+            </div>
           </Container>
         </section>
       </div>

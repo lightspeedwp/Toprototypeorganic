@@ -9,6 +9,7 @@ import { Star, Quote } from "@phosphor-icons/react";
 import type { Review } from "../../data/types";
 import { cn } from "../../lib/utils";
 import { motion } from "motion/react";
+import { BotanicalCorner } from "../common/organic/OrganicAssets";
 
 export interface ReviewCardProps {
   review: Review;
@@ -20,12 +21,15 @@ export function ReviewCard({ review, className = "", layout = "grid" }: ReviewCa
   return (
     <article 
       className={cn(
-        "wp-card wp-card--review group",
+        "wp-card wp-card--review group has-organic-assets",
         layout === "horizontal" && "wp-card--horizontal",
         className
       )}
     >
-      <div className="wp-card__content">
+      {/* Botanical Flourish */}
+      <BotanicalCorner className="wp-part-botanical-ornament--top-right" />
+
+      <div className="wp-card__content relative z-10">
         {/* Rating Section */}
         <div className="wp-card__rating" aria-label={`Rating: ${review.rating} out of 5 stars`}>
           {Array.from({ length: 5 }, (_, i) => (

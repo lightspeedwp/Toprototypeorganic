@@ -157,7 +157,7 @@ export function SpecialsArchive() {
                       onClick={() => navigateToSpecial(special.slug)} 
                     />
                     {daysLeft > 0 && daysLeft <= 7 && (
-                      <div className="absolute top-4 right-4 z-10 px-3 py-1.5 bg-accent text-white text-xs uppercase tracking-widest rounded shadow-lg flex items-center gap-2 animate-pulse">
+                      <div className="absolute top-4 right-4 z-10 px-3 py-1.5 bg-accent text-accent-foreground text-xs uppercase tracking-widest rounded shadow-lg flex items-center gap-2 animate-pulse">
                         <Clock size={12} />
                         Expires in {daysLeft} {daysLeft === 1 ? 'day' : 'days'}
                       </div>

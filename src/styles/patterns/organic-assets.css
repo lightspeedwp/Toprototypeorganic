@@ -1,0 +1,129 @@
+/**
+ * Organic Assets - CSS Positioning and Modifiers
+ * 
+ * Defines standard positions and modifiers for organic SVGs
+ * (Savannah Contour, Botanical Corner, Safari Medallion)
+ * using CSS variables and adhering to BEM naming.
+ */
+
+/* ============================================
+   BASE CLASSES
+   ============================================ */
+
+/* The parent element of an organic asset must be relative with overflow hidden 
+   to ensure the asset respects the container boundaries. */
+.has-organic-assets {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================
+   SAVANNAH CONTOUR FRAME
+   ============================================ */
+
+.wp-pattern-organic-frame {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.8;
+  transform: translateY(20%);
+}
+
+.wp-pattern-organic-frame--subtle {
+  opacity: 0.03;
+  transform: translateY(25%);
+}
+
+/* ============================================
+   BOTANICAL CORNER FLOURISH
+   ============================================ */
+
+.wp-part-botanical-ornament {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Modifier: Bottom Right */
+.wp-part-botanical-ornament--bottom-right {
+  bottom: 0;
+  right: 0;
+  width: 8rem; /* 128px */
+  height: 8rem;
+  opacity: 0.15;
+  transform: translate(10%, 10%);
+}
+
+.wp-part-botanical-ornament--bottom-right-large {
+  bottom: 0;
+  right: 0;
+  width: 16rem; /* 256px */
+  height: 16rem;
+  opacity: 0.10;
+}
+
+.wp-part-botanical-ornament--bottom-right-small {
+  bottom: 0;
+  right: 0;
+  width: 6rem; /* 96px */
+  height: 6rem;
+  opacity: 0.08;
+  transition: transform var(--transition-slow);
+}
+
+/* Add hover effect via parent group */
+.group:hover .wp-part-botanical-ornament--bottom-right-small {
+  transform: scale(1.1);
+}
+
+/* Modifier: Top Left */
+.wp-part-botanical-ornament--top-left {
+  top: 0;
+  left: 0;
+  width: 8rem;
+  height: 8rem;
+  opacity: 0.15;
+  transform: scaleX(-1) rotate(90deg);
+}
+
+.wp-part-botanical-ornament--top-left-large {
+  top: 0;
+  left: 0;
+  width: 12rem;
+  height: 12rem;
+  opacity: 0.10;
+  transform: scaleX(-1) rotate(90deg);
+}
+
+/* Modifier: Top Right */
+.wp-part-botanical-ornament--top-right {
+  top: 0;
+  right: 0;
+  width: 6rem;
+  height: 6rem;
+  opacity: 0.15;
+  transform: scaleX(1) rotate(90deg);
+}
+
+/* ============================================
+   SAFARI MEDALLION
+   ============================================ */
+
+.wp-block-safari-badge {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Modifier: Top Right Corner Callout */
+.wp-block-safari-badge--top-right {
+  top: -15px;
+  right: -15px;
+  width: 6rem; /* 96px */
+  height: 6rem;
+  opacity: 0.9;
+  filter: drop-shadow(var(--elevation-md));
+}

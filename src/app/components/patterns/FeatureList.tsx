@@ -56,11 +56,11 @@ export function FeatureList({
         const Icon = feature.icon;
         
         return (
-          <div key={index} className="flex gap-6 group">
+          <div key={index} className="flex gap-[var(--spacing-gap-lg)] group">
             {/* Icon Wrapper */}
             <div className="flex-shrink-0 mt-1">
               <div className={cn(
-                "rounded-xl bg-muted group-hover:bg-primary/5 transition-colors flex items-center justify-center",
+                "rounded-[var(--radius-xl)] bg-muted group-hover:bg-primary/5 transition-colors flex items-center justify-center",
                 iconSize === 'sm' ? "w-10 h-10" : iconSize === 'md' ? "w-12 h-12" : "w-16 h-16"
               )}>
                 <Icon
@@ -72,18 +72,18 @@ export function FeatureList({
             
             {/* Content */}
             <div className="flex-1">
-              <h3 className="mb-2 text-xl font-serif font-semibold group-hover:text-primary transition-colors">
+              <h3 className="mb-[var(--spacing-element-xs)] text-[length:var(--text-xl)] group-hover:text-primary transition-colors">
                 {feature.title}
               </h3>
               
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed m-0">
                 {feature.description}
               </p>
               
               {feature.link && (
                 <a
                   href={feature.link.href}
-                  className="inline-flex items-center mt-4 text-primary hover:underline font-medium text-sm gap-1 group/link"
+                  className="inline-flex items-center mt-[var(--spacing-element-md)] text-primary hover:underline text-[length:var(--text-sm)] gap-[var(--spacing-gap-xs)] group/link"
                 >
                   <span>{feature.link.label}</span>
                   <span className="transition-transform group-hover/link:translate-x-1">→</span>

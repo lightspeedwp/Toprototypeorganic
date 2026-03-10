@@ -24,6 +24,9 @@ import { ScrollDownArrow } from "../common/ScrollDownArrow";
 import { cn } from "../../lib/utils";
 import { getHeroContent } from "../../data/content/heroes";
 import type { HeroContent } from "../../data/types";
+import { SavannahContourFrame } from "../common/organic/OrganicAssets";
+
+import { OrganicBlobWebGL } from "../webgl/OrganicBlobWebGL";
 
 /* ------------------------------------------------------------------ */
 /*  Icon resolver                                                      */
@@ -191,14 +194,14 @@ export function Hero({
     <section
       ref={sectionRef}
       className={cn(
-        "wp-pattern-hero",
+        "wp-pattern-hero has-organic-assets",
         `wp-pattern-hero--${height}`,
         heroImage && "wp-pattern-hero--with-background",
         className,
       )}
     >
       {/* Background Media */}
-      {heroImage && (
+      {heroImage ? (
         <div className="wp-pattern-hero__background">
           <img
             ref={imageRef}
@@ -210,7 +213,15 @@ export function Hero({
             className={cn("wp-pattern-hero__overlay", `wp-pattern-hero__overlay--${overlay}`)}
           />
         </div>
+      ) : (
+        <div className="wp-pattern-hero__background bg-card relative overflow-hidden">
+           <OrganicBlobWebGL color="var(--primary)" className="opacity-20" />
+           <div className="absolute inset-0 bg-[image:var(--texture-grain-micro)] mix-blend-multiply opacity-50" />
+        </div>
       )}
+
+      {/* Environmental Depth */}
+      <SavannahContourFrame />
 
       {/* Content */}
       <Container className="wp-pattern-hero__content">

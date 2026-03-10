@@ -38,8 +38,8 @@ export interface ButtonsProps {
   /** Layout orientation: horizontal or vertical */
   orientation?: 'horizontal' | 'vertical';
   
-  /** Gap between buttons (Tailwind gap value: 1-12) */
-  gap?: '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '12';
+  /** Gap between buttons (semantic gap sizes) */
+  gap?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   
   /** Alignment of button group */
   align?: 'start' | 'center' | 'end';
@@ -83,7 +83,7 @@ export interface ButtonsProps {
  */
 export function Buttons({
   orientation = 'horizontal',
-  gap = '4',
+  gap = 'sm',
   align = 'start',
   className,
   children,
@@ -98,15 +98,11 @@ export function Buttons({
         orientation === 'vertical' && 'flex-col',
         stackOnMobile && 'flex-col md:flex-row',
         // Gap
-        gap === '1' && 'gap-1',
-        gap === '2' && 'gap-2',
-        gap === '3' && 'gap-3',
-        gap === '4' && 'gap-4',
-        gap === '5' && 'gap-5',
-        gap === '6' && 'gap-6',
-        gap === '8' && 'gap-8',
-        gap === '10' && 'gap-10',
-        gap === '12' && 'gap-12',
+        gap === 'xs' && 'gap-[var(--spacing-gap-xs)]',
+        gap === 'sm' && 'gap-[var(--spacing-gap-sm)]',
+        gap === 'md' && 'gap-[var(--spacing-gap-md)]',
+        gap === 'lg' && 'gap-[var(--spacing-gap-lg)]',
+        gap === 'xl' && 'gap-[var(--spacing-gap-xl)]',
         // Alignment
         align === 'start' && 'justify-start',
         align === 'center' && 'justify-center',

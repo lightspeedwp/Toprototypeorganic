@@ -84,7 +84,7 @@ interface BookingConfirmation {
 /**
  * Enhanced Booking Confirmation Page Component
  */
-export default function BookingConfirmationPageEnhanced({ onNavigate }: BookingConfirmationPageEnhancedProps) {
+export default function BookingConfirmationPageEnhanced({ onNavigate }: { onNavigate?: (path: string) => void }) {
   const { navigateTo } = useNavigation();
   const nav = (path: string) => {
     if (onNavigate) onNavigate(path);
@@ -220,31 +220,33 @@ export default function BookingConfirmationPageEnhanced({ onNavigate }: BookingC
       {/* ================================================================
           SUCCESS HERO - Confirmation message
           ================================================================ */}
-      <section className="py-section-sm md:py-section-md bg-muted print:bg-white">
+      <section className="py-[var(--spacing-section-sm)] md:py-[var(--spacing-section-md)] bg-muted print:bg-white">
         <Container>
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto max-w-3xl text-center flex flex-col items-center gap-[var(--spacing-gap-lg)]">
             {/* Success Icon */}
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary print:border-4 print:border-primary">
+            <div className="flex h-20 w-20 items-center justify-center rounded-[var(--radius-full)] bg-primary print:border-4 print:border-primary">
               <Check size={40} className="text-primary-foreground print:text-primary" />
             </div>
 
-            <h1 className="mb-4">Booking Confirmed!</h1>
-            <p className="text-lg text-muted-foreground mb-6">
-              Thank you for your reservation. Your booking has been confirmed and a
-              confirmation email has been sent to{" "}
-              <strong className="text-foreground">{booking.leadPassenger.email}</strong>
-            </p>
+            <div className="flex flex-col gap-[var(--spacing-gap-sm)]">
+              <h1 className="m-0 text-fluid-4xl">Booking Confirmed!</h1>
+              <p className="text-fluid-lg text-muted-foreground m-0">
+                Thank you for your reservation. Your booking has been confirmed and a
+                confirmation email has been sent to{" "}
+                <strong className="text-foreground">{booking.leadPassenger.email}</strong>
+              </p>
+            </div>
 
             {/* Booking ID with copy button */}
-            <div className="wp-callout-accent inline-flex items-center gap-3 px-6 print:border-2">
-              <div className="text-left">
-                <p className="text-sm text-muted-foreground mb-1">Booking Reference</p>
-                <p className="text-2xl font-medium font-mono">{booking.bookingId}</p>
+            <div className="wp-callout-accent inline-flex items-center gap-[var(--spacing-gap-md)] px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] print:border-2 rounded-[var(--radius-md)] bg-card">
+              <div className="text-left flex flex-col gap-[var(--spacing-gap-xs)]">
+                <p className="text-fluid-sm text-muted-foreground m-0">Booking Reference</p>
+                <p className="text-fluid-2xl m-0">{booking.bookingId}</p>
               </div>
               <button
                 onClick={handleCopyBookingId}
                 className={cn(
-                  "p-2 rounded-md transition-colors print:hidden",
+                  "p-[var(--spacing-element-sm)] rounded-[var(--radius-md)] transition-colors print:hidden",
                   "hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring"
                 )}
                 aria-label="Copy booking ID"
@@ -263,13 +265,13 @@ export default function BookingConfirmationPageEnhanced({ onNavigate }: BookingC
       {/* ================================================================
           ACTION BUTTONS - Print, Download, Share, Calendar
           ================================================================ */}
-      <section className="py-6 bg-background border-y border-border print:hidden">
+      <section className="py-[var(--spacing-element-lg)] bg-background border-y border-border print:hidden">
         <Container>
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-[var(--spacing-gap-md)]">
             <button
               onClick={handlePrint}
               className={cn(
-                "inline-flex items-center gap-2 px-4 py-2 rounded-md",
+                "inline-flex items-center gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] rounded-[var(--radius-md)]",
                 "bg-card border border-border text-foreground",
                 "hover:bg-accent transition-colors",
                 "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -282,7 +284,7 @@ export default function BookingConfirmationPageEnhanced({ onNavigate }: BookingC
             <button
               onClick={handleDownload}
               className={cn(
-                "inline-flex items-center gap-2 px-4 py-2 rounded-md",
+                "inline-flex items-center gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] rounded-[var(--radius-md)]",
                 "bg-card border border-border text-foreground",
                 "hover:bg-accent transition-colors",
                 "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -295,7 +297,7 @@ export default function BookingConfirmationPageEnhanced({ onNavigate }: BookingC
             <button
               onClick={handleAddToCalendar}
               className={cn(
-                "inline-flex items-center gap-2 px-4 py-2 rounded-md",
+                "inline-flex items-center gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] rounded-[var(--radius-md)]",
                 "bg-card border border-border text-foreground",
                 "hover:bg-accent transition-colors",
                 "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -308,7 +310,7 @@ export default function BookingConfirmationPageEnhanced({ onNavigate }: BookingC
             <button
               onClick={handleShare}
               className={cn(
-                "inline-flex items-center gap-2 px-4 py-2 rounded-md",
+                "inline-flex items-center gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] rounded-[var(--radius-md)]",
                 "bg-card border border-border text-foreground",
                 "hover:bg-accent transition-colors",
                 "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -324,25 +326,25 @@ export default function BookingConfirmationPageEnhanced({ onNavigate }: BookingC
       {/* ================================================================
           BOOKING DETAILS - Complete summary
           ================================================================ */}
-      <section className="py-section-sm md:py-section-md bg-background">
+      <section className="py-[var(--spacing-section-sm)] md:py-[var(--spacing-section-md)] bg-background">
         <Container>
-          <div className="mx-auto max-w-4xl">
-            <h2 className="mb-8">Booking Details</h2>
+          <div className="mx-auto max-w-4xl flex flex-col gap-[var(--spacing-section-sm)]">
+            <h2 className="m-0 text-fluid-3xl">Booking Details</h2>
 
-            <div className="wp-booking-details-grid">
+            <div className="wp-booking-details-grid grid gap-[var(--spacing-gap-lg)] md:grid-cols-2">
               {/* Tour Information */}
-              <div className="bg-card border border-border rounded-lg p-6">
-                <h3 className="mb-4">Tour Information</h3>
-                <div className="space-y-3">
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">Tour Name</p>
-                    <p className="font-medium">{booking.tourTitle}</p>
+              <div className="bg-card border border-border rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)] flex flex-col gap-[var(--spacing-gap-md)]">
+                <h3 className="m-0 text-fluid-xl">Tour Information</h3>
+                <div className="flex flex-col gap-[var(--spacing-gap-sm)]">
+                  <div className="flex flex-col gap-[var(--spacing-gap-xs)]">
+                    <p className="text-fluid-sm text-muted-foreground m-0">Tour Name</p>
+                    <p className="m-0">{booking.tourTitle}</p>
                   </div>
-                  <div className="flex items-start gap-2">
+                  <div className="flex items-start gap-[var(--spacing-gap-sm)]">
                     <Calendar className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Departure Date</p>
-                      <p className="font-medium">
+                    <div className="flex flex-col gap-[var(--spacing-gap-xs)]">
+                      <p className="text-fluid-sm text-muted-foreground m-0">Departure Date</p>
+                      <p className="m-0">
                         {travelDate.toLocaleDateString("en-US", {
                           weekday: "long",
                           year: "numeric",
@@ -352,11 +354,11 @@ export default function BookingConfirmationPageEnhanced({ onNavigate }: BookingC
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-2">
+                  <div className="flex items-start gap-[var(--spacing-gap-sm)]">
                     <Calendar className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Return Date</p>
-                      <p className="font-medium">
+                    <div className="flex flex-col gap-[var(--spacing-gap-xs)]">
+                      <p className="text-fluid-sm text-muted-foreground m-0">Return Date</p>
+                      <p className="m-0">
                         {returnDate.toLocaleDateString("en-US", {
                           weekday: "long",
                           year: "numeric",
@@ -366,66 +368,66 @@ export default function BookingConfirmationPageEnhanced({ onNavigate }: BookingC
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-2">
+                  <div className="flex items-start gap-[var(--spacing-gap-sm)]">
                     <Clock className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Duration</p>
-                      <p className="font-medium">{booking.duration}</p>
+                    <div className="flex flex-col gap-[var(--spacing-gap-xs)]">
+                      <p className="text-fluid-sm text-muted-foreground m-0">Duration</p>
+                      <p className="m-0">{booking.duration}</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Passenger Information */}
-              <div className="bg-card border border-border rounded-lg p-6">
-                <h3 className="mb-4">Passenger Information</h3>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-2">
+              <div className="bg-card border border-border rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)] flex flex-col gap-[var(--spacing-gap-md)]">
+                <h3 className="m-0 text-fluid-xl">Passenger Information</h3>
+                <div className="flex flex-col gap-[var(--spacing-gap-sm)]">
+                  <div className="flex items-start gap-[var(--spacing-gap-sm)]">
                     <Users className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Total Passengers</p>
-                      <p className="font-medium">{totalPassengers} traveler{totalPassengers !== 1 ? "s" : ""}</p>
-                      <p className="text-sm text-muted-foreground mt-1">
+                    <div className="flex flex-col gap-[var(--spacing-gap-xs)]">
+                      <p className="text-fluid-sm text-muted-foreground m-0">Total Passengers</p>
+                      <p className="m-0">{totalPassengers} traveler{totalPassengers !== 1 ? "s" : ""}</p>
+                      <p className="text-fluid-sm text-muted-foreground m-0">
                         {booking.passengers.adults} Adult{booking.passengers.adults !== 1 ? "s" : ""}
                         {booking.passengers.children > 0 && `, ${booking.passengers.children} Child${booking.passengers.children !== 1 ? "ren" : ""}`}
                         {booking.passengers.infants > 0 && `, ${booking.passengers.infants} Infant${booking.passengers.infants !== 1 ? "s" : ""}`}
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-2">
+                  <div className="flex items-start gap-[var(--spacing-gap-sm)]">
                     <Mail className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Lead Passenger</p>
-                      <p className="font-medium">
+                    <div className="flex flex-col gap-[var(--spacing-gap-xs)]">
+                      <p className="text-fluid-sm text-muted-foreground m-0">Lead Passenger</p>
+                      <p className="m-0">
                         {booking.leadPassenger.firstName} {booking.leadPassenger.lastName}
                       </p>
-                      <p className="text-sm text-muted-foreground mt-1">
+                      <p className="text-fluid-sm text-muted-foreground m-0">
                         {booking.leadPassenger.email}
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-2">
+                  <div className="flex items-start gap-[var(--spacing-gap-sm)]">
                     <Phone className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Contact Number</p>
-                      <p className="font-medium">{booking.leadPassenger.phone}</p>
+                    <div className="flex flex-col gap-[var(--spacing-gap-xs)]">
+                      <p className="text-fluid-sm text-muted-foreground m-0">Contact Number</p>
+                      <p className="m-0">{booking.leadPassenger.phone}</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Payment Information */}
-              <div className="bg-card border border-border rounded-lg p-6">
-                <h3 className="mb-4">Payment Information</h3>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-2">
+              <div className="bg-card border border-border rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)] flex flex-col gap-[var(--spacing-gap-md)]">
+                <h3 className="m-0 text-fluid-xl">Payment Information</h3>
+                <div className="flex flex-col gap-[var(--spacing-gap-md)]">
+                  <div className="flex items-start gap-[var(--spacing-gap-sm)]">
                     <CreditCard className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Payment Status</p>
-                      <div className="flex items-center gap-2">
+                    <div className="flex flex-col gap-[var(--spacing-gap-xs)]">
+                      <p className="text-fluid-sm text-muted-foreground m-0">Payment Status</p>
+                      <div className="flex items-center gap-[var(--spacing-gap-sm)]">
                         <span
                           className={cn(
-                            "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-sm font-medium",
+                            "inline-flex items-center gap-[var(--spacing-gap-xs)] px-[var(--spacing-element-sm)] py-1 rounded-[var(--radius-full)] text-fluid-sm",
                             booking.paymentStatus === "confirmed" &&
                               "wp-bg-primary-light",
                             booking.paymentStatus === "pending" &&
@@ -442,20 +444,20 @@ export default function BookingConfirmationPageEnhanced({ onNavigate }: BookingC
                       </div>
                     </div>
                   </div>
-                  <div className="pt-3 border-t border-border space-y-2">
+                  <div className="pt-[var(--spacing-element-md)] border-t border-border flex flex-col gap-[var(--spacing-gap-sm)]">
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Total Price</span>
-                      <span className="font-medium">{booking.totalPrice}</span>
+                      <span className="">{booking.totalPrice}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Deposit Paid</span>
-                      <span className="font-medium text-primary">{booking.depositPaid}</span>
+                      <span className="text-primary">{booking.depositPaid}</span>
                     </div>
-                    <div className="flex justify-between pt-2 border-t border-border">
-                      <span className="font-medium">Balance Due</span>
-                      <span className="text-lg font-medium">{booking.balanceDue}</span>
+                    <div className="flex justify-between pt-[var(--spacing-element-sm)] border-t border-border">
+                      <span className="">Balance Due</span>
+                      <span className="text-fluid-lg">{booking.balanceDue}</span>
                     </div>
-                    <p className="text-xs text-muted-foreground mt-2">
+                    <p className="text-fluid-xs text-muted-foreground m-0">
                       Due 60 days before departure
                     </p>
                   </div>
@@ -463,12 +465,12 @@ export default function BookingConfirmationPageEnhanced({ onNavigate }: BookingC
               </div>
 
               {/* Booking Details */}
-              <div className="bg-card border border-border rounded-lg p-6">
-                <h3 className="mb-4">Booking Details</h3>
-                <div className="space-y-3">
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">Booking Date</p>
-                    <p className="font-medium">
+              <div className="bg-card border border-border rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)] flex flex-col gap-[var(--spacing-gap-md)]">
+                <h3 className="m-0 text-fluid-xl">Booking Details</h3>
+                <div className="flex flex-col gap-[var(--spacing-gap-md)]">
+                  <div className="flex flex-col gap-[var(--spacing-gap-xs)]">
+                    <p className="text-fluid-sm text-muted-foreground m-0">Booking Date</p>
+                    <p className="m-0">
                       {bookingDate.toLocaleDateString("en-US", {
                         year: "numeric",
                         month: "long",
@@ -476,12 +478,12 @@ export default function BookingConfirmationPageEnhanced({ onNavigate }: BookingC
                       })}
                     </p>
                   </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">Confirmation Email</p>
-                    <p className="font-medium">{booking.confirmationEmail}</p>
+                  <div className="flex flex-col gap-[var(--spacing-gap-xs)]">
+                    <p className="text-fluid-sm text-muted-foreground m-0">Confirmation Email</p>
+                    <p className="m-0">{booking.confirmationEmail}</p>
                     <button
                       onClick={handleResendEmail}
-                      className="text-sm text-primary hover:underline print:hidden"
+                      className="text-fluid-sm text-primary hover:underline print:hidden text-left"
                     >
                       Resend confirmation email
                     </button>
@@ -496,17 +498,12 @@ export default function BookingConfirmationPageEnhanced({ onNavigate }: BookingC
       {/* ================================================================
           NEXT STEPS - What to do next
           ================================================================ */}
-      <section className="py-section-sm md:py-section-md bg-muted print:bg-white">
+      <section className="py-[var(--spacing-section-sm)] md:py-[var(--spacing-section-md)] bg-muted print:bg-white">
         <Container>
-          <div className="mx-auto max-w-3xl text-center">
-            {/* Success Icon */}
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary print:border-4 print:border-primary">
-              <Check size={40} className="text-primary-foreground print:text-primary" />
-            </div>
+          <div className="mx-auto max-w-3xl text-center flex flex-col gap-[var(--spacing-section-sm)]">
+            <h2 className="m-0 text-fluid-3xl">What Happens Next?</h2>
 
-            <h2 className="mb-8">What Happens Next?</h2>
-
-            <div className="space-y-4">
+            <div className="flex flex-col gap-[var(--spacing-gap-md)] text-left">
               {[
                 {
                   step: 1,
@@ -531,14 +528,14 @@ export default function BookingConfirmationPageEnhanced({ onNavigate }: BookingC
               ].map((item) => (
                 <div
                   key={item.step}
-                  className="flex gap-4 bg-card border border-border rounded-lg p-6"
+                  className="flex gap-[var(--spacing-gap-md)] bg-card border border-border rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)]"
                 >
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-medium">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-[var(--radius-full)] bg-primary text-primary-foreground flex items-center justify-center">
                     {item.step}
                   </div>
-                  <div>
-                    <h4 className="mb-2">{item.title}</h4>
-                    <p className="text-muted-foreground">{item.description}</p>
+                  <div className="flex flex-col gap-[var(--spacing-gap-xs)]">
+                    <h4 className="m-0 text-fluid-lg">{item.title}</h4>
+                    <p className="text-muted-foreground m-0">{item.description}</p>
                   </div>
                 </div>
               ))}
@@ -550,19 +547,21 @@ export default function BookingConfirmationPageEnhanced({ onNavigate }: BookingC
       {/* ================================================================
           CONTACT SUPPORT - Help section
           ================================================================ */}
-      <section className="py-section-sm md:py-section-md bg-primary text-primary-foreground print:hidden">
+      <section className="py-[var(--spacing-section-sm)] md:py-[var(--spacing-section-md)] bg-primary text-primary-foreground print:hidden">
         <Container>
-          <div className="mx-auto max-w-3xl text-center">
-            <Info className="w-12 h-12 mx-auto mb-4" />
-            <h2 className="mb-4">Questions About Your Booking?</h2>
-            <p className="text-lg mb-6 text-primary-foreground/90">
-              Our travel experts are here to help you with any questions
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="mx-auto max-w-3xl text-center flex flex-col items-center gap-[var(--spacing-gap-lg)]">
+            <Info className="w-12 h-12" />
+            <div className="flex flex-col gap-[var(--spacing-gap-sm)]">
+              <h2 className="m-0 text-primary-foreground text-fluid-3xl">Questions About Your Booking?</h2>
+              <p className="text-fluid-lg text-primary-foreground/90 m-0">
+                Our travel experts are here to help you with any questions
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-[var(--spacing-gap-md)]">
               <button
                 onClick={() => nav("/contact")}
                 className={cn(
-                  "inline-flex items-center gap-2 px-6 py-3 rounded-md",
+                  "inline-flex items-center gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
                   "bg-background text-foreground",
                   "hover:bg-background/90 transition-all",
                   "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
@@ -573,7 +572,7 @@ export default function BookingConfirmationPageEnhanced({ onNavigate }: BookingC
               <button
                 onClick={() => nav("/tours/" + booking.tourSlug)}
                 className={cn(
-                  "inline-flex items-center gap-2 px-6 py-3 rounded-md",
+                  "inline-flex items-center gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
                   "border-2 border-primary-foreground/20 text-primary-foreground",
                   "hover:bg-primary-foreground/10 transition-all",
                   "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"

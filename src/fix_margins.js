@@ -1,0 +1,10 @@
+const fs = require('fs');
+let content = fs.readFileSync('src/app/pages/ComponentLibrary.tsx', 'utf8');
+content = content.replace(/className="text-center mb-16"/g, 'className="text-center flex flex-col items-center gap-[var(--spacing-gap-lg)] pb-[var(--spacing-gap-xl)]"');
+content = content.replace(/className="wp-badge mb-4"/g, 'className="wp-badge"');
+content = content.replace(/className="mb-4"/g, 'className="m-0"');
+content = content.replace(/className="mb-16"/g, 'className="flex flex-col gap-[var(--spacing-gap-lg)] pb-[var(--spacing-gap-xl)]"');
+content = content.replace(/className="mb-6"/g, 'className="m-0"');
+content = content.replace(/className="mb-6 text-center"/g, 'className="m-0 text-center"');
+content = content.replace(/className="text-muted-foreground mb-8"/g, 'className="text-muted-foreground m-0"');
+fs.writeFileSync('src/app/pages/ComponentLibrary.tsx', content);

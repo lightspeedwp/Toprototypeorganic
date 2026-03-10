@@ -236,7 +236,7 @@ function SingleDestinationTemplate() {
 
       <div className="organic-section-middle">
         {/* Main Content Grid */}
-        <section className="py-section-sm md:py-section-md">
+        <section className="py-[var(--spacing-section-sm)] md:py-[var(--spacing-section-md)]">
           <Container>
             <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
               {/* Main Content - 2 columns */}
@@ -267,20 +267,20 @@ function SingleDestinationTemplate() {
                     <div
                       key={index}
                       className={cn(
-                        "p-6 rounded-lg border border-border",
+                        "p-6 rounded-[var(--radius-lg)] border border-border",
                         "bg-card wp-bg-accent-hover",
                         "transition-colors duration-200"
                       )}
                     >
                       <div className="flex items-start gap-3">
                         <div className="flex-shrink-0 mt-1">
-                          <div className="size-8 rounded-full bg-primary/10 flex items-center justify-center">
+                          <div className="size-8 rounded-[var(--radius-full)] bg-primary/10 flex items-center justify-center">
                             <MapPin size={16} className="text-primary" />
                           </div>
                         </div>
                         <div>
-                          <h4 className="mb-2 text-lg">{highlight}</h4>
-                          <p className="text-sm text-muted-foreground">
+                          <h4 className="mb-2 text-fluid-lg">{highlight}</h4>
+                          <p className="text-fluid-sm text-muted-foreground">
                             A must-see attraction that showcases the best of what {destination.name} has to offer.
                           </p>
                         </div>
@@ -297,66 +297,66 @@ function SingleDestinationTemplate() {
                   <h2>Climate & Best Time to Visit</h2>
                 </div>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="p-6 rounded-lg border border-border bg-card">
+                  <div className="p-6 rounded-[var(--radius-lg)] border border-border bg-card">
                     <div className="flex items-center gap-2 mb-3">
                       <Sun size={20} className="text-accent" />
                       <h4>Summer</h4>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-2">
+                    <p className="text-fluid-sm text-muted-foreground mb-2">
                       {climateInfo.summer.months}
                     </p>
-                    <p className="text-sm font-medium mb-2">
+                    <p className="text-fluid-sm font-medium mb-2">
                       {climateInfo.summer.temp}
                     </p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-fluid-sm text-muted-foreground">
                       {climateInfo.summer.description}
                     </p>
                   </div>
 
-                  <div className="p-6 rounded-lg border border-border bg-card">
+                  <div className="p-6 rounded-[var(--radius-lg)] border border-border bg-card">
                     <div className="flex items-center gap-2 mb-3">
                       <Calendar size={20} className="text-secondary" />
                       <h4>Autumn</h4>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-2">
+                    <p className="text-fluid-sm text-muted-foreground mb-2">
                       {climateInfo.autumn.months}
                     </p>
-                    <p className="text-sm font-medium mb-2">
+                    <p className="text-fluid-sm font-medium mb-2">
                       {climateInfo.autumn.temp}
                     </p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-fluid-sm text-muted-foreground">
                       {climateInfo.autumn.description}
                     </p>
                   </div>
 
-                  <div className="p-6 rounded-lg border border-border bg-card">
+                  <div className="p-6 rounded-[var(--radius-lg)] border border-border bg-card">
                     <div className="flex items-center gap-2 mb-3">
                       <CloudRain size={20} className="text-info" />
                       <h4>Winter</h4>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-2">
+                    <p className="text-fluid-sm text-muted-foreground mb-2">
                       {climateInfo.winter.months}
                     </p>
-                    <p className="text-sm font-medium mb-2">
+                    <p className="text-fluid-sm font-medium mb-2">
                       {climateInfo.winter.temp}
                     </p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-fluid-sm text-muted-foreground">
                       {climateInfo.winter.description}
                     </p>
                   </div>
 
-                  <div className="p-6 rounded-lg border border-border bg-card">
+                  <div className="p-6 rounded-[var(--radius-lg)] border border-border bg-card">
                     <div className="flex items-center gap-2 mb-3">
                       <TrendingUp size={20} className="text-success" />
                       <h4>Spring</h4>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-2">
+                    <p className="text-fluid-sm text-muted-foreground mb-2">
                       {climateInfo.spring.months}
                     </p>
-                    <p className="text-sm font-medium mb-2">
+                    <p className="text-fluid-sm font-medium mb-2">
                       {climateInfo.spring.temp}
                     </p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-fluid-sm text-muted-foreground">
                       {climateInfo.spring.description}
                     </p>
                   </div>
@@ -408,9 +408,9 @@ function SingleDestinationTemplate() {
                 />
 
                 {/* Quick Info Card */}
-                <div className="p-6 rounded-lg border border-border bg-card">
+                <div className="p-6 rounded-[var(--radius-lg)] border border-border bg-card">
                   <h4 className="mb-4">Quick Travel Info</h4>
-                  <ul className="space-y-3 text-sm text-muted-foreground">
+                  <ul className="space-y-3 text-fluid-sm text-muted-foreground">
                     <li className="flex items-start gap-2">
                       <MapPin size={16} className="text-primary mt-0.5 flex-shrink-0" />
                       <span>Multiple regions to explore</span>

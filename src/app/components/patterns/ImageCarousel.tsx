@@ -186,7 +186,7 @@ export function ImageCarousel({
     <>
       <div
         className={cn(
-          "group relative overflow-hidden rounded-lg border border-border bg-muted",
+          "group relative overflow-hidden rounded-[var(--radius-lg)] border border-border bg-muted",
           getAspectRatioClass(),
           className
         )}
@@ -215,7 +215,7 @@ export function ImageCarousel({
         {showArrows && images.length > 1 && (
           <button
             onClick={handlePrevious}
-            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-background/80 p-2 text-foreground opacity-0 transition-opacity hover:bg-background focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring group-hover:opacity-100"
+            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-[var(--radius-full)] bg-background/80 p-2 text-foreground opacity-0 transition-opacity hover:bg-background focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring group-hover:opacity-100"
             aria-label="Previous image"
           >
             <ChevronLeft size={24} />
@@ -226,7 +226,7 @@ export function ImageCarousel({
         {showArrows && images.length > 1 && (
           <button
             onClick={handleNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-background/80 p-2 text-foreground opacity-0 transition-opacity hover:bg-background focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring group-hover:opacity-100"
+            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-[var(--radius-full)] bg-background/80 p-2 text-foreground opacity-0 transition-opacity hover:bg-background focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring group-hover:opacity-100"
             aria-label="Next image"
           >
             <ChevronRight size={24} />
@@ -237,7 +237,7 @@ export function ImageCarousel({
         {autoPlayInterval > 0 && images.length > 1 && (
           <button
             onClick={togglePlayPause}
-            className="absolute right-4 top-4 rounded-full bg-background/80 p-2 text-foreground opacity-0 transition-opacity hover:bg-background focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring group-hover:opacity-100"
+            className="absolute right-4 top-4 rounded-[var(--radius-full)] bg-background/80 p-2 text-foreground opacity-0 transition-opacity hover:bg-background focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring group-hover:opacity-100"
             aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
           >
             {isPlaying ? <Pause size={20} /> : <Play size={20} />}
@@ -266,7 +266,7 @@ export function ImageCarousel({
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={cn(
-                  "h-2 rounded-full transition-all",
+                  "h-2 rounded-[var(--radius-full)] transition-all",
                   index === currentIndex
                     ? "w-8 bg-primary"
                     : "w-2 bg-background/60 hover:bg-background/80"
@@ -330,7 +330,7 @@ export function ThumbnailCarousel({
       <div className={cn("space-y-4", className)}>
         {/* Main Image */}
         <div
-          className="relative aspect-video overflow-hidden rounded-lg border border-border bg-muted"
+          className="relative aspect-video overflow-hidden rounded-[var(--radius-lg)] border border-border bg-muted"
           onClick={() => enableLightbox && openLightbox(currentIndex)}
         >
           <img
@@ -357,7 +357,7 @@ export function ThumbnailCarousel({
               key={index}
               onClick={() => setCurrentIndex(index)}
               className={cn(
-                "aspect-square overflow-hidden rounded-md border-2 transition-all hover:opacity-100",
+                "aspect-square overflow-hidden rounded-[var(--radius-md)] border-2 transition-all hover:opacity-100",
                 index === currentIndex
                   ? "border-primary opacity-100"
                   : "border-border opacity-60"

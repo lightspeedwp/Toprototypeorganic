@@ -274,11 +274,11 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
               </div>
               <div className="has-width-full has-height-2 has-muted-background-color has-border-radius-full wp-block-lts-layout--overflow-hidden">
                 <div
-                  className="has-height-full has-primary-background-color"
+                  className="has-height-full has-primary-background-color transition-all duration-500"
                   style={{
-                    width: `${(user.stats.rewardPoints / (user.stats.rewardPoints + user.membership.pointsToNext)) * 100}%`,
-                    transition: "all 500ms"
-                  }}
+                    '--dynamic-width': `${(user.stats.rewardPoints / (user.stats.rewardPoints + user.membership.pointsToNext)) * 100}%`,
+                    width: 'var(--dynamic-width)'
+                  } as React.CSSProperties}
                 />
               </div>
             </div>

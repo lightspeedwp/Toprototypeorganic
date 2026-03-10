@@ -72,7 +72,7 @@
   --info-foreground: #000000;
 
   /* — Borders, inputs, focus — */
-  --border:           #404040;  /* Dark grey divider — visible on dark surface */
+  --border:           #666666;  /* WCAG 2.2 AA non-text contrast >3:1 on #0A0A0A */
   --border-subtle:    #333333;  /* Softer divider for section separators */
   --input:            #1A1A1A;
   --input-background: #1A1A1A;

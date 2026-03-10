@@ -73,9 +73,11 @@ export function Skeleton({
         className
       )}
       style={{
-        width: typeof width === "number" ? `${width}px` : width,
-        height: typeof height === "number" ? `${height}px` : height,
-      }}
+        '--dynamic-width': typeof width === 'number' ? `${width}px` : width,
+        '--dynamic-height': typeof height === 'number' ? `${height}px` : height,
+        width: 'var(--dynamic-width)',
+        height: 'var(--dynamic-height)'
+      } as React.CSSProperties}
       role="status"
       aria-busy="true"
       aria-live="polite"

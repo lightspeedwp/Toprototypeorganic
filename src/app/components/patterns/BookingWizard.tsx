@@ -276,7 +276,7 @@ export function BookingWizard({
                   <div className="mt-2 text-center hidden md:block">
                     <p
                       className={cn(
-                        "text-sm font-medium transition-colors",
+                        "text-[length:var(--text-sm)] font-bold transition-colors",
                         isActive && "text-primary",
                         !isActive && "text-muted-foreground"
                       )}

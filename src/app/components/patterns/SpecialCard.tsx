@@ -53,6 +53,7 @@
 import { Calendar, Percent } from "@phosphor-icons/react";
 import type { Special } from "../../data/types";
 import { cn } from "../../lib/utils";
+import { SafariMedallion } from "../common/organic/OrganicAssets";
 
 /**
  * Props for the SpecialCard component.
@@ -98,7 +99,7 @@ export function SpecialCard({ special, onClick, layout = "grid" }: SpecialCardPr
   return (
     <article 
       className={cn(
-        "wp-card wp-card--special",
+        "wp-card wp-card--special group has-organic-assets",
         layout === "list" && "wp-card--horizontal"
       )}
       onClick={handleClick}
@@ -107,6 +108,9 @@ export function SpecialCard({ special, onClick, layout = "grid" }: SpecialCardPr
       role="button"
       aria-label={`View ${special.title}`}
     >
+      {/* Organic Decorations */}
+      <SafariMedallion className="wp-block-safari-badge--top-right" />
+
       <div className="wp-card__image-wrapper">
         <img
           src={special.featuredImage}

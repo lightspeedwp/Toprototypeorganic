@@ -19,14 +19,16 @@ This document defines the **modern fluid typography system** for the LightSpeed 
 - Smooth transitions across all viewport widths — no breakpoint jumps
 - Media queries are reserved for **structural layout changes** only (grid columns, nav switches)
 
-### 2. Three Font Families Only
-Only these three font stacks are permitted in this project:
+### 2. Five Font Families Only
+Only these five font stacks are permitted in this project:
 
 | Variable | Stack | Usage |
 |----------|-------|-------|
 | `var(--font-family-lora)` | `'Lora', Georgia, 'Times New Roman', serif` | Headings (H1-H6), labels, blockquotes, editorial |
 | `var(--font-family-noto-sans)` | `'Noto Sans', Arial, Helvetica, sans-serif` | Body text, paragraphs, buttons, inputs, UI elements |
 | `var(--font-family-mono)` | `'Courier New', Courier, monospace` | Code blocks, technical values (booking IDs, reference codes) |
+| `var(--font-family-caveat)` | `'Caveat', cursive` | Hand-drawn accents, organic flourishes, decorative microcopy |
+| `var(--font-family-shadows)` | `'Shadows Into Light', cursive` | Alternative hand-drawn accent script |
 
 **NO OTHER FONTS ARE ALLOWED.**
 

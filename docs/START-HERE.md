@@ -121,7 +121,7 @@
 <code className="font-mono"> {/* → Courier New */}
 ```
 
-**ONLY these 3 fonts are allowed. No others.**
+**ONLY these 5 fonts are allowed. No others.**
 
 ### **3. USE External CSS Files**
 
@@ -321,7 +321,7 @@ export function MyComponent({ variant = "primary", children }: MyComponentProps)
 - [ ] **No `Arial`, `Helvetica`, `Georgia`** (font names)
 - [ ] **Has external CSS file** with BEM naming
 - [ ] **CSS imported** in `/src/styles/index.css`
-- [ ] **Uses only** Lora, Noto Sans, Courier New fonts
+- [ ] **Uses only** Lora, Noto Sans, Courier New, Caveat, Shadows Into Light fonts
 - [ ] **All colors** via CSS variables
 - [ ] **All spacing** via CSS variables or Tailwind scale
 - [ ] **Passes** `./scripts/verify-compliance.sh`

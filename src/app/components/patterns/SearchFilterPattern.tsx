@@ -100,7 +100,7 @@ export function SearchFilterPattern({
                   size="sm"
                   onClick={() => setIsExpanded(!isExpanded)}
                   className={cn(
-                    "rounded-xl font-bold gap-2 px-5 transition-all duration-300",
+                    "rounded-[var(--radius-xl)] gap-[var(--spacing-gap-sm)] px-5 transition-all duration-300 font-bold",
                     isExpanded ? "bg-primary text-primary-foreground border-primary" : "bg-card"
                   )}
                 >
@@ -112,7 +112,7 @@ export function SearchFilterPattern({
               {hasActiveFilters && (
                 <button
                   onClick={handleClear}
-                  className="flex items-center gap-2 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-destructive hover:bg-destructive/10 rounded-lg transition-all"
+                  className="flex items-center gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] text-[length:var(--text-xs)] uppercase tracking-widest text-destructive hover:bg-destructive/10 rounded-[var(--radius-lg)] transition-all font-bold"
                 >
                   <X className="size-3" /> Clear Active
                 </button>
@@ -131,7 +131,7 @@ export function SearchFilterPattern({
                     onSearchChange(e.target.value);
                   }}
                   placeholder={searchPlaceholder || 'Search the collection...'}
-                  className="w-full pl-12 pr-4 py-3 rounded-2xl bg-muted/50 border-2 border-transparent focus:border-primary/20 focus:bg-background transition-all outline-none font-bold text-sm"
+                  className="w-full pl-12 pr-[var(--spacing-element-md)] py-[var(--spacing-element-md)] rounded-[var(--radius-2xl)] bg-muted/50 border-2 border-transparent focus:border-primary/20 focus:bg-background transition-all outline-none text-[length:var(--text-sm)] font-bold"
                 />
               </div>
             )}
@@ -174,17 +174,17 @@ export function SearchFilterPattern({
                               value={filterValue}
                               onChange={(e) => handleChange(e.target.value)}
                               placeholder={filter.placeholder || 'Keywords...'}
-                              className="w-full pl-9 pr-4 py-2 rounded-xl bg-card border-2 border-border focus:border-primary/30 outline-none text-sm transition-all"
+                              className="w-full pl-9 pr-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] rounded-[var(--radius-xl)] bg-card border-2 border-border focus:border-primary/30 outline-none text-[length:var(--text-sm)] transition-all"
                             />
                           </div>
                         )}
 
                         {filter.type === 'select' && (
                           <Select value={filterValue} onValueChange={handleChange}>
-                            <SelectTrigger id={filter.id} className="w-full bg-card border-2 border-border rounded-xl h-10 font-bold text-sm">
+                            <SelectTrigger id={filter.id} className="w-full bg-card border-2 border-border rounded-[var(--radius-xl)] h-10 font-[var(--font-weight-bold)] text-[length:var(--text-sm)]">
                               <SelectValue placeholder={filter.placeholder || 'Select...'} />
                             </SelectTrigger>
-                            <SelectContent className="rounded-xl border-2 border-border shadow-xl">
+                            <SelectContent className="rounded-[var(--radius-xl)] border-2 border-border shadow-[var(--elevation-xl)]">
                               <SelectItem value="" className="font-bold text-sm">All {filter.label}s</SelectItem>
                               {filter.options?.map((option) => (
                                 <SelectItem key={option.value} value={option.value} className="font-medium text-sm">

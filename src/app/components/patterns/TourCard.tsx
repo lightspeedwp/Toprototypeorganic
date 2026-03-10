@@ -11,6 +11,7 @@ import { cn } from "../../lib/utils";
 import { motion as Motion } from "motion/react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { useNavigate } from "react-router";
+import { SafariMedallion, BotanicalCorner } from "../common/organic/OrganicAssets";
 
 interface TourCardProps {
   tour: Tour;
@@ -42,7 +43,7 @@ export function TourCard({ tour, onClick, layout = "card", animated = false }: T
   const cardContent = (
     <article 
       className={cn(
-        "wp-card wp-card--tour group",
+        "wp-card wp-card--tour group has-organic-assets",
         layout === "horizontal" && "wp-card--horizontal",
         isSpecial && "wp-card--special",
         onClick && "cursor-pointer"
@@ -53,6 +54,10 @@ export function TourCard({ tour, onClick, layout = "card", animated = false }: T
       role="button"
       aria-label={`Explore ${tour.title}`}
     >
+      {/* Organic Decorations */}
+      {isSpecial && <SafariMedallion className="wp-block-safari-badge--top-right" />}
+      <BotanicalCorner className="wp-part-botanical-ornament--bottom-right-large" />
+
       {/* Featured Image Section */}
       <div className="wp-card__image-wrapper">
         <ImageWithFallback

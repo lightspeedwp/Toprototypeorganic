@@ -637,7 +637,7 @@ export default function BlockDocumentation() {
 
                   <CardContent>
                     <Tabs defaultValue="props" className="w-full">
-                      <TabsList style={{ display: "grid", width: "100%", gridTemplateColumns: "repeat(5, minmax(0, 1fr))" }}>
+                      <TabsList className="grid w-full grid-cols-5">
                         <TabsTrigger value="props">Props</TabsTrigger>
                         <TabsTrigger value="example">Example</TabsTrigger>
                         <TabsTrigger value="usage">Usage</TabsTrigger>

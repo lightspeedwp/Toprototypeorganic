@@ -9,7 +9,7 @@
 ### **ALL generated UI MUST:**
 
 1. ✅ **Use CSS variables ONLY** - No hardcoded colors, spacing, fonts, radius, shadows
-2. ✅ **Use defined fonts ONLY** - Lora (serif), Noto Sans (sans), Courier New (mono)
+2. ✅ **Use defined fonts ONLY** - Lora (serif), Noto Sans (sans), Courier New (mono), Caveat (handwriting), Shadows Into Light (handwriting)
 3. ✅ **Use external CSS files** - No inline styles (`style={{}}`)
 4. ✅ **Use BEM naming** - `.wp-pattern-*`, `.wp-card-*`, `.wp-section-*`
 5. ✅ **Support dark mode automatically** - Via CSS variables (no `dark:` classes)
@@ -207,7 +207,7 @@ var(--elevation-xl)  /* Extra large shadow */
 Before submitting any UI component, verify:
 
 - [ ] **No hardcoded colors** - All colors use `var(--*)` 
-- [ ] **No hardcoded fonts** - Only Lora, Noto Sans, Courier New via CSS variables
+- [ ] **No hardcoded fonts** - Only Lora, Noto Sans, Courier New, Caveat, Shadows Into Light via CSS variables
 - [ ] **No inline styles** - All styling in external CSS files
 - [ ] **No `dark:` classes** - Dark mode handled by CSS variables automatically
 - [ ] **Uses BEM naming** - `.wp-pattern-*`, `.wp-card-*`, etc.

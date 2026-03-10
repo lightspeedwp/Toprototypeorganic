@@ -163,7 +163,7 @@ const FAQ_REQUIREMENTS = INSURANCE_REQUIREMENTS.map(req => ({
 function InsuranceProviderCard({ provider }: { provider: typeof INSURANCE_PROVIDERS[0] }) {
   return (
     <article 
-      className={`bg-card border rounded-lg p-6 relative ${
+      className={`bg-card border rounded-lg p-6 relative flex flex-col gap-[var(--spacing-gap-md)] ${
         provider.recommended ? 'ring-2 ring-primary' : ''
       }`}
     >
@@ -175,13 +175,13 @@ function InsuranceProviderCard({ provider }: { provider: typeof INSURANCE_PROVID
         </div>
       )}
 
-      <div className="flex items-start justify-between mb-4">
+      <div className="flex items-start justify-between">
         <div className="flex items-center gap-3">
           <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
             {provider.logo}
           </div>
           <div>
-            <h3>{provider.name}</h3>
+            <h3 className="m-0">{provider.name}</h3>
             <div className="flex items-center gap-2 text-sm">
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
@@ -198,15 +198,15 @@ function InsuranceProviderCard({ provider }: { provider: typeof INSURANCE_PROVID
         </div>
       </div>
 
-      <p className="mb-4">
+      <p className="m-0">
         From {provider.startingPrice}
         <span className="text-sm text-muted-foreground"> / week</span>
       </p>
 
-      <ul className="space-y-2 mb-6">
+      <ul className="space-y-2 m-0">
         {provider.features.map((feature, index) => (
           <li key={index} className="flex items-start gap-2 text-sm">
-            <CircleCheck className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+            <CircleCheck className="h-4 w-4 text-primary flex-shrink-0" />
             <span>{feature}</span>
           </li>
         ))}
@@ -251,9 +251,9 @@ export function TravelInsurancePage() {
       {/* Recommended Providers */}
       <section className="py-section-md bg-muted/30">
         <Container>
-          <div className="text-center mb-8">
-            <h2 className="mb-4">How it works</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+          <div className="text-center flex flex-col gap-[var(--spacing-gap-sm)] pb-[var(--spacing-gap-lg)]">
+            <h2 className="m-0">How it works</h2>
+            <p className="text-muted-foreground max-w-2xl m-0">
               We've partnered with trusted providers that specialize in adventure and safari travel coverage
             </p>
           </div>
@@ -264,12 +264,14 @@ export function TravelInsurancePage() {
             ))}
           </div>
 
-          <div className="mt-8 wp-bg-accent-ultralight border wp-border-accent-soft rounded-lg p-6 text-center">
-            <p className="text-sm">
-              <strong>Note:</strong> These are affiliate links. Purchasing through our partners 
-              helps support our service at no additional cost to you. We only recommend providers 
-              we trust and use ourselves.
-            </p>
+          <div className="pt-[var(--spacing-gap-lg)]">
+            <div className="wp-bg-accent-ultralight border wp-border-accent-soft rounded-lg p-6 text-center">
+              <p className="text-sm m-0">
+                <strong>Note:</strong> These are affiliate links. Purchasing through our partners 
+                helps support our service at no additional cost to you. We only recommend providers 
+                we trust and use ourselves.
+              </p>
+            </div>
           </div>
         </Container>
       </section>
@@ -309,9 +311,9 @@ export function TravelInsurancePage() {
       {/* Requirements by Destination */}
       <section className="py-section-md bg-muted/30">
         <Container>
-          <div className="text-center mb-8">
-            <h2 className="mb-4">Frequently asked questions</h2>
-            <p className="text-center text-muted-foreground mb-12">
+          <div className="text-center flex flex-col gap-[var(--spacing-gap-sm)]">
+            <h2 className="m-0">Frequently asked questions</h2>
+            <p className="text-center text-muted-foreground m-0 pb-[var(--spacing-gap-xl)]">
               Understand insurance needs for different safari destinations
             </p>
             

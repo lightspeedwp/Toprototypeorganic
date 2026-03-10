@@ -243,7 +243,7 @@ export function ReviewsHubPage() {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="flex justify-center pt-[var(--spacing-section-sm)]">
             <Button variant="outline" size="lg">
               Load More Reviews <ArrowRight className="size-4" />
             </Button>

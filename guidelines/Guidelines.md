@@ -13,13 +13,19 @@
 **This 1-page document contains THE TWO NON-NEGOTIABLE RULES:**
 
 1. **RULE #1:** Use CSS variables ONLY (no hardcoded colors/fonts)
-2. **RULE #2:** Use ONLY 3 fonts (Lora, Noto Sans, Courier New)
+2. **RULE #2:** Use ONLY 5 fonts (Lora, Noto Sans, Courier New, Caveat, Shadows Into Light)
 
 **If you skip this, your component WILL be rejected!** ❌
 
 ---
 
 ## 🚨 **CRITICAL: STYLING & COMPLIANCE RULES**
+
+### **⚠️ ZERO MARGIN & ORGANIC WRAPPER POLICY ⚠️**
+
+1. ✅ **Zero Margin Policy:** ALL elements must rely on flex/grid gaps or specific padding. You MUST NOT use margin utilities (e.g., `mb-4`, `mt-8`, `my-6`, `mx-auto`) to separate elements. Use layout components or CSS grid/flex spacing instead.
+2. ✅ **Organic Wrappers:** Use specific organic section wrappers (`organic-section-top`, `organic-section-middle`, `organic-section-bottom`) for page layout sections. Do not use plain `<section>` or `<div>` for the primary sections of a page.
+3. ✅ **Use design tokens:** Colors, spacing, typography must come from `/styles/global.css` and the Tailwind config.
 
 ### **⚠️ ZERO TOLERANCE: INLINE STYLES ⚠️**
 
@@ -44,7 +50,7 @@
 
 **This interactive script will verify you understand:**
 1. ✅ Must use CSS variables for ALL styling
-2. ✅ Must use ONLY defined fonts (Lora, Noto Sans, Courier New)
+2. ✅ Must use ONLY defined fonts (Lora, Noto Sans, Courier New, Caveat, Shadows Into Light)
 3. ✅ Must create external CSS files
 4. ✅ Must use BEM naming convention
 5. ✅ Must avoid hardcoded colors
@@ -89,7 +95,7 @@ This document contains:
 **ALL UI generation MUST strictly follow these rules:**
 
 1. ✅ **USE CSS VARIABLES ONLY** - No hardcoded colors, fonts, spacing, borders, radius, shadows
-2. ✅ **USE DEFINED FONTS ONLY** - Lora (serif), Noto Sans (sans-serif), Courier New (monospace)
+2. ✅ **USE DEFINED FONTS ONLY** - Lora (serif), Noto Sans (sans-serif), Courier New (monospace), Caveat (handwriting), Shadows Into Light (handwriting)
 3. ✅ **FOLLOW BEM NAMING** - `.wp-part-*`, `.wp-pattern-*`, `.wp-card-*`
 4. ✅ **NO INLINE STYLES** - All styling via external CSS files
 5. ✅ **NO dark: CLASSES** - CSS variables handle dark mode automatically
@@ -343,7 +349,7 @@ This prototype exists to validate **content models, layout patterns, and editori
 
 ### **Typography Requirements:**
 
-**ONLY use these 3 font faces defined in `/src/styles/theme.css`:**
+**ONLY use these 5 font faces defined in `/src/styles/theme.css`:**
 
 1. **Lora** (serif) via `var(--font-family-lora)`
    - Usage: Headings (H1-H6), labels, blockquotes, editorial content
@@ -353,6 +359,12 @@ This prototype exists to validate **content models, layout patterns, and editori
    
 3. **Courier New** (monospace) via `var(--font-family-courier-new)`
    - Usage: Code blocks, technical content
+
+4. **Caveat** (handwriting) via `var(--font-family-caveat)`
+   - Usage: Accent text, organic flourishes, decorative microcopy
+
+5. **Shadows Into Light** (handwriting) via `var(--font-family-shadows)`
+   - Usage: Alternative accent text for organic, hand-drawn feel
 
 **NO OTHER FONTS ARE ALLOWED.**
 

@@ -71,14 +71,14 @@ export function ReviewsSectionPattern({
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="p-8 rounded-[2rem] bg-card border-2 border-border shadow-xl flex items-center gap-8 relative overflow-hidden group hover:border-primary transition-colors duration-500"
+              className="p-8 rounded-4xl bg-card border-2 border-border shadow-xl flex items-center gap-8 relative overflow-hidden group hover:border-primary transition-colors duration-500"
             >
               <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform duration-700">
                 <Star className="size-20 text-accent fill-current" />
               </div>
               
               <div className="text-center relative z-10">
-                <p className="text-5xl font-serif font-bold text-primary leading-none mb-2">
+                <p className="text-[length:var(--text-5xl)] text-primary leading-none mb-2">
                   {calculatedAverage.toFixed(1)}
                 </p>
                 <div className="flex items-center justify-center gap-1 mb-1">
@@ -92,13 +92,13 @@ export function ReviewsSectionPattern({
                     />
                   ))}
                 </div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Rating Score</p>
+                <p className="text-[length:var(--text-xs)] uppercase tracking-widest text-muted-foreground">Rating Score</p>
               </div>
               
               <div className="h-16 w-px bg-border/50 relative z-10" />
               
               <div className="relative z-10">
-                <p className="text-sm font-bold text-foreground mb-1">
+                <p className="text-[length:var(--text-sm)] text-foreground mb-1">
                   Verified Experiences
                 </p>
                 <p className="text-xs text-muted-foreground m-0">
@@ -124,7 +124,7 @@ export function ReviewsSectionPattern({
         {/* Bottom Action */}
         <div className="mt-16 text-center">
           <button 
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-xl border-2 border-border font-bold text-sm hover:bg-muted transition-all group"
+            className="inline-flex items-center gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-xl)] py-[var(--spacing-element-md)] rounded-[var(--radius-xl)] border-2 border-border text-[length:var(--text-sm)] hover:bg-muted transition-all group"
           >
             Read All Testimonials <span className="group-hover:translate-x-1 transition-transform">→</span>
           </button>

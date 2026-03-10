@@ -50,7 +50,7 @@ export function ArchiveTourTemplate() {
     <PageShell context="tours-archive" as="main" className="wp-template-archive-tours theme-organic">
       <div className="organic-section-top">
         {/* Advanced Control Bar */}
-        <section className="wp-template-archive-tours__filters px-[24px] py-[0px]">
+        <section className="wp-template-archive-tours__filters py-section-sm">
           <Container>
             <div className="wp-template-archive-tours__filter-bar">
             <div className="wp-template-archive-tours__filter-group">
@@ -161,7 +161,7 @@ export function ArchiveTourTemplate() {
 
       <div className="organic-section-middle">
         {/* Main Results */}
-        <section className="wp-template-archive-tours__content px-[24px] py-[64px]">
+        <section className="wp-template-archive-tours__content py-section-lg">
           <Container className="flex flex-col gap-gap-lg">
             <SectionHeader
               section={{

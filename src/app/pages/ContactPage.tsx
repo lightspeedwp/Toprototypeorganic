@@ -43,32 +43,32 @@ export function ContactPage() {
         {/* Trust & Support Highlights */}
         <section className="wp-template-page__stats border-b border-border/50">
           <Container>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="flex gap-4 p-6 organic-radius-md bg-muted/30 border border-border/50">
-                <div className="p-3 organic-radius-sm bg-primary/10 text-primary shrink-0 self-start">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-[var(--spacing-gap-lg)]">
+              <div className="flex gap-[var(--spacing-gap-md)] p-[var(--spacing-element-lg)] rounded-[var(--radius-md)] bg-muted/30 border border-border/50">
+                <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-sm)] bg-primary/10 text-primary shrink-0 self-start">
                   <Clock className="size-6" />
                 </div>
                 <div>
-                  <h3 className="m-0 mb-1">Fast Response</h3>
-                  <p className="text-sm text-muted-foreground m-0">We typically respond to all inquiries within 2-4 business hours.</p>
+                  <h3 className="m-0 mb-[var(--spacing-element-xs)]">Fast Response</h3>
+                  <p className="text-fluid-sm text-muted-foreground m-0">We typically respond to all inquiries within 2-4 business hours.</p>
                 </div>
               </div>
-              <div className="flex gap-4 p-6 organic-radius-md bg-muted/30 border border-border/50">
-                <div className="p-3 organic-radius-sm bg-primary/10 text-primary shrink-0 self-start">
+              <div className="flex gap-[var(--spacing-gap-md)] p-[var(--spacing-element-lg)] rounded-[var(--radius-md)] bg-muted/30 border border-border/50">
+                <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-sm)] bg-primary/10 text-primary shrink-0 self-start">
                   <ShieldCheck className="size-6" />
                 </div>
                 <div>
-                  <h3 className="m-0 mb-1">Expert Advice</h3>
-                  <p className="text-sm text-muted-foreground m-0">Speak directly with guides who have personal experience in the field.</p>
+                  <h3 className="m-0 mb-[var(--spacing-element-xs)]">Expert Advice</h3>
+                  <p className="text-fluid-sm text-muted-foreground m-0">Speak directly with guides who have personal experience in the field.</p>
                 </div>
               </div>
-              <div className="flex gap-4 p-6 organic-radius-md bg-muted/30 border border-border/50">
-                <div className="p-3 organic-radius-sm bg-primary/10 text-primary shrink-0 self-start">
+              <div className="flex gap-[var(--spacing-gap-md)] p-[var(--spacing-element-lg)] rounded-[var(--radius-md)] bg-muted/30 border border-border/50">
+                <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-sm)] bg-primary/10 text-primary shrink-0 self-start">
                   <Headphones className="size-6" />
                 </div>
                 <div>
-                  <h3 className="m-0 mb-1">24/7 Support</h3>
-                  <p className="text-sm text-muted-foreground m-0">Our travelers have access to emergency support throughout their journey.</p>
+                  <h3 className="m-0 mb-[var(--spacing-element-xs)]">24/7 Support</h3>
+                  <p className="text-fluid-sm text-muted-foreground m-0">Our travelers have access to emergency support throughout their journey.</p>
                 </div>
               </div>
             </div>
@@ -80,8 +80,8 @@ export function ContactPage() {
         {/* Primary Contact Area */}
         <section className="wp-template-page__form bg-card">
           <Container>
-            <div className="grid lg:grid-cols-2 gap-16 items-start">
-              <div className="space-y-12">
+            <div className="grid lg:grid-cols-2 gap-[var(--spacing-gap-xl)] items-start">
+              <div className="space-y-[var(--spacing-element-xl)]">
                 <ContactInfoPattern
                   title="Get in Touch"
                   description="Use the contact details below to reach our offices directly."
@@ -95,21 +95,21 @@ export function ContactPage() {
                   className="p-0!"
                 />
                 
-                <div className="p-8 organic-radius-lg bg-primary/5 border-2 border-primary/10">
-                  <div className="flex items-center gap-3 mb-4">
+                <div className="p-[var(--spacing-element-xl)] rounded-[var(--radius-lg)] bg-primary/5 border-2 border-primary/10">
+                  <div className="flex items-center gap-[var(--spacing-element-sm)] mb-[var(--spacing-element-md)]">
                     <Building2 className="size-5 text-primary" />
                     <h4 className="m-0 wp-text--hand">Business Hours</h4>
                   </div>
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
+                  <div className="space-y-[var(--spacing-element-xs)]">
+                    <div className="flex justify-between text-fluid-sm">
                       <span className="text-foreground">Monday - Friday</span>
                       <span className="text-muted-foreground">08:00 - 18:00 (SAST)</span>
                     </div>
-                    <div className="flex justify-between text-sm">
+                    <div className="flex justify-between text-fluid-sm">
                       <span className="text-foreground">Saturday</span>
                       <span className="text-muted-foreground">09:00 - 13:00 (SAST)</span>
                     </div>
-                    <div className="flex justify-between text-sm">
+                    <div className="flex justify-between text-fluid-sm">
                       <span className="text-foreground">Sunday</span>
                       <span className="text-muted-foreground">Closed</span>
                     </div>
@@ -117,7 +117,7 @@ export function ContactPage() {
                 </div>
               </div>
 
-              <div className="p-8 md:p-12 organic-radius-lg bg-background border-2 border-border shadow-xl" id="contact-form">
+              <div className="p-[var(--spacing-section-sm)] md:p-[var(--spacing-section-md)] rounded-[var(--radius-lg)] bg-background border-2 border-border shadow-xl" id="contact-form">
                 <ContactFormPattern
                   title="Send a Message"
                   description="Fill out the form below and one of our specialists will reach out to start your planning."

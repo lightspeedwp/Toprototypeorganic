@@ -137,8 +137,8 @@ export function Button({
 }: ButtonProps) {
   // Base styles (always applied)
   const baseStyles = cn(
-    'inline-flex items-center justify-center gap-2',
-    'rounded-lg',
+    'inline-flex items-center justify-center flex-nowrap whitespace-nowrap gap-[var(--spacing-gap-sm)]',
+    'rounded-[var(--radius-lg)]',
     'transition-colors duration-200',
     'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
     'disabled:opacity-50 disabled:pointer-events-none',
@@ -162,9 +162,9 @@ export function Button({
   // Size styles (minimum touch targets for accessibility)
   // Using design system CSS variables for spacing
   const sizeStyles = {
-    sm: 'min-h-[32px] text-sm',        // Small: 32px height, smaller text
+    sm: 'min-h-[32px] text-[length:var(--text-sm)]',        // Small: 32px height, smaller text
     default: 'min-h-[44px]',           // Default: 44px (WCAG AA touch target)
-    lg: 'min-h-[52px] text-lg',        // Large: 52px height, larger text
+    lg: 'min-h-[52px] text-[length:var(--text-lg)]',        // Large: 52px height, larger text
   };
 
   // Padding uses design system spacing variables via Tailwind

@@ -120,9 +120,9 @@ export function ArchiveBlogTemplate() {
       </div>
 
       <div className="organic-section-middle-alt">
-        <section className="py-section-lg bg-muted/30 border-y border-border/50">
+        <section className="py-[var(--spacing-section-md)] bg-muted/30 border-y border-border/50">
           <Container maxWidth="narrow">
-            <div className="p-10 md:p-16 organic-radius-lg bg-background border-2 border-border shadow-2xl relative overflow-hidden">
+            <div className="p-[var(--spacing-element-xl)] rounded-[var(--radius-lg)] bg-background border-2 border-border shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 p-8 opacity-5">
                 <Newspaper className="size-48" />
               </div>

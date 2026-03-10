@@ -20,6 +20,7 @@
 
 import { cn } from "../../lib/utils";
 import type { Icon as PhosphorIcon } from "@phosphor-icons/react";
+import { BotanicalCorner } from "../common/organic/OrganicAssets";
 
 interface FeatureCardProps {
   /** Phosphor icon component to display */
@@ -63,16 +64,19 @@ export function FeatureCard({
   return (
     <div
       className={cn(
-        "wp-pattern-feature-card",
+        "wp-pattern-feature-card group has-organic-assets",
         `wp-pattern-feature-card--${variant}`,
         className
       )}
     >
-      <div className="wp-pattern-feature-card__icon-wrapper">
+      {/* Decorative Botanical Flourish */}
+      <BotanicalCorner className="wp-part-botanical-ornament--bottom-right-small" />
+
+      <div className="wp-pattern-feature-card__icon-wrapper relative z-10">
         <Icon className="wp-pattern-feature-card__icon" />
       </div>
-      <h3 className="wp-pattern-feature-card__title">{title}</h3>
-      <p className="wp-pattern-feature-card__description">{description}</p>
+      <h3 className="wp-pattern-feature-card__title relative z-10">{title}</h3>
+      <p className="wp-pattern-feature-card__description relative z-10">{description}</p>
     </div>
   );
 }

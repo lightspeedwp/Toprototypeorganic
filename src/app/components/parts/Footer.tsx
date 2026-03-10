@@ -5,18 +5,14 @@
  * Built with WordPress block theme architecture in mind.
  */
 
-import { 
-  Envelope,
-  Phone,
-  MapPin,
-  Clock
-} from "@phosphor-icons/react";
+import { Envelope, Phone, MapPin, Clock } from "@phosphor-icons/react";
 import { Container } from "../common/Container";
 import { Logo } from "../common/Logo";
 import { SocialLinks, type SocialLink } from "../common/SocialLinks";
 import { NewsletterSignupPattern } from "../patterns/NewsletterSignupPattern";
 import { SITE_CONFIG } from "../../data/site-config";
 import { useNavigation } from "../../contexts/NavigationContext";
+import { BotanicalCorner, SavannahContourFrame } from "../common/organic/OrganicAssets";
 
 /**
  * Footer component props.
@@ -82,9 +78,16 @@ export function Footer({ onNavigate }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="wp-part-footer theme-organic">
+    <footer className="wp-part-footer theme-organic has-organic-assets">
+      {/* Decorative Botanical corners */}
+      <BotanicalCorner className="wp-part-botanical-ornament--top-left-large" />
+      <BotanicalCorner className="wp-part-botanical-ornament--bottom-right-large" />
+
+      {/* Decorative Savannah contour behind the bottom area */}
+      <SavannahContourFrame className="wp-pattern-organic-frame--subtle" />
+
       {/* Newsletter Section */}
-      <section className="wp-part-footer__newsletter-wrapper">
+      <section className="wp-part-footer__newsletter-wrapper relative z-10">
         <NewsletterSignupPattern
           title="Join Our Adventure"
           description="Get the latest safari tips, destination guides, and exclusive offers delivered to your inbox."
@@ -96,7 +99,7 @@ export function Footer({ onNavigate }: FooterProps) {
         />
       </section>
 
-      <Container>
+      <Container className="relative z-10">
         {/* Main Footer Content */}
         <div className="wp-part-footer__main">
           {/* Column 1: Brand */}

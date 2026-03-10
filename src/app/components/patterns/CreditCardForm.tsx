@@ -224,13 +224,13 @@ export function CreditCardForm({
   const yearOptions = Array.from({ length: 11 }, (_, i) => currentYear + i);
 
   return (
-    <div className={cn("space-y-6", className)}>
+    <div className={cn("space-y-[var(--spacing-gap-lg)]", className)}>
       {/* Header */}
-      <div className="flex items-start gap-3">
+      <div className="flex items-start gap-[var(--spacing-gap-md)]">
         <CreditCard className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
         <div>
-          <h3 className="mb-2">Card Information</h3>
-          <p className="text-sm text-muted-foreground">
+          <h3 className="mb-[var(--spacing-element-sm)] text-[length:var(--text-xl)]">Card Information</h3>
+          <p className="text-[length:var(--text-sm)] text-muted-foreground m-0">
             Enter your card details below
           </p>
         </div>
@@ -238,7 +238,7 @@ export function CreditCardForm({
 
       {/* Card Number */}
       <div>
-        <label htmlFor="cardNumber" className="mb-2 block">
+        <label htmlFor="cardNumber" className="mb-[var(--spacing-element-sm)] block text-[length:var(--text-sm)]">
           Card Number *
         </label>
         <div className="relative">
@@ -251,7 +251,7 @@ export function CreditCardForm({
             onChange={(e) => handleCardNumberChange(e.target.value)}
             onBlur={() => markTouched("cardNumber")}
             className={cn(
-              "w-full px-4 py-3 pr-12 rounded-md",
+              "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] pr-[var(--spacing-element-xl)] rounded-[var(--radius-md)]",
               "bg-input-background border-2",
               "text-foreground placeholder:text-muted-foreground",
               "focus:outline-none focus:ring-2 focus:ring-ring",
@@ -267,8 +267,8 @@ export function CreditCardForm({
           {/* Card Brand Icon */}
           <div className="absolute right-3 top-1/2 -translate-y-1/2">
             {cardBrand !== "unknown" && (
-              <div className="flex items-center gap-1">
-                <span className="text-xs font-medium text-muted-foreground uppercase">
+              <div className="flex items-center gap-[var(--spacing-gap-xs)]">
+                <span className="text-[length:var(--text-xs)] text-muted-foreground uppercase tracking-widest">
                   {cardBrand}
                 </span>
                 {isCardNumberValid && touched.cardNumber && (
@@ -280,7 +280,7 @@ export function CreditCardForm({
         </div>
         
         {showCardNumberError && (
-          <div className="flex items-center gap-1.5 mt-2 text-sm text-destructive">
+          <div className="flex items-center gap-[var(--spacing-gap-xs)] mt-[var(--spacing-element-sm)] text-[length:var(--text-sm)] text-destructive">
             <AlertCircle className="w-4 h-4 flex-shrink-0" />
             <span>Please enter a valid card number</span>
           </div>
@@ -289,7 +289,7 @@ export function CreditCardForm({
 
       {/* Cardholder Name */}
       <div>
-        <label htmlFor="cardholderName" className="mb-2 block">
+        <label htmlFor="cardholderName" className="mb-[var(--spacing-element-sm)] block text-[length:var(--text-sm)]">
           Cardholder Name *
         </label>
         <input
@@ -300,7 +300,7 @@ export function CreditCardForm({
           onChange={(e) => updateField("cardholderName", e.target.value)}
           onBlur={() => markTouched("cardholderName")}
           className={cn(
-            "w-full px-4 py-3 rounded-md",
+            "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
             "bg-input-background border-2",
             "text-foreground placeholder:text-muted-foreground",
             "focus:outline-none focus:ring-2 focus:ring-ring",
@@ -314,7 +314,7 @@ export function CreditCardForm({
         />
         
         {showNameError && (
-          <div className="flex items-center gap-1.5 mt-2 text-sm text-destructive">
+          <div className="flex items-center gap-[var(--spacing-gap-xs)] mt-[var(--spacing-element-sm)] text-[length:var(--text-sm)] text-destructive">
             <AlertCircle className="w-4 h-4 flex-shrink-0" />
             <span>Please enter the name as shown on card</span>
           </div>
@@ -322,10 +322,10 @@ export function CreditCardForm({
       </div>
 
       {/* Expiry Date and CVV */}
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-[var(--spacing-gap-md)] md:grid-cols-3">
         {/* Expiry Month */}
         <div>
-          <label htmlFor="expiryMonth" className="mb-2 block">
+          <label htmlFor="expiryMonth" className="mb-[var(--spacing-element-sm)] block text-[length:var(--text-sm)]">
             Expiry Month *
           </label>
           <select
@@ -334,7 +334,7 @@ export function CreditCardForm({
             onChange={(e) => updateField("expiryMonth", e.target.value)}
             onBlur={() => markTouched("expiryMonth")}
             className={cn(
-              "w-full px-4 py-3 rounded-md",
+              "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
               "bg-input-background border-2",
               "text-foreground",
               "focus:outline-none focus:ring-2 focus:ring-ring",
@@ -357,7 +357,7 @@ export function CreditCardForm({
 
         {/* Expiry Year */}
         <div>
-          <label htmlFor="expiryYear" className="mb-2 block">
+          <label htmlFor="expiryYear" className="mb-[var(--spacing-element-sm)] block text-[length:var(--text-sm)]">
             Expiry Year *
           </label>
           <select
@@ -366,7 +366,7 @@ export function CreditCardForm({
             onChange={(e) => updateField("expiryYear", e.target.value)}
             onBlur={() => markTouched("expiryYear")}
             className={cn(
-              "w-full px-4 py-3 rounded-md",
+              "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
               "bg-input-background border-2",
               "text-foreground",
               "focus:outline-none focus:ring-2 focus:ring-ring",
@@ -389,11 +389,11 @@ export function CreditCardForm({
 
         {/* CVV */}
         <div>
-          <label htmlFor="cvv" className="mb-2 flex items-center gap-2">
+          <label htmlFor="cvv" className="mb-[var(--spacing-element-sm)] flex items-center gap-[var(--spacing-gap-xs)] text-[length:var(--text-sm)]">
             <span>CVV *</span>
             <div className="group relative">
               <Lock className="w-3.5 h-3.5 text-muted-foreground cursor-help" />
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-popover text-popover-foreground border border-border rounded-md text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-[var(--spacing-element-sm)] px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] bg-popover text-popover-foreground border border-border rounded-[var(--radius-md)] text-[length:var(--text-xs)] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
                 3-4 digit security code on back of card
               </div>
             </div>
@@ -407,7 +407,7 @@ export function CreditCardForm({
             onChange={(e) => handleCvvChange(e.target.value)}
             onBlur={() => markTouched("cvv")}
             className={cn(
-              "w-full px-4 py-3 rounded-md",
+              "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
               "bg-input-background border-2",
               "text-foreground placeholder:text-muted-foreground",
               "focus:outline-none focus:ring-2 focus:ring-ring",
@@ -421,7 +421,7 @@ export function CreditCardForm({
           />
           
           {showCvvError && (
-            <div className="flex items-center gap-1.5 mt-2 text-sm text-destructive">
+            <div className="flex items-center gap-[var(--spacing-gap-xs)] mt-[var(--spacing-element-sm)] text-[length:var(--text-sm)] text-destructive">
               <AlertCircle className="w-4 h-4 flex-shrink-0" />
               <span>Invalid CVV</span>
             </div>
@@ -432,7 +432,7 @@ export function CreditCardForm({
       {/* Billing ZIP (Optional) */}
       {showBillingZip && (
         <div>
-          <label htmlFor="billingZip" className="mb-2 block">
+          <label htmlFor="billingZip" className="mb-[var(--spacing-element-sm)] block text-[length:var(--text-sm)]">
             Billing ZIP Code (Optional)
           </label>
           <input
@@ -443,7 +443,7 @@ export function CreditCardForm({
             onChange={(e) => updateField("billingZip", e.target.value)}
             onBlur={() => markTouched("billingZip")}
             className={cn(
-              "w-full px-4 py-3 rounded-md",
+              "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
               "bg-input-background border border-border",
               "text-foreground placeholder:text-muted-foreground",
               "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -454,17 +454,17 @@ export function CreditCardForm({
 
       {/* Save Card Option */}
       {showSaveOption && (
-        <div className="flex items-start gap-3">
+        <div className="flex items-start gap-[var(--spacing-gap-md)]">
           <input
             id="saveCard"
             type="checkbox"
             checked={formData.saveCard}
             onChange={(e) => updateField("saveCard", e.target.checked)}
-            className="mt-1 w-4 h-4 rounded border-border text-primary focus:ring-ring"
+            className="mt-1 w-4 h-4 rounded-[var(--radius-sm)] border-border text-primary focus:ring-ring"
           />
-          <label htmlFor="saveCard" className="text-sm cursor-pointer flex-1">
-            <span className="font-medium">Save this card for future bookings</span>
-            <p className="text-muted-foreground mt-0.5">
+          <label htmlFor="saveCard" className="text-[length:var(--text-sm)] cursor-pointer flex-1 m-0">
+            <span>Save this card for future bookings</span>
+            <p className="text-muted-foreground mt-0.5 m-0 text-[length:var(--text-xs)]">
               Your card details will be securely stored for faster checkout next time
             </p>
           </label>
@@ -472,14 +472,14 @@ export function CreditCardForm({
       )}
 
       {/* Security Notice */}
-      <div className="wp-bg-muted-light rounded-lg p-4">
-        <div className="flex items-start gap-3">
+      <div className="wp-bg-muted-light rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)]">
+        <div className="flex items-start gap-[var(--spacing-gap-md)]">
           <Shield className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-          <div className="text-sm">
-            <p className="font-medium text-foreground mb-1">
+          <div className="text-[length:var(--text-sm)]">
+            <p className="text-foreground mb-1 m-0 font-bold">
               256-bit SSL Encryption
             </p>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground m-0 text-[length:var(--text-xs)]">
               Your payment information is encrypted and transmitted securely. We never
               store your full card number.
             </p>

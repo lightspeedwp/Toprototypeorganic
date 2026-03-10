@@ -73,7 +73,7 @@
 
   /* — Accent — Darker amber/gold */
   --accent:            #B87A00; /* 7.01:1 on #FFFFFF */
-  --accent-foreground: #FFFFFF; /* White on accent — AA+ for large text */
+  --accent-foreground: #000000; /* Black on accent — 5.76:1 */
 
   /* — Muted / de-emphasised — */
   --muted:            #F5F5F5; /* Very light grey surface */
@@ -93,7 +93,7 @@
   --info-foreground: #FFFFFF;
 
   /* — Borders, inputs, focus — */
-  --border:           #BDBDBD; /* Visible but subtle divider */
+  --border:           #8A8A8A; /* WCAG 2.2 AA non-text contrast >3:1 on white */
   --border-subtle:    #E0E0E0; /* Softer divider for section separators */
   --input:            #FFFFFF; /* Input field background */
   --input-background: #FFFFFF;

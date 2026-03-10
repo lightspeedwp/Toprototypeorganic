@@ -396,13 +396,13 @@ export default function DesignBlocksShowcase() {
             <ContentLayout
               layout="sidebar-right"
               main={
-                <div className="bg-background p-8 rounded-lg border">
-                  <h4 className="mb-4">Main Content Area</h4>
-                  <p className="text-muted-foreground mb-4">
+                <div className="bg-background p-8 rounded-lg border flex flex-col gap-4">
+                  <h4 className="m-0">Main Content Area</h4>
+                  <p className="text-muted-foreground m-0">
                     This is the main content area (66.667% width) with a right sidebar.
                     Content automatically stacks on mobile for better readability.
                   </p>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground m-0">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                     eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   </p>

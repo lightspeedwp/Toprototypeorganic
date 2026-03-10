@@ -38,12 +38,14 @@
 
 ---
 
-### **RULE #2: ONLY 3 Fonts**
+### **RULE #2: ONLY 5 Fonts**
 
 **ONLY use these font faces:**
 1. **Lora** (serif) - `font-serif` or `var(--font-family-lora)`
 2. **Noto Sans** (sans-serif) - `font-sans` or `var(--font-family-noto-sans)`
 3. **Courier New** (mono) - `font-mono` or `var(--font-family-mono)`
+4. **Caveat** (handwriting) - `font-caveat` or `var(--font-family-caveat)`
+5. **Shadows Into Light** (handwriting) - `font-shadows` or `var(--font-family-shadows)`
 
 **❌ NEVER use:** Arial, Helvetica, Georgia, Times, Verdana, or ANY other font!
 

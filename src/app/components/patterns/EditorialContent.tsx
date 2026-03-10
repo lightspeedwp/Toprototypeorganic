@@ -45,6 +45,7 @@ import { motion } from "motion/react";
 import { Clock } from "@phosphor-icons/react";
 import { Container } from "../common/Container";
 import { cn } from "../../lib/utils";
+import { BotanicalCorner } from "../common/organic/OrganicAssets";
 
 /**
  * Layout variant types.
@@ -126,7 +127,15 @@ export function EditorialContent({
   };
 
   return (
-    <section className={cn("wp-pattern-editorial", className)}>
+    <section className={cn("wp-pattern-editorial relative overflow-hidden", className)}>
+      {/* Decorative Corners */}
+      <div className="absolute top-0 left-0 w-32 h-32 z-0 opacity-15 pointer-events-none -scale-x-100 rotate-90">
+        <BotanicalCorner />
+      </div>
+      <div className="absolute bottom-0 right-0 w-32 h-32 z-0 opacity-15 pointer-events-none">
+        <BotanicalCorner />
+      </div>
+
       <Container>
         <div className={cn(
           "wp-pattern-editorial__inner",

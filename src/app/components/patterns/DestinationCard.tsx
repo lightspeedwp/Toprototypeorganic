@@ -12,6 +12,7 @@ import { cn } from "../../lib/utils";
 import { motion as Motion, useScroll, useTransform } from "motion/react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { useNavigate } from "react-router";
+import { BotanicalCorner } from "../common/organic/OrganicAssets";
 
 interface DestinationCardProps {
   destination: Destination;
@@ -57,7 +58,7 @@ export function DestinationCard({ destination, onClick, layout = "card", animate
     <article 
       ref={cardRef}
       className={cn(
-        "wp-card wp-card--destination group",
+        "wp-card wp-card--destination group has-organic-assets",
         layout === "horizontal" && "wp-card--horizontal",
         onClick && "cursor-pointer"
       )}
@@ -67,6 +68,9 @@ export function DestinationCard({ destination, onClick, layout = "card", animate
       role="button"
       aria-label={`Explore ${destination.title}`}
     >
+      {/* Botanical Flourish */}
+      <BotanicalCorner className="wp-part-botanical-ornament--bottom-right" />
+
       {/* Media Section */}
       <div className="wp-card__image-wrapper">
         <Motion.div 

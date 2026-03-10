@@ -20,7 +20,7 @@
 
 The typography system has been upgraded to:
 - H1-H6 complete hierarchy with fluid `clamp()` sizing (48px-96px for H1 at large desktop)
-- Three font families: Lora (headings), Noto Sans (body/UI), Courier New (code/technical)
+- Five font families: Lora (headings), Noto Sans (body/UI), Courier New (code/technical), Caveat (accent), Shadows Into Light (accent)
 - Modern letter-spacing (tracking) for better readability
 - Expanded font weight scale (300-700)
 - Optimized line heights for all text types

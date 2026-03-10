@@ -78,21 +78,21 @@ export function SingleBlogTemplate() {
             <div className="flex flex-wrap items-center justify-between gap-8">
               <div className="flex flex-wrap items-center gap-8">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 organic-radius-sm bg-primary/5 text-primary"><Calendar className="size-4" /></div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{post.date}</span>
+                  <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-sm)] bg-primary/5 text-primary"><Calendar className="size-4" /></div>
+                  <span className="text-fluid-xs font-bold uppercase tracking-widest text-muted-foreground">{post.date}</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="p-2 organic-radius-sm bg-primary/5 text-primary"><User className="size-4" /></div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{author?.name || "Expert Narrator"}</span>
+                  <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-sm)] bg-primary/5 text-primary"><User className="size-4" /></div>
+                  <span className="text-fluid-xs font-bold uppercase tracking-widest text-muted-foreground">{author?.name || "Expert Narrator"}</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="p-2 organic-radius-sm bg-primary/5 text-primary"><Clock className="size-4" /></div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{post.readTime || "8 min reading"}</span>
+                  <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-sm)] bg-primary/5 text-primary"><Clock className="size-4" /></div>
+                  <span className="text-fluid-xs font-bold uppercase tracking-widest text-muted-foreground">{post.readTime || "8 min reading"}</span>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <span className="text-xs font-bold uppercase tracking-widest text-foreground">Disseminate:</span>
-                <button className="p-2 organic-radius-sm hover:bg-primary/10 transition-colors"><Share2 className="size-4 text-primary" /></button>
+                <span className="text-fluid-xs font-bold uppercase tracking-widest text-foreground">Disseminate:</span>
+                <button className="p-[var(--spacing-element-sm)] rounded-[var(--radius-sm)] hover:bg-primary/10 transition-colors"><Share2 className="size-4 text-primary" /></button>
               </div>
             </div>
           </Container>
@@ -114,14 +114,14 @@ export function SingleBlogTemplate() {
                 </article>
 
                 {/* Taxonomy Bar */}
-                <div className="mt-16 pt-10 border-t-2 border-border/50">
-                  <div className="flex flex-wrap items-center gap-4">
-                    <div className="size-10 organic-radius-sm bg-muted flex items-center justify-center text-muted-foreground"><Hash className="size-4" /></div>
+                <div className="mt-[var(--spacing-section-sm)] pt-[var(--spacing-element-lg)] border-t border-border/50">
+                  <div className="flex flex-wrap items-center gap-[var(--spacing-element-md)]">
+                    <div className="size-10 rounded-[var(--radius-sm)] bg-muted flex items-center justify-center text-muted-foreground"><Hash className="size-4" /></div>
                     {categories.map((cat: any) => (
                       <button 
                         key={cat.id}
                         onClick={() => navigateTo(`/blog/category/${cat.slug}`)}
-                        className="px-5 py-2 organic-radius-md bg-muted hover:bg-primary hover:text-primary-foreground text-xs font-bold uppercase tracking-widest transition-all"
+                        className="px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] rounded-[var(--radius-md)] bg-muted hover:bg-primary hover:text-primary-foreground text-fluid-xs font-bold uppercase tracking-widest transition-all"
                       >
                         {cat.name}
                       </button>
@@ -140,14 +140,14 @@ export function SingleBlogTemplate() {
                 )}
 
                 {/* Engagement Section */}
-                <div className="mt-24 space-y-10">
-                  <div className="flex items-center gap-4 border-b-2 border-border/50 pb-6">
-                    <div className="size-12 organic-radius-sm bg-primary/10 flex items-center justify-center text-primary"><MessageSquare className="size-6" /></div>
-                    <h3 className="text-3xl font-bold font-serif mb-0 wp-text--hand">Discourse</h3>
+                <div className="mt-[var(--spacing-section-md)] space-y-[var(--spacing-element-lg)]">
+                  <div className="flex items-center gap-[var(--spacing-element-md)] border-b border-border/50 pb-[var(--spacing-element-lg)]">
+                    <div className="size-12 rounded-[var(--radius-sm)] bg-primary/10 flex items-center justify-center text-primary"><MessageSquare className="size-6" /></div>
+                    <h3 className="text-fluid-3xl font-bold font-serif mb-0 wp-text--hand">Discourse</h3>
                   </div>
-                  <div className="bg-muted/30 p-12 organic-radius-lg text-center border-2 border-dashed border-border group hover:border-primary/30 transition-all duration-500">
-                    <p className="text-muted-foreground text-lg mb-10 max-w-md mx-auto italic">Share your unique perspective on this chronicle.</p>
-                    <button className="bg-card border-2 border-border hover:border-primary px-10 py-4 organic-radius-md font-bold transition-all shadow-sm hover:shadow-xl">
+                  <div className="bg-muted/30 p-[var(--spacing-section-sm)] rounded-[var(--radius-lg)] text-center border-2 border-dashed border-border group hover:border-primary/30 transition-all duration-500">
+                    <p className="text-muted-foreground text-fluid-lg mb-[var(--spacing-element-lg)] max-w-md mx-auto italic">Share your unique perspective on this chronicle.</p>
+                    <button className="bg-card border-2 border-border hover:border-primary px-[var(--spacing-element-xl)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)] font-bold transition-all shadow-sm hover:shadow-xl">
                       Contribute a Thought
                     </button>
                   </div>
@@ -158,7 +158,7 @@ export function SingleBlogTemplate() {
               <aside className="lg:col-span-4">
                 <div className="sticky top-32 space-y-12">
                   {/* Refined Signup */}
-                  <div className="p-10 organic-radius-lg bg-card border-2 border-border shadow-xl relative overflow-hidden group">
+                  <div className="p-[var(--spacing-element-xl)] rounded-[var(--radius-lg)] bg-card border-2 border-border shadow-xl relative overflow-hidden group">
                     <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:rotate-12 transition-transform duration-700"><Mail className="size-24" /></div>
                     <NewsletterSignupPattern
                       title="The Insider"
@@ -168,17 +168,17 @@ export function SingleBlogTemplate() {
                   </div>
 
                   {/* Categories Widget */}
-                  <div className="p-10 organic-radius-lg bg-muted/30 border-2 border-border/50">
-                    <h4 className="text-xs font-bold uppercase tracking-widest text-foreground mb-8">Chronicle Themes</h4>
-                    <ul className="space-y-4 m-0 p-0 list-none">
+                  <div className="p-[var(--spacing-element-xl)] rounded-[var(--radius-lg)] bg-muted/30 border-2 border-border/50">
+                    <h4 className="text-fluid-xs font-bold uppercase tracking-widest text-foreground mb-[var(--spacing-element-lg)]">Chronicle Themes</h4>
+                    <ul className="space-y-[var(--spacing-element-sm)] m-0 p-0 list-none">
                       {ALL_BLOG_CATEGORIES.map(cat => (
                         <li key={cat.id}>
                           <button 
                             onClick={() => navigateTo(`/blog/category/${cat.slug}`)}
-                            className="flex items-center justify-between w-full p-4 organic-radius-sm hover:bg-background border border-transparent hover:border-border transition-all group"
+                            className="flex items-center justify-between w-full p-[var(--spacing-element-sm)] rounded-[var(--radius-sm)] hover:bg-background border border-transparent hover:border-border transition-all group"
                           >
                             <span className="font-bold text-muted-foreground group-hover:text-primary transition-colors">{cat.name}</span>
-                            <span className="text-xs font-bold bg-muted group-hover:bg-primary group-hover:text-primary-foreground px-2 py-1 organic-radius-sm transition-all">
+                            <span className="text-fluid-xs font-bold bg-muted group-hover:bg-primary group-hover:text-primary-foreground px-2 py-1 rounded-[var(--radius-sm)] transition-all">
                               {Math.floor(Math.random() * 12) + 1}
                             </span>
                           </button>
@@ -188,12 +188,12 @@ export function SingleBlogTemplate() {
                   </div>
 
                   {/* Promotional Context */}
-                  <div className="p-10 organic-radius-lg bg-primary text-primary-foreground shadow-2xl overflow-hidden relative group cursor-pointer" onClick={() => navigateTo("/tours")}>
+                  <div className="p-[var(--spacing-element-xl)] rounded-[var(--radius-lg)] bg-primary text-primary-foreground shadow-2xl overflow-hidden relative group cursor-pointer" onClick={() => navigateTo("/tours")}>
                     <div className="relative z-10">
-                      <span className="text-xs font-bold uppercase tracking-[0.2em] opacity-70 block mb-2">Expedition Call</span>
-                      <h4 className="text-2xl font-bold font-serif mb-4 leading-tight wp-text--hand">Translate Inspiration into Reality</h4>
-                      <p className="text-sm opacity-80 mb-10 leading-relaxed">Begin crafting your own African chronicle with our master architects.</p>
-                      <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest bg-background/10 backdrop-blur-md px-6 py-3 organic-radius-sm w-fit">
+                      <span className="text-fluid-xs font-bold uppercase tracking-[0.2em] opacity-70 block mb-2">Expedition Call</span>
+                      <h4 className="text-fluid-2xl font-bold font-serif mb-4 leading-tight wp-text--hand">Translate Inspiration into Reality</h4>
+                      <p className="text-fluid-sm opacity-80 mb-[var(--spacing-element-lg)] leading-relaxed">Begin crafting your own African chronicle with our master architects.</p>
+                      <div className="flex items-center gap-[var(--spacing-element-sm)] text-fluid-xs font-bold uppercase tracking-widest bg-background/10 backdrop-blur-md px-[var(--spacing-element-lg)] py-[var(--spacing-element-sm)] rounded-[var(--radius-sm)] w-fit">
                         Begin Journey <ArrowRight className="size-4" />
                       </div>
                     </div>
@@ -210,14 +210,14 @@ export function SingleBlogTemplate() {
         {/* Continuation Feed */}
         <section className="py-section-lg bg-muted/10 border-t-2 border-border/50">
           <Container>
-            <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
+            <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-[var(--spacing-section-sm)]">
               <div className="max-w-2xl">
-                <span className="text-xs font-bold uppercase tracking-widest text-primary mb-2 block">Related Chronicles</span>
-                <h2 className="text-4xl font-bold font-serif wp-text--hand">Extend Your Discovery</h2>
+                <span className="text-fluid-xs font-bold uppercase tracking-widest text-primary mb-2 block">Related Chronicles</span>
+                <h2 className="text-fluid-4xl font-bold font-serif wp-text--hand">Extend Your Discovery</h2>
               </div>
               <button 
                 onClick={() => navigateTo("/blog")}
-                className="text-xs font-bold uppercase tracking-widest text-primary hover:underline underline-offset-8 transition-all"
+                className="text-fluid-xs font-bold uppercase tracking-widest text-primary hover:underline underline-offset-8 transition-all"
               >
                 Archive Repository →
               </button>

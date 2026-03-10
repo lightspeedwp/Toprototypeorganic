@@ -105,10 +105,10 @@ export function CountdownPattern({
 
   if (timeRemaining.isExpired) {
     return (
-      <div className={cn("bg-muted py-8", className)}>
+      <div className={cn("bg-muted py-[var(--spacing-element-2xl)]", className)}>
         <Container>
           <div className="text-center">
-            <Clock className="w-12 h-12 text-muted-foreground mx-auto mb-4" aria-hidden="true" />
+            <Clock className="w-12 h-12 text-muted-foreground mx-auto mb-[var(--spacing-element-md)]" aria-hidden="true" />
             <ParagraphBlock className="text-muted-foreground">
               {expiredMessage}
             </ParagraphBlock>
@@ -125,14 +125,14 @@ export function CountdownPattern({
     <div className="flex flex-col items-center">
       <div 
         className={cn(
-          "bg-card border border-border rounded-lg flex items-center justify-center",
+          "bg-card border border-border rounded-[var(--radius-lg)] flex items-center justify-center",
           isCompact ? "w-12 h-12 mb-1" : "w-20 h-20 mb-2"
         )}
       >
         <span 
           className={cn(
-            "text-primary font-serif font-bold leading-none",
-            isCompact ? "text-fluid-xl" : "text-fluid-4xl"
+            "text-primary leading-none",
+            isCompact ? "text-[length:var(--text-xl)]" : "text-[length:var(--text-4xl)]"
           )}
         >
           {value.toString().padStart(2, '0')}
@@ -140,8 +140,8 @@ export function CountdownPattern({
       </div>
       <span 
         className={cn(
-          "text-muted-foreground uppercase tracking-wider font-sans font-medium",
-          isCompact ? "text-xs" : "text-sm"
+          "text-muted-foreground uppercase tracking-wider",
+          isCompact ? "text-[length:var(--text-xs)]" : "text-[length:var(--text-sm)]"
         )}
       >
         {label}
@@ -152,24 +152,24 @@ export function CountdownPattern({
   return (
     <div className={cn(
       "bg-accent text-accent-foreground",
-      variant === 'default' && "py-section-sm md:py-section-md",
-      variant === 'inline' && "py-8",
-      variant === 'compact' && "py-4",
+      variant === 'default' && "py-[var(--spacing-section-sm)] md:py-[var(--spacing-section-md)]",
+      variant === 'inline' && "py-[var(--spacing-element-2xl)]",
+      variant === 'compact' && "py-[var(--spacing-element-lg)]",
       className
     )}>
       <Container>
         <div className={cn(
-          "flex items-center justify-between gap-8",
+          "flex items-center justify-between gap-[var(--spacing-gap-lg)]",
           (variant === 'default' || !isInline) && "flex-col text-center"
         )}>
           {/* Text Content */}
           <div className={cn(
             isInline && "flex-1"
           )}>
-            <div className="flex items-center gap-2 mb-2 justify-center">
+            <div className="flex items-center gap-[var(--spacing-gap-sm)] mb-[var(--spacing-element-sm)] justify-center">
               <Clock className="w-5 h-5" aria-hidden="true" />
               <span 
-                className="uppercase tracking-wider font-sans font-medium text-fluid-sm"
+                className="uppercase tracking-wider text-[length:var(--text-sm)]"
               >
                 Limited Time Offer
               </span>
@@ -178,7 +178,7 @@ export function CountdownPattern({
             <HeadingBlock 
               level={2} 
               textAlign={isInline ? 'left' : 'center'}
-              className="text-accent-foreground mb-2"
+              className="text-accent-foreground mb-[var(--spacing-element-sm)]"
             >
               {title}
             </HeadingBlock>
@@ -195,8 +195,8 @@ export function CountdownPattern({
 
           {/* Countdown Timer */}
           <div className={cn(
-            "flex items-center gap-3",
-            isCompact && "gap-2"
+            "flex items-center gap-[var(--spacing-gap-sm)]",
+            isCompact && "gap-[var(--spacing-gap-xs)]"
           )}>
             {timeRemaining.days > 0 && (
               <TimeUnit value={timeRemaining.days} label="Days" />

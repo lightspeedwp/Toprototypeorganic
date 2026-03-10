@@ -9,6 +9,7 @@ import { Envelope, Phone, ArrowUpRight } from "@phosphor-icons/react";
 import type { TeamMember } from "../../data/types";
 import { cn } from "../../lib/utils";
 import { motion } from "motion/react";
+import { BotanicalCorner } from "../common/organic/OrganicAssets";
 
 export interface TeamCardProps {
   member: TeamMember;
@@ -31,7 +32,7 @@ export function TeamCard({ member, onClick, layout = "card" }: TeamCardProps) {
   return (
     <article 
       className={cn(
-        "wp-card wp-card--team group",
+        "wp-card wp-card--team group has-organic-assets",
         layout === "horizontal" && "wp-card--team--horizontal",
         onClick && "cursor-pointer"
       )}
@@ -41,6 +42,9 @@ export function TeamCard({ member, onClick, layout = "card" }: TeamCardProps) {
       role="button"
       aria-label={`View profile of ${member.name}`}
     >
+      {/* Botanical Flourish */}
+      <BotanicalCorner className="wp-part-botanical-ornament--top-right" />
+
       {/* Portrait Section */}
       <div className="wp-card__image-wrapper">
         <img

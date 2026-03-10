@@ -108,17 +108,17 @@ export function Header({ currentPage = "/", onNavigate }: { currentPage?: string
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[100] bg-background flex flex-col"
+            className="wp-part-header__mobile-overlay"
           >
-            <Container className="flex-1 flex flex-col py-8">
-              <div className="flex items-center justify-between mb-16">
+            <Container className="wp-part-header__mobile-overlay-inner">
+              <div className="wp-part-header__mobile-overlay-header">
                 <Logo size="sm" bare className="h-8 cursor-pointer" onClick={() => handleNav("/")} />
-                <button onClick={() => setMobileMenuOpen(false)} className="size-12 rounded-lg bg-muted flex items-center justify-center text-foreground hover:bg-accent hover:text-primary transition-colors">
+                <button onClick={() => setMobileMenuOpen(false)} className="wp-part-header__mobile-overlay-close">
                   <X className="size-6" />
                 </button>
               </div>
 
-              <nav className="flex-1 space-y-8">
+              <nav className="wp-part-header__mobile-overlay-nav">
                 {PRIMARY_NAV.map((link, idx) => (
                   <Motion.button
                     initial={{ opacity: 0, x: 20 }}
@@ -126,29 +126,29 @@ export function Header({ currentPage = "/", onNavigate }: { currentPage?: string
                     transition={{ delay: idx * 0.1 }}
                     key={link.id}
                     onClick={() => handleNav(link.href)}
-                    className="w-full text-left flex items-center justify-between group"
+                    className="wp-part-header__mobile-overlay-link group"
                   >
-                    <span className="text-fluid-4xl font-serif font-bold group-hover:text-primary transition-colors">{link.label}</span>
-                    <ArrowRight className="size-6 text-primary opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
+                    <span className="wp-part-header__mobile-overlay-link-text">{link.label}</span>
+                    <ArrowRight className="wp-part-header__mobile-overlay-link-icon" />
                   </Motion.button>
                 ))}
               </nav>
 
-              <div className="mt-auto pt-12 border-t border-border/50">
+              <div className="wp-part-header__mobile-overlay-footer">
                 <button 
                   onClick={() => handleNav("/trip-planner")}
-                  className="w-full py-4 organic-radius-md bg-primary text-primary-foreground font-bold text-fluid-lg shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all"
+                  className="wp-part-header__mobile-overlay-cta"
                 >
                   Start Trip Planner
                 </button>
-                <div className="flex justify-center gap-8 mt-12 text-muted-foreground">
-                  <button onClick={() => handleNav("/destinations")} aria-label="Destinations" className="hover:text-primary transition-colors">
+                <div className="wp-part-header__mobile-overlay-social">
+                  <button onClick={() => handleNav("/destinations")} aria-label="Destinations" className="wp-part-header__mobile-overlay-social-link">
                     <Globe className="size-5" />
                   </button>
-                  <button onClick={() => handleNav("/about")} aria-label="About Us" className="hover:text-primary transition-colors">
+                  <button onClick={() => handleNav("/about")} aria-label="About Us" className="wp-part-header__mobile-overlay-social-link">
                     <ShieldCheck className="size-5" />
                   </button>
-                  <button onClick={() => handleNav("/contact")} aria-label="Contact Us" className="hover:text-primary transition-colors">
+                  <button onClick={() => handleNav("/contact")} aria-label="Contact Us" className="wp-part-header__mobile-overlay-social-link">
                     <Envelope className="size-5" />
                   </button>
                 </div>

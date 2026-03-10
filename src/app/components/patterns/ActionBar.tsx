@@ -34,7 +34,7 @@ export function ActionBar({
 }: ActionBarProps) {
   const variantClasses = {
     default: '',
-    muted: 'bg-muted/50 p-4 rounded-xl border border-border/50',
+    muted: 'bg-muted/50 p-[var(--spacing-element-md)] rounded-[var(--radius-xl)] border border-border/50',
     bordered: 'border-b border-border pb-6 mb-8',
   };
 

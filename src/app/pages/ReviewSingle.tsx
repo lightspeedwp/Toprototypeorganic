@@ -86,7 +86,7 @@ export function ReviewSingle() {
                 ))}
               </div>
               {review.verified && (
-                <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-success/10 text-success text-[10px] font-bold uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-success/10 text-success text-xs font-bold uppercase tracking-wider">
                   <ShieldCheck size={12} />
                   Verified Trip
                 </span>
@@ -121,7 +121,7 @@ export function ReviewSingle() {
                     <div className="h-2 w-full bg-background rounded-full overflow-hidden">
                       <div 
                         className="h-full bg-primary transition-all duration-1000" 
-                        style={{ width: `${(value as number / 5) * 100}%` }}
+                        style={{ '--dynamic-width': `${(value as number / 5) * 100}%`, width: 'var(--dynamic-width)' } as React.CSSProperties}
                       />
                     </div>
                   </div>

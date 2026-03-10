@@ -58,7 +58,7 @@ export function SustainabilityPattern({
                 <div className="size-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Icon className="size-8" />
                 </div>
-                <h3 className="text-xl font-serif font-bold mb-3">{commitment.title}</h3>
+                <h3 className="text-[length:var(--text-xl)] mb-3">{commitment.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed m-0">{commitment.description}</p>
               </motion.div>
             );
@@ -67,7 +67,7 @@ export function SustainabilityPattern({
 
         {/* Conservation Projects Header */}
         <div className="max-w-3xl mb-16">
-          <HeadingBlock level={2} className="text-4xl md:text-5xl font-serif font-bold mb-6">
+          <HeadingBlock level={2} className="text-[length:var(--text-4xl)] md:text-[length:var(--text-5xl)] mb-6">
             Pioneering Conservation Initiatives
           </HeadingBlock>
           <ParagraphBlock className="text-lg text-muted-foreground leading-relaxed">
@@ -85,7 +85,7 @@ export function SustainabilityPattern({
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="group flex flex-col bg-card rounded-[2.5rem] overflow-hidden border-2 border-border/50 hover:border-primary transition-all duration-500 hover:shadow-2xl"
+              className="group flex flex-col bg-card rounded-5xl overflow-hidden border-2 border-border/50 hover:border-primary transition-all duration-500 hover:shadow-2xl"
             >
               <div className="aspect-video overflow-hidden">
                 <img
@@ -96,13 +96,13 @@ export function SustainabilityPattern({
               </div>
               <div className="p-10 flex-1 flex flex-col">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="px-3 py-1 rounded-full bg-accent/10 text-accent text-[10px] font-bold uppercase tracking-widest">
+                  <span className="px-3 py-1 rounded-full bg-accent/10 text-accent text-[length:var(--text-xs)] uppercase tracking-widest">
                     {project.category}
                   </span>
                   <div className="h-px flex-1 bg-border/50" />
                 </div>
                 
-                <h3 className="text-2xl font-serif font-bold mb-4 group-hover:text-primary transition-colors">
+                <h3 className="text-[length:var(--text-2xl)] mb-4 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
                 
@@ -111,8 +111,8 @@ export function SustainabilityPattern({
                 </p>
                 
                 <div className="mt-auto p-6 rounded-2xl bg-muted/50 border border-border/50">
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-primary mb-2">Measured Impact</p>
-                  <p className="text-sm font-bold m-0">{project.impact}</p>
+                  <p className="text-[length:var(--text-xs)] uppercase tracking-widest text-primary mb-2">Measured Impact</p>
+                  <p className="text-[length:var(--text-sm)] m-0">{project.impact}</p>
                 </div>
               </div>
             </motion.div>

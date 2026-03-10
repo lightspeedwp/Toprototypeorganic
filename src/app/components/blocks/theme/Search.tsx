@@ -222,7 +222,7 @@ export function Search({
               "text-foreground",
               "placeholder:text-muted-foreground",
               "border border-border",
-              "rounded-lg",
+              "rounded-[var(--radius-lg)]",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
               "transition-colors"
             )}
@@ -237,7 +237,7 @@ export function Search({
               "h-9 w-9", // Icon button size
               "flex items-center justify-center",
               "bg-primary text-primary-foreground",
-              "rounded-md",
+              "rounded-[var(--radius-md)]",
               "hover:opacity-90",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
               "transition-opacity"
@@ -287,7 +287,7 @@ export function Search({
           "text-foreground",
           "placeholder:text-muted-foreground",
           "border border-border",
-          "rounded-lg",
+          "rounded-[var(--radius-lg)]",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           "transition-colors"
         )}
@@ -302,7 +302,7 @@ export function Search({
           "flex items-center justify-center gap-2",
           "bg-primary text-primary-foreground",
           "font-medium",
-          "rounded-lg",
+          "rounded-[var(--radius-lg)]",
           "hover:opacity-90",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           "transition-opacity",

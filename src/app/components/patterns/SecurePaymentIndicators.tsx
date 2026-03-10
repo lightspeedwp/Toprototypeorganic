@@ -115,16 +115,16 @@ export function SecurePaymentIndicators({
   // Compact variant - single row
   if (variant === "compact") {
     return (
-      <div className={cn("wp-bg-muted-light rounded-lg p-4", className)}>
+      <div className={cn("wp-bg-muted-light rounded-[var(--radius-lg)] p-4", className)}>
         <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
           {indicators.map((indicator) => {
             const Icon = indicator.icon;
             return (
               <div key={indicator.id} className="flex items-center gap-2">
                 <Icon className="w-4 h-4 text-primary flex-shrink-0" />
-                <span className="text-sm font-medium">{indicator.title}</span>
+                <span className="text-fluid-sm">{indicator.title}</span>
                 {indicator.badge && (
-                  <span className="wp-badge-primary-sm rounded-full">
+                  <span className="wp-badge-primary-sm rounded-[var(--radius-full)]">
                     {indicator.badge}
                   </span>
                 )}
@@ -148,12 +148,12 @@ export function SecurePaymentIndicators({
               className="group relative"
               title={indicator.title}
             >
-              <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
+              <div className="w-10 h-10 rounded-[var(--radius-lg)] bg-muted flex items-center justify-center">
                 <Icon className="w-5 h-5 text-primary" />
               </div>
               
               {/* Tooltip */}
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-popover text-popover-foreground border border-border rounded-md text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-popover text-popover-foreground border border-border rounded-[var(--radius-md)] text-fluid-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
                 {indicator.title}
               </div>
             </div>
@@ -173,22 +173,22 @@ export function SecurePaymentIndicators({
           return (
             <div
               key={indicator.id}
-              className="bg-card border border-border rounded-lg p-4 hover:border-primary/50 transition-colors"
+              className="bg-card border border-border rounded-[var(--radius-lg)] p-4 hover:border-primary/50 transition-colors"
             >
               <div className="flex items-start gap-3">
-                <div className="wp-icon-container-primary rounded-lg">
+                <div className="wp-icon-container-primary rounded-[var(--radius-lg)]">
                   <Icon className="w-5 h-5 text-primary" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <h4 className="text-sm font-medium">{indicator.title}</h4>
+                    <h4 className="text-fluid-sm">{indicator.title}</h4>
                     {indicator.badge && (
-                      <span className="wp-badge-primary-sm rounded-full">
+                      <span className="wp-badge-primary-sm rounded-[var(--radius-full)]">
                         {indicator.badge}
                       </span>
                     )}
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-fluid-sm text-muted-foreground">
                     {indicator.description}
                   </p>
                 </div>
@@ -200,9 +200,9 @@ export function SecurePaymentIndicators({
 
       {/* Payment Provider Logos */}
       {showPaymentLogos && (
-        <div className="wp-bg-muted-light rounded-lg p-4">
+        <div className="wp-bg-muted-light rounded-[var(--radius-lg)] p-4">
           <div className="text-center mb-4">
-            <p className="text-sm font-medium text-muted-foreground">
+            <p className="text-fluid-sm text-muted-foreground">
               Accepted Payment Methods
             </p>
           </div>
@@ -211,13 +211,13 @@ export function SecurePaymentIndicators({
               <div
                 key={provider.name}
                 className={cn(
-                  "px-4 py-2 rounded-md border bg-card flex items-center justify-center min-w-[80px]",
+                  "px-4 py-2 rounded-[var(--radius-md)] border bg-card flex items-center justify-center min-w-[80px]",
                   provider.available
                     ? "border-border"
                     : "border-border opacity-50"
                 )}
               >
-                <span className="text-sm font-medium text-foreground">
+                <span className="text-fluid-sm text-foreground">
                   {provider.name}
                 </span>
               </div>
@@ -227,40 +227,40 @@ export function SecurePaymentIndicators({
       )}
 
       {/* Trust Statistics */}
-      <div className="bg-primary/5 border border-primary/20 rounded-lg p-6">
+      <div className="bg-primary/5 border border-primary/20 rounded-[var(--radius-lg)] p-6">
         <div className="grid gap-6 sm:grid-cols-3 text-center">
           <div>
             <div className="flex items-center justify-center gap-2 mb-2">
               <Verified className="w-5 h-5 text-primary" />
-              <p className="text-2xl font-medium">10,000+</p>
+              <p className="text-fluid-2xl">10,000+</p>
             </div>
-            <p className="text-sm text-muted-foreground">Secure Bookings</p>
+            <p className="text-fluid-sm text-muted-foreground">Secure Bookings</p>
           </div>
           
           <div>
             <div className="flex items-center justify-center gap-2 mb-2">
               <Shield className="w-5 h-5 text-primary" />
-              <p className="text-2xl font-medium">100%</p>
+              <p className="text-fluid-2xl">100%</p>
             </div>
-            <p className="text-sm text-muted-foreground">Payment Protection</p>
+            <p className="text-fluid-sm text-muted-foreground">Payment Protection</p>
           </div>
           
           <div>
             <div className="flex items-center justify-center gap-2 mb-2">
               <Award className="w-5 h-5 text-primary" />
-              <p className="text-2xl font-medium">5-Star</p>
+              <p className="text-fluid-2xl">5-Star</p>
             </div>
-            <p className="text-sm text-muted-foreground">Trustpilot Rating</p>
+            <p className="text-fluid-sm text-muted-foreground">Trustpilot Rating</p>
           </div>
         </div>
       </div>
 
       {/* Additional Security Info */}
-      <div className="wp-bg-muted-light rounded-lg p-4">
+      <div className="wp-bg-muted-light rounded-[var(--radius-lg)] p-4">
         <div className="flex items-start gap-3">
           <Lock className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-          <div className="text-sm">
-            <p className="font-medium text-foreground mb-2">
+          <div className="text-fluid-sm">
+            <p className="text-foreground mb-2">
               Your Security is Our Priority
             </p>
             <ul className="space-y-1 text-muted-foreground">

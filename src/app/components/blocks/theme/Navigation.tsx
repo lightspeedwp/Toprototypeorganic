@@ -289,7 +289,7 @@ export function Navigation({
               "nav-link",
               "transition-colors duration-200",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-              "rounded-sm px-2 py-1",
+              "rounded-[var(--radius-sm)] px-2 py-1",
               "cursor-pointer",
               // Normal state
               item.isActive ? "text-primary font-semibold underline" : "text-foreground",
@@ -311,7 +311,7 @@ export function Navigation({
               aria-haspopup="true"
               aria-label={`Toggle ${item.title} submenu`}
               className={cn(
-                "p-1 rounded-sm",
+                "p-1 rounded-[var(--radius-sm)]",
                 "hover:bg-muted",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 "transition-all duration-200"
@@ -334,7 +334,7 @@ export function Navigation({
               "submenu",
               "mt-2 space-y-2",
               orientation === 'horizontal' && !isMobile
-                ? "absolute left-0 top-full bg-card border border-border rounded-lg shadow-lg py-2 px-4 min-w-[200px] z-50"
+                ? "absolute left-0 top-full bg-card border border-border rounded-[var(--radius-lg)] shadow-[var(--elevation-lg)] py-2 px-4 min-w-[200px] z-50"
                 : "ml-4 pl-4 border-l-2 border-border"
             )}
           >
@@ -353,7 +353,7 @@ export function Navigation({
       aria-expanded={isMobileMenuOpen}
       className={cn(
         "mobile-menu-toggle",
-        "p-2 rounded-md",
+        "p-2 rounded-[var(--radius-md)]",
         "bg-muted",
         "hover:bg-muted/80",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
@@ -433,7 +433,7 @@ export function Navigation({
                 onClick={closeMobileMenu}
                 aria-label="Close navigation"
                 className={cn(
-                  "p-2 rounded-md",
+                  "p-2 rounded-[var(--radius-md)]",
                   "hover:bg-muted",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                   "transition-colors"

@@ -80,9 +80,9 @@ export function TableOfContentsPattern({
         <button
           onClick={() => scrollTo(s.id)}
           className={cn(
-            "w-full text-left py-2 px-4 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-3",
+            "w-full text-left py-2 px-4 rounded-[var(--radius-xl)] text-[length:var(--text-sm)] transition-all duration-300 flex items-center gap-[var(--spacing-gap-sm)]",
             isActive 
-              ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20 translate-x-2" 
+              ? "bg-primary text-primary-foreground shadow-[var(--elevation-lg)] shadow-primary/20 translate-x-2" 
               : "text-muted-foreground hover:bg-muted hover:text-foreground",
             depth > 0 && "ml-6 opacity-80"
           )}
@@ -101,24 +101,24 @@ export function TableOfContentsPattern({
 
   return (
     <section className={cn(
-      "wp-pattern-lts-toc py-12",
+      "wp-pattern-lts-toc py-[var(--spacing-section-md)]",
       sticky && "sticky top-24 self-start",
       className
     )}>
       <Container maxWidth="narrow">
         <div className={cn(
-          "wp-pattern-lts-toc__card p-8 rounded-2xl border-2 border-border shadow-sm",
+          "wp-pattern-lts-toc__card p-[var(--spacing-element-xl)] rounded-[var(--radius-2xl)] border-2 border-border shadow-[var(--elevation-sm)]",
           variant === 'minimal' ? "bg-transparent border-none p-0 shadow-none" : "bg-card"
         )}>
-          <div className="flex items-center gap-4 mb-8">
-            <div className="p-2 rounded-lg bg-primary/10 text-primary">
+          <div className="flex items-center gap-[var(--spacing-gap-md)] mb-[var(--spacing-element-xl)]">
+            <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)] bg-primary/10 text-primary">
               <List className="size-5" />
             </div>
-            <h2 className="text-xl font-bold mb-0 font-serif">{title}</h2>
+            <h2 className="text-[length:var(--text-xl)] mb-0">{title}</h2>
           </div>
           
           <nav aria-label="Table of contents">
-            <ul className="space-y-2 p-0 m-0">
+            <ul className="space-y-[var(--spacing-gap-xs)] p-0 m-0">
               {sections.map(s => renderItem(s))}
             </ul>
           </nav>

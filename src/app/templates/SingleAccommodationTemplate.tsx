@@ -93,9 +93,9 @@ export function SingleAccommodationTemplate() {
       </div>
 
       <div className="organic-section-middle">
-        <section className="py-section-lg border-b border-border/50">
+        <section className="py-[var(--spacing-section-md)] border-b border-border/50">
           <Container>
-            <div className="grid lg:grid-cols-12 gap-16">
+            <div className="grid lg:grid-cols-12 gap-[var(--spacing-gap-xl)]">
               <div className="lg:col-span-8">
                 <EditorialContent
                   title={`Portrait of ${accommodation.title}`}
@@ -104,7 +104,7 @@ export function SingleAccommodationTemplate() {
                   className="p-0 border-0 bg-transparent"
                 />
                 
-                <div className="mt-16 pt-16 border-t border-border/50">
+                <div className="mt-[var(--spacing-section-sm)] pt-[var(--spacing-section-sm)] border-t border-border/50">
                   <GallerySectionPattern 
                     images={galleryImages}
                     title="Estate Visuals"
@@ -112,7 +112,7 @@ export function SingleAccommodationTemplate() {
                   />
                 </div>
 
-                <div id="rooms-section" className="mt-16 pt-16 border-t border-border/50">
+                <div id="rooms-section" className="mt-[var(--spacing-section-sm)] pt-[var(--spacing-section-sm)] border-t border-border/50">
                   <RoomTypesPattern
                     title="Your Personal Sanctuary"
                     description="Select from our meticulously designed suites and canvas villas."
@@ -144,53 +144,53 @@ export function SingleAccommodationTemplate() {
               </div>
 
               <aside className="lg:col-span-4">
-                <div className="sticky top-32 space-y-8">
-                  <div className="p-8 organic-radius-lg bg-card border-2 border-border shadow-xl">
-                    <div className="flex items-center gap-3 mb-6">
+                <div className="sticky top-32 space-y-[var(--spacing-element-lg)]">
+                  <div className="p-[var(--spacing-element-xl)] rounded-[var(--radius-lg)] bg-card border-2 border-border shadow-xl">
+                    <div className="flex items-center gap-[var(--spacing-element-sm)] mb-[var(--spacing-element-lg)]">
                       <ShieldCheck className="size-5 text-primary" />
-                      <span className="text-xs font-bold uppercase tracking-widest text-primary">Certified Sanctuary</span>
+                      <span className="text-fluid-xs font-bold uppercase tracking-widest text-primary">Certified Sanctuary</span>
                     </div>
-                    <h3 className="text-2xl font-bold font-serif mb-6 wp-text--hand">Estate Intelligence</h3>
-                    <ul className="space-y-6 m-0 p-0 list-none">
-                      <li className="flex items-start gap-4">
-                        <div className="p-2 rounded-lg bg-primary/5 text-primary shrink-0"><Shield className="size-4" /></div>
+                    <h3 className="text-fluid-2xl font-bold font-serif mb-[var(--spacing-element-lg)] wp-text--hand">Estate Intelligence</h3>
+                    <ul className="space-y-[var(--spacing-element-lg)] m-0 p-0 list-none">
+                      <li className="flex items-start gap-[var(--spacing-element-md)]">
+                        <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-sm)] bg-primary/5 text-primary shrink-0"><Shield className="size-4" /></div>
                         <div>
-                          <p className="text-sm font-bold mb-1">Discrete Protection</p>
-                          <p className="text-xs text-muted-foreground m-0">24/7 specialist-led security protocols.</p>
+                          <p className="text-fluid-sm font-bold mb-[var(--spacing-element-xs)]">Discrete Protection</p>
+                          <p className="text-fluid-xs text-muted-foreground m-0">24/7 specialist-led security protocols.</p>
                         </div>
                       </li>
-                      <li className="flex items-start gap-4">
-                        <div className="p-2 rounded-lg bg-primary/5 text-primary shrink-0"><Heart className="size-4" /></div>
+                      <li className="flex items-start gap-[var(--spacing-element-md)]">
+                        <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-sm)] bg-primary/5 text-primary shrink-0"><Heart className="size-4" /></div>
                         <div>
-                          <p className="text-sm font-bold mb-1">Regenerative Luxury</p>
-                          <p className="text-xs text-muted-foreground m-0">Zero-footprint operations and community equity.</p>
+                          <p className="text-fluid-sm font-bold mb-[var(--spacing-element-xs)]">Regenerative Luxury</p>
+                          <p className="text-fluid-xs text-muted-foreground m-0">Zero-footprint operations and community equity.</p>
                         </div>
                       </li>
-                      <li className="flex items-start gap-4">
-                        <div className="p-2 rounded-lg bg-primary/5 text-primary shrink-0"><Award className="size-4" /></div>
+                      <li className="flex items-start gap-[var(--spacing-element-md)]">
+                        <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-sm)] bg-primary/5 text-primary shrink-0"><Award className="size-4" /></div>
                         <div>
-                          <p className="text-sm font-bold mb-1">Global Distinction</p>
-                          <p className="text-xs text-muted-foreground m-0">Voted Top Wilderness Lodge 2025.</p>
+                          <p className="text-fluid-sm font-bold mb-[var(--spacing-element-xs)]">Global Distinction</p>
+                          <p className="text-fluid-xs text-muted-foreground m-0">Voted Top Wilderness Lodge 2025.</p>
                         </div>
                       </li>
                     </ul>
                     
                     <button 
                       onClick={() => navigateTo("/contact")}
-                      className="w-full mt-10 py-4 organic-radius-md bg-primary text-primary-foreground font-bold hover:shadow-2xl transition-all"
+                      className="w-full mt-[var(--spacing-element-lg)] py-[var(--spacing-element-sm)] rounded-[var(--radius-md)] bg-primary text-primary-foreground font-bold hover:shadow-2xl transition-all"
                     >
                       Contact Estate Concierge
                     </button>
                   </div>
 
                   {accommodation.facilities && (
-                    <div className="p-8 organic-radius-lg bg-muted/30 border-2 border-border/50">
-                      <h4 className="text-xs font-bold uppercase tracking-widest text-foreground mb-6">Estate Facilities</h4>
-                      <div className="grid grid-cols-2 gap-4">
+                    <div className="p-[var(--spacing-element-xl)] rounded-[var(--radius-lg)] bg-muted/30 border-2 border-border/50">
+                      <h4 className="text-fluid-xs font-bold uppercase tracking-widest text-foreground mb-[var(--spacing-element-sm)]">Estate Facilities</h4>
+                      <div className="grid grid-cols-2 gap-[var(--spacing-gap-md)]">
                         {accommodation.facilities.slice(0, 6).map(id => {
                           const Icon = facilityIcons[id.toLowerCase()] || Compass;
                           return (
-                            <div key={id} className="flex items-center gap-2 text-xs font-bold text-muted-foreground">
+                            <div key={id} className="flex items-center gap-[var(--spacing-element-sm)] text-fluid-xs font-bold text-muted-foreground">
                               <Icon className="size-3 text-primary" /> {id}
                             </div>
                           );
@@ -226,7 +226,7 @@ export function SingleAccommodationTemplate() {
       </div>
 
       <div className="organic-section-bottom">
-        <Container className="py-section-lg border-t border-border/50">
+        <Container className="py-[var(--spacing-section-md)] border-t border-border/50">
           <RelatedAccommodationsBlock
             currentAccommodationId={accommodation.id}
             destinationId={accommodation.destinations?.[0]}

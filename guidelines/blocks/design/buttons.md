@@ -17,10 +17,10 @@ The Buttons block appears in the **Design** category. When selected, the toolbar
 
 - **Typography:** Buttons should use your primary label text style. Use a consistent font weight and uppercase or sentence case according to your brand guidelines. The theme's typography tokens (e.g., `--text-base`, `--font-family-noto-sans`) should be applied to button text for consistency.
 - **Colors:** Buttons convey hierarchy. Use colour tokens to differentiate primary, secondary and tertiary button variants (e.g., primary uses `bg-primary text-primary-foreground`, secondary uses `bg-secondary text-secondary-foreground`, text buttons use transparent backgrounds with coloured text). Ensure sufficient contrast between text and background colours.
-- **Spacing & size:** Apply consistent padding around button text using spacing tokens (e.g., `px-4 py-2` for small, `px-6 py-3` for medium, `px-8 py-4` for large). Maintain a minimum touch target of 44 × 44 pixels for accessibility.
-- **Border radius:** Use a uniform radius from your design system (e.g., `rounded-lg` for `var(--radius-lg)`) across all button variants. Avoid mixing sharp and rounded corners.
-- **Orientation & gap:** For horizontal button groups, use a small gap between buttons (e.g., `gap-4`); for vertical arrangements, use larger spacing (e.g., `gap-3`). Configure the Buttons block's orientation property accordingly.
-- **Elevation & shadows:** Use subtle shadows for raised buttons where appropriate. Avoid overuse of shadows, particularly on secondary or text buttons.
+- **Spacing & size:** Apply consistent padding around button text using spacing tokens (e.g., `px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)]` for small). Maintain a minimum touch target of 44 × 44 pixels for accessibility.
+- **Border radius:** Use a uniform radius from your design system (e.g., `organic-radius-lg` or `radius-[var(--radius-lg)]`) across all button variants. Avoid mixing sharp and rounded corners.
+- **Orientation & gap:** For horizontal button groups, use a small gap between buttons (e.g., `gap-[var(--spacing-gap-md)]`); for vertical arrangements, use larger spacing (e.g., `gap-[var(--spacing-gap-lg)]`). Configure the Buttons block's orientation property accordingly.
+- **Icon wrapping:** Icons must NEVER wrap to a new line. Always use `flex-nowrap` and `whitespace-nowrap` on buttons to ensure text and icons stay horizontally aligned on a single line.
 
 ## Component structure (React)
 
@@ -70,8 +70,9 @@ The Buttons block appears in the **Design** category. When selected, the toolbar
 **CSS Variables Used:**
 - Typography: `var(--font-family-noto-sans)`, `var(--text-base)`, `var(--font-weight-medium)`
 - Colors: `bg-primary`, `text-primary-foreground`, `bg-secondary`, `text-secondary-foreground`
-- Spacing: Tailwind spacing scale (`px-4`, `py-2`, `gap-4`)
-- Border radius: `rounded-lg` → `var(--radius-lg)`
+- Spacing: CSS variables for spacing (e.g., `px-[var(--spacing-element-md)]`, `py-[var(--spacing-element-sm)]`, `gap-[var(--spacing-gap-sm)]`)
+- Border radius: `organic-radius-lg` or inline variables `rounded-[var(--radius-lg)]`
+- Layout Constraints: `flex-nowrap`, `whitespace-nowrap`
 - Transitions: `transition-colors`, `duration-200`
 
 **Font Requirements:**

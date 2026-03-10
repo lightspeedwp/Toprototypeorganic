@@ -190,7 +190,7 @@ export const CardGrid = memo(function CardGrid({
   const childArray = Array.isArray(children) ? children : [children];
 
   return (
-    <section className={cn("wp-pattern-card-grid p-[0px]", className)}>
+    <section className={cn("wp-pattern-card-grid", className)}>
       <Container>
         {animated ? (
           <motion.div

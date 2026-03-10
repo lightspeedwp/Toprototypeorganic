@@ -11,6 +11,7 @@ import { ArrowRight, Compass, Envelope, Calendar } from "@phosphor-icons/react";
 import { Container } from "../common/Container";
 import { EnquiryModal } from "./EnquiryModal";
 import { cn } from "../../lib/utils";
+import { BotanicalCorner } from "../common/organic/OrganicAssets";
 
 interface ActionButton {
   label: string;
@@ -49,7 +50,7 @@ export function CTA({
 
   return (
     <>
-      <section className={cn("wp-pattern-cta px-[24px] py-[40px]", `wp-pattern-cta--${variant}`, className)}>
+      <section className={cn("wp-pattern-cta has-organic-assets", `wp-pattern-cta--${variant}`, className)}>
         {/* Background Image/Pattern */}
         {backgroundImage && (
           <div className="wp-pattern-cta__background">
@@ -58,8 +59,12 @@ export function CTA({
           </div>
         )}
 
-        <Container>
-          <div className="wp-pattern-cta__inner">
+        {/* Botanical Flourish */}
+        <BotanicalCorner className="wp-part-botanical-ornament--bottom-right-large" />
+        <BotanicalCorner className="wp-part-botanical-ornament--top-left-large" />
+
+        <Container className="relative">
+          <div className="wp-pattern-cta__inner relative z-10">
             <motion.div
               initial={animated ? { opacity: 0, scale: 0.9 } : {}}
               whileInView={{ opacity: 1, scale: 1 }}

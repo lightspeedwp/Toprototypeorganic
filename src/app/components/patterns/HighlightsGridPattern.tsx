@@ -51,10 +51,10 @@ export function HighlightsGridPattern({
     <section className={cn("wp-pattern-lts-highlights has-section-padding-md", className)}>
       <Container>
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-12 md:mb-16">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-[var(--spacing-gap-lg)] mb-12 md:mb-16">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 rounded-lg bg-primary/10 text-primary">
+            <div className="flex items-center gap-[var(--spacing-gap-sm)] mb-[var(--spacing-element-md)]">
+              <div className="p-2 rounded-[var(--radius-lg)] bg-primary/10 text-primary">
                 <Sparkles className="size-5" />
               </div>
               <HeadingBlock level={2} className="mb-0">
@@ -62,7 +62,7 @@ export function HighlightsGridPattern({
               </HeadingBlock>
             </div>
             {description && (
-              <ParagraphBlock className="text-muted-foreground text-lg m-0">
+              <ParagraphBlock className="text-muted-foreground text-[length:var(--text-lg)] m-0">
                 {description}
               </ParagraphBlock>
             )}
@@ -70,7 +70,7 @@ export function HighlightsGridPattern({
         </div>
 
         {/* Highlights Grid */}
-        <div className={cn("grid gap-8 md:gap-12", gridClasses)}>
+        <div className={cn("grid gap-[var(--spacing-gap-lg)] md:gap-[var(--spacing-gap-xl)]", gridClasses)}>
           {highlights.map((item, idx) => {
             const Icon = item.icon;
             const isClickable = !!(item.href || item.onClick);
@@ -89,15 +89,15 @@ export function HighlightsGridPattern({
                   </div>
                 ) : (
                   <div className="p-8 pb-0">
-                    <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 shadow-sm">
+                    <div className="size-16 rounded-[var(--radius-2xl)] bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 shadow-[var(--elevation-sm)]">
                       {Icon ? <Icon className="size-8" /> : <Sparkles className="size-8" />}
                     </div>
                   </div>
                 )}
 
                 {/* Text Content */}
-                <div className="p-8 flex flex-col flex-1">
-                  <h3 className="text-2xl font-bold font-serif mb-4 group-hover:text-primary transition-colors">
+                <div className="p-[var(--spacing-element-xl)] flex flex-col flex-1">
+                  <h3 className="text-[length:var(--text-2xl)] mb-[var(--spacing-element-md)] group-hover:text-primary transition-colors">
                     {item.title}
                   </h3>
                   <ParagraphBlock className="text-muted-foreground leading-relaxed m-0">
@@ -105,8 +105,8 @@ export function HighlightsGridPattern({
                   </ParagraphBlock>
                   
                   {isClickable && (
-                    <div className="mt-6 pt-6 border-t border-border/50 text-sm font-bold text-primary flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                      Explore Detail <span className="text-xl">→</span>
+                    <div className="mt-6 pt-6 border-t border-border/50 text-[length:var(--text-sm)] text-primary flex items-center gap-[var(--spacing-gap-xs)] opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                      <strong>Explore Detail</strong> <span className="text-[length:var(--text-xl)]">→</span>
                     </div>
                   )}
                 </div>
@@ -122,7 +122,7 @@ export function HighlightsGridPattern({
                 transition={{ delay: idx * 0.1 }}
                 className={cn(
                   "wp-pattern-lts-highlights__item group relative flex flex-col overflow-hidden transition-all duration-500",
-                  variant === 'cards' && "bg-card border-2 border-border rounded-3xl shadow-sm hover:shadow-2xl hover:border-primary",
+                  variant === 'cards' && "bg-card border-2 border-border rounded-[var(--radius-3xl)] shadow-[var(--elevation-sm)] hover:shadow-[var(--elevation-2xl)] hover:border-primary",
                   variant === 'minimal' && "bg-transparent",
                   isClickable && "cursor-pointer"
                 )}

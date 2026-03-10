@@ -67,20 +67,20 @@ export function SpecialSingle() {
         <div className="absolute inset-0 bg-primary/5 animate-pulse" />
         <Container>
           <div className="flex flex-col md:flex-row items-center justify-center gap-12 relative z-10">
-            <div className="flex items-center gap-4">
-              <div className="size-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center shadow-lg border border-white/30">
-                <Clock className="size-6 text-white animate-spin-slow" />
+            <div className="flex items-center gap-[var(--spacing-gap-sm)]">
+              <div className="size-12 rounded-2xl bg-accent-foreground/10 backdrop-blur-md flex items-center justify-center shadow-lg border border-accent-foreground/20">
+                <Clock className="size-6 text-accent-foreground animate-spin-slow" />
               </div>
-              <div className="text-white">
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-70 block mb-1">Time is Essential</span>
+              <div className="text-accent-foreground flex flex-col gap-[var(--spacing-gap-xs)]">
+                <span className="text-xs font-bold uppercase tracking-widest opacity-70 block">Time is Essential</span>
                 <span className="font-serif font-bold text-2xl md:text-3xl italic leading-none">Offer Decays Shortly</span>
               </div>
             </div>
-            <div className="h-12 w-px bg-white/20 hidden md:block" />
+            <div className="h-12 w-px bg-accent-foreground/20 hidden md:block" />
             <CountdownPattern 
               endDate={special.validTo} 
               variant="minimal" 
-              className="bg-white/10 rounded-2xl px-10 py-4 backdrop-blur-md border border-white/20 shadow-inner"
+              className="bg-accent-foreground/10 rounded-2xl px-10 py-4 backdrop-blur-md border border-accent-foreground/20 shadow-inner"
             />
           </div>
         </Container>
@@ -99,9 +99,9 @@ export function SpecialSingle() {
 
       <section className="py-section-lg bg-muted/10 border-y-2 border-border/50">
         <Container maxWidth="narrow">
-          <div className="text-center mb-16">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-primary mb-2 block">Value Added</span>
-            <h2 className="text-4xl font-bold font-serif">Inclusions & Advantages</h2>
+          <div className="text-center flex flex-col items-center gap-[var(--spacing-gap-sm)] pb-[var(--spacing-gap-lg)]">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary block">Value Added</span>
+            <h2 className="text-4xl font-bold font-serif m-0">Inclusions & Advantages</h2>
           </div>
           
           <div className="grid sm:grid-cols-2 gap-6">
@@ -133,10 +133,10 @@ export function SpecialSingle() {
 
       <section className="py-section-lg">
         <Container>
-          <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
-            <div className="max-w-2xl">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-primary mb-2 block">Curation</span>
-              <h2 className="text-4xl font-bold font-serif">Applicable Expeditions</h2>
+          <div className="flex flex-col md:flex-row justify-between items-end gap-[var(--spacing-gap-lg)] pb-[var(--spacing-gap-lg)]">
+            <div className="max-w-2xl flex flex-col gap-[var(--spacing-gap-xs)]">
+              <span className="text-xs font-bold uppercase tracking-widest text-primary block">Curation</span>
+              <h2 className="text-4xl font-bold font-serif m-0">Applicable Expeditions</h2>
               <p className="text-muted-foreground text-lg m-0">This privilege is extended across our most coveted journeys.</p>
             </div>
           </div>

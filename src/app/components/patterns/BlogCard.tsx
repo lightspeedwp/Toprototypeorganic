@@ -9,6 +9,7 @@ import { Calendar, User, Clock, ArrowRight } from "@phosphor-icons/react";
 import { cn } from "../../lib/utils";
 import type { BlogPost } from "../../data/types";
 import { motion } from "motion/react";
+import { BotanicalCorner } from "../common/organic/OrganicAssets";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -46,11 +47,14 @@ export function BlogCard({
     <article
       onClick={onClick}
       className={cn(
-        "wp-card wp-card--blog group",
+        "wp-card wp-card--blog group has-organic-assets",
         layout === "horizontal" && "wp-card--blog--horizontal",
         onClick && "cursor-pointer"
       )}
     >
+      {/* Botanical Flourish */}
+      <BotanicalCorner className="wp-part-botanical-ornament--top-right" />
+
       {/* Featured Image */}
       <div className="wp-card__image-wrapper">
         <img

@@ -204,8 +204,9 @@ export default function SectionStylesShowcase() {
               <section 
                 className="section-hero-image" 
                 style={{ 
-                  backgroundImage: 'url(https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200&h=600&fit=crop)' 
-                }}
+                  '--hero-bg-image': 'url(https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200&h=600&fit=crop)',
+                  backgroundImage: 'var(--hero-bg-image)'
+                } as React.CSSProperties}
               >
                 <Container>
                   <div className="max-w-2xl">

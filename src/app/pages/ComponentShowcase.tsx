@@ -739,7 +739,7 @@ export default function ComponentShowcase() {
         </div>
 
         <Container>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "var(--spacing-gap-lg)", paddingBlock: "var(--spacing-section-sm)" }}>
+          <div className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-gap-lg py-section-sm">
             {/* Sidebar - Component Selector */}
             <aside className="space-y-6">
               {/* Search and Filter */}
@@ -855,7 +855,7 @@ export default function ComponentShowcase() {
             {/* Main Content - Preview & Controls */}
             <div className="space-y-6">
               <Tabs defaultValue="preview" className="w-full">
-                <TabsList style={{ display: "grid", width: "100%", gridTemplateColumns: "repeat(3, minmax(0, 1fr))" }}>
+                <TabsList className="grid w-full grid-cols-3">
                   <TabsTrigger value="preview">Preview</TabsTrigger>
                   <TabsTrigger value="props">Props</TabsTrigger>
                   <TabsTrigger value="code">Code</TabsTrigger>

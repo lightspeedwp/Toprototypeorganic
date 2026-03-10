@@ -43,25 +43,25 @@ export function WhyBookWithUsPage() {
       <section className="py-section-lg bg-card border-b border-border/50">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="text-center p-10 rounded-3xl bg-muted/20 border-2 border-border/50 hover:border-primary transition-all duration-500">
-              <div className="size-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-8">
+            <div className="text-center p-10 rounded-3xl bg-muted/20 border-2 border-border/50 hover:border-primary transition-all duration-500 flex flex-col items-center gap-[var(--spacing-gap-md)]">
+              <div className="size-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
                 <Shield className="size-8" />
               </div>
-              <h3 className="mb-4">Financial Protection</h3>
+              <h3>Financial Protection</h3>
               <p className="text-muted-foreground leading-relaxed">Your investment is 100% protected through our comprehensive bonding and secure trust accounts.</p>
             </div>
-            <div className="text-center p-10 rounded-3xl bg-muted/20 border-2 border-border/50 hover:border-primary transition-all duration-500">
-              <div className="size-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-8">
+            <div className="text-center p-10 rounded-3xl bg-muted/20 border-2 border-border/50 hover:border-primary transition-all duration-500 flex flex-col items-center gap-[var(--spacing-gap-md)]">
+              <div className="size-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
                 <Award className="size-8" />
               </div>
-              <h3 className="mb-4">Field Expertise</h3>
+              <h3>Field Expertise</h3>
               <p className="text-muted-foreground leading-relaxed">Speak directly with designers who spend months each year in the African bush personally vetting every lodge.</p>
             </div>
-            <div className="text-center p-10 rounded-3xl bg-muted/20 border-2 border-border/50 hover:border-primary transition-all duration-500">
-              <div className="size-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-8">
+            <div className="text-center p-10 rounded-3xl bg-muted/20 border-2 border-border/50 hover:border-primary transition-all duration-500 flex flex-col items-center gap-[var(--spacing-gap-md)]">
+              <div className="size-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
                 <Users className="size-8" />
               </div>
-              <h3 className="mb-4">Verified Excellence</h3>
+              <h3>Verified Excellence</h3>
               <p className="text-muted-foreground leading-relaxed">A consistent 4.9/5 satisfaction rating from our global community of over 15,000 happy travelers.</p>
             </div>
           </div>
@@ -130,13 +130,13 @@ export function WhyBookWithUsPage() {
                   { t: "Flexible Commitment", d: "Change your dates up to 60 days before travel with zero administration fees." },
                   { t: "The 'Native' Standard", d: "We only use lodges that pass our strict criteria for sustainability and service." }
                 ].map((p, i) => (
-                  <div key={i} className="flex gap-4 group">
-                    <div className="size-6 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-1 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                  <div key={i} className="flex gap-4 group items-start">
+                    <div className="size-6 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                       <Check className="size-3" />
                     </div>
-                    <div>
-                      <h5 className="text-foreground mb-1">{p.t}</h5>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{p.d}</p>
+                    <div className="flex flex-col gap-[var(--spacing-gap-xs)]">
+                      <h5 className="text-foreground m-0">{p.t}</h5>
+                      <p className="text-muted-foreground text-sm leading-relaxed m-0">{p.d}</p>
                     </div>
                   </div>
                 ))}
@@ -150,10 +150,10 @@ export function WhyBookWithUsPage() {
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-1000" 
                 />
               </div>
-              <div className="absolute -bottom-8 -left-8 p-8 rounded-2xl bg-primary text-primary-foreground shadow-xl hidden md:block max-w-xs">
-                <Star className="size-8 mb-4 fill-primary-foreground" />
-                <p className="italic mb-2">"The attention to detail was beyond anything we've experienced in 30 years of travel."</p>
-                <p className="text-xs uppercase tracking-widest opacity-80">— The Harrison Family</p>
+              <div className="absolute -bottom-8 -left-8 p-8 rounded-2xl bg-primary text-primary-foreground shadow-xl hidden md:block max-w-xs flex flex-col gap-[var(--spacing-gap-sm)]">
+                <Star className="size-8 fill-primary-foreground" />
+                <p className="italic m-0">"The attention to detail was beyond anything we've experienced in 30 years of travel."</p>
+                <p className="text-xs uppercase tracking-widest opacity-80 m-0">— The Harrison Family</p>
               </div>
             </div>
           </div>

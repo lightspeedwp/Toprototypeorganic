@@ -7,7 +7,7 @@ import { cn } from "../lib/utils";
 export default function Diagnostic() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-background p-8">
-      <div className="max-w-xl w-full bg-card p-12 rounded-[24px] border-2 border-border shadow-2xl">
+      <div className="max-w-xl w-full bg-card p-12 rounded-4xl border-2 border-border shadow-2xl">
         <h1 className="mt-0 text-primary font-serif">✅ Status: Operational</h1>
         <p className="font-sans text-lg">The React application and design system have initialized successfully.</p>
         

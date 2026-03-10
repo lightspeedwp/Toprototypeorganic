@@ -52,10 +52,10 @@ export function ClimateInfoPattern({
     <section className={cn("wp-pattern-lts-climate has-section-padding-md", className)}>
       <Container>
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-[var(--spacing-gap-lg)] mb-12">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 rounded-lg bg-primary/10 text-primary">
+            <div className="flex items-center gap-[var(--spacing-gap-sm)] mb-[var(--spacing-element-md)]">
+              <div className="p-2 rounded-[var(--radius-lg)] bg-primary/10 text-primary">
                 <Cloud className="size-5" />
               </div>
               <HeadingBlock level={2} className="mb-0">
@@ -63,7 +63,7 @@ export function ClimateInfoPattern({
               </HeadingBlock>
             </div>
             {description && (
-              <ParagraphBlock className="text-muted-foreground text-lg m-0">
+              <ParagraphBlock className="text-muted-foreground text-[length:var(--text-lg)] m-0">
                 {description}
               </ParagraphBlock>
             )}
@@ -72,33 +72,33 @@ export function ClimateInfoPattern({
 
         {/* Display Variants */}
         {variant === 'table' && monthlyData.length > 0 ? (
-          <div className="wp-pattern-lts-climate__table-container bg-card border-2 border-border rounded-3xl overflow-hidden shadow-sm">
+          <div className="wp-pattern-lts-climate__table-container bg-card border-2 border-border rounded-[var(--radius-3xl)] overflow-hidden shadow-[var(--elevation-sm)]">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-muted border-b-2 border-border">
-                    <th className="px-8 py-6 font-serif font-bold text-foreground text-lg">Month</th>
-                    <th className="px-8 py-6 font-serif font-bold text-foreground text-lg text-center">High (°{tempUnit})</th>
-                    <th className="px-8 py-6 font-serif font-bold text-foreground text-lg text-center">Low (°{tempUnit})</th>
-                    <th className="px-8 py-6 font-serif font-bold text-foreground text-lg text-center">Rain ({rainfallUnit})</th>
+                    <th className="px-[var(--spacing-element-2xl)] py-[var(--spacing-element-lg)] text-foreground text-[length:var(--text-lg)]">Month</th>
+                    <th className="px-[var(--spacing-element-2xl)] py-[var(--spacing-element-lg)] text-foreground text-[length:var(--text-lg)] text-center">High (°{tempUnit})</th>
+                    <th className="px-[var(--spacing-element-2xl)] py-[var(--spacing-element-lg)] text-foreground text-[length:var(--text-lg)] text-center">Low (°{tempUnit})</th>
+                    <th className="px-[var(--spacing-element-2xl)] py-[var(--spacing-element-lg)] text-foreground text-[length:var(--text-lg)] text-center">Rain ({rainfallUnit})</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border/50">
                   {monthlyData.map((row, index) => (
                     <tr key={index} className="hover:bg-muted/30 transition-colors">
-                      <td className="px-8 py-6 font-bold text-foreground">{row.month}</td>
-                      <td className="px-8 py-6 text-center">
-                        <div className="inline-flex items-center gap-2 text-warning font-bold">
+                      <td className="px-[var(--spacing-element-2xl)] py-[var(--spacing-element-lg)] text-foreground font-bold">{row.month}</td>
+                      <td className="px-[var(--spacing-element-2xl)] py-[var(--spacing-element-lg)] text-center">
+                        <div className="inline-flex items-center gap-[var(--spacing-gap-xs)] text-warning font-bold">
                           <Sun className="size-4" /> {row.tempHigh}°
                         </div>
                       </td>
-                      <td className="px-8 py-6 text-center">
-                        <div className="inline-flex items-center gap-2 text-primary font-bold">
+                      <td className="px-[var(--spacing-element-2xl)] py-[var(--spacing-element-lg)] text-center">
+                        <div className="inline-flex items-center gap-[var(--spacing-gap-xs)] text-primary font-bold">
                           <ThermometerSun className="size-4" /> {row.tempLow}°
                         </div>
                       </td>
-                      <td className="px-8 py-6 text-center">
-                        <div className="inline-flex items-center gap-2 text-info font-bold">
+                      <td className="px-[var(--spacing-element-2xl)] py-[var(--spacing-element-lg)] text-center">
+                        <div className="inline-flex items-center gap-[var(--spacing-gap-xs)] text-info font-bold">
                           <Droplets className="size-4" /> {row.rainfall}
                         </div>
                       </td>
@@ -109,7 +109,7 @@ export function ClimateInfoPattern({
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--spacing-gap-lg)] md:gap-[var(--spacing-gap-2xl)]">
             {seasonalInfo.map((season, idx) => (
               <motion.article 
                 key={idx}
@@ -117,30 +117,30 @@ export function ClimateInfoPattern({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="wp-pattern-lts-climate__season-card bg-card border-2 border-border rounded-3xl p-10 hover:border-primary transition-all duration-500 shadow-sm hover:shadow-xl group"
+                className="wp-pattern-lts-climate__season-card bg-card border-2 border-border rounded-[var(--radius-3xl)] p-[var(--spacing-element-3xl)] hover:border-primary transition-all duration-500 shadow-[var(--elevation-sm)] hover:shadow-[var(--elevation-xl)] group"
               >
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="size-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 shadow-sm">
+                <div className="flex items-center gap-[var(--spacing-gap-sm)] mb-[var(--spacing-element-2xl)]">
+                  <div className="size-14 bg-primary/10 rounded-[var(--radius-2xl)] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 shadow-[var(--elevation-sm)]">
                     <Calendar className="size-7" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold font-serif mb-1">{season.name}</h3>
-                    <p className="text-xs font-bold uppercase tracking-widest text-primary m-0">{season.months}</p>
+                    <h3 className="text-[length:var(--text-2xl)] mb-1">{season.name}</h3>
+                    <p className="text-[length:var(--text-xs)] uppercase tracking-widest text-primary m-0 font-bold">{season.months}</p>
                   </div>
                 </div>
 
-                <ParagraphBlock className="text-muted-foreground text-lg leading-relaxed mb-8 italic">
+                <ParagraphBlock className="text-muted-foreground text-[length:var(--text-lg)] leading-relaxed mb-8 italic">
                   "{season.description}"
                 </ParagraphBlock>
 
                 {season.bestFor && (
                   <div className="pt-8 border-t border-border/50">
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-foreground mb-4 flex items-center gap-2">
+                    <p className="text-[10px] uppercase tracking-widest text-foreground mb-4 flex items-center gap-[var(--spacing-gap-xs)] font-bold">
                       <Info className="size-3 text-primary" /> Ideal For
                     </p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-[var(--spacing-gap-xs)]">
                       {season.bestFor.map((item, i) => (
-                        <span key={i} className="px-4 py-1.5 rounded-xl bg-muted text-xs font-bold text-muted-foreground border border-border/50">
+                        <span key={i} className="px-4 py-1.5 rounded-[var(--radius-xl)] bg-muted text-[length:var(--text-xs)] text-muted-foreground border border-border/50 font-bold">
                           {item}
                         </span>
                       ))}

@@ -77,10 +77,10 @@ export function GallerySectionPattern({
         {(title || description) && (
           <div className="text-center mb-12 max-w-3xl mx-auto">
             {title && (
-              <h2 className="text-3xl font-bold font-serif mb-4">{title}</h2>
+              <h2 className="text-[length:var(--text-3xl)] mb-4">{title}</h2>
             )}
             {description && (
-              <p className="text-muted-foreground text-lg">{description}</p>
+              <p className="text-muted-foreground text-[length:var(--text-lg)]">{description}</p>
             )}
           </div>
         )}
@@ -95,7 +95,7 @@ export function GallerySectionPattern({
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05 }}
               onClick={() => openLightbox(idx)}
-              className="wp-pattern-lts-gallery__item relative aspect-square overflow-hidden rounded-2xl bg-muted group cursor-pointer border-2 border-transparent hover:border-primary transition-all duration-300 shadow-sm hover:shadow-xl"
+              className="wp-pattern-lts-gallery__item relative aspect-square overflow-hidden rounded-[var(--radius-2xl)] bg-muted group cursor-pointer border-2 border-transparent hover:border-primary transition-all duration-300 shadow-[var(--elevation-sm)] hover:shadow-[var(--elevation-xl)]"
               aria-label={`View ${image.alt}`}
             >
               <img
@@ -105,7 +105,7 @@ export function GallerySectionPattern({
                 className="absolute inset-0 size-full object-cover group-hover:scale-110 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                <div className="p-3 rounded-full bg-background/90 backdrop-blur shadow-lg transform scale-50 group-hover:scale-100 transition-all duration-300">
+                <div className="p-3 rounded-[var(--radius-full)] bg-background/90 backdrop-blur shadow-[var(--elevation-lg)] transform scale-50 group-hover:scale-100 transition-all duration-300">
                   <Maximize2 className="size-5 text-primary" />
                 </div>
               </div>
@@ -129,7 +129,7 @@ export function GallerySectionPattern({
             {/* Close Button */}
             <button
               onClick={closeLightbox}
-              className="absolute top-8 right-8 p-3 bg-muted hover:bg-primary hover:text-primary-foreground rounded-full transition-all z-50 shadow-lg"
+              className="absolute top-8 right-8 p-3 bg-muted hover:bg-primary hover:text-primary-foreground rounded-[var(--radius-full)] transition-all z-50 shadow-[var(--elevation-lg)]"
               aria-label="Close gallery"
             >
               <X className="size-6" />
@@ -137,7 +137,7 @@ export function GallerySectionPattern({
 
             {/* Main Content Area */}
             <div
-              className="relative max-w-7xl size-full flex flex-col items-center justify-center gap-8"
+              className="relative max-w-7xl size-full flex flex-col items-center justify-center gap-[var(--spacing-gap-lg)]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Image with Slide Animation */}
@@ -149,18 +149,18 @@ export function GallerySectionPattern({
                   transition={{ type: "spring", damping: 25, stiffness: 200 }}
                   src={images[currentImage].src}
                   alt={images[currentImage].alt}
-                  className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
+                  className="max-w-full max-h-full object-contain rounded-[var(--radius-xl)] shadow-[var(--elevation-2xl)]"
                 />
               </div>
               
               {/* Info & Metadata */}
               <div className="text-center max-w-2xl">
                 {images[currentImage].caption && (
-                  <h3 className="text-2xl font-serif font-bold mb-3 italic">
+                  <h3 className="text-[length:var(--text-2xl)] mb-3 italic">
                     {images[currentImage].caption}
                   </h3>
                 )}
-                <div className="inline-flex items-center gap-4 px-6 py-2 rounded-full bg-muted/50 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                <div className="inline-flex items-center gap-4 px-6 py-2 rounded-[var(--radius-full)] bg-muted/50 text-[length:var(--text-xs)] uppercase tracking-widest text-muted-foreground">
                   <span className="text-primary">{currentImage + 1}</span>
                   <span className="opacity-30">/</span>
                   <span>{images.length} Captured Moments</span>
@@ -172,14 +172,14 @@ export function GallerySectionPattern({
                 <>
                   <button
                     onClick={prevImage}
-                    className="absolute left-0 md:-left-16 top-1/2 -translate-y-1/2 size-14 flex items-center justify-center bg-card hover:bg-primary hover:text-primary-foreground border-2 border-border rounded-full transition-all shadow-xl group"
+                    className="absolute left-0 md:-left-16 top-1/2 -translate-y-1/2 size-14 flex items-center justify-center bg-card hover:bg-primary hover:text-primary-foreground border-2 border-border rounded-[var(--radius-full)] transition-all shadow-[var(--elevation-xl)] group"
                     aria-label="Previous image"
                   >
                     <ChevronLeft className="size-6 group-hover:-translate-x-1 transition-transform" />
                   </button>
                   <button
                     onClick={nextImage}
-                    className="absolute right-0 md:-right-16 top-1/2 -translate-y-1/2 size-14 flex items-center justify-center bg-card hover:bg-primary hover:text-primary-foreground border-2 border-border rounded-full transition-all shadow-xl group"
+                    className="absolute right-0 md:-right-16 top-1/2 -translate-y-1/2 size-14 flex items-center justify-center bg-card hover:bg-primary hover:text-primary-foreground border-2 border-border rounded-[var(--radius-full)] transition-all shadow-[var(--elevation-xl)] group"
                     aria-label="Next image"
                   >
                     <ChevronRight className="size-6 group-hover:translate-x-1 transition-transform" />

@@ -58,10 +58,10 @@ export function AuthorBioPattern({
         <article className={cn(
           "wp-pattern-author-bio",
           `wp-pattern-author-bio--${variant}`,
-          "bg-card border border-border rounded-lg p-6 md:p-8"
+          "bg-card border border-border rounded-[var(--radius-lg)] p-[var(--spacing-element-xl)] md:p-[var(--spacing-element-2xl)]"
         )}>
           <div className={cn(
-            "flex gap-6 md:gap-8",
+            "flex gap-[var(--spacing-gap-lg)] md:gap-[var(--spacing-gap-xl)]",
             isCompact || isInline ? "flex-row items-start" : "flex-col md:flex-row md:items-center"
           )}>
             {/* Avatar */}
@@ -71,7 +71,7 @@ export function AuthorBioPattern({
                   src={avatar}
                   alt={name}
                   className={cn(
-                    "rounded-full object-cover border-2 border-primary/10",
+                    "rounded-[var(--radius-full)] object-cover border-2 border-primary/10",
                     isCompact ? "w-16 h-16" : "w-24 h-24 md:w-32 md:h-32"
                   )}
                 />
@@ -81,37 +81,37 @@ export function AuthorBioPattern({
             {/* Author Info */}
             <div className="flex-1">
               {/* Header */}
-              <div className="mb-4">
+              <div className="mb-[var(--spacing-element-lg)]">
                 <HeadingBlock 
                   level={isCompact ? 4 : 3}
-                  className="mb-1"
+                  className="mb-[var(--spacing-element-xs)]"
                 >
                   {name}
                 </HeadingBlock>
                 {role && (
-                  <p className="text-primary font-medium text-sm md:text-base">
+                  <p className="text-primary text-[length:var(--text-sm)] md:text-[length:var(--text-base)] m-0">
                     {role}
                   </p>
                 )}
               </div>
 
               {/* Bio */}
-              <div className="mb-6">
-                <ParagraphBlock className="text-muted-foreground leading-relaxed">
+              <div className="mb-[var(--spacing-gap-lg)]">
+                <ParagraphBlock className="text-muted-foreground m-0">
                   {bio}
                 </ParagraphBlock>
               </div>
 
               {/* Footer Meta & Social */}
-              <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-border/50">
+              <div className="flex flex-wrap items-center justify-between gap-[var(--spacing-gap-md)] pt-[var(--spacing-element-lg)] border-t border-border/50">
                 {articleCount !== undefined && (
-                  <span className="text-sm text-muted-foreground font-medium">
+                  <span className="text-[length:var(--text-sm)] text-muted-foreground m-0">
                     {articleCount} {articleCount === 1 ? 'article' : 'articles'}
                   </span>
                 )}
 
                 {socialLinks.length > 0 && (
-                  <nav className="flex items-center gap-3" aria-label={`Social links for ${name}`}>
+                  <nav className="flex items-center gap-[var(--spacing-gap-sm)]" aria-label={`Social links for ${name}`}>
                     {socialLinks.map((social, index) => {
                       const Icon = socialIcons[social.platform as keyof typeof socialIcons] || Globe;
                       
@@ -121,7 +121,7 @@ export function AuthorBioPattern({
                           href={social.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-2 text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-full transition-all"
+                          className="p-[var(--spacing-element-sm)] text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-[var(--radius-full)] transition-all"
                           aria-label={social.label || `${name}'s ${social.platform}`}
                         >
                           <Icon className="w-5 h-5" aria-hidden="true" />

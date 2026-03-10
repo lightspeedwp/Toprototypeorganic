@@ -61,7 +61,7 @@ export function RoomTypesPattern({
         <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-12">
           <div className="max-w-2xl">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 rounded-lg bg-primary/10 text-primary">
+              <div className="p-2 rounded-[var(--radius-lg)] bg-primary/10 text-primary">
                 <Bed className="size-5" />
               </div>
               <HeadingBlock level={2} className="mb-0">
@@ -69,7 +69,7 @@ export function RoomTypesPattern({
               </HeadingBlock>
             </div>
             {description && (
-              <ParagraphBlock className="text-muted-foreground text-lg m-0">
+              <ParagraphBlock className="text-muted-foreground text-fluid-lg m-0">
                 {description}
               </ParagraphBlock>
             )}
@@ -85,7 +85,7 @@ export function RoomTypesPattern({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="wp-pattern-lts-rooms__item group flex flex-col bg-card border-2 border-border rounded-3xl overflow-hidden hover:border-primary transition-all duration-500 shadow-sm hover:shadow-2xl"
+                className="wp-pattern-lts-rooms__item group flex flex-col bg-card border-2 border-border rounded-[var(--radius-3xl)] overflow-hidden hover:border-primary transition-all duration-500 shadow-sm hover:shadow-[var(--elevation-2xl)]"
               >
                 {/* Image */}
                 {room.image && (
@@ -96,9 +96,9 @@ export function RoomTypesPattern({
                       className="absolute inset-0 size-full object-cover transition-transform duration-1000 group-hover:scale-110"
                     />
                     {room.price && (
-                      <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-md px-4 py-2 rounded-xl shadow-lg border border-border/50">
-                        <span className="text-primary font-serif font-bold text-xl">{currency}{room.price}</span>
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-2">{priceUnit}</span>
+                      <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-md px-4 py-2 rounded-[var(--radius-xl)] shadow-[var(--elevation-lg)] border border-border/50">
+                        <span className="text-primary text-fluid-xl">{currency}{room.price}</span>
+                        <span className="text-fluid-xs uppercase tracking-widest text-muted-foreground ml-2">{priceUnit}</span>
                       </div>
                     )}
                   </div>
@@ -107,13 +107,13 @@ export function RoomTypesPattern({
                 {/* Content */}
                 <div className="p-8 flex flex-col flex-1">
                   <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-2xl font-bold font-serif mb-0">
+                    <h3 className="text-fluid-2xl mb-0">
                       {room.name}
                     </h3>
                     {room.capacity && (
-                      <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-muted text-muted-foreground">
+                      <div className="flex items-center gap-2 px-3 py-1 rounded-[var(--radius-full)] bg-muted text-muted-foreground">
                         <Users className="size-3" />
-                        <span className="text-[10px] font-bold uppercase tracking-widest">{room.capacity} Guests</span>
+                        <span className="text-fluid-xs uppercase tracking-widest">{room.capacity} Guests</span>
                       </div>
                     )}
                   </div>
@@ -126,7 +126,7 @@ export function RoomTypesPattern({
                   {room.amenities && (
                     <div className="flex flex-wrap gap-2 mb-8">
                       {room.amenities.map((a, i) => (
-                        <span key={i} className="px-3 py-1 rounded-lg bg-primary/5 text-primary text-[10px] font-bold uppercase tracking-widest flex items-center gap-1.5">
+                        <span key={i} className="px-3 py-1 rounded-[var(--radius-lg)] bg-primary/5 text-primary text-fluid-xs uppercase tracking-widest flex items-center gap-1.5">
                           <CircleCheck className="size-3" /> {a}
                         </span>
                       ))}
@@ -137,7 +137,7 @@ export function RoomTypesPattern({
                   <div className="pt-6 border-t border-border/50 flex items-center justify-between">
                     {room.availability && (
                       <span className={cn(
-                        "px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest",
+                        "px-3 py-1 rounded-[var(--radius-full)] text-fluid-xs uppercase tracking-widest",
                         statusClasses[room.availability]
                       )}>
                         {room.availability}
@@ -148,7 +148,7 @@ export function RoomTypesPattern({
                         variant="primary"
                         size="sm"
                         onClick={() => cta.onClick(room.id)}
-                        className="rounded-lg font-bold"
+                        className="rounded-[var(--radius-lg)]"
                         disabled={room.availability === 'unavailable'}
                       >
                         {cta.label}
@@ -160,14 +160,14 @@ export function RoomTypesPattern({
             ))}
           </div>
         ) : (
-          <div className="wp-pattern-lts-rooms__table-container bg-card border-2 border-border rounded-3xl overflow-hidden shadow-sm">
+          <div className="wp-pattern-lts-rooms__table-container bg-card border-2 border-border rounded-[var(--radius-3xl)] overflow-hidden shadow-[var(--elevation-sm)]">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-muted border-b-2 border-border">
-                    <th className="px-8 py-6 font-serif font-bold text-foreground text-lg">Room Type</th>
-                    <th className="px-8 py-6 font-serif font-bold text-foreground text-lg text-center">Capacity</th>
-                    <th className="px-8 py-6 font-serif font-bold text-foreground text-lg text-right">Investment</th>
+                    <th className="px-8 py-6 text-foreground text-fluid-lg">Room Type</th>
+                    <th className="px-8 py-6 text-foreground text-fluid-lg text-center">Capacity</th>
+                    <th className="px-8 py-6 text-foreground text-fluid-lg text-right">Investment</th>
                     <th className="px-8 py-6 text-center"></th>
                   </tr>
                 </thead>
@@ -175,20 +175,20 @@ export function RoomTypesPattern({
                   {rooms.map((room) => (
                     <tr key={room.id} className="hover:bg-muted/30 transition-colors group">
                       <td className="px-8 py-6">
-                        <p className="font-bold text-foreground mb-1 text-lg">{room.name}</p>
-                        <p className="text-sm text-muted-foreground m-0 max-w-md">{room.description}</p>
+                        <p className="text-foreground mb-1 text-fluid-lg">{room.name}</p>
+                        <p className="text-fluid-sm text-muted-foreground m-0 max-w-md">{room.description}</p>
                       </td>
                       <td className="px-8 py-6 text-center">
                         <div className="inline-flex items-center gap-2 text-muted-foreground">
                           <Users className="size-4" />
-                          <span className="font-bold">{room.capacity}</span>
+                          <span className="">{room.capacity}</span>
                         </div>
                       </td>
                       <td className="px-8 py-6 text-right">
-                        <div className="text-primary font-serif font-bold text-xl">
+                        <div className="text-primary text-fluid-xl">
                           {currency}{room.price}
                         </div>
-                        <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                        <div className="text-fluid-xs uppercase tracking-widest text-muted-foreground">
                           {priceUnit}
                         </div>
                       </td>
@@ -198,7 +198,7 @@ export function RoomTypesPattern({
                             variant="outline"
                             size="sm"
                             onClick={() => cta.onClick(room.id)}
-                            className="rounded-lg"
+                            className="rounded-[var(--radius-lg)]"
                             disabled={room.availability === 'unavailable'}
                           >
                             {cta.label}

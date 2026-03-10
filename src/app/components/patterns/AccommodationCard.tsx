@@ -10,6 +10,7 @@ import type { Accommodation } from "../../data/types";
 import { cn } from "../../lib/utils";
 import { motion } from "motion/react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
+import { BotanicalCorner } from "../common/organic/OrganicAssets";
 
 interface AccommodationCardProps {
   accommodation: Accommodation;
@@ -35,7 +36,7 @@ export function AccommodationCard({ accommodation, onClick, layout = "card", ani
   const cardContent = (
     <article 
       className={cn(
-        "wp-card wp-card--accommodation group",
+        "wp-card wp-card--accommodation group has-organic-assets",
         layout === "horizontal" && "wp-card--horizontal",
         onClick && "cursor-pointer"
       )}
@@ -45,6 +46,9 @@ export function AccommodationCard({ accommodation, onClick, layout = "card", ani
       role="button"
       aria-label={`Explore ${accommodation.title}`}
     >
+      {/* Botanical Flourish */}
+      <BotanicalCorner className="wp-part-botanical-ornament--top-right" />
+
       {/* Featured Image */}
       <div className="wp-card__image-wrapper">
         <ImageWithFallback

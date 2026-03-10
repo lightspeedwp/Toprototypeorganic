@@ -99,9 +99,11 @@ export function Skeleton({
         className
       )}
       style={{
-        width: typeof width === 'number' ? `${width}px` : width,
-        height: typeof height === 'number' ? `${height}px` : height,
-      }}
+        '--dynamic-width': typeof width === 'number' ? `${width}px` : width,
+        '--dynamic-height': typeof height === 'number' ? `${height}px` : height,
+        width: 'var(--dynamic-width)',
+        height: 'var(--dynamic-height)'
+      } as React.CSSProperties}
     />
   );
 }
@@ -255,7 +257,7 @@ export function ProgressBar({
       <div className={cn('w-full bg-muted rounded-full overflow-hidden', sizeClasses[size])}>
         <div
           className={cn('h-full transition-all duration-500 ease-out', variantClasses[variant])}
-          style={{ width: `${clampedValue}%` }}
+          style={{ '--dynamic-width': `${clampedValue}%`, width: 'var(--dynamic-width)' } as React.CSSProperties}
         />
       </div>
       {showValue && (

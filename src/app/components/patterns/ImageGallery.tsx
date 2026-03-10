@@ -161,7 +161,7 @@ export function ImageGallery({
           {images.map((image, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-lg border border-border bg-muted transition-all hover:shadow-lg"
+              className="group relative overflow-hidden rounded-[var(--radius-lg)] border border-border bg-muted transition-all hover:shadow-[var(--elevation-lg)]"
               onClick={() => handleImageClick(index)}
               role={enableLightbox ? "button" : undefined}
               tabIndex={enableLightbox ? 0 : undefined}
@@ -234,7 +234,7 @@ export function ImageGallery({
           {images.map((image, index) => (
             <div
               key={index}
-              className="group relative mb-4 break-inside-avoid overflow-hidden rounded-lg border border-border bg-muted transition-all hover:shadow-lg"
+              className="group relative mb-[var(--spacing-element-md)] break-inside-avoid overflow-hidden rounded-[var(--radius-lg)] border border-border bg-muted transition-all hover:shadow-[var(--elevation-lg)]"
               onClick={() => handleImageClick(index)}
               role={enableLightbox ? "button" : undefined}
               tabIndex={enableLightbox ? 0 : undefined}
