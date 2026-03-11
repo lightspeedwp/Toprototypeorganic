@@ -38,9 +38,9 @@ export function FeatureList({
   className,
 }: FeatureListProps) {
   const iconSizeClasses = {
-    sm: 'h-5 w-5',
-    md: 'h-6 w-6',
-    lg: 'h-10 w-10',
+    sm: 'w-[var(--spacing-element-md)] h-[var(--spacing-element-md)]',
+    md: 'w-[var(--spacing-element-lg)] h-[var(--spacing-element-lg)]',
+    lg: 'w-[var(--spacing-element-2xl)] h-[var(--spacing-element-2xl)]',
   };
 
   const iconColorClasses = {
@@ -58,10 +58,10 @@ export function FeatureList({
         return (
           <div key={index} className="flex gap-[var(--spacing-gap-lg)] group">
             {/* Icon Wrapper */}
-            <div className="flex-shrink-0 mt-1">
+            <div className="flex-shrink-0 mt-[var(--spacing-element-xs)]">
               <div className={cn(
                 "rounded-[var(--radius-xl)] bg-muted group-hover:bg-primary/5 transition-colors flex items-center justify-center",
-                iconSize === 'sm' ? "w-10 h-10" : iconSize === 'md' ? "w-12 h-12" : "w-16 h-16"
+                iconSize === 'sm' ? "w-[var(--spacing-element-xl)] h-[var(--spacing-element-xl)]" : iconSize === 'md' ? "w-[var(--spacing-element-2xl)] h-[var(--spacing-element-2xl)]" : "w-[var(--spacing-element-4xl)] h-[var(--spacing-element-4xl)]"
               )}>
                 <Icon
                   className={cn(iconSizeClasses[iconSize], iconColorClasses[iconColor], "transition-transform group-hover:scale-110")}
@@ -83,7 +83,7 @@ export function FeatureList({
               {feature.link && (
                 <a
                   href={feature.link.href}
-                  className="inline-flex items-center mt-[var(--spacing-element-md)] text-primary hover:underline text-[length:var(--text-sm)] gap-[var(--spacing-gap-xs)] group/link"
+                  className="inline-flex items-center mt-[var(--spacing-element-md)] text-primary hover:underline text-[length:var(--text-sm)] gap-[var(--spacing-gap-xs)] group/link font-[var(--font-weight-medium)]"
                 >
                   <span>{feature.link.label}</span>
                   <span className="transition-transform group-hover/link:translate-x-1">→</span>

@@ -51,11 +51,11 @@ export function HighlightsGridPattern({
     <section className={cn("wp-pattern-lts-highlights has-section-padding-md", className)}>
       <Container>
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end gap-[var(--spacing-gap-lg)] mb-12 md:mb-16">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-[var(--spacing-gap-lg)] mb-[var(--spacing-gap-2xl)] md:mb-[var(--spacing-gap-3xl)]">
           <div className="max-w-2xl">
             <div className="flex items-center gap-[var(--spacing-gap-sm)] mb-[var(--spacing-element-md)]">
-              <div className="p-2 rounded-[var(--radius-lg)] bg-primary/10 text-primary">
-                <Sparkles className="size-5" />
+              <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)] bg-primary/10 text-primary">
+                <Sparkles className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)]" />
               </div>
               <HeadingBlock level={2} className="mb-0">
                 {title}
@@ -83,14 +83,14 @@ export function HighlightsGridPattern({
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
                 ) : (
-                  <div className="p-8 pb-0">
-                    <div className="size-16 rounded-[var(--radius-2xl)] bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 shadow-[var(--elevation-sm)]">
-                      {Icon ? <Icon className="size-8" /> : <Sparkles className="size-8" />}
+                  <div className="p-[var(--spacing-element-2xl)] pb-0">
+                    <div className="w-[var(--spacing-element-4xl)] h-[var(--spacing-element-4xl)] rounded-[var(--radius-2xl)] bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 shadow-[var(--elevation-sm)]">
+                      {Icon ? <Icon className="w-[var(--spacing-element-2xl)] h-[var(--spacing-element-2xl)]" /> : <Sparkles className="w-[var(--spacing-element-2xl)] h-[var(--spacing-element-2xl)]" />}
                     </div>
                   </div>
                 )}
@@ -105,8 +105,8 @@ export function HighlightsGridPattern({
                   </ParagraphBlock>
                   
                   {isClickable && (
-                    <div className="mt-6 pt-6 border-t border-border/50 text-[length:var(--text-sm)] text-primary flex items-center gap-[var(--spacing-gap-xs)] opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                      <strong>Explore Detail</strong> <span className="text-[length:var(--text-xl)]">→</span>
+                    <div className="mt-[var(--spacing-element-lg)] pt-[var(--spacing-element-lg)] border-t border-border/50 text-[length:var(--text-sm)] text-primary flex items-center gap-[var(--spacing-gap-xs)] opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                      <strong className="font-[var(--font-weight-bold)]">Explore Detail</strong> <span className="text-[length:var(--text-xl)]">→</span>
                     </div>
                   )}
                 </div>

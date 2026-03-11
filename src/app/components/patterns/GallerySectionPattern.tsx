@@ -75,18 +75,18 @@ export function GallerySectionPattern({
       <Container>
         {/* Header */}
         {(title || description) && (
-          <div className="text-center mb-12 max-w-3xl mx-auto">
+          <div className="text-center mb-[var(--spacing-section-sm)] max-w-3xl mx-auto">
             {title && (
-              <h2 className="text-[length:var(--text-3xl)] mb-4">{title}</h2>
+              <h2 className="text-[length:var(--text-3xl)] mb-[var(--spacing-element-lg)]">{title}</h2>
             )}
             {description && (
-              <p className="text-muted-foreground text-[length:var(--text-lg)]">{description}</p>
+              <p className="text-muted-foreground text-[length:var(--text-lg)] !m-0">{description}</p>
             )}
           </div>
         )}
 
         {/* Thumbnail Grid */}
-        <div className={cn("grid gap-4 md:gap-6", gridClasses)}>
+        <div className={cn("grid gap-[var(--spacing-gap-lg)] md:gap-[var(--spacing-gap-2xl)]", gridClasses)}>
           {images.map((image, idx) => (
             <motion.button
               key={image.id}
@@ -105,7 +105,7 @@ export function GallerySectionPattern({
                 className="absolute inset-0 size-full object-cover group-hover:scale-110 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                <div className="p-3 rounded-[var(--radius-full)] bg-background/90 backdrop-blur shadow-[var(--elevation-lg)] transform scale-50 group-hover:scale-100 transition-all duration-300">
+                <div className="p-[var(--spacing-element-md)] rounded-[var(--radius-full)] bg-background/90 backdrop-blur shadow-[var(--elevation-lg)] transform scale-50 group-hover:scale-100 transition-all duration-300">
                   <Maximize2 className="size-5 text-primary" />
                 </div>
               </div>
@@ -121,7 +121,7 @@ export function GallerySectionPattern({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-background/98 backdrop-blur-xl flex items-center justify-center p-4 md:p-12"
+            className="fixed inset-0 z-[100] bg-background/98 backdrop-blur-xl flex items-center justify-center p-[var(--spacing-element-lg)] md:p-[var(--spacing-section-sm)]"
             onClick={closeLightbox}
             role="dialog"
             aria-modal="true"
@@ -129,7 +129,7 @@ export function GallerySectionPattern({
             {/* Close Button */}
             <button
               onClick={closeLightbox}
-              className="absolute top-8 right-8 p-3 bg-muted hover:bg-primary hover:text-primary-foreground rounded-[var(--radius-full)] transition-all z-50 shadow-[var(--elevation-lg)]"
+              className="absolute top-[var(--spacing-gap-3xl)] right-[var(--spacing-gap-3xl)] p-[var(--spacing-element-md)] bg-muted hover:bg-primary hover:text-primary-foreground rounded-[var(--radius-full)] transition-all z-50 shadow-[var(--elevation-lg)]"
               aria-label="Close gallery"
             >
               <X className="size-6" />
@@ -156,11 +156,11 @@ export function GallerySectionPattern({
               {/* Info & Metadata */}
               <div className="text-center max-w-2xl">
                 {images[currentImage].caption && (
-                  <h3 className="text-[length:var(--text-2xl)] mb-3 italic">
+                  <h3 className="text-[length:var(--text-2xl)] mb-[var(--spacing-element-sm)] italic">
                     {images[currentImage].caption}
                   </h3>
                 )}
-                <div className="inline-flex items-center gap-4 px-6 py-2 rounded-[var(--radius-full)] bg-muted/50 text-[length:var(--text-xs)] uppercase tracking-widest text-muted-foreground">
+                <div className="inline-flex items-center gap-[var(--spacing-gap-md)] px-[var(--spacing-element-2xl)] py-[var(--spacing-element-sm)] rounded-[var(--radius-full)] bg-muted/50 text-[length:var(--text-xs)] uppercase tracking-widest text-muted-foreground">
                   <span className="text-primary">{currentImage + 1}</span>
                   <span className="opacity-30">/</span>
                   <span>{images.length} Captured Moments</span>

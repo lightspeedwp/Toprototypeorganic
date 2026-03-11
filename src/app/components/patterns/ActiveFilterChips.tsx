@@ -166,10 +166,10 @@ export function ActiveFilterChips({
   }
 
   return (
-    <div className={cn("space-y-3", className)}>
+    <div className={cn("space-y-[var(--spacing-gap-md)]", className)}>
       {/* Header */}
       <div className="flex items-center justify-between">
-        <p className="text-[length:var(--text-sm)] text-foreground font-bold">
+        <p className="text-[length:var(--text-sm)] text-foreground font-[var(--font-weight-bold)] !mb-0">
           Active Filters ({chips.length})
         </p>
         {showClearAll && chips.length > 0 && (
@@ -185,7 +185,7 @@ export function ActiveFilterChips({
       </div>
 
       {/* Chips */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-[var(--spacing-gap-sm)]">
         {chips.map((chip, index) => (
           <FilterChip
             key={`${chip.key}-${chip.value || index}`}
@@ -211,13 +211,13 @@ function FilterChip({
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-[var(--radius-full)] border border-primary wp-bg-primary-light wp-bg-primary-hover px-3 py-1.5 text-[length:var(--text-sm)] text-foreground transition-colors"
+        "inline-flex items-center gap-[var(--spacing-gap-xs)] rounded-[var(--radius-full)] border border-primary wp-bg-primary-light wp-bg-primary-hover px-[var(--spacing-element-md)] py-[var(--spacing-element-xs)] text-[length:var(--text-sm)] text-foreground transition-colors"
       )}
     >
       <span>{label}</span>
       <button
         onClick={onRemove}
-        className="flex h-4 w-4 items-center justify-center rounded-[var(--radius-full)] transition-colors hover:bg-primary/30 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1"
+        className="flex h-[var(--spacing-element-md)] w-[var(--spacing-element-md)] items-center justify-center rounded-[var(--radius-full)] transition-colors hover:bg-primary/30 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1"
         aria-label={`Remove ${label} filter`}
       >
         <X size={12} />

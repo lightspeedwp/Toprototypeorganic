@@ -81,7 +81,7 @@ export function ContactInfoPattern({
 }: ContactInfoPatternProps) {
   // Map legacy props to items if provided
   const items = itemsProp || [
-    ...(phone ? [{ type: 'phone' as const, label: 'Phone', value: phone, href: `tel:${phone.replace(/\s/g, '')}` }] : []),
+    ...(phone ? [{ type: 'phone' as const, label: 'Phone', value: phone, href: `tel:${phone.replace(/\\s/g, '')}` }] : []),
     ...(email ? [{ type: 'email' as const, label: 'Email', value: email, href: `mailto:${email}` }] : []),
     ...(address ? [{ type: 'address' as const, label: 'Address', value: address }] : []),
   ];
@@ -98,9 +98,9 @@ export function ContactInfoPattern({
       <Container>
         {/* Section Header */}
         {(title || description) && (
-          <div className="text-center mb-12 md:mb-16 max-w-3xl mx-auto">
+          <div className="text-center mb-[var(--spacing-gap-2xl)] md:mb-[var(--spacing-gap-3xl)] max-w-3xl mx-auto">
             {title && (
-              <HeadingBlock level={2} textAlign="center" className="mb-4">
+              <HeadingBlock level={2} textAlign="center" className="mb-[var(--spacing-element-md)]">
                 {title}
               </HeadingBlock>
             )}
@@ -113,7 +113,7 @@ export function ContactInfoPattern({
         )}
 
         {/* Contact Grid */}
-        <div className={cn("grid gap-8 md:gap-12", gridClasses)}>
+        <div className={cn("grid gap-[var(--spacing-gap-xl)] md:gap-[var(--spacing-gap-3xl)]", gridClasses)}>
           {items.map((item, index) => {
             const Icon = item.icon || DEFAULT_ICONS[item.type] || Globe;
             const values = Array.isArray(item.value) ? item.value : [item.value];
@@ -132,37 +132,37 @@ export function ContactInfoPattern({
                 } : undefined}
                 className={cn(
                   "wp-pattern-lts-contact-info__item",
-                  variant === 'card' && "p-8 bg-card border-2 border-border rounded-2xl shadow-sm transition-all duration-300"
+                  variant === 'card' && "p-[var(--spacing-element-2xl)] bg-card border-2 border-border rounded-[var(--radius-2xl)] shadow-[var(--elevation-sm)] transition-all duration-300"
                 )}
               >
                 {/* Icon Wrapper */}
-                <div className="flex justify-center mb-6">
+                <div className="flex justify-center mb-[var(--spacing-element-lg)]">
                   <div className={cn(
-                    "size-14 rounded-2xl flex items-center justify-center transition-all duration-300",
+                    "w-[var(--spacing-element-4xl)] h-[var(--spacing-element-4xl)] rounded-[var(--radius-2xl)] flex items-center justify-center transition-all duration-300",
                     variant === 'card' ? "bg-primary/10 text-primary" : "bg-muted text-primary"
                   )}>
-                    <Icon className="size-6" aria-hidden="true" />
+                    <Icon className="w-[var(--spacing-element-xl)] h-[var(--spacing-element-xl)]" aria-hidden="true" />
                   </div>
                 </div>
 
                 {/* Label */}
-                <HeadingBlock level={3} textAlign="center" className="mb-3">
+                <HeadingBlock level={3} textAlign="center" className="mb-[var(--spacing-element-sm)]">
                   {item.label}
                 </HeadingBlock>
 
                 {/* Values */}
-                <div className="space-y-2 text-center">
+                <div className="space-y-[var(--spacing-gap-xs)] text-center">
                   {values.map((val, idx) => (
                     <div key={idx}>
                       {item.href ? (
                         <a 
                           href={item.href}
-                          className="text-foreground font-medium hover:text-primary transition-colors underline-offset-4 decoration-primary/30 hover:underline"
+                          className="text-foreground font-[var(--font-weight-medium)] hover:text-primary transition-colors underline-offset-4 decoration-primary/30 hover:underline"
                         >
                           {val}
                         </a>
                       ) : (
-                        <p className="text-muted-foreground font-medium m-0">
+                        <p className="text-muted-foreground font-[var(--font-weight-medium)] m-0">
                           {val}
                         </p>
                       )}

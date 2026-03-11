@@ -79,25 +79,25 @@ export function AuthorBioPattern({
             )}
 
             {/* Author Info */}
-            <div className="flex-1">
+            <div className="flex-1 flex flex-col gap-[var(--spacing-gap-lg)]">
               {/* Header */}
-              <div className="mb-[var(--spacing-element-lg)]">
+              <div className="flex flex-col gap-[var(--spacing-gap-xs)]">
                 <HeadingBlock 
                   level={isCompact ? 4 : 3}
-                  className="mb-[var(--spacing-element-xs)]"
+                  className="!mb-0"
                 >
                   {name}
                 </HeadingBlock>
                 {role && (
-                  <p className="text-primary text-[length:var(--text-sm)] md:text-[length:var(--text-base)] m-0">
+                  <p className="text-primary text-[length:var(--text-sm)] md:text-[length:var(--text-base)] !mb-0">
                     {role}
                   </p>
                 )}
               </div>
 
               {/* Bio */}
-              <div className="mb-[var(--spacing-gap-lg)]">
-                <ParagraphBlock className="text-muted-foreground m-0">
+              <div>
+                <ParagraphBlock className="text-muted-foreground !mb-0">
                   {bio}
                 </ParagraphBlock>
               </div>
@@ -105,7 +105,7 @@ export function AuthorBioPattern({
               {/* Footer Meta & Social */}
               <div className="flex flex-wrap items-center justify-between gap-[var(--spacing-gap-md)] pt-[var(--spacing-element-lg)] border-t border-border/50">
                 {articleCount !== undefined && (
-                  <span className="text-[length:var(--text-sm)] text-muted-foreground m-0">
+                  <span className="text-[length:var(--text-sm)] text-muted-foreground">
                     {articleCount} {articleCount === 1 ? 'article' : 'articles'}
                   </span>
                 )}

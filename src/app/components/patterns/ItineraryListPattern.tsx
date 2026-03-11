@@ -147,8 +147,8 @@ interface ItineraryListPatternProps {
 export function ItineraryListPattern({ days }: ItineraryListPatternProps) {
   if (!days || days.length === 0) {
     return (
-      <div className="text-center py-section-sm px-4 wp-bg-muted-ultralight rounded-lg">
-        <p className="text-muted-foreground">
+      <div className="text-center py-section-sm px-[var(--spacing-element-lg)] wp-bg-muted-ultralight rounded-[var(--radius-lg)]">
+        <p className="text-muted-foreground m-0">
           Detailed itinerary coming soon
         </p>
       </div>
@@ -156,43 +156,43 @@ export function ItineraryListPattern({ days }: ItineraryListPatternProps) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col gap-[var(--spacing-gap-lg)]">
       {days.map((day) => (
         <article
           key={day.day}
-          className="bg-card border border-border rounded-lg p-5 md:p-6"
+          className="bg-card border border-border rounded-[var(--radius-lg)] p-[var(--spacing-element-xl)] md:p-[var(--spacing-element-2xl)]"
         >
           {/* Day Number & Title */}
-          <div className="flex items-start gap-4 mb-4">
-            <div className="wp-icon-container-primary rounded-full flex-shrink-0">
+          <div className="flex items-start gap-[var(--spacing-gap-lg)] mb-[var(--spacing-element-lg)]">
+            <div className="wp-icon-container-primary rounded-[var(--radius-full)] flex-shrink-0">
               {/* Day number uses CSS variable for font-weight */}
               <span 
-                className="text-primary font-semibold"
+                className="text-primary font-[var(--font-weight-semibold)]"
               >
                 {day.day}
               </span>
             </div>
             <div className="flex-1">
               {/* H3 uses system default font-weight-semibold */}
-              <h3 className="mb-1">
+              <h3 className="!mb-[var(--spacing-element-xs)]">
                 Day {day.day}: {day.title}
               </h3>
             </div>
           </div>
 
           {/* Description */}
-          <p className="text-muted-foreground mb-4">
+          <p className="text-muted-foreground mb-[var(--spacing-element-lg)]">
             {day.description}
           </p>
 
           {/* Activities */}
           {day.activities && day.activities.length > 0 && (
-            <div className="mb-4">
-              <h4 className="mb-2 text-fluid-sm font-medium">Activities</h4>
-              <ul className="space-y-1">
+            <div className="mb-[var(--spacing-element-lg)]">
+              <h4 className="mb-[var(--spacing-element-sm)] text-fluid-sm font-[var(--font-weight-medium)]">Activities</h4>
+              <ul className="space-y-[var(--spacing-gap-xs)] m-0 pl-0 list-none">
                 {day.activities.map((activity, idx) => (
-                  <li key={idx} className="text-muted-foreground flex items-start gap-2 text-fluid-sm">
-                    <span className="text-primary mt-1">•</span>
+                  <li key={idx} className="text-muted-foreground flex items-start gap-[var(--spacing-gap-sm)] text-fluid-sm">
+                    <span className="text-primary mt-[var(--spacing-element-xs)]">•</span>
                     <span>{activity}</span>
                   </li>
                 ))}
@@ -201,12 +201,12 @@ export function ItineraryListPattern({ days }: ItineraryListPatternProps) {
           )}
 
           {/* Meta Info */}
-          <div className="flex flex-wrap gap-4 text-muted-foreground pt-4 border-t border-border text-fluid-sm">
+          <div className="flex flex-wrap gap-[var(--spacing-gap-lg)] text-muted-foreground pt-[var(--spacing-element-lg)] border-t border-border text-fluid-sm">
             {day.meals && (
               <div>
                 {/* Bold labels use CSS variable */}
                 <span 
-                  className="text-foreground font-medium"
+                  className="text-foreground font-[var(--font-weight-medium)]"
                 >
                   Meals:
                 </span> {day.meals}
@@ -216,7 +216,7 @@ export function ItineraryListPattern({ days }: ItineraryListPatternProps) {
               <div>
                 {/* Bold labels use CSS variable */}
                 <span 
-                  className="text-foreground font-medium"
+                  className="text-foreground font-[var(--font-weight-medium)]"
                 >
                   Accommodation:
                 </span> {day.accommodation}

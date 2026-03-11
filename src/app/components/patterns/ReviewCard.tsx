@@ -58,7 +58,7 @@ export function ReviewCard({ review, className = "", layout = "grid" }: ReviewCa
               loading="lazy"
             />
           ) : (
-            <div className="wp-card__reviewer-avatar bg-primary/10 flex items-center justify-center text-primary font-bold">
+            <div className="wp-card__reviewer-avatar bg-primary/10 flex items-center justify-center text-primary font-[var(--font-weight-bold)]">
               {review.author.charAt(0)}
             </div>
           )}

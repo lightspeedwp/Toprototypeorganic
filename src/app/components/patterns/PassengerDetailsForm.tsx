@@ -169,13 +169,13 @@ export function PassengerDetailsForm({
   const totalPassengers = passengerCount.adults + passengerCount.children + passengerCount.infants;
 
   return (
-    <div className={cn("space-y-6", className)}>
+    <div className={cn("space-y-[var(--spacing-gap-lg)]", className)}>
       {/* Header */}
-      <div className="flex items-start gap-3">
-        <User className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+      <div className="flex items-start gap-[var(--spacing-gap-sm)]">
+        <User className="w-[var(--spacing-element-lg)] h-[var(--spacing-element-lg)] text-primary flex-shrink-0 mt-[var(--spacing-element-xs)]" />
         <div>
-          <h2 className="mb-2">Passenger Information</h2>
-          <p className="text-muted-foreground">
+          <h2 className="mb-[var(--spacing-element-sm)]">Passenger Information</h2>
+          <p className="text-muted-foreground !m-0">
             Please provide details for all {totalPassengers} passenger
             {totalPassengers !== 1 ? "s" : ""}
           </p>
@@ -183,7 +183,7 @@ export function PassengerDetailsForm({
       </div>
 
       {/* Passenger Forms */}
-      <div className="space-y-4">
+      <div className="space-y-[var(--spacing-gap-md)]">
         {passengers.map((passenger, index) => {
           const isExpanded = expandedPassenger === passenger.id;
           const isComplete = isPassengerComplete(passenger);
@@ -194,34 +194,34 @@ export function PassengerDetailsForm({
           return (
             <div
               key={passenger.id}
-              className="bg-card border border-border rounded-lg overflow-hidden"
+              className="bg-card border border-border rounded-[var(--radius-lg)] overflow-hidden"
             >
               {/* Passenger Header */}
               <button
                 onClick={() => togglePassenger(passenger.id)}
                 className={cn(
-                  "w-full px-4 md:px-6 py-4 flex items-center justify-between",
+                  "w-full px-[var(--spacing-element-lg)] md:px-[var(--spacing-element-xl)] py-[var(--spacing-element-md)] flex items-center justify-between",
                   "hover:bg-accent transition-colors text-left",
                   "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-inset"
                 )}
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-[var(--spacing-gap-sm)]">
                   <div
                     className={cn(
-                      "w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0",
+                      "w-[var(--spacing-element-xl)] h-[var(--spacing-element-xl)] rounded-[var(--radius-full)] flex items-center justify-center flex-shrink-0",
                       isComplete ? "bg-primary text-primary-foreground" : "bg-muted"
                     )}
                   >
                     {isComplete ? (
-                      <Check className="w-4 h-4" />
+                      <Check className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)]" />
                     ) : (
-                      <span className="text-sm font-medium">{index + 1}</span>
+                      <span className="text-[length:var(--text-sm)] font-[var(--font-weight-medium)]">{index + 1}</span>
                     )}
                   </div>
                   <div>
-                    <p className="font-medium">{passengerLabel}</p>
+                    <p className="font-[var(--font-weight-medium)] !m-0">{passengerLabel}</p>
                     {passenger.firstName && passenger.lastName && (
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-[length:var(--text-sm)] text-muted-foreground mt-[var(--spacing-element-xs)] !m-0">
                         {passenger.firstName} {passenger.lastName}
                       </p>
                     )}
@@ -229,7 +229,7 @@ export function PassengerDetailsForm({
                 </div>
                 <svg
                   className={cn(
-                    "w-5 h-5 text-muted-foreground transition-transform",
+                    "w-[var(--spacing-element-lg)] h-[var(--spacing-element-lg)] text-muted-foreground transition-transform",
                     isExpanded && "rotate-180"
                   )}
                   xmlns="http://www.w3.org/2000/svg"
@@ -248,11 +248,11 @@ export function PassengerDetailsForm({
 
               {/* Passenger Form */}
               {isExpanded && (
-                <div className="px-4 md:px-6 pb-6 border-t border-border">
-                  <div className="pt-6 grid gap-6 md:grid-cols-2">
+                <div className="px-[var(--spacing-element-lg)] md:px-[var(--spacing-element-xl)] pb-[var(--spacing-element-xl)] border-t border-border">
+                  <div className="pt-[var(--spacing-element-xl)] grid gap-[var(--spacing-gap-lg)] md:grid-cols-2">
                     {/* First Name */}
                     <div>
-                      <label htmlFor={`${passenger.id}-firstName`} className="mb-2 block">
+                      <label htmlFor={`${passenger.id}-firstName`} className="mb-[var(--spacing-element-sm)] block">
                         First Name *
                       </label>
                       <input
@@ -265,7 +265,7 @@ export function PassengerDetailsForm({
                         }
                         placeholder="John"
                         className={cn(
-                          "w-full px-4 py-3 rounded-md",
+                          "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
                           "bg-input-background border border-border",
                           "text-foreground placeholder:text-muted-foreground",
                           "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -275,7 +275,7 @@ export function PassengerDetailsForm({
 
                     {/* Last Name */}
                     <div>
-                      <label htmlFor={`${passenger.id}-lastName`} className="mb-2 block">
+                      <label htmlFor={`${passenger.id}-lastName`} className="mb-[var(--spacing-element-sm)] block">
                         Last Name *
                       </label>
                       <input
@@ -288,7 +288,7 @@ export function PassengerDetailsForm({
                         }
                         placeholder="Doe"
                         className={cn(
-                          "w-full px-4 py-3 rounded-md",
+                          "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
                           "bg-input-background border border-border",
                           "text-foreground placeholder:text-muted-foreground",
                           "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -298,7 +298,7 @@ export function PassengerDetailsForm({
 
                     {/* Date of Birth */}
                     <div>
-                      <label htmlFor={`${passenger.id}-dob`} className="mb-2 block">
+                      <label htmlFor={`${passenger.id}-dob`} className="mb-[var(--spacing-element-sm)] block">
                         Date of Birth *
                       </label>
                       <input
@@ -311,7 +311,7 @@ export function PassengerDetailsForm({
                         }
                         max={new Date().toISOString().split("T")[0]}
                         className={cn(
-                          "w-full px-4 py-3 rounded-md",
+                          "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
                           "bg-input-background border border-border",
                           "text-foreground",
                           "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -321,7 +321,7 @@ export function PassengerDetailsForm({
 
                     {/* Gender */}
                     <div>
-                      <label htmlFor={`${passenger.id}-gender`} className="mb-2 block">
+                      <label htmlFor={`${passenger.id}-gender`} className="mb-[var(--spacing-element-sm)] block">
                         Gender *
                       </label>
                       <select
@@ -336,7 +336,7 @@ export function PassengerDetailsForm({
                           )
                         }
                         className={cn(
-                          "w-full px-4 py-3 rounded-md",
+                          "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
                           "bg-input-background border border-border",
                           "text-foreground",
                           "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -351,7 +351,7 @@ export function PassengerDetailsForm({
 
                     {/* Nationality */}
                     <div className="md:col-span-2">
-                      <label htmlFor={`${passenger.id}-nationality`} className="mb-2 block">
+                      <label htmlFor={`${passenger.id}-nationality`} className="mb-[var(--spacing-element-sm)] block">
                         Nationality *
                       </label>
                       <input
@@ -364,7 +364,7 @@ export function PassengerDetailsForm({
                         }
                         placeholder="e.g., United States"
                         className={cn(
-                          "w-full px-4 py-3 rounded-md",
+                          "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
                           "bg-input-background border border-border",
                           "text-foreground placeholder:text-muted-foreground",
                           "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -378,7 +378,7 @@ export function PassengerDetailsForm({
                         <div>
                           <label
                             htmlFor={`${passenger.id}-passportNumber`}
-                            className="mb-2 block"
+                            className="mb-[var(--spacing-element-sm)] block"
                           >
                             Passport Number
                           </label>
@@ -391,7 +391,7 @@ export function PassengerDetailsForm({
                             }
                             placeholder="AB123456"
                             className={cn(
-                              "w-full px-4 py-3 rounded-md",
+                              "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
                               "bg-input-background border border-border",
                               "text-foreground placeholder:text-muted-foreground",
                               "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -402,7 +402,7 @@ export function PassengerDetailsForm({
                         <div>
                           <label
                             htmlFor={`${passenger.id}-passportExpiry`}
-                            className="mb-2 block"
+                            className="mb-[var(--spacing-element-sm)] block"
                           >
                             Passport Expiry Date
                           </label>
@@ -415,7 +415,7 @@ export function PassengerDetailsForm({
                             }
                             min={new Date().toISOString().split("T")[0]}
                             className={cn(
-                              "w-full px-4 py-3 rounded-md",
+                              "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
                               "bg-input-background border border-border",
                               "text-foreground",
                               "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -429,7 +429,7 @@ export function PassengerDetailsForm({
                     <div className="md:col-span-2">
                       <label
                         htmlFor={`${passenger.id}-dietary`}
-                        className="mb-2 block"
+                        className="mb-[var(--spacing-element-sm)] block"
                       >
                         Dietary Requirements (Optional)
                       </label>
@@ -442,7 +442,7 @@ export function PassengerDetailsForm({
                         }
                         placeholder="e.g., Vegetarian, Gluten-free, etc."
                         className={cn(
-                          "w-full px-4 py-3 rounded-md",
+                          "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
                           "bg-input-background border border-border",
                           "text-foreground placeholder:text-muted-foreground",
                           "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -452,7 +452,7 @@ export function PassengerDetailsForm({
 
                     {/* Special Needs */}
                     <div className="md:col-span-2">
-                      <label htmlFor={`${passenger.id}-special`} className="mb-2 block">
+                      <label htmlFor={`${passenger.id}-special`} className="mb-[var(--spacing-element-sm)] block">
                         Special Needs or Requests (Optional)
                       </label>
                       <textarea
@@ -464,7 +464,7 @@ export function PassengerDetailsForm({
                         }
                         placeholder="Any medical conditions, mobility issues, or special requests..."
                         className={cn(
-                          "w-full px-4 py-3 rounded-md resize-none",
+                          "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)] resize-none",
                           "bg-input-background border border-border",
                           "text-foreground placeholder:text-muted-foreground",
                           "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -480,15 +480,15 @@ export function PassengerDetailsForm({
       </div>
 
       {/* Completion Status */}
-      <div className="wp-bg-muted-light rounded-lg p-4">
-        <div className="flex items-start gap-3">
-          <AlertCircle className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
-          <div className="text-sm">
-            <p className="font-medium text-foreground mb-1">
+      <div className="wp-bg-muted-light rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)]">
+        <div className="flex items-start gap-[var(--spacing-gap-sm)]">
+          <AlertCircle className="w-[var(--spacing-element-lg)] h-[var(--spacing-element-lg)] text-muted-foreground flex-shrink-0 mt-[var(--spacing-element-xs)]" />
+          <div className="text-[length:var(--text-sm)]">
+            <p className="font-[var(--font-weight-medium)] text-foreground mb-[var(--spacing-element-xs)] !m-0">
               {passengers.filter(isPassengerComplete).length} of {totalPassengers} passenger
               {totalPassengers !== 1 ? "s" : ""} completed
             </p>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground !m-0">
               Please ensure all required fields are filled for each passenger before continuing
             </p>
           </div>

@@ -89,26 +89,28 @@ export function ContactFormPattern({
   };
 
   return (
-    <div className={cn("wp-pattern-lts-contact-form", variant === "compact" ? "max-w-2xl" : "max-w-3xl")}>
-      {title && <HeadingBlock level={2} className="mb-4">{title}</HeadingBlock>}
-      {description && <ParagraphBlock className="text-muted-foreground mb-8">{description}</ParagraphBlock>}
+    <div className={cn("wp-pattern-lts-contact-form flex flex-col gap-[var(--spacing-gap-xl)]", variant === "compact" ? "max-w-2xl" : "max-w-3xl")}>
+      <div className="flex flex-col gap-[var(--spacing-gap-sm)]">
+        {title && <HeadingBlock level={2} className="!mb-0">{title}</HeadingBlock>}
+        {description && <ParagraphBlock className="text-muted-foreground !mb-0">{description}</ParagraphBlock>}
+      </div>
 
       {submitStatus === "success" && (
-        <div className="p-6 rounded-xl bg-primary/10 border border-primary/20 flex items-start gap-4 mb-8">
-          <CircleCheck className="size-6 text-primary shrink-0" />
-          <p className="text-primary font-bold m-0">{successMessage}</p>
+        <div className="p-[var(--spacing-element-2xl)] rounded-[var(--radius-xl)] bg-primary/10 border border-primary/20 flex items-start gap-[var(--spacing-gap-lg)]">
+          <CircleCheck className="w-[var(--spacing-element-xl)] h-[var(--spacing-element-xl)] text-primary shrink-0" />
+          <p className="text-primary font-[var(--font-weight-bold)] !mb-0">{successMessage}</p>
         </div>
       )}
 
       {submitStatus === "error" && (
-        <div className="p-6 rounded-xl bg-destructive/10 border border-destructive/20 flex items-start gap-4 mb-8">
-          <AlertCircle className="size-6 text-destructive shrink-0" />
-          <p className="text-destructive font-bold m-0">{errorMessage}</p>
+        <div className="p-[var(--spacing-element-2xl)] rounded-[var(--radius-xl)] bg-destructive/10 border border-destructive/20 flex items-start gap-[var(--spacing-gap-lg)]">
+          <AlertCircle className="w-[var(--spacing-element-xl)] h-[var(--spacing-element-xl)] text-destructive shrink-0" />
+          <p className="text-destructive font-[var(--font-weight-bold)] !mb-0">{errorMessage}</p>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-6">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-[var(--spacing-gap-xl)]">
+        <div className="grid md:grid-cols-2 gap-[var(--spacing-gap-xl)]">
           <div className="form__group">
             <label htmlFor="name" className="form__label form__label--required">Full Name</label>
             <input
@@ -140,7 +142,7 @@ export function ContactFormPattern({
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-[var(--spacing-gap-xl)]">
           {showPhoneField && (
             <div className="form__group">
               <label htmlFor="phone" className="form__label">Phone Number (Optional)</label>
@@ -193,16 +195,16 @@ export function ContactFormPattern({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full flex items-center justify-center gap-3 bg-primary text-primary-foreground font-bold py-4 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50"
+          className="w-full flex items-center justify-center gap-[var(--spacing-gap-md)] bg-primary text-primary-foreground font-[var(--font-weight-bold)] py-[var(--spacing-element-lg)] rounded-[var(--radius-xl)] hover:opacity-90 transition-opacity disabled:opacity-50"
         >
           {isSubmitting ? (
             <>
-              <LoaderCircle className="size-5 animate-spin" />
+              <LoaderCircle className="w-[var(--spacing-element-xl)] h-[var(--spacing-element-xl)] animate-spin" />
               <span>Transmitting...</span>
             </>
           ) : (
             <>
-              <Send className="size-5" />
+              <Send className="w-[var(--spacing-element-xl)] h-[var(--spacing-element-xl)]" />
               <span>Send Enquiry</span>
             </>
           )}

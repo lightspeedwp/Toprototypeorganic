@@ -126,7 +126,7 @@ export function CountdownPattern({
       <div 
         className={cn(
           "bg-card border border-border rounded-[var(--radius-lg)] flex items-center justify-center",
-          isCompact ? "w-12 h-12 mb-1" : "w-20 h-20 mb-2"
+          isCompact ? "w-12 h-12 mb-[var(--spacing-element-xs)]" : "w-20 h-20 mb-[var(--spacing-element-sm)]"
         )}
       >
         <span 

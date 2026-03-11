@@ -50,7 +50,7 @@ export interface SitemapGridPatternProps {
 
 function SitemapLinkItem({ link, depth = 0 }: { link: SitemapLink; depth?: number }) {
   return (
-    <li className={cn(depth > 0 && "ml-4")}>
+    <li className={cn(depth > 0 && "ml-[var(--spacing-element-md)]")}>
       <a
         href={link.href}
         onClick={(e) => {
@@ -59,7 +59,7 @@ function SitemapLinkItem({ link, depth = 0 }: { link: SitemapLink; depth?: numbe
             link.onClick();
           }
         }}
-        className="wp-pattern-sitemap-grid__link group/link"
+        className="wp-pattern-sitemap-grid__link group/link flex gap-[var(--spacing-gap-sm)] p-[var(--spacing-element-xs)] no-underline"
       >
         {link.icon ? (
           <span className="wp-pattern-sitemap-grid__link-icon">
@@ -67,29 +67,29 @@ function SitemapLinkItem({ link, depth = 0 }: { link: SitemapLink; depth?: numbe
           </span>
         ) : (
           <ChevronRight
-            className="w-3.5 h-3.5 flex-shrink-0 mt-1 text-border group-hover/link:text-primary group-hover/link:translate-x-0.5 transition-all"
+            className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)] flex-shrink-0 mt-[var(--spacing-element-xs)] text-border group-hover/link:text-primary group-hover/link:translate-x-0.5 transition-all"
             aria-hidden="true"
           />
         )}
 
         <div className="flex-1 min-w-0">
-          <span className="font-sans text-sm group-hover/link:text-primary transition-colors">
+          <span className="font-[var(--font-family-noto-sans)] text-[length:var(--text-sm)] group-hover/link:text-primary transition-colors">
             {link.title}
           </span>
           {link.description && (
-            <p className="text-muted-foreground text-xs mb-0 mt-0.5">
+            <p className="text-muted-foreground text-[length:var(--text-xs)] mb-0 mt-0.5">
               {link.description}
             </p>
           )}
         </div>
 
         {link.external && (
-          <ExternalLink className="w-3 h-3 text-muted-foreground/40 flex-shrink-0 mt-1" aria-label="External link" />
+          <ExternalLink className="w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)] text-muted-foreground/40 flex-shrink-0 mt-[var(--spacing-element-xs)]" aria-label="External link" />
         )}
       </a>
 
       {link.children && link.children.length > 0 && (
-        <ul className="space-y-0.5 mt-0.5 border-l border-border/50 ml-2 pl-0">
+        <ul className="space-y-[var(--spacing-gap-xs)] mt-[var(--spacing-element-xs)] border-l border-border/50 ml-[var(--spacing-element-sm)] pl-0 list-none">
           {link.children.map((child, idx) => (
             <SitemapLinkItem key={idx} link={child} depth={depth + 1} />
           ))}
@@ -125,34 +125,34 @@ export function SitemapGridPattern({
     <Container className={className}>
       {/* Header */}
       {(title || description) && (
-        <div className="mb-10">
+        <div className="mb-[var(--spacing-gap-2xl)]">
           <h1>{title}</h1>
           {description && (
-            <p className="text-muted-foreground mt-2 max-w-2xl">{description}</p>
+            <p className="text-muted-foreground mt-[var(--spacing-element-sm)] max-w-2xl">{description}</p>
           )}
-          <div className="flex items-center gap-4 mt-4 text-sm text-muted-foreground">
+          <div className="flex items-center gap-[var(--spacing-gap-md)] mt-[var(--spacing-element-md)] text-[length:var(--text-sm)] text-muted-foreground">
             <span>{sections.length} sections</span>
-            <span className="w-1 h-1 rounded-full bg-border" aria-hidden="true" />
+            <span className="w-1 h-1 rounded-[var(--radius-full)] bg-border" aria-hidden="true" />
             <span>{totalPages} pages</span>
           </div>
         </div>
       )}
 
       {/* Grid */}
-      <div className={cn("grid gap-6", gridColumns)}>
+      <div className={cn("grid gap-[var(--spacing-gap-lg)]", gridColumns)}>
         {sections.map((section, sectionIndex) => (
           <div
             key={sectionIndex}
             className={cn(
               "group/section",
               isCard
-                ? "bg-card border border-border rounded-xl p-5 hover:border-primary/20 transition-colors"
-                : "pb-6"
+                ? "bg-card border border-border rounded-[var(--radius-xl)] p-[var(--spacing-element-xl)] hover:border-primary/20 transition-colors"
+                : "pb-[var(--spacing-element-xl)]"
             )}
           >
             {/* Section heading */}
             <div className={cn(
-              "flex items-center gap-3 mb-4 pb-3",
+              "flex items-center gap-[var(--spacing-gap-sm)] mb-[var(--spacing-element-md)] pb-[var(--spacing-element-sm)]",
               !isCard && "border-b border-border"
             )}>
               {section.icon && (
@@ -163,16 +163,16 @@ export function SitemapGridPattern({
                   {section.icon}
                 </div>
               )}
-              <div className="flex items-baseline gap-2">
+              <div className="flex items-baseline gap-[var(--spacing-gap-sm)]">
                 <h3 className="mb-0 text-foreground">{section.title}</h3>
-                <span className="text-muted-foreground text-xs font-sans">
+                <span className="text-muted-foreground text-[length:var(--text-xs)] font-[var(--font-family-noto-sans)]">
                   {section.links.length}
                 </span>
               </div>
             </div>
 
             {/* Links */}
-            <ul className="space-y-0.5">
+            <ul className="space-y-[var(--spacing-gap-xs)] list-none pl-0">
               {section.links.map((link, linkIndex) => (
                 <SitemapLinkItem key={linkIndex} link={link} />
               ))}
@@ -182,7 +182,7 @@ export function SitemapGridPattern({
       </div>
 
       {/* Footer */}
-      <div className="mt-10 pt-4 border-t border-border text-xs text-muted-foreground">
+      <div className="mt-[var(--spacing-gap-2xl)] pt-[var(--spacing-element-md)] border-t border-border text-[length:var(--text-xs)] text-muted-foreground">
         Generated from WordPress template hierarchy
       </div>
     </Container>

@@ -20,7 +20,7 @@
  * **Design System Compliance:**
  * - Typography: Lora (section headings), Noto Sans (links, body)
  * - Colors: All from CSS variables (semantic tokens)
- * - Spacing: Design system rhythm (gap-4, p-6, etc.)
+ * - Spacing: Design system rhythm (gap-[var(--spacing-gap-md)], p-[var(--spacing-element-xl)], etc.)
  * - Effects: Border radius, shadows, transitions from theme.css
  * - Dark mode: Automatic via CSS custom properties
  * 
@@ -228,16 +228,16 @@ export function MobileMenuPattern({
             className={cn(
               "mobile-menu-panel",
               "bg-card border-t border-border",
-              "shadow-lg"
+              "shadow-[var(--elevation-lg)]"
             )}
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation menu"
           >
             {/* Search Bar */}
-            <div className="px-4 py-3 border-b border-border bg-background">
+            <div className="px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] border-b border-border bg-background">
               <div className="relative">
-                <Search size={20} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                <Search size={20} className="absolute right-[var(--spacing-element-md)] top-1/2 -translate-y-1/2 text-muted-foreground" />
                 <input
                   ref={searchInputRef}
                   type="search"
@@ -248,7 +248,7 @@ export function MobileMenuPattern({
                   }}
                   placeholder="Search tours, destinations..."
                   className={cn(
-                    "w-full pl-4 pr-10 py-3 rounded-md",
+                    "w-full pl-[var(--spacing-element-lg)] pr-[var(--spacing-element-3xl)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
                     "wp-bg-accent-medium border border-border",
                     "text-foreground placeholder:text-muted-foreground",
                     "focus:outline-none focus:ring-2 focus:ring-ring focus:bg-accent",
@@ -260,7 +260,7 @@ export function MobileMenuPattern({
             </div>
 
             {/* Navigation — Scrollable */}
-            <nav className="flex-1 overflow-y-auto px-4 py-3 space-y-1" aria-label="Mobile navigation">
+            <nav className="flex-1 overflow-y-auto px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] space-y-1" aria-label="Mobile navigation">
               {sections.map((section) => (
                 <div key={section.id}>
                   {/* Section Header — Always visible */}
@@ -274,7 +274,7 @@ export function MobileMenuPattern({
                     }}
                     className={cn(
                       "w-full flex items-center justify-between",
-                      "px-4 py-3.5 rounded-md",
+                      "px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
                       "text-left transition-all duration-200",
                       "text-foreground hover:bg-accent",
                       currentPage === section.href && "bg-accent",
@@ -282,7 +282,7 @@ export function MobileMenuPattern({
                       "min-h-[48px]"
                     )}
                   >
-                    <span className="flex items-center gap-3">
+                    <span className="flex items-center gap-[var(--spacing-gap-md)]">
                       {section.icon && <section.icon size={20} className="text-primary" />}
                       <span>{section.label}</span>
                     </span>
@@ -308,32 +308,32 @@ export function MobileMenuPattern({
                         transition={{ duration: 0.2 }}
                         className="overflow-hidden"
                       >
-                        <div className="mt-1 ml-4 space-y-0.5 pl-4 border-l-2 border-border">
+                        <div className="mt-[var(--spacing-element-xs)] ml-[var(--spacing-element-lg)] space-y-0.5 pl-[var(--spacing-element-lg)] border-l-2 border-border">
                           {section.children.map((item) => (
                             <button
                               key={item.label}
                               onClick={() => handleNavClick(item.href)}
                               className={cn(
-                                "w-full text-left px-4 py-3 rounded-md",
+                                "w-full text-left px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
                                 "transition-all duration-200",
                                 "text-muted-foreground hover:text-foreground wp-bg-accent-hover",
-                                "flex items-center gap-3",
+                                "flex items-center gap-[var(--spacing-gap-md)]",
                                 "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1",
                                 "min-h-[44px]"
                               )}
                             >
                               {item.icon && <item.icon size={18} className="text-primary flex-shrink-0" />}
                               <div className="flex-1">
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-[var(--spacing-gap-sm)]">
                                   <span>{item.label}</span>
                                   {item.badge && (
-                                    <span className="wp-badge-primary-sm rounded-full">
+                                    <span className="wp-badge-primary-sm rounded-[var(--radius-full)]">
                                       {item.badge}
                                     </span>
                                   )}
                                 </div>
                                 {item.description && (
-                                  <p className="text-sm text-muted-foreground mt-0.5 mb-0">
+                                  <p className="text-[length:var(--text-sm)] text-muted-foreground mt-0.5 mb-0">
                                     {item.description}
                                   </p>
                                 )}
@@ -350,7 +350,7 @@ export function MobileMenuPattern({
 
             {/* Footer CTA — Enquire Now */}
             <div className={cn(
-              "px-4 py-4 border-t border-border",
+              "px-[var(--spacing-element-lg)] py-[var(--spacing-element-lg)] border-t border-border",
               "bg-background"
             )}>
               <button
@@ -358,14 +358,14 @@ export function MobileMenuPattern({
                   handleNavClick("/contact");
                 }}
                 className={cn(
-                  "w-full px-6 py-3.5 rounded-md",
+                  "w-full px-[var(--spacing-element-2xl)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
                   "bg-primary text-primary-foreground",
                   "hover:bg-primary/90",
                   "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
                   "transition-all duration-200",
-                  "flex items-center justify-center gap-2",
+                  "flex items-center justify-center gap-[var(--spacing-gap-sm)]",
                   "min-h-[48px]",
-                  "shadow-sm hover:shadow-md"
+                  "shadow-[var(--elevation-sm)] hover:shadow-[var(--elevation-md)]"
                 )}
                 aria-label="Enquire now"
               >
@@ -375,10 +375,10 @@ export function MobileMenuPattern({
               </button>
               
               {/* Quick Contact Info */}
-              <div className="mt-3 flex items-center justify-center gap-6 text-sm text-muted-foreground">
+              <div className="mt-[var(--spacing-element-md)] flex items-center justify-center gap-[var(--spacing-gap-xl)] text-[length:var(--text-sm)] text-muted-foreground">
                 <a
                   href="tel:+1234567890"
-                  className="flex items-center gap-2 hover:text-foreground transition-colors"
+                  className="flex items-center gap-[var(--spacing-gap-sm)] hover:text-foreground transition-colors"
                   onClick={(e) => {
                     e.stopPropagation();
                   }}
@@ -389,7 +389,7 @@ export function MobileMenuPattern({
                 <span className="text-border">|</span>
                 <a
                   href="mailto:info@lightspeedtours.com"
-                  className="flex items-center gap-2 hover:text-foreground transition-colors"
+                  className="flex items-center gap-[var(--spacing-gap-sm)] hover:text-foreground transition-colors"
                   onClick={(e) => {
                     e.stopPropagation();
                   }}

@@ -52,11 +52,11 @@ export function ClimateInfoPattern({
     <section className={cn("wp-pattern-lts-climate has-section-padding-md", className)}>
       <Container>
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end gap-[var(--spacing-gap-lg)] mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-[var(--spacing-gap-lg)] mb-[var(--spacing-gap-3xl)]">
           <div className="max-w-2xl">
             <div className="flex items-center gap-[var(--spacing-gap-sm)] mb-[var(--spacing-element-md)]">
-              <div className="p-2 rounded-[var(--radius-lg)] bg-primary/10 text-primary">
-                <Cloud className="size-5" />
+              <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)] bg-primary/10 text-primary">
+                <Cloud className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)]" />
               </div>
               <HeadingBlock level={2} className="mb-0">
                 {title}
@@ -86,20 +86,20 @@ export function ClimateInfoPattern({
                 <tbody className="divide-y divide-border/50">
                   {monthlyData.map((row, index) => (
                     <tr key={index} className="hover:bg-muted/30 transition-colors">
-                      <td className="px-[var(--spacing-element-2xl)] py-[var(--spacing-element-lg)] text-foreground font-bold">{row.month}</td>
+                      <td className="px-[var(--spacing-element-2xl)] py-[var(--spacing-element-lg)] text-foreground font-[var(--font-weight-bold)]">{row.month}</td>
                       <td className="px-[var(--spacing-element-2xl)] py-[var(--spacing-element-lg)] text-center">
-                        <div className="inline-flex items-center gap-[var(--spacing-gap-xs)] text-warning font-bold">
-                          <Sun className="size-4" /> {row.tempHigh}°
+                        <div className="inline-flex items-center gap-[var(--spacing-gap-xs)] text-warning font-[var(--font-weight-bold)]">
+                          <Sun className="w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)]" /> {row.tempHigh}°
                         </div>
                       </td>
                       <td className="px-[var(--spacing-element-2xl)] py-[var(--spacing-element-lg)] text-center">
-                        <div className="inline-flex items-center gap-[var(--spacing-gap-xs)] text-primary font-bold">
-                          <ThermometerSun className="size-4" /> {row.tempLow}°
+                        <div className="inline-flex items-center gap-[var(--spacing-gap-xs)] text-primary font-[var(--font-weight-bold)]">
+                          <ThermometerSun className="w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)]" /> {row.tempLow}°
                         </div>
                       </td>
                       <td className="px-[var(--spacing-element-2xl)] py-[var(--spacing-element-lg)] text-center">
-                        <div className="inline-flex items-center gap-[var(--spacing-gap-xs)] text-info font-bold">
-                          <Droplets className="size-4" /> {row.rainfall}
+                        <div className="inline-flex items-center gap-[var(--spacing-gap-xs)] text-info font-[var(--font-weight-bold)]">
+                          <Droplets className="w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)]" /> {row.rainfall}
                         </div>
                       </td>
                     </tr>
@@ -120,27 +120,27 @@ export function ClimateInfoPattern({
                 className="wp-pattern-lts-climate__season-card bg-card border-2 border-border rounded-[var(--radius-3xl)] p-[var(--spacing-element-3xl)] hover:border-primary transition-all duration-500 shadow-[var(--elevation-sm)] hover:shadow-[var(--elevation-xl)] group"
               >
                 <div className="flex items-center gap-[var(--spacing-gap-sm)] mb-[var(--spacing-element-2xl)]">
-                  <div className="size-14 bg-primary/10 rounded-[var(--radius-2xl)] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 shadow-[var(--elevation-sm)]">
-                    <Calendar className="size-7" />
+                  <div className="w-[var(--spacing-element-4xl)] h-[var(--spacing-element-4xl)] bg-primary/10 rounded-[var(--radius-2xl)] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 shadow-[var(--elevation-sm)]">
+                    <Calendar className="w-[var(--spacing-element-2xl)] h-[var(--spacing-element-2xl)]" />
                   </div>
                   <div>
-                    <h3 className="text-[length:var(--text-2xl)] mb-1">{season.name}</h3>
-                    <p className="text-[length:var(--text-xs)] uppercase tracking-widest text-primary m-0 font-bold">{season.months}</p>
+                    <h3 className="text-[length:var(--text-2xl)] mb-[var(--spacing-element-xs)]">{season.name}</h3>
+                    <p className="text-[length:var(--text-xs)] uppercase tracking-widest text-primary m-0 font-[var(--font-weight-bold)]">{season.months}</p>
                   </div>
                 </div>
 
-                <ParagraphBlock className="text-muted-foreground text-[length:var(--text-lg)] leading-relaxed mb-8 italic">
+                <ParagraphBlock className="text-muted-foreground text-[length:var(--text-lg)] leading-relaxed mb-[var(--spacing-gap-2xl)] italic m-0">
                   "{season.description}"
                 </ParagraphBlock>
 
                 {season.bestFor && (
-                  <div className="pt-8 border-t border-border/50">
-                    <p className="text-[10px] uppercase tracking-widest text-foreground mb-4 flex items-center gap-[var(--spacing-gap-xs)] font-bold">
-                      <Info className="size-3 text-primary" /> Ideal For
+                  <div className="pt-[var(--spacing-element-2xl)] border-t border-border/50">
+                    <p className="text-[length:var(--text-xs)] uppercase tracking-widest text-foreground mb-[var(--spacing-element-md)] flex items-center gap-[var(--spacing-gap-xs)] font-[var(--font-weight-bold)] m-0">
+                      <Info className="w-[var(--spacing-element-xs)] h-[var(--spacing-element-xs)] text-primary" /> Ideal For
                     </p>
                     <div className="flex flex-wrap gap-[var(--spacing-gap-xs)]">
                       {season.bestFor.map((item, i) => (
-                        <span key={i} className="px-4 py-1.5 rounded-[var(--radius-xl)] bg-muted text-[length:var(--text-xs)] text-muted-foreground border border-border/50 font-bold">
+                        <span key={i} className="px-[var(--spacing-element-lg)] py-[var(--spacing-element-xs)] rounded-[var(--radius-xl)] bg-muted text-[length:var(--text-xs)] text-muted-foreground border border-border/50 font-[var(--font-weight-bold)]">
                           {item}
                         </span>
                       ))}

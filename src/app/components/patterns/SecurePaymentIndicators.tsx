@@ -115,14 +115,14 @@ export function SecurePaymentIndicators({
   // Compact variant - single row
   if (variant === "compact") {
     return (
-      <div className={cn("wp-bg-muted-light rounded-[var(--radius-lg)] p-4", className)}>
-        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+      <div className={cn("wp-bg-muted-light rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)]", className)}>
+        <div className="flex flex-wrap items-center justify-center gap-[var(--spacing-gap-md)] md:gap-[var(--spacing-gap-lg)]">
           {indicators.map((indicator) => {
             const Icon = indicator.icon;
             return (
-              <div key={indicator.id} className="flex items-center gap-2">
+              <div key={indicator.id} className="flex items-center gap-[var(--spacing-gap-sm)]">
                 <Icon className="w-4 h-4 text-primary flex-shrink-0" />
-                <span className="text-fluid-sm">{indicator.title}</span>
+                <span className="text-[length:var(--text-sm)]">{indicator.title}</span>
                 {indicator.badge && (
                   <span className="wp-badge-primary-sm rounded-[var(--radius-full)]">
                     {indicator.badge}
@@ -139,7 +139,7 @@ export function SecurePaymentIndicators({
   // Icons only variant - minimal
   if (variant === "icons-only") {
     return (
-      <div className={cn("flex flex-wrap items-center justify-center gap-4", className)}>
+      <div className={cn("flex flex-wrap items-center justify-center gap-[var(--spacing-gap-md)]", className)}>
         {indicators.map((indicator) => {
           const Icon = indicator.icon;
           return (
@@ -153,7 +153,7 @@ export function SecurePaymentIndicators({
               </div>
               
               {/* Tooltip */}
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-popover text-popover-foreground border border-border rounded-[var(--radius-md)] text-fluid-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-[var(--spacing-element-sm)] px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] bg-popover text-popover-foreground border border-border rounded-[var(--radius-md)] text-[length:var(--text-xs)] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
                 {indicator.title}
               </div>
             </div>
@@ -165,30 +165,30 @@ export function SecurePaymentIndicators({
 
   // Detailed variant - default
   return (
-    <div className={cn("space-y-6", className)}>
+    <div className={cn("space-y-[var(--spacing-gap-lg)]", className)}>
       {/* Security Features Grid */}
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-[var(--spacing-gap-md)] sm:grid-cols-2">
         {indicators.map((indicator) => {
           const Icon = indicator.icon;
           return (
             <div
               key={indicator.id}
-              className="bg-card border border-border rounded-[var(--radius-lg)] p-4 hover:border-primary/50 transition-colors"
+              className="bg-card border border-border rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)] hover:border-primary/50 transition-colors"
             >
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-[var(--spacing-gap-sm)]">
                 <div className="wp-icon-container-primary rounded-[var(--radius-lg)]">
                   <Icon className="w-5 h-5 text-primary" />
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h4 className="text-fluid-sm">{indicator.title}</h4>
+                  <div className="flex items-center gap-[var(--spacing-gap-sm)] mb-[var(--spacing-element-xs)]">
+                    <h4 className="text-[length:var(--text-sm)] m-0">{indicator.title}</h4>
                     {indicator.badge && (
                       <span className="wp-badge-primary-sm rounded-[var(--radius-full)]">
                         {indicator.badge}
                       </span>
                     )}
                   </div>
-                  <p className="text-fluid-sm text-muted-foreground">
+                  <p className="text-[length:var(--text-sm)] text-muted-foreground m-0">
                     {indicator.description}
                   </p>
                 </div>
@@ -200,24 +200,24 @@ export function SecurePaymentIndicators({
 
       {/* Payment Provider Logos */}
       {showPaymentLogos && (
-        <div className="wp-bg-muted-light rounded-[var(--radius-lg)] p-4">
-          <div className="text-center mb-4">
-            <p className="text-fluid-sm text-muted-foreground">
+        <div className="wp-bg-muted-light rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)]">
+          <div className="text-center mb-[var(--spacing-element-md)]">
+            <p className="text-[length:var(--text-sm)] text-muted-foreground m-0">
               Accepted Payment Methods
             </p>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-[var(--spacing-gap-sm)]">
             {PAYMENT_PROVIDERS.map((provider) => (
               <div
                 key={provider.name}
                 className={cn(
-                  "px-4 py-2 rounded-[var(--radius-md)] border bg-card flex items-center justify-center min-w-[80px]",
+                  "px-[var(--spacing-element-lg)] py-[var(--spacing-element-sm)] rounded-[var(--radius-md)] border bg-card flex items-center justify-center min-w-[80px]",
                   provider.available
                     ? "border-border"
                     : "border-border opacity-50"
                 )}
               >
-                <span className="text-fluid-sm text-foreground">
+                <span className="text-[length:var(--text-sm)] text-foreground">
                   {provider.name}
                 </span>
               </div>
@@ -227,56 +227,56 @@ export function SecurePaymentIndicators({
       )}
 
       {/* Trust Statistics */}
-      <div className="bg-primary/5 border border-primary/20 rounded-[var(--radius-lg)] p-6">
-        <div className="grid gap-6 sm:grid-cols-3 text-center">
+      <div className="bg-primary/5 border border-primary/20 rounded-[var(--radius-lg)] p-[var(--spacing-element-xl)]">
+        <div className="grid gap-[var(--spacing-gap-lg)] sm:grid-cols-3 text-center">
           <div>
-            <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="flex items-center justify-center gap-[var(--spacing-gap-sm)] mb-[var(--spacing-element-sm)]">
               <Verified className="w-5 h-5 text-primary" />
-              <p className="text-fluid-2xl">10,000+</p>
+              <p className="text-[length:var(--text-2xl)] m-0">10,000+</p>
             </div>
-            <p className="text-fluid-sm text-muted-foreground">Secure Bookings</p>
+            <p className="text-[length:var(--text-sm)] text-muted-foreground m-0">Secure Bookings</p>
           </div>
           
           <div>
-            <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="flex items-center justify-center gap-[var(--spacing-gap-sm)] mb-[var(--spacing-element-sm)]">
               <Shield className="w-5 h-5 text-primary" />
-              <p className="text-fluid-2xl">100%</p>
+              <p className="text-[length:var(--text-2xl)] m-0">100%</p>
             </div>
-            <p className="text-fluid-sm text-muted-foreground">Payment Protection</p>
+            <p className="text-[length:var(--text-sm)] text-muted-foreground m-0">Payment Protection</p>
           </div>
           
           <div>
-            <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="flex items-center justify-center gap-[var(--spacing-gap-sm)] mb-[var(--spacing-element-sm)]">
               <Award className="w-5 h-5 text-primary" />
-              <p className="text-fluid-2xl">5-Star</p>
+              <p className="text-[length:var(--text-2xl)] m-0">5-Star</p>
             </div>
-            <p className="text-fluid-sm text-muted-foreground">Trustpilot Rating</p>
+            <p className="text-[length:var(--text-sm)] text-muted-foreground m-0">Trustpilot Rating</p>
           </div>
         </div>
       </div>
 
       {/* Additional Security Info */}
-      <div className="wp-bg-muted-light rounded-[var(--radius-lg)] p-4">
-        <div className="flex items-start gap-3">
+      <div className="wp-bg-muted-light rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)]">
+        <div className="flex items-start gap-[var(--spacing-gap-sm)]">
           <Lock className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-          <div className="text-fluid-sm">
-            <p className="text-foreground mb-2">
+          <div className="text-[length:var(--text-sm)]">
+            <p className="text-foreground mb-[var(--spacing-element-sm)] m-0">
               Your Security is Our Priority
             </p>
-            <ul className="space-y-1 text-muted-foreground">
-              <li className="flex items-start gap-2">
+            <ul className="space-y-[var(--spacing-gap-xs)] text-muted-foreground m-0">
+              <li className="flex items-start gap-[var(--spacing-gap-sm)]">
                 <CircleCheck className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                 <span>All transactions are encrypted with 256-bit SSL</span>
               </li>
-              <li className="flex items-start gap-2">
+              <li className="flex items-start gap-[var(--spacing-gap-sm)]">
                 <CircleCheck className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                 <span>We never store your full card number</span>
               </li>
-              <li className="flex items-start gap-2">
+              <li className="flex items-start gap-[var(--spacing-gap-sm)]">
                 <CircleCheck className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                 <span>PCI-DSS Level 1 certified payment processing</span>
               </li>
-              <li className="flex items-start gap-2">
+              <li className="flex items-start gap-[var(--spacing-gap-sm)]">
                 <CircleCheck className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                 <span>Regular security audits and monitoring</span>
               </li>

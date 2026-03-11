@@ -121,13 +121,13 @@ export function ImageGallery({
   const getGapClass = () => {
     switch (gap) {
       case "sm":
-        return "gap-2";
+        return "gap-[var(--spacing-gap-sm)]";
       case "md":
-        return "gap-4";
+        return "gap-[var(--spacing-gap-md)]";
       case "lg":
-        return "gap-6";
+        return "gap-[var(--spacing-gap-lg)]";
       default:
-        return "gap-4";
+        return "gap-[var(--spacing-gap-md)]";
     }
   };
 
@@ -187,14 +187,14 @@ export function ImageGallery({
                 )}
               </div>
               {showCaptions && (image.caption || image.title) && (
-                <div className="p-3">
+                <div className="p-[var(--spacing-element-sm)]">
                   {image.title && (
-                    <p className="mb-1 font-medium text-foreground">
+                    <p className="mb-[var(--spacing-element-xs)] font-[var(--font-weight-medium)] text-foreground m-0">
                       {image.title}
                     </p>
                   )}
                   {image.caption && (
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-[length:var(--text-sm)] text-muted-foreground m-0">
                       {image.caption}
                     </p>
                   )}
@@ -260,14 +260,14 @@ export function ImageGallery({
                 )}
               </div>
               {showCaptions && (image.caption || image.title) && (
-                <div className="p-3">
+                <div className="p-[var(--spacing-element-sm)]">
                   {image.title && (
-                    <p className="mb-1 font-medium text-foreground">
+                    <p className="mb-[var(--spacing-element-xs)] font-[var(--font-weight-medium)] text-foreground m-0">
                       {image.title}
                     </p>
                   )}
                   {image.caption && (
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-[length:var(--text-sm)] text-muted-foreground m-0">
                       {image.caption}
                     </p>
                   )}
@@ -297,7 +297,7 @@ export function ImageGallery({
   if (layout === "carousel") {
     return (
       <div className={cn("relative", className)}>
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground m-0">
           Carousel layout coming soon. Use grid or masonry for now.
         </p>
       </div>
@@ -344,12 +344,12 @@ export function GallerySection({
   className?: string;
 }) {
   return (
-    <div className={cn("space-y-6", className)}>
+    <div className={cn("space-y-[var(--spacing-gap-lg)]", className)}>
       {(title || description) && (
-        <div className="space-y-2 text-center">
+        <div className="space-y-[var(--spacing-gap-sm)] text-center">
           {title && <h2 className="text-foreground">{title}</h2>}
           {description && (
-            <p className="mx-auto max-w-2xl text-muted-foreground">
+            <p className="mx-auto max-w-2xl text-muted-foreground m-0">
               {description}
             </p>
           )}

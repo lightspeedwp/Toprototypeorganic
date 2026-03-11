@@ -80,18 +80,18 @@ export function TableOfContentsPattern({
         <button
           onClick={() => scrollTo(s.id)}
           className={cn(
-            "w-full text-left py-2 px-4 rounded-[var(--radius-xl)] text-[length:var(--text-sm)] transition-all duration-300 flex items-center gap-[var(--spacing-gap-sm)]",
+            "w-full text-left py-[var(--spacing-element-sm)] px-[var(--spacing-element-md)] rounded-[var(--radius-xl)] text-[length:var(--text-sm)] transition-all duration-300 flex items-center gap-[var(--spacing-gap-sm)]",
             isActive 
-              ? "bg-primary text-primary-foreground shadow-[var(--elevation-lg)] shadow-primary/20 translate-x-2" 
+              ? "bg-primary text-primary-foreground shadow-[var(--elevation-lg)] shadow-primary/20 translate-x-2 font-[var(--font-weight-bold)]" 
               : "text-muted-foreground hover:bg-muted hover:text-foreground",
-            depth > 0 && "ml-6 opacity-80"
+            depth > 0 && "ml-[var(--spacing-element-xl)] opacity-80"
           )}
         >
-          <ChevronRight className={cn("size-3 shrink-0 transition-transform", isActive ? "rotate-90" : "opacity-30")} />
+          <ChevronRight className={cn("w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)] shrink-0 transition-transform", isActive ? "rotate-90" : "opacity-30")} />
           <span>{s.label}</span>
         </button>
         {s.children && (
-          <ul className="mt-1 space-y-1">
+          <ul className="mt-[var(--spacing-gap-xs)] space-y-[var(--spacing-gap-xs)]">
             {s.children.map(c => renderItem(c, depth + 1))}
           </ul>
         )}
@@ -102,7 +102,7 @@ export function TableOfContentsPattern({
   return (
     <section className={cn(
       "wp-pattern-lts-toc py-[var(--spacing-section-md)]",
-      sticky && "sticky top-24 self-start",
+      sticky && "sticky top-[var(--spacing-element-5xl)] self-start",
       className
     )}>
       <Container maxWidth="narrow">
@@ -112,7 +112,7 @@ export function TableOfContentsPattern({
         )}>
           <div className="flex items-center gap-[var(--spacing-gap-md)] mb-[var(--spacing-element-xl)]">
             <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)] bg-primary/10 text-primary">
-              <List className="size-5" />
+              <List className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)]" />
             </div>
             <h2 className="text-[length:var(--text-xl)] mb-0">{title}</h2>
           </div>

@@ -90,17 +90,17 @@ export function SearchFilterPattern({
       )}
     >
       <Container>
-        <div className="py-6">
+        <div className="py-[var(--spacing-element-xl)]">
           {/* Main Controls Row */}
-          <div className="flex flex-wrap items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-between gap-[var(--spacing-gap-lg)]">
+            <div className="flex items-center gap-[var(--spacing-gap-md)]">
               {collapsible && (
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => setIsExpanded(!isExpanded)}
                   className={cn(
-                    "rounded-[var(--radius-xl)] gap-[var(--spacing-gap-sm)] px-5 transition-all duration-300 font-bold",
+                    "rounded-[var(--radius-xl)] gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-lg)] transition-all duration-300 font-[var(--font-weight-bold)]",
                     isExpanded ? "bg-primary text-primary-foreground border-primary" : "bg-card"
                   )}
                 >
@@ -112,7 +112,7 @@ export function SearchFilterPattern({
               {hasActiveFilters && (
                 <button
                   onClick={handleClear}
-                  className="flex items-center gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] text-[length:var(--text-xs)] uppercase tracking-widest text-destructive hover:bg-destructive/10 rounded-[var(--radius-lg)] transition-all font-bold"
+                  className="flex items-center gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] text-[length:var(--text-xs)] uppercase tracking-widest text-destructive hover:bg-destructive/10 rounded-[var(--radius-lg)] transition-all font-[var(--font-weight-bold)]"
                 >
                   <X className="size-3" /> Clear Active
                 </button>
@@ -122,7 +122,7 @@ export function SearchFilterPattern({
             {/* Global Search Bar (if provided) */}
             {onSearchChange && (
               <div className="relative flex-1 max-w-md group">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                <Search className="absolute left-[var(--spacing-element-lg)] top-1/2 -translate-y-1/2 size-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
                 <input
                   type="text"
                   value={internalSearchQuery}
@@ -131,7 +131,7 @@ export function SearchFilterPattern({
                     onSearchChange(e.target.value);
                   }}
                   placeholder={searchPlaceholder || 'Search the collection...'}
-                  className="w-full pl-12 pr-[var(--spacing-element-md)] py-[var(--spacing-element-md)] rounded-[var(--radius-2xl)] bg-muted/50 border-2 border-transparent focus:border-primary/20 focus:bg-background transition-all outline-none text-[length:var(--text-sm)] font-bold"
+                  className="w-full pl-[var(--spacing-element-3xl)] pr-[var(--spacing-element-md)] py-[var(--spacing-element-md)] rounded-[var(--radius-2xl)] bg-muted/50 border-2 border-transparent focus:border-primary/20 focus:bg-background transition-all outline-none text-[length:var(--text-sm)] font-[var(--font-weight-bold)]"
                 />
               </div>
             )}
@@ -146,7 +146,7 @@ export function SearchFilterPattern({
                 exit={{ height: 0, opacity: 0 }}
                 className="overflow-hidden"
               >
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-8 mt-6 border-t border-border/50">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[var(--spacing-gap-xl)] pt-[var(--spacing-element-xl)] mt-[var(--spacing-gap-lg)] border-t border-border/50">
                   {filters.map((filter) => {
                     const isControlled = filter.value !== undefined && filter.onChange !== undefined;
                     const filterValue = isControlled ? filter.value : (filterValues[filter.id] || '');
@@ -160,21 +160,21 @@ export function SearchFilterPattern({
                     };
 
                     return (
-                      <div key={filter.id} className="space-y-3">
-                        <Label htmlFor={filter.id} className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-1">
+                      <div key={filter.id} className="space-y-[var(--spacing-gap-sm)]">
+                        <Label htmlFor={filter.id} className="text-[length:var(--text-xs)] font-[var(--font-weight-bold)] uppercase tracking-widest text-muted-foreground ml-[var(--spacing-element-xs)]">
                           {filter.label}
                         </Label>
 
                         {filter.type === 'search' && (
                           <div className="relative group">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-3 text-muted-foreground" />
+                            <Search className="absolute left-[var(--spacing-element-md)] top-1/2 -translate-y-1/2 size-3 text-muted-foreground" />
                             <input
                               id={filter.id}
                               type="search"
                               value={filterValue}
                               onChange={(e) => handleChange(e.target.value)}
                               placeholder={filter.placeholder || 'Keywords...'}
-                              className="w-full pl-9 pr-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] rounded-[var(--radius-xl)] bg-card border-2 border-border focus:border-primary/30 outline-none text-[length:var(--text-sm)] transition-all"
+                              className="w-full pl-[var(--spacing-element-2xl)] pr-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] rounded-[var(--radius-xl)] bg-card border-2 border-border focus:border-primary/30 outline-none text-[length:var(--text-sm)] transition-all"
                             />
                           </div>
                         )}
@@ -185,9 +185,9 @@ export function SearchFilterPattern({
                               <SelectValue placeholder={filter.placeholder || 'Select...'} />
                             </SelectTrigger>
                             <SelectContent className="rounded-[var(--radius-xl)] border-2 border-border shadow-[var(--elevation-xl)]">
-                              <SelectItem value="" className="font-bold text-sm">All {filter.label}s</SelectItem>
+                              <SelectItem value="" className="font-[var(--font-weight-bold)] text-[length:var(--text-sm)]">All {filter.label}s</SelectItem>
                               {filter.options?.map((option) => (
-                                <SelectItem key={option.value} value={option.value} className="font-medium text-sm">
+                                <SelectItem key={option.value} value={option.value} className="font-[var(--font-weight-medium)] text-[length:var(--text-sm)]">
                                   {option.label}
                                 </SelectItem>
                               ))}

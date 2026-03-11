@@ -215,7 +215,7 @@ export function ImageCarousel({
         {showArrows && images.length > 1 && (
           <button
             onClick={handlePrevious}
-            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-[var(--radius-full)] bg-background/80 p-2 text-foreground opacity-0 transition-opacity hover:bg-background focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring group-hover:opacity-100"
+            className="absolute left-[var(--spacing-element-lg)] top-1/2 -translate-y-1/2 rounded-[var(--radius-full)] bg-background/80 p-[var(--spacing-element-sm)] text-foreground opacity-0 transition-opacity hover:bg-background focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring group-hover:opacity-100"
             aria-label="Previous image"
           >
             <ChevronLeft size={24} />
@@ -226,7 +226,7 @@ export function ImageCarousel({
         {showArrows && images.length > 1 && (
           <button
             onClick={handleNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-[var(--radius-full)] bg-background/80 p-2 text-foreground opacity-0 transition-opacity hover:bg-background focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring group-hover:opacity-100"
+            className="absolute right-[var(--spacing-element-lg)] top-1/2 -translate-y-1/2 rounded-[var(--radius-full)] bg-background/80 p-[var(--spacing-element-sm)] text-foreground opacity-0 transition-opacity hover:bg-background focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring group-hover:opacity-100"
             aria-label="Next image"
           >
             <ChevronRight size={24} />
@@ -237,7 +237,7 @@ export function ImageCarousel({
         {autoPlayInterval > 0 && images.length > 1 && (
           <button
             onClick={togglePlayPause}
-            className="absolute right-4 top-4 rounded-[var(--radius-full)] bg-background/80 p-2 text-foreground opacity-0 transition-opacity hover:bg-background focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring group-hover:opacity-100"
+            className="absolute right-[var(--spacing-element-lg)] top-[var(--spacing-element-lg)] rounded-[var(--radius-full)] bg-background/80 p-[var(--spacing-element-sm)] text-foreground opacity-0 transition-opacity hover:bg-background focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring group-hover:opacity-100"
             aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
           >
             {isPlaying ? <Pause size={20} /> : <Play size={20} />}
@@ -246,12 +246,12 @@ export function ImageCarousel({
 
         {/* Caption */}
         {showCaptions && (currentImage.caption || currentImage.title) && (
-          <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+          <div className="absolute inset-x-0 bottom-0 p-[var(--spacing-element-xl)] text-white">
             {currentImage.title && (
-              <h3 className="mb-2 drop-shadow-lg">{currentImage.title}</h3>
+              <h3 className="mb-[var(--spacing-element-sm)] drop-shadow-[var(--elevation-lg)]">{currentImage.title}</h3>
             )}
             {currentImage.caption && (
-              <p className="text-sm drop-shadow-lg opacity-90">
+              <p className="text-[length:var(--text-sm)] drop-shadow-[var(--elevation-lg)] opacity-90 !mb-0">
                 {currentImage.caption}
               </p>
             )}
@@ -260,7 +260,7 @@ export function ImageCarousel({
 
         {/* Dot Indicators */}
         {showIndicators && images.length > 1 && (
-          <div className="absolute inset-x-0 bottom-4 flex justify-center gap-2">
+          <div className="absolute inset-x-0 bottom-[var(--spacing-element-lg)] flex justify-center gap-[var(--spacing-gap-sm)]">
             {images.map((_, index) => (
               <button
                 key={index}
@@ -327,7 +327,7 @@ export function ThumbnailCarousel({
 
   return (
     <>
-      <div className={cn("space-y-4", className)}>
+      <div className={cn("space-y-[var(--spacing-gap-md)]", className)}>
         {/* Main Image */}
         <div
           className="relative aspect-video overflow-hidden rounded-[var(--radius-lg)] border border-border bg-muted"
@@ -342,8 +342,8 @@ export function ThumbnailCarousel({
             )}
           />
           {showCaptions && currentImage.caption && (
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-              <p className="text-sm text-white drop-shadow-lg">
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-[var(--spacing-element-lg)]">
+              <p className="text-[length:var(--text-sm)] text-white drop-shadow-[var(--elevation-lg)] !mb-0">
                 {currentImage.caption}
               </p>
             </div>
@@ -351,7 +351,7 @@ export function ThumbnailCarousel({
         </div>
 
         {/* Thumbnails */}
-        <div className="grid grid-cols-4 gap-2 md:grid-cols-6 lg:grid-cols-8">
+        <div className="grid grid-cols-4 gap-[var(--spacing-gap-sm)] md:grid-cols-6 lg:grid-cols-8">
           {images.map((image, index) => (
             <button
               key={index}

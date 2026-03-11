@@ -48,18 +48,18 @@ export function ReviewsSectionPattern({
     <section className={cn("wp-pattern-lts-reviews has-section-padding-md bg-muted/5 border-y-2 border-border/50", className)}>
       <Container>
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-16 md:mb-20">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-[var(--spacing-gap-3xl)] mb-[var(--spacing-gap-3xl)] md:mb-[var(--spacing-section-sm)]">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                <Quote className="size-5" />
+            <div className="flex items-center gap-[var(--spacing-gap-md)] mb-[var(--spacing-element-xl)]">
+              <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)] bg-primary/10 text-primary">
+                <Quote className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)]" />
               </div>
-              <HeadingBlock level={2} className="mb-0 text-3xl md:text-4xl">
+              <HeadingBlock level={2} className="!mb-0 text-[length:var(--text-3xl)] md:text-[length:var(--text-4xl)]">
                 {title}
               </HeadingBlock>
             </div>
             {description && (
-              <ParagraphBlock className="text-muted-foreground text-lg m-0 leading-relaxed">
+              <ParagraphBlock className="text-muted-foreground text-[length:var(--text-lg)] !mb-0 leading-relaxed">
                 {description}
               </ParagraphBlock>
             )}
@@ -71,37 +71,37 @@ export function ReviewsSectionPattern({
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="p-8 rounded-4xl bg-card border-2 border-border shadow-xl flex items-center gap-8 relative overflow-hidden group hover:border-primary transition-colors duration-500"
+              className="p-[var(--spacing-element-3xl)] rounded-[var(--radius-3xl)] bg-card border-2 border-border shadow-[var(--elevation-xl)] flex items-center gap-[var(--spacing-gap-2xl)] relative overflow-hidden group hover:border-primary transition-colors duration-500"
             >
-              <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform duration-700">
-                <Star className="size-20 text-accent fill-current" />
+              <div className="absolute top-0 right-0 p-[var(--spacing-element-lg)] opacity-5 group-hover:scale-110 transition-transform duration-700">
+                <Star className="w-[var(--spacing-element-4xl)] h-[var(--spacing-element-4xl)] text-accent fill-current" />
               </div>
               
               <div className="text-center relative z-10">
-                <p className="text-[length:var(--text-5xl)] text-primary leading-none mb-2">
+                <p className="text-[length:var(--text-5xl)] text-primary leading-none mb-[var(--spacing-element-sm)]">
                   {calculatedAverage.toFixed(1)}
                 </p>
-                <div className="flex items-center justify-center gap-1 mb-1">
+                <div className="flex items-center justify-center gap-[var(--spacing-gap-xs)] mb-[var(--spacing-element-xs)]">
                   {Array.from({ length: 5 }, (_, i) => (
                     <Star
                       key={i}
                       className={cn(
-                        "size-3",
+                        "w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)]",
                         i < Math.round(calculatedAverage) ? "fill-accent text-accent" : "text-muted-foreground/20"
                       )}
                     />
                   ))}
                 </div>
-                <p className="text-[length:var(--text-xs)] uppercase tracking-widest text-muted-foreground">Rating Score</p>
+                <p className="text-[length:var(--text-xs)] uppercase tracking-widest text-muted-foreground !mb-0">Rating Score</p>
               </div>
               
-              <div className="h-16 w-px bg-border/50 relative z-10" />
+              <div className="h-[var(--spacing-element-4xl)] w-px bg-border/50 relative z-10" />
               
               <div className="relative z-10">
-                <p className="text-[length:var(--text-sm)] text-foreground mb-1">
+                <p className="text-[length:var(--text-sm)] text-foreground mb-[var(--spacing-element-xs)]">
                   Verified Experiences
                 </p>
-                <p className="text-xs text-muted-foreground m-0">
+                <p className="text-[length:var(--text-xs)] text-muted-foreground !mb-0">
                   Based on {displayTotal} detailed reviews from our global community.
                 </p>
               </div>
@@ -112,7 +112,7 @@ export function ReviewsSectionPattern({
         {/* Reviews Grid */}
         <div className="relative">
           {/* Decorative background element */}
-          <div className="absolute -top-10 -left-10 size-40 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute -top-[var(--spacing-element-3xl)] -left-[var(--spacing-element-3xl)] w-[var(--spacing-element-5xl)] h-[var(--spacing-element-5xl)] bg-primary/5 rounded-[var(--radius-full)] blur-3xl" />
           
           <CardGrid columns={columns as any} animated>
             {reviews.slice(0, 6).map((review) => (
@@ -122,7 +122,7 @@ export function ReviewsSectionPattern({
         </div>
 
         {/* Bottom Action */}
-        <div className="mt-16 text-center">
+        <div className="mt-[var(--spacing-section-sm)] text-center">
           <button 
             className="inline-flex items-center gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-xl)] py-[var(--spacing-element-md)] rounded-[var(--radius-xl)] border-2 border-border text-[length:var(--text-sm)] hover:bg-muted transition-all group"
           >

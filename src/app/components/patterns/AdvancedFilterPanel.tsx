@@ -197,17 +197,17 @@ export function AdvancedFilterPanel({
   return (
     <div
       className={cn(
-        "space-y-4 rounded-lg border border-border bg-card p-4",
+        "space-y-[var(--spacing-gap-md)] rounded-[var(--radius-lg)] border border-border bg-card p-[var(--spacing-element-lg)]",
         className
       )}
     >
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-[var(--spacing-gap-sm)]">
           <SlidersHorizontal size={20} className="text-primary" />
-          <h3 className="text-foreground">Filters</h3>
+          <h3 className="text-foreground m-0">Filters</h3>
           {activeCount > 0 && (
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-medium text-primary-foreground">
+            <span className="flex h-6 w-6 items-center justify-center rounded-[var(--radius-full)] bg-primary text-[length:var(--text-xs)] font-[var(--font-weight-medium)] text-primary-foreground">
               {activeCount}
             </span>
           )}
@@ -217,7 +217,7 @@ export function AdvancedFilterPanel({
             variant="ghost"
             size="sm"
             onClick={clearAllFilters}
-            className="text-sm text-muted-foreground hover:text-foreground"
+            className="text-[length:var(--text-sm)] text-muted-foreground hover:text-foreground"
           >
             Clear all
           </Button>
@@ -226,7 +226,7 @@ export function AdvancedFilterPanel({
 
       {/* Result Count */}
       {resultCount !== undefined && (
-        <div className="rounded-md wp-bg-muted-light p-3 text-sm text-foreground">
+        <div className="rounded-[var(--radius-md)] wp-bg-muted-light p-[var(--spacing-element-md)] text-[length:var(--text-sm)] text-foreground">
           <strong>{resultCount}</strong> result{resultCount !== 1 ? 's' : ''} found
         </div>
       )}
@@ -352,20 +352,20 @@ function FilterSection({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border-b border-border pb-4">
+    <div className="border-b border-border pb-[var(--spacing-element-lg)]">
       <button
         onClick={onToggle}
-        className="flex w-full items-center justify-between py-2 text-left focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+        className="flex w-full items-center justify-between py-[var(--spacing-element-sm)] text-left focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
         aria-expanded={isExpanded}
       >
-        <span className="font-medium text-foreground">{title}</span>
+        <span className="font-[var(--font-weight-medium)] text-foreground">{title}</span>
         {isExpanded ? (
           <ChevronUp size={16} className="text-muted-foreground" />
         ) : (
           <ChevronDown size={16} className="text-muted-foreground" />
         )}
       </button>
-      {isExpanded && <div className="mt-3">{children}</div>}
+      {isExpanded && <div className="mt-[var(--spacing-gap-sm)]">{children}</div>}
     </div>
   );
 }
@@ -405,8 +405,8 @@ function PriceRangeSlider({
   };
 
   return (
-    <div className="space-y-3">
-      <div className="flex items-center justify-between text-sm">
+    <div className="space-y-[var(--spacing-gap-sm)]">
+      <div className="flex items-center justify-between text-[length:var(--text-sm)]">
         <span className="text-muted-foreground">
           ${localValue[0].toLocaleString()}
         </span>
@@ -414,14 +414,14 @@ function PriceRangeSlider({
           ${localValue[1].toLocaleString()}
         </span>
       </div>
-      <div className="space-y-2">
+      <div className="space-y-[var(--spacing-gap-xs)]">
         <input
           type="range"
           min={min}
           max={max}
           value={localValue[0]}
           onChange={handleMinChange}
-          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-muted accent-primary"
+          className="h-2 w-full cursor-pointer appearance-none rounded-[var(--radius-lg)] bg-muted accent-primary"
           aria-label="Minimum price"
         />
         <input
@@ -430,7 +430,7 @@ function PriceRangeSlider({
           max={max}
           value={localValue[1]}
           onChange={handleMaxChange}
-          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-muted accent-primary"
+          className="h-2 w-full cursor-pointer appearance-none rounded-[var(--radius-lg)] bg-muted accent-primary"
           aria-label="Maximum price"
         />
       </div>
@@ -473,8 +473,8 @@ function DurationSlider({
   };
 
   return (
-    <div className="space-y-3">
-      <div className="flex items-center justify-between text-sm">
+    <div className="space-y-[var(--spacing-gap-sm)]">
+      <div className="flex items-center justify-between text-[length:var(--text-sm)]">
         <span className="text-muted-foreground">
           {localValue[0]} day{localValue[0] !== 1 ? 's' : ''}
         </span>
@@ -482,14 +482,14 @@ function DurationSlider({
           {localValue[1]} day{localValue[1] !== 1 ? 's' : ''}
         </span>
       </div>
-      <div className="space-y-2">
+      <div className="space-y-[var(--spacing-gap-xs)]">
         <input
           type="range"
           min={min}
           max={max}
           value={localValue[0]}
           onChange={handleMinChange}
-          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-muted accent-primary"
+          className="h-2 w-full cursor-pointer appearance-none rounded-[var(--radius-lg)] bg-muted accent-primary"
           aria-label="Minimum duration"
         />
         <input
@@ -498,7 +498,7 @@ function DurationSlider({
           max={max}
           value={localValue[1]}
           onChange={handleMaxChange}
-          className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-muted accent-primary"
+          className="h-2 w-full cursor-pointer appearance-none rounded-[var(--radius-lg)] bg-muted accent-primary"
           aria-label="Maximum duration"
         />
       </div>
@@ -519,17 +519,17 @@ function CheckboxGroup({
   onChange: (value: string) => void;
 }) {
   return (
-    <div className="space-y-2">
+    <div className="space-y-[var(--spacing-gap-xs)]">
       {options.map((option) => (
         <label
           key={option}
-          className="flex cursor-pointer items-center gap-2 text-sm"
+          className="flex cursor-pointer items-center gap-[var(--spacing-gap-sm)] text-[length:var(--text-sm)]"
         >
           <input
             type="checkbox"
             checked={selected.includes(option)}
             onChange={() => onChange(option)}
-            className="h-4 w-4 cursor-pointer rounded border-border bg-background text-primary focus:ring-2 focus:ring-ring focus:ring-offset-2"
+            className="h-4 w-4 cursor-pointer rounded-[var(--radius-sm)] border-border bg-background text-primary focus:ring-2 focus:ring-ring focus:ring-offset-2"
           />
           <span className="text-foreground">{option}</span>
         </label>

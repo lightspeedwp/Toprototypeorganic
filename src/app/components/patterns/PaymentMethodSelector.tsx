@@ -177,11 +177,11 @@ export function PaymentMethodSelector({
   const activeMethod = internalSelected || selectedMethod;
 
   return (
-    <div className={cn("space-y-6", className)}>
+    <div className={cn("space-y-[var(--spacing-gap-lg)]", className)}>
       {/* Header */}
       <div>
-        <h3 className="mb-2">Select Payment Method</h3>
-        <p className="text-muted-foreground">
+        <h3 className="mb-[var(--spacing-element-xs)]">Select Payment Method</h3>
+        <p className="text-muted-foreground m-0">
           Choose how you'd like to pay for your booking
         </p>
       </div>
@@ -189,29 +189,29 @@ export function PaymentMethodSelector({
       {/* Saved Cards (Optional) */}
       {showSavedCards && (
         <div className="wp-callout-accent">
-          <div className="flex items-start gap-3">
+          <div className="flex items-start gap-[var(--spacing-gap-sm)]">
             <Shield className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
             <div className="flex-1">
-              <p className="font-medium mb-1">Saved Payment Methods</p>
-              <p className="text-sm text-muted-foreground mb-3">
+              <p className="font-[var(--font-weight-medium)] mb-[var(--spacing-element-xs)] m-0">Saved Payment Methods</p>
+              <p className="text-[length:var(--text-sm)] text-muted-foreground mb-[var(--spacing-element-sm)] m-0">
                 Use a previously saved card for faster checkout
               </p>
               
               <button
                 onClick={() => handleMethodSelect("credit-card")}
                 className={cn(
-                  "w-full p-3 rounded-md border-2 transition-all text-left",
+                  "w-full p-[var(--spacing-element-md)] rounded-[var(--radius-md)] border-2 transition-all text-left",
                   activeMethod === "credit-card"
                     ? "border-primary bg-primary/5"
                     : "border-border hover:border-primary/50 bg-card"
                 )}
               >
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-[var(--spacing-gap-sm)]">
                     <CreditCard className="w-5 h-5 text-primary" />
                     <div>
-                      <p className="text-sm font-medium">Visa ending in 4242</p>
-                      <p className="text-xs text-muted-foreground">Expires 12/25</p>
+                      <p className="text-[length:var(--text-sm)] font-[var(--font-weight-medium)] m-0">Visa ending in 4242</p>
+                      <p className="text-[length:var(--text-xs)] text-muted-foreground m-0">Expires 12/25</p>
                     </div>
                   </div>
                   {activeMethod === "credit-card" && (
@@ -225,7 +225,7 @@ export function PaymentMethodSelector({
       )}
 
       {/* Payment Methods Grid */}
-      <div className="grid gap-3">
+      <div className="grid gap-[var(--spacing-gap-sm)]">
         {filteredMethods.map((method) => {
           const Icon = method.icon;
           const isSelected = activeMethod === method.id;
@@ -235,33 +235,33 @@ export function PaymentMethodSelector({
               key={method.id}
               onClick={() => handleMethodSelect(method.id)}
               className={cn(
-                "p-4 md:p-5 rounded-lg border-2 transition-all text-left group",
+                "p-[var(--spacing-element-lg)] md:p-[var(--spacing-element-xl)] rounded-[var(--radius-lg)] border-2 transition-all text-left group",
                 "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
                 isSelected
                   ? "border-primary bg-primary/5"
                   : "border-border hover:border-primary/50 bg-card"
               )}
             >
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-[var(--spacing-gap-md)]">
                 {/* Icon */}
                 <div
                   className={cn(
-                    "flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center transition-colors",
+                    "flex-shrink-0 w-[var(--spacing-element-3xl)] h-[var(--spacing-element-3xl)] rounded-[var(--radius-lg)] flex items-center justify-center transition-colors",
                     isSelected ? "bg-primary text-primary-foreground" : "bg-muted"
                   )}
                 >
-                  <Icon className="w-6 h-6" />
+                  <Icon className="w-[var(--spacing-element-lg)] h-[var(--spacing-element-lg)]" />
                 </div>
 
                 {/* Details */}
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-start justify-between gap-3 mb-2">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <h4 className="font-medium">{method.name}</h4>
+                  <div className="flex items-start justify-between gap-[var(--spacing-gap-sm)] mb-[var(--spacing-element-xs)]">
+                    <div className="flex items-center gap-[var(--spacing-gap-sm)] flex-wrap">
+                      <h4 className="font-[var(--font-weight-medium)] m-0">{method.name}</h4>
                       {method.badge && (
                         <span
                           className={cn(
-                            "px-2 py-0.5 text-xs rounded-full",
+                            "px-[var(--spacing-element-sm)] py-0.5 text-[length:var(--text-xs)] rounded-[var(--radius-full)]",
                             method.popular
                               ? "wp-bg-primary-light"
                               : "bg-accent text-accent-foreground"
@@ -276,26 +276,26 @@ export function PaymentMethodSelector({
                     )}
                   </div>
                   
-                  <p className="text-sm text-muted-foreground mb-3">
+                  <p className="text-[length:var(--text-sm)] text-muted-foreground mb-[var(--spacing-element-sm)] m-0">
                     {method.description}
                   </p>
 
                   {/* Payment Details */}
-                  <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
+                  <div className="flex flex-wrap items-center gap-[var(--spacing-gap-md)] text-[length:var(--text-xs)] text-muted-foreground">
                     {method.processingTime && (
-                      <div className="flex items-center gap-1.5">
+                      <div className="flex items-center gap-[var(--spacing-gap-xs)]">
                         <Info className="w-3.5 h-3.5" />
                         <span>{method.processingTime}</span>
                       </div>
                     )}
                     {method.fees && (
-                      <div className="flex items-center gap-1.5">
+                      <div className="flex items-center gap-[var(--spacing-gap-xs)]">
                         <span>•</span>
                         <span>{method.fees}</span>
                       </div>
                     )}
                     {method.secure && (
-                      <div className="flex items-center gap-1.5">
+                      <div className="flex items-center gap-[var(--spacing-gap-xs)]">
                         <Lock className="w-3.5 h-3.5 text-primary" />
                         <span className="text-primary">Secure</span>
                       </div>
@@ -309,14 +309,14 @@ export function PaymentMethodSelector({
       </div>
 
       {/* Security Notice */}
-      <div className="wp-bg-muted-light rounded-lg p-4">
-        <div className="flex items-start gap-3">
+      <div className="wp-bg-muted-light rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)]">
+        <div className="flex items-start gap-[var(--spacing-gap-sm)]">
           <Shield className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-          <div className="text-sm">
-            <p className="font-medium text-foreground mb-1">
+          <div className="text-[length:var(--text-sm)]">
+            <p className="font-[var(--font-weight-medium)] text-foreground mb-[var(--spacing-element-xs)] m-0">
               Secure Payment Processing
             </p>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground m-0">
               All payments are processed through our secure, PCI-DSS compliant payment
               gateway. Your payment information is encrypted and never stored on our
               servers.

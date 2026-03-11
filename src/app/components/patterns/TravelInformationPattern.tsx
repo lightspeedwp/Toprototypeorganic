@@ -69,25 +69,25 @@ export function TravelInformationPattern({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--spacing-gap-md)]">
             {bestTime && (
               <div>
-                <h4 className="mb-1 text-fluid-sm font-[var(--font-weight-medium)]">Best Time to Visit</h4>
+                <h4 className="mb-[var(--spacing-element-xs)] text-fluid-sm font-[var(--font-weight-medium)]">Best Time to Visit</h4>
                 <p className="text-muted-foreground text-fluid-sm m-0">{bestTime}</p>
               </div>
             )}
             {difficulty && (
               <div>
-                <h4 className="mb-1 text-fluid-sm font-[var(--font-weight-medium)]">Difficulty Level</h4>
+                <h4 className="mb-[var(--spacing-element-xs)] text-fluid-sm font-[var(--font-weight-medium)]">Difficulty Level</h4>
                 <p className="text-muted-foreground text-fluid-sm m-0">{difficulty}</p>
               </div>
             )}
             {visaInfo && (
               <div>
-                <h4 className="mb-1 text-fluid-sm font-[var(--font-weight-medium)]">Visa Requirements</h4>
+                <h4 className="mb-[var(--spacing-element-xs)] text-fluid-sm font-[var(--font-weight-medium)]">Visa Requirements</h4>
                 <p className="text-muted-foreground text-fluid-sm m-0">{visaInfo}</p>
               </div>
             )}
             {healthInfo && (
               <div>
-                <h4 className="mb-1 text-fluid-sm font-[var(--font-weight-medium)]">Health & Vaccinations</h4>
+                <h4 className="mb-[var(--spacing-element-xs)] text-fluid-sm font-[var(--font-weight-medium)]">Health & Vaccinations</h4>
                 <p className="text-muted-foreground text-fluid-sm m-0">{healthInfo}</p>
               </div>
             )}

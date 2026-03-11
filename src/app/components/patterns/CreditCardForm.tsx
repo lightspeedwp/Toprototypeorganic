@@ -227,10 +227,10 @@ export function CreditCardForm({
     <div className={cn("space-y-[var(--spacing-gap-lg)]", className)}>
       {/* Header */}
       <div className="flex items-start gap-[var(--spacing-gap-md)]">
-        <CreditCard className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+        <CreditCard className="w-[var(--spacing-element-lg)] h-[var(--spacing-element-lg)] text-primary flex-shrink-0 mt-[var(--spacing-element-xs)]" />
         <div>
           <h3 className="mb-[var(--spacing-element-sm)] text-[length:var(--text-xl)]">Card Information</h3>
-          <p className="text-[length:var(--text-sm)] text-muted-foreground m-0">
+          <p className="text-[length:var(--text-sm)] text-muted-foreground !mb-0">
             Enter your card details below
           </p>
         </div>
@@ -265,14 +265,14 @@ export function CreditCardForm({
           />
           
           {/* Card Brand Icon */}
-          <div className="absolute right-3 top-1/2 -translate-y-1/2">
+          <div className="absolute right-[var(--spacing-element-md)] top-1/2 -translate-y-1/2">
             {cardBrand !== "unknown" && (
               <div className="flex items-center gap-[var(--spacing-gap-xs)]">
                 <span className="text-[length:var(--text-xs)] text-muted-foreground uppercase tracking-widest">
                   {cardBrand}
                 </span>
                 {isCardNumberValid && touched.cardNumber && (
-                  <Check className="w-4 h-4 text-primary" />
+                  <Check className="w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)] text-primary" />
                 )}
               </div>
             )}
@@ -281,7 +281,7 @@ export function CreditCardForm({
         
         {showCardNumberError && (
           <div className="flex items-center gap-[var(--spacing-gap-xs)] mt-[var(--spacing-element-sm)] text-[length:var(--text-sm)] text-destructive">
-            <AlertCircle className="w-4 h-4 flex-shrink-0" />
+            <AlertCircle className="w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)] flex-shrink-0" />
             <span>Please enter a valid card number</span>
           </div>
         )}
@@ -315,7 +315,7 @@ export function CreditCardForm({
         
         {showNameError && (
           <div className="flex items-center gap-[var(--spacing-gap-xs)] mt-[var(--spacing-element-sm)] text-[length:var(--text-sm)] text-destructive">
-            <AlertCircle className="w-4 h-4 flex-shrink-0" />
+            <AlertCircle className="w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)] flex-shrink-0" />
             <span>Please enter the name as shown on card</span>
           </div>
         )}
@@ -392,7 +392,7 @@ export function CreditCardForm({
           <label htmlFor="cvv" className="mb-[var(--spacing-element-sm)] flex items-center gap-[var(--spacing-gap-xs)] text-[length:var(--text-sm)]">
             <span>CVV *</span>
             <div className="group relative">
-              <Lock className="w-3.5 h-3.5 text-muted-foreground cursor-help" />
+              <Lock className="w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)] text-muted-foreground cursor-help" />
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-[var(--spacing-element-sm)] px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] bg-popover text-popover-foreground border border-border rounded-[var(--radius-md)] text-[length:var(--text-xs)] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
                 3-4 digit security code on back of card
               </div>
@@ -422,7 +422,7 @@ export function CreditCardForm({
           
           {showCvvError && (
             <div className="flex items-center gap-[var(--spacing-gap-xs)] mt-[var(--spacing-element-sm)] text-[length:var(--text-sm)] text-destructive">
-              <AlertCircle className="w-4 h-4 flex-shrink-0" />
+              <AlertCircle className="w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)] flex-shrink-0" />
               <span>Invalid CVV</span>
             </div>
           )}
@@ -460,11 +460,11 @@ export function CreditCardForm({
             type="checkbox"
             checked={formData.saveCard}
             onChange={(e) => updateField("saveCard", e.target.checked)}
-            className="mt-1 w-4 h-4 rounded-[var(--radius-sm)] border-border text-primary focus:ring-ring"
+            className="mt-[var(--spacing-element-xs)] w-[var(--spacing-element-md)] h-[var(--spacing-element-md)] rounded-[var(--radius-sm)] border-border text-primary focus:ring-ring"
           />
-          <label htmlFor="saveCard" className="text-[length:var(--text-sm)] cursor-pointer flex-1 m-0">
+          <label htmlFor="saveCard" className="text-[length:var(--text-sm)] cursor-pointer flex-1 !m-0">
             <span>Save this card for future bookings</span>
-            <p className="text-muted-foreground mt-0.5 m-0 text-[length:var(--text-xs)]">
+            <p className="text-muted-foreground mt-[var(--spacing-element-xs)] !m-0 text-[length:var(--text-xs)]">
               Your card details will be securely stored for faster checkout next time
             </p>
           </label>
@@ -474,12 +474,12 @@ export function CreditCardForm({
       {/* Security Notice */}
       <div className="wp-bg-muted-light rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)]">
         <div className="flex items-start gap-[var(--spacing-gap-md)]">
-          <Shield className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-          <div className="text-[length:var(--text-sm)]">
-            <p className="text-foreground mb-1 m-0 font-bold">
+          <Shield className="w-[var(--spacing-element-lg)] h-[var(--spacing-element-lg)] text-primary flex-shrink-0 mt-[var(--spacing-element-xs)]" />
+          <div className="text-[length:var(--text-sm)] flex flex-col gap-[var(--spacing-gap-xs)]">
+            <p className="text-foreground !mb-0 font-[var(--font-weight-bold)]">
               256-bit SSL Encryption
             </p>
-            <p className="text-muted-foreground m-0 text-[length:var(--text-xs)]">
+            <p className="text-muted-foreground !m-0 text-[length:var(--text-xs)]">
               Your payment information is encrypted and transmitted securely. We never
               store your full card number.
             </p>

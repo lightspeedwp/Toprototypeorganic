@@ -162,7 +162,7 @@ interface SectionHeaderPatternProps {
  * // In a section layout
  * function FeaturedToursSection() {
  *   return (
- *     <section className="py-12">
+ *     <section className="py-[var(--spacing-section-md)]">
  *       <Container>
  *         <SectionHeaderPattern
  *           title="Featured Tours"

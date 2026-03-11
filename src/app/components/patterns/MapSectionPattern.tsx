@@ -60,10 +60,10 @@ export function MapSectionPattern({
           isSplit ? "lg:grid-cols-12 items-start" : "grid-cols-1"
         )}>
           {/* Info Side */}
-          <div className={cn(isSplit ? "lg:col-span-5" : "text-center max-w-3xl mx-auto mb-16")}>
+          <div className={cn(isSplit ? "lg:col-span-5" : "text-center max-w-3xl mx-auto mb-[var(--spacing-gap-2xl)]")}>
             <div className={cn("flex items-center gap-[var(--spacing-gap-sm)] mb-[var(--spacing-element-lg)]", !isSplit && "justify-center")}>
-              <div className="size-14 rounded-[var(--radius-2xl)] bg-primary/10 flex items-center justify-center text-primary shadow-[var(--elevation-sm)] shrink-0">
-                <Compass className="size-7" />
+              <div className="w-[var(--spacing-element-4xl)] h-[var(--spacing-element-4xl)] rounded-[var(--radius-2xl)] bg-primary/10 flex items-center justify-center text-primary shadow-[var(--elevation-sm)] shrink-0">
+                <Compass className="w-[var(--spacing-element-2xl)] h-[var(--spacing-element-2xl)]" />
               </div>
               <div>
                 <HeadingBlock level={2} className="text-[length:var(--text-3xl)] md:text-[length:var(--text-4xl)] mb-0">
@@ -73,7 +73,7 @@ export function MapSectionPattern({
             </div>
             
             {description && (
-              <ParagraphBlock className="text-muted-foreground text-[length:var(--text-lg)] mb-12 leading-relaxed">
+              <ParagraphBlock className="text-muted-foreground text-[length:var(--text-lg)] mb-[var(--spacing-gap-xl)] leading-relaxed">
                 {description}
               </ParagraphBlock>
             )}
@@ -90,21 +90,21 @@ export function MapSectionPattern({
                 >
                   <div className="flex items-start justify-between gap-[var(--spacing-gap-sm)] mb-[var(--spacing-element-md)]">
                     <div>
-                      <h4 className="text-[length:var(--text-xl)] mb-1 group-hover:text-primary transition-colors">{loc.name}</h4>
+                      <h4 className="text-[length:var(--text-xl)] mb-[var(--spacing-element-xs)] group-hover:text-primary transition-colors">{loc.name}</h4>
                       <p className="text-[length:var(--text-xs)] uppercase tracking-widest text-muted-foreground m-0">Position: {loc.lat ? `${loc.lat}, ${loc.lng}` : 'Regional Area'}</p>
                     </div>
                     <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-xl)] bg-muted text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500">
-                      <MapPin className="size-5" />
+                      <MapPin className="w-[var(--spacing-element-lg)] h-[var(--spacing-element-lg)]" />
                     </div>
                   </div>
                   {loc.description && (
-                    <p className="text-[length:var(--text-sm)] text-muted-foreground leading-relaxed mb-6">{loc.description}</p>
+                    <p className="text-[length:var(--text-sm)] text-muted-foreground leading-relaxed mb-[var(--spacing-element-lg)] m-0">{loc.description}</p>
                   )}
                   <button 
                     onClick={() => window.open(getDirectionsUrl(loc), '_blank')}
-                    className="flex items-center gap-[var(--spacing-gap-xs)] text-[length:var(--text-xs)] uppercase tracking-widest text-primary hover:underline underline-offset-8 transition-all font-bold"
+                    className="flex items-center gap-[var(--spacing-gap-xs)] text-[length:var(--text-xs)] uppercase tracking-widest text-primary hover:underline underline-offset-8 transition-all font-[var(--font-weight-bold)]"
                   >
-                    <Navigation className="size-3" /> Navigation Protocols →
+                    <Navigation className="w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)]" /> Navigation Protocols →
                   </button>
                 </motion.div>
               ))}
@@ -113,7 +113,7 @@ export function MapSectionPattern({
 
           {/* Map Side */}
           <div className={cn(
-            "lg:col-span-7 sticky top-32",
+            "lg:col-span-7 sticky top-[var(--spacing-element-4xl)]",
             !isSplit && "lg:col-span-full"
           )}>
             <div className="rounded-[var(--radius-3xl)] md:rounded-[var(--radius-full)] overflow-hidden border-2 border-border shadow-[var(--elevation-2xl)] bg-muted relative group aspect-video lg:aspect-square">
@@ -128,43 +128,43 @@ export function MapSectionPattern({
                   title={`Expedition Map`}
                 />
               ) : (
-                <div className="size-full">
+                <div className="w-full h-full">
                   <img
                     src={mapImageUrl || "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=1200"}
                     alt="Regional Cartography"
-                    className="size-full object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+                    className="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
                   />
                   <div className="absolute inset-0 bg-primary/10 pointer-events-none" />
                 </div>
               )}
               
               {/* Floating Map Controls UI (Visual Only) */}
-              <div className="absolute top-8 right-8 flex flex-col gap-[var(--spacing-gap-sm)]">
+              <div className="absolute top-[var(--spacing-element-xl)] right-[var(--spacing-element-xl)] flex flex-col gap-[var(--spacing-gap-sm)]">
                 <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-2xl)] bg-background/90 backdrop-blur shadow-[var(--elevation-xl)] border border-border/50 flex flex-col gap-[var(--spacing-gap-sm)]">
-                  <div className="size-8 rounded-[var(--radius-lg)] bg-muted flex items-center justify-center text-muted-foreground cursor-pointer hover:bg-primary hover:text-primary-foreground transition-all">
-                    <Plus className="size-4" />
+                  <div className="w-[var(--spacing-element-xl)] h-[var(--spacing-element-xl)] rounded-[var(--radius-lg)] bg-muted flex items-center justify-center text-muted-foreground cursor-pointer hover:bg-primary hover:text-primary-foreground transition-all">
+                    <Plus className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)]" />
                   </div>
                   <div className="w-full h-px bg-border/50" />
-                  <div className="size-8 rounded-[var(--radius-lg)] bg-muted flex items-center justify-center text-muted-foreground cursor-pointer hover:bg-primary hover:text-primary-foreground transition-all">
-                    <Minus className="size-4" />
+                  <div className="w-[var(--spacing-element-xl)] h-[var(--spacing-element-xl)] rounded-[var(--radius-lg)] bg-muted flex items-center justify-center text-muted-foreground cursor-pointer hover:bg-primary hover:text-primary-foreground transition-all">
+                    <Minus className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)]" />
                   </div>
                 </div>
                 <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-2xl)] bg-background/90 backdrop-blur shadow-[var(--elevation-xl)] border border-border/50 flex items-center justify-center text-primary cursor-pointer hover:bg-primary hover:text-primary-foreground transition-all">
-                  <ExternalLink className="size-5" />
+                  <ExternalLink className="w-[var(--spacing-element-lg)] h-[var(--spacing-element-lg)]" />
                 </div>
               </div>
 
               {/* Legend Overlay */}
-              <div className="absolute bottom-8 left-8 p-[var(--spacing-element-lg)] rounded-[var(--radius-2xl)] bg-background/90 backdrop-blur shadow-[var(--elevation-xl)] border border-border/50 max-w-[200px] hidden md:block">
-                <p className="text-[length:var(--text-xs)] uppercase tracking-widest text-muted-foreground mb-3 font-bold">Map Legend</p>
+              <div className="absolute bottom-[var(--spacing-element-xl)] left-[var(--spacing-element-xl)] p-[var(--spacing-element-lg)] rounded-[var(--radius-2xl)] bg-background/90 backdrop-blur shadow-[var(--elevation-xl)] border border-border/50 max-w-[200px] hidden md:block">
+                <p className="text-[length:var(--text-xs)] uppercase tracking-widest text-muted-foreground mb-[var(--spacing-element-sm)] font-[var(--font-weight-bold)] m-0">Map Legend</p>
                 <div className="space-y-[var(--spacing-gap-xs)]">
                   <div className="flex items-center gap-[var(--spacing-gap-sm)]">
-                    <div className="size-3 rounded-[var(--radius-full)] bg-primary" />
-                    <span className="text-[length:var(--text-xs)] font-bold">Primary Site</span>
+                    <div className="w-[var(--spacing-element-xs)] h-[var(--spacing-element-xs)] rounded-[var(--radius-full)] bg-primary" />
+                    <span className="text-[length:var(--text-xs)] font-[var(--font-weight-bold)]">Primary Site</span>
                   </div>
                   <div className="flex items-center gap-[var(--spacing-gap-sm)]">
-                    <div className="size-3 rounded-[var(--radius-full)] bg-accent" />
-                    <span className="text-[length:var(--text-xs)] font-bold">Base Camp</span>
+                    <div className="w-[var(--spacing-element-xs)] h-[var(--spacing-element-xs)] rounded-[var(--radius-full)] bg-accent" />
+                    <span className="text-[length:var(--text-xs)] font-[var(--font-weight-bold)]">Base Camp</span>
                   </div>
                 </div>
               </div>

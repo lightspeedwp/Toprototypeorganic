@@ -169,7 +169,7 @@ export function MobileMenuPanel({
 
     return (
       <li key={item.id}>
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center justify-between gap-[var(--spacing-gap-sm)]">
           {/* Menu link */}
           <a
             href={item.url}
@@ -179,16 +179,16 @@ export function MobileMenuPanel({
               onNavigate?.(item.url);
             }}
             className={cn(
-              "flex-1 py-3 px-4 rounded-md",
+              "flex-1 py-[var(--spacing-element-md)] px-[var(--spacing-element-lg)] rounded-[var(--radius-md)]",
               "cursor-pointer",
               "transition-all duration-200",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
               // Active state
               item.isActive 
-                ? "wp-bg-primary-light font-medium" 
+                ? "wp-bg-primary-light font-[var(--font-weight-medium)]" 
                 : "text-foreground hover:bg-muted",
               // Level-based size
-              level === 0 ? "text-lg" : "text-base ml-6"
+              level === 0 ? "text-[length:var(--text-lg)]" : "text-[length:var(--text-base)] ml-[var(--spacing-element-xl)]"
             )}
             aria-current={item.isActive ? 'page' : undefined}
           >
@@ -203,7 +203,7 @@ export function MobileMenuPanel({
               aria-haspopup="true"
               aria-label={`Toggle ${item.title} submenu`}
               className={cn(
-                "p-3 rounded-md",
+                "p-[var(--spacing-element-sm)] rounded-[var(--radius-md)]",
                 "hover:bg-muted",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 "transition-all duration-200"
@@ -221,7 +221,7 @@ export function MobileMenuPanel({
 
         {/* Submenu */}
         {hasSubMenu && isSubmenuOpen && (
-          <ul className="mt-2 space-y-1">
+          <ul className="mt-[var(--spacing-gap-sm)] space-y-[var(--spacing-gap-xs)]">
             {item.children!.map((child) => renderNavItem(child, level + 1))}
           </ul>
         )}
@@ -244,9 +244,9 @@ export function MobileMenuPanel({
       )}
     >
       {/* Header: Logo + Close Button */}
-      <header className="flex items-center justify-between p-6 border-b border-border">
+      <header className="flex items-center justify-between p-[var(--spacing-element-xl)] border-b border-border">
         {/* Logo */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-[var(--spacing-gap-md)]">
           <SiteLogo width="180px" />
         </div>
 
@@ -255,7 +255,7 @@ export function MobileMenuPanel({
           onClick={handleClose}
           aria-label="Close menu"
           className={cn(
-            "p-3 rounded-full",
+            "p-[var(--spacing-element-sm)] rounded-[var(--radius-full)]",
             "bg-muted hover:bg-muted/80",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
             "transition-all duration-200",
@@ -269,12 +269,12 @@ export function MobileMenuPanel({
       {/* Scrollable Content */}
       <div className="overflow-y-auto h-[calc(100vh-80px)]">
         {/* Search Bar */}
-        <div className="p-6 border-b border-border">
+        <div className="p-[var(--spacing-element-xl)] border-b border-border">
           {!isSearchOpen ? (
             <button
               onClick={() => setIsSearchOpen(true)}
               className={cn(
-                "w-full flex items-center gap-3 p-4 rounded-lg",
+                "w-full flex items-center gap-[var(--spacing-gap-md)] p-[var(--spacing-element-lg)] rounded-[var(--radius-lg)]",
                 "bg-muted hover:bg-muted/80",
                 "text-muted-foreground",
                 "transition-all duration-200",
@@ -286,7 +286,7 @@ export function MobileMenuPanel({
             </button>
           ) : (
             <form onSubmit={handleSearchSubmit} className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <Search className="absolute left-[var(--spacing-element-lg)] top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
               <input
                 type="text"
                 value={searchQuery}
@@ -294,7 +294,7 @@ export function MobileMenuPanel({
                 placeholder="Search tours, destinations..."
                 autoFocus
                 className={cn(
-                  "w-full pl-12 pr-12 py-4 rounded-lg",
+                  "w-full pl-[var(--spacing-element-3xl)] pr-[var(--spacing-element-3xl)] py-[var(--spacing-element-lg)] rounded-[var(--radius-lg)]",
                   "bg-muted border-2 border-primary",
                   "text-foreground placeholder:text-muted-foreground",
                   "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
@@ -304,7 +304,7 @@ export function MobileMenuPanel({
               <button
                 type="button"
                 onClick={() => setIsSearchOpen(false)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-background rounded-md"
+                className="absolute right-[var(--spacing-element-lg)] top-1/2 -translate-y-1/2 p-[var(--spacing-element-xs)] hover:bg-background rounded-[var(--radius-md)]"
                 aria-label="Close search"
               >
                 <X className="h-5 w-5" />
@@ -314,11 +314,11 @@ export function MobileMenuPanel({
         </div>
 
         {/* Primary CTA */}
-        <div className="p-6 border-b border-border">
+        <div className="p-[var(--spacing-element-xl)] border-b border-border">
           <Button
             onClick={handleCTAClick}
             size="lg"
-            className="w-full text-lg py-6"
+            className="w-full text-[length:var(--text-lg)] py-[var(--spacing-element-xl)]"
           >
             <Phone className="h-5 w-5" />
             Request a Quote
@@ -326,24 +326,24 @@ export function MobileMenuPanel({
         </div>
 
         {/* Theme Toggle */}
-        <div className="p-6 border-b border-border">
+        <div className="p-[var(--spacing-element-xl)] border-b border-border">
           <button
             onClick={onThemeToggle}
             className={cn(
-              "w-full flex items-center justify-between p-4 rounded-lg",
+              "w-full flex items-center justify-between p-[var(--spacing-element-lg)] rounded-[var(--radius-lg)]",
               "bg-muted hover:bg-muted/80",
               "transition-all duration-200",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             )}
             aria-label="Toggle theme"
           >
-            <span className="flex items-center gap-3">
+            <span className="flex items-center gap-[var(--spacing-gap-md)]">
               {theme === 'light' ? (
                 <Sun className="h-5 w-5 text-accent" />
               ) : (
                 <Moon className="h-5 w-5 text-info" />
               )}
-              <span className="font-medium">
+              <span className="font-[var(--font-weight-medium)]">
                 {theme === 'light' ? 'Light Mode' : 'Dark Mode'}
               </span>
             </span>
@@ -352,22 +352,22 @@ export function MobileMenuPanel({
         </div>
 
         {/* Navigation Menu */}
-        <nav className="p-6" role="navigation" aria-label="Main navigation">
+        <nav className="p-[var(--spacing-element-xl)]" role="navigation" aria-label="Main navigation">
           <h2 className="sr-only">Main Menu</h2>
-          <ul className="space-y-2 list-none">
+          <ul className="space-y-[var(--spacing-gap-sm)] list-none">
             {menu.map((item) => renderNavItem(item))}
           </ul>
         </nav>
 
         {/* Quick Contact Links */}
-        <div className="p-6 border-t border-border wp-bg-muted-ultralight">
-          <h3 className="font-medium mb-4">Get in Touch</h3>
-          <div className="space-y-3">
+        <div className="p-[var(--spacing-element-xl)] border-t border-border wp-bg-muted-ultralight">
+          <h3 className="font-[var(--font-weight-medium)] mb-[var(--spacing-element-md)] m-0">Get in Touch</h3>
+          <div className="space-y-[var(--spacing-gap-md)]">
             {/* Phone */}
             <a
               href="tel:+1234567890"
               className={cn(
-                "flex items-center gap-3 p-3 rounded-lg",
+                "flex items-center gap-[var(--spacing-gap-md)] p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)]",
                 "hover:bg-background",
                 "transition-colors duration-200",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
@@ -381,7 +381,7 @@ export function MobileMenuPanel({
             <a
               href="mailto:info@example.com"
               className={cn(
-                "flex items-center gap-3 p-3 rounded-lg",
+                "flex items-center gap-[var(--spacing-gap-md)] p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)]",
                 "hover:bg-background",
                 "transition-colors duration-200",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
@@ -394,7 +394,7 @@ export function MobileMenuPanel({
             {/* Address */}
             <div
               className={cn(
-                "flex items-center gap-3 p-3 rounded-lg",
+                "flex items-center gap-[var(--spacing-gap-md)] p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)]",
                 "text-foreground"
               )}
             >
@@ -405,8 +405,8 @@ export function MobileMenuPanel({
         </div>
 
         {/* Footer Note */}
-        <div className="p-6 text-center text-sm text-muted-foreground">
-          <p>© 2024 LightSpeed Tours. All rights reserved.</p>
+        <div className="p-[var(--spacing-element-xl)] text-center text-[length:var(--text-sm)] text-muted-foreground">
+          <p className="m-0">© 2024 LightSpeed Tours. All rights reserved.</p>
         </div>
       </div>
     </div>
