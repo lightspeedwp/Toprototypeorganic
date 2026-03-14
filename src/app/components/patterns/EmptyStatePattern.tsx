@@ -67,35 +67,35 @@ export function EmptyStatePattern({
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="text-center"
+          className="text-center flex flex-col items-center"
         >
           {/* Icon Wrapper */}
-          <div className="flex justify-center mb-[var(--spacing-gap-2xl)]">
-            <div className="w-[var(--spacing-element-5xl)] h-[var(--spacing-element-5xl)] rounded-[var(--radius-3xl)] bg-muted flex items-center justify-center text-muted-foreground/40 relative">
-              <div className="absolute inset-0 bg-primary/5 rounded-[var(--radius-3xl)] animate-pulse" />
+          <div className="flex justify-center pb-fluid-2xl">
+            <div className="w-[var(--spacing-element-5xl)] h-[var(--spacing-element-5xl)] rounded-[var(--radius-3xl)] bg-[color:var(--color-muted)] flex items-center justify-center text-[color:var(--color-muted-foreground)]/40 relative">
+              <div className="absolute inset-0 bg-[color:var(--color-primary)]/5 rounded-[var(--radius-3xl)] animate-pulse" />
               {isCustomIcon ? icon : <IconComp className="w-[var(--spacing-element-2xl)] h-[var(--spacing-element-2xl)] relative z-10" aria-hidden="true" />}
             </div>
           </div>
 
           {/* Text Content */}
-          <HeadingBlock level={2} textAlign="center" className="mb-[var(--spacing-element-md)] text-[length:var(--text-3xl)] md:text-[length:var(--text-4xl)]">
+          <HeadingBlock level={2} textAlign="center" className="pb-element-md !m-0 text-[length:var(--text-3xl)] md:text-[length:var(--text-4xl)] font-[family:var(--font-family-lora)] text-[color:var(--color-foreground)]">
             {title}
           </HeadingBlock>
           
-          <ParagraphBlock className="text-muted-foreground text-[length:var(--text-lg)] mb-[var(--spacing-gap-3xl)] max-w-lg mx-auto m-0">
+          <ParagraphBlock className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] text-[length:var(--text-lg)] pb-fluid-3xl max-w-lg self-center !m-0">
             {displayMessage}
           </ParagraphBlock>
 
           {/* Actions */}
           {resolvedActions.length > 0 && (
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-[var(--spacing-gap-md)]">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-fluid-md">
               {resolvedActions.map((action, index) => (
                 <Button
                   key={index}
                   variant={action.variant as any || 'outline'}
                   size="lg"
                   onClick={action.onClick}
-                  className="rounded-[var(--radius-xl)] px-[var(--spacing-element-2xl)] min-w-[160px]"
+                  className="rounded-[var(--radius-xl)] px-element-2xl min-w-[160px]"
                 >
                   {action.label}
                 </Button>
@@ -106,7 +106,7 @@ export function EmptyStatePattern({
           {resolvedActions.length === 0 && (
             <button 
               onClick={() => window.location.reload()}
-              className="inline-flex items-center gap-[var(--spacing-gap-sm)] text-primary font-[var(--font-weight-bold)] hover:underline underline-offset-8 transition-all"
+              className="inline-flex items-center gap-fluid-sm text-primary font-[var(--font-weight-bold)] hover:underline underline-offset-8 transition-all"
             >
               <RefreshCcw className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)]" /> Refresh Discovery
             </button>

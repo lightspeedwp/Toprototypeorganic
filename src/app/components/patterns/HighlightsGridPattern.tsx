@@ -8,16 +8,17 @@
 import { Container } from "../common/Container";
 import { HeadingBlock } from "../blocks/core/HeadingBlock";
 import { ParagraphBlock } from "../blocks/core/ParagraphBlock";
-import { Icon as PhosphorIcon, Sparkle as Sparkles } from "@phosphor-icons/react";
+import { Sparkle as Sparkles } from "@phosphor-icons/react";
 import { cn } from "../../lib/utils";
 import { motion } from "motion/react";
+import { isValidElement, type ReactNode, type ComponentType } from "react";
 
 export interface Highlight {
   id: string;
   title: string;
   description: string;
   image?: string;
-  icon?: PhosphorIcon;
+  icon?: ReactNode | ComponentType<{ className?: string }>;
   href?: string;
   onClick?: () => void;
 }
@@ -51,18 +52,18 @@ export function HighlightsGridPattern({
     <section className={cn("wp-pattern-lts-highlights has-section-padding-md", className)}>
       <Container>
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end gap-[var(--spacing-gap-lg)] mb-[var(--spacing-gap-2xl)] md:mb-[var(--spacing-gap-3xl)]">
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-[var(--spacing-gap-sm)] mb-[var(--spacing-element-md)]">
-              <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)] bg-primary/10 text-primary">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-fluid-lg pb-fluid-2xl md:pb-fluid-3xl">
+          <div className="max-w-2xl flex flex-col gap-element-md">
+            <div className="flex items-center gap-fluid-sm">
+              <div className="p-element-sm rounded-[var(--radius-lg)] bg-[color:var(--color-primary)]/10 text-[color:var(--color-primary)]">
                 <Sparkles className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)]" />
               </div>
-              <HeadingBlock level={2} className="mb-0">
+              <HeadingBlock level={2} className="!m-0 font-[family:var(--font-family-lora)] text-[color:var(--color-foreground)]">
                 {title}
               </HeadingBlock>
             </div>
             {description && (
-              <ParagraphBlock className="text-muted-foreground text-[length:var(--text-lg)] m-0">
+              <ParagraphBlock className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] text-[length:var(--text-lg)] !m-0">
                 {description}
               </ParagraphBlock>
             )}
@@ -70,10 +71,20 @@ export function HighlightsGridPattern({
         </div>
 
         {/* Highlights Grid */}
-        <div className={cn("grid gap-[var(--spacing-gap-lg)] md:gap-[var(--spacing-gap-xl)]", gridClasses)}>
+        <div className={cn("grid gap-fluid-lg md:gap-fluid-xl", gridClasses)}>
           {highlights.map((item, idx) => {
-            const Icon = item.icon;
             const isClickable = !!(item.href || item.onClick);
+
+            // Render icon: handle both JSX elements and component references
+            const renderIcon = () => {
+              if (!item.icon) return <Sparkles className="w-[var(--spacing-element-2xl)] h-[var(--spacing-element-2xl)]" />;
+              if (isValidElement(item.icon)) return item.icon;
+              if (typeof item.icon === 'function') {
+                const IconComponent = item.icon as ComponentType<{ className?: string }>;
+                return <IconComponent className="w-[var(--spacing-element-2xl)] h-[var(--spacing-element-2xl)]" />;
+              }
+              return <Sparkles className="w-[var(--spacing-element-2xl)] h-[var(--spacing-element-2xl)]" />;
+            };
 
             const cardContent = (
               <div className="flex flex-col h-full">
@@ -85,28 +96,30 @@ export function HighlightsGridPattern({
                       alt={item.title}
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-background)]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
                 ) : (
-                  <div className="p-[var(--spacing-element-2xl)] pb-0">
-                    <div className="w-[var(--spacing-element-4xl)] h-[var(--spacing-element-4xl)] rounded-[var(--radius-2xl)] bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 shadow-[var(--elevation-sm)]">
-                      {Icon ? <Icon className="w-[var(--spacing-element-2xl)] h-[var(--spacing-element-2xl)]" /> : <Sparkles className="w-[var(--spacing-element-2xl)] h-[var(--spacing-element-2xl)]" />}
+                  <div className="p-element-2xl pb-0">
+                    <div className="w-[var(--spacing-element-4xl)] h-[var(--spacing-element-4xl)] rounded-[var(--radius-2xl)] bg-[color:var(--color-primary)]/10 flex items-center justify-center text-[color:var(--color-primary)] group-hover:bg-[color:var(--color-primary)] group-hover:text-[color:var(--color-primary-foreground)] transition-all duration-500 shadow-[var(--elevation-sm)]">
+                      {renderIcon()}
                     </div>
                   </div>
                 )}
 
                 {/* Text Content */}
-                <div className="p-[var(--spacing-element-xl)] flex flex-col flex-1">
-                  <h3 className="text-[length:var(--text-2xl)] mb-[var(--spacing-element-md)] group-hover:text-primary transition-colors">
-                    {item.title}
-                  </h3>
-                  <ParagraphBlock className="text-muted-foreground leading-relaxed m-0">
-                    {item.description}
-                  </ParagraphBlock>
+                <div className="p-element-xl flex flex-col flex-1">
+                  <div className="flex-1 flex flex-col gap-element-md">
+                    <h3 className="text-[length:var(--text-2xl)] !m-0 font-[family:var(--font-family-lora)] text-[color:var(--color-foreground)] group-hover:text-[color:var(--color-primary)] transition-colors">
+                      {item.title}
+                    </h3>
+                    <ParagraphBlock className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] leading-relaxed !m-0">
+                      {item.description}
+                    </ParagraphBlock>
+                  </div>
                   
                   {isClickable && (
-                    <div className="mt-[var(--spacing-element-lg)] pt-[var(--spacing-element-lg)] border-t border-border/50 text-[length:var(--text-sm)] text-primary flex items-center gap-[var(--spacing-gap-xs)] opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                      <strong className="font-[var(--font-weight-bold)]">Explore Detail</strong> <span className="text-[length:var(--text-xl)]">→</span>
+                    <div className="pt-element-lg border-t border-[color:var(--color-border)]/50 text-[length:var(--text-sm)] font-[family:var(--font-family-noto-sans)] text-[color:var(--color-primary)] flex items-center gap-fluid-xs opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                      <strong className="font-[weight:var(--font-weight-bold)]">Explore Detail</strong> <span className="text-[length:var(--text-xl)]">→</span>
                     </div>
                   )}
                 </div>

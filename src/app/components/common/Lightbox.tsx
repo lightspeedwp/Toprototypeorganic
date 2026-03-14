@@ -201,7 +201,7 @@ export function Lightbox({
       {/* Close Button */}
       <button
         onClick={onClose}
-        className="absolute right-4 top-4 z-10 rounded-full bg-background/80 p-2 text-foreground transition-colors hover:bg-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+        className="absolute right-4 top-4 z-10 rounded-[var(--radius-full)] bg-background/80 p-element-xs text-foreground transition-colors hover:bg-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
         aria-label="Close lightbox"
       >
         <X size={24} />
@@ -209,7 +209,7 @@ export function Lightbox({
 
       {/* Counter */}
       {showCounter && images.length > 1 && (
-        <div className="absolute left-4 top-4 z-10 rounded-full bg-background/80 px-4 py-2 text-sm text-foreground">
+        <div className="absolute left-4 top-4 z-10 rounded-[var(--radius-full)] bg-background/80 px-element-md py-element-sm text-[length:var(--text-sm)] text-foreground">
           {currentIndex + 1} / {images.length}
         </div>
       )}
@@ -218,7 +218,7 @@ export function Lightbox({
       {showNavigation && images.length > 1 && (
         <button
           onClick={handlePrevious}
-          className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-background/80 p-3 text-foreground transition-colors hover:bg-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+          className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-[var(--radius-full)] bg-background/80 p-element-sm text-foreground transition-colors hover:bg-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
           aria-label="Previous image"
         >
           <CaretLeft size={32} />
@@ -229,7 +229,7 @@ export function Lightbox({
       {showNavigation && images.length > 1 && (
         <button
           onClick={handleNext}
-          className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-background/80 p-3 text-foreground transition-colors hover:bg-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+          className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-[var(--radius-full)] bg-background/80 p-element-sm text-foreground transition-colors hover:bg-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
           aria-label="Next image"
         >
           <CaretRight size={32} />
@@ -237,11 +237,11 @@ export function Lightbox({
       )}
 
       {/* Image Container */}
-      <div className="relative flex h-full w-full flex-col items-center justify-center p-4 md:p-8">
+      <div className="relative flex h-full w-full flex-col items-center justify-center p-element-md md:p-element-xl">
         {/* Loading Spinner */}
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+            <div className="h-12 w-12 animate-spin rounded-[var(--radius-full)] border-4 border-primary border-t-transparent" />
           </div>
         )}
 
@@ -258,9 +258,9 @@ export function Lightbox({
 
         {/* Caption */}
         {showCaption && (currentImage.caption || currentImage.title) && (
-          <div className="mt-4 max-w-3xl rounded-lg bg-background/80 p-4 text-center">
+          <div className="pt-element-md max-w-3xl rounded-[var(--radius-lg)] bg-[color:var(--color-background)]/80 p-element-md text-center">
             {currentImage.title && (
-              <h3 className="mb-2 text-foreground">{currentImage.title}</h3>
+              <h3 className="pb-element-sm text-[color:var(--color-foreground)]">{currentImage.title}</h3>
             )}
             {currentImage.caption && (
               <p className="text-muted-foreground">{currentImage.caption}</p>

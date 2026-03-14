@@ -115,7 +115,7 @@ export function BreadcrumbsPattern({
   const content = (
     <nav
       aria-label="Breadcrumb"
-      className={cn("wp-pattern-breadcrumbs alignwide wp-container wp-container--xl", className)}
+      className={cn("wp-pattern-breadcrumbs alignwide wp-container wp-container--xl pt-2 pb-0", className)}
     >
       <ol className="wp-pattern-breadcrumbs__list">
         {items.map((item, index) => (

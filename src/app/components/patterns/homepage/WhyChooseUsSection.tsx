@@ -11,13 +11,13 @@
  */
 
 import { WhyChooseUsPattern } from "../WhyChooseUsPattern";
-import type { Icon as PhosphorIcon } from "@phosphor-icons/react";
+import type { ReactNode, ComponentType } from "react";
 
 /**
  * Interface for a single feature.
  */
 interface Feature {
-  icon: PhosphorIcon;
+  icon: ReactNode | ComponentType<any>;
   title: string;
   description: string;
 }

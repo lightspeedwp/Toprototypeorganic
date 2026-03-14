@@ -58,7 +58,7 @@ export function ModalTourPart({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50"
+      className="fixed inset-0 z-50 flex items-center justify-center p-element-md bg-black/50"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -69,13 +69,13 @@ export function ModalTourPart({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-5 md:p-6 border-b border-border">
+        <div className="flex items-center justify-between p-element-lg md:p-element-xl border-b border-border">
           <h2 id="modal-title">
             {title}
           </h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-muted rounded-md transition-colors"
+            className="p-element-xs hover:bg-muted rounded-[var(--radius-md)] transition-colors"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -83,7 +83,7 @@ export function ModalTourPart({
         </div>
 
         {/* Content */}
-        <div className="p-5 md:p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
+        <div className="p-element-lg md:p-element-xl overflow-y-auto max-h-[calc(90vh-80px)]">
           {children}
         </div>
       </div>

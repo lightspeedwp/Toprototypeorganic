@@ -3,6 +3,7 @@
 .theme-organic .section-hero-primary {
   --background: var(--o-surface-sun);
 }
+.dark .theme-organic .section-hero-primary,
 .dark.theme-organic .section-hero-primary {
   --background: var(--organic-sunset-bg-primary);
 }
@@ -12,6 +13,8 @@
 .theme-organic .section-card-grid-default {
   --background: var(--o-surface-clay);
 }
+.dark .theme-organic .section-content-default,
+.dark .theme-organic .section-card-grid-default,
 .dark.theme-organic .section-content-default,
 .dark.theme-organic .section-card-grid-default {
   --background: var(--organic-clay-bg-primary);
@@ -101,6 +104,12 @@
 }
 
 /* Dark mode specific foreground overrides for primary buttons */
+.dark .theme-organic .organic-section-top,
+.dark .theme-organic .organic-section-top-alt,
+.dark .theme-organic .organic-section-middle,
+.dark .theme-organic .organic-section-middle-alt,
+.dark .theme-organic .organic-section-bottom,
+.dark .theme-organic .organic-section-bottom-alt,
 .dark.theme-organic .organic-section-top,
 .dark.theme-organic .organic-section-top-alt,
 .dark.theme-organic .organic-section-middle,

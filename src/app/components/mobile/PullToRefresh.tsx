@@ -161,7 +161,7 @@ export function PullToRefresh({
           transition: isRefreshing || !canPull ? "all 0.3s ease-out" : "none",
         }}
       >
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-fluid-xs">
           <RefreshCw
             className={cn("transition-transform", indicatorColor)}
             size={24}
@@ -171,10 +171,10 @@ export function PullToRefresh({
             }}
           />
           {progress >= 1 && !isRefreshing && (
-            <span className="text-xs text-muted-foreground">Release to refresh</span>
+            <span className="text-[length:var(--text-sm)] text-muted-foreground">Release to refresh</span>
           )}
           {isRefreshing && (
-            <span className="text-xs text-muted-foreground">Refreshing...</span>
+            <span className="text-[length:var(--text-sm)] text-muted-foreground">Refreshing...</span>
           )}
         </div>
       </div>

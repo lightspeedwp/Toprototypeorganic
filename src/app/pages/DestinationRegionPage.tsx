@@ -93,8 +93,8 @@ export function DestinationRegionPage() {
       {relatedTours.length > 0 && (
         <section className="py-section-md bg-muted/20 border-y border-border/50">
           <Container>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-serif font-semibold mb-4">Safaris Including {destination.title}</h2>
+            <div className="text-center pb-12 flex flex-col gap-4 items-center">
+              <h2 className="text-3xl font-serif font-semibold">Safaris Including {destination.title}</h2>
               <p className="text-muted-foreground">Discover tours that visit this spectacular area.</p>
             </div>
             <CardGrid columns={3}>
@@ -110,8 +110,8 @@ export function DestinationRegionPage() {
       {relatedAccommodation.length > 0 && (
         <section className="py-section-md">
           <Container>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-serif font-semibold mb-4">Where to Stay</h2>
+            <div className="text-center pb-12 flex flex-col gap-4 items-center">
+              <h2 className="text-3xl font-serif font-semibold">Where to Stay</h2>
               <p className="text-muted-foreground">Our hand-picked lodges and boutique hotels in {destination.title}.</p>
             </div>
             <CardGrid columns={3}>
@@ -127,8 +127,8 @@ export function DestinationRegionPage() {
       {consultant && (
         <section className="py-section-md bg-muted/30 border-y border-border/50">
           <Container maxWidth="narrow">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl font-serif font-semibold mb-2">Region Specialist</h2>
+            <div className="text-center pb-12 flex flex-col gap-2 items-center">
+              <h2 className="text-2xl font-serif font-semibold">Region Specialist</h2>
               <p className="text-muted-foreground">Get expert advice from our consultant who knows {destination.title} intimately.</p>
             </div>
             <TeamCard member={consultant} onClick={() => navigateToTeamMember(consultant.slug)} />
@@ -140,7 +140,7 @@ export function DestinationRegionPage() {
       {relatedReviews.length > 0 && (
         <section className="py-section-md">
           <Container>
-            <h2 className="text-3xl font-serif font-semibold mb-8 text-center">Traveler Experiences</h2>
+            <h2 className="text-3xl font-serif font-semibold pb-8 text-center">Traveler Experiences</h2>
             <CardGrid columns={3}>
               {relatedReviews.map((review) => (
                 <ReviewCard key={review.id} review={review} />

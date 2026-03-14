@@ -58,10 +58,10 @@ export function AuthorBioPattern({
         <article className={cn(
           "wp-pattern-author-bio",
           `wp-pattern-author-bio--${variant}`,
-          "bg-card border border-border rounded-[var(--radius-lg)] p-[var(--spacing-element-xl)] md:p-[var(--spacing-element-2xl)]"
+          "bg-card border border-border rounded-[var(--radius-lg)] p-element-xl md:p-element-2xl"
         )}>
           <div className={cn(
-            "flex gap-[var(--spacing-gap-lg)] md:gap-[var(--spacing-gap-xl)]",
+            "flex gap-fluid-lg md:gap-fluid-xl",
             isCompact || isInline ? "flex-row items-start" : "flex-col md:flex-row md:items-center"
           )}>
             {/* Avatar */}
@@ -79,17 +79,17 @@ export function AuthorBioPattern({
             )}
 
             {/* Author Info */}
-            <div className="flex-1 flex flex-col gap-[var(--spacing-gap-lg)]">
+            <div className="flex-1 flex flex-col gap-fluid-lg">
               {/* Header */}
-              <div className="flex flex-col gap-[var(--spacing-gap-xs)]">
+              <div className="flex flex-col gap-fluid-xs">
                 <HeadingBlock 
                   level={isCompact ? 4 : 3}
-                  className="!mb-0"
+                  className="m-0"
                 >
                   {name}
                 </HeadingBlock>
                 {role && (
-                  <p className="text-primary text-[length:var(--text-sm)] md:text-[length:var(--text-base)] !mb-0">
+                  <p className="text-[color:var(--color-primary)] font-[family:var(--font-family-noto-sans)] text-[length:var(--text-sm)] md:text-[length:var(--text-base)] m-0">
                     {role}
                   </p>
                 )}
@@ -97,13 +97,13 @@ export function AuthorBioPattern({
 
               {/* Bio */}
               <div>
-                <ParagraphBlock className="text-muted-foreground !mb-0">
+                <ParagraphBlock className="text-[color:var(--color-muted-foreground)] m-0">
                   {bio}
                 </ParagraphBlock>
               </div>
 
               {/* Footer Meta & Social */}
-              <div className="flex flex-wrap items-center justify-between gap-[var(--spacing-gap-md)] pt-[var(--spacing-element-lg)] border-t border-border/50">
+              <div className="flex flex-wrap items-center justify-between gap-fluid-md pt-element-lg border-t border-border/50">
                 {articleCount !== undefined && (
                   <span className="text-[length:var(--text-sm)] text-muted-foreground">
                     {articleCount} {articleCount === 1 ? 'article' : 'articles'}
@@ -111,7 +111,7 @@ export function AuthorBioPattern({
                 )}
 
                 {socialLinks.length > 0 && (
-                  <nav className="flex items-center gap-[var(--spacing-gap-sm)]" aria-label={`Social links for ${name}`}>
+                  <nav className="flex items-center gap-fluid-sm" aria-label={`Social links for ${name}`}>
                     {socialLinks.map((social, index) => {
                       const Icon = socialIcons[social.platform as keyof typeof socialIcons] || Globe;
                       
@@ -121,7 +121,7 @@ export function AuthorBioPattern({
                           href={social.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-[var(--spacing-element-sm)] text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-[var(--radius-full)] transition-all"
+                          className="p-element-sm text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-[var(--radius-full)] transition-all"
                           aria-label={social.label || `${name}'s ${social.platform}`}
                         >
                           <Icon className="w-5 h-5" aria-hidden="true" />

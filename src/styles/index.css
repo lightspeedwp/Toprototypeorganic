@@ -48,6 +48,7 @@
 
 /* ── 8. Template Parts ───────────────────────────────────────────── */
 @import './parts/header.css';
+@import './parts/mega-menu.css';
 @import './parts/footer.css';
 
 /* ── 9. Page Templates ───────────────────────────────────────────── */
@@ -84,6 +85,7 @@
 @import './pages/design-system-showcase.css';
 @import './pages/design-system-example.css';
 @import './pages/component-library.css';
+@import './pages/taxonomy-hub.css';
 
 /* ── 11. Block pattern styles ────────────────────────────────────── */
 @import './patterns/mobile-menu.css';
@@ -115,6 +117,10 @@
 @import './patterns/pricing.css';
 @import './patterns/view-switcher.css';
 @import './patterns/sort-dropdown.css';
+@import './patterns/facility-chips.css';
+@import './patterns/facility-badges.css';
+@import './patterns/collapsible-filter-panel.css';
+@import './patterns/booking-wizard.css';
 
 /* ── 12. Common component styles ─────────────────────────────────── */
 @import './common/logo.css';

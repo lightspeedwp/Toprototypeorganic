@@ -1,0 +1,378 @@
+/* day-and-dusk.css — Day & Dusk Landing Page */
+/* Light = Day (blue sky, bright savanna), Dark = Dusk (sunset amber, warm night) */
+
+/* ═══════════════════════════════════════════
+   DAY & DUSK — Local Design Tokens
+   All hardcoded colors extracted to CSS variables
+   for easy customization and design system compliance.
+   ═══════════════════════════════════════════ */
+:root {
+  /* Day (light) mode tokens */
+  --dnd-day-text:         var(--foreground);
+  --dnd-day-text-subtle:  var(--muted-foreground);
+  --dnd-day-surface:      var(--card);
+  --dnd-day-btn-glass-bg: rgba(255,255,255,0.65);
+  --dnd-day-btn-glass-border: rgba(43,37,32,0.15);
+  --dnd-day-tag-bg:       rgba(92,115,62,0.1);
+
+  /* Dusk (dark) mode tokens */
+  --dnd-dusk-text:        var(--card-foreground);
+  --dnd-dusk-text-subtle: var(--muted-foreground);
+  --dnd-dusk-surface:     var(--o-night-card, var(--card));
+  --dnd-dusk-cta-bg:      var(--accent);
+  --dnd-dusk-cta-text:    var(--accent-foreground);
+  --dnd-dusk-btn-glass-bg: rgba(255,255,255,0.12);
+  --dnd-dusk-btn-glass-border: rgba(255,255,255,0.2);
+  --dnd-dusk-tag-bg:      rgba(155,178,122,0.15);
+}
+
+/* ═══════════════════════════════════════════
+   HERO — Full-viewport sky + savannah
+   ═══════════════════════════════════════════ */
+.dnd-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Day sky colors (light mode) */
+.dnd-hero__sky {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Savannah frame positioned at bottom */
+.dnd-hero__savannah {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  pointer-events: none;
+  line-height: 0;
+}
+
+.dnd-hero__savannah img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Shield medallion */
+.dnd-hero__shield {
+  width: 100px;
+  height: auto;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));
+  animation: organic-float 6s var(--ease-organic) infinite;
+}
+
+@media (min-width: 768px) {
+  .dnd-hero__shield {
+    width: 140px;
+  }
+}
+
+/* Hero text overlay — sits above sky, below savannah */
+.dnd-hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding-bottom: 28vh;
+  padding-left: var(--spacing-element-lg);
+  padding-right: var(--spacing-element-lg);
+}
+
+@media (min-width: 768px) {
+  .dnd-hero__content {
+    padding-bottom: 22vh;
+  }
+}
+
+/* DAY MODE hero text colours */
+.dnd-hero__title {
+  color: var(--dnd-day-text);
+  text-shadow: 0 2px 12px rgba(255,255,255,0.4);
+}
+
+.dnd-hero__subtitle {
+  color: var(--dnd-day-text-subtle);
+}
+
+.dnd-hero__btn-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.dnd-hero__btn-secondary {
+  background-color: var(--dnd-day-btn-glass-bg);
+  color: var(--dnd-day-text);
+  border: 1px solid var(--dnd-day-btn-glass-border);
+  backdrop-filter: blur(8px);
+}
+
+/* DUSK MODE hero text colours */
+.dark .dnd-hero__title {
+  color: var(--dnd-dusk-text);
+  text-shadow: 0 2px 20px rgba(200,121,65,0.4);
+}
+
+.dark .dnd-hero__subtitle {
+  color: var(--dnd-dusk-text-subtle);
+}
+
+.dark .dnd-hero__btn-secondary {
+  background-color: var(--dnd-dusk-btn-glass-bg);
+  color: var(--dnd-dusk-text);
+  border: 1px solid var(--dnd-dusk-btn-glass-border);
+}
+
+/* ═══════════════════════════════════════════
+   SECTION — Day / Dusk aware backgrounds
+   ═══════════════════════════════════════════ */
+.dnd-section--sand {
+  background-color: var(--organic-sunset-bg-primary);
+  color: var(--organic-sunset-text);
+  background-image: var(--texture-grain-micro);
+  background-blend-mode: multiply;
+}
+
+.dnd-section--clay {
+  background-color: var(--organic-clay-bg-primary);
+  color: var(--organic-clay-text);
+  background-image: var(--texture-grain-micro);
+  background-blend-mode: multiply;
+}
+
+.dnd-section--linen {
+  background-color: var(--organic-earth-bg-primary);
+  color: var(--organic-earth-text);
+  background-image: var(--texture-grain-micro);
+  background-blend-mode: multiply;
+}
+
+/* Muted foreground for each section */
+.dnd-section--sand .dnd-muted { color: var(--organic-sunset-text-muted); }
+.dnd-section--clay .dnd-muted { color: var(--organic-clay-text-muted); }
+.dnd-section--linen .dnd-muted { color: var(--organic-earth-text-muted); }
+
+/* ═══════════════════════════════════════════
+   CARDS — Proper day/dusk styling
+   ═══════════════════════════════════════════ */
+.dnd-card {
+  border-radius: var(--organic-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--elevation-sm);
+  transition: all var(--duration-organic-long) var(--ease-organic);
+  background-image: var(--texture-grain-micro);
+  background-blend-mode: multiply;
+}
+
+/* Day cards */
+.dnd-card {
+  background-color: var(--dnd-day-surface);
+  color: var(--organic-sunset-text);
+}
+
+/* Dusk cards */
+.dark .dnd-card {
+  background-color: var(--dnd-dusk-surface);
+  color: var(--o-night-ink, var(--card-foreground));
+}
+
+.dnd-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--elevation-md, 0 4px 12px rgba(0,0,0,0.15));
+}
+
+.dnd-card__image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.dnd-card__body {
+  padding: var(--spacing-element-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-sm);
+}
+
+.dnd-card__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-gap-xs);
+  padding: var(--spacing-element-xs) var(--spacing-element-sm);
+  border-radius: var(--organic-radius-pebble);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+}
+
+/* Day tag */
+.dnd-card__tag {
+  background-color: var(--dnd-day-tag-bg);
+  color: var(--primary);
+}
+
+/* Dusk tag */
+.dark .dnd-card__tag {
+  background-color: var(--dnd-dusk-tag-bg);
+  color: var(--primary);
+}
+
+/* ═══════════════════════════════════════════
+   QUOTE — Day/Dusk aware
+   ═══════════════════════════════════════════ */
+.dnd-quote {
+  position: relative;
+  padding: var(--spacing-element-xl) var(--spacing-element-2xl);
+  border-radius: var(--organic-radius-lg);
+  box-shadow: var(--elevation-sm);
+  background-image: var(--texture-grain-micro);
+  background-blend-mode: multiply;
+}
+
+.dnd-quote { background-color: var(--dnd-day-surface); }
+.dark .dnd-quote { background-color: var(--dnd-dusk-surface); }
+
+.dnd-quote::before {
+  content: "\201C";
+  font-family: var(--font-family-lora);
+  font-size: 4rem;
+  color: var(--primary);
+  opacity: 0.25;
+  position: absolute;
+  top: var(--spacing-element-sm);
+  left: var(--spacing-element-lg);
+  line-height: 1;
+}
+
+/* ═══════════════════════════════════════════
+   CTA BANNER — Day/Dusk versions
+   ═══════════════════════════════════════════ */
+.dnd-cta {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--organic-radius-xl);
+  padding: var(--spacing-section-md);
+  text-align: center;
+}
+
+/* Day CTA — warm terracotta */
+.dnd-cta {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* Dusk CTA — deeper, richer */
+.dark .dnd-cta {
+  background-color: var(--dnd-dusk-cta-bg);
+  color: var(--dnd-dusk-cta-text);
+}
+
+.dnd-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--texture-grain-micro);
+  background-blend-mode: overlay;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════
+   BOTANICAL CORNERS — Day/Dusk opacity
+   ═══════════════════════════════════════════ */
+.dnd-botanical {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.dnd-botanical { opacity: 0.12; }
+.dark .dnd-botanical { opacity: 0.08; }
+
+.dnd-botanical--top-right {
+  top: 0;
+  right: 0;
+  width: 180px;
+  height: auto;
+}
+
+.dnd-botanical--bottom-left {
+  bottom: 0;
+  left: 0;
+  width: 180px;
+  height: auto;
+  transform: rotate(180deg);
+}
+
+@media (min-width: 768px) {
+  .dnd-botanical--top-right,
+  .dnd-botanical--bottom-left {
+    width: 280px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   WAVE DIVIDER
+   ═══════════════════════════════════════════ */
+.dnd-wave {
+  position: relative;
+  height: 60px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+@media (min-width: 768px) {
+  .dnd-wave {
+    height: 80px;
+  }
+}
+
+.dnd-wave svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ═══════════════════════════════════════════
+   STATS — trust row
+   ═══════════════════════════════════════════ */
+.dnd-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-gap-lg);
+}
+
+.dnd-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-gap-xs);
+}
+
+.dnd-stat__value {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+}
+
+.dnd-stat__label {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--organic-sunset-text-muted);
+}
+
+.dark .dnd-stat__label {
+  color: var(--organic-sunset-text-muted);
+}

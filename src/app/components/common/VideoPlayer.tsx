@@ -174,11 +174,11 @@ export function VideoPlayer({
           className="absolute inset-0 flex items-center justify-center bg-muted transition-colors hover:bg-muted/80"
           aria-label={`Load video: ${title}`}
         >
-          <div className="text-center">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
+          <div className="text-center flex flex-col items-center gap-element-md">
+            <div className="flex h-16 w-16 items-center justify-center rounded-[var(--radius-full)] bg-primary text-primary-foreground">
               <Play size={32} fill="currentColor" />
             </div>
-            <p className="text-sm text-muted-foreground">Click to load video</p>
+            <p className="text-[length:var(--text-sm)] text-muted-foreground">Click to load video</p>
           </div>
         </button>
       ) : (
@@ -261,7 +261,7 @@ export function VideoGallery({
   return (
     <div className={cn("grid gap-6", columnClass, className)}>
       {videos.map((video, index) => (
-        <div key={index} className="space-y-3">
+        <div key={index} className="flex flex-col gap-3">
           <VideoPlayer
             src={video.src}
             source={video.source}
@@ -269,12 +269,12 @@ export function VideoGallery({
             lazyLoad
           />
           {(video.title || video.description) && (
-            <div>
+            <div className="flex flex-col gap-element-xs">
               {video.title && (
-                <h3 className="mb-1 text-foreground">{video.title}</h3>
+                <h3 className="text-foreground">{video.title}</h3>
               )}
               {video.description && (
-                <p className="text-sm text-muted-foreground">
+                <p className="text-[length:var(--text-sm)] text-muted-foreground">
                   {video.description}
                 </p>
               )}

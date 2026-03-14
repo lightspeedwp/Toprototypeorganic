@@ -249,8 +249,8 @@ export function BookingWizard({
     <section className={cn("py-section-sm md:py-section-md bg-background", className)}>
       <Container>
         {/* Progress Indicator */}
-        <div className="mb-[var(--spacing-gap-2xl)] md:mb-[var(--spacing-gap-3xl)]">
-          <div className="flex items-center justify-between mb-[var(--spacing-gap-md)]">
+        <div className="flex flex-col gap-fluid-2xl md:gap-fluid-3xl pb-fluid-2xl md:pb-fluid-3xl">
+          <div className="flex items-center justify-between pb-fluid-md">
             {BOOKING_STEPS.map((step, index) => {
               const StepIcon = step.icon;
               const isActive = index === currentStep;
@@ -273,12 +273,12 @@ export function BookingWizard({
                     )}
                   </div>
                   
-                  <div className="mt-[var(--spacing-element-sm)] text-center hidden md:block">
+                  <div className="pt-element-sm text-center hidden md:flex md:flex-col md:gap-fluid-xs">
                     <p
                       className={cn(
-                        "text-[length:var(--text-sm)] font-[var(--font-weight-medium)] transition-colors m-0",
-                        isActive && "text-primary",
-                        !isActive && "text-muted-foreground"
+                        "text-[length:var(--text-sm)] font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] transition-colors m-0",
+                        isActive && "text-[color:var(--color-primary)]",
+                        !isActive && "text-[color:var(--color-muted-foreground)]"
                       )}
                     >
                       {step.label}
@@ -299,12 +299,12 @@ export function BookingWizard({
           </div>
 
           {/* Mobile step label */}
-          <div className="md:hidden text-center mt-[var(--spacing-gap-md)]">
-            <p className="text-[length:var(--text-sm)] text-muted-foreground m-0">
+          <div className="md:hidden text-center pt-fluid-md flex flex-col gap-fluid-xs">
+            <p className="text-[length:var(--text-sm)] text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] m-0">
               Step {currentStep + 1} of {BOOKING_STEPS.length}
             </p>
-            <h3 className="mt-[var(--spacing-element-xs)] mb-0">{currentStepData.label}</h3>
-            <p className="text-[length:var(--text-sm)] text-muted-foreground mt-[var(--spacing-element-xs)] m-0">
+            <h3 className="m-0 font-[family:var(--font-family-lora)]">{currentStepData.label}</h3>
+            <p className="text-[length:var(--text-sm)] text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] m-0">
               {currentStepData.description}
             </p>
           </div>
@@ -318,19 +318,19 @@ export function BookingWizard({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3 }}
-            className="bg-card border border-border rounded-[var(--radius-lg)] p-[var(--spacing-element-xl)] md:p-[var(--spacing-element-2xl)] mb-[var(--spacing-gap-xl)]"
+            className="bg-[color:var(--color-card)] border border-[color:var(--color-border)] rounded-[var(--radius-lg)] p-element-xl md:p-element-2xl"
           >
             {/* Step 1: Date Selection */}
             {currentStep === 0 && (
               <div>
-                <h2 className="mb-[var(--spacing-element-sm)]">Select Your Travel Date</h2>
-                <p className="text-muted-foreground mb-[var(--spacing-gap-lg)] m-0">
+                <h2 className="pb-element-sm m-0 font-[family:var(--font-family-lora)] text-[color:var(--color-foreground)]">Select Your Travel Date</h2>
+                <p className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] pb-fluid-lg m-0">
                   Choose when you'd like to start your {tour.title} adventure
                 </p>
                 
-                <div className="space-y-[var(--spacing-gap-md)]">
+                <div className="flex flex-col gap-fluid-md">
                   <div>
-                    <label htmlFor="travel-date" className="mb-[var(--spacing-element-sm)] block">
+                    <label htmlFor="travel-date" className="pb-element-sm block font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">
                       Departure Date
                     </label>
                     <input
@@ -340,7 +340,7 @@ export function BookingWizard({
                       onChange={(e) => updateBookingData("selectedDate", e.target.value)}
                       min={new Date().toISOString().split("T")[0]}
                       className={cn(
-                        "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
+                        "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
                         "bg-input-background border border-border",
                         "text-foreground",
                         "focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
@@ -350,11 +350,11 @@ export function BookingWizard({
 
                   {bookingData.selectedDate && (
                     <div className="wp-callout-accent">
-                      <div className="flex items-start gap-[var(--spacing-gap-md)]">
-                        <Calendar className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                        <div>
-                          <p className="font-[var(--font-weight-medium)] m-0">Selected Date</p>
-                          <p className="text-[length:var(--text-sm)] text-muted-foreground mt-[var(--spacing-element-xs)] m-0">
+                      <div className="flex items-start gap-fluid-md">
+                        <Calendar className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)] text-[color:var(--color-primary)] flex-shrink-0" />
+                        <div className="flex flex-col gap-fluid-xs">
+                          <p className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] m-0">Selected Date</p>
+                          <p className="text-[length:var(--text-sm)] text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] m-0">
                             {new Date(bookingData.selectedDate).toLocaleDateString("en-US", {
                               weekday: "long",
                               year: "numeric",
@@ -373,14 +373,14 @@ export function BookingWizard({
             {/* Step 2: Passenger Details */}
             {currentStep === 1 && (
               <div>
-                <h2 className="mb-[var(--spacing-element-sm)]">Passenger Information</h2>
-                <p className="text-muted-foreground mb-[var(--spacing-gap-lg)] m-0">
+                <h2 className="pb-element-sm m-0 font-[family:var(--font-family-lora)] text-[color:var(--color-foreground)]">Passenger Information</h2>
+                <p className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] pb-fluid-lg m-0">
                   How many people will be traveling?
                 </p>
 
                 <div className="wp-booking-wizard__passengers-grid">
                   <div>
-                    <label htmlFor="adults" className="mb-[var(--spacing-element-sm)] block">
+                    <label htmlFor="adults" className="pb-element-sm block font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">
                       Adults (18+)
                     </label>
                     <input
@@ -396,7 +396,7 @@ export function BookingWizard({
                         })
                       }
                       className={cn(
-                        "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
+                        "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
                         "bg-input-background border border-border",
                         "text-foreground",
                         "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -405,7 +405,7 @@ export function BookingWizard({
                   </div>
 
                   <div>
-                    <label htmlFor="children" className="mb-[var(--spacing-element-sm)] block">
+                    <label htmlFor="children" className="pb-element-sm block font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">
                       Children (2-17)
                     </label>
                     <input
@@ -421,7 +421,7 @@ export function BookingWizard({
                         })
                       }
                       className={cn(
-                        "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
+                        "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
                         "bg-input-background border border-border",
                         "text-foreground",
                         "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -430,7 +430,7 @@ export function BookingWizard({
                   </div>
 
                   <div>
-                    <label htmlFor="infants" className="mb-[var(--spacing-element-sm)] block">
+                    <label htmlFor="infants" className="pb-element-sm block font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">
                       Infants (0-1)
                     </label>
                     <input
@@ -446,7 +446,7 @@ export function BookingWizard({
                         })
                       }
                       className={cn(
-                        "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
+                        "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
                         "bg-input-background border border-border",
                         "text-foreground",
                         "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -456,17 +456,19 @@ export function BookingWizard({
                 </div>
 
                 {/* Passenger Count Summary */}
-                <div className="wp-callout-accent mt-[var(--spacing-gap-xl)]">
-                  <div className="flex items-start gap-[var(--spacing-gap-md)]">
-                    <Users className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="font-[var(--font-weight-medium)] m-0">Total Passengers</p>
-                      <p className="text-[length:var(--text-sm)] text-muted-foreground mt-[var(--spacing-element-xs)] m-0">
-                        {bookingData.passengers.adults + 
-                         bookingData.passengers.children + 
-                         bookingData.passengers.infants}{" "}
-                        travelers
-                      </p>
+                <div className="pt-fluid-xl">
+                  <div className="wp-callout-accent">
+                    <div className="flex items-start gap-fluid-md">
+                      <Users className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)] text-[color:var(--color-primary)] flex-shrink-0" />
+                      <div className="flex flex-col gap-fluid-xs">
+                        <p className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] m-0">Total Passengers</p>
+                        <p className="text-[length:var(--text-sm)] text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] m-0">
+                          {bookingData.passengers.adults + 
+                           bookingData.passengers.children + 
+                           bookingData.passengers.infants}{" "}
+                          travelers
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -476,14 +478,14 @@ export function BookingWizard({
             {/* Step 3: Contact Information */}
             {currentStep === 2 && (
               <div>
-                <h2 className="mb-[var(--spacing-element-sm)]">Contact Information</h2>
-                <p className="text-muted-foreground mb-[var(--spacing-gap-lg)] m-0">
+                <h2 className="pb-element-sm m-0 font-[family:var(--font-family-lora)] text-[color:var(--color-foreground)]">Contact Information</h2>
+                <p className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] pb-fluid-lg m-0">
                   Primary contact details for this booking
                 </p>
 
                 <div className="wp-booking-wizard__contact-grid">
                   <div>
-                    <label htmlFor="firstName" className="mb-[var(--spacing-element-sm)] block">
+                    <label htmlFor="firstName" className="pb-element-sm block font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">
                       First Name *
                     </label>
                     <input
@@ -498,7 +500,7 @@ export function BookingWizard({
                         })
                       }
                       className={cn(
-                        "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
+                        "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
                         "bg-input-background border border-border",
                         "text-foreground",
                         "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -507,7 +509,7 @@ export function BookingWizard({
                   </div>
 
                   <div>
-                    <label htmlFor="lastName" className="mb-[var(--spacing-element-sm)] block">
+                    <label htmlFor="lastName" className="pb-element-sm block font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">
                       Last Name *
                     </label>
                     <input
@@ -522,7 +524,7 @@ export function BookingWizard({
                         })
                       }
                       className={cn(
-                        "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
+                        "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
                         "bg-input-background border border-border",
                         "text-foreground",
                         "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -531,7 +533,7 @@ export function BookingWizard({
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="mb-[var(--spacing-element-sm)] block">
+                    <label htmlFor="email" className="pb-element-sm block font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">
                       Email Address *
                     </label>
                     <input
@@ -546,7 +548,7 @@ export function BookingWizard({
                         })
                       }
                       className={cn(
-                        "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
+                        "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
                         "bg-input-background border border-border",
                         "text-foreground",
                         "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -555,7 +557,7 @@ export function BookingWizard({
                   </div>
 
                   <div>
-                    <label htmlFor="phone" className="mb-[var(--spacing-element-sm)] block">
+                    <label htmlFor="phone" className="pb-element-sm block font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">
                       Phone Number *
                     </label>
                     <input
@@ -570,7 +572,7 @@ export function BookingWizard({
                         })
                       }
                       className={cn(
-                        "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
+                        "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
                         "bg-input-background border border-border",
                         "text-foreground",
                         "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -579,7 +581,7 @@ export function BookingWizard({
                   </div>
 
                   <div className="md:col-span-2">
-                    <label htmlFor="country" className="mb-[var(--spacing-element-sm)] block">
+                    <label htmlFor="country" className="pb-element-sm block font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">
                       Country of Residence
                     </label>
                     <input
@@ -593,7 +595,7 @@ export function BookingWizard({
                         })
                       }
                       className={cn(
-                        "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
+                        "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
                         "bg-input-background border border-border",
                         "text-foreground",
                         "focus:outline-none focus:ring-2 focus:ring-ring"
@@ -607,46 +609,46 @@ export function BookingWizard({
             {/* Step 4: Payment & Review */}
             {currentStep === 3 && (
               <div>
-                <h2 className="mb-[var(--spacing-element-sm)]">Review & Payment</h2>
-                <p className="text-muted-foreground mb-[var(--spacing-gap-lg)] m-0">
+                <h2 className="pb-element-sm m-0 font-[family:var(--font-family-lora)] text-[color:var(--color-foreground)]">Review & Payment</h2>
+                <p className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] pb-fluid-lg m-0">
                   Review your booking details and complete payment
                 </p>
 
                 {/* Booking Summary */}
-                <div className="bg-muted rounded-[var(--radius-lg)] p-[var(--spacing-element-xl)] mb-[var(--spacing-gap-xl)]">
-                  <h3 className="mb-[var(--spacing-element-md)]">Booking Summary</h3>
+                <div className="bg-[color:var(--color-muted)]/50 rounded-[var(--radius-lg)] p-element-xl flex flex-col gap-element-md">
+                  <h3 className="m-0 font-[family:var(--font-family-lora)] text-[color:var(--color-foreground)]">Booking Summary</h3>
                   
-                  <div className="space-y-[var(--spacing-gap-sm)]">
+                  <div className="flex flex-col gap-fluid-sm">
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Tour</span>
-                      <span className="font-[var(--font-weight-medium)]">{tour.title}</span>
+                      <span className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)]">Tour</span>
+                      <span className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">{tour.title}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Departure Date</span>
-                      <span className="font-[var(--font-weight-medium)]">
+                      <span className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)]">Departure Date</span>
+                      <span className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">
                         {new Date(bookingData.selectedDate).toLocaleDateString()}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Passengers</span>
-                      <span className="font-[var(--font-weight-medium)]">
+                      <span className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)]">Passengers</span>
+                      <span className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">
                         {bookingData.passengers.adults + 
                          bookingData.passengers.children + 
                          bookingData.passengers.infants}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Lead Passenger</span>
-                      <span className="font-[var(--font-weight-medium)]">
+                      <span className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)]">Lead Passenger</span>
+                      <span className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">
                         {bookingData.leadPassenger.firstName}{" "}
                         {bookingData.leadPassenger.lastName}
                       </span>
                     </div>
                     
-                    <div className="pt-[var(--spacing-gap-sm)] mt-[var(--spacing-gap-sm)] border-t border-border">
+                    <div className="pt-fluid-sm border-t border-[color:var(--color-border)]">
                       <div className="flex justify-between items-center">
-                        <span className="font-[var(--font-weight-medium)]">Total Price</span>
-                        <span className="text-[length:var(--text-xl)] font-[var(--font-weight-medium)] text-primary">
+                        <span className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">Total Price</span>
+                        <span className="text-[length:var(--text-xl)] font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-primary)]">
                           {tour.price}
                         </span>
                       </div>
@@ -654,46 +656,47 @@ export function BookingWizard({
                   </div>
                 </div>
 
-                {/* Payment Method */}
-                <div className="mb-[var(--spacing-gap-xl)]">
-                  <label className="mb-[var(--spacing-element-md)] block">Payment Method *</label>
-                  <div className="wp-booking-wizard__payment-grid">
-                    <button
-                      type="button"
-                      onClick={() => updateBookingData("paymentMethod", "credit-card")}
-                      className={cn(
-                        "p-[var(--spacing-element-lg)] rounded-[var(--radius-lg)] border-2 transition-all text-left",
-                        bookingData.paymentMethod === "credit-card"
-                          ? "border-primary bg-primary/5"
-                          : "border-border hover:border-primary/50"
-                      )}
-                    >
-                      <div className="flex items-center gap-[var(--spacing-gap-md)]">
-                        <CreditCard className="w-5 h-5 text-primary" />
-                        <div>
-                          <p className="font-[var(--font-weight-medium)] m-0">Credit Card</p>
-                          <p className="text-[length:var(--text-sm)] text-muted-foreground m-0">
-                            Secure payment
-                          </p>
+                <div className="pt-fluid-xl">
+                  {/* Payment Method */}
+                  <div className="pb-fluid-xl flex flex-col gap-fluid-md">
+                    <label className="pb-element-md block font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">Payment Method *</label>
+                    <div className="wp-booking-wizard__payment-grid">
+                      <button
+                        type="button"
+                        onClick={() => updateBookingData("paymentMethod", "credit-card")}
+                        className={cn(
+                          "p-element-lg rounded-[var(--radius-lg)] border-2 transition-all text-left",
+                          bookingData.paymentMethod === "credit-card"
+                            ? "border-[color:var(--color-primary)] bg-[color:var(--color-primary)]/5"
+                            : "border-[color:var(--color-border)] hover:border-[color:var(--color-primary)]/50"
+                        )}
+                      >
+                        <div className="flex items-center gap-fluid-md">
+                          <CreditCard className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)] text-[color:var(--color-primary)]" />
+                          <div className="flex flex-col gap-fluid-xs">
+                            <p className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)] m-0">Credit Card</p>
+                            <p className="text-[length:var(--text-sm)] text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] m-0">
+                              Secure payment
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </button>
+                      </button>
 
                     <button
                       type="button"
                       onClick={() => updateBookingData("paymentMethod", "bank-transfer")}
                       className={cn(
-                        "p-[var(--spacing-element-lg)] rounded-[var(--radius-lg)] border-2 transition-all text-left",
+                        "p-element-lg rounded-[var(--radius-lg)] border-2 transition-all text-left",
                         bookingData.paymentMethod === "bank-transfer"
                           ? "border-primary bg-primary/5"
                           : "border-border hover:border-primary/50"
                       )}
                     >
-                      <div className="flex items-center gap-[var(--spacing-gap-md)]">
-                        <Mail className="w-5 h-5 text-primary" />
-                        <div>
-                          <p className="font-[var(--font-weight-medium)] m-0">Bank Transfer</p>
-                          <p className="text-[length:var(--text-sm)] text-muted-foreground m-0">
+                      <div className="flex items-center gap-fluid-md">
+                        <Mail className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)] text-[color:var(--color-primary)]" />
+                        <div className="flex flex-col gap-fluid-xs">
+                          <p className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)] m-0">Bank Transfer</p>
+                          <p className="text-[length:var(--text-sm)] text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] m-0">
                             Details via email
                           </p>
                         </div>
@@ -701,9 +704,10 @@ export function BookingWizard({
                     </button>
                   </div>
                 </div>
+              </div>
 
                 {/* Terms & Conditions */}
-                <div className="flex items-start gap-[var(--spacing-gap-md)] mb-[var(--spacing-gap-xl)]">
+                <div className="flex items-start gap-fluid-md pb-fluid-xl">
                   <input
                     id="terms"
                     type="checkbox"
@@ -711,28 +715,28 @@ export function BookingWizard({
                     onChange={(e) =>
                       updateBookingData("termsAccepted", e.target.checked)
                     }
-                    className="mt-[var(--spacing-element-xs)] w-4 h-4 rounded-[var(--radius-sm)] border-border text-primary focus:ring-ring"
+                    className="self-start relative top-0.5 w-4 h-4 rounded-[var(--radius-sm)] border-[color:var(--color-border)] text-[color:var(--color-primary)] focus:ring-2 focus:ring-[color:var(--color-ring)]"
                   />
-                  <label htmlFor="terms" className="text-[length:var(--text-sm)] cursor-pointer m-0">
+                  <label htmlFor="terms" className="text-[length:var(--text-sm)] font-[family:var(--font-family-noto-sans)] text-[color:var(--color-muted-foreground)] cursor-pointer m-0">
                     I accept the{" "}
-                    <a href="/terms-conditions" className="text-primary hover:underline">
+                    <a href="/terms-conditions" className="text-[color:var(--color-primary)] hover:underline">
                       Terms & Conditions
                     </a>{" "}
                     and{" "}
-                    <a href="/privacy-policy" className="text-primary hover:underline">
+                    <a href="/privacy-policy" className="text-[color:var(--color-primary)] hover:underline">
                       Privacy Policy
                     </a>
                   </label>
                 </div>
 
                 {!isStepValid() && (
-                  <div className="flex items-start gap-[var(--spacing-gap-md)] bg-destructive/10 border border-destructive/50 rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)]">
-                    <AlertCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="text-[length:var(--text-sm)] font-[var(--font-weight-medium)] text-destructive m-0">
+                  <div className="flex items-start gap-fluid-md bg-[color:var(--color-destructive)]/10 border border-[color:var(--color-destructive)]/50 rounded-[var(--radius-lg)] p-element-lg">
+                    <AlertCircle className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)] text-[color:var(--color-destructive)] flex-shrink-0" />
+                    <div className="flex flex-col gap-fluid-xs">
+                      <p className="text-[length:var(--text-sm)] font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-destructive)] m-0">
                         Please complete all required fields
                       </p>
-                      <p className="text-[length:var(--text-sm)] text-muted-foreground mt-[var(--spacing-element-xs)] m-0">
+                      <p className="text-[length:var(--text-sm)] text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] m-0">
                         Select a payment method and accept the terms to continue
                       </p>
                     </div>
@@ -744,12 +748,12 @@ export function BookingWizard({
         </AnimatePresence>
 
         {/* Navigation Buttons */}
-        <div className="flex items-center justify-between gap-[var(--spacing-gap-md)]">
+        <div className="flex items-center justify-between gap-fluid-md">
           <button
             onClick={handleBack}
             disabled={currentStep === 0}
             className={cn(
-              "inline-flex items-center gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-xl)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)] transition-all",
+              "inline-flex items-center gap-fluid-sm px-element-xl py-element-md rounded-[var(--radius-md)] transition-all",
               "border border-border text-foreground",
               "hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring",
               "disabled:opacity-50 disabled:cursor-not-allowed"
@@ -764,7 +768,7 @@ export function BookingWizard({
               onClick={handleNext}
               disabled={!isStepValid()}
               className={cn(
-                "inline-flex items-center gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-xl)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)] transition-all",
+                "inline-flex items-center gap-fluid-sm px-element-xl py-element-md rounded-[var(--radius-md)] transition-all",
                 "bg-primary text-primary-foreground",
                 "hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring",
                 "disabled:opacity-50 disabled:cursor-not-allowed"
@@ -778,9 +782,9 @@ export function BookingWizard({
               onClick={handleComplete}
               disabled={!isStepValid()}
               className={cn(
-                "inline-flex items-center gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-xl)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)] transition-all",
+                "inline-flex items-center gap-fluid-sm px-element-xl py-element-md rounded-[var(--radius-md)] transition-all",
                 "bg-primary text-primary-foreground",
-                "hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring",
+                "hover:bg-primary/90",
                 "disabled:opacity-50 disabled:cursor-not-allowed"
               )}
             >

@@ -2,138 +2,155 @@
  * React Router route configuration.
  * 
  * Defines all application routes mapping to WordPress template hierarchy.
- * Uses static imports for all page components to avoid dynamic import errors.
+ * Uses React.lazy() for code-splitting — only the active page loads into memory.
  * 
  * @module routes
  * @category routing
  */
 
+import { lazy } from "react";
 import { createBrowserRouter, type RouteObject } from "react-router";
 
-// Root Layout
+// Root Layout (always loaded — it's the shell)
 import { RootLayout } from "./components/layout/RootLayout";
 
+// --- Lazy-loaded page components ---
+
 // Core Pages
-import HomePage from "./pages/HomePage";
-import NotFoundPage from "./pages/NotFoundPage";
+const HomePage = lazy(() => import("./pages/HomePage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 // Tours
-import ToursArchive from "./pages/ToursArchive";
-import TourSingle from "./pages/TourSingle";
-import ToursArchiveNew from "./pages/ToursArchiveNew";
-import TourSingleNew from "./pages/TourSingleNew";
-import TourGalleryPage from "./pages/TourGalleryPage";
+const ToursArchive = lazy(() => import("./pages/ToursArchive"));
+const TourSingle = lazy(() => import("./pages/TourSingle"));
+const ToursArchiveNew = lazy(() => import("./pages/ToursArchiveNew"));
+const TourSingleNew = lazy(() => import("./pages/TourSingleNew"));
+const TourGalleryPage = lazy(() => import("./pages/TourGalleryPage"));
 
 // Destinations
-import DestinationsArchive from "./pages/DestinationsArchive";
-import DestinationSingle from "./pages/DestinationSingle";
-import DestinationsArchiveEnhanced from "./pages/DestinationsArchiveEnhanced";
-import DestinationsArchiveTest from "./pages/DestinationsArchiveTest";
-import DestinationsArchiveSimple from "./pages/DestinationsArchiveSimple";
-import ArchiveDestinationTemplate from "./templates/ArchiveDestinationTemplate";
+const DestinationsArchive = lazy(() => import("./pages/DestinationsArchive"));
+const DestinationSingle = lazy(() => import("./pages/DestinationSingle"));
+const DestinationsArchiveEnhanced = lazy(() => import("./pages/DestinationsArchiveEnhanced"));
+const DestinationsArchiveTest = lazy(() => import("./pages/DestinationsArchiveTest"));
+const DestinationsArchiveSimple = lazy(() => import("./pages/DestinationsArchiveSimple"));
+const ArchiveDestinationTemplate = lazy(() => import("./templates/ArchiveDestinationTemplate"));
+const DestinationRouter = lazy(() => import("./pages/DestinationRouter"));
 
 // Accommodation
-import AccommodationArchive from "./pages/AccommodationArchive";
-import AccommodationSingle from "./pages/AccommodationSingle";
+const AccommodationArchive = lazy(() => import("./pages/AccommodationArchive"));
+const AccommodationSingle = lazy(() => import("./pages/AccommodationSingle"));
 
 // Blog
-import BlogArchive from "./pages/BlogArchive";
-import BlogSingle from "./pages/BlogSingle";
+const BlogArchive = lazy(() => import("./pages/BlogArchive"));
+const BlogSingle = lazy(() => import("./pages/BlogSingle"));
 
 // Team
-import TeamArchive from "./pages/TeamArchive";
-import TeamSingle from "./pages/TeamSingle";
+const TeamArchive = lazy(() => import("./pages/TeamArchive"));
+const TeamSingle = lazy(() => import("./pages/TeamSingle"));
 
 // Specials
-import SpecialsArchive from "./pages/SpecialsArchive";
-import SpecialSingle from "./pages/SpecialSingle";
+const SpecialsArchive = lazy(() => import("./pages/SpecialsArchive"));
+const SpecialSingle = lazy(() => import("./pages/SpecialSingle"));
 
 // Reviews
-import ReviewsArchive from "./pages/ReviewsArchive";
-import ReviewSingle from "./pages/ReviewSingle";
-import ReviewsHubPage from "./pages/ReviewsHubPage";
+const ReviewsArchive = lazy(() => import("./pages/ReviewsArchive"));
+const ReviewSingle = lazy(() => import("./pages/ReviewSingle"));
+const ReviewsHubPage = lazy(() => import("./pages/ReviewsHubPage"));
 
 // Taxonomy
-import TaxonomyArchive from "./pages/TaxonomyArchive";
+const TaxonomyArchive = lazy(() => import("./pages/TaxonomyArchive"));
+
+// Taxonomy Hubs
+const TravelStylesHubPage = lazy(() => import("./pages/TravelStylesHubPage"));
+const TravellerTypesHubPage = lazy(() => import("./pages/TravellerTypesHubPage"));
+const AccommodationTypesHubPage = lazy(() => import("./pages/AccommodationTypesHubPage"));
+const BrandsArchivePage = lazy(() => import("./pages/BrandsArchivePage"));
+const FacilitiesHubPage = lazy(() => import("./pages/FacilitiesHubPage"));
 
 // Utility Pages
-import FAQPage from "./pages/FAQPage";
-import FAQsArchivePage from "./pages/FAQsArchivePage";
-import AboutPage from "./pages/AboutPage";
-import ContactPage from "./pages/ContactPage";
-import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
-import TermsConditionsPage from "./pages/TermsConditionsPage";
-import WhyBookWithUsPage from "./pages/WhyBookWithUsPage";
-import SitemapPage from "./pages/SitemapPage";
+const FAQPage = lazy(() => import("./pages/FAQPage"));
+const FAQsArchivePage = lazy(() => import("./pages/FAQsArchivePage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
+const TermsConditionsPage = lazy(() => import("./pages/TermsConditionsPage"));
+const WhyBookWithUsPage = lazy(() => import("./pages/WhyBookWithUsPage"));
+const SitemapPage = lazy(() => import("./pages/SitemapPage"));
 
 // Conversion Pages
-import QuoteRequestPage from "./pages/QuoteRequestPage";
-import DestinationGuidesHubPage from "./pages/DestinationGuidesHubPage";
-import TravelInsurancePage from "./pages/TravelInsurancePage";
-import NewsletterSignupPage from "./pages/NewsletterSignupPage";
-import PackingGuidesPage from "./pages/PackingGuidesPage";
-import SustainabilityPage from "./pages/SustainabilityPage";
+const QuoteRequestPage = lazy(() => import("./pages/QuoteRequestPage"));
+const DestinationGuidesHubPage = lazy(() => import("./pages/DestinationGuidesHubPage"));
+const TravelInsurancePage = lazy(() => import("./pages/TravelInsurancePage"));
+const NewsletterSignupPage = lazy(() => import("./pages/NewsletterSignupPage"));
+const PackingGuidesPage = lazy(() => import("./pages/PackingGuidesPage"));
+const SustainabilityPage = lazy(() => import("./pages/SustainabilityPage"));
 
 // Booking & Account
-import BookingPage from "./pages/BookingPage";
-import BookingConfirmationPage from "./pages/BookingConfirmationPage";
-import BookingConfirmationPageEnhanced from "./pages/BookingConfirmationPageEnhanced";
-import BookingManagementPage from "./pages/BookingManagementPage";
-import PaymentPage from "./pages/PaymentPage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import ProfilePage from "./pages/ProfilePage";
-import SavedPassengersPage from "./pages/SavedPassengersPage";
-import AccountSettingsPage from "./pages/AccountSettingsPage";
-import WishlistPage from "./pages/WishlistPage";
-import TourComparisonPage from "./pages/TourComparisonPage";
-import TripPlannerPage from "./pages/TripPlannerPage";
+const BookingPage = lazy(() => import("./pages/BookingPage"));
+const BookingConfirmationPage = lazy(() => import("./pages/BookingConfirmationPage"));
+const BookingConfirmationPageEnhanced = lazy(() => import("./pages/BookingConfirmationPageEnhanced"));
+const BookingManagementPage = lazy(() => import("./pages/BookingManagementPage"));
+const PaymentPage = lazy(() => import("./pages/PaymentPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const RegisterPage = lazy(() => import("./pages/RegisterPage"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage"));
+const SavedPassengersPage = lazy(() => import("./pages/SavedPassengersPage"));
+const AccountSettingsPage = lazy(() => import("./pages/AccountSettingsPage"));
+const WishlistPage = lazy(() => import("./pages/WishlistPage"));
+const TourComparisonPage = lazy(() => import("./pages/TourComparisonPage"));
+const TripPlannerPage = lazy(() => import("./pages/TripPlannerPage"));
+
+// Itinerary & Loyalty
+const ItineraryBuilderPage = lazy(() => import("./pages/ItineraryBuilderPage"));
+const LoyaltyRewardsPage = lazy(() => import("./pages/LoyaltyRewardsPage"));
 
 // Search
-import SearchResultsPage from "./pages/SearchResultsPage";
-import AdvancedSearchResultsPage from "./pages/AdvancedSearchResultsPage";
+const SearchResultsPage = lazy(() => import("./pages/SearchResultsPage"));
+const AdvancedSearchResultsPage = lazy(() => import("./pages/AdvancedSearchResultsPage"));
 
 // Developer Tools
-import DevToolsPage from "./pages/DevToolsPage";
-import TemplateTester from "./pages/TemplateTester";
-import ComponentShowcase from "./pages/ComponentShowcase";
-import ComponentAPIReference from "./pages/ComponentAPIReference";
-import BlockDocumentation from "./pages/BlockDocumentation";
-import DesignBlocksShowcase from "./pages/DesignBlocksShowcase";
-import ThemeBlocksShowcase from "./pages/ThemeBlocksShowcase";
-import HeaderFooterComparison from "./pages/HeaderFooterComparison";
-import ButtonShowcase from "./pages/ButtonShowcase";
-import SectionStylesShowcase from "./pages/SectionStylesShowcase";
-import IconLibrary from "./pages/IconLibrary";
-import LivePreview from "./pages/LivePreview";
-import StyleGuide from "./pages/StyleGuide";
-import DesignSystemShowcase from "./pages/DesignSystemShowcase";
-import DesignSystemExample from "./pages/DesignSystemExample";
-import DesignSystemVerification from "./pages/DesignSystemVerification";
-import ComponentLibrary from "./pages/ComponentLibrary";
-import NotificationBannerExamples from "./pages/NotificationBannerExamples";
-import Diagnostic from "./pages/Diagnostic";
-import OrganicDemo from "./pages/OrganicDemo"; // NEW - Organic Redesign Demo
+const DevToolsPage = lazy(() => import("./pages/DevToolsPage"));
+const TemplateTester = lazy(() => import("./pages/TemplateTester"));
+const ComponentShowcase = lazy(() => import("./pages/ComponentShowcase"));
+const ComponentAPIReference = lazy(() => import("./pages/ComponentAPIReference"));
+const BlockDocumentation = lazy(() => import("./pages/BlockDocumentation"));
+const DesignBlocksShowcase = lazy(() => import("./pages/DesignBlocksShowcase"));
+const ThemeBlocksShowcase = lazy(() => import("./pages/ThemeBlocksShowcase"));
+const HeaderFooterComparison = lazy(() => import("./pages/HeaderFooterComparison"));
+const ButtonShowcase = lazy(() => import("./pages/ButtonShowcase"));
+const SectionStylesShowcase = lazy(() => import("./pages/SectionStylesShowcase"));
+const IconLibrary = lazy(() => import("./pages/IconLibrary"));
+const LivePreview = lazy(() => import("./pages/LivePreview"));
+const StyleGuide = lazy(() => import("./pages/StyleGuide"));
+const DesignSystemShowcase = lazy(() => import("./pages/DesignSystemShowcase"));
+const DesignSystemExample = lazy(() => import("./pages/DesignSystemExample"));
+const DesignSystemVerification = lazy(() => import("./pages/DesignSystemVerification"));
+const ComponentLibrary = lazy(() => import("./pages/ComponentLibrary"));
+const NotificationBannerExamples = lazy(() => import("./pages/NotificationBannerExamples"));
+const Diagnostic = lazy(() => import("./pages/Diagnostic"));
+const OrganicDemo = lazy(() => import("./pages/OrganicDemo"));
+const OrganicLandingPage = lazy(() => import("./pages/OrganicLandingPage"));
+const DayAndDuskPage = lazy(() => import("./pages/DayAndDuskPage"));
 
 // Dev Tools Sub-pages
-import AccessibilityAudit from "./pages/dev-tools/AccessibilityAudit";
-import AnalyticsDashboard from "./pages/dev-tools/AnalyticsDashboard";
-import CodeQualityDashboard from "./pages/dev-tools/CodeQualityDashboard";
-import DeploymentReadiness from "./pages/dev-tools/DeploymentReadiness";
-import DesignSystemPlayground from "./pages/dev-tools/DesignSystemPlayground";
-import DesignTokensReference from "./pages/dev-tools/DesignTokensReference";
-import DocumentationGenerator from "./pages/dev-tools/DocumentationGenerator";
-import IntegrationTester from "./pages/dev-tools/IntegrationTester";
-import PerformanceMonitor from "./pages/dev-tools/PerformanceMonitor";
-import SnippetGenerator from "./pages/dev-tools/SnippetGenerator";
-import VisualRegressionTester from "./pages/dev-tools/VisualRegressionTester";
-import DevToolsIndex from "./pages/dev-tools/index";
-import TypographySpecimens from "./pages/dev-tools/TypographySpecimens";
-import SpacingScale from "./pages/dev-tools/SpacingScale";
-import ShadowScale from "./pages/dev-tools/ShadowScale";
-import RadiusSpecimens from "./pages/dev-tools/RadiusSpecimens";
-import CardInteractions from "./pages/dev-tools/CardInteractions";
-import AnimationsShowcase from "./pages/dev-tools/AnimationsShowcase";
+const AccessibilityAudit = lazy(() => import("./pages/dev-tools/AccessibilityAudit"));
+const AnalyticsDashboard = lazy(() => import("./pages/dev-tools/AnalyticsDashboard"));
+const CodeQualityDashboard = lazy(() => import("./pages/dev-tools/CodeQualityDashboard"));
+const DeploymentReadiness = lazy(() => import("./pages/dev-tools/DeploymentReadiness"));
+const DesignSystemPlayground = lazy(() => import("./pages/dev-tools/DesignSystemPlayground"));
+const DesignTokensReference = lazy(() => import("./pages/dev-tools/DesignTokensReference"));
+const DocumentationGenerator = lazy(() => import("./pages/dev-tools/DocumentationGenerator"));
+const IntegrationTester = lazy(() => import("./pages/dev-tools/IntegrationTester"));
+const PerformanceMonitor = lazy(() => import("./pages/dev-tools/PerformanceMonitor"));
+const SnippetGenerator = lazy(() => import("./pages/dev-tools/SnippetGenerator"));
+const VisualRegressionTester = lazy(() => import("./pages/dev-tools/VisualRegressionTester"));
+const DevToolsIndex = lazy(() => import("./pages/dev-tools/index"));
+const TypographySpecimens = lazy(() => import("./pages/dev-tools/TypographySpecimens"));
+const SpacingScale = lazy(() => import("./pages/dev-tools/SpacingScale"));
+const ShadowScale = lazy(() => import("./pages/dev-tools/ShadowScale"));
+const RadiusSpecimens = lazy(() => import("./pages/dev-tools/RadiusSpecimens"));
+const CardInteractions = lazy(() => import("./pages/dev-tools/CardInteractions"));
+const AnimationsShowcase = lazy(() => import("./pages/dev-tools/AnimationsShowcase"));
 
 const routes: RouteObject[] = [
   {
@@ -146,6 +163,7 @@ const routes: RouteObject[] = [
         children: [
           { index: true, Component: ToursArchive },
           { path: "new", Component: ToursArchiveNew },
+          { path: "travel-style/:slug", Component: TaxonomyArchive },
           { path: ":slug", Component: TourSingle },
           { path: ":slug/new", Component: TourSingleNew },
           { path: ":slug/gallery", Component: TourGalleryPage },
@@ -155,10 +173,11 @@ const routes: RouteObject[] = [
         path: "destinations",
         children: [
           { index: true, Component: DestinationsArchive },
+          { path: "simple", Component: DestinationsArchiveSimple },
           { path: "test", Component: DestinationsArchiveTest },
           { path: "enhanced", Component: DestinationsArchiveEnhanced },
           { path: "old", Component: ArchiveDestinationTemplate },
-          { path: ":slug", Component: DestinationSingle },
+          { path: ":slug", Component: DestinationRouter },
         ],
       },
       {
@@ -197,10 +216,16 @@ const routes: RouteObject[] = [
           { path: ":slug", Component: ReviewSingle },
         ],
       },
+      { path: "travel-styles", Component: TravelStylesHubPage },
       { path: "travel-styles/:slug", Component: TaxonomyArchive },
+      { path: "traveller-types", Component: TravellerTypesHubPage },
+      { path: "traveller-types/:slug", Component: TaxonomyArchive },
       { path: "continents/:slug", Component: TaxonomyArchive },
+      { path: "accommodation-types", Component: AccommodationTypesHubPage },
       { path: "accommodation-types/:slug", Component: TaxonomyArchive },
+      { path: "brands", Component: BrandsArchivePage },
       { path: "brands/:slug", Component: TaxonomyArchive },
+      { path: "facilities", Component: FacilitiesHubPage },
       { path: "facilities/:slug", Component: TaxonomyArchive },
       { path: "categories/:slug", Component: TaxonomyArchive },
       { path: "tags/:slug", Component: TaxonomyArchive },
@@ -231,6 +256,8 @@ const routes: RouteObject[] = [
       { path: "wishlist", Component: WishlistPage },
       { path: "tour-comparison", Component: TourComparisonPage },
       { path: "trip-planner", Component: TripPlannerPage },
+      { path: "itinerary-builder", Component: ItineraryBuilderPage },
+      { path: "loyalty-rewards", Component: LoyaltyRewardsPage },
       { path: "search", Component: SearchResultsPage },
       { path: "advanced-search", Component: AdvancedSearchResultsPage },
       {
@@ -267,7 +294,7 @@ const routes: RouteObject[] = [
           { path: "visual-regression-tester", Component: VisualRegressionTester },
           { path: "dev-tools-index", Component: DevToolsIndex },
           { path: "typography-specimens", Component: TypographySpecimens },
-          { path: "typography", Component: TypographySpecimens }, // Alias for typography-specimens
+          { path: "typography", Component: TypographySpecimens },
           { path: "spacing-scale", Component: SpacingScale },
           { path: "shadow-scale", Component: ShadowScale },
           { path: "radius-specimens", Component: RadiusSpecimens },
@@ -276,7 +303,9 @@ const routes: RouteObject[] = [
         ],
       },
       { path: "diagnostic", Component: Diagnostic },
-      { path: "organic-demo", Component: OrganicDemo }, // NEW - Organic Redesign Demo
+      { path: "organic-demo", Component: OrganicDemo },
+      { path: "organic-demo/landing-page", Component: OrganicLandingPage },
+      { path: "organic-demo/day-and-dusk-page", Component: DayAndDuskPage },
       { path: "*", Component: NotFoundPage },
     ],
   },

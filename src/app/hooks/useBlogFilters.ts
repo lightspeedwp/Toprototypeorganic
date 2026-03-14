@@ -1,58 +1,88 @@
 /**
  * Custom hook for managing blog archive filters.
- * 
- * Extracts filtering logic from the ArchiveBlogTemplate.
- * 
+ *
+ * Composes useArchiveFilters for shared search/URL/pagination plumbing
+ * and adds blog-specific category filter.
+ *
  * @module useBlogFilters
  * @category hooks
  */
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import type { BlogPost } from "../data/types";
+import { useArchiveFilters } from "./useArchiveFilters";
+import { useResultsAnnouncement } from "./useResultsAnnouncement";
 
 /**
  * useBlogFilters hook.
- * 
+ *
  * @param {BlogPost[]} posts - The full list of blog posts to filter.
  * @param {number} itemsPerPage - Number of items to display per page.
  */
 export function useBlogFilters(posts: BlogPost[], itemsPerPage: number = 12) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [searchQuery, setSearchQuery] = useState<string>("");
+  const base = useArchiveFilters({ itemsPerPage });
 
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    () => base.searchParams.get("category") || "all"
+  );
+
+  // ── Sync all filters → URL query params (single effect) ───────────
+  useEffect(() => {
+    base.setSearchParams((prev) => {
+      const next = new URLSearchParams(prev);
+      base.applyBaseParams(next);
+
+      if (selectedCategory !== "all") {
+        next.set("category", selectedCategory);
+      } else {
+        next.delete("category");
+      }
+
+      return next;
+    }, { replace: true });
+  }, [base.debouncedSearchQuery, selectedCategory, base.currentPage, base.setSearchParams, base.applyBaseParams]);
+
+  // ── Filtering ─────────────────────────────────────────────────────
   const filteredPosts = useMemo(() => {
     return posts.filter((post) => {
-      const matchesCategory = selectedCategory === "all" || post.categories.includes(selectedCategory);
+      const matchesCategory =
+        selectedCategory === "all" || post.categories.includes(selectedCategory);
       const matchesSearch =
-        !searchQuery ||
-        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+        !base.searchQuery ||
+        post.title.toLowerCase().includes(base.searchQuery.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(base.searchQuery.toLowerCase());
 
       return matchesCategory && matchesSearch;
     });
-  }, [posts, selectedCategory, searchQuery]);
+  }, [posts, selectedCategory, base.searchQuery]);
 
-  const totalPages = Math.ceil(filteredPosts.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedPosts = filteredPosts.slice(startIndex, startIndex + itemsPerPage);
+  const { paginatedItems: paginatedPosts, totalPages } = base.paginate(filteredPosts);
 
-  const resetFilters = () => {
-    setSearchQuery("");
+  // ── Screen-reader announcement after filtering settles ────────────
+  useResultsAnnouncement(filteredPosts.length, posts.length, "blog posts");
+
+  const resetFilters = useCallback(() => {
+    base.setSearchQuery("");
     setSelectedCategory("all");
-    setCurrentPage(1);
-  };
+    base.resetPage();
+  }, [base.setSearchQuery, base.resetPage]);
+
+  const activeFilterCount =
+    (base.searchQuery ? 1 : 0) + (selectedCategory !== "all" ? 1 : 0);
 
   return {
-    currentPage,
-    setCurrentPage,
+    currentPage: base.currentPage,
+    setCurrentPage: base.setCurrentPage,
+    resetPage: base.resetPage,
     selectedCategory,
     setSelectedCategory,
-    searchQuery,
-    setSearchQuery,
+    searchQuery: base.searchQuery,
+    setSearchQuery: base.setSearchQuery,
+    flushSearch: base.flushSearch,
     filteredPosts,
     paginatedPosts,
     totalPages,
     resetFilters,
+    activeFilterCount,
   };
 }

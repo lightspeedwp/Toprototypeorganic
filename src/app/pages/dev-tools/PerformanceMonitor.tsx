@@ -84,21 +84,21 @@ export default function PerformanceMonitor() {
       {/* Header */}
       <div className="bg-muted border-b border-border py-section-sm">
         <Container>
-          <div className="flex items-start justify-between gap-6">
-            <div>
-              <div className="flex items-center gap-3 mb-2">
-                <Activity className="w-8 h-8 text-primary" />
-                <h1>Performance Monitor</h1>
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-fluid-sm">
+            <div className="flex flex-col gap-element-sm">
+              <div className="wp-page-header__icon-container w-14 h-14 flex items-center justify-center rounded-[var(--radius-lg)] bg-primary/10 text-primary transition-colors hover:bg-primary/20">
+                <Activity className="w-7 h-7" />
               </div>
+              <h1>Performance Monitor</h1>
               <p className="text-muted-foreground">
                 Real-time component performance tracking and optimization insights
               </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 w-full md:w-auto">
               <button
                 onClick={handleRefresh}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors w-full md:w-auto md:shrink-0"
               >
                 <RefreshCw className="w-4 h-4" />
                 Refresh
@@ -106,7 +106,7 @@ export default function PerformanceMonitor() {
 
               <button
                 onClick={handleClear}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-destructive text-destructive-foreground hover:bg-destructive/90 transition-colors"
+                className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-destructive text-destructive-foreground hover:bg-destructive/90 transition-colors w-full md:w-auto md:shrink-0"
               >
                 <Trash2 className="w-4 h-4" />
                 Clear
@@ -128,38 +128,38 @@ export default function PerformanceMonitor() {
 
       <Container className="py-section-sm">
         {/* Performance Score */}
-        <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-8 rounded-lg border border-border mb-8">
+        <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-8 rounded-lg border border-border pb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="mb-2">Performance Score</h2>
+              <h2 className="pb-2">Performance Score</h2>
               <p className={`font-serif text-fluid-6xl ${getScoreColor(insights.score)}`}>
                 {insights.score}
                 <span className="font-serif text-fluid-3xl text-muted-foreground">/100</span>
               </p>
-              <p className="text-muted-foreground mt-2">{insights.summary}</p>
+              <p className="text-muted-foreground pt-2">{insights.summary}</p>
             </div>
 
             <div className="text-right">
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-card p-4 rounded-lg border border-border">
-                  <div className="text-sm text-muted-foreground mb-1">Components</div>
+                  <div className="text-sm text-muted-foreground pb-1">Components</div>
                   <div className="font-serif text-fluid-2xl">{insights.totalComponents}</div>
                 </div>
                 <div className="bg-card p-4 rounded-lg border border-border">
-                  <div className="text-sm text-muted-foreground mb-1">Avg Time</div>
+                  <div className="text-sm text-muted-foreground pb-1">Avg Time</div>
                   <div className="font-serif text-fluid-2xl">
                     {insights.averageRenderTime?.toFixed(1) || 0}
                     <span className="text-sm text-muted-foreground">ms</span>
                   </div>
                 </div>
                 <div className="bg-card p-4 rounded-lg border border-border">
-                  <div className="text-sm text-muted-foreground mb-1">Slow</div>
+                  <div className="text-sm text-muted-foreground pb-1">Slow</div>
                   <div className="font-serif text-fluid-2xl text-destructive">
                     {insights.slowComponents || 0}
                   </div>
                 </div>
                 <div className="bg-card p-4 rounded-lg border border-border">
-                  <div className="text-sm text-muted-foreground mb-1">Critical</div>
+                  <div className="text-sm text-muted-foreground pb-1">Critical</div>
                   <div className="font-serif text-fluid-2xl text-destructive">
                     {insights.criticalComponents || 0}
                   </div>
@@ -171,12 +171,12 @@ export default function PerformanceMonitor() {
 
         {/* Insights & Recommendations */}
         {insights.recommendations.length > 0 && (
-          <div className="bg-accent text-accent-foreground p-6 rounded-lg mb-8">
-            <h3 className="mb-4 flex items-center gap-2">
+          <div className="bg-accent text-accent-foreground p-6 rounded-lg pb-8">
+            <h3 className="pb-4 flex items-center gap-2">
               <TrendingUp className="w-5 h-5" />
               Optimization Recommendations
             </h3>
-            <ul className="space-y-2">
+            <ul className="flex flex-col gap-2">
               {insights.recommendations.map((rec, idx) => (
                 <li key={idx} className="text-sm">
                   {rec}
@@ -187,39 +187,39 @@ export default function PerformanceMonitor() {
         )}
 
         {/* Performance Thresholds Reference */}
-        <div className="bg-card p-6 rounded-lg border border-border mb-8">
-          <h3 className="mb-4">Performance Thresholds</h3>
+        <div className="bg-card p-6 rounded-lg border border-border pb-8">
+          <h3 className="pb-4">Performance Thresholds</h3>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             <div className="text-center">
-              <div className="text-2xl mb-1">🚀</div>
+              <div className="text-2xl pb-1">🚀</div>
               <div className="text-sm font-medium">Excellent</div>
               <div className="text-xs text-muted-foreground">
                 &lt; {PERFORMANCE_THRESHOLDS.excellent}ms
               </div>
             </div>
             <div className="text-center">
-              <div className="text-2xl mb-1">✅</div>
+              <div className="text-2xl pb-1">✅</div>
               <div className="text-sm font-medium">Good</div>
               <div className="text-xs text-muted-foreground">
                 &lt; {PERFORMANCE_THRESHOLDS.good}ms
               </div>
             </div>
             <div className="text-center">
-              <div className="text-2xl mb-1">⚠️</div>
+              <div className="text-2xl pb-1">⚠️</div>
               <div className="text-sm font-medium">Acceptable</div>
               <div className="text-xs text-muted-foreground">
                 &lt; {PERFORMANCE_THRESHOLDS.acceptable}ms
               </div>
             </div>
             <div className="text-center">
-              <div className="text-2xl mb-1">🐢</div>
+              <div className="text-2xl pb-1">🐢</div>
               <div className="text-sm font-medium">Slow</div>
               <div className="text-xs text-muted-foreground">
                 &lt; {PERFORMANCE_THRESHOLDS.slow}ms
               </div>
             </div>
             <div className="text-center">
-              <div className="text-2xl mb-1">🔴</div>
+              <div className="text-2xl pb-1">🔴</div>
               <div className="text-sm font-medium">Critical</div>
               <div className="text-xs text-muted-foreground">
                 &gt; {PERFORMANCE_THRESHOLDS.critical}ms
@@ -230,17 +230,17 @@ export default function PerformanceMonitor() {
 
         {/* Component Metrics */}
         {metrics.length === 0 ? (
-          <div className="bg-muted p-12 rounded-lg text-center">
-            <Zap className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="mb-2">No Performance Data Yet</h3>
+          <div className="bg-muted p-12 rounded-lg text-center flex flex-col items-center">
+            <Zap className="w-12 h-12 text-muted-foreground pb-4" />
+            <h3 className="pb-2">No Performance Data Yet</h3>
             <p className="text-muted-foreground">
               Navigate through the app to collect performance metrics.
               Components using <code className="text-sm bg-background px-2 py-1 rounded">usePerformanceProfiler</code> will appear here.
             </p>
           </div>
         ) : (
-          <div className="space-y-4">
-            <h2 className="mb-6">Component Metrics</h2>
+          <div className="flex flex-col gap-4">
+            <h2 className="pb-6">Component Metrics</h2>
             
             {metrics.map((metric) => {
               const rating = getPerformanceRating(metric.averageRenderTime);
@@ -252,7 +252,7 @@ export default function PerformanceMonitor() {
                 >
                   <div className="flex items-start justify-between gap-6">
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-3">
+                      <div className="flex items-center gap-3 pb-3">
                         <h3>{metric.componentName}</h3>
                         <span className={`px-3 py-1 rounded-full text-sm border ${getSeverityColor(rating.rating)}`}>
                           {rating.emoji} {rating.rating}
@@ -261,35 +261,35 @@ export default function PerformanceMonitor() {
 
                       <div className="grid grid-cols-2 md:grid-cols-6 gap-4 text-sm">
                         <div>
-                          <div className="text-muted-foreground mb-1">Renders</div>
+                          <div className="text-muted-foreground pb-1">Renders</div>
                           <div className="font-semibold">{metric.renderCount}</div>
                         </div>
                         <div>
-                          <div className="text-muted-foreground mb-1">Average</div>
+                          <div className="text-muted-foreground pb-1">Average</div>
                           <div className="font-semibold">
                             {metric.averageRenderTime.toFixed(2)}ms
                           </div>
                         </div>
                         <div>
-                          <div className="text-muted-foreground mb-1">Fastest</div>
+                          <div className="text-muted-foreground pb-1">Fastest</div>
                           <div className="font-semibold text-primary">
                             {metric.fastestRender.toFixed(2)}ms
                           </div>
                         </div>
                         <div>
-                          <div className="text-muted-foreground mb-1">Slowest</div>
+                          <div className="text-muted-foreground pb-1">Slowest</div>
                           <div className="font-semibold text-destructive">
                             {metric.slowestRender.toFixed(2)}ms
                           </div>
                         </div>
                         <div>
-                          <div className="text-muted-foreground mb-1">Last</div>
+                          <div className="text-muted-foreground pb-1">Last</div>
                           <div className="font-semibold">
                             {metric.lastRenderTime.toFixed(2)}ms
                           </div>
                         </div>
                         <div>
-                          <div className="text-muted-foreground mb-1">Total</div>
+                          <div className="text-muted-foreground pb-1">Total</div>
                           <div className="font-semibold">
                             {metric.totalRenderTime.toFixed(0)}ms
                           </div>
@@ -314,8 +314,8 @@ export default function PerformanceMonitor() {
                   </div>
 
                   {/* Performance bar */}
-                  <div className="mt-4">
-                    <div className="flex items-center gap-2 mb-1">
+                  <div className="pt-4">
+                    <div className="flex items-center gap-2 pb-1">
                       <span className="text-xs text-muted-foreground">Performance Range</span>
                     </div>
                     <div className="relative h-2 bg-muted rounded-full overflow-hidden">
@@ -334,7 +334,7 @@ export default function PerformanceMonitor() {
                         }}
                       />
                     </div>
-                    <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                    <div className="flex justify-between text-xs text-muted-foreground pt-1">
                       <span>0ms</span>
                       <span>{PERFORMANCE_THRESHOLDS.critical}ms</span>
                     </div>
@@ -346,11 +346,11 @@ export default function PerformanceMonitor() {
         )}
 
         {/* Usage Instructions */}
-        <div className="bg-accent text-accent-foreground p-6 rounded-lg mt-8">
-          <h3 className="mb-4">How to Use Performance Profiler</h3>
-          <div className="space-y-4 text-sm">
+        <div className="bg-accent text-accent-foreground p-6 rounded-lg pt-8">
+          <h3 className="pb-4">How to Use Performance Profiler</h3>
+          <div className="flex flex-col gap-4 text-sm">
             <div>
-              <h4 className="font-medium mb-2">In Your Components:</h4>
+              <h4 className="font-medium pb-2">In Your Components:</h4>
               <pre className="bg-background/20 p-3 rounded overflow-x-auto">
 {`import { usePerformanceProfiler } from "../utils/performanceProfiler";
 
@@ -363,8 +363,8 @@ function MyComponent() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">Tips for Optimization:</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Tips for Optimization:</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>Use React.memo() for components that re-render frequently</li>
                 <li>Use useMemo() and useCallback() to prevent unnecessary recalculations</li>
                 <li>Split large components into smaller ones</li>

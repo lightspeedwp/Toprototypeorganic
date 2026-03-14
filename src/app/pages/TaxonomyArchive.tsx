@@ -34,6 +34,8 @@ import {
   ALL_BRANDS,
   ALL_ACCOMMODATION_TYPES,
 } from "../data/mockExpanded";
+import { TRAVELLER_TYPES } from "../data/taxonomies/traveller-types";
+import { FACILITIES } from "../data/taxonomies/facilities";
 import { FAQ_GENERAL, getPageSectionFAQs } from "../data/mock";
 import { useNavigation } from "../contexts/NavigationContext";
 
@@ -48,14 +50,14 @@ function useTaxonomyContext() {
   const path = location.pathname;
 
   if (path.startsWith("/tours/travel-style/")) return { module: "tours", taxonomy: "travel-style", slug: slug || "" };
-  if (path.startsWith("/destinations/continent/")) return { module: "destinations", taxonomy: "continent", slug: slug || "" };
-  if (path.startsWith("/accommodation/brand/")) return { module: "accommodation", taxonomy: "brand", slug: slug || "" };
-  if (path.startsWith("/accommodation/style/")) return { module: "accommodation", taxonomy: "style", slug: slug || "" };
-  if (path.startsWith("/accommodation/type/")) return { module: "accommodation", taxonomy: "type", slug: slug || "" };
-  if (path.startsWith("/team/role/")) return { module: "team", taxonomy: "role", slug: slug || "" };
-  if (path.startsWith("/blog/category/")) return { module: "blog", taxonomy: "category", slug: slug || "" };
-  if (path.startsWith("/blog/tag/")) return { module: "blog", taxonomy: "tag", slug: slug || "" };
   if (path.startsWith("/travel-styles/")) return { module: "travel-styles", taxonomy: "travel-style", slug: slug || "" };
+  if (path.startsWith("/traveller-types/")) return { module: "traveller-types", taxonomy: "traveller-type", slug: slug || "" };
+  if (path.startsWith("/continents/")) return { module: "destinations", taxonomy: "continent", slug: slug || "" };
+  if (path.startsWith("/accommodation-types/")) return { module: "accommodation", taxonomy: "type", slug: slug || "" };
+  if (path.startsWith("/brands/")) return { module: "accommodation", taxonomy: "brand", slug: slug || "" };
+  if (path.startsWith("/facilities/")) return { module: "accommodation", taxonomy: "facility", slug: slug || "" };
+  if (path.startsWith("/categories/")) return { module: "blog", taxonomy: "category", slug: slug || "" };
+  if (path.startsWith("/tags/")) return { module: "blog", taxonomy: "tag", slug: slug || "" };
 
   return { module: "unknown", taxonomy: "unknown", slug: slug || "" };
 }
@@ -80,6 +82,19 @@ function useTaxonomyData(module: string, taxonomy: string, slug: string) {
           contentType: "tours" as const,
         };
       }
+      case "traveller-types": {
+        const term = TRAVELLER_TYPES.find(tt => tt.slug === slug);
+        const items = term ? ALL_TOURS.filter(t => (t as any).travellerTypes?.includes(term.id) || term.tourIds.includes(t.id)) : ALL_TOURS;
+        return {
+          termName: term?.name || slug,
+          termDescription: term?.description || "",
+          parentLabel: "Safari Tours",
+          parentPath: "/tours",
+          taxonomyLabel: "Traveller Type",
+          items,
+          contentType: "tours" as const,
+        };
+      }
       case "destinations": {
         const term = ALL_CONTINENTS.find(c => c.slug === slug);
         const items = term ? ALL_DESTINATIONS.filter(d => term.destinationIds?.includes(d.id)) : ALL_DESTINATIONS;
@@ -96,6 +111,7 @@ function useTaxonomyData(module: string, taxonomy: string, slug: string) {
       case "accommodation": {
         const term = taxonomy === "brand" ? ALL_BRANDS.find(b => b.slug === slug) : 
                      taxonomy === "type" ? ALL_ACCOMMODATION_TYPES.find(t => t.slug === slug) : 
+                     taxonomy === "facility" ? FACILITIES.find(f => f.slug === slug) : 
                      ALL_TRAVEL_STYLES.find(s => s.slug === slug);
         const items = term ? ALL_ACCOMMODATION.filter(a => term.accommodationIds?.includes(a.id)) : ALL_ACCOMMODATION;
         return {
@@ -171,6 +187,7 @@ export function TaxonomyArchive() {
         items={[
           { label: "Home", href: "/", onClick: () => navigateTo("/") },
           { label: data.parentLabel, href: data.parentPath, onClick: () => navigateTo(data.parentPath) },
+          ...(taxonomy === "facility" ? [{ label: "Facilities", href: "/facilities", onClick: () => navigateTo("/facilities") }] : []),
           { label: displayName },
         ]}
         fullWidth={true}

@@ -143,7 +143,7 @@ export default function TripPlannerPage() {
   };
 
   const renderProgress = () => (
-    <div className="flex flex-col gap-[var(--spacing-gap-sm)] pb-[var(--spacing-section-sm)]">
+    <div className="flex flex-col gap-fluid-sm pb-section-sm">
       <div className="flex items-center justify-between">
         <span className="text-fluid-xs uppercase tracking-widest text-primary">
           Step {currentStep} of {totalSteps}
@@ -162,7 +162,7 @@ export default function TripPlannerPage() {
   );
 
   const renderNavigation = () => (
-    <div className="flex gap-[var(--spacing-gap-sm)] pt-[var(--spacing-element-xl)] border-t border-border/50">
+    <div className="flex gap-fluid-sm pt-element-xl border-t border-border/50">
       {currentStep > 1 && (
         <Button
           variant="outline"
@@ -199,38 +199,38 @@ export default function TripPlannerPage() {
   if (submitted) {
     return (
       <main className="theme-organic">
-        <div className="organic-section-middle min-h-[80vh] flex items-center py-[var(--spacing-section-lg)]">
+        <div className="organic-section-middle min-h-[80vh] flex items-center py-section-lg">
           <Container maxWidth="sm">
-            <div className="text-center flex flex-col gap-[var(--spacing-gap-xl)] items-center">
-              <div className="size-20 rounded-[var(--radius-full)] bg-primary/10 flex items-center justify-center mx-auto">
+            <div className="text-center flex flex-col gap-fluid-xl items-center">
+              <div className="size-20 rounded-[var(--radius-full)] bg-primary/10 flex items-center justify-center">
                 <CircleCheck className="size-10 text-primary" />
               </div>
-              <div className="flex flex-col gap-[var(--spacing-gap-sm)]">
+              <div className="flex flex-col gap-fluid-sm">
                 <HeadingBlock level={1}>Request Received</HeadingBlock>
-                <ParagraphBlock className="text-muted-foreground pb-[var(--spacing-element-lg)]">
+                <ParagraphBlock className="text-muted-foreground pb-element-lg">
                   Our specialists are already reviewing your preferences. We'll send a personalized proposal 
                   to <strong>{formData.email}</strong> shortly.
                 </ParagraphBlock>
               </div>
 
-              <div className="bg-muted/30 p-[var(--spacing-element-xl)] rounded-[var(--radius-lg)] text-left border border-border/50 flex flex-col gap-[var(--spacing-gap-lg)] w-full">
+              <div className="bg-muted/30 p-element-xl rounded-[var(--radius-lg)] text-left border border-border/50 flex flex-col gap-fluid-lg w-full">
                 <h3 className="text-fluid-xl m-0 wp-text--hand">Your Planning Roadmap</h3>
-                <ul className="flex flex-col gap-[var(--spacing-gap-lg)] list-none m-0 p-0">
-                  <li className="flex gap-[var(--spacing-gap-sm)]">
+                <ul className="flex flex-col gap-fluid-lg list-none m-0 p-0">
+                  <li className="flex gap-fluid-sm">
                     <div className="size-6 rounded-[var(--radius-full)] bg-primary text-primary-foreground flex items-center justify-center text-fluid-xs shrink-0">1</div>
                     <div>
                       <p className="text-fluid-sm m-0">Expert Analysis</p>
                     <p className="text-fluid-xs text-muted-foreground m-0">A safari specialist is matching your interests with the best locations.</p>
                   </div>
                 </li>
-                <li className="flex gap-[var(--spacing-gap-sm)]">
+                <li className="flex gap-fluid-sm">
                   <div className="size-6 rounded-[var(--radius-full)] bg-primary text-primary-foreground flex items-center justify-center text-fluid-xs shrink-0">2</div>
                   <div>
                     <p className="text-fluid-sm m-0">Personalized Proposal</p>
                     <p className="text-fluid-xs text-muted-foreground m-0">You'll receive a custom itinerary with lodges, pricing, and maps.</p>
                   </div>
                 </li>
-                <li className="flex gap-[var(--spacing-gap-sm)]">
+                <li className="flex gap-fluid-sm">
                   <div className="size-6 rounded-[var(--radius-full)] bg-primary text-primary-foreground flex items-center justify-center text-fluid-xs shrink-0">3</div>
                   <div>
                     <p className="text-fluid-sm m-0">Consultation</p>
@@ -240,7 +240,7 @@ export default function TripPlannerPage() {
               </ul>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-[var(--spacing-gap-sm)] w-full">
+            <div className="flex flex-col sm:flex-row gap-fluid-sm w-full">
               <Button variant="outline" className="flex-1" onClick={() => window.location.href = '/'}>
                 Back to Home
               </Button>
@@ -257,41 +257,41 @@ export default function TripPlannerPage() {
 
   return (
     <main className="theme-organic">
-      <div className="organic-section-middle py-[var(--spacing-section-lg)] min-h-[80vh]">
-        <Container maxWidth="md" className="flex flex-col gap-[var(--spacing-gap-2xl)]">
-          <div className="text-center flex flex-col gap-[var(--spacing-gap-sm)]">
+      <div className="organic-section-middle py-section-lg min-h-[80vh]">
+        <Container maxWidth="md" className="flex flex-col gap-fluid-2xl">
+          <div className="text-center flex flex-col gap-fluid-sm">
             <HeadingBlock level={1}>The Safari Designer</HeadingBlock>
-            <ParagraphBlock className="text-muted-foreground max-w-xl mx-auto m-0">
+            <ParagraphBlock className="text-muted-foreground max-w-xl self-center m-0">
               Design your dream African adventure in less than 2 minutes. 
               Our experts will turn your vision into a reality.
             </ParagraphBlock>
           </div>
 
-          <div className="bg-card p-[var(--spacing-element-xl)] md:p-[var(--spacing-element-2xl)] rounded-[var(--radius-lg)] shadow-xl border border-border/50 flex flex-col gap-[var(--spacing-gap-xl)]">
+          <div className="bg-card p-element-xl md:p-element-2xl rounded-[var(--radius-lg)] shadow-xl border border-border/50 flex flex-col gap-fluid-xl">
             {renderProgress()}
 
           {/* Step 1: Destinations */}
           {currentStep === 1 && (
-            <div className="space-y-[var(--spacing-element-xl)] animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="flex items-center gap-[var(--spacing-gap-sm)]">
-                <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-md)] bg-primary/10 text-primary">
+            <div className="flex flex-col gap-element-xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <div className="flex items-center gap-fluid-sm">
+                <div className="p-element-sm rounded-[var(--radius-md)] bg-primary/10 text-primary">
                   <MapPin className="size-6" />
                 </div>
                 <h2 className="text-fluid-3xl m-0">Dream Destinations</h2>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-[var(--spacing-gap-sm)]">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-fluid-sm">
                 {destinations.map((dest) => (
                   <button
                     key={dest.id}
                     onClick={() => toggleDestination(dest.id)}
                     className={cn(
-                      "p-[var(--spacing-element-md)] border-2 rounded-[var(--radius-md)] text-left transition-all duration-300",
+                      "p-element-md border-2 rounded-[var(--radius-md)] text-left transition-all duration-300",
                       formData.destinations?.includes(dest.id)
                         ? "border-primary bg-primary/5 ring-4 ring-primary/10"
                         : "border-border hover:border-primary/50"
                     )}
                   >
-                    <p className="text-fluid-sm m-0 mb-[var(--spacing-element-xs)]">{dest.name}</p>
+                    <p className="text-fluid-sm m-0">{dest.name}</p>
                     <p className="text-fluid-xs uppercase tracking-wider text-muted-foreground m-0">{dest.region}</p>
                   </button>
                 ))}
@@ -301,20 +301,20 @@ export default function TripPlannerPage() {
 
           {/* Step 2: Travel Month */}
           {currentStep === 2 && (
-            <div className="space-y-[var(--spacing-element-xl)] animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="flex items-center gap-[var(--spacing-gap-sm)]">
-                <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-md)] bg-primary/10 text-primary">
+            <div className="flex flex-col gap-element-xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <div className="flex items-center gap-fluid-sm">
+                <div className="p-element-sm rounded-[var(--radius-md)] bg-primary/10 text-primary">
                   <Calendar className="size-6" />
                 </div>
                 <h2 className="text-fluid-3xl m-0">Travel Window</h2>
               </div>
-              <div className="grid grid-cols-3 sm:grid-cols-4 gap-[var(--spacing-gap-sm)]">
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-fluid-sm">
                 {months.map((month) => (
                   <button
                     key={month}
                     onClick={() => setFormData({ ...formData, travelMonth: month })}
                     className={cn(
-                      "p-[var(--spacing-element-sm)] border-2 rounded-[var(--radius-md)] text-center transition-all duration-300",
+                      "p-element-sm border-2 rounded-[var(--radius-md)] text-center transition-all duration-300",
                       formData.travelMonth === month
                         ? "border-primary bg-primary/5 ring-4 ring-primary/10"
                         : "border-border hover:border-primary/50"
@@ -329,20 +329,20 @@ export default function TripPlannerPage() {
 
           {/* Step 3: Travelers */}
           {currentStep === 3 && (
-            <div className="space-y-[var(--spacing-element-xl)] animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="flex items-center gap-[var(--spacing-gap-sm)]">
-                <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-md)] bg-primary/10 text-primary">
+            <div className="flex flex-col gap-element-xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <div className="flex items-center gap-fluid-sm">
+                <div className="p-element-sm rounded-[var(--radius-md)] bg-primary/10 text-primary">
                   <Users className="size-6" />
                 </div>
                 <h2 className="text-fluid-3xl m-0">Your Party</h2>
               </div>
-              <div className="space-y-[var(--spacing-element-md)] max-w-sm mx-auto">
-                <div className="flex items-center justify-between p-[var(--spacing-element-lg)] border-2 border-border rounded-[var(--radius-lg)]">
+              <div className="flex flex-col gap-element-md max-w-sm self-center w-full">
+                <div className="flex items-center justify-between p-element-lg border-2 border-border rounded-[var(--radius-lg)]">
                   <div>
                     <p className="m-0">Adults</p>
                     <p className="text-fluid-xs text-muted-foreground m-0">Age 18+</p>
                   </div>
-                  <div className="flex items-center gap-[var(--spacing-gap-md)]">
+                  <div className="flex items-center gap-fluid-md">
                     <button 
                       className="size-10 rounded-[var(--radius-full)] border border-border flex items-center justify-center hover:bg-muted"
                       onClick={() => setFormData({...formData, travelers: {...formData.travelers!, adults: Math.max(1, (formData.travelers?.adults || 0) - 1)}})}
@@ -354,12 +354,12 @@ export default function TripPlannerPage() {
                     >+</button>
                   </div>
                 </div>
-                <div className="flex items-center justify-between p-[var(--spacing-element-lg)] border-2 border-border rounded-[var(--radius-lg)]">
+                <div className="flex items-center justify-between p-element-lg border-2 border-border rounded-[var(--radius-lg)]">
                   <div>
                     <p className="m-0">Children</p>
                     <p className="text-fluid-xs text-muted-foreground m-0">Age 0-17</p>
                   </div>
-                  <div className="flex items-center gap-[var(--spacing-gap-md)]">
+                  <div className="flex items-center gap-fluid-md">
                     <button 
                       className="size-10 rounded-[var(--radius-full)] border border-border flex items-center justify-center hover:bg-muted"
                       onClick={() => setFormData({...formData, travelers: {...formData.travelers!, children: Math.max(0, (formData.travelers?.children || 0) - 1)}})}
@@ -377,26 +377,26 @@ export default function TripPlannerPage() {
 
           {/* Step 4: Budget */}
           {currentStep === 4 && (
-            <div className="space-y-[var(--spacing-element-xl)] animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="flex items-center gap-[var(--spacing-gap-sm)]">
-                <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-md)] bg-primary/10 text-primary">
+            <div className="flex flex-col gap-element-xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <div className="flex items-center gap-fluid-sm">
+                <div className="p-element-sm rounded-[var(--radius-md)] bg-primary/10 text-primary">
                   <DollarSign className="size-6" />
                 </div>
                 <h2 className="text-fluid-3xl m-0">Budget Planning</h2>
               </div>
-              <div className="space-y-[var(--spacing-element-md)]">
+              <div className="flex flex-col gap-element-md">
                 {budgets.map((budget) => (
                   <button
                     key={budget.value}
                     onClick={() => setFormData({ ...formData, budget: budget.value })}
                     className={cn(
-                      "w-full p-[var(--spacing-element-lg)] border-2 rounded-[var(--radius-lg)] text-left transition-all duration-300",
+                      "w-full p-element-lg border-2 rounded-[var(--radius-lg)] text-left transition-all duration-300",
                       formData.budget === budget.value
                         ? "border-primary bg-primary/5 ring-4 ring-primary/10"
                         : "border-border hover:border-primary/50"
                     )}
                   >
-                    <div className="flex items-center justify-between mb-[var(--spacing-element-xs)]">
+                    <div className="flex items-center justify-between">
                       <p className="text-fluid-lg m-0">{budget.label}</p>
                       <p className="text-primary m-0">{budget.range}</p>
                     </div>
@@ -409,14 +409,14 @@ export default function TripPlannerPage() {
 
           {/* Step 5: Travel Style */}
           {currentStep === 5 && (
-            <div className="space-y-[var(--spacing-element-xl)] animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="flex items-center gap-[var(--spacing-gap-sm)]">
-                <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-md)] bg-primary/10 text-primary">
+            <div className="flex flex-col gap-element-xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <div className="flex items-center gap-fluid-sm">
+                <div className="p-element-sm rounded-[var(--radius-md)] bg-primary/10 text-primary">
                   <Compass className="size-6" />
                 </div>
                 <h2 className="text-fluid-3xl m-0">Safari Style</h2>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-[var(--spacing-gap-sm)]">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-fluid-sm">
                 {travelStyles.map((style) => {
                   const Icon = style.icon;
                   return (
@@ -424,13 +424,13 @@ export default function TripPlannerPage() {
                       key={style.id}
                       onClick={() => toggleTravelStyle(style.id)}
                       className={cn(
-                        "p-[var(--spacing-element-lg)] border-2 rounded-[var(--radius-lg)] text-center transition-all duration-300",
+                        "p-element-lg border-2 rounded-[var(--radius-lg)] text-center transition-all duration-300",
                         formData.travelStyle?.includes(style.id)
                           ? "border-primary bg-primary/5 ring-4 ring-primary/10"
                           : "border-border hover:border-primary/50"
                       )}
                     >
-                      <Icon className="size-8 mx-auto m-0 pb-[var(--spacing-element-md)] text-primary" />
+                      <Icon className="size-8 m-0 pb-element-md text-primary" />
                       <p className="text-fluid-sm m-0">{style.label}</p>
                     </button>
                   );
@@ -441,20 +441,20 @@ export default function TripPlannerPage() {
 
           {/* Step 6: Interests */}
           {currentStep === 6 && (
-            <div className="space-y-[var(--spacing-element-xl)] animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="flex items-center gap-[var(--spacing-gap-sm)]">
-                <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-md)] bg-primary/10 text-primary">
+            <div className="flex flex-col gap-element-xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <div className="flex items-center gap-fluid-sm">
+                <div className="p-element-sm rounded-[var(--radius-md)] bg-primary/10 text-primary">
                   <Camera className="size-6" />
                 </div>
                 <h2 className="text-fluid-3xl m-0">Must-See Experiences</h2>
               </div>
-              <div className="flex flex-wrap gap-[var(--spacing-gap-sm)]">
+              <div className="flex flex-wrap gap-fluid-sm">
                 {interests.map((interest) => (
                   <button
                     key={interest}
                     onClick={() => toggleInterest(interest)}
                     className={cn(
-                      "px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] border-2 rounded-[var(--radius-full)] transition-all duration-300 text-fluid-sm",
+                      "px-element-lg py-element-md border-2 rounded-[var(--radius-full)] transition-all duration-300 text-fluid-sm",
                       formData.interests?.includes(interest)
                         ? "border-primary bg-primary text-primary-foreground"
                         : "border-border hover:border-primary/50 text-muted-foreground"
@@ -469,45 +469,45 @@ export default function TripPlannerPage() {
 
           {/* Step 7: Contact */}
           {currentStep === 7 && (
-            <div className="space-y-[var(--spacing-element-xl)] animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="flex items-center gap-[var(--spacing-gap-sm)]">
-                <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-md)] bg-primary/10 text-primary">
+            <div className="flex flex-col gap-element-xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <div className="flex items-center gap-fluid-sm">
+                <div className="p-element-sm rounded-[var(--radius-md)] bg-primary/10 text-primary">
                   <Mail className="size-6" />
                 </div>
                 <h2 className="text-fluid-3xl m-0">Almost Finished</h2>
               </div>
-              <div className="grid gap-[var(--spacing-gap-md)]">
-                <div>
-                  <label htmlFor="name" className="block text-fluid-sm m-0 mb-[var(--spacing-element-xs)]">Your Name *</label>
+              <div className="grid gap-fluid-md">
+                <div className="flex flex-col gap-element-xs">
+                  <label htmlFor="name" className="block text-fluid-sm m-0">Your Name *</label>
                   <input
                     id="name"
                     type="text"
                     placeholder="Enter your full name"
                     value={formData.name || ""}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full p-[var(--spacing-element-md)] border-2 border-border rounded-[var(--radius-md)] focus:border-primary focus:outline-none transition-colors"
+                    className="w-full p-element-md border-2 border-border rounded-[var(--radius-md)] focus:border-primary focus:outline-none transition-colors"
                   />
                 </div>
-                <div>
-                  <label htmlFor="email" className="block text-fluid-sm m-0 mb-[var(--spacing-element-xs)]">Email Address *</label>
+                <div className="flex flex-col gap-element-xs">
+                  <label htmlFor="email" className="block text-fluid-sm m-0">Email Address *</label>
                   <input
                     id="email"
                     type="email"
                     placeholder="Where should we send your recommendations?"
                     value={formData.email || ""}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full p-[var(--spacing-element-md)] border-2 border-border rounded-[var(--radius-md)] focus:border-primary focus:outline-none transition-colors"
+                    className="w-full p-element-md border-2 border-border rounded-[var(--radius-md)] focus:border-primary focus:outline-none transition-colors"
                   />
                 </div>
-                <div>
-                  <label htmlFor="phone" className="block text-fluid-sm m-0 mb-[var(--spacing-element-xs)]">Phone Number</label>
+                <div className="flex flex-col gap-element-xs">
+                  <label htmlFor="phone" className="block text-fluid-sm m-0">Phone Number</label>
                   <input
                     id="phone"
                     type="tel"
                     placeholder="Optional: for a faster response"
                     value={formData.phone || ""}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full p-[var(--spacing-element-md)] border-2 border-border rounded-[var(--radius-md)] focus:border-primary focus:outline-none transition-colors"
+                    className="w-full p-element-md border-2 border-border rounded-[var(--radius-md)] focus:border-primary focus:outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -518,16 +518,16 @@ export default function TripPlannerPage() {
         </div>
 
         {/* Trust Indicators */}
-        <div className="mt-[var(--spacing-section-sm)] flex flex-wrap justify-center gap-[var(--spacing-gap-lg)] md:gap-[var(--spacing-gap-xl)]">
-          <div className="flex items-center gap-[var(--spacing-gap-sm)]">
+        <div className="pt-section-sm flex flex-wrap justify-center gap-fluid-lg md:gap-fluid-xl">
+          <div className="flex items-center gap-fluid-sm">
             <CircleCheck className="size-5 text-primary" />
             <span className="text-fluid-xs text-muted-foreground uppercase tracking-widest">No Commitment</span>
           </div>
-          <div className="flex items-center gap-[var(--spacing-gap-sm)]">
+          <div className="flex items-center gap-fluid-sm">
             <CircleCheck className="size-5 text-primary" />
             <span className="text-fluid-xs text-muted-foreground uppercase tracking-widest">Expert Guided</span>
           </div>
-          <div className="flex items-center gap-[var(--spacing-gap-sm)]">
+          <div className="flex items-center gap-fluid-sm">
             <CircleCheck className="size-5 text-primary" />
             <span className="text-fluid-xs text-muted-foreground uppercase tracking-widest">Personalized</span>
           </div>

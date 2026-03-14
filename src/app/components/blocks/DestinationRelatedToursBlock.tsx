@@ -49,7 +49,7 @@ export function DestinationRelatedToursBlock({
 
         {/* View All Link */}
         {onViewAll && (
-          <div className="mt-12 text-center">
+          <div className="pt-12 text-center">
             <button 
               onClick={onViewAll}
               className="inline-flex items-center gap-2 text-primary hover:underline font-semibold"

@@ -303,7 +303,7 @@ function SingleTourTemplate() {
       />
 
       {/* Top Section - Savanna Sunset */}
-      <div className="organic-section-top">
+      <section className="organic-section-top texture-medium">
         {/* Hero Section */}
         <Hero
           title={tour.title}
@@ -323,11 +323,11 @@ function SingleTourTemplate() {
           }}
           animated
         />
-      </div>
+      </section>
 
       {/* Main Content Grid - Acacia & Clay */}
-      <div className="organic-section-middle">
-        <section className="single-tour__content-section">
+      <section className="organic-section-middle texture-subtle">
+        <div className="single-tour__content-section">
           <Container>
             <div className="single-tour__grid">
               {/* Main Content Column */}
@@ -383,11 +383,11 @@ function SingleTourTemplate() {
               </div>
             </div>
           </Container>
-        </section>
-      </div>
+        </div>
+      </section>
 
       {/* Middle Alt - Acacia & Clay Alt */}
-      <div className="organic-section-middle-alt">
+      <section className="organic-section-middle-alt texture-subtle">
         {/* Related Destinations */}
         <TourRelatedDestinationBlock 
           destinations={relatedDestinations} 
@@ -399,10 +399,10 @@ function SingleTourTemplate() {
           accommodations={relatedAccommodations}
           onSelect={(acc) => navigateToAccommodation(acc.slug)}
         />
-      </div>
+      </section>
 
       {/* Bottom Section - Minimal Earth */}
-      <div className="organic-section-bottom">
+      <section className="organic-section-bottom texture-subtle">
         {/* FAQ Section */}
         <FAQ
           title={faqData?.sectionTitle || "Frequently Asked Questions"}
@@ -427,7 +427,7 @@ function SingleTourTemplate() {
             onClick: () => navigateTo("/contact"),
           }}
         />
-      </div>
+      </section>
     </main>
   );
 }

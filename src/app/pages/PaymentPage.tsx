@@ -137,13 +137,13 @@ export default function PaymentPage({ onNavigate }: PaymentPageProps) {
           ================================================================ */}
       <section className="py-section-sm md:py-section-md bg-muted">
         <Container>
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-4">
+          <div className="max-w-3xl flex flex-col gap-4">
+            <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
                 <Lock className="w-6 h-6 text-primary-foreground" />
               </div>
-              <div>
-                <h1 className="mb-2">Secure Payment</h1>
+              <div className="flex flex-col gap-2">
+                <h1>Secure Payment</h1>
                 <p className="text-sm text-muted-foreground">
                   Booking Reference: <span className="font-mono font-medium">{MOCK_BOOKING.bookingRef}</span>
                 </p>
@@ -163,7 +163,7 @@ export default function PaymentPage({ onNavigate }: PaymentPageProps) {
         <Container>
           <div className="grid gap-8 lg:grid-cols-3">
             {/* Left Column - Payment Form */}
-            <div className="lg:col-span-2 space-y-8">
+            <div className="lg:col-span-2 flex flex-col gap-8">
               {/* Payment Method Selection */}
               <div className="bg-card border border-border rounded-lg p-6 md:p-8">
                 <PaymentMethodSelector
@@ -187,19 +187,19 @@ export default function PaymentPage({ onNavigate }: PaymentPageProps) {
 
               {/* Bank Transfer Instructions (Conditional) */}
               {selectedMethod === "bank-transfer" && (
-                <div className="bg-card border border-border rounded-lg p-6 md:p-8">
-                  <div className="flex items-start gap-3 mb-4">
-                    <AlertCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="mb-2">Bank Transfer Instructions</h3>
+                <div className="bg-card border border-border rounded-lg p-6 md:p-8 flex flex-col gap-4">
+                  <div className="flex items-start gap-3">
+                    <AlertCircle className="w-6 h-6 text-primary flex-shrink-0 translate-y-1" />
+                    <div className="flex flex-col gap-2">
+                      <h3>Bank Transfer Instructions</h3>
                       <p className="text-muted-foreground">
                         Complete your booking and we'll send detailed bank transfer instructions to your email
                       </p>
                     </div>
                   </div>
-                  <div className="bg-muted/50 rounded-lg p-4 space-y-2">
+                  <div className="bg-muted/50 rounded-lg p-4 flex flex-col gap-2">
                     <p className="text-sm font-medium">What happens next:</p>
-                    <ol className="text-sm text-muted-foreground space-y-1 ml-4 list-decimal">
+                    <ol className="text-sm text-muted-foreground flex flex-col gap-1 pl-4 list-decimal">
                       <li>You'll receive an email with our bank details</li>
                       <li>Transfer the full amount within 3 business days</li>
                       <li>Include your booking reference in the transfer description</li>
@@ -216,7 +216,7 @@ export default function PaymentPage({ onNavigate }: PaymentPageProps) {
                   type="checkbox"
                   checked={termsAccepted}
                   onChange={(e) => setTermsAccepted(e.target.checked)}
-                  className="mt-1 w-4 h-4 rounded border-border text-primary focus:ring-ring"
+                  className="translate-y-1 w-4 h-4 rounded border-border text-primary focus:ring-ring"
                 />
                 <label htmlFor="terms" className="text-sm cursor-pointer flex-1">
                   I agree to the{" "}
@@ -272,20 +272,20 @@ export default function PaymentPage({ onNavigate }: PaymentPageProps) {
 
             {/* Right Column - Order Summary */}
             <div className="lg:col-span-1">
-              <div className="bg-card border border-border rounded-lg p-6 sticky top-24">
-                <h3 className="mb-6">Order Summary</h3>
+              <div className="bg-card border border-border rounded-lg p-6 sticky top-24 flex flex-col gap-6">
+                <h3>Order Summary</h3>
 
                 {/* Tour Details */}
-                <div className="space-y-4 mb-6">
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">Tour</p>
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-1">
+                    <p className="text-sm text-muted-foreground">Tour</p>
                     <p className="font-medium">{MOCK_BOOKING.tourTitle}</p>
                   </div>
 
                   <div className="flex items-start gap-2">
-                    <Calendar className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Travel Dates</p>
+                    <Calendar className="w-4 h-4 text-primary translate-y-1 flex-shrink-0" />
+                    <div className="flex flex-col gap-1">
+                      <p className="text-sm text-muted-foreground">Travel Dates</p>
                       <p className="text-sm font-medium">
                         {departureDate.toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                         {" - "}
@@ -296,9 +296,9 @@ export default function PaymentPage({ onNavigate }: PaymentPageProps) {
                   </div>
 
                   <div className="flex items-start gap-2">
-                    <Users className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Passengers</p>
+                    <Users className="w-4 h-4 text-primary translate-y-1 flex-shrink-0" />
+                    <div className="flex flex-col gap-1">
+                      <p className="text-sm text-muted-foreground">Passengers</p>
                       <p className="text-sm font-medium">
                         {totalPassengers} traveler{totalPassengers !== 1 ? "s" : ""}
                       </p>
@@ -306,9 +306,9 @@ export default function PaymentPage({ onNavigate }: PaymentPageProps) {
                   </div>
 
                   <div className="flex items-start gap-2">
-                    <MapPin className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Lead Passenger</p>
+                    <MapPin className="w-4 h-4 text-primary translate-y-1 flex-shrink-0" />
+                    <div className="flex flex-col gap-1">
+                      <p className="text-sm text-muted-foreground">Lead Passenger</p>
                       <p className="text-sm font-medium">
                         {MOCK_BOOKING.leadPassenger.firstName} {MOCK_BOOKING.leadPassenger.lastName}
                       </p>
@@ -317,7 +317,7 @@ export default function PaymentPage({ onNavigate }: PaymentPageProps) {
                 </div>
 
                 {/* Pricing Breakdown */}
-                <div className="pt-6 border-t border-border space-y-3">
+                <div className="pt-6 border-t border-border flex flex-col gap-3">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Tour Price</span>
                     <span className="font-medium">${MOCK_BOOKING.pricing.basePrice.toLocaleString()}</span>
@@ -344,12 +344,12 @@ export default function PaymentPage({ onNavigate }: PaymentPageProps) {
                 </div>
 
                 {/* Additional Info */}
-                <div className="mt-6 pt-6 border-t border-border">
+                <div className="pt-6 border-t border-border">
                   <div className="wp-callout-accent-soft p-3">
                     <div className="flex items-start gap-2">
-                      <CircleCheck className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                      <div className="text-xs text-muted-foreground">
-                        <p className="font-medium text-foreground mb-1">
+                      <CircleCheck className="w-4 h-4 text-primary flex-shrink-0 translate-y-0.5" />
+                      <div className="text-xs text-muted-foreground flex flex-col gap-1">
+                        <p className="font-medium text-foreground">
                           Free Cancellation
                         </p>
                         <p>
@@ -370,9 +370,9 @@ export default function PaymentPage({ onNavigate }: PaymentPageProps) {
           ================================================================ */}
       <section className="py-section-sm md:py-section-md bg-muted">
         <Container>
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-8">
-              <h2 className="mb-4">Secure & Trusted Payment</h2>
+          <div className="max-w-5xl flex flex-col gap-8">
+            <div className="text-center flex flex-col gap-4">
+              <h2>Secure & Trusted Payment</h2>
               <p className="text-lg text-muted-foreground">
                 Your security is our top priority
               </p>

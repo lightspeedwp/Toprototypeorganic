@@ -10,7 +10,7 @@ import { Container } from "../common/Container";
 import { SectionHeader } from "../common/SectionHeader";
 import { ViewAllButton } from "../common/ViewAllButton";
 import { cn } from "../../lib/utils";
-import type { Icon as PhosphorIcon } from "@phosphor-icons/react";
+import type { ReactNode, ComponentType } from "react";
 
 /**
  * Props for the FeaturedSection component.
@@ -23,7 +23,7 @@ interface FeaturedSectionProps<T extends { id: string | number }> {
     eyebrow?: string;
     title: string;
     description: string;
-    icon?: PhosphorIcon;
+    icon?: ReactNode | ComponentType<any>;
     prefix?: string;
   };
   /** Array of items to display in the grid. */
@@ -67,18 +67,22 @@ export function FeaturedSection<T extends { id: string | number }>({
           prefix={header.prefix || "wp-featured-section"}
         />
 
-        <div className={cn("wp-featured-section__grid", gridClassName)}>
+        <div className={cn("wp-featured-section__grid flex flex-wrap gap-fluid-lg md:grid md:grid-cols-2 lg:grid-cols-3 pt-element-xl", gridClassName)}>
           {items.map((item) => (
-            <div key={item.id} className="wp-featured-section__item">
+            <div key={item.id} className="wp-featured-section__item flex w-full">
               {renderCard(item)}
             </div>
           ))}
         </div>
 
-        {children}
+        {children && (
+          <div className="pt-element-lg">
+            {children}
+          </div>
+        )}
 
         {viewAll && (
-          <div className="wp-featured-section__footer">
+          <div className="wp-featured-section__footer pt-element-xl flex justify-center w-full">
             <ViewAllButton
               label={viewAll.label}
               onClick={viewAll.onClick}

@@ -169,15 +169,15 @@ export function TourGalleryPage() {
           HERO - Gallery header
           ================================================================ */}
       <GroupBlock sectionStyle="section-hero-default">
-        <Container>
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm text-primary">
+        <Container className="flex flex-col items-center">
+          <div className="max-w-4xl w-full text-center flex flex-col items-center gap-4">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm text-primary">
               <MapPin size={16} />
               Maasai Mara, Kenya
             </div>
 
-            <h1 className="mb-4 text-foreground">Kenya Safari Adventure Gallery</h1>
-            <p className="mb-8 text-lg text-muted-foreground">
+            <h1 className="text-foreground">Kenya Safari Adventure Gallery</h1>
+            <p className="text-lg text-muted-foreground">
               Explore stunning photos and videos from one of Africa's most spectacular
               wildlife destinations. Preview your adventure through the eyes of our guests.
             </p>
@@ -204,9 +204,9 @@ export function TourGalleryPage() {
           FEATURED CAROUSEL - Hero slideshow
           ================================================================ */}
       <GroupBlock sectionStyle="section-default">
-        <Container>
-          <div className="mx-auto max-w-5xl">
-            <h2 className="mb-6 text-center text-foreground">Featured Photos</h2>
+        <Container className="flex flex-col items-center">
+          <div className="max-w-5xl w-full flex flex-col gap-6">
+            <h2 className="text-center text-foreground">Featured Photos</h2>
             <ImageCarousel
               images={featuredImages}
               autoPlayInterval={5000}
@@ -224,9 +224,9 @@ export function TourGalleryPage() {
           THUMBNAIL CAROUSEL - Alternative view
           ================================================================ */}
       <GroupBlock sectionStyle="section-accent-subtle">
-        <Container>
-          <div className="mx-auto max-w-5xl">
-            <h2 className="mb-6 text-center text-foreground">Browse All Photos</h2>
+        <Container className="flex flex-col items-center">
+          <div className="max-w-5xl w-full flex flex-col gap-6">
+            <h2 className="text-center text-foreground">Browse All Photos</h2>
             <ThumbnailCarousel
               images={featuredImages}
               showCaptions
@@ -240,7 +240,7 @@ export function TourGalleryPage() {
           GALLERY GRID - All photos
           ================================================================ */}
       <GroupBlock sectionStyle="section-default">
-        <Container>
+        <Container className="flex flex-col items-center">
           <GallerySection
             title="Tour Photo Gallery"
             description="Click any image to view full size. All photos taken by our guests and tour guides."
@@ -257,7 +257,7 @@ export function TourGalleryPage() {
           MASONRY GALLERY - Wildlife photos
           ================================================================ */}
       <GroupBlock sectionStyle="section-muted-subtle">
-        <Container>
+        <Container className="flex flex-col items-center">
           <GallerySection
             title="Wildlife Photography"
             description="Stunning captures of the Big Five and other incredible species"
@@ -273,10 +273,10 @@ export function TourGalleryPage() {
           VIDEO GALLERY - Tour videos
           ================================================================ */}
       <GroupBlock sectionStyle="section-default">
-        <Container>
-          <div className="mx-auto max-w-5xl">
-            <div className="mb-8 text-center">
-              <h2 className="mb-4 text-foreground">Tour Videos</h2>
+        <Container className="flex flex-col items-center">
+          <div className="max-w-5xl w-full flex flex-col gap-8">
+            <div className="text-center flex flex-col gap-4">
+              <h2 className="text-foreground">Tour Videos</h2>
               <p className="text-muted-foreground">
                 Watch highlights from recent tours and get a feel for the experience
               </p>
@@ -291,10 +291,10 @@ export function TourGalleryPage() {
           SINGLE VIDEO EXAMPLE
           ================================================================ */}
       <GroupBlock sectionStyle="section-accent-subtle">
-        <Container>
-          <div className="mx-auto max-w-4xl">
-            <div className="mb-6 text-center">
-              <h2 className="mb-4 text-foreground">Virtual Tour Experience</h2>
+        <Container className="flex flex-col items-center">
+          <div className="max-w-4xl w-full flex flex-col gap-6">
+            <div className="text-center flex flex-col gap-4">
+              <h2 className="text-foreground">Virtual Tour Experience</h2>
               <p className="text-muted-foreground">
                 Take a 360° virtual tour of the Maasai Mara (coming soon)
               </p>
@@ -315,23 +315,23 @@ export function TourGalleryPage() {
           STATS SECTION
           ================================================================ */}
       <GroupBlock sectionStyle="section-default">
-        <Container>
-          <div className="mx-auto max-w-4xl">
+        <Container className="flex flex-col items-center">
+          <div className="max-w-4xl w-full">
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="text-center">
-                <div className="mb-2 font-serif text-fluid-4xl text-primary">150+</div>
+              <div className="text-center flex flex-col gap-2">
+                <div className="font-serif text-fluid-4xl text-primary">150+</div>
                 <p className="text-muted-foreground">Photo Gallery</p>
               </div>
-              <div className="text-center">
-                <div className="mb-2 font-serif text-fluid-4xl text-primary">12</div>
+              <div className="text-center flex flex-col gap-2">
+                <div className="font-serif text-fluid-4xl text-primary">12</div>
                 <p className="text-muted-foreground">Video Tours</p>
               </div>
-              <div className="text-center">
-                <div className="mb-2 font-serif text-fluid-4xl text-primary">50+</div>
+              <div className="text-center flex flex-col gap-2">
+                <div className="font-serif text-fluid-4xl text-primary">50+</div>
                 <p className="text-muted-foreground">Wildlife Species</p>
               </div>
-              <div className="text-center">
-                <div className="mb-2 font-serif text-fluid-4xl text-primary">127</div>
+              <div className="text-center flex flex-col gap-2">
+                <div className="font-serif text-fluid-4xl text-primary">127</div>
                 <p className="text-muted-foreground">Guest Reviews</p>
               </div>
             </div>

@@ -120,11 +120,11 @@ export default function LoginPage({ onNavigate }: LoginPageProps) {
           ================================================================ */}
       <section className="py-section-sm md:py-section-md bg-muted">
         <Container>
-          <div className="max-w-md mx-auto text-center">
-            <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center mx-auto mb-4">
+          <div className="max-w-md text-center flex flex-col items-center gap-4">
+            <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
               <Lock className="w-8 h-8 text-primary-foreground" />
             </div>
-            <h1 className="mb-4">Welcome Back</h1>
+            <h1>Welcome Back</h1>
             <p className="text-lg text-muted-foreground">
               Sign in to your account to manage bookings and access exclusive features
             </p>
@@ -137,13 +137,13 @@ export default function LoginPage({ onNavigate }: LoginPageProps) {
           ================================================================ */}
       <section className="py-section-sm md:py-section-md bg-background">
         <Container>
-          <div className="max-w-md mx-auto">
+          <div className="max-w-md">
             {/* Login Card */}
             <div className="bg-card border border-border rounded-lg p-6 md:p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                 {/* Email Field */}
                 <div>
-                  <label htmlFor="email" className="mb-2 block">
+                  <label htmlFor="email" className="block">
                     Email Address *
                   </label>
                   <div className="relative">
@@ -170,7 +170,7 @@ export default function LoginPage({ onNavigate }: LoginPageProps) {
                     />
                   </div>
                   {errors.email && (
-                    <div className="flex items-center gap-1.5 mt-2 text-sm text-destructive">
+                    <div className="flex items-center gap-1.5 pt-2 text-sm text-destructive">
                       <AlertCircle className="w-4 h-4 flex-shrink-0" />
                       <span>{errors.email}</span>
                     </div>
@@ -179,7 +179,7 @@ export default function LoginPage({ onNavigate }: LoginPageProps) {
 
                 {/* Password Field */}
                 <div>
-                  <label htmlFor="password" className="mb-2 block">
+                  <label htmlFor="password" className="block">
                     Password *
                   </label>
                   <div className="relative">
@@ -218,7 +218,7 @@ export default function LoginPage({ onNavigate }: LoginPageProps) {
                     </button>
                   </div>
                   {errors.password && (
-                    <div className="flex items-center gap-1.5 mt-2 text-sm text-destructive">
+                    <div className="flex items-center gap-1.5 pt-2 text-sm text-destructive">
                       <AlertCircle className="w-4 h-4 flex-shrink-0" />
                       <span>{errors.password}</span>
                     </div>
@@ -275,7 +275,7 @@ export default function LoginPage({ onNavigate }: LoginPageProps) {
               </form>
 
               {/* Divider */}
-              <div className="relative my-6">
+              <div className="relative py-6">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-border" />
                 </div>
@@ -336,7 +336,7 @@ export default function LoginPage({ onNavigate }: LoginPageProps) {
             </div>
 
             {/* Register Link */}
-            <div className="mt-6 text-center">
+            <div className="pt-6 text-center">
               <p className="text-muted-foreground">
                 Don't have an account?{" "}
                 <button
@@ -356,9 +356,9 @@ export default function LoginPage({ onNavigate }: LoginPageProps) {
           ================================================================ */}
       <section className="py-section-sm md:py-section-md bg-muted">
         <Container>
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-8">
-              <h2 className="mb-4">Benefits of Having an Account</h2>
+          <div className="max-w-4xl">
+            <div className="text-center flex flex-col gap-4 pb-8">
+              <h2>Benefits of Having an Account</h2>
               <p className="text-lg text-muted-foreground">
                 Unlock exclusive features and make booking easier
               </p>
@@ -403,8 +403,8 @@ export default function LoginPage({ onNavigate }: LoginPageProps) {
                     key={index}
                     className="bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-colors"
                   >
-                    <Icon className="w-8 h-8 text-primary mb-3" />
-                    <h4 className="mb-2">{benefit.title}</h4>
+                    <Icon className="w-8 h-8 text-primary pb-3" />
+                    <h4 className="pb-2">{benefit.title}</h4>
                     <p className="text-sm text-muted-foreground">{benefit.description}</p>
                   </div>
                 );

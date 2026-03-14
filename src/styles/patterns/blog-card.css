@@ -87,7 +87,7 @@
   background-color: color-mix(in srgb, var(--background) 90%, transparent);
   backdrop-filter: blur(8px);
   font-family: var(--font-family-noto-sans);
-  font-size: 10px;
+  font-size: var(--text-2xs);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -134,7 +134,7 @@
 /* Title */
 .wp-card--blog .wp-card__title {
   font-family: var(--font-family-lora);
-  font-size: var(--text-2xl);
+  font-size: var(--text-xl);
   font-weight: var(--font-weight-bold);
   line-height: var(--leading-snug);
   transition: color 300ms ease;

@@ -104,32 +104,32 @@ export function DestinationGuidesHubPage() {
             centered
           />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-fluid-lg">
             {GUIDES.map((guide) => (
-              <div key={guide.id} className="group flex flex-col bg-card border border-border/50 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
+              <div key={guide.id} className="group flex flex-col bg-card border border-border/50 rounded-[var(--radius-2xl)] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
                 <div className="aspect-[4/3] overflow-hidden relative">
                   <img src={guide.image} alt={guide.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute top-4 left-4 bg-primary text-primary-foreground text-xs uppercase tracking-widest px-2 py-1 rounded">
+                  <div className="absolute top-[var(--spacing-element-md)] left-[var(--spacing-element-md)] bg-primary text-primary-foreground text-[length:var(--text-xs)] font-[var(--font-weight-bold)] uppercase tracking-widest px-element-sm py-element-xs rounded-[var(--radius-sm)]">
                     Free Download
                   </div>
                 </div>
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
+                <div className="p-element-xl flex flex-col flex-1 gap-element-sm">
+                  <div className="flex items-center gap-fluid-sm text-[length:var(--text-xs)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">
                     <MapPin size={12} className="text-primary" />
                     <span>{guide.destination}</span>
                   </div>
-                  <h4 className="mb-3">{guide.title}</h4>
-                  <p className="text-sm text-muted-foreground line-clamp-2 mb-6">{guide.description}</p>
+                  <h4 className="font-[family-name:var(--font-family-lora)]">{guide.title}</h4>
+                  <p className="text-[length:var(--text-sm)] text-muted-foreground line-clamp-2 font-[family-name:var(--font-family-noto-sans)]">{guide.description}</p>
                   
-                  <div className="mt-auto space-y-4">
-                    <div className="flex items-center justify-between text-xs text-muted-foreground border-t border-border/50 pt-4">
-                      <span className="flex items-center gap-1"><FileText size={12} /> {guide.pages} pages</span>
-                      <span className="flex items-center gap-1 text-foreground">{guide.fileSize}</span>
+                  <div className="mt-auto flex flex-col gap-element-md">
+                    <div className="flex items-center justify-between text-[length:var(--text-xs)] text-muted-foreground border-t border-border/50 pt-element-md font-[family-name:var(--font-family-noto-sans)]">
+                      <span className="flex items-center gap-fluid-xs"><FileText size={12} /> {guide.pages} pages</span>
+                      <span className="flex items-center gap-fluid-xs text-foreground">{guide.fileSize}</span>
                     </div>
                     <Button
                       variant="primary"
                       size="sm"
-                      className="w-full rounded-xl"
+                      className="w-full rounded-[var(--radius-xl)] font-[family-name:var(--font-family-noto-sans)]"
                       disabled={downloadingId === guide.id}
                       onClick={() => handleDownload(guide.id)}
                     >

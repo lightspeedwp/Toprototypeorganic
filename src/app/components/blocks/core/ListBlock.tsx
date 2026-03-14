@@ -52,7 +52,7 @@ export function ListBlock({
   return (
     <Tag 
       className={cn(
-        "space-y-2 mb-4",
+        "flex flex-col gap-2 pb-element-md",
         !hasCustomMarker && ordered && "list-decimal list-inside",
         !hasCustomMarker && !ordered && "list-disc list-inside",
         hasCustomMarker && "list-none",

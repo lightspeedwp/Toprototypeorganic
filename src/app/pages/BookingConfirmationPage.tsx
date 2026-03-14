@@ -104,15 +104,15 @@ export function BookingConfirmationPage() {
           HERO - Confirmation message
           ================================================================ */}
       <GroupBlock sectionStyle="section-hero-default">
-        <Container>
-          <div className="mx-auto max-w-3xl text-center">
+        <Container className="flex flex-col items-center">
+          <div className="max-w-3xl w-full text-center flex flex-col items-center gap-6">
             {/* Success Icon */}
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary">
+            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary">
               <Check size={40} className="text-primary-foreground" />
             </div>
 
-            <h1 className="mb-4 text-foreground">Booking Confirmed!</h1>
-            <p className="mb-6 text-lg text-muted-foreground">
+            <h1 className="text-foreground">Booking Confirmed!</h1>
+            <p className="text-lg text-muted-foreground">
               Thank you for your reservation. Your booking has been confirmed and a
               confirmation email has been sent to{" "}
               <strong className="text-foreground">{booking.leadPassenger.email}</strong>
@@ -125,7 +125,7 @@ export function BookingConfirmationPage() {
             </div>
 
             {/* Action Buttons */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <div className="flex flex-wrap items-center justify-center gap-4">
               <button
                 onClick={handlePrint}
                 className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-primary-foreground transition-colors hover:bg-primary/90"
@@ -149,18 +149,18 @@ export function BookingConfirmationPage() {
           BOOKING SUMMARY - Details of reservation
           ================================================================ */}
       <GroupBlock sectionStyle="section-default">
-        <Container>
-          <div className="mx-auto max-w-4xl">
-            <h2 className="mb-8 text-center text-foreground">Booking Summary</h2>
+        <Container className="flex flex-col items-center">
+          <div className="max-w-4xl w-full flex flex-col gap-8 items-center">
+            <h2 className="text-center text-foreground">Booking Summary</h2>
 
-            <div className="space-y-6">
+            <div className="flex flex-col gap-6 w-full">
               {/* Tour Details */}
-              <div className="rounded-lg border border-border bg-card p-6">
-                <h3 className="mb-4 flex items-center gap-2 text-foreground">
+              <div className="rounded-lg border border-border bg-card p-6 flex flex-col gap-4">
+                <h3 className="flex items-center gap-2 text-foreground">
                   <MapPin size={24} className="text-primary" />
                   Tour Details
                 </h3>
-                <div className="space-y-3">
+                <div className="flex flex-col gap-3">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Tour:</span>
                     <span className="font-medium text-foreground">{booking.tourTitle}</span>
@@ -190,12 +190,12 @@ export function BookingConfirmationPage() {
               </div>
 
               {/* Passenger Details */}
-              <div className="rounded-lg border border-border bg-card p-6">
-                <h3 className="mb-4 flex items-center gap-2 text-foreground">
+              <div className="rounded-lg border border-border bg-card p-6 flex flex-col gap-4">
+                <h3 className="flex items-center gap-2 text-foreground">
                   <Users size={24} className="text-primary" />
                   Passengers
                 </h3>
-                <div className="space-y-3">
+                <div className="flex flex-col gap-3">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Adults:</span>
                     <span className="font-medium text-foreground">{booking.passengers.adults}</span>
@@ -216,12 +216,12 @@ export function BookingConfirmationPage() {
               </div>
 
               {/* Contact Details */}
-              <div className="rounded-lg border border-border bg-card p-6">
-                <h3 className="mb-4 flex items-center gap-2 text-foreground">
+              <div className="rounded-lg border border-border bg-card p-6 flex flex-col gap-4">
+                <h3 className="flex items-center gap-2 text-foreground">
                   <Mail size={24} className="text-primary" />
                   Lead Passenger
                 </h3>
-                <div className="space-y-3">
+                <div className="flex flex-col gap-3">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Name:</span>
                     <span className="font-medium text-foreground">
@@ -240,8 +240,8 @@ export function BookingConfirmationPage() {
               </div>
 
               {/* Payment Summary */}
-              <div className="rounded-lg border-2 border-primary bg-primary/10 p-6">
-                <div className="mb-4 flex items-center justify-between">
+              <div className="rounded-lg border-2 border-primary bg-primary/10 p-6 flex flex-col gap-4">
+                <div className="flex items-center justify-between">
                   <h3 className="text-foreground">Total Amount</h3>
                   <span className="font-serif text-fluid-3xl text-foreground">{booking.totalPrice}</span>
                 </div>
@@ -275,18 +275,18 @@ export function BookingConfirmationPage() {
           NEXT STEPS - What to do next
           ================================================================ */}
       <GroupBlock sectionStyle="section-accent-subtle">
-        <Container>
-          <div className="mx-auto max-w-3xl">
-            <h2 className="mb-8 text-center text-foreground">What Happens Next?</h2>
+        <Container className="flex flex-col items-center">
+          <div className="max-w-3xl w-full flex flex-col gap-8 items-center">
+            <h2 className="text-center text-foreground">What Happens Next?</h2>
 
-            <div className="space-y-6">
+            <div className="flex flex-col gap-6">
               {/* Step 1 */}
               <div className="flex gap-4">
                 <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
                   1
                 </div>
-                <div>
-                  <h3 className="mb-2 text-foreground">Check Your Email</h3>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-foreground">Check Your Email</h3>
                   <p className="text-muted-foreground">
                     A confirmation email with all booking details has been sent to{" "}
                     <strong className="text-foreground">{booking.leadPassenger.email}</strong>.
@@ -300,8 +300,8 @@ export function BookingConfirmationPage() {
                 <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
                   2
                 </div>
-                <div>
-                  <h3 className="mb-2 text-foreground">Complete Payment</h3>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-foreground">Complete Payment</h3>
                   <p className="text-muted-foreground">
                     {booking.paymentStatus === "confirmed"
                       ? "Your payment has been processed successfully. Thank you!"
@@ -315,8 +315,8 @@ export function BookingConfirmationPage() {
                 <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
                   3
                 </div>
-                <div>
-                  <h3 className="mb-2 text-foreground">Prepare for Your Trip</h3>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-foreground">Prepare for Your Trip</h3>
                   <p className="text-muted-foreground">
                     Review the tour itinerary, packing list, and travel requirements.
                     Our team will contact you 2 weeks before departure with final details.
@@ -329,8 +329,8 @@ export function BookingConfirmationPage() {
                 <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
                   4
                 </div>
-                <div>
-                  <h3 className="mb-2 text-foreground">Contact Support</h3>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-foreground">Contact Support</h3>
                   <p className="text-muted-foreground">
                     Have questions? Our support team is available 24/7 to help you.
                     Email us at{" "}
@@ -352,10 +352,10 @@ export function BookingConfirmationPage() {
           SHARE - Social sharing
           ================================================================ */}
       <GroupBlock sectionStyle="section-default">
-        <Container>
-          <div className="mx-auto max-w-3xl text-center">
-            <h3 className="mb-4 text-foreground">Share Your Adventure</h3>
-            <p className="mb-6 text-muted-foreground">
+        <Container className="flex flex-col items-center">
+          <div className="max-w-3xl w-full text-center flex flex-col items-center gap-4">
+            <h3 className="text-foreground">Share Your Adventure</h3>
+            <p className="text-muted-foreground">
               Excited about your upcoming trip? Share it with friends and family!
             </p>
             <div className="flex justify-center">

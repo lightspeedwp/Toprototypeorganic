@@ -31,7 +31,8 @@ import {
   Lightning as Zap,
   Leaf,
   MapPin,
-  CheckCircle as CircleCheck
+  CheckCircle as CircleCheck,
+  Trophy
 } from "@phosphor-icons/react";
 
 export function WhyBookWithUsPage() {
@@ -42,23 +43,23 @@ export function WhyBookWithUsPage() {
       {/* Trust Pillars */}
       <section className="py-section-lg bg-card border-b border-border/50">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="text-center p-10 rounded-3xl bg-muted/20 border-2 border-border/50 hover:border-primary transition-all duration-500 flex flex-col items-center gap-[var(--spacing-gap-md)]">
-              <div className="size-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-fluid-2xl">
+            <div className="text-center p-element-xl rounded-[var(--radius-3xl)] bg-muted/20 border-2 border-border/50 hover:border-primary transition-all duration-500 flex flex-col items-center gap-fluid-md">
+              <div className="size-16 rounded-[var(--radius-2xl)] bg-primary/10 text-primary flex items-center justify-center">
                 <Shield className="size-8" />
               </div>
               <h3>Financial Protection</h3>
               <p className="text-muted-foreground leading-relaxed">Your investment is 100% protected through our comprehensive bonding and secure trust accounts.</p>
             </div>
-            <div className="text-center p-10 rounded-3xl bg-muted/20 border-2 border-border/50 hover:border-primary transition-all duration-500 flex flex-col items-center gap-[var(--spacing-gap-md)]">
-              <div className="size-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
+            <div className="text-center p-element-xl rounded-[var(--radius-3xl)] bg-muted/20 border-2 border-border/50 hover:border-primary transition-all duration-500 flex flex-col items-center gap-fluid-md">
+              <div className="size-16 rounded-[var(--radius-2xl)] bg-primary/10 text-primary flex items-center justify-center">
                 <Award className="size-8" />
               </div>
               <h3>Field Expertise</h3>
               <p className="text-muted-foreground leading-relaxed">Speak directly with designers who spend months each year in the African bush personally vetting every lodge.</p>
             </div>
-            <div className="text-center p-10 rounded-3xl bg-muted/20 border-2 border-border/50 hover:border-primary transition-all duration-500 flex flex-col items-center gap-[var(--spacing-gap-md)]">
-              <div className="size-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
+            <div className="text-center p-element-xl rounded-[var(--radius-3xl)] bg-muted/20 border-2 border-border/50 hover:border-primary transition-all duration-500 flex flex-col items-center gap-fluid-md">
+              <div className="size-16 rounded-[var(--radius-2xl)] bg-primary/10 text-primary flex items-center justify-center">
                 <Users className="size-8" />
               </div>
               <h3>Verified Excellence</h3>
@@ -113,9 +114,9 @@ export function WhyBookWithUsPage() {
       {/* The Promise Grid */}
       <section className="py-section-lg bg-card">
         <Container>
-          <div className="flex flex-col lg:flex-row gap-16 items-center">
-            <div className="lg:w-1/2 space-y-8">
-              <div className="p-3 rounded-xl bg-primary/10 text-primary w-fit">
+          <div className="flex flex-col lg:flex-row gap-fluid-2xl items-center">
+            <div className="lg:w-1/2 flex flex-col gap-element-xl">
+              <div className="p-element-sm rounded-[var(--radius-xl)] bg-primary/10 text-primary w-fit">
                 <CircleCheck className="size-6" />
               </div>
               <h2>Our Unwavering Promises</h2>
@@ -124,36 +125,36 @@ export function WhyBookWithUsPage() {
                 the bedrock of our relationship.
               </ParagraphBlock>
               
-              <div className="grid gap-6">
+              <div className="grid gap-fluid-lg">
                 {[
                   { t: "Transparent Pricing", d: "No hidden local payments or surprise surcharges. Your quote is the total price." },
                   { t: "Flexible Commitment", d: "Change your dates up to 60 days before travel with zero administration fees." },
                   { t: "The 'Native' Standard", d: "We only use lodges that pass our strict criteria for sustainability and service." }
                 ].map((p, i) => (
-                  <div key={i} className="flex gap-4 group items-start">
-                    <div className="size-6 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                  <div key={i} className="flex gap-fluid-sm group items-start">
+                    <div className="size-6 rounded-[var(--radius-full)] bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                       <Check className="size-3" />
                     </div>
-                    <div className="flex flex-col gap-[var(--spacing-gap-xs)]">
+                    <div className="flex flex-col gap-fluid-xs">
                       <h5 className="text-foreground m-0">{p.t}</h5>
-                      <p className="text-muted-foreground text-sm leading-relaxed m-0">{p.d}</p>
+                      <p className="text-muted-foreground text-[length:var(--text-sm)] leading-relaxed m-0">{p.d}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
             <div className="lg:w-1/2 relative">
-              <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl">
+              <div className="aspect-square rounded-[var(--radius-3xl)] overflow-hidden shadow-2xl">
                 <img 
                   src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1000" 
                   alt="African landscape" 
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-1000" 
                 />
               </div>
-              <div className="absolute -bottom-8 -left-8 p-8 rounded-2xl bg-primary text-primary-foreground shadow-xl hidden md:block max-w-xs flex flex-col gap-[var(--spacing-gap-sm)]">
+              <div className="absolute -bottom-[var(--spacing-element-2xl)] -left-[var(--spacing-element-2xl)] p-element-2xl rounded-[var(--radius-2xl)] bg-primary text-primary-foreground shadow-xl hidden md:block max-w-xs flex flex-col gap-fluid-sm">
                 <Star className="size-8 fill-primary-foreground" />
-                <p className="italic m-0">"The attention to detail was beyond anything we've experienced in 30 years of travel."</p>
-                <p className="text-xs uppercase tracking-widest opacity-80 m-0">— The Harrison Family</p>
+                <p className="italic m-0 font-[family-name:var(--font-family-lora)]">"The attention to detail was beyond anything we've experienced in 30 years of travel."</p>
+                <p className="text-[length:var(--text-xs)] font-[var(--font-weight-bold)] uppercase tracking-widest opacity-80 m-0">— The Harrison Family</p>
               </div>
             </div>
           </div>

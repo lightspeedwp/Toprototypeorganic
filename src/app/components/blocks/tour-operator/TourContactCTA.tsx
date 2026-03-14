@@ -50,7 +50,7 @@ export function TourContactCTA({
 }: TourContactCTAProps) {
   return (
     <div className={`lsx-tour-contact-cta ${className}`} role="complementary" aria-label={title}>
-      <h4 className="mb-2">{title}</h4>
+      <h4 className="pb-element-sm">{title}</h4>
       <p className="lsx-tour-contact-cta__description">{description}</p>
 
       <div className="lsx-tour-contact-cta__links">

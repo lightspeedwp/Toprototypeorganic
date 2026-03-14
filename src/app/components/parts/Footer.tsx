@@ -56,10 +56,10 @@ const FOOTER_NAV = {
     { label: "Why Book With Us", href: "/why-book-with-us" },
   ],
   support: [
-    { label: "Booking Terms", href: "/booking-terms" },
+    { label: "Booking Terms", href: "/terms-conditions" },
     { label: "Travel Insurance", href: "/travel-insurance" },
-    { label: "Payment Options", href: "/payment-options" },
-    { label: "Cancellation Policy", href: "/cancellation-policy" },
+    { label: "Packing Guides", href: "/packing-guides" },
+    { label: "Destination Guides", href: "/destination-guides" },
   ],
 };
 
@@ -164,11 +164,24 @@ export function Footer({ onNavigate }: FooterProps) {
             </ul>
           </div>
 
-          {/* Column 4: Contact */}
+          {/* Column 4: Support & Contact */}
           <div className="wp-part-footer__column">
             <h4 className="wp-part-footer__column-title">
-              Contact
+              Support
             </h4>
+            <ul className="wp-part-footer__nav-list">
+              {FOOTER_NAV.support.map((link) => (
+                <li key={link.href}>
+                  <button
+                    onClick={() => handleNavigate(link.href)}
+                    className="wp-part-footer__nav-link"
+                  >
+                    {link.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+
             <ul className="wp-part-footer__contact-list">
               <li className="wp-part-footer__contact-item">
                 <MapPin className="wp-part-footer__contact-icon" />

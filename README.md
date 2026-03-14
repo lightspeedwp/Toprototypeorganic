@@ -1,7 +1,7 @@
 
-  # TO Prototype Tailwind Organic
+  # Organic Tours
 
-  This is a code bundle for TO Prototype Tailwind Organic. The original project is available at https://www.figma.com/design/AW7Ru6kgErk0MZVC7P8SHR/TO-Prototype-Tailwind-Organic.
+  This is a code bundle for Organic Tours. The original project is available at https://www.figma.com/design/AW7Ru6kgErk0MZVC7P8SHR/Organic-Tours.
 
   ## Running the code
 

@@ -13,13 +13,13 @@
 import { Container } from "../common/Container";
 import { HeadingBlock } from "../blocks/core/HeadingBlock";
 import { ParagraphBlock } from "../blocks/core/ParagraphBlock";
-import type { Icon as PhosphorIcon } from "@phosphor-icons/react";
 import { cn } from "../../lib/utils";
+import { isValidElement, type ReactNode, type ComponentType } from "react";
 
 export interface StatisticItem {
   value: string | number;
   label: string;
-  icon?: PhosphorIcon;
+  icon?: ReactNode | ComponentType<any>;
   prefix?: string;
   suffix?: string;
 }
@@ -74,15 +74,26 @@ export function StatisticsMetricsPattern({
         {/* Statistics Grid */}
         <div className={cn("wp-pattern-statistics__grid", gridModifier)}>
           {statistics.map((stat, index) => {
-            const Icon = stat.icon;
+            // Handle both JSX elements and component references
+            const renderIcon = () => {
+              if (!stat.icon) return null;
+              if (isValidElement(stat.icon)) return stat.icon;
+              if (typeof stat.icon === 'function') {
+                const IconComponent = stat.icon as ComponentType<any>;
+                return <IconComponent size={24} />;
+              }
+              return null;
+            };
+
+            const iconElement = renderIcon();
 
             return (
               <div key={index} className="wp-pattern-statistics__item">
                 {/* Icon (optional) */}
-                {Icon && (
+                {iconElement && (
                   <div className="wp-pattern-statistics__icon-wrapper">
                     <div className="wp-pattern-statistics__icon">
-                      <Icon size={24} />
+                      {iconElement}
                     </div>
                   </div>
                 )}

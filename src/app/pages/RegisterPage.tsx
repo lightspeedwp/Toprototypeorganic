@@ -203,11 +203,11 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
           ================================================================ */}
       <section className="py-section-sm md:py-section-md bg-muted">
         <Container>
-          <div className="max-w-md mx-auto text-center">
-            <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center mx-auto mb-4">
+          <div className="max-w-md text-center flex flex-col items-center gap-4">
+            <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
               <User className="w-8 h-8 text-primary-foreground" />
             </div>
-            <h1 className="mb-4">Create Your Account</h1>
+            <h1>Create Your Account</h1>
             <p className="text-lg text-muted-foreground">
               Join thousands of travelers and unlock exclusive benefits
             </p>
@@ -220,14 +220,14 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
           ================================================================ */}
       <section className="py-section-sm md:py-section-md bg-background">
         <Container>
-          <div className="max-w-md mx-auto">
+          <div className="max-w-md">
             {/* Registration Card */}
             <div className="bg-card border border-border rounded-lg p-6 md:p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                 {/* Name Fields */}
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <div>
-                    <label htmlFor="firstName" className="mb-2 block">
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="firstName" className="block">
                       First Name *
                     </label>
                     <input
@@ -248,12 +248,12 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                       )}
                     />
                     {errors.firstName && (
-                      <p className="text-xs text-destructive mt-1">{errors.firstName}</p>
+                      <p className="text-xs text-destructive">{errors.firstName}</p>
                     )}
                   </div>
 
-                  <div>
-                    <label htmlFor="lastName" className="mb-2 block">
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="lastName" className="block">
                       Last Name *
                     </label>
                     <input
@@ -274,14 +274,14 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                       )}
                     />
                     {errors.lastName && (
-                      <p className="text-xs text-destructive mt-1">{errors.lastName}</p>
+                      <p className="text-xs text-destructive">{errors.lastName}</p>
                     )}
                   </div>
                 </div>
 
                 {/* Email Field */}
-                <div>
-                  <label htmlFor="email" className="mb-2 block">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="email" className="block">
                     Email Address *
                   </label>
                   <div className="relative">
@@ -305,7 +305,7 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                     />
                   </div>
                   {errors.email && (
-                    <div className="flex items-center gap-1.5 mt-2 text-sm text-destructive">
+                    <div className="flex items-center gap-1.5 pt-2 text-sm text-destructive">
                       <AlertCircle className="w-4 h-4 flex-shrink-0" />
                       <span>{errors.email}</span>
                     </div>
@@ -313,8 +313,8 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                 </div>
 
                 {/* Password Field */}
-                <div>
-                  <label htmlFor="password" className="mb-2 block">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="password" className="block">
                     Password *
                   </label>
                   <div className="relative">
@@ -352,8 +352,8 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                   
                   {/* Password Strength Indicator */}
                   {formData.password && passwordStrength && (
-                    <div className="mt-2">
-                      <div className="flex items-center gap-2 mb-1">
+                    <div className="pt-2 flex flex-col gap-1">
+                      <div className="flex items-center gap-2">
                         <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
                           <div
                             className={cn(
@@ -378,7 +378,7 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                   )}
                   
                   {errors.password && (
-                    <div className="flex items-center gap-1.5 mt-2 text-sm text-destructive">
+                    <div className="flex items-center gap-1.5 pt-2 text-sm text-destructive">
                       <AlertCircle className="w-4 h-4 flex-shrink-0" />
                       <span>{errors.password}</span>
                     </div>
@@ -386,8 +386,8 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                 </div>
 
                 {/* Confirm Password Field */}
-                <div>
-                  <label htmlFor="confirmPassword" className="mb-2 block">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="confirmPassword" className="block">
                     Confirm Password *
                   </label>
                   <div className="relative">
@@ -426,7 +426,7 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                     </button>
                   </div>
                   {errors.confirmPassword && (
-                    <div className="flex items-center gap-1.5 mt-2 text-sm text-destructive">
+                    <div className="flex items-center gap-1.5 pt-2 text-sm text-destructive">
                       <AlertCircle className="w-4 h-4 flex-shrink-0" />
                       <span>{errors.confirmPassword}</span>
                     </div>
@@ -434,7 +434,7 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                   {formData.confirmPassword &&
                     formData.password === formData.confirmPassword &&
                     !errors.confirmPassword && (
-                      <div className="flex items-center gap-1.5 mt-2 text-sm text-primary">
+                      <div className="flex items-center gap-1.5 pt-2 text-sm text-primary">
                         <CircleCheck className="w-4 h-4 flex-shrink-0" />
                         <span>Passwords match</span>
                       </div>
@@ -448,11 +448,11 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                     type="checkbox"
                     checked={newsletter}
                     onChange={(e) => setNewsletter(e.target.checked)}
-                    className="mt-1 w-4 h-4 rounded border-border text-primary focus:ring-ring"
+                    className="translate-y-1 w-4 h-4 rounded border-border text-primary focus:ring-ring"
                   />
                   <label htmlFor="newsletter" className="text-sm cursor-pointer flex-1">
                     <span className="font-medium">Subscribe to our newsletter</span>
-                    <p className="text-muted-foreground mt-0.5">
+                    <p className="text-muted-foreground pt-0.5">
                       Get travel tips, exclusive deals, and tour updates
                     </p>
                   </label>
@@ -475,7 +475,7 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                           });
                         }
                       }}
-                      className="mt-1 w-4 h-4 rounded border-border text-primary focus:ring-ring"
+                      className="translate-y-1 w-4 h-4 rounded border-border text-primary focus:ring-ring"
                     />
                     <label htmlFor="terms" className="text-sm cursor-pointer flex-1">
                       I agree to the{" "}
@@ -497,7 +497,7 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                     </label>
                   </div>
                   {errors.terms && (
-                    <div className="flex items-center gap-1.5 mt-2 text-sm text-destructive">
+                    <div className="flex items-center gap-1.5 pt-2 text-sm text-destructive">
                       <AlertCircle className="w-4 h-4 flex-shrink-0" />
                       <span>{errors.terms}</span>
                     </div>
@@ -531,7 +531,7 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
               </form>
 
               {/* Divider */}
-              <div className="relative my-6">
+              <div className="relative py-6">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-border" />
                 </div>
@@ -592,7 +592,7 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
             </div>
 
             {/* Login Link */}
-            <div className="mt-6 text-center">
+            <div className="pt-6 text-center">
               <p className="text-muted-foreground">
                 Already have an account?{" "}
                 <button
@@ -612,32 +612,32 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
           ================================================================ */}
       <section className="py-section-sm md:py-section-md bg-muted">
         <Container>
-          <div className="max-w-3xl mx-auto bg-card border border-border rounded-lg p-6 md:p-8">
+          <div className="max-w-3xl bg-card border border-border rounded-lg p-6 md:p-8">
             <div className="flex items-start gap-4">
               <Shield className="w-8 h-8 text-primary flex-shrink-0" />
               <div>
-                <h3 className="mb-3">Your Privacy is Protected</h3>
-                <div className="space-y-2 text-sm text-muted-foreground">
+                <h3 className="pb-3">Your Privacy is Protected</h3>
+                <div className="flex flex-col gap-2 text-sm text-muted-foreground">
                   <p className="flex items-start gap-2">
-                    <CircleCheck className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                    <CircleCheck className="w-4 h-4 text-primary flex-shrink-0 translate-y-0.5" />
                     <span>
                       Your personal information is encrypted and stored securely
                     </span>
                   </p>
                   <p className="flex items-start gap-2">
-                    <CircleCheck className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                    <CircleCheck className="w-4 h-4 text-primary flex-shrink-0 translate-y-0.5" />
                     <span>
                       We'll never share your data with third parties without your consent
                     </span>
                   </p>
                   <p className="flex items-start gap-2">
-                    <CircleCheck className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                    <CircleCheck className="w-4 h-4 text-primary flex-shrink-0 translate-y-0.5" />
                     <span>
                       You can update or delete your account at any time
                     </span>
                   </p>
                   <p className="flex items-start gap-2">
-                    <CircleCheck className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                    <CircleCheck className="w-4 h-4 text-primary flex-shrink-0 translate-y-0.5" />
                     <span>
                       We're GDPR compliant and follow industry best practices
                     </span>

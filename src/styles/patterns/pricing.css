@@ -186,7 +186,7 @@
 }
 
 .wp-pattern-lts-pricing__price-unit {
-  font-size: 10px; /* text-[10px] */
+  font-size: var(--text-2xs);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   letter-spacing: 0.1em; /* tracking-widest */

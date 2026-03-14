@@ -183,12 +183,12 @@ export default function IntegrationTester() {
       {/* Header */}
       <div className="bg-muted border-b border-border py-section-sm">
         <Container>
-          <div className="flex items-start justify-between gap-6">
-            <div>
-              <div className="flex items-center gap-3 mb-2">
-                <Play className="w-8 h-8 text-primary" />
-                <h1>Integration Tester</h1>
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-fluid-sm">
+            <div className="flex flex-col gap-element-sm">
+              <div className="wp-page-header__icon-container w-14 h-14 flex items-center justify-center rounded-[var(--radius-lg)] bg-primary/10 text-primary transition-colors hover:bg-primary/20">
+                <Play className="w-7 h-7" />
               </div>
+              <h1>Integration Tester</h1>
               <p className="text-muted-foreground">
                 Run user flow simulations and test component interactions
               </p>
@@ -197,7 +197,7 @@ export default function IntegrationTester() {
             <button
               onClick={runAllTests}
               disabled={isRunning}
-              className="px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50"
+              className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50 w-full md:w-auto md:shrink-0"
             >
               {isRunning ? 'Running...' : 'Run All Tests'}
             </button>
@@ -208,19 +208,19 @@ export default function IntegrationTester() {
       <Container className="py-section-sm">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left: Test Flows */}
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <div className="bg-card p-6 rounded-lg border border-border">
-              <h2 className="mb-4">Available Test Flows</h2>
+              <h2 className="pb-4">Available Test Flows</h2>
 
-              <div className="space-y-3">
+              <div className="flex flex-col gap-3">
                 {SAMPLE_FLOWS.map((flow, idx) => (
                   <div
                     key={idx}
                     className="p-4 rounded-lg bg-muted border border-border hover:border-primary/50 transition-colors"
                   >
-                    <div className="flex items-start justify-between mb-2">
+                    <div className="flex items-start justify-between pb-2">
                       <div>
-                        <h3 className="mb-1">{flow.name}</h3>
+                        <h3 className="pb-1">{flow.name}</h3>
                         <p className="text-sm text-muted-foreground">
                           {flow.steps.length} steps
                         </p>
@@ -241,12 +241,12 @@ export default function IntegrationTester() {
                     </div>
 
                     {/* Steps Preview */}
-                    <div className="mt-3">
+                    <div className="pt-3">
                       <details className="text-sm">
                         <summary className="cursor-pointer text-muted-foreground hover:text-foreground">
                           View steps
                         </summary>
-                        <ol className="mt-2 space-y-1 list-decimal list-inside">
+                        <ol className="pt-2 flex flex-col gap-1 list-decimal list-inside">
                           {flow.steps.map((step, stepIdx) => (
                             <li key={stepIdx} className="text-muted-foreground">
                               {step.description}
@@ -262,7 +262,7 @@ export default function IntegrationTester() {
 
             {/* Custom Flow Builder */}
             <div className="bg-card p-6 rounded-lg border border-border">
-              <h2 className="mb-4">Custom Flow (JSON)</h2>
+              <h2 className="pb-4">Custom Flow (JSON)</h2>
 
               <textarea
                 value={customFlow}
@@ -281,7 +281,7 @@ export default function IntegrationTester() {
                   }
                 }}
                 disabled={isRunning || !customFlow}
-                className="mt-4 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50"
+                className="pt-4 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50"
               >
                 Run Custom Flow
               </button>
@@ -291,31 +291,31 @@ export default function IntegrationTester() {
           {/* Right: Test Results */}
           <div>
             {results.length > 0 ? (
-              <div className="space-y-6">
+              <div className="flex flex-col gap-6">
                 {/* Summary */}
                 <div className="bg-card p-6 rounded-lg border border-border">
-                  <h2 className="mb-4">Test Summary</h2>
+                  <h2 className="pb-4">Test Summary</h2>
 
                   <div className="grid grid-cols-3 gap-4">
                     <div>
-                      <div className="text-sm text-muted-foreground mb-1">Total</div>
+                      <div className="text-sm text-muted-foreground pb-1">Total</div>
                       <div className="font-serif text-fluid-2xl">{results.length}</div>
                     </div>
                     <div>
-                      <div className="text-sm text-muted-foreground mb-1">Passed</div>
+                      <div className="text-sm text-muted-foreground pb-1">Passed</div>
                       <div className="font-serif text-fluid-2xl text-primary">
                         {results.filter(r => r.passed).length}
                       </div>
                     </div>
                     <div>
-                      <div className="text-sm text-muted-foreground mb-1">Failed</div>
+                      <div className="text-sm text-muted-foreground pb-1">Failed</div>
                       <div className="font-serif text-fluid-2xl text-destructive">
                         {results.filter(r => !r.passed).length}
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-4 border-t border-border">
+                  <div className="pt-4 pt-4 border-t border-border">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-muted-foreground">Success Rate</span>
                       <span className="font-semibold">
@@ -326,7 +326,7 @@ export default function IntegrationTester() {
                 </div>
 
                 {/* Individual Results */}
-                <div className="space-y-4">
+                <div className="flex flex-col gap-4">
                   {results.map((result, idx) => (
                     <div
                       key={idx}
@@ -336,9 +336,9 @@ export default function IntegrationTester() {
                           : 'bg-destructive/5 border-destructive/20'
                       }`}
                     >
-                      <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-start justify-between pb-4">
                         <div>
-                          <div className="flex items-center gap-2 mb-1">
+                          <div className="flex items-center gap-2 pb-1">
                             {getStatusIcon(result.passed)}
                             <h3>{result.testName}</h3>
                           </div>
@@ -354,21 +354,21 @@ export default function IntegrationTester() {
                       </div>
 
                       {/* Performance Metrics */}
-                      <div className="grid grid-cols-3 gap-4 p-3 rounded bg-muted mb-4">
+                      <div className="grid grid-cols-3 gap-4 p-3 rounded bg-muted pb-4">
                         <div>
-                          <div className="text-xs text-muted-foreground mb-1">Avg Step</div>
+                          <div className="text-xs text-muted-foreground pb-1">Avg Step</div>
                           <div className="text-sm font-semibold">
                             {result.performance.averageStepTime.toFixed(0)}ms
                           </div>
                         </div>
                         <div>
-                          <div className="text-xs text-muted-foreground mb-1">Slowest</div>
+                          <div className="text-xs text-muted-foreground pb-1">Slowest</div>
                           <div className="text-sm font-semibold">
                             Step {result.performance.slowestStep.step} ({result.performance.slowestStep.time}ms)
                           </div>
                         </div>
                         <div>
-                          <div className="text-xs text-muted-foreground mb-1">Render</div>
+                          <div className="text-xs text-muted-foreground pb-1">Render</div>
                           <div className="text-sm font-semibold">
                             {result.performance.renderTime}ms
                           </div>
@@ -378,7 +378,7 @@ export default function IntegrationTester() {
                       {/* Errors */}
                       {result.errors.length > 0 && (
                         <div className="wp-bg-destructive-light p-3 rounded">
-                          <div className="flex items-center gap-2 mb-2">
+                          <div className="flex items-center gap-2 pb-2">
                             <AlertTriangle className="w-4 h-4" />
                             <strong className="text-sm">Errors</strong>
                           </div>
@@ -392,8 +392,8 @@ export default function IntegrationTester() {
 
                       {/* Warnings */}
                       {result.warnings.length > 0 && (
-                        <div className="bg-muted p-3 rounded mt-2">
-                          <div className="flex items-center gap-2 mb-2">
+                        <div className="bg-muted p-3 rounded pt-2">
+                          <div className="flex items-center gap-2 pb-2">
                             <AlertTriangle className="w-4 h-4 text-muted-foreground" />
                             <strong className="text-sm">Warnings</strong>
                           </div>
@@ -410,8 +410,8 @@ export default function IntegrationTester() {
               </div>
             ) : (
               <div className="bg-muted p-12 rounded-lg text-center h-full flex flex-col items-center justify-center">
-                <Play className="w-12 h-12 text-muted-foreground mb-4" />
-                <h3 className="mb-2">No Tests Run Yet</h3>
+                <Play className="w-12 h-12 text-muted-foreground pb-4" />
+                <h3 className="pb-2">No Tests Run Yet</h3>
                 <p className="text-muted-foreground">
                   Select a test flow from the left to get started
                 </p>
@@ -421,13 +421,13 @@ export default function IntegrationTester() {
         </div>
 
         {/* Info Section */}
-        <div className="bg-accent text-accent-foreground p-6 rounded-lg mt-8">
-          <h3 className="mb-4">About Integration Testing</h3>
+        <div className="bg-accent text-accent-foreground p-6 rounded-lg pt-8">
+          <h3 className="pb-4">About Integration Testing</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
             <div>
-              <h4 className="font-medium mb-2">What Gets Tested</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">What Gets Tested</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>Multi-component interactions</li>
                 <li>User flow simulations</li>
                 <li>Form submissions</li>
@@ -437,8 +437,8 @@ export default function IntegrationTester() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">Available Actions</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Available Actions</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li><strong>click:</strong> Simulate clicking an element</li>
                 <li><strong>type:</strong> Simulate typing into inputs</li>
                 <li><strong>scroll:</strong> Scroll to an element</li>
@@ -449,8 +449,8 @@ export default function IntegrationTester() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">Best Practices</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Best Practices</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>Test complete user journeys</li>
                 <li>Include wait times for async operations</li>
                 <li>Use data attributes for reliable selectors</li>
@@ -460,8 +460,8 @@ export default function IntegrationTester() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">Performance Metrics</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Performance Metrics</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li><strong>Total Time:</strong> Complete flow duration</li>
                 <li><strong>Step Times:</strong> Individual step performance</li>
                 <li><strong>Avg Step:</strong> Average step execution time</li>

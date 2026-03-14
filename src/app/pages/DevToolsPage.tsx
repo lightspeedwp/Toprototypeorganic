@@ -179,7 +179,7 @@ function DevToolsPage() {
       {/* ============================================================
           STATS — overlapping cards using StatsDisplay
           ============================================================ */}
-      <section className="relative -mt-6 z-10 pb-8">
+      <section className="relative translate-y-[-1.5rem] z-10 pb-8">
         <StatsDisplay
           stats={[
             { value: String(TOTAL_TOOLS), label: "Tools", description: "Developer utilities", icon: "Wrench" },
@@ -198,7 +198,7 @@ function DevToolsPage() {
       <div className="sticky top-0 z-20 bg-background/95 backdrop-blur-sm border-b border-border">
         <Container>
           <div className="flex items-center gap-2 py-3 overflow-x-auto">
-            <span className="text-muted-foreground text-sm font-sans mr-1 flex-shrink-0">Jump to:</span>
+            <span className="text-muted-foreground text-sm font-sans pr-1 flex-shrink-0">Jump to:</span>
             {CATEGORIES.map((cat) => (
               <a
                 key={cat.id}
@@ -224,13 +224,13 @@ function DevToolsPage() {
         >
           <Container>
             {/* Category header */}
-            <div className="flex items-start gap-4 mb-8">
+            <div className="flex items-start gap-4 pb-8">
               <div className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${category.accentClass}`}>
                 {category.icon}
               </div>
-              <div>
-                <h2 className="mb-1">{category.title}</h2>
-                <p className="text-muted-foreground mb-0">{category.description}</p>
+              <div className="flex flex-col gap-1">
+                <h2>{category.title}</h2>
+                <p className="text-muted-foreground">{category.description}</p>
               </div>
             </div>
 
@@ -245,11 +245,11 @@ function DevToolsPage() {
                   {/* Accent line on hover */}
                   <div className="absolute top-0 left-0 right-0 h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" aria-hidden="true" />
 
-                  <div className="wp-template-devtools__tool-icon mb-3">
+                  <div className="wp-template-devtools__tool-icon pb-3">
                     {tool.icon}
                   </div>
-                  <h5 className="mb-1.5 group-hover:text-primary transition-colors">{tool.title}</h5>
-                  <p className="text-sm text-muted-foreground flex-1 mb-3">{tool.description}</p>
+                  <h5 className="pb-1.5 group-hover:text-primary transition-colors">{tool.title}</h5>
+                  <p className="text-sm text-muted-foreground flex-1 pb-3">{tool.description}</p>
                   <span className="inline-flex items-center gap-1 text-sm text-primary opacity-0 group-hover:opacity-100 translate-y-0.5 group-hover:translate-y-0 transition-all">
                     Open <ChevronRight className="w-3.5 h-3.5" />
                   </span>
@@ -264,9 +264,9 @@ function DevToolsPage() {
           ADDITIONAL UTILITIES
           ============================================================ */}
       <section className="py-section-sm wp-template-devtools__utilities-section border-t border-border">
-        <Container>
-          <div className="max-w-4xl mx-auto text-center">
-            <h3 className="mb-6">Additional Utilities</h3>
+        <Container className="flex flex-col items-center">
+          <div className="max-w-4xl w-full text-center flex flex-col gap-6 items-center">
+            <h3>Additional Utilities</h3>
             <div className="flex flex-wrap justify-center gap-2">
               {ADDITIONAL_TOOLS.map((link) => (
                 <Link
@@ -288,19 +288,19 @@ function DevToolsPage() {
           HOW IT WORKS
           ============================================================ */}
       <section className="py-section-sm bg-background border-t border-border">
-        <Container>
-          <div className="max-w-3xl mx-auto">
+        <Container className="flex flex-col items-center">
+          <div className="max-w-3xl w-full">
             <div className="bg-card border border-border rounded-xl p-8 relative overflow-hidden">
               <div className="wp-template-devtools__shape" aria-hidden="true" />
 
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 pb-5">
                 <div className="wp-template-devtools__how-icon">
                   <PhosphorIcons.Lightning className="w-5 h-5" />
                 </div>
-                <h3 className="mb-0">How It Works</h3>
+                <h3>How It Works</h3>
               </div>
 
-              <p className="text-muted-foreground mb-4">
+              <p className="text-muted-foreground pb-4">
                 Every colour, spacing value, shadow, and radius is defined as a CSS
                 custom property in <code className="text-sm bg-muted px-1.5 py-0.5 rounded">theme-light.css</code> and{" "}
                 <code className="text-sm bg-muted px-1.5 py-0.5 rounded">theme-dark.css</code>. Tailwind's{" "}
@@ -310,8 +310,8 @@ function DevToolsPage() {
               </p>
 
               <div className="wp-template-devtools__callout">
-                <PhosphorIcons.Lightning className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                <p className="text-sm mb-0">
+                <PhosphorIcons.Lightning className="w-4 h-4 text-primary flex-shrink-0 translate-y-0.5" />
+                <p className="text-sm">
                   <strong className="text-foreground">To update the design system:</strong>{" "}
                   <span className="text-muted-foreground">edit the CSS variables in the theme files. Everything updates automatically.</span>
                 </p>

@@ -55,7 +55,7 @@ export const FOOTER_NAV: NavSection[] = [
       { id: "ft-tours",        label: "All Tours",          href: "/tours" },
       { id: "ft-specials",     label: "Exclusive Specials",  href: "/specials" },
       { id: "ft-destinations", label: "Our Territories",     href: "/destinations" },
-      { id: "ft-styles",       label: "Travel Styles",       href: "/travel-styles" },
+      { id: "ft-reviews",      label: "Traveller Reviews",   href: "/reviews" },
     ],
   },
   {
@@ -63,7 +63,7 @@ export const FOOTER_NAV: NavSection[] = [
     heading: "Sanctuary",
     items: [
       { id: "ft-accommodation", label: "Estate Collection",   href: "/accommodation" },
-      { id: "ft-about",         label: "Sustainable Impact",  href: "/about" },
+      { id: "ft-sustainability", label: "Conservation",        href: "/sustainability" },
       { id: "ft-studio",        label: "The Studio",          href: "/about" },
       { id: "ft-blog",          label: "The Chronicles",      href: "/blog" },
       { id: "ft-contact",       label: "Expert Concierge",    href: "/contact" },
@@ -73,7 +73,8 @@ export const FOOTER_NAV: NavSection[] = [
     id: "footer-intelligence",
     heading: "Intelligence",
     items: [
-      { id: "ft-faq",     label: "Travel FAQ",          href: "/faqs" },
+      { id: "ft-faq",     label: "Travel FAQ",          href: "/faq" },
+      { id: "ft-guides",  label: "Destination Guides",  href: "/destination-guides" },
       { id: "ft-terms",   label: "Booking Protocols",   href: "/terms-conditions" },
       { id: "ft-privacy", label: "Privacy Policy",      href: "/privacy-policy" },
       { id: "ft-dev",     label: "Digital Studio",      href: "/dev-tools" },

@@ -17,3 +17,4 @@ export * from "./reviews";
 export * from "./team";
 export * from "./specials";
 export * from "./template-parts";
+export * from "./traveller-types";

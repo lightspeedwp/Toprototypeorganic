@@ -41,6 +41,8 @@ interface BlockDoc {
   accessibility: AccessibilityDoc;
   designSystem: DesignSystemDoc;
   relatedBlocks: string[];
+  examples: string[];
+  designTokens?: string[];
 }
 
 interface PropDoc {
@@ -122,6 +124,42 @@ const BLOCK_DOCS: BlockDoc[] = [
       customTokens: ["--hero-overlay-opacity", "--hero-min-height"],
     },
     relatedBlocks: ["ArchiveHeader", "CTA", "EditorialContent"],
+    examples: [
+      `<Hero
+  title="Explore Iceland"
+  description="Discover breathtaking landscapes"
+  backgroundImage="/images/iceland-hero.jpg"
+  overlay={true}
+  overlayOpacity={40}
+  height="large"
+  alignment="center"
+  primaryButton={{
+    text: "View Tours",
+    href: "/tours/iceland"
+  }}
+  secondaryButton={{
+    text: "Learn More",
+    href: "/destinations/iceland"
+  }}
+/>`,
+      `<Hero
+  title="Discover the Alps"
+  description="Experience the majestic mountains"
+  backgroundImage="/images/alps-hero.jpg"
+  overlay={true}
+  overlayOpacity={50}
+  height="medium"
+  alignment="left"
+  primaryButton={{
+    text: "Book Now",
+    href: "/tours/alps"
+  }}
+/>`,
+    ],
+    designTokens: [
+      "--hero-overlay-opacity",
+      "--hero-min-height",
+    ],
   },
   {
     id: "card-grid-block",
@@ -159,6 +197,18 @@ const BLOCK_DOCS: BlockDoc[] = [
       customTokens: [],
     },
     relatedBlocks: ["TourCard", "DestinationCard", "BlogCard", "Query"],
+    examples: [
+      `<CardGrid columns={3} gap={6} minWidth="300px">
+  {tours.map(tour => (
+    <TourCard key={tour.id} tour={tour} />
+  ))}
+</CardGrid>`,
+      `<CardGrid columns={2} gap={4} minWidth="280px">
+  {destinations.map(destination => (
+    <DestinationCard key={destination.id} destination={destination} />
+  ))}
+</CardGrid>`,
+    ],
   },
   {
     id: "taxonomy-filter-block",
@@ -197,6 +247,21 @@ const BLOCK_DOCS: BlockDoc[] = [
       customTokens: [],
     },
     relatedBlocks: ["TaxonomyNav", "Query", "CardGrid"],
+    examples: [
+      `<TaxonomyFilter
+  label="Filter by Travel Style:"
+  terms={travelStyles}
+  activeTerm="adventure"
+  showCounts={true}
+/>`,
+      `<TaxonomyFilter
+  label="Filter by Destination:"
+  terms={destinations}
+  activeTerm="europe"
+  showCounts={false}
+  layout="vertical"
+/>`,
+    ],
   },
   {
     id: "faq-block",
@@ -243,6 +308,36 @@ const BLOCK_DOCS: BlockDoc[] = [
       customTokens: [],
     },
     relatedBlocks: ["EditorialContent", "Accordion"],
+    examples: [
+      `<FAQ
+  title="Frequently Asked Questions"
+  items={[
+    {
+      question: "How do I book a tour?",
+      answer: "You can book directly through our website..."
+    },
+    {
+      question: "What's included?",
+      answer: "All tours include..."
+    }
+  ]}
+  defaultOpen={0}
+/>`,
+      `<FAQ
+  title="Travel Tips"
+  items={[
+    {
+      question: "What should I pack?",
+      answer: "Pack light, comfortable clothing..."
+    },
+    {
+      question: "How to tip?",
+      answer: "Tipping is appreciated..."
+    }
+  ]}
+  allowMultiple={true}
+/>`,
+    ],
   },
   {
     id: "cta-block",
@@ -291,6 +386,33 @@ const BLOCK_DOCS: BlockDoc[] = [
       customTokens: [],
     },
     relatedBlocks: ["Hero", "Button", "EditorialContent"],
+    examples: [
+      `<CTA
+  title="Ready to Explore?"
+  description="Join thousands of happy travelers"
+  primaryButton={{
+    text: "Browse Tours",
+    href: "/tours",
+    variant: "primary"
+  }}
+  secondaryButton={{
+    text: "Contact Us",
+    href: "/contact",
+    variant: "outline"
+  }}
+  variant="centered"
+/>`,
+      `<CTA
+  title="Book Now"
+  description="Experience the adventure"
+  primaryButton={{
+    text: "Book Your Tour",
+    href: "/tours/book",
+    variant: "primary"
+  }}
+  variant="compact"
+/>`,
+    ],
   },
   {
     id: "editorial-content-block",
@@ -328,6 +450,17 @@ const BLOCK_DOCS: BlockDoc[] = [
       customTokens: [],
     },
     relatedBlocks: ["Heading", "Paragraph", "List"],
+    examples: [
+      `<EditorialContent
+  title="About This Tour"
+  content="<p>Experience the wonder...</p><ul><li>Item 1</li></ul>"
+  maxWidth="medium"
+/>`,
+      `<EditorialContent
+  content="<p>Discover the beauty...</p><ul><li>Item 1</li></ul>"
+  maxWidth="wide"
+/>`,
+    ],
   },
   {
     id: "fast-facts-block",
@@ -368,6 +501,25 @@ const BLOCK_DOCS: BlockDoc[] = [
       customTokens: [],
     },
     relatedBlocks: ["EditorialContent", "Meta"],
+    examples: [
+      `<FastFacts
+  title="Tour Details"
+  facts={[
+    { label: "Duration", value: "7 days", icon: "Calendar" },
+    { label: "Price", value: "$2,499", icon: "DollarSign" },
+    { label: "Group Size", value: "12-16", icon: "Users" }
+  ]}
+  variant="sidebar"
+/>`,
+      `<FastFacts
+  facts={[
+    { label: "Duration", value: "5 days", icon: "Calendar" },
+    { label: "Price", value: "$1,999", icon: "DollarSign" },
+    { label: "Group Size", value: "8-12", icon: "Users" }
+  ]}
+  variant="inline"
+/>`,
+    ],
   },
   {
     id: "related-content-block",
@@ -407,6 +559,21 @@ const BLOCK_DOCS: BlockDoc[] = [
       customTokens: [],
     },
     relatedBlocks: ["CardGrid", "Query", "TourCard"],
+    examples: [
+      `<RelatedContent
+  title="Similar Tours"
+  items={relatedTours}
+  columns={3}
+  limit={3}
+  queryType="taxonomy"
+/>`,
+      `<RelatedContent
+  items={relatedDestinations}
+  columns={2}
+  limit={4}
+  queryType="tags"
+/>`,
+    ],
   },
   {
     id: "archive-header-block",
@@ -445,6 +612,20 @@ const BLOCK_DOCS: BlockDoc[] = [
       customTokens: [],
     },
     relatedBlocks: ["Hero", "TaxonomyNav", "Breadcrumbs"],
+    examples: [
+      `<ArchiveHeader
+  title="Adventure Tours"
+  description="Thrilling experiences for the bold"
+  count={42}
+  showCount={true}
+/>`,
+      `<ArchiveHeader
+  title="Nature Tours"
+  description="Explore the great outdoors"
+  count={35}
+  showCount={false}
+/>`,
+    ],
   },
   {
     id: "pagination-block",
@@ -485,6 +666,22 @@ const BLOCK_DOCS: BlockDoc[] = [
       customTokens: [],
     },
     relatedBlocks: ["Query", "CardGrid", "Navigation"],
+    examples: [
+      `<Pagination
+  currentPage={2}
+  totalPages={10}
+  onPageChange={handlePageChange}
+  showFirstLast={true}
+  siblingCount={1}
+/>`,
+      `<Pagination
+  currentPage={5}
+  totalPages={20}
+  onPageChange={handlePageChange}
+  showFirstLast={false}
+  siblingCount={2}
+/>`,
+    ],
   },
   {
     id: "breadcrumbs-block",
@@ -524,6 +721,26 @@ const BLOCK_DOCS: BlockDoc[] = [
       customTokens: [],
     },
     relatedBlocks: ["Navigation", "ArchiveHeader"],
+    examples: [
+      `<Breadcrumbs
+  items={[
+    { label: "Home", href: "/" },
+    { label: "Tours", href: "/tours" },
+    { label: "Adventure", href: "/tours/adventure" },
+    { label: "Iceland Explorer" }
+  ]}
+  separator="/"
+/>`,
+      `<Breadcrumbs
+  items={[
+    { label: "Home", href: "/" },
+    { label: "Destinations", href: "/destinations" },
+    { label: "Europe", href: "/destinations/europe" },
+    { label: "Paris" }
+  ]}
+  separator="/"
+/>`,
+    ],
   },
   {
     id: "team-member-card",
@@ -561,6 +778,20 @@ const BLOCK_DOCS: BlockDoc[] = [
       customTokens: [],
     },
     relatedBlocks: ["CardGrid", "Image", "SocialLinks"],
+    examples: [
+      `<TeamMemberCard
+  member={teamMemberData}
+  showBio={true}
+  showSocial={true}
+  variant="card"
+/>`,
+      `<TeamMemberCard
+  member={teamMemberData}
+  showBio={false}
+  showSocial={true}
+  variant="list"
+/>`,
+    ],
   },
 ];
 
@@ -587,7 +818,7 @@ export default function BlockDocumentation() {
             <div className="py-8">
               <div className="flex items-start justify-between">
                 <div>
-                  <h1 className="mb-2">Block Documentation</h1>
+                  <h1 className="pb-2">Block Documentation</h1>
                   <p className="text-muted-foreground">
                     Complete guide to all WordPress-equivalent blocks
                   </p>
@@ -601,9 +832,9 @@ export default function BlockDocumentation() {
         </div>
 
         <Container>
-          <div className="py-8">
+          <div className="py-8 flex flex-col gap-8">
             {/* Category Navigation */}
-            <div className="mb-8">
+            <div>
               <div className="flex flex-wrap gap-2">
                 {["All", "Content", "Layout", "Navigation", "Widget", "Media"].map(category => (
                   <Badge key={category} variant="outline" className="cursor-pointer">
@@ -614,20 +845,20 @@ export default function BlockDocumentation() {
             </div>
 
             {/* Blocks List */}
-            <div className="space-y-6">
+            <div className="flex flex-col gap-6">
               {BLOCK_DOCS.map((block) => (
                 <Card key={block.id}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
+                      <div className="flex-1 flex flex-col gap-2">
+                        <div className="flex items-center gap-3">
                           <CardTitle>{block.name}</CardTitle>
                           <Badge variant="outline">{block.category}</Badge>
                         </div>
                         <CardDescription>{block.description}</CardDescription>
-                        <div className="mt-3">
-                          <Badge variant="secondary" className="text-xs">
-                            <Code className="mr-1 h-3 w-3" />
+                        <div>
+                          <Badge variant="secondary" className="text-xs flex items-center gap-1 w-fit">
+                            <Code className="h-3 w-3" />
                             {block.wpBlock}
                           </Badge>
                         </div>
@@ -646,7 +877,7 @@ export default function BlockDocumentation() {
                       </TabsList>
 
                       {/* Props Table */}
-                      <TabsContent value="props" className="mt-4">
+                      <TabsContent value="props" className="pt-4">
                         <Table>
                           <TableHeader>
                             <TableRow>
@@ -684,17 +915,17 @@ export default function BlockDocumentation() {
                       </TabsContent>
 
                       {/* Example Code */}
-                      <TabsContent value="example" className="mt-4">
+                      <TabsContent value="example" className="pt-4">
                         <pre className="overflow-auto rounded-md bg-muted p-4">
                           <code className="text-sm">{block.example}</code>
                         </pre>
                       </TabsContent>
 
                       {/* Usage Guidelines */}
-                      <TabsContent value="usage" className="mt-4">
-                        <div className="space-y-4">
-                          <div>
-                            <h4 className="mb-2 flex items-center gap-2">
+                      <TabsContent value="usage" className="pt-4">
+                        <div className="flex flex-col gap-4">
+                          <div className="flex flex-col gap-2">
+                            <h4 className="flex items-center gap-2">
                               <CircleCheck className="h-4 w-4 text-success" />
                               Best Practices
                             </h4>
@@ -702,8 +933,8 @@ export default function BlockDocumentation() {
                           </div>
                           
                           {block.relatedBlocks.length > 0 && (
-                            <div>
-                              <h4 className="mb-3">Related Blocks</h4>
+                            <div className="flex flex-col gap-3">
+                              <h4>Related Blocks</h4>
                               <div className="flex flex-wrap gap-2">
                                 {block.relatedBlocks.map((related) => (
                                   <Badge key={related} variant="outline">
@@ -717,17 +948,17 @@ export default function BlockDocumentation() {
                       </TabsContent>
 
                       {/* Accessibility */}
-                      <TabsContent value="a11y" className="mt-4">
-                        <div className="space-y-4">
-                          <div>
-                            <div className="mb-2 flex items-center gap-2">
+                      <TabsContent value="a11y" className="pt-4">
+                        <div className="flex flex-col gap-4">
+                          <div className="flex flex-col gap-2">
+                            <div className="flex items-center gap-2">
                               <h4>Requirements</h4>
                               <Badge variant="outline">WCAG {block.accessibility.wcagLevel}</Badge>
                             </div>
-                            <ul className="space-y-2">
+                            <ul className="flex flex-col gap-2">
                               {block.accessibility.requirements.map((req, index) => (
                                 <li key={index} className="flex items-start gap-2">
-                                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                                  <span className="translate-y-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
                                   <span className="text-sm">{req}</span>
                                 </li>
                               ))}
@@ -735,9 +966,9 @@ export default function BlockDocumentation() {
                           </div>
 
                           {block.accessibility.ariaAttributes.length > 0 && (
-                            <div>
-                              <h4 className="mb-2">ARIA Attributes</h4>
-                              <div className="space-y-1">
+                            <div className="flex flex-col gap-2">
+                              <h4>ARIA Attributes</h4>
+                              <div className="flex flex-col gap-1">
                                 {block.accessibility.ariaAttributes.map((attr, index) => (
                                   <code key={index} className="block rounded bg-muted px-3 py-2 text-sm">
                                     {attr}
@@ -750,10 +981,22 @@ export default function BlockDocumentation() {
                       </TabsContent>
 
                       {/* Design System */}
-                      <TabsContent value="design" className="mt-4 space-y-4">
-                        <div>
-                          <h4 className="mb-2">Colors</h4>
-                          <div className="space-y-1">
+                      <TabsContent value="design" className="pt-4 flex flex-col gap-4">
+                        {block.designTokens?.length > 0 && (
+                          <div className="flex flex-col gap-1">
+                            <h4>Design Tokens</h4>
+                            <div className="flex flex-col gap-1">
+                              {block.designTokens.map((token, index) => (
+                                <code key={index} className="block rounded bg-muted px-3 py-2 text-sm">
+                                  {token}
+                                </code>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                        <div className="flex flex-col gap-2">
+                          <h4>Colors</h4>
+                          <div className="flex flex-col gap-1">
                             {block.designSystem.colors.map((color, index) => (
                               <code key={index} className="block rounded bg-muted px-3 py-2 text-sm">
                                 {color}
@@ -762,9 +1005,9 @@ export default function BlockDocumentation() {
                           </div>
                         </div>
 
-                        <div>
-                          <h4 className="mb-2">Typography</h4>
-                          <div className="space-y-1">
+                        <div className="flex flex-col gap-2">
+                          <h4>Typography</h4>
+                          <div className="flex flex-col gap-1">
                             {block.designSystem.typography.map((typo, index) => (
                               <code key={index} className="block rounded bg-muted px-3 py-2 text-sm">
                                 {typo}
@@ -773,9 +1016,9 @@ export default function BlockDocumentation() {
                           </div>
                         </div>
 
-                        <div>
-                          <h4 className="mb-2">Spacing</h4>
-                          <div className="space-y-1">
+                        <div className="flex flex-col gap-2">
+                          <h4>Spacing</h4>
+                          <div className="flex flex-col gap-1">
                             {block.designSystem.spacing.map((space, index) => (
                               <code key={index} className="block rounded bg-muted px-3 py-2 text-sm">
                                 {space}
@@ -785,9 +1028,9 @@ export default function BlockDocumentation() {
                         </div>
 
                         {block.designSystem.customTokens.length > 0 && (
-                          <div>
-                            <h4 className="mb-2">Custom Tokens</h4>
-                            <div className="space-y-1">
+                          <div className="flex flex-col gap-2">
+                            <h4>Custom Tokens</h4>
+                            <div className="flex flex-col gap-1">
                               {block.designSystem.customTokens.map((token, index) => (
                                 <code key={index} className="block rounded bg-muted px-3 py-2 text-sm">
                                   {token}

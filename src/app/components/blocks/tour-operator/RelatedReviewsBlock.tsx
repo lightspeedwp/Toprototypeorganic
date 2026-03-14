@@ -69,9 +69,9 @@ function getAccommodationReviews(
  */
 function ReviewCard({ review }: { review: Review }) {
   return (
-    <article className="bg-card border border-border rounded-lg p-6 hover:shadow-md transition-shadow">
+    <article className="bg-card border border-border rounded-[var(--radius-lg)] p-element-lg hover:shadow-md transition-shadow">
       {/* Rating */}
-      <div className="flex items-center gap-1 mb-3">
+      <div className="flex items-center gap-fluid-xs pb-element-md">
         {Array.from({ length: 5 }).map((_, i) => (
           <Star
             key={i}
@@ -85,20 +85,20 @@ function ReviewCard({ review }: { review: Review }) {
       </div>
 
       {/* Title */}
-      <h3 className="mb-3">{review.title}</h3>
+      <h3 className="pb-element-md">{review.title}</h3>
 
       {/* Review Content */}
-      <p className="text-muted-foreground mb-4 line-clamp-4">
+      <p className="text-muted-foreground pb-element-lg line-clamp-4">
         {review.content}
       </p>
 
       {/* Author */}
-      <div className="flex items-center justify-between text-sm border-t border-border pt-4">
+      <div className="flex items-center justify-between text-[length:var(--text-sm)] border-t border-border pt-element-md">
         <div>
-          <p className="font-medium text-foreground">{review.author}</p>
-          <p className="text-muted-foreground text-xs">{review.authorLocation}</p>
+          <p className="font-[var(--font-weight-medium)] text-foreground">{review.author}</p>
+          <p className="text-muted-foreground text-[length:var(--text-xs)]">{review.authorLocation}</p>
         </div>
-        <div className="text-muted-foreground text-xs">
+        <div className="text-muted-foreground text-[length:var(--text-xs)]">
           {new Date(review.date).toLocaleDateString("en-US", {
             month: "short",
             year: "numeric",
@@ -108,7 +108,7 @@ function ReviewCard({ review }: { review: Review }) {
 
       {/* Verified Badge */}
       {review.verified && (
-        <div className="mt-3 inline-flex items-center gap-1 text-xs text-primary">
+        <div className="pt-element-md inline-flex items-center gap-fluid-xs text-[length:var(--text-xs)] text-primary">
           <svg
             className="h-3 w-3"
             fill="currentColor"
@@ -155,8 +155,8 @@ export function RelatedReviewsBlock({
     return (
       <section className={`section-content-default ${className}`}>
         <Container>
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="mb-4">{title}</h2>
+          <div className="flex flex-col items-center text-center max-w-2xl self-center">
+            <h2 className="pb-element-lg">{title}</h2>
             <p className="text-muted-foreground">
               No reviews yet. Be the first to share your experience!
             </p>
@@ -170,16 +170,18 @@ export function RelatedReviewsBlock({
     <section className={`section-content-default ${className}`}>
       <Container>
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="text-center pb-section-md">
           <h2>{title}</h2>
-          <div className="mt-4 w-20 h-0.5 bg-border mx-auto" />
-          <p className="mt-4 text-muted-foreground">
+          <div className="pt-element-lg flex justify-center w-full">
+            <div className="w-20 h-0.5 bg-[color:var(--color-border)]" />
+          </div>
+          <p className="pt-element-lg text-[color:var(--color-muted-foreground)]">
             {reviews.length} {reviews.length === 1 ? "review" : "reviews"}
           </p>
         </div>
 
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-fluid-lg">
           {reviews.map((review) => (
             <ReviewCard key={review.id} review={review} />
           ))}

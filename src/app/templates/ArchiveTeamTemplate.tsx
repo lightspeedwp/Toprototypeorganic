@@ -13,12 +13,11 @@ import { PageShell } from "../components/parts/PageShell";
 import { CTA } from "../components/patterns/CTA";
 import { FAQ } from "../components/patterns/FAQ";
 import { TeamCard } from "../components/patterns/TeamCard";
-import { ViewSwitcher, type ViewMode } from "../components/patterns/ViewSwitcher";
-import { Container } from "../components/common/Container";
-import { SectionHeader } from "../components/common/SectionHeader";
+import { ArchiveResultsSection } from "../components/patterns/ArchiveResultsSection";
 import { ALL_TEAM } from "../data/mockExpanded";
 import { CTA_TEAM_ARCHIVE, getPageSectionFAQs } from "../data/mock";
 import { useNavigation } from "../contexts/NavigationContext";
+import type { ViewMode } from "../components/patterns/ViewSwitcher";
 
 /**
  * ArchiveTeamTemplate Component.
@@ -33,36 +32,26 @@ export function ArchiveTeamTemplate() {
   return (
     <PageShell context="team-archive" as="article" className="wp-template-archive-team theme-organic">
       <div className="organic-section-middle">
-        {/* Content Section */}
-        <section className="wp-template-archive__content py-section-lg">
-          <Container>
-            {/* Results Header */}
-            <div className="wp-template-archive__results-header">
-              <SectionHeader
-                section={{
-                  eyebrow: "Expertise",
-                  title: "Our Specialists",
-                  description: `Showing ${ALL_TEAM.length} experts ready to help you plan your legendary journey.`
-                }}
-                centered={false}
-                className="m-0"
-              />
-              <ViewSwitcher currentView={viewMode} onViewChange={setViewMode} />
-            </div>
-
-            {/* Team Grid */}
-            <div className={viewMode === "list" ? "wp-template-archive__list" : "wp-template-archive__grid wp-template-archive__grid--cols-3"}>
-              {ALL_TEAM.map((member) => (
-                <TeamCard
-                  key={member.id}
-                  member={member}
-                  layout={viewMode === "list" ? "horizontal" : "card"}
-                  onClick={() => navigateToTeamMember(member.slug)}
-                />
-              ))}
-            </div>
-          </Container>
-        </section>
+        <ArchiveResultsSection
+          header={{
+            eyebrow: "Expertise",
+            title: "Our Specialists",
+            description: `Showing ${ALL_TEAM.length} experts ready to help you plan your legendary journey.`,
+          }}
+          items={ALL_TEAM}
+          totalFiltered={ALL_TEAM.length}
+          viewMode={viewMode}
+          onViewModeChange={setViewMode}
+          renderItem={(member, vm) => (
+            <TeamCard
+              key={member.id}
+              member={member}
+              layout={vm === "list" ? "horizontal" : "card"}
+              onClick={() => navigateToTeamMember(member.slug)}
+            />
+          )}
+          className="py-section-lg"
+        />
       </div>
 
       <div className="organic-section-bottom">

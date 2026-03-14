@@ -753,7 +753,7 @@ export default function ComponentAPIReference() {
             <div className="py-8">
               <div className="flex items-start justify-between">
                 <div>
-                  <h1 className="mb-2">Component API Reference</h1>
+                  <h1 className="pb-2">Component API Reference</h1>
                   <p className="text-muted-foreground">
                     Complete documentation for all pattern components
                   </p>
@@ -764,7 +764,7 @@ export default function ComponentAPIReference() {
               </div>
 
               {/* Search and Filter */}
-              <div className="mt-6 flex flex-col gap-4 sm:flex-row">
+              <div className="pt-6 flex flex-col gap-4 sm:flex-row">
                 <div className="relative flex-1">
                   <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
@@ -794,20 +794,20 @@ export default function ComponentAPIReference() {
         <Container>
           <div className="py-8">
             {/* Components List */}
-            <div className="space-y-6">
+            <div className="flex flex-col gap-6">
               {filteredComponents.map((component) => (
                 <Card key={component.id}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
+                        <div className="flex items-center gap-3 pb-2">
                           <CardTitle>{component.name}</CardTitle>
                           <Badge variant="outline">{component.category}</Badge>
                         </div>
                         <CardDescription>{component.description}</CardDescription>
-                        <div className="mt-3 flex flex-wrap gap-2">
+                        <div className="pt-3 flex flex-wrap gap-2">
                           <Badge variant="secondary" className="text-xs">
-                            <FileCode className="mr-1 h-3 w-3" />
+                            <FileCode className="pr-1 h-3 w-3" />
                             {component.wpEquivalent}
                           </Badge>
                         </div>
@@ -825,8 +825,8 @@ export default function ComponentAPIReference() {
                       </TabsList>
 
                       {/* Props Table */}
-                      <TabsContent value="props" className="mt-4">
-                        <div className="mb-4">
+                      <TabsContent value="props" className="pt-4">
+                        <div className="pb-4">
                           <code className="rounded bg-muted px-2 py-1 text-sm">
                             {component.importPath}
                           </code>
@@ -869,11 +869,11 @@ export default function ComponentAPIReference() {
                       </TabsContent>
 
                       {/* Examples */}
-                      <TabsContent value="examples" className="mt-4 space-y-4">
+                      <TabsContent value="examples" className="pt-4 flex flex-col gap-4">
                         {component.examples.map((example, index) => (
                           <div key={index}>
-                            <h4 className="mb-2">{example.title}</h4>
-                            <p className="mb-3 text-sm text-muted-foreground">
+                            <h4 className="pb-2">{example.title}</h4>
+                            <p className="pb-3 text-sm text-[color:var(--color-muted-foreground)]">
                               {example.description}
                             </p>
                             <pre className="overflow-auto rounded-md bg-muted p-4">
@@ -884,11 +884,11 @@ export default function ComponentAPIReference() {
                       </TabsContent>
 
                       {/* Accessibility */}
-                      <TabsContent value="a11y" className="mt-4">
-                        <ul className="space-y-2">
+                      <TabsContent value="a11y" className="pt-4">
+                        <ul className="flex flex-col gap-2">
                           {component.accessibility.map((item, index) => (
                             <li key={index} className="flex items-start gap-2">
-                              <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                              <span className="pt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[color:var(--color-primary)]" />
                               <span className="text-sm">{item}</span>
                             </li>
                           ))}
@@ -896,8 +896,8 @@ export default function ComponentAPIReference() {
                       </TabsContent>
 
                       {/* Design Tokens */}
-                      <TabsContent value="tokens" className="mt-4">
-                        <div className="space-y-2">
+                      <TabsContent value="tokens" className="pt-4">
+                        <div className="flex flex-col gap-2">
                           {component.designTokens.map((token, index) => (
                             <code
                               key={index}
@@ -909,8 +909,8 @@ export default function ComponentAPIReference() {
                         </div>
 
                         {component.relatedComponents.length > 0 && (
-                          <div className="mt-6">
-                            <h4 className="mb-3">Related Components</h4>
+                          <div className="pt-6">
+                            <h4 className="pb-3">Related Components</h4>
                             <div className="flex flex-wrap gap-2">
                               {component.relatedComponents.map((related) => (
                                 <Badge key={related} variant="outline">

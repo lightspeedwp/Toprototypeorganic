@@ -30,10 +30,10 @@ import DestinationSingle from "./DestinationSingle";
 function NotFoundFallback() {
   return (
     <section className="py-section-md bg-background">
-      <Container>
-        <div className="text-center max-w-2xl mx-auto">
-          <h1 className="mb-4 text-4xl font-bold font-serif">Destination not found</h1>
-          <p className="text-muted-foreground mb-12 italic font-serif">
+      <Container className="flex flex-col items-center">
+        <div className="text-center max-w-2xl w-full flex flex-col items-center gap-4">
+          <h1 className="text-4xl font-bold font-serif">Destination not found</h1>
+          <p className="text-muted-foreground italic font-serif pb-8">
             The territory you're looking for doesn't exist or has been removed from our catalog.
           </p>
           <Link 

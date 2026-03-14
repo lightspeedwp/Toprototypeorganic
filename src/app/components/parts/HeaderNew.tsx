@@ -158,7 +158,7 @@ export function HeaderNew({ currentPage, onNavigate }: HeaderNewProps) {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <Container>
         {/* Desktop Header */}
-        <div className="hidden md:flex items-center justify-between gap-6 py-4">
+        <div className="hidden md:flex items-center justify-between gap-fluid-lg py-element-md">
           {/* Logo */}
           <div className="flex items-center">
             <SiteLogo 
@@ -180,17 +180,16 @@ export function HeaderNew({ currentPage, onNavigate }: HeaderNewProps) {
           </div>
 
           {/* Actions: Search + Theme Switcher */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-fluid-sm">
             {/* Search Icon */}
             <button
               onClick={() => setIsSearchOpen(true)}
               className={cn(
-                "p-2 rounded-md",
-                "hover:bg-muted",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-                "transition-colors"
+                "p-element-xs rounded-[var(--radius-md)]",
+                "text-foreground hover:bg-accent transition-colors",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               )}
-              aria-label="Open search"
+              aria-label="Search"
             >
               <SearchIcon className="w-5 h-5" />
             </button>
@@ -199,12 +198,11 @@ export function HeaderNew({ currentPage, onNavigate }: HeaderNewProps) {
             <button
               onClick={toggleTheme}
               className={cn(
-                "p-2 rounded-md",
-                "hover:bg-muted",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-                "transition-colors"
+                "p-element-xs rounded-[var(--radius-md)]",
+                "text-foreground hover:bg-accent transition-colors",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               )}
-              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+              aria-label={theme === 'light' ? "Switch to dark mode" : "Switch to light mode"}
             >
               {theme === 'light' ? (
                 <Moon className="w-5 h-5" />
@@ -216,7 +214,7 @@ export function HeaderNew({ currentPage, onNavigate }: HeaderNewProps) {
         </div>
 
         {/* Mobile Header */}
-        <div className="flex md:hidden items-center justify-between gap-4 py-4">
+        <div className="flex md:hidden items-center justify-between gap-fluid-md py-element-md">
           {/* Logo */}
           <div className="flex items-center">
             <SiteLogo 
@@ -226,17 +224,16 @@ export function HeaderNew({ currentPage, onNavigate }: HeaderNewProps) {
           </div>
 
           {/* Actions: Search + Theme Switcher + Mobile Menu Toggle */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-fluid-xs">
             {/* Search Icon (Mobile) */}
             <button
               onClick={() => setIsSearchOpen(true)}
               className={cn(
-                "p-2 rounded-md",
-                "hover:bg-muted",
+                "p-element-xs rounded-[var(--radius-md)]",
+                "text-foreground hover:bg-accent transition-colors",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                "transition-colors"
               )}
-              aria-label="Open search"
+              aria-label="Search"
             >
               <SearchIcon className="w-5 h-5" />
             </button>
@@ -245,12 +242,11 @@ export function HeaderNew({ currentPage, onNavigate }: HeaderNewProps) {
             <button
               onClick={toggleTheme}
               className={cn(
-                "p-2 rounded-md",
-                "hover:bg-muted",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                "transition-colors"
+                "p-element-xs rounded-[var(--radius-md)]",
+                "text-foreground hover:bg-accent transition-colors md:hidden",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               )}
-              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+              aria-label={theme === 'light' ? "Switch to dark mode" : "Switch to light mode"}
             >
               {theme === 'light' ? (
                 <Moon className="w-5 h-5" />
@@ -280,12 +276,12 @@ export function HeaderNew({ currentPage, onNavigate }: HeaderNewProps) {
             onClick={() => setIsSearchOpen(false)}
           >
             <div 
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl bg-background p-6 rounded-lg shadow-lg"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl bg-background p-element-lg rounded-[var(--radius-lg)] shadow-lg"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setIsSearchOpen(false)}
-                className="absolute top-3 right-3 p-2 rounded-md hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="absolute top-3 right-3 p-element-xs rounded-[var(--radius-md)] hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 aria-label="Close search"
               >
                 <X className="w-5 h-5" />

@@ -69,7 +69,7 @@ export function FAQ({ items, questions, title, intro, subtitle, className }: FAQ
                   value={item.id}
                   className="wp-pattern-faq__item"
                 >
-                  <AccordionTrigger className="wp-pattern-faq__trigger px-[0px] pt-[16px] pb-[0px]">
+                  <AccordionTrigger className="wp-pattern-faq__trigger">
                     <span className="wp-pattern-faq__question">
                       {item.question}
                     </span>

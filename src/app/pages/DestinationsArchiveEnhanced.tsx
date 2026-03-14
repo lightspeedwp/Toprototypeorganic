@@ -39,10 +39,10 @@ function FeaturedCountryCard({ destination }: { destination: any }) {
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-      <div className="absolute inset-0 flex flex-col justify-end p-[var(--spacing-element-lg)] gap-[var(--spacing-gap-sm)]">
+      <div className="absolute inset-0 flex flex-col justify-end p-element-lg gap-fluid-sm">
         <h3 className="text-primary-foreground m-0 text-fluid-2xl font-serif font-bold">{destination.title}</h3>
         <p className="text-primary-foreground/90 text-fluid-sm line-clamp-2 m-0">{destination.excerpt}</p>
-        <div className="flex items-center gap-[var(--spacing-gap-sm)] text-primary-foreground/80 text-fluid-sm">
+        <div className="flex items-center gap-fluid-sm text-primary-foreground/80 text-fluid-sm">
           <MapPin size={16} />
           <span>{destination.tourIds.length} tours available</span>
         </div>
@@ -67,12 +67,12 @@ function FeaturedRegionCard({ destination }: { destination: any }) {
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
-      <div className="p-[var(--spacing-element-md)] flex flex-col gap-[var(--spacing-gap-sm)]">
+      <div className="p-element-md flex flex-col gap-fluid-sm">
         <h4 className="m-0 text-fluid-xl font-bold font-serif group-hover:text-primary transition-colors">
           {destination.title}
         </h4>
         <p className="text-fluid-sm text-muted-foreground line-clamp-2 m-0">{destination.excerpt}</p>
-        <div className="flex items-center gap-[var(--spacing-gap-sm)] text-muted-foreground text-fluid-sm">
+        <div className="flex items-center gap-fluid-sm text-muted-foreground text-fluid-sm">
           <MapPin size={16} />
           <span>{destination.tourIds.length} tours</span>
         </div>
@@ -89,7 +89,7 @@ function DestinationCard({ destination, viewMode }: { destination: any; viewMode
     return (
       <Link
         to={`/destinations/${destination.slug}`}
-        className="flex gap-[var(--spacing-gap-md)] bg-card border border-border rounded-[var(--radius-lg)] overflow-hidden hover:border-primary transition-colors group"
+        className="flex gap-fluid-md bg-card border border-border rounded-[var(--radius-lg)] overflow-hidden hover:border-primary transition-colors group"
       >
         <div className="w-48 flex-shrink-0 aspect-[4/3] overflow-hidden">
           <img
@@ -98,13 +98,13 @@ function DestinationCard({ destination, viewMode }: { destination: any; viewMode
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
         </div>
-        <div className="flex-1 p-[var(--spacing-element-md)] flex flex-col gap-[var(--spacing-gap-sm)]">
+        <div className="flex-1 p-element-md flex flex-col gap-fluid-sm">
           <h4 className="m-0 text-fluid-xl font-bold font-serif group-hover:text-primary transition-colors">
             {destination.title}
           </h4>
           <p className="text-muted-foreground text-fluid-sm m-0 line-clamp-2">{destination.excerpt}</p>
-          <div className="flex items-center gap-[var(--spacing-gap-md)] text-fluid-sm text-muted-foreground pt-1">
-            <span className="flex items-center gap-[var(--spacing-gap-xs)]">
+          <div className="flex items-center gap-fluid-md text-fluid-sm text-muted-foreground pt-1">
+            <span className="flex items-center gap-fluid-xs">
               <MapPin size={16} />
               {destination.tourIds.length} tours
             </span>
@@ -126,12 +126,12 @@ function DestinationCard({ destination, viewMode }: { destination: any; viewMode
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
-      <div className="p-[var(--spacing-element-md)] flex flex-col gap-[var(--spacing-gap-sm)]">
+      <div className="p-element-md flex flex-col gap-fluid-sm">
         <h4 className="m-0 text-fluid-xl font-bold font-serif group-hover:text-primary transition-colors">
           {destination.title}
         </h4>
         <p className="text-fluid-sm text-muted-foreground line-clamp-2 m-0">{destination.excerpt}</p>
-        <div className="text-fluid-sm text-muted-foreground flex items-center gap-[var(--spacing-gap-xs)]">
+        <div className="text-fluid-sm text-muted-foreground flex items-center gap-fluid-xs">
           <MapPin size={16} />
           {destination.tourIds.length} tours
         </div>
@@ -191,13 +191,13 @@ function DestinationsArchiveEnhanced() {
     <PageShell context="destinations-archive">
       {/* Featured Countries Section */}
       {featuredCountries.length > 0 && (
-        <section className="py-[var(--spacing-section-md)] bg-background">
-          <Container>
-            <div className="flex flex-col gap-[var(--spacing-gap-sm)] mb-[var(--spacing-section-sm)]">
+        <section className="py-section-md bg-background">
+          <Container className="flex flex-col gap-section-sm">
+            <div className="flex flex-col gap-fluid-sm">
               <h2 className="m-0 text-fluid-3xl font-serif">Featured Countries</h2>
               <p className="text-muted-foreground text-fluid-base m-0">Explore our most popular country destinations</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[var(--spacing-gap-lg)]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-fluid-lg">
               {featuredCountries.map((destination) => (
                 <FeaturedCountryCard key={destination.id} destination={destination} />
               ))}
@@ -208,13 +208,13 @@ function DestinationsArchiveEnhanced() {
 
       {/* Featured Regions & Cities Section */}
       {featuredRegions.length > 0 && (
-        <section className="py-[var(--spacing-section-md)] bg-muted">
-          <Container>
-            <div className="flex flex-col gap-[var(--spacing-gap-sm)] mb-[var(--spacing-section-sm)]">
+        <section className="py-section-md bg-muted">
+          <Container className="flex flex-col gap-section-sm">
+            <div className="flex flex-col gap-fluid-sm">
               <h2 className="m-0 text-fluid-3xl font-serif">Featured Regions & Cities</h2>
               <p className="text-muted-foreground text-fluid-base m-0">Discover unique regions and vibrant cities</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--spacing-gap-lg)]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-fluid-lg">
               {featuredRegions.map((destination) => (
                 <FeaturedRegionCard key={destination.id} destination={destination} />
               ))}
@@ -224,15 +224,15 @@ function DestinationsArchiveEnhanced() {
       )}
 
       {/* All Destinations with Filtering */}
-      <section className="py-[var(--spacing-section-md)] bg-background">
-        <Container>
-          <div className="flex flex-col gap-[var(--spacing-gap-lg)] mb-[var(--spacing-section-sm)]">
+      <section className="py-section-md bg-background">
+        <Container className="flex flex-col gap-section-sm">
+          <div className="flex flex-col gap-fluid-lg">
             <h2 className="m-0 text-fluid-3xl font-serif">All Destinations</h2>
 
             {/* Filters */}
-            <div className="flex flex-col gap-[var(--spacing-gap-md)]">
+            <div className="flex flex-col gap-fluid-md">
               {/* Search + View Mode */}
-              <div className="flex flex-col sm:flex-row gap-[var(--spacing-gap-md)] justify-between">
+              <div className="flex flex-col sm:flex-row gap-fluid-md justify-between">
                 <div className="relative flex-1 max-w-md">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
                   <input
@@ -240,14 +240,14 @@ function DestinationsArchiveEnhanced() {
                     placeholder="Search destinations..."
                     value={searchTerm}
                     onChange={(e) => handleFilterChange(() => setSearchTerm(e.target.value))}
-                    className="w-full pl-10 pr-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] bg-card border border-border rounded-[var(--radius-lg)] focus:outline-none focus:ring-2 focus:ring-ring"
+                    className="w-full pl-10 pr-element-md py-element-sm bg-card border border-border rounded-[var(--radius-lg)] focus:outline-none focus:ring-2 focus:ring-ring"
                   />
                 </div>
 
-                <div className="flex items-center gap-[var(--spacing-gap-sm)]">
+                <div className="flex items-center gap-fluid-sm">
                   <button
                     onClick={() => setViewMode("3col")}
-                    className={`p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)] border transition-colors ${
+                    className={`p-element-sm rounded-[var(--radius-lg)] border transition-colors ${
                       viewMode === "3col"
                         ? "bg-primary text-primary-foreground border-primary"
                         : "bg-card border-border hover:border-primary"
@@ -258,7 +258,7 @@ function DestinationsArchiveEnhanced() {
                   </button>
                   <button
                     onClick={() => setViewMode("2col")}
-                    className={`p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)] border transition-colors ${
+                    className={`p-element-sm rounded-[var(--radius-lg)] border transition-colors ${
                       viewMode === "2col"
                         ? "bg-primary text-primary-foreground border-primary"
                         : "bg-card border-border hover:border-primary"
@@ -269,7 +269,7 @@ function DestinationsArchiveEnhanced() {
                   </button>
                   <button
                     onClick={() => setViewMode("list")}
-                    className={`p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)] border transition-colors ${
+                    className={`p-element-sm rounded-[var(--radius-lg)] border transition-colors ${
                       viewMode === "list"
                         ? "bg-primary text-primary-foreground border-primary"
                         : "bg-card border-border hover:border-primary"
@@ -282,11 +282,11 @@ function DestinationsArchiveEnhanced() {
               </div>
 
               {/* Type + Continent Filters */}
-              <div className="flex flex-col sm:flex-row gap-[var(--spacing-gap-md)]">
+              <div className="flex flex-col sm:flex-row gap-fluid-md">
                 <select
                   value={typeFilter}
                   onChange={(e) => handleFilterChange(() => setTypeFilter(e.target.value))}
-                  className="px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] bg-card border border-border rounded-[var(--radius-lg)] focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="px-element-md py-element-sm bg-card border border-border rounded-[var(--radius-lg)] focus:outline-none focus:ring-2 focus:ring-ring"
                 >
                   <option value="all">All Types</option>
                   <option value="countries">Countries</option>
@@ -296,7 +296,7 @@ function DestinationsArchiveEnhanced() {
                 <select
                   value={continentFilter}
                   onChange={(e) => handleFilterChange(() => setContinentFilter(e.target.value))}
-                  className="px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] bg-card border border-border rounded-[var(--radius-lg)] focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="px-element-md py-element-sm bg-card border border-border rounded-[var(--radius-lg)] focus:outline-none focus:ring-2 focus:ring-ring"
                 >
                   <option value="all">All Continents</option>
                   {CONTINENTS.map((continent) => (
@@ -314,7 +314,7 @@ function DestinationsArchiveEnhanced() {
                       setContinentFilter("all");
                       setCurrentPage(1);
                     }}
-                    className="px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] text-fluid-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="px-element-md py-element-sm text-fluid-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
                     Clear filters
                   </button>
@@ -325,9 +325,9 @@ function DestinationsArchiveEnhanced() {
 
           {/* Results */}
           {paginatedDestinations.length > 0 ? (
-            <div className="flex flex-col gap-[var(--spacing-section-sm)]">
+            <div className="flex flex-col gap-section-sm">
               <div
-                className={`grid gap-[var(--spacing-gap-lg)] ${
+                className={`grid gap-fluid-lg ${
                   viewMode === "3col"
                     ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
                     : viewMode === "2col"
@@ -342,22 +342,22 @@ function DestinationsArchiveEnhanced() {
 
               {/* Pagination */}
               {totalPages > 1 && (
-                <div className="flex items-center justify-center gap-[var(--spacing-gap-sm)]">
+                <div className="flex items-center justify-center gap-fluid-sm">
                   <button
                     onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                     disabled={currentPage === 1}
-                    className="p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)] border border-border hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="p-element-sm rounded-[var(--radius-lg)] border border-border hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     aria-label="Previous page"
                   >
                     <ChevronLeft size={20} />
                   </button>
 
-                  <div className="flex items-center gap-[var(--spacing-gap-sm)]">
+                  <div className="flex items-center gap-fluid-sm">
                     {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                       <button
                         key={page}
                         onClick={() => setCurrentPage(page)}
-                        className={`min-w-[40px] px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] rounded-[var(--radius-lg)] border transition-colors ${
+                        className={`min-w-[40px] px-element-md py-element-sm rounded-[var(--radius-lg)] border transition-colors ${
                           page === currentPage
                             ? "bg-primary text-primary-foreground border-primary"
                             : "border-border hover:border-primary"
@@ -371,7 +371,7 @@ function DestinationsArchiveEnhanced() {
                   <button
                     onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                     disabled={currentPage === totalPages}
-                    className="p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)] border border-border hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="p-element-sm rounded-[var(--radius-lg)] border border-border hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     aria-label="Next page"
                   >
                     <ChevronRight size={20} />
@@ -381,9 +381,9 @@ function DestinationsArchiveEnhanced() {
             </div>
           ) : (
             /* Empty State */
-            <div className="text-center py-[var(--spacing-section-md)] flex flex-col items-center gap-[var(--spacing-gap-md)]">
+            <div className="text-center py-section-md flex flex-col items-center gap-fluid-md">
               <MapPin size={48} className="text-muted-foreground" />
-              <div className="flex flex-col gap-[var(--spacing-gap-sm)]">
+              <div className="flex flex-col gap-fluid-sm">
                 <h3 className="m-0 text-fluid-2xl font-serif">No destinations found</h3>
                 <p className="text-muted-foreground m-0">
                   Try adjusting your filters or search term
@@ -396,7 +396,7 @@ function DestinationsArchiveEnhanced() {
                   setContinentFilter("all");
                   setCurrentPage(1);
                 }}
-                className="inline-flex items-center px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] bg-primary text-primary-foreground rounded-[var(--radius-lg)] hover:bg-primary/90 transition-colors"
+                className="inline-flex items-center px-element-lg py-element-md bg-primary text-primary-foreground rounded-[var(--radius-lg)] hover:bg-primary/90 transition-colors"
               >
                 Clear all filters
               </button>

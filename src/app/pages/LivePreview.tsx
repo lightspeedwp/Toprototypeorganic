@@ -98,9 +98,9 @@ export default function LivePreview() {
     switch (selectedComponent) {
       case 'button':
         return (
-          <div className="space-y-4">
-            <div>
-              <label className="block mb-2 text-sm font-medium">Button Text</label>
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
+              <label className="block text-sm font-medium">Button Text</label>
               <Input
                 type="text"
                 value={buttonText}
@@ -109,8 +109,8 @@ export default function LivePreview() {
               />
             </div>
             
-            <div>
-              <label className="block mb-2 text-sm font-medium">Variant</label>
+            <div className="flex flex-col gap-2">
+              <label className="block text-sm font-medium">Variant</label>
               <div className="flex gap-2">
                 {['default', 'outline', 'ghost'].map((variant) => (
                   <Button
@@ -125,8 +125,8 @@ export default function LivePreview() {
               </div>
             </div>
 
-            <div>
-              <label className="block mb-2 text-sm font-medium">Size</label>
+            <div className="flex flex-col gap-2">
+              <label className="block text-sm font-medium">Size</label>
               <div className="flex gap-2">
                 {['sm', 'md', 'lg'].map((size) => (
                   <Button
@@ -153,8 +153,8 @@ export default function LivePreview() {
       <div className="min-h-screen bg-background py-section-sm">
         <Container>
           {/* Header */}
-          <div className="mb-8">
-            <h1 className="mb-4">Live Preview</h1>
+          <div className="flex flex-col gap-4 pb-8">
+            <h1>Live Preview</h1>
             <p className="text-muted-foreground">
               Interactive component preview and testing tool. Edit props in real-time and copy generated code.
             </p>
@@ -167,7 +167,7 @@ export default function LivePreview() {
                 <CardTitle className="text-lg">Components</CardTitle>
               </CardHeader>
               <CardContent className="p-0">
-                <div className="space-y-1">
+                <div className="flex flex-col gap-1">
                   {COMPONENTS.map((component) => (
                     <button
                       key={component.id}
@@ -185,7 +185,7 @@ export default function LivePreview() {
             </Card>
 
             {/* Preview & Controls */}
-            <div className="lg:col-span-9 space-y-6">
+            <div className="lg:col-span-9 flex flex-col gap-6">
               {/* Preview */}
               <Card>
                 <CardHeader>
@@ -211,10 +211,10 @@ export default function LivePreview() {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
+                <CardContent className={viewMode === 'mobile' ? 'flex flex-col items-center' : ''}>
                   <div
                     className={`border border-border rounded-lg bg-background ${
-                      viewMode === 'mobile' ? 'max-w-sm mx-auto' : ''
+                      viewMode === 'mobile' ? 'max-w-sm w-full' : ''
                     }`}
                   >
                     {renderPreview()}
@@ -280,12 +280,12 @@ export default function LivePreview() {
           </div>
 
           {/* Coming Soon Notice */}
-          <div className="mt-12 p-6 border border-border rounded-lg bg-muted">
-            <h2 className="mb-2">🚧 Coming Soon</h2>
-            <p className="text-muted-foreground mb-4">
+          <div className="p-6 border border-border rounded-lg bg-muted flex flex-col gap-2">
+            <h2>🚧 Coming Soon</h2>
+            <p className="text-muted-foreground">
               This Live Preview tool is currently in development. More components and features will be added soon:
             </p>
-            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+            <ul className="list-disc list-inside flex flex-col gap-1 text-sm text-muted-foreground">
               <li>All 27 components available for preview</li>
               <li>Advanced prop editors (colors, spacing, etc.)</li>
               <li>Responsive breakpoint testing</li>

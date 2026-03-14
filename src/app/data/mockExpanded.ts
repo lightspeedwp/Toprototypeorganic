@@ -14,12 +14,15 @@ import { CONTINENTS } from "./destinations/continents";
 import { ACCOMMODATION } from "./accommodation/properties";
 import { ACCOMMODATION_TYPES } from "./taxonomies/accommodation-types";
 import { BLOG_POSTS } from "./blog/posts";
+import { BLOG_POSTS_ASIA } from "./blog/posts-asia";
+import { BLOG_POSTS_EUROPE } from "./blog/posts-europe";
 import { BLOG_CATEGORIES } from "./blog/categories";
 import { BLOG_TAGS } from "./blog/tags";
-import { REVIEWS } from "./reviews/data";
+import { ALL_REVIEWS as REVIEWS_ALL } from "./reviews/index";
+import { REVIEWS_DATA as REVIEWS } from "./reviews/data";
 export { REVIEWS };
 import { SPECIALS } from "./specials/data";
-export { SPECIALS };
+import { ALL_TEAM_MEMBERS } from "./team/index";
 import { TEAM_MEMBERS } from "./team/members";
 export { TEAM_MEMBERS }; // Re-export for centralized access
 import { TRAVEL_STYLES } from "./taxonomies/travel-styles";
@@ -49,13 +52,13 @@ import type {
 } from "./types";
 
 // Combine base data with generated data
-export const ALL_TOURS: Tour[] = [...TOURS, ...generateAdditionalTours(13)];
-export const ALL_DESTINATIONS: Destination[] = [...DESTINATIONS, ...generateAdditionalDestinations(17)];
-export const ALL_ACCOMMODATION: Accommodation[] = [...ACCOMMODATION, ...generateAdditionalAccommodation(10)];
-export const ALL_BLOG_POSTS: BlogPost[] = [...BLOG_POSTS, ...generateAdditionalBlogPosts(25)];
-export const ALL_REVIEWS: Review[] = [...REVIEWS, ...generateAdditionalReviews(6)];
+export const ALL_TOURS: Tour[] = [...TOURS, ...generateAdditionalTours(100)];
+export const ALL_DESTINATIONS: Destination[] = [...DESTINATIONS, ...generateAdditionalDestinations(100)];
+export const ALL_ACCOMMODATION: Accommodation[] = [...ACCOMMODATION, ...generateAdditionalAccommodation(100)];
+export const ALL_BLOG_POSTS: BlogPost[] = [...BLOG_POSTS, ...BLOG_POSTS_ASIA, ...BLOG_POSTS_EUROPE];
+export const ALL_REVIEWS: Review[] = [...REVIEWS_ALL];
 export const ALL_SPECIALS: Special[] = [...SPECIALS, ...generateAdditionalSpecials(5)];
-export const ALL_TEAM: TeamMember[] = [...TEAM_MEMBERS, ...generateAdditionalTeamMembers(6)];
+export const ALL_TEAM: TeamMember[] = [...ALL_TEAM_MEMBERS];
 
 // Export expanded taxonomies
 export const ALL_CONTINENTS: Continent[] = [...CONTINENTS, ...EXPANDED_CONTINENTS.filter(c => !CONTINENTS.some(existing => existing.id === c.id))];

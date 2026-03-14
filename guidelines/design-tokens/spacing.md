@@ -1,593 +1,272 @@
 # Spacing Design Tokens
 
-**DEPRECATED:** This document describes the legacy spacing system.
-**Current System:** See [MODERN-SPACING.md](MODERN-SPACING.md) for the modern fluid spacing system (v4.0).
-
-**Critical:**
-- **NEVER hardcode spacing values** — Use only CSS variables from `theme-base.css`
-- **NEVER use inline `style={{ padding: ... }}`** — All spacing via CSS classes
-- **ZERO MARGIN policy** — Use `gap` and `padding` for layout, not margins
+**Version:** 6.0 — Fully Fluid Utility System
+**Last Updated:** March 2026
+**Status:** Production Ready
+**Source of Truth:** `/src/styles/theme-base.css`, `/src/styles/theme.css`
 
 ---
 
-## Migration Notice
+## Overview
 
-**Date:** March 2026
-**Status:** Legacy — Maintained for reference only
-**Action Required:** Use the modern fluid spacing system for all new development
+This document defines the **gap-first spacing system** for the LightSpeed Tour Operator prototype. All layout spacing between sibling elements uses `flex`/`grid` **gap** — never margins. Padding is used for internal component spacing and section rhythm.
 
-The spacing system has been upgraded to:
-- Fluid `clamp()` values (was fixed px values)
-- Zero-margin layout policy (was margin-based)
-- WordPress `--wp--preset--spacing--*` alignment
-- Multi-breakpoint column progression (1-6 columns)
-- Dedicated section, container, element, and gap token categories
+**All gap and padding values MUST use the fluid utility classes** defined in `/src/styles/theme.css`. These classes reference `clamp()` CSS variables from `/src/styles/theme-base.css`, ensuring spacing scales fluidly with the viewport.
 
-**[View Modern Spacing System](MODERN-SPACING.md)**
-**[View Breakpoints System](breakpoints.md)**
+**For fluid spacing token values**, see [MODERN-SPACING.md](MODERN-SPACING.md).
+**For layout block patterns** (Group, Stack, Row, Columns, Grid), see [/guidelines/blocks/design/](/guidelines/blocks/design/).
 
 ---
 
-## Purpose
+## Core Principles
 
-This document defines the **spacing system** used throughout the LightSpeed Tour Operator plugin prototype. Spacing creates visual rhythm, hierarchy, and breathing room in the interface.
+### 1. Gap-First, Always
 
----
+Every parent container that has multiple children MUST use `flex` or `grid` with a `gap` to space them. Children never push each other apart — the parent controls the rhythm.
 
-## Spacing Philosophy
-
-**Consistent scale:** Use predefined spacing values for margins, padding, and gaps.
-
-**Zero Inline Styles:** Never use `style={{ padding: '24px' }}`. All spacing must be applied via Tailwind classes (`p-6`) or BEM classes in CSS files.
-
-**WordPress preset compatibility:** Spacing tokens are designed to map to WordPress theme.json spacing presets.
-
-**Predictable rhythm:** Spacing creates visual relationships between elements.
-
----
-
-## Spacing Scale
-
-The LightSpeed spacing system uses a **numerical scale** with increments of 4px:
-
-| Token Name | Value | Rem Equivalent | Common Usage                        |
-| ---------- | ----- | -------------- | ----------------------------------- |
-| `--spacing-1` | 4px   | 0.25rem     | Tight spacing, icons                |
-| `--spacing-2` | 8px   | 0.5rem      | Small gaps, compact UI              |
-| `--spacing-3` | 12px  | 0.75rem     | Medium-small spacing                |
-| `--spacing-4` | 16px  | 1rem        | Default spacing, card padding       |
-| `--spacing-5` | 20px  | 1.25rem     | Medium spacing                      |
-| `--spacing-6` | 24px  | 1.5rem      | Section spacing                     |
-| `--spacing-8` | 32px  | 2rem        | Large section spacing               |
-| `--spacing-10`| 40px  | 2.5rem      | Extra large spacing                 |
-| `--spacing-12`| 48px  | 3rem        | Page section spacing                |
-| `--spacing-16`| 64px  | 4rem        | Major section spacing               |
-| `--spacing-20`| 80px  | 5rem        | Hero/major block spacing            |
-| `--spacing-24`| 96px  | 6rem        | Extra large block spacing           |
-
-**Note:** Values are conceptual for this prototype. Actual implementation uses Tailwind's default spacing scale.
-
----
-
-## Tailwind Spacing Classes
-
-The prototype uses **Tailwind's default spacing scale**, which aligns with our design system:
-
-| Tailwind Class | Value | Usage                               |
-| -------------- | ----- | ----------------------------------- |
-| `m-1`, `p-1`   | 4px   | Minimal spacing                     |
-| `m-2`, `p-2`   | 8px   | Small spacing                       |
-| `m-3`, `p-3`   | 12px  | Medium-small spacing                |
-| `m-4`, `p-4`   | 16px  | Default spacing                     |
-| `m-5`, `p-5`   | 20px  | Medium spacing                      |
-| `m-6`, `p-6`   | 24px  | Section spacing                     |
-| `m-8`, `p-8`   | 32px  | Large spacing                       |
-| `m-10`, `p-10` | 40px  | Extra large spacing                 |
-| `m-12`, `p-12` | 48px  | Page section spacing                |
-| `m-16`, `p-16` | 64px  | Major section spacing               |
-| `m-20`, `p-20` | 80px  | Hero spacing                        |
-| `m-24`, `p-24` | 96px  | Extra large block spacing           |
-
----
-
-## Spacing Usage Patterns
-
-### 1. Component Internal Spacing (Padding)
-
-**Cards:**
-```typescript
-<div className="p-4">      {/* 16px padding - mobile */}
-<div className="p-6">      {/* 24px padding - desktop */}
-```
-
-**Containers:**
-```typescript
-<Container className="px-4 py-6">   {/* Horizontal: 16px, Vertical: 24px */}
-<Container className="px-6 py-8">   {/* Horizontal: 24px, Vertical: 32px */}
-```
-
-**Buttons:**
-```typescript
-<button className="px-4 py-2">     {/* Horizontal: 16px, Vertical: 8px */}
-<button className="px-6 py-3">     {/* Horizontal: 24px, Vertical: 12px */}
-```
-
----
-
-### 2. Component External Spacing (Margin)
-
-**Section Spacing:**
-```typescript
-<section className="mb-12">       {/* 48px bottom margin */}
-<section className="mb-16">       {/* 64px bottom margin */}
-<section className="mb-20">       {/* 80px bottom margin */}
-```
-
-**Element Spacing:**
-```typescript
-<h2 className="mb-4">             {/* 16px below heading */}
-<p className="mb-6">              {/* 24px below paragraph */}
-```
-
----
-
-### 3. Gap Spacing (Flexbox/Grid)
-
-**Card Grids:**
-```typescript
-<div className="grid gap-4">      {/* 16px gap - mobile */}
-<div className="grid gap-6">      {/* 24px gap - desktop */}
-```
-
-**Flex Containers:**
-```typescript
-<div className="flex gap-2">      {/* 8px gap - tight spacing */}
-<div className="flex gap-4">      {/* 16px gap - default */}
-```
-
-**Icon + Text:**
-```typescript
-<div className="flex items-center gap-2">  {/* 8px gap */}
-  <MapPin className="w-5 h-5" />
-  <span>Location</span>
+```tsx
+// ✅ CORRECT — parent controls spacing via gap
+<div className="flex flex-col gap-6">
+  <h2>Title</h2>
+  <p>Description</p>
+  <CardGrid />
 </div>
-```
 
----
-
-## Spacing by Component
-
-### Container Component
-
-```typescript
-// Default container padding
-<Container className="px-4 md:px-6 lg:px-8">
-  {/* Mobile: 16px, Tablet: 24px, Desktop: 32px */}
-</Container>
-```
-
----
-
-### Hero Pattern
-
-```typescript
-<Hero className="py-12 md:py-16 lg:py-20">
-  {/* Mobile: 48px, Tablet: 64px, Desktop: 80px */}
-  <h1 className="mb-4">Title</h1>           {/* 16px below */}
-  <p className="mb-6">Excerpt</p>           {/* 24px below */}
-</Hero>
-```
-
----
-
-### Card Grid Pattern
-
-```typescript
-<CardGrid className="grid gap-6 md:gap-8">
-  {/* Mobile: 24px gap, Desktop: 32px gap */}
-  {items.map(item => (
-    <Card key={item.id} className="p-4 md:p-6">
-      {/* Mobile: 16px padding, Desktop: 24px padding */}
-    </Card>
-  ))}
-</CardGrid>
-```
-
----
-
-### Editorial Content Pattern
-
-```typescript
-<EditorialContent className="space-y-6">
-  {/* 24px vertical spacing between blocks */}
-  <h2 className="mb-4">Heading</h2>     {/* 16px below */}
-  <p className="mb-4">Paragraph</p>     {/* 16px below */}
-  <ul className="space-y-2">            {/* 8px between list items */}
-    <li>Item</li>
-  </ul>
-</EditorialContent>
-```
-
----
-
-### Fast Facts Pattern
-
-```typescript
-<FastFacts className="grid grid-cols-2 gap-4 p-6">
-  {/* 24px padding, 16px gap */}
-  {facts.map(fact => (
-    <div key={fact.label} className="flex gap-2">
-      {/* 8px gap between icon and text */}
-      <Icon className="w-5 h-5" />
-      <div>...</div>
-    </div>
-  ))}
-</FastFacts>
-```
-
----
-
-### CTA Pattern
-
-```typescript
-<CTA className="py-12 md:py-16">
-  {/* Mobile: 48px vertical, Desktop: 64px vertical */}
+// ❌ WRONG — children push each other with margin
+<div>
   <h2 className="mb-4">Title</h2>
   <p className="mb-6">Description</p>
-  <button className="px-6 py-3">Action</button>
-</CTA>
+  <CardGrid />
+</div>
 ```
+
+### 2. Zero Margin Policy
+
+Margins are **strictly prohibited** on:
+- Headings (`h1`–`h6`)
+- Paragraphs (`p`)
+- Buttons
+- Cards
+- Any layout-level element
+
+**The parent always controls spacing between its children via `gap`.**
+
+### 3. Allowed Margin Exceptions
+
+| Exception | Example | Reason |
+|-----------|---------|--------|
+| `mx-auto` | Centering a block element | Standard CSS centering pattern |
+| `mb-0` / `mt-0` / `m-0` | Resetting inherited defaults | Override browser/library defaults |
+| Negative margins (`-mt-*`, `-mb-*`) | Overlay effects, stats overlapping hero banners | Intentional design overlap |
+| `sr-only` / accessibility helpers | Screen reader utilities | Accessibility requirement |
+| `margin-inline: auto` on containers | Container centering | WordPress alignment pattern |
+
+**Everything else uses gap or padding.**
+
+### 4. No `space-y-*` or `space-x-*`
+
+Tailwind's `space-y-*` and `space-x-*` utilities use `> * + * { margin-top }` under the hood — they are margin abstractions.
+
+**Replace all `space-y-*` with `flex flex-col gap-*`.**
+**Replace all `space-x-*` with `flex gap-*`.**
+
+```tsx
+// ❌ DEPRECATED — space-y uses margin under the hood
+<div className="space-y-4">
+  <p>Paragraph 1</p>
+  <p>Paragraph 2</p>
+</div>
+
+// ✅ CORRECT — flex gap is explicit and predictable
+<div className="flex flex-col gap-4">
+  <p>Paragraph 1</p>
+  <p>Paragraph 2</p>
+</div>
+```
+
+### 5. No Arbitrary Gap Values — Use Fluid Utility Classes
+
+**Tailwind arbitrary values like `gap-[var(--spacing-gap-lg)]` are PROHIBITED.**
+
+The design system provides dedicated fluid utility classes for every spacing token. These are shorter, more readable, and ensure consistent usage across the codebase.
+
+```tsx
+// ❌ PROHIBITED — arbitrary Tailwind value
+<div className="flex flex-col gap-[var(--spacing-gap-lg)]">
+
+// ❌ PROHIBITED — arbitrary Tailwind value
+<div className="flex flex-col gap-[var(--spacing-element-md)]">
+
+// ✅ CORRECT — fluid utility class
+<div className="flex flex-col gap-fluid-lg">
+
+// ✅ CORRECT — fluid element-gap utility class
+<div className="flex flex-col gap-element-md">
+```
+
+**Why?**
+- Shorter and more readable class names
+- Enforces consistent token usage (no typos in variable names)
+- Easier to grep/audit across the codebase
+- All backed by the same `clamp()` CSS variables
 
 ---
 
-### Site Header
+## 🚨 Complete Fluid Utility Class Reference
 
-```typescript
-<Header className="py-4 md:py-6">
-  {/* Mobile: 16px vertical, Desktop: 24px vertical */}
-  <nav className="flex items-center gap-6">
-    {/* 24px gap between nav items */}
-  </nav>
-</Header>
-```
+All fluid utility classes are defined in `/src/styles/theme.css`. They reference `clamp()` CSS variables from `/src/styles/theme-base.css`.
 
----
+### Fluid Gap Utilities (layout gaps between siblings)
 
-### Site Footer
+| Utility Class | CSS Variable | Mobile (320px) | Desktop (1920px) | Use Case |
+|---------------|-------------|----------------|------------------|----------|
+| `gap-fluid-xs` | `--spacing-gap-xs` | 8px | 20px | Tight grid/flex gaps |
+| `gap-fluid-sm` | `--spacing-gap-sm` | 12px | 32px | Standard component gaps |
+| `gap-fluid-md` | `--spacing-gap-md` | 16px | 48px | Card grids, section content |
+| `gap-fluid-lg` | `--spacing-gap-lg` | 24px | 72px | Section-level gaps, page containers |
 
-```typescript
-<Footer className="py-12 md:py-16">
-  {/* Mobile: 48px vertical, Desktop: 64px vertical */}
-  <div className="grid gap-8">
-    {/* 32px gap between footer sections */}
+### Fluid Element-Gap Utilities (internal component gaps)
+
+| Utility Class | CSS Variable | Mobile (320px) | Desktop (1920px) | Use Case |
+|---------------|-------------|----------------|------------------|----------|
+| `gap-element-xs` | `--spacing-element-xs` | 8px | 16px | Tight internal gaps (icon+text) |
+| `gap-element-sm` | `--spacing-element-sm` | 12px | 24px | Card content, form fields |
+| `gap-element-md` | `--spacing-element-md` | 16px | 32px | Component content groups |
+| `gap-element-lg` | `--spacing-element-lg` | 24px | 48px | Large component internal sections |
+| `gap-element-xl` | `--spacing-element-xl` | 32px | 72px | Hero/CTA internal spacing |
+
+### Fluid Section Padding
+
+| Utility Class | CSS Variable | Mobile (320px) | Desktop (1920px) | Use Case |
+|---------------|-------------|----------------|------------------|----------|
+| `py-section-sm` | `--spacing-section-sm` | 40px | 80px | Small sections |
+| `py-section-md` | `--spacing-section-md` | 64px | 128px | Standard sections |
+| `py-section-lg` | `--spacing-section-lg` | 80px | 160px | Hero, large sections |
+| `py-section-xl` | `--spacing-section-xl` | 96px | 192px | Maximum section spacing |
+
+### Fluid Container Padding
+
+| Utility Class | CSS Variable | Mobile (320px) | Desktop (1920px) | Use Case |
+|---------------|-------------|----------------|------------------|----------|
+| `px-container-sm` | `--spacing-container-sm` | 16px | 40px | Narrow containers |
+| `px-container-md` | `--spacing-container-md` | 24px | 64px | Standard containers |
+| `px-container-lg` | `--spacing-container-lg` | 32px | 96px | Wide containers |
+
+### Fluid Element Padding
+
+| Utility Class | CSS Variable | Use Case |
+|---------------|-------------|----------|
+| `p-element-xs` | `--spacing-element-xs` | Tight component padding |
+| `p-element-sm` | `--spacing-element-sm` | Small card/button padding |
+| `p-element-md` | `--spacing-element-md` | Standard card padding |
+| `p-element-lg` | `--spacing-element-lg` | Large component padding |
+| `p-element-xl` | `--spacing-element-xl` | Hero/CTA padding |
+| `px-element-xs` through `px-element-lg` | Horizontal only | Inline padding |
+| `py-element-xs` through `py-element-lg` | Vertical only | Block padding |
+| `pt-element-sm`, `pt-element-md` | Top only | Top padding |
+| `pb-element-sm`, `pb-element-md` | Bottom only | Bottom padding |
+
+### Quick Reference
+
+| Before (deprecated) | After (correct) |
+|---------------------|-----------------| 
+| `space-y-1` | `flex flex-col gap-1` |
+| `space-y-1.5` | `flex flex-col gap-1.5` |
+| `space-y-2` | `flex flex-col gap-2` |
+| `space-y-3` | `flex flex-col gap-3` |
+| `space-y-4` | `flex flex-col gap-4` |
+| `space-y-6` | `flex flex-col gap-6` |
+| `space-y-8` | `flex flex-col gap-8` |
+| `space-y-12` | `flex flex-col gap-12` |
+| `space-x-4` | `flex flex-row gap-4` (or `flex gap-4`) |
+
+### Arbitrary Values → Fluid Utility Classes
+
+| Before (deprecated) | After (correct) |
+|---------------------|-----------------| 
+| `gap-[var(--spacing-gap-xs)]` | `gap-fluid-xs` |
+| `gap-[var(--spacing-gap-sm)]` | `gap-fluid-sm` |
+| `gap-[var(--spacing-gap-md)]` | `gap-fluid-md` |
+| `gap-[var(--spacing-gap-lg)]` | `gap-fluid-lg` |
+| `gap-[var(--spacing-element-xs)]` | `gap-element-xs` |
+| `gap-[var(--spacing-element-sm)]` | `gap-element-sm` |
+| `gap-[var(--spacing-element-md)]` | `gap-element-md` |
+| `gap-[var(--spacing-element-lg)]` | `gap-element-lg` |
+| `gap-[var(--spacing-element-xl)]` | `gap-element-xl` |
+| `p-[var(--spacing-element-md)]` | `p-element-md` |
+| `px-[var(--spacing-element-md)]` | `px-element-md` |
+| `py-[var(--spacing-element-sm)]` | `py-element-sm` |
+| `pt-[var(--spacing-element-md)]` | `pt-element-md` |
+| `pb-[var(--spacing-element-sm)]` | `pb-element-sm` |
+
+### When to Use Fixed vs Fluid
+
+| Context | Use Fixed (`gap-2`, `gap-4`) | Use Fluid (`gap-fluid-*`, `gap-element-*`) |
+|---------|------------------------------|-------------------------------------------|
+| Icon + label | ✅ `gap-2` | — |
+| Title + subtitle group | ✅ `gap-2` / `gap-3` | — |
+| Card meta items | ✅ `gap-3` | — |
+| Card content sections | — | ✅ `gap-element-sm` |
+| Grid of cards | — | ✅ `gap-fluid-md` |
+| Section content blocks | — | ✅ `gap-fluid-md` / `gap-fluid-lg` |
+| Page-level containers | — | ✅ `gap-fluid-lg` |
+| Section vertical rhythm | — | ✅ `py-section-*` |
+
+**Rule of thumb:** If the spacing should **grow with the viewport**, use a fluid utility. If it should remain **constant** (tight internal relationships), use a fixed Tailwind value.
+
+### Mobile-Friendly Stacking Pattern
+
+Page headers and toolbar rows that place a title/description alongside an action button **MUST** stack vertically on mobile and switch to side-by-side on desktop. This prevents buttons from overflowing the viewport on small screens.
+
+```tsx
+// ✅ CORRECT — stacks on mobile, side-by-side on md+
+<div className="flex flex-col md:flex-row md:items-start md:justify-between gap-fluid-sm">
+  <div className="flex flex-col gap-element-sm">
+    <h1>Page Title</h1>
+    <p className="text-muted-foreground">Description text</p>
   </div>
-</Footer>
-```
 
----
-
-## Responsive Spacing
-
-### Mobile-First Approach
-
-**Always start with mobile spacing, then increase for larger screens:**
-
-```typescript
-// ✅ Good - Mobile-first
-<div className="p-4 md:p-6 lg:p-8">
-  {/* Mobile: 16px, Tablet: 24px, Desktop: 32px */}
-</div>
-
-// ❌ Bad - Desktop-first
-<div className="p-8 md:p-6 sm:p-4">
-  {/* Confusing and non-standard */}
+  <button className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground w-full md:w-auto md:shrink-0">
+    Action
+  </button>
 </div>
 ```
 
----
+**Key classes:**
+| Class | Purpose |
+|-------|---------|
+| `flex flex-col` | Stack vertically by default (mobile) |
+| `md:flex-row` | Switch to horizontal at `md` breakpoint |
+| `md:items-start` | Align items to top in horizontal mode |
+| `md:justify-between` | Push title and button to opposite edges |
+| `gap-fluid-sm` | Fluid gap between stacked/side-by-side elements |
+| `w-full md:w-auto` | Button spans full width on mobile, auto on desktop |
+| `md:shrink-0` | Prevent button from shrinking in flex row |
+| `justify-center` | Center button content when full-width on mobile |
 
-### Common Responsive Patterns
-
-**Section Spacing:**
-```typescript
-<section className="py-12 md:py-16 lg:py-20">
-  {/* Scales up on larger screens */}
-</section>
-```
-
-**Container Padding:**
-```typescript
-<Container className="px-4 md:px-6 lg:px-8">
-  {/* More padding on larger screens */}
-</Container>
-```
-
-**Grid Gap:**
-```typescript
-<div className="grid gap-4 md:gap-6 lg:gap-8">
-  {/* Larger gaps on larger screens */}
-</div>
-```
-
-**Element Margins:**
-```typescript
-<h1 className="mb-4 md:mb-6">
-  {/* More space below on larger screens */}
-</h1>
-```
-
----
-
-## Spacing Utility Classes
-
-### Space-Y (Vertical Stack)
-
-**Add consistent vertical spacing between child elements:**
-
-```typescript
-<div className="space-y-4">
-  {/* 16px vertical spacing between children */}
-  <p>Paragraph 1</p>
-  <p>Paragraph 2</p>
-  <p>Paragraph 3</p>
-</div>
-```
-
-**Common Values:**
-- `space-y-2` → 8px
-- `space-y-4` → 16px
-- `space-y-6` → 24px
-- `space-y-8` → 32px
-
----
-
-### Space-X (Horizontal Stack)
-
-**Add consistent horizontal spacing between child elements:**
-
-```typescript
-<div className="flex space-x-4">
-  {/* 16px horizontal spacing between children */}
-  <button>Button 1</button>
-  <button>Button 2</button>
+**❌ WRONG — button overflows on mobile:**
+```tsx
+<div className="flex items-start justify-between gap-6">
+  <div>
+    <h1>Page Title</h1>
+    <p>Description</p>
+  </div>
+  <button className="px-6 py-3">Action</button>
 </div>
 ```
 
 ---
 
-### Gap (Grid/Flex)
+## Implementation Checklist
 
-**Preferred method for modern layouts:**
-
-```typescript
-// Flexbox
-<div className="flex gap-4">
-  {/* 16px gap */}
-</div>
-
-// Grid
-<div className="grid gap-6">
-  {/* 24px gap */}
-</div>
-
-// Different horizontal/vertical gaps
-<div className="grid gap-x-4 gap-y-6">
-  {/* Horizontal: 16px, Vertical: 24px */}
-</div>
-```
-
----
-
-## Spacing Rules
-
-### Rule 1: Use Consistent Scale
-
-**✅ Good:**
-```typescript
-<div className="space-y-4">     {/* 16px */}
-  <p className="mb-4">...</p>
-</div>
-```
-
-**❌ Bad:**
-```typescript
-<div className="space-y-3">     {/* 12px - inconsistent */}
-  <p className="mb-5">...</p>   {/* 20px - inconsistent */}
-</div>
-```
-
----
-
-### Rule 2: Increase Spacing on Larger Screens
-
-**✅ Good:**
-```typescript
-<section className="py-12 md:py-16 lg:py-20">
-  {/* Progressively larger */}
-</section>
-```
-
-**❌ Bad:**
-```typescript
-<section className="py-20 md:py-16 lg:py-12">
-  {/* Gets smaller - wrong direction */}
-</section>
-```
-
----
-
-### Rule 3: Use Gap Instead of Margin for Grids
-
-**✅ Good:**
-```typescript
-<div className="grid gap-6">
-  <Card />
-  <Card />
-</div>
-```
-
-**❌ Bad:**
-```typescript
-<div className="grid">
-  <Card className="mb-6" />  {/* Manual margin */}
-  <Card />
-</div>
-```
-
----
-
-### Rule 4: Use Space-Y for Vertical Stacks
-
-**✅ Good:**
-```typescript
-<div className="space-y-4">
-  <p>Paragraph 1</p>
-  <p>Paragraph 2</p>
-</div>
-```
-
-**❌ Bad:**
-```typescript
-<div>
-  <p className="mb-4">Paragraph 1</p>
-  <p className="mb-4">Paragraph 2</p>
-</div>
-```
-
----
-
-## Spacing Accessibility
-
-### 1. Touch Targets
-
-**Minimum touch target size: 44px × 44px**
-
-```typescript
-// ✅ Good - 44px height
-<button className="px-4 py-3">    {/* 16px + 12px + 12px = ~40px + text */}
-  Action
-</button>
-
-// ❌ Bad - Too small
-<button className="px-2 py-1">    {/* Too small for touch */}
-  Action
-</button>
-```
-
----
-
-### 2. Spacing for Readability
-
-**Line spacing (line-height) affects readability:**
-- Body text: 1.5 (defined in typography)
-- Headings: 1.25 (defined in typography)
-
-**Paragraph spacing:**
-```typescript
-<div className="space-y-4">      {/* 16px between paragraphs */}
-  <p>...</p>
-  <p>...</p>
-</div>
-```
-
----
-
-### 3. Focus Indicators
-
-**Ensure focus rings have space:**
-
-```typescript
-<button className="focus:ring-2 focus:ring-offset-2">
-  {/* ring-offset-2 adds 2px spacing */}
-  Action
-</button>
-```
-
----
-
-## WordPress Theme.json Mapping
-
-**Spacing presets for WordPress:**
-
-```json
-{
-  "settings": {
-    "spacing": {
-      "units": ["px", "rem"],
-      "spacingScale": {
-        "steps": 0
-      },
-      "spacingSizes": [
-        { "slug": "10", "size": "4px", "name": "1" },
-        { "slug": "20", "size": "8px", "name": "2" },
-        { "slug": "30", "size": "12px", "name": "3" },
-        { "slug": "40", "size": "16px", "name": "4" },
-        { "slug": "50", "size": "20px", "name": "5" },
-        { "slug": "60", "size": "24px", "name": "6" },
-        { "slug": "80", "size": "32px", "name": "8" },
-        { "slug": "100", "size": "40px", "name": "10" },
-        { "slug": "120", "size": "48px", "name": "12" },
-        { "slug": "160", "size": "64px", "name": "16" },
-        { "slug": "200", "size": "80px", "name": "20" },
-        { "slug": "240", "size": "96px", "name": "24" }
-      ]
-    }
-  }
-}
-```
-
-**Usage in patterns:**
-```html
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|60"}}}} -->
-```
-
----
-
-## Spacing Quick Reference
-
-```typescript
-// Padding
-p-4      // 16px all sides
-px-4     // 16px horizontal
-py-4     // 16px vertical
-pt-4     // 16px top
-pr-4     // 16px right
-pb-4     // 16px bottom
-pl-4     // 16px left
-
-// Margin
-m-4      // 16px all sides
-mx-4     // 16px horizontal
-my-4     // 16px vertical
-mt-4     // 16px top
-mr-4     // 16px right
-mb-4     // 16px bottom
-ml-4     // 16px left
-
-// Gap
-gap-4    // 16px gap (flex/grid)
-gap-x-4  // 16px horizontal gap
-gap-y-4  // 16px vertical gap
-
-// Space Between
-space-x-4  // 16px horizontal between children
-space-y-4  // 16px vertical between children
-```
-
----
-
-## WordPress Zero Margin Policy & Block Gap
-This system enforces a strict **Zero Margin Policy**. Margins are largely prohibited unless it is negative margins for display layout adjustments. Instead of margin, always opt for flex or grid **gap** (blockGap) to handle vertical and horizontal rhythm.
-
-**Core Variables:**
-- `--spacing-block-gap`: Default layout gap, mapped to `var(--spacing-gap-md)`. Use this as the `theme.json` equivalent spacing token.
-- `--wp--preset--spacing--*`: Use WordPress preset mapped variables for component internals.
-
----
-
-## Related Documentation
-
-- [design-tokens/typography.md](typography.md) - Typography system
-- [design-tokens/colors.md](colors.md) - Color system
-- [overview-components.md](../overview-components.md) - Component usage
-- [components/Container.md](../components/Container.md) - Container spacing
+- [ ] All `space-y-*` replaced with `flex flex-col gap-*`
+- [ ] All `space-x-*` replaced with `flex gap-*`
+- [ ] All `gap-[var(--spacing-*)]` arbitrary values replaced with fluid utility classes
+- [ ] All `p-[var(--spacing-*)]` / `px-` / `py-` / `pt-` / `pb-` arbitrary values replaced with fluid utility classes
+- [ ] No `mb-*`, `mt-*`, `ml-*`, `mr-*` on headings, paragraphs, or buttons
+- [ ] Title + subtitle groups wrapped in `flex flex-col gap-2` containers
+- [ ] Parent containers use appropriate gap scale
+- [ ] Fluid gap tokens used for viewport-responsive spacing
+- [ ] Section padding uses `py-section-*` classes
+- [ ] Negative margins documented and intentional only
+- [ ] `mx-auto` used only for centering

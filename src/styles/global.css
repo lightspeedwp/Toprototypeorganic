@@ -32,26 +32,11 @@
 
 /* ============================================
    CSS RESET & BASE STYLES
-   NOTE: Tailwind preflight handles box-sizing, margin, padding resets.
-   Only html/body base styles are set here.
+   NOTE: html and body base styles are defined in theme.css
+   (@layer base). Do NOT redefine them here — un-layered CSS
+   would override @layer base and prevent Tailwind utility
+   overrides from working correctly.
    ============================================ */
-
-html {
-  position: relative;
-  font-size: var(--font-size);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  position: relative;
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-family-noto-sans);
-  font-size: var(--text-base);
-  line-height: var(--leading-normal);
-  min-height: 100vh;
-}
 
 /* ============================================
    TYPOGRAPHY - WordPress Block Editor Selectors

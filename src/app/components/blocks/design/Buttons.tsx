@@ -98,11 +98,11 @@ export function Buttons({
         orientation === 'vertical' && 'flex-col',
         stackOnMobile && 'flex-col md:flex-row',
         // Gap
-        gap === 'xs' && 'gap-[var(--spacing-gap-xs)]',
-        gap === 'sm' && 'gap-[var(--spacing-gap-sm)]',
-        gap === 'md' && 'gap-[var(--spacing-gap-md)]',
-        gap === 'lg' && 'gap-[var(--spacing-gap-lg)]',
-        gap === 'xl' && 'gap-[var(--spacing-gap-xl)]',
+        gap === 'xs' && 'gap-fluid-xs',
+        gap === 'sm' && 'gap-fluid-sm',
+        gap === 'md' && 'gap-fluid-md',
+        gap === 'lg' && 'gap-fluid-lg',
+        gap === 'xl' && 'gap-fluid-xl',
         // Alignment
         align === 'start' && 'justify-start',
         align === 'center' && 'justify-center',

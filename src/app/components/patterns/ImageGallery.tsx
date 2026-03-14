@@ -121,13 +121,13 @@ export function ImageGallery({
   const getGapClass = () => {
     switch (gap) {
       case "sm":
-        return "gap-[var(--spacing-gap-sm)]";
+        return "gap-fluid-sm";
       case "md":
-        return "gap-[var(--spacing-gap-md)]";
+        return "gap-fluid-md";
       case "lg":
-        return "gap-[var(--spacing-gap-lg)]";
+        return "gap-fluid-lg";
       default:
-        return "gap-[var(--spacing-gap-md)]";
+        return "gap-fluid-md";
     }
   };
 
@@ -187,14 +187,14 @@ export function ImageGallery({
                 )}
               </div>
               {showCaptions && (image.caption || image.title) && (
-                <div className="p-[var(--spacing-element-sm)]">
+                <div className="p-element-sm flex flex-col gap-element-xs">
                   {image.title && (
-                    <p className="mb-[var(--spacing-element-xs)] font-[var(--font-weight-medium)] text-foreground m-0">
+                    <p className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)] m-0">
                       {image.title}
                     </p>
                   )}
                   {image.caption && (
-                    <p className="text-[length:var(--text-sm)] text-muted-foreground m-0">
+                    <p className="text-[length:var(--text-sm)] font-[family:var(--font-family-noto-sans)] text-[color:var(--color-muted-foreground)] m-0">
                       {image.caption}
                     </p>
                   )}
@@ -234,7 +234,7 @@ export function ImageGallery({
           {images.map((image, index) => (
             <div
               key={index}
-              className="group relative mb-[var(--spacing-element-md)] break-inside-avoid overflow-hidden rounded-[var(--radius-lg)] border border-border bg-muted transition-all hover:shadow-[var(--elevation-lg)]"
+              className="group relative pb-element-md break-inside-avoid overflow-hidden rounded-[var(--radius-lg)] border border-[color:var(--color-border)] bg-[color:var(--color-muted)] transition-all hover:shadow-[var(--elevation-lg)]"
               onClick={() => handleImageClick(index)}
               role={enableLightbox ? "button" : undefined}
               tabIndex={enableLightbox ? 0 : undefined}
@@ -260,14 +260,14 @@ export function ImageGallery({
                 )}
               </div>
               {showCaptions && (image.caption || image.title) && (
-                <div className="p-[var(--spacing-element-sm)]">
+                <div className="p-element-sm flex flex-col gap-element-xs">
                   {image.title && (
-                    <p className="mb-[var(--spacing-element-xs)] font-[var(--font-weight-medium)] text-foreground m-0">
+                    <p className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)] m-0">
                       {image.title}
                     </p>
                   )}
                   {image.caption && (
-                    <p className="text-[length:var(--text-sm)] text-muted-foreground m-0">
+                    <p className="text-[length:var(--text-sm)] font-[family:var(--font-family-noto-sans)] text-[color:var(--color-muted-foreground)] m-0">
                       {image.caption}
                     </p>
                   )}
@@ -344,12 +344,12 @@ export function GallerySection({
   className?: string;
 }) {
   return (
-    <div className={cn("space-y-[var(--spacing-gap-lg)]", className)}>
+    <div className={cn("flex flex-col gap-fluid-lg", className)}>
       {(title || description) && (
-        <div className="space-y-[var(--spacing-gap-sm)] text-center">
-          {title && <h2 className="text-foreground">{title}</h2>}
+        <div className="flex flex-col gap-fluid-sm text-center items-center">
+          {title && <h2 className="text-[color:var(--color-foreground)] font-[family:var(--font-family-lora)] !m-0">{title}</h2>}
           {description && (
-            <p className="mx-auto max-w-2xl text-muted-foreground m-0">
+            <p className="max-w-2xl text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] m-0">
               {description}
             </p>
           )}

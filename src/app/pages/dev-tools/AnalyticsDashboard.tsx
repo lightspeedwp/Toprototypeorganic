@@ -137,29 +137,29 @@ export default function AnalyticsDashboard() {
       {/* Header */}
       <div className="bg-muted border-b border-border py-section-sm">
         <Container>
-          <div className="flex items-start justify-between gap-6">
-            <div>
-              <div className="flex items-center gap-3 mb-2">
-                <BarChart3 className="w-8 h-8 text-primary" />
-                <h1>Analytics Dashboard</h1>
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-fluid-sm">
+            <div className="flex flex-col gap-element-sm">
+              <div className="wp-page-header__icon-container w-14 h-14 flex items-center justify-center rounded-[var(--radius-lg)] bg-primary/10 text-primary transition-colors hover:bg-primary/20">
+                <BarChart3 className="w-7 h-7" />
               </div>
+              <h1>Analytics Dashboard</h1>
               <p className="text-muted-foreground">
                 Real-time insights into user behavior, performance, and system health
               </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 w-full md:w-auto">
               {!isMonitoring ? (
                 <button
                   onClick={handleStartMonitoring}
-                  className="px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                  className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors w-full md:w-auto md:shrink-0"
                 >
                   Start Monitoring
                 </button>
               ) : (
                 <button
                   onClick={handleStopMonitoring}
-                  className="px-4 py-2 rounded-lg bg-destructive text-destructive-foreground hover:bg-destructive/90 transition-colors"
+                  className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-destructive text-destructive-foreground hover:bg-destructive/90 transition-colors w-full md:w-auto md:shrink-0"
                 >
                   Stop Monitoring
                 </button>
@@ -184,13 +184,13 @@ export default function AnalyticsDashboard() {
       </div>
 
       <Container className="py-section-sm">
-        <div className="space-y-8">
+        <div className="flex flex-col gap-8">
           {/* Analytics Overview */}
           {analytics && (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="bg-card p-6 rounded-lg border border-border">
-                  <div className="flex items-center gap-3 mb-2">
+                  <div className="flex items-center gap-3 pb-2">
                     <Activity className="w-5 h-5 text-primary" />
                     <h3>Total Events</h3>
                   </div>
@@ -198,7 +198,7 @@ export default function AnalyticsDashboard() {
                 </div>
 
                 <div className="bg-card p-6 rounded-lg border border-border">
-                  <div className="flex items-center gap-3 mb-2">
+                  <div className="flex items-center gap-3 pb-2">
                     <Users className="w-5 h-5 text-primary" />
                     <h3>Sessions</h3>
                   </div>
@@ -206,7 +206,7 @@ export default function AnalyticsDashboard() {
                 </div>
 
                 <div className="bg-card p-6 rounded-lg border border-border">
-                  <div className="flex items-center gap-3 mb-2">
+                  <div className="flex items-center gap-3 pb-2">
                     <TrendingUp className="w-5 h-5 text-primary" />
                     <h3>Avg Duration</h3>
                   </div>
@@ -216,7 +216,7 @@ export default function AnalyticsDashboard() {
                 </div>
 
                 <div className="bg-card p-6 rounded-lg border border-border">
-                  <div className="flex items-center gap-3 mb-2">
+                  <div className="flex items-center gap-3 pb-2">
                     <Monitor className="w-5 h-5 text-primary" />
                     <h3>Top Device</h3>
                   </div>
@@ -232,10 +232,10 @@ export default function AnalyticsDashboard() {
 
               {/* Top Pages */}
               <div className="bg-card p-6 rounded-lg border border-border">
-                <h2 className="mb-4">Top Pages</h2>
+                <h2 className="pb-4">Top Pages</h2>
                 
                 {analytics.topPages.length > 0 ? (
-                  <div className="space-y-3">
+                  <div className="flex flex-col gap-3">
                     {analytics.topPages.map((page, idx) => (
                       <div key={idx} className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
@@ -267,19 +267,19 @@ export default function AnalyticsDashboard() {
 
               {/* Device Breakdown */}
               <div className="bg-card p-6 rounded-lg border border-border">
-                <h2 className="mb-4">Device Breakdown</h2>
+                <h2 className="pb-4">Device Breakdown</h2>
                 
                 <div className="grid grid-cols-3 gap-4">
                   <div className="text-center">
-                    <div className="font-serif text-fluid-3xl mb-1">{analytics.deviceBreakdown.mobile}</div>
+                    <div className="font-serif text-fluid-3xl pb-1">{analytics.deviceBreakdown.mobile}</div>
                     <div className="text-sm text-muted-foreground">Mobile</div>
                   </div>
                   <div className="text-center">
-                    <div className="font-serif text-fluid-3xl mb-1">{analytics.deviceBreakdown.tablet}</div>
+                    <div className="font-serif text-fluid-3xl pb-1">{analytics.deviceBreakdown.tablet}</div>
                     <div className="text-sm text-muted-foreground">Tablet</div>
                   </div>
                   <div className="text-center">
-                    <div className="font-serif text-fluid-3xl mb-1">{analytics.deviceBreakdown.desktop}</div>
+                    <div className="font-serif text-fluid-3xl pb-1">{analytics.deviceBreakdown.desktop}</div>
                     <div className="text-sm text-muted-foreground">Desktop</div>
                   </div>
                 </div>
@@ -290,7 +290,7 @@ export default function AnalyticsDashboard() {
           {/* System Health */}
           {health && (
             <div className={`p-6 rounded-lg border ${getStatusBg(health.status)}`}>
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center justify-between pb-6">
                 <div className="flex items-center gap-3">
                   {getStatusIcon(health.status)}
                   <h2>System Health: {health.status.toUpperCase()}</h2>
@@ -303,11 +303,11 @@ export default function AnalyticsDashboard() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {health.metrics.map((metric, idx) => (
                   <div key={idx} className="bg-background/50 p-4 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center justify-between pb-2">
                       <span className="text-sm font-medium">{metric.name}</span>
                       {getStatusIcon(metric.status)}
                     </div>
-                    <div className="font-serif text-fluid-2xl mb-1">
+                    <div className="font-serif text-fluid-2xl pb-1">
                       {metric.value}{metric.unit}
                     </div>
                     {metric.threshold && (
@@ -320,9 +320,9 @@ export default function AnalyticsDashboard() {
               </div>
 
               {health.issues.length > 0 && (
-                <div className="mt-6 p-4 bg-destructive/10 rounded-lg">
-                  <h4 className="font-medium mb-2 text-destructive">Issues Detected</h4>
-                  <ul className="space-y-1">
+                <div className="pt-6 p-4 bg-destructive/10 rounded-lg">
+                  <h4 className="font-medium pb-2 text-destructive">Issues Detected</h4>
+                  <ul className="flex flex-col gap-1">
                     {health.issues.map((issue, idx) => (
                       <li key={idx} className="text-sm">• {issue}</li>
                     ))}
@@ -335,29 +335,29 @@ export default function AnalyticsDashboard() {
           {/* Performance History */}
           {history.length > 0 && (
             <div className="bg-card p-6 rounded-lg border border-border">
-              <h2 className="mb-4">Performance History</h2>
+              <h2 className="pb-4">Performance History</h2>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pb-6">
                 <div>
-                  <div className="text-sm text-muted-foreground mb-1">Avg FPS</div>
+                  <div className="text-sm text-muted-foreground pb-1">Avg FPS</div>
                   <div className="font-serif text-fluid-2xl">
                     {(history.reduce((sum, s) => sum + s.fps, 0) / history.length).toFixed(1)}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground mb-1">Avg Memory</div>
+                  <div className="text-sm text-muted-foreground pb-1">Avg Memory</div>
                   <div className="font-serif text-fluid-2xl">
                     {(history.reduce((sum, s) => sum + s.memory, 0) / history.length).toFixed(1)}MB
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground mb-1">Avg DOM</div>
+                  <div className="text-sm text-muted-foreground pb-1">Avg DOM</div>
                   <div className="font-serif text-fluid-2xl">
                     {Math.round(history.reduce((sum, s) => sum + s.dom, 0) / history.length)}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground mb-1">Avg Score</div>
+                  <div className="text-sm text-muted-foreground pb-1">Avg Score</div>
                   <div className="font-serif text-fluid-2xl">
                     {Math.round(history.reduce((sum, s) => sum + s.score, 0) / history.length)}
                   </div>
@@ -382,13 +382,13 @@ export default function AnalyticsDashboard() {
         </div>
 
         {/* Info Section */}
-        <div className="bg-accent text-accent-foreground p-6 rounded-lg mt-8">
-          <h3 className="mb-4">About Analytics Dashboard</h3>
+        <div className="bg-accent text-accent-foreground p-6 rounded-lg pt-8">
+          <h3 className="pb-4">About Analytics Dashboard</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
             <div>
-              <h4 className="font-medium mb-2">What Gets Tracked</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">What Gets Tracked</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>Page views and navigation</li>
                 <li>User interactions</li>
                 <li>Conversion events</li>
@@ -398,8 +398,8 @@ export default function AnalyticsDashboard() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">Features</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Features</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>Real-time monitoring</li>
                 <li>Performance tracking</li>
                 <li>Device analytics</li>
@@ -409,8 +409,8 @@ export default function AnalyticsDashboard() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">Best Practices</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Best Practices</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>Monitor regularly during development</li>
                 <li>Track key user journeys</li>
                 <li>Export data before major changes</li>
@@ -419,8 +419,8 @@ export default function AnalyticsDashboard() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">Privacy</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Privacy</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>All data stored locally (browser)</li>
                 <li>No external tracking services</li>
                 <li>No personal information collected</li>

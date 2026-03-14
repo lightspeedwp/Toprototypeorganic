@@ -133,7 +133,7 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
           ================================================================ */}
       <section className="wp-pattern-profile__hero">
         <Container>
-          <div className="wp-pattern-profile__hero-content max-w-5xl mx-auto">
+          <div className="wp-pattern-profile__hero-content max-w-5xl">
             {/* Avatar */}
             <div className="wp-pattern-profile__avatar-container">
               <div className="wp-pattern-profile__avatar">
@@ -159,8 +159,8 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
             {/* User Info */}
             <div className="wp-pattern-profile__info">
               <div className="wp-pattern-profile__info-header">
-                <div>
-                  <h1 className="mb-2">
+                <div className="flex flex-col gap-element-sm">
+                  <h1 className="font-[family-name:var(--font-family-lora)]">
                     {user.firstName} {user.lastName}
                   </h1>
                   <div className="wp-pattern-profile__meta">
@@ -184,15 +184,15 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
               </div>
 
               {/* Membership Badge */}
-              <div className="wp-badge-accent-bordered inline-flex items-center gap-2">
+              <div className="wp-badge-accent-bordered inline-flex items-center gap-fluid-sm">
                 <Award className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium">{user.membership.tier} Member</span>
-                <span className="text-xs text-muted-foreground">
+                <span className="text-[length:var(--text-sm)] font-[var(--font-weight-medium)] font-[family-name:var(--font-family-noto-sans)]">{user.membership.tier} Member</span>
+                <span className="text-[length:var(--text-xs)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">
                   Level {user.membership.level}
                 </span>
               </div>
 
-              <p className="text-sm text-muted-foreground mt-3">
+              <p className="text-[length:var(--text-sm)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">
                 Member since {memberSince.toLocaleDateString("en-US", { 
                   month: "long", 
                   year: "numeric" 
@@ -208,7 +208,7 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
           ================================================================ */}
       <section className="wp-pattern-profile__stats-section">
         <Container>
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-5xl">
             <div className="wp-pattern-profile__stats-grid">
               <div className="wp-pattern-profile__stat-card">
                 <div className="wp-pattern-profile__stat-content">
@@ -291,7 +291,7 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
           ================================================================ */}
       <section className="wp-pattern-profile__main-section">
         <Container>
-          <div className="wp-pattern-profile__layout-grid max-w-5xl mx-auto">
+          <div className="wp-pattern-profile__layout-grid max-w-5xl">
             {/* Left Column - Quick Actions */}
             <div className="wp-pattern-profile__sidebar">
               {/* Account Menu */}
@@ -394,19 +394,19 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
                     },
                   ].map((booking) => (
                     <div key={booking.id} className="wp-pattern-profile__booking-item">
-                      <div className="wp-pattern-profile__booking-content">
-                        <div className="flex items-center justify-between mb-2">
+                      <div className="wp-pattern-profile__booking-content flex flex-col gap-element-sm">
+                        <div className="flex items-center justify-between">
                           <p className="wp-pattern-profile__booking-title">{booking.tour}</p>
                           <span className="wp-pattern-profile__booking-status">
                             {booking.status}
                           </span>
                         </div>
-                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-fluid-md text-[length:var(--text-sm)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">
                           <span className="flex items-center gap-1.5">
                             <Calendar className="w-4 h-4" />
                             {booking.date}
                           </span>
-                          <span className="font-mono text-xs">{booking.id}</span>
+                          <span className="font-[family-name:var(--font-family-courier-new)] text-[length:var(--text-xs)]">{booking.id}</span>
                         </div>
                       </div>
                     </div>
@@ -417,29 +417,29 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
               {/* Security Info */}
               <div className="wp-pattern-profile__card">
                 <div className="wp-pattern-profile__card-body">
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-start gap-fluid-md text-[length:var(--text-sm)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">
                     <Shield className="w-6 h-6 text-primary flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="mb-2">Account Security</h4>
-                      <p className="text-sm text-muted-foreground mb-4">
+                    <div className="flex-1 flex flex-col gap-element-sm">
+                      <h4 className="font-[family-name:var(--font-family-noto-sans)]">Account Security</h4>
+                      <p className="text-[length:var(--text-sm)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">
                         Keep your account secure with two-factor authentication and regular
                         password updates
                       </p>
-                      <div className="wp-pattern-profile__form-group mb-2">
-                        <div className="flex items-center justify-between text-sm">
+                      <div className="wp-pattern-profile__form-group">
+                        <div className="flex items-center justify-between text-[length:var(--text-sm)] font-[family-name:var(--font-family-noto-sans)]">
                           <span className="text-muted-foreground">Two-Factor Auth</span>
                           <span className="text-destructive">Not enabled</span>
                         </div>
                       </div>
                       <div className="wp-pattern-profile__form-group">
-                        <div className="flex items-center justify-between text-sm">
+                        <div className="flex items-center justify-between text-[length:var(--text-sm)] font-[family-name:var(--font-family-noto-sans)]">
                           <span className="text-muted-foreground">Last password change</span>
                           <span>3 months ago</span>
                         </div>
                       </div>
                       <button
                         onClick={() => nav("/profile/settings")}
-                        className="wp-pattern-profile__card-action mt-4"
+                        className="wp-pattern-profile__card-action"
                       >
                         Review security settings →
                       </button>
@@ -450,24 +450,24 @@ export default function ProfilePage({ onNavigate }: ProfilePageProps) {
 
               {/* Quick Stats Details */}
               <div className="wp-pattern-profile__card">
-                <div className="wp-pattern-profile__card-body">
-                  <h4 className="mb-4">Travel Statistics</h4>
+                <div className="wp-pattern-profile__card-body flex flex-col gap-element-md">
+                  <h4 className="font-[family-name:var(--font-family-noto-sans)]">Travel Statistics</h4>
                   <div className="wp-pattern-profile__form-grid">
                     <div className="wp-pattern-profile__form-group">
                       <p className="wp-pattern-profile__form-label">Countries Visited</p>
-                      <p className="wp-pattern-profile__form-value text-2xl font-medium m-0">15</p>
+                      <p className="wp-pattern-profile__form-value text-[length:var(--text-2xl)] font-[var(--font-weight-medium)] m-0 font-[family-name:var(--font-family-noto-sans)]">15</p>
                     </div>
                     <div className="wp-pattern-profile__form-group">
                       <p className="wp-pattern-profile__form-label">Total Distance</p>
-                      <p className="wp-pattern-profile__form-value text-2xl font-medium m-0">125,000 km</p>
+                      <p className="wp-pattern-profile__form-value text-[length:var(--text-2xl)] font-[var(--font-weight-medium)] m-0 font-[family-name:var(--font-family-noto-sans)]">125,000 km</p>
                     </div>
                     <div className="wp-pattern-profile__form-group">
                       <p className="wp-pattern-profile__form-label">Favorite Destination</p>
-                      <p className="wp-pattern-profile__form-value text-lg font-medium m-0">Iceland</p>
+                      <p className="wp-pattern-profile__form-value text-[length:var(--text-lg)] font-[var(--font-weight-medium)] m-0 font-[family-name:var(--font-family-noto-sans)]">Iceland</p>
                     </div>
                     <div className="wp-pattern-profile__form-group">
                       <p className="wp-pattern-profile__form-label">Next Adventure</p>
-                      <p className="wp-pattern-profile__form-value text-lg font-medium m-0">45 days</p>
+                      <p className="wp-pattern-profile__form-value text-[length:var(--text-lg)] font-[var(--font-weight-medium)] m-0 font-[family-name:var(--font-family-noto-sans)]">45 days</p>
                     </div>
                   </div>
                 </div>

@@ -5,19 +5,17 @@
  * Strictly adheres to design system tokens and BEM naming.
  */
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { PageShell } from "../components/parts/PageShell";
 import { TaxonomyNav } from "../components/patterns/TaxonomyNav";
 import { AccommodationCard } from "../components/patterns/AccommodationCard";
-import { CardGrid } from "../components/patterns/CardGrid";
 import { CTA } from "../components/patterns/CTA";
-import { Pagination } from "../components/patterns/Pagination";
-import { ViewSwitcher, ViewMode } from "../components/patterns/ViewSwitcher";
 import { SearchFilterPattern } from "../components/patterns/SearchFilterPattern";
-import { EmptyStatePattern } from "../components/patterns/EmptyStatePattern";
 import { FAQ } from "../components/patterns/FAQ";
+import { FacilityChips } from "../components/patterns/FacilityChips";
+import { ActiveFilterSummary, searchFilterTag, singleFilterTag, multiFilterTags, buildFilterTags } from "../components/patterns/ActiveFilterSummary";
 import { Container } from "../components/common/Container";
-import { SectionHeader } from "../components/common/SectionHeader";
+import { ArchiveResultsSection } from "../components/patterns/ArchiveResultsSection";
 import { 
   ALL_ACCOMMODATION, 
   ALL_ACCOMMODATION_TYPES, 
@@ -26,6 +24,8 @@ import {
 import { getPageSectionFAQs } from "../data/mock";
 import { useNavigation } from "../contexts/NavigationContext";
 import { useAccommodationFilters } from "../hooks/useAccommodationFilters";
+import { FACILITIES } from "../data/taxonomies/facilities";
+import type { ViewMode } from "../components/patterns/ViewSwitcher";
 
 export function ArchiveAccommodationTemplate() {
   const [viewMode, setViewMode] = useState<ViewMode>("grid-3");
@@ -36,10 +36,14 @@ export function ArchiveAccommodationTemplate() {
     setActiveType,
     currentPage,
     setCurrentPage,
+    resetPage,
     searchQuery,
     setSearchQuery,
+    flushSearch,
     selectedDestination,
     setSelectedDestination,
+    selectedFacilities,
+    toggleFacility,
     filteredProperties,
     paginatedProperties,
     totalPages,
@@ -57,7 +61,7 @@ export function ArchiveAccommodationTemplate() {
           label="Property Type"
           terms={ALL_ACCOMMODATION_TYPES}
           activeId={activeType}
-          onTermClick={(id) => { setActiveType(id); setCurrentPage(1); }}
+          onTermClick={(id) => { setActiveType(id); resetPage(); }}
         />
 
         <SearchFilterPattern
@@ -82,66 +86,84 @@ export function ArchiveAccommodationTemplate() {
               ]
             }
           ]}
-          onSearchChange={(q) => { setSearchQuery(q); setCurrentPage(1); }}
-          onFilterChange={(f) => { setSelectedDestination(f.destination || ""); setCurrentPage(1); }}
+          onSearchChange={(q) => { setSearchQuery(q); resetPage(); }}
+          onSearchSubmit={flushSearch}
+          onFilterChange={(f) => { setSelectedDestination(f.destination || ""); resetPage(); }}
           onClearAll={resetFilters}
           collapsible={true}
         />
+
+        <Container>
+          <FacilityChips
+            selected={selectedFacilities}
+            onToggle={toggleFacility}
+          />
+
+          {/* Active facility filter summary */}
+          <ActiveFilterSummary
+            tags={buildFilterTags(
+              searchFilterTag(searchQuery, () => { setSearchQuery(""); resetPage(); }),
+              singleFilterTag(
+                "type",
+                activeType,
+                ALL_ACCOMMODATION_TYPES.find((t) => t.id === activeType)?.name || activeType || "",
+                () => { setActiveType(undefined); resetPage(); }
+              ),
+              singleFilterTag(
+                "dest",
+                selectedDestination,
+                ALL_DESTINATIONS.find((d) => d.id === selectedDestination)?.title || selectedDestination,
+                () => { setSelectedDestination(""); resetPage(); }
+              ),
+              multiFilterTags(
+                "facility",
+                selectedFacilities
+                  .map((id) => {
+                    const facility = FACILITIES.find((f) => f.id === id);
+                    return facility ? { id, label: facility.name } : null;
+                  })
+                  .filter((tag): tag is { id: string; label: string } => tag !== null),
+                (id) => toggleFacility(id)
+              ),
+            )}
+            onClearAll={resetFilters}
+          />
+        </Container>
       </div>
 
       <div className="organic-section-middle">
-        <section className="wp-template-archive__content">
-          <Container>
-            <div className="wp-template-archive__results-header">
-              <SectionHeader
-                section={{
-                  eyebrow: "Our Collection",
-                  title: "Hand-Picked Retreats",
-                  description: `Displaying ${paginatedProperties.length} of ${filteredProperties.length} elite properties matching your criteria.`
-                }}
-                centered={false}
-                className="m-0"
-              />
-              <ViewSwitcher
-                currentView={viewMode}
-                onViewChange={setViewMode}
-              />
-            </div>
-
-            {paginatedProperties.length > 0 ? (
-              <div className={viewMode === "list" ? "wp-template-archive__list" : "wp-template-archive__grid wp-template-archive__grid--cols-3"}>
-                {paginatedProperties.map((property) => (
-                  <AccommodationCard 
-                    key={property.id} 
-                    accommodation={property}
-                    layout={viewMode === "list" ? "horizontal" : "card"}
-                    onClick={() => navigateToAccommodation(property.slug)}
-                  />
-                ))}
-              </div>
-            ) : (
-              <EmptyStatePattern
-                icon="empty"
-                title="No Sanctuaries Found"
-                message="We couldn't find any properties matching your current filters. Try expanding your search area or selecting a different type."
-                primaryAction={{
-                  label: "Reset All Filters",
-                  onClick: resetFilters
-                }}
-              />
-            )}
-
-            {filteredProperties.length > ITEMS_PER_PAGE && (
-              <div className="wp-template-archive__pagination">
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={setCurrentPage}
-                />
-              </div>
-            )}
-          </Container>
-        </section>
+        <ArchiveResultsSection
+          header={{
+            eyebrow: "Our Collection",
+            title: "Hand-Picked Retreats",
+            description: `Displaying ${paginatedProperties.length} of ${filteredProperties.length} elite properties matching your criteria.`,
+          }}
+          items={paginatedProperties}
+          totalFiltered={filteredProperties.length}
+          viewMode={viewMode}
+          onViewModeChange={setViewMode}
+          renderItem={(property, vm) => (
+            <AccommodationCard
+              key={property.id}
+              accommodation={property}
+              layout={vm === "list" ? "horizontal" : "card"}
+              onClick={() => navigateToAccommodation(property.slug)}
+            />
+          )}
+          emptyState={{
+            icon: "empty",
+            title: "No Sanctuaries Found",
+            message: "We couldn't find any properties matching your current filters. Try expanding your search area or selecting a different type.",
+            actionLabel: "Reset All Filters",
+            onAction: resetFilters,
+          }}
+          pagination={{
+            currentPage,
+            totalPages,
+            onPageChange: setCurrentPage,
+            itemsPerPage: ITEMS_PER_PAGE,
+          }}
+        />
       </div>
 
       <div className="organic-section-bottom">

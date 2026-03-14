@@ -1,49 +1,37 @@
 /**
  * Destinations Data - Main Aggregator
- * 
- * Central export point for all destination data organized by continent.
- * This file aggregates destinations from all continents into a single array
- * and provides convenient exports for filtered subsets (countries only, regions only).
- * 
- * **Structure:**
- * - `/continents.ts` - Continent taxonomy
- * - `/africa/` - African destinations
- * - `/asia/` - Asian destinations (Phase 3)
- * - `/europe/` - European destinations (Phase 3)
- * - `/north-america/` - North American destinations (Phase 3)
- * - `/south-america/` - South American destinations (Phase 3)
- * - `/oceania/` - Oceanian destinations (Phase 3)
- * 
- * **Usage:**
- * ```typescript
- * import { DESTINATIONS, CONTINENTS, COUNTRIES, REGIONS } from "../data/destinations";
- * ```
- * 
+ *
+ * Central export point for all destination data organized by continent/region.
+ *
  * @module destinations
  * @category data
  */
 
 import { CONTINENTS } from "./continents";
-import { AFRICA_DESTINATIONS } from "./africa";
+import {
+  AFRICA_DESTINATIONS,
+  AFRICA_COUNTRIES,
+  AFRICA_REGIONS,
+  EAST_AFRICA,
+  SOUTHERN_AFRICA,
+} from "./africa";
 import { ASIA_DESTINATIONS } from "./asia";
 import { EUROPE_DESTINATIONS } from "./europe";
 import { NORTH_AMERICA_DESTINATIONS } from "./north-america";
 import { SOUTH_AMERICA_DESTINATIONS } from "./south-america";
 import { OCEANIA_DESTINATIONS } from "./oceania";
+import {
+  INDIAN_OCEAN_DESTINATIONS,
+  INDIAN_OCEAN_COUNTRIES,
+  INDIAN_OCEAN_REGIONS,
+} from "./indian-ocean";
 
 /**
- * All destinations across all continents
- * 
- * Combines countries, regions, cities, and parks from:
- * - Africa
- * - Asia
- * - Europe
- * - North America
- * - South America
- * - Oceania
+ * All destinations across all continents + Indian Ocean
  */
 export const DESTINATIONS = [
   ...AFRICA_DESTINATIONS,
+  ...INDIAN_OCEAN_DESTINATIONS,
   ...ASIA_DESTINATIONS,
   ...EUROPE_DESTINATIONS,
   ...NORTH_AMERICA_DESTINATIONS,
@@ -71,6 +59,13 @@ export const REGIONS = DESTINATIONS.filter((d) => d.type !== "country");
  */
 export {
   AFRICA_DESTINATIONS,
+  AFRICA_COUNTRIES,
+  AFRICA_REGIONS,
+  EAST_AFRICA,
+  SOUTHERN_AFRICA,
+  INDIAN_OCEAN_DESTINATIONS,
+  INDIAN_OCEAN_COUNTRIES,
+  INDIAN_OCEAN_REGIONS,
   ASIA_DESTINATIONS,
   EUROPE_DESTINATIONS,
   NORTH_AMERICA_DESTINATIONS,

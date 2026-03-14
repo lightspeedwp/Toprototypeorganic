@@ -95,7 +95,7 @@ export function FAQsArchivePage() {
           Object.entries(groupedFAQs).map(([catId, faqs]) => {
             const category = FAQ_CATEGORIES.find(c => c.id === catId);
             return (
-              <div key={catId} className="mb-16 last:mb-0">
+              <div key={catId} className="pb-16 last:pb-0">
                 <FAQ 
                   items={faqs} 
                   title={category?.name || "General Information"}

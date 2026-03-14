@@ -131,6 +131,11 @@ export interface BlogTag {
   name: string;
 
   /**
+   * Tag description.
+   */
+  description?: string;
+
+  /**
    * Related BlogPost post IDs.
    */
   postIds: string[];

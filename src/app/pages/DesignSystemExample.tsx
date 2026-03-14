@@ -36,17 +36,17 @@ export function DesignSystemExample() {
       {/* Hero Section - Primary Background */}
       <section className="wp-section-hero">
         <Container>
-          <div className="text-center max-w-4xl mx-auto py-20">
-            <div className="wp-badge mb-6">
+          <div className="text-center max-w-4xl py-20 flex flex-col items-center gap-6">
+            <div className="wp-badge">
               <Star className="w-4 h-4" />
               <span>100% Customizable via CSS</span>
             </div>
             
-            <h1 className="mb-6">
+            <h1>
               Build Beautiful Sites with Your Design System
             </h1>
             
-            <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-primary-foreground/90 max-w-2xl">
               Every component uses CSS variables. Change colors, fonts, and spacing 
               by editing just 3 CSS files. No React code changes needed.
             </p>
@@ -67,9 +67,9 @@ export function DesignSystemExample() {
       {/* Features Section */}
       <section className="py-16 md:py-24">
         <Container>
-          <div className="text-center mb-12">
-            <h2 className="mb-4">Why Use Our Design System?</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <div className="text-center flex flex-col gap-4 pb-12 items-center">
+            <h2>Why Use Our Design System?</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl">
               Built with flexibility and user customization in mind. 
               All styling is controlled through CSS variables.
             </p>
@@ -139,9 +139,9 @@ export function DesignSystemExample() {
       {/* How It Works Section */}
       <section className="py-16 md:py-24">
         <Container>
-          <div className="text-center mb-12">
-            <h2 className="mb-4">How It Works</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <div className="text-center flex flex-col gap-4 pb-12 items-center">
+            <h2>How It Works</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl">
               Three simple files control your entire site design.
             </p>
           </div>
@@ -191,8 +191,8 @@ export function DesignSystemExample() {
         <Container>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="mb-6">Everything You Need</h2>
-              <ul className="space-y-4">
+              <h2 className="pb-6">Everything You Need</h2>
+              <ul className="flex flex-col gap-4">
                 <li className="wp-feature-list-item">
                   <CircleCheck className="w-5 h-5 text-success flex-shrink-0" />
                   <span>All colors via CSS variables</span>
@@ -260,9 +260,9 @@ export function DesignSystemExample() {
       {/* CTA Section */}
       <section className="py-16 md:py-24">
         <Container>
-          <div className="wp-cta-box">
-            <h2 className="mb-4">Ready to Get Started?</h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto">
+          <div className="wp-cta-box flex flex-col items-center gap-4">
+            <h2>Ready to Get Started?</h2>
+            <p className="text-lg max-w-2xl">
               View the complete design system showcase or read the documentation 
               to learn how to build your own components.
             </p>
@@ -282,7 +282,7 @@ export function DesignSystemExample() {
       {/* Testimonial Section - Card Background */}
       <section className="py-16 md:py-24 bg-muted/30">
         <Container>
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl">
             <div className="wp-testimonial">
               <div className="wp-testimonial__quote">
                 "I changed the primary color in theme-light.css and the entire site 

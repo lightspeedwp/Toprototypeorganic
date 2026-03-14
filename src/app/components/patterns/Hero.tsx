@@ -90,6 +90,7 @@ export interface HeroProps {
   subtitle?: string;
   image?: string;
   backgroundImage?: string;
+  accent?: string;
 
   /** Badge / chip above the title. */
   badge?: { icon?: string; label: string };
@@ -126,6 +127,7 @@ export function Hero({
   subtitle,
   image: imageProp,
   backgroundImage,
+  accent: accentProp,
   badge: badgeProp,
   primaryCTA: primaryCTAProp,
   secondaryCTA: secondaryCTAProp,
@@ -143,6 +145,7 @@ export function Hero({
   const title = titleProp ?? data?.title ?? "";
   const displayIntro = intro ?? descProp ?? subtitle ?? data?.description;
   const heroImage = imageProp ?? backgroundImage ?? data?.image;
+  const accent = accentProp ?? (data as any)?.accent;
   const height = heightProp ?? data?.height ?? "medium";
   const overlay = overlayProp ?? data?.overlay ?? "medium";
   const showScroll = scrollProp ?? data?.showScrollIndicator ?? false;
@@ -226,16 +229,16 @@ export function Hero({
       {/* Content */}
       <Container className="wp-pattern-hero__content">
         <div className="wp-pattern-hero__inner wp-pattern-hero__inner--split">
-          <div className="wp-pattern-hero__main">
+          <div className="wp-pattern-hero__main flex flex-col gap-element-md">
             {/* Badge / Chip */}
             {badge && (
               <motion.div
                 initial={animated ? { opacity: 0, y: -10 } : undefined}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="wp-pattern-hero__badges"
+                className="wp-pattern-hero__badges m-0"
               >
-                <span className="wp-pattern-hero__badge">
+                <span className="wp-pattern-hero__badge font-[family:var(--font-family-noto-sans)]">
                   {BadgeIcon && <BadgeIcon className="wp-pattern-hero__badge-icon" />}
                   {badge.label}
                 </span>
@@ -248,10 +251,22 @@ export function Hero({
                 initial={animated ? { opacity: 0, y: 30 } : undefined}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.2 }}
-                className="wp-pattern-hero__title"
+                className="wp-pattern-hero__title m-0 font-[family:var(--font-family-lora)]"
               >
                 {title}
               </motion.h1>
+            )}
+
+            {/* Accent Text */}
+            {accent && (
+              <motion.p
+                initial={animated ? { opacity: 0, y: 20 } : undefined}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                className="font-[family:var(--font-family-caveat)] text-[length:var(--text-3xl)] text-[color:var(--color-accent)] m-0"
+              >
+                {accent}
+              </motion.p>
             )}
 
             {/* Description */}
@@ -260,7 +275,7 @@ export function Hero({
                 initial={animated ? { opacity: 0, y: 20 } : undefined}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.4 }}
-                className="wp-pattern-hero__intro"
+                className="wp-pattern-hero__intro m-0 font-[family:var(--font-family-noto-sans)]"
               >
                 {displayIntro}
               </motion.p>
@@ -272,12 +287,12 @@ export function Hero({
                 initial={animated ? { opacity: 0, y: 20 } : undefined}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.6 }}
-                className="wp-pattern-hero__actions"
+                className="wp-pattern-hero__actions m-0 flex flex-wrap gap-fluid-md pt-element-sm"
               >
                 {primaryCTA && (
                   <button
                     onClick={handleNav(primaryCTA.href, primaryCTA.onClick)}
-                    className="wp-pattern-hero__button-primary"
+                    className="wp-pattern-hero__button-primary flex items-center gap-fluid-sm font-[family:var(--font-family-noto-sans)]"
                   >
                     {primaryCTA.label}
                     {primaryCTA.icon
@@ -290,7 +305,7 @@ export function Hero({
                   <button
                     onClick={handleNav(secondaryCTA.href, secondaryCTA.onClick)}
                     className={cn(
-                      "wp-pattern-hero__button-secondary",
+                      "wp-pattern-hero__button-secondary font-[family:var(--font-family-noto-sans)]",
                       secondaryCTA.variant === "ghost" &&
                         "wp-pattern-hero__button-secondary--ghost",
                     )}

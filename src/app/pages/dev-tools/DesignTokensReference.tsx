@@ -11,7 +11,7 @@
 import { Container } from "../../components/common/Container";
 import { DevToolsBreadcrumbs } from "../../components/common/DevToolsBreadcrumbs";
 import { useState } from "react";
-import { Copy, Check } from "@phosphor-icons/react";
+import { Copy, Check, Palette } from "@phosphor-icons/react";
 
 interface TokenCategory {
   name: string;
@@ -205,25 +205,30 @@ export default function DesignTokensReference() {
       {/* Header */}
       <div className="bg-muted border-b border-border py-section-sm">
         <Container>
-          <h1>Design Tokens Reference</h1>
-          <p className="text-muted-foreground mt-4">
-            Complete reference of all design tokens available in the system.
-            Click any class name to copy it to your clipboard.
-          </p>
+          <div className="flex flex-col gap-element-sm">
+            <div className="wp-page-header__icon-container w-14 h-14 flex items-center justify-center rounded-[var(--radius-lg)] bg-primary/10 text-primary transition-colors hover:bg-primary/20">
+              <Palette className="w-7 h-7" />
+            </div>
+            <h1>Design Tokens Reference</h1>
+            <p className="text-muted-foreground">
+              Complete reference of all design tokens available in the system.
+              Click any class name to copy it to your clipboard.
+            </p>
+          </div>
         </Container>
       </div>
 
       {/* Content */}
       <Container className="py-section-sm">
-        <div className="space-y-12">
+        <div className="flex flex-col gap-12">
           {categories.map((category, idx) => (
             <section key={idx} className="bg-card p-8 rounded-lg border border-border">
-              <h2 className="mb-2">{category.name}</h2>
-              <p className="text-muted-foreground mb-6">
+              <h2 className="pb-2">{category.name}</h2>
+              <p className="text-muted-foreground pb-6">
                 {category.description}
               </p>
 
-              <div className="space-y-4">
+              <div className="flex flex-col gap-4">
                 {category.tokens.map((token, tokenIdx) => (
                   <div 
                     key={tokenIdx}
@@ -231,7 +236,7 @@ export default function DesignTokensReference() {
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
+                        <div className="flex items-center gap-3 pb-2">
                           <span className="font-medium">{token.name}</span>
                           {token.value && (
                             <code className="text-sm text-muted-foreground bg-background px-2 py-1 rounded">
@@ -273,23 +278,23 @@ export default function DesignTokensReference() {
 
           {/* Usage Guidelines */}
           <section className="bg-accent text-accent-foreground p-8 rounded-lg">
-            <h2 className="mb-4">Usage Guidelines</h2>
+            <h2 className="pb-4">Usage Guidelines</h2>
             
-            <div className="space-y-4">
+            <div className="flex flex-col gap-4">
               <div>
-                <h3 className="mb-2">✅ Do</h3>
-                <ul className="list-disc list-inside space-y-1 text-sm">
+                <h3 className="pb-2">✅ Do</h3>
+                <ul className="list-disc list-inside flex flex-col gap-1 text-sm">
                   <li>Use semantic color tokens (bg-primary, text-foreground)</li>
                   <li>Use semantic HTML for typography (h1, h2, p)</li>
-                  <li>Use Tailwind spacing scale (p-4, mb-6)</li>
+                  <li>Use Tailwind spacing scale (p-4, gap-6)</li>
                   <li>Use design token classes from this reference</li>
                   <li>Test in both light and dark modes</li>
                 </ul>
               </div>
 
               <div>
-                <h3 className="mb-2">❌ Don't</h3>
-                <ul className="list-disc list-inside space-y-1 text-sm">
+                <h3 className="pb-2">❌ Don't</h3>
+                <ul className="list-disc list-inside flex flex-col gap-1 text-sm">
                   <li>Don't use hardcoded hex colors (#4a7311)</li>
                   <li>Don't use hardcoded RGB values (rgb(110, 165, 50))</li>
                   <li>Don't use text size classes on semantic HTML (text-2xl on h2)</li>
@@ -298,12 +303,12 @@ export default function DesignTokensReference() {
                 </ul>
               </div>
 
-              <div className="bg-background/20 p-4 rounded mt-6">
-                <h3 className="mb-2">Example: Compliant Component</h3>
+              <div className="bg-background/20 p-4 rounded pt-6">
+                <h3 className="pb-2">Example: Compliant Component</h3>
                 <pre className="text-sm overflow-x-auto">
 {`<div className="bg-card text-card-foreground p-6 rounded-lg border border-border">
   <h2>Section Title</h2>
-  <p className="text-muted-foreground mt-2">
+  <p className="text-muted-foreground pt-2">
     Description text
   </p>
   <button className="bg-primary text-primary-foreground px-6 py-3 rounded-lg">
@@ -317,12 +322,12 @@ export default function DesignTokensReference() {
 
           {/* Quick Reference */}
           <section className="bg-card p-8 rounded-lg border border-border">
-            <h2 className="mb-4">Quick Reference</h2>
+            <h2 className="pb-4">Quick Reference</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h3 className="mb-2">Common Patterns</h3>
-                <div className="space-y-2 text-sm">
+                <h3 className="pb-2">Common Patterns</h3>
+                <div className="flex flex-col gap-2 text-sm">
                   <div className="flex justify-between items-center p-2 bg-muted rounded">
                     <span>Card</span>
                     <button
@@ -354,8 +359,8 @@ export default function DesignTokensReference() {
               </div>
 
               <div>
-                <h3 className="mb-2">Accessibility</h3>
-                <div className="space-y-2 text-sm">
+                <h3 className="pb-2">Accessibility</h3>
+                <div className="flex flex-col gap-2 text-sm">
                   <div className="flex justify-between items-center p-2 bg-muted rounded">
                     <span>Focus Ring</span>
                     <button

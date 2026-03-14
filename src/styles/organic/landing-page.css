@@ -1,0 +1,392 @@
+/* landing-page.css — Organic Landing Page styles */
+
+/* ═══════════════════════════════════════════
+   HERO — Sky gradient + Savannah SVG overlay
+   ═══════════════════════════════════════════ */
+.organic-landing__hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.organic-landing__hero-sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #87CEEB 0%,
+    #C4956A 45%,
+    #D4915C 65%,
+    var(--organic-sunset-bg-primary) 100%
+  );
+  z-index: 0;
+}
+
+.dark .organic-landing__hero-sky {
+  background: linear-gradient(
+    180deg,
+    #1a1520 0%,
+    #2C2418 45%,
+    #3D2E22 65%,
+    var(--organic-sunset-bg-primary) 100%
+  );
+}
+
+.organic-landing__hero-mountains {
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  right: 0;
+  height: 200px;
+  z-index: 1;
+}
+
+.organic-landing__hero-mountains svg {
+  width: 100%;
+  height: 100%;
+}
+
+.organic-landing__hero-bush {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.organic-landing__hero-bush svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.organic-landing__hero-content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding-top: var(--spacing-section-lg);
+  padding-bottom: var(--spacing-section-xl);
+}
+
+.organic-landing__hero-shield {
+  width: 120px;
+  height: auto;
+  margin-bottom: var(--spacing-gap-lg);
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+  animation: organic-float 6s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+  .organic-landing__hero-shield {
+    width: 160px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   CSS ANIMATIONS — Organic motion
+   ═══════════════════════════════════════════ */
+@keyframes organic-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes organic-drift {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(10px) rotate(1deg); }
+  75% { transform: translateX(-10px) rotate(-1deg); }
+}
+
+@keyframes organic-pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(200, 121, 65, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(200, 121, 65, 0.4); }
+}
+
+@keyframes organic-morph {
+  0%   { border-radius: 42% 58% 70% 30% / 45% 55% 45% 55%; }
+  25%  { border-radius: 55% 45% 60% 40% / 50% 60% 40% 50%; }
+  50%  { border-radius: 40% 60% 50% 50% / 55% 45% 55% 45%; }
+  75%  { border-radius: 48% 52% 65% 35% / 42% 58% 42% 58%; }
+  100% { border-radius: 42% 58% 70% 30% / 45% 55% 45% 55%; }
+}
+
+@keyframes organic-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes organic-sway {
+  0%, 100% { transform: rotate(-2deg) scale(1); }
+  50% { transform: rotate(2deg) scale(1.02); }
+}
+
+@keyframes organic-fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Utility animation classes */
+.organic-animate-float {
+  animation: organic-float 6s var(--ease-organic) infinite;
+}
+
+.organic-animate-drift {
+  animation: organic-drift 8s var(--ease-organic) infinite;
+}
+
+.organic-animate-morph {
+  animation: organic-morph 12s var(--ease-organic) infinite;
+}
+
+.organic-animate-sway {
+  animation: organic-sway 4s var(--ease-organic) infinite;
+}
+
+.organic-animate-pulse-glow {
+  animation: organic-pulse-glow 3s var(--ease-organic) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .organic-animate-float,
+  .organic-animate-drift,
+  .organic-animate-morph,
+  .organic-animate-sway,
+  .organic-animate-pulse-glow,
+  .organic-landing__hero-shield {
+    animation: none;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   CSS SHAPES — Organic clip-paths & borders
+   ═══════════════════════════════════════════ */
+.organic-shape-blob {
+  clip-path: polygon(
+    30% 0%, 70% 0%, 100% 30%, 100% 70%,
+    70% 100%, 30% 100%, 0% 70%, 0% 30%
+  );
+}
+
+.organic-shape-wave-top {
+  clip-path: ellipse(80% 60% at 50% 100%);
+}
+
+.organic-shape-wave-bottom {
+  clip-path: ellipse(80% 60% at 50% 0%);
+}
+
+.organic-shape-pebble {
+  border-radius: var(--organic-radius-pebble);
+}
+
+.organic-shape-leaf {
+  border-radius: 60% 40% 60% 40% / 70% 30% 70% 30%;
+}
+
+/* ═══════════════════════════════════════════
+   ORGANIC CARDS — Tour, Destination, etc.
+   ═══════════════════════════════════════════ */
+.organic-card {
+  border-radius: var(--organic-radius-lg);
+  overflow: hidden;
+  background-color: var(--color-card, var(--card));
+  box-shadow: var(--elevation-sm);
+  transition: all var(--duration-organic-long) var(--ease-organic);
+  background-image: var(--texture-grain-micro);
+  background-blend-mode: multiply;
+}
+
+.organic-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--elevation-md, 0 4px 12px rgba(0,0,0,0.15));
+}
+
+.organic-card__image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.organic-card__body {
+  padding: var(--spacing-element-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-sm);
+}
+
+.organic-card__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-gap-xs);
+  padding: var(--spacing-element-xs) var(--spacing-element-sm);
+  border-radius: var(--organic-radius-pebble);
+  background-color: var(--color-muted, var(--muted));
+  color: var(--color-muted-foreground, var(--muted-foreground));
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+}
+
+/* ═══════════════════════════════════════════
+   ORGANIC QUOTE — Testimonial/review block
+   ═══════════════════════════════════════════ */
+.organic-quote {
+  position: relative;
+  padding: var(--spacing-element-xl) var(--spacing-element-2xl);
+  border-radius: var(--organic-radius-lg);
+  background-color: var(--color-card, var(--card));
+  box-shadow: var(--elevation-sm);
+  background-image: var(--texture-grain-micro);
+  background-blend-mode: multiply;
+}
+
+.organic-quote::before {
+  content: "\201C";
+  font-family: var(--font-family-lora);
+  font-size: 4rem;
+  color: var(--primary);
+  opacity: 0.3;
+  position: absolute;
+  top: var(--spacing-element-sm);
+  left: var(--spacing-element-lg);
+  line-height: 1;
+}
+
+.organic-quote__text {
+  font-family: var(--font-family-lora);
+  font-style: italic;
+  color: var(--color-foreground, var(--foreground));
+  line-height: 1.7;
+}
+
+.organic-quote__author {
+  font-family: var(--font-family-noto-sans);
+  color: var(--color-muted-foreground, var(--muted-foreground));
+}
+
+/* ═══════════════════════════════════════════
+   ORGANIC CTA — Call-to-action with animation
+   ═══════════════════════════════════════════ */
+.organic-cta {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--organic-radius-xl);
+  padding: var(--spacing-section-md);
+  text-align: center;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.organic-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--texture-grain-micro);
+  background-blend-mode: overlay;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════
+   SECTION DIVIDERS — Organic wave shapes
+   ═══════════════════════════════════════════ */
+.organic-divider-wave {
+  position: relative;
+  height: 80px;
+  overflow: hidden;
+}
+
+.organic-divider-wave svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ═══════════════════════════════════════════
+   ORGANIC MODAL — CTA-triggered
+   ═══════════════════════════════════════════ */
+.organic-modal__overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-element-lg);
+}
+
+.organic-modal__content {
+  background-color: var(--color-card, var(--card));
+  border-radius: var(--organic-radius-xl);
+  padding: var(--spacing-element-2xl);
+  max-width: 560px;
+  width: 100%;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  background-image: var(--texture-grain-micro);
+  background-blend-mode: multiply;
+  position: relative;
+}
+
+/* ═══════════════════════════════════════════
+   BOTANICAL CORNER DECORATIONS
+   ═══════════════════════════════════════════ */
+.organic-botanical-corner {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.15;
+}
+
+.organic-botanical-corner--top-right {
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: auto;
+}
+
+.organic-botanical-corner--bottom-left {
+  bottom: 0;
+  left: 0;
+  width: 200px;
+  height: auto;
+  transform: rotate(180deg);
+}
+
+@media (min-width: 768px) {
+  .organic-botanical-corner--top-right,
+  .organic-botanical-corner--bottom-left {
+    width: 300px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   SHIMMER ACCENT — Gradient animation
+   ═══════════════════════════════════════════ */
+.organic-shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--organic-sunset-primary) 0%,
+    var(--organic-sunset-accent) 50%,
+    var(--organic-sunset-primary) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: organic-shimmer 4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .organic-shimmer-text {
+    animation: none;
+    -webkit-text-fill-color: currentColor;
+    background: none;
+  }
+}

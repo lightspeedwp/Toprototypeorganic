@@ -47,7 +47,7 @@ export function ImageBlock({
   }[aspectRatio];
 
   return (
-    <figure className={cn("mb-4", className)}>
+    <figure className={cn("pb-element-md", className)}>
       <img 
         src={src} 
         alt={alt}
@@ -58,7 +58,7 @@ export function ImageBlock({
         )}
       />
       {caption && (
-        <figcaption className="text-sm text-muted-foreground mt-2">
+        <figcaption className="text-[length:var(--text-sm)] text-muted-foreground pt-element-xs">
           {caption}
         </figcaption>
       )}

@@ -1,0 +1,117 @@
+/**
+ * FacilityBadges Pattern CSS
+ *
+ * Amenity badges for single accommodation detail pages.
+ * BEM block: .wp-pattern-facility-badges
+ *
+ * All values reference design-system CSS variables — no hardcoded colours,
+ * fonts, spacing, or inline styles.
+ *
+ * @see /src/app/components/patterns/FacilityBadges.tsx
+ */
+
+/* ============================================
+   FACILITY BADGES — Container
+   ============================================ */
+
+.wp-pattern-facility-badges {
+  padding: var(--spacing-element-xl);
+  border-radius: var(--radius-lg);
+  background-color: var(--muted);
+  border: var(--border-width-thick) solid var(--border);
+}
+
+/* ============================================
+   FACILITY BADGES — Title
+   ============================================ */
+
+.wp-pattern-facility-badges__title {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--foreground);
+  padding-block-end: var(--spacing-element-sm);
+}
+
+/* ============================================
+   FACILITY BADGES — Grid
+   ============================================ */
+
+.wp-pattern-facility-badges__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-gap-sm);
+}
+
+/* ============================================
+   FACILITY BADGES — Individual Badge
+   ============================================ */
+
+.wp-pattern-facility-badges__badge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-element-xs);
+  padding: var(--spacing-element-xs) var(--spacing-element-sm);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  background: transparent;
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-fast);
+}
+
+.wp-pattern-facility-badges__badge:hover {
+  color: var(--primary);
+  background-color: var(--primary-muted);
+  border-color: var(--primary);
+}
+
+.wp-pattern-facility-badges__badge:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* ── Icon ───────────────────────────────────── */
+
+.wp-pattern-facility-badges__icon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   FACILITY BADGES — "More" Link
+   ============================================ */
+
+.wp-pattern-facility-badges__more {
+  display: block;
+  width: 100%;
+  padding-block-start: var(--spacing-element-sm);
+  border-block-start: var(--border-width) solid var(--border);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--primary);
+  background: transparent;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  cursor: pointer;
+  text-align: center;
+  transition: opacity var(--transition-fast);
+}
+
+.wp-pattern-facility-badges__more:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.wp-pattern-facility-badges__more:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}

@@ -73,44 +73,46 @@ export function GallerySectionPattern({
   return (
     <section className={cn("wp-pattern-lts-gallery has-section-padding-md", className)}>
       <Container>
-        {/* Header */}
-        {(title || description) && (
-          <div className="text-center mb-[var(--spacing-section-sm)] max-w-3xl mx-auto">
-            {title && (
-              <h2 className="text-[length:var(--text-3xl)] mb-[var(--spacing-element-lg)]">{title}</h2>
-            )}
-            {description && (
-              <p className="text-muted-foreground text-[length:var(--text-lg)] !m-0">{description}</p>
-            )}
-          </div>
-        )}
+        <div className="flex flex-col items-center">
+          {/* Header */}
+          {(title || description) && (
+            <div className="flex flex-col items-center justify-center text-center pb-section-sm max-w-3xl w-full">
+              {title && (
+                <h2 className="text-[length:var(--text-3xl)] pb-element-lg !m-0 font-[family:var(--font-family-lora)] text-[color:var(--color-foreground)]">{title}</h2>
+              )}
+              {description && (
+                <p className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] text-[length:var(--text-lg)] !m-0">{description}</p>
+              )}
+            </div>
+          )}
 
-        {/* Thumbnail Grid */}
-        <div className={cn("grid gap-[var(--spacing-gap-lg)] md:gap-[var(--spacing-gap-2xl)]", gridClasses)}>
-          {images.map((image, idx) => (
-            <motion.button
-              key={image.id}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.05 }}
-              onClick={() => openLightbox(idx)}
-              className="wp-pattern-lts-gallery__item relative aspect-square overflow-hidden rounded-[var(--radius-2xl)] bg-muted group cursor-pointer border-2 border-transparent hover:border-primary transition-all duration-300 shadow-[var(--elevation-sm)] hover:shadow-[var(--elevation-xl)]"
-              aria-label={`View ${image.alt}`}
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                loading="lazy"
-                className="absolute inset-0 size-full object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                <div className="p-[var(--spacing-element-md)] rounded-[var(--radius-full)] bg-background/90 backdrop-blur shadow-[var(--elevation-lg)] transform scale-50 group-hover:scale-100 transition-all duration-300">
-                  <Maximize2 className="size-5 text-primary" />
+          {/* Thumbnail Grid */}
+          <div className={cn("grid gap-fluid-lg md:gap-fluid-2xl w-full", gridClasses)}>
+            {images.map((image, idx) => (
+              <motion.button
+                key={image.id}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05 }}
+                onClick={() => openLightbox(idx)}
+                className="wp-pattern-lts-gallery__item relative aspect-square overflow-hidden rounded-[var(--radius-2xl)] bg-muted group cursor-pointer border-2 border-transparent hover:border-primary transition-all duration-300 shadow-[var(--elevation-sm)] hover:shadow-[var(--elevation-xl)]"
+                aria-label={`View ${image.alt}`}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  loading="lazy"
+                  className="absolute inset-0 size-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                  <div className="p-element-md rounded-[var(--radius-full)] bg-background/90 backdrop-blur shadow-[var(--elevation-lg)] transform scale-50 group-hover:scale-100 transition-all duration-300">
+                    <Maximize2 className="size-5 text-primary" />
+                  </div>
                 </div>
-              </div>
-            </motion.button>
-          ))}
+              </motion.button>
+            ))}
+          </div>
         </div>
       </Container>
 
@@ -121,7 +123,7 @@ export function GallerySectionPattern({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-background/98 backdrop-blur-xl flex items-center justify-center p-[var(--spacing-element-lg)] md:p-[var(--spacing-section-sm)]"
+            className="fixed inset-0 z-[100] bg-background/98 backdrop-blur-xl flex items-center justify-center p-element-lg md:p-[var(--spacing-section-sm)]"
             onClick={closeLightbox}
             role="dialog"
             aria-modal="true"
@@ -129,7 +131,7 @@ export function GallerySectionPattern({
             {/* Close Button */}
             <button
               onClick={closeLightbox}
-              className="absolute top-[var(--spacing-gap-3xl)] right-[var(--spacing-gap-3xl)] p-[var(--spacing-element-md)] bg-muted hover:bg-primary hover:text-primary-foreground rounded-[var(--radius-full)] transition-all z-50 shadow-[var(--elevation-lg)]"
+              className="absolute top-[var(--spacing-gap-3xl)] right-[var(--spacing-gap-3xl)] p-element-md bg-muted hover:bg-primary hover:text-primary-foreground rounded-[var(--radius-full)] transition-all z-50 shadow-[var(--elevation-lg)]"
               aria-label="Close gallery"
             >
               <X className="size-6" />
@@ -137,7 +139,7 @@ export function GallerySectionPattern({
 
             {/* Main Content Area */}
             <div
-              className="relative max-w-7xl size-full flex flex-col items-center justify-center gap-[var(--spacing-gap-lg)]"
+              className="relative max-w-7xl size-full flex flex-col items-center justify-center gap-fluid-lg"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Image with Slide Animation */}
@@ -153,15 +155,14 @@ export function GallerySectionPattern({
                 />
               </div>
               
-              {/* Info & Metadata */}
-              <div className="text-center max-w-2xl">
+              <div className="text-center max-w-2xl flex flex-col gap-element-sm">
                 {images[currentImage].caption && (
-                  <h3 className="text-[length:var(--text-2xl)] mb-[var(--spacing-element-sm)] italic">
+                  <h3 className="text-[length:var(--text-2xl)] m-0 font-[family:var(--font-family-lora)] text-[color:var(--color-foreground)] italic">
                     {images[currentImage].caption}
                   </h3>
                 )}
-                <div className="inline-flex items-center gap-[var(--spacing-gap-md)] px-[var(--spacing-element-2xl)] py-[var(--spacing-element-sm)] rounded-[var(--radius-full)] bg-muted/50 text-[length:var(--text-xs)] uppercase tracking-widest text-muted-foreground">
-                  <span className="text-primary">{currentImage + 1}</span>
+                <div className="inline-flex items-center gap-fluid-md px-element-2xl py-element-sm rounded-[var(--radius-full)] bg-[color:var(--color-muted)]/50 text-[length:var(--text-xs)] uppercase tracking-widest text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)]">
+                  <span className="text-[color:var(--color-primary)]">{currentImage + 1}</span>
                   <span className="opacity-30">/</span>
                   <span>{images.length} Captured Moments</span>
                 </div>

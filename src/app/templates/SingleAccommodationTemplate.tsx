@@ -7,7 +7,7 @@
 
 import { useParams } from "react-router";
 import {
-  MapPin, Buildings as Hotel, Star, WifiHigh as Wifi, Coffee, Television as Tv, Shield, Wind, ForkKnife as Utensils, Waves, Heart, EnvelopeSimple as Mail, Calendar, Compass, ShieldCheck, Medal as Award
+  MapPin, Buildings as Hotel, Star, Shield, Heart, ShieldCheck, Medal as Award
 } from "@phosphor-icons/react";
 import { Container } from "../components/common/Container";
 import { BreadcrumbsPattern } from "../components/patterns/BreadcrumbsPattern";
@@ -19,12 +19,12 @@ import { EditorialContent } from "../components/patterns/EditorialContent";
 import { RoomTypesPattern } from "../components/patterns/RoomTypesPattern";
 import { PricingSectionPattern } from "../components/patterns/PricingSectionPattern";
 import { ReviewsSectionPattern } from "../components/patterns/ReviewsSectionPattern";
-import { HighlightsGridPattern } from "../components/patterns/HighlightsGridPattern";
 import { GallerySectionPattern } from "../components/patterns/GallerySectionPattern";
 import { RelatedAccommodationsBlock } from "../components/blocks/tour-operator/RelatedAccommodationsBlock";
+import { FacilityBadges } from "../components/patterns/FacilityBadges";
 import { useNavigation } from "../contexts/NavigationContext";
 import { 
-  ALL_ACCOMMODATION, ALL_DESTINATIONS, ALL_ACCOMMODATION_TYPES, ALL_FACILITIES, ALL_REVIEWS 
+  ALL_ACCOMMODATION, ALL_DESTINATIONS, ALL_ACCOMMODATION_TYPES, ALL_REVIEWS 
 } from "../data/mockExpanded";
 import { FAQ_ACCOMMODATION } from "../data/mock";
 import { motion } from "motion/react";
@@ -40,10 +40,6 @@ export function SingleAccommodationTemplate() {
   const accType = accommodation.types?.[0]
     ? ALL_ACCOMMODATION_TYPES.find(type => type.id === accommodation.types[0])
     : undefined;
-
-  const facilityIcons: Record<string, any> = {
-    'wifi': Wifi, 'coffee': Coffee, 'tv': Tv, 'security': Shield, 'ac': Wind, 'restaurant': Utensils, 'pool': Waves,
-  };
 
   const fastFacts = [
     { icon: Hotel, label: "Estate Category", value: accType?.name || "Sanctuary" },
@@ -93,10 +89,10 @@ export function SingleAccommodationTemplate() {
       </div>
 
       <div className="organic-section-middle">
-        <section className="py-[var(--spacing-section-md)] border-b border-border/50">
+        <section className="py-section-md border-b border-border/50">
           <Container>
-            <div className="grid lg:grid-cols-12 gap-[var(--spacing-gap-xl)]">
-              <div className="lg:col-span-8">
+            <div className="grid lg:grid-cols-12 gap-fluid-xl">
+              <div className="lg:col-span-8 flex flex-col gap-section-sm">
                 <EditorialContent
                   title={`Portrait of ${accommodation.title}`}
                   subtitle="The definitive wilderness estate experience"
@@ -104,7 +100,7 @@ export function SingleAccommodationTemplate() {
                   className="p-0 border-0 bg-transparent"
                 />
                 
-                <div className="mt-[var(--spacing-section-sm)] pt-[var(--spacing-section-sm)] border-t border-border/50">
+                <div className="pt-section-sm border-t border-border/50">
                   <GallerySectionPattern 
                     images={galleryImages}
                     title="Estate Visuals"
@@ -112,7 +108,7 @@ export function SingleAccommodationTemplate() {
                   />
                 </div>
 
-                <div id="rooms-section" className="mt-[var(--spacing-section-sm)] pt-[var(--spacing-section-sm)] border-t border-border/50">
+                <div id="rooms-section" className="pt-section-sm border-t border-border/50">
                   <RoomTypesPattern
                     title="Your Personal Sanctuary"
                     description="Select from our meticulously designed suites and canvas villas."
@@ -144,32 +140,32 @@ export function SingleAccommodationTemplate() {
               </div>
 
               <aside className="lg:col-span-4">
-                <div className="sticky top-32 space-y-[var(--spacing-element-lg)]">
-                  <div className="p-[var(--spacing-element-xl)] rounded-[var(--radius-lg)] bg-card border-2 border-border shadow-xl">
-                    <div className="flex items-center gap-[var(--spacing-element-sm)] mb-[var(--spacing-element-lg)]">
+                <div className="sticky top-32 flex flex-col gap-element-lg">
+                  <div className="p-element-xl rounded-[var(--radius-lg)] bg-card border-2 border-border shadow-xl flex flex-col gap-element-lg">
+                    <div className="flex items-center gap-element-sm">
                       <ShieldCheck className="size-5 text-primary" />
                       <span className="text-fluid-xs font-bold uppercase tracking-widest text-primary">Certified Sanctuary</span>
                     </div>
-                    <h3 className="text-fluid-2xl font-bold font-serif mb-[var(--spacing-element-lg)] wp-text--hand">Estate Intelligence</h3>
-                    <ul className="space-y-[var(--spacing-element-lg)] m-0 p-0 list-none">
-                      <li className="flex items-start gap-[var(--spacing-element-md)]">
-                        <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-sm)] bg-primary/5 text-primary shrink-0"><Shield className="size-4" /></div>
-                        <div>
-                          <p className="text-fluid-sm font-bold mb-[var(--spacing-element-xs)]">Discrete Protection</p>
+                    <h3 className="text-fluid-2xl font-bold font-serif wp-text--hand">Estate Intelligence</h3>
+                    <ul className="flex flex-col gap-element-lg m-0 p-0 list-none">
+                      <li className="flex items-start gap-element-md">
+                        <div className="p-element-sm rounded-[var(--radius-sm)] bg-primary/5 text-primary shrink-0"><Shield className="size-4" /></div>
+                        <div className="flex flex-col gap-element-xs">
+                          <p className="text-fluid-sm font-bold">Discrete Protection</p>
                           <p className="text-fluid-xs text-muted-foreground m-0">24/7 specialist-led security protocols.</p>
                         </div>
                       </li>
-                      <li className="flex items-start gap-[var(--spacing-element-md)]">
-                        <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-sm)] bg-primary/5 text-primary shrink-0"><Heart className="size-4" /></div>
-                        <div>
-                          <p className="text-fluid-sm font-bold mb-[var(--spacing-element-xs)]">Regenerative Luxury</p>
+                      <li className="flex items-start gap-element-md">
+                        <div className="p-element-sm rounded-[var(--radius-sm)] bg-primary/5 text-primary shrink-0"><Heart className="size-4" /></div>
+                        <div className="flex flex-col gap-element-xs">
+                          <p className="text-fluid-sm font-bold">Regenerative Luxury</p>
                           <p className="text-fluid-xs text-muted-foreground m-0">Zero-footprint operations and community equity.</p>
                         </div>
                       </li>
-                      <li className="flex items-start gap-[var(--spacing-element-md)]">
-                        <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-sm)] bg-primary/5 text-primary shrink-0"><Award className="size-4" /></div>
-                        <div>
-                          <p className="text-fluid-sm font-bold mb-[var(--spacing-element-xs)]">Global Distinction</p>
+                      <li className="flex items-start gap-element-md">
+                        <div className="p-element-sm rounded-[var(--radius-sm)] bg-primary/5 text-primary shrink-0"><Award className="size-4" /></div>
+                        <div className="flex flex-col gap-element-xs">
+                          <p className="text-fluid-sm font-bold">Global Distinction</p>
                           <p className="text-fluid-xs text-muted-foreground m-0">Voted Top Wilderness Lodge 2025.</p>
                         </div>
                       </li>
@@ -177,26 +173,17 @@ export function SingleAccommodationTemplate() {
                     
                     <button 
                       onClick={() => navigateTo("/contact")}
-                      className="w-full mt-[var(--spacing-element-lg)] py-[var(--spacing-element-sm)] rounded-[var(--radius-md)] bg-primary text-primary-foreground font-bold hover:shadow-2xl transition-all"
+                      className="w-full py-element-sm rounded-[var(--radius-md)] bg-primary text-primary-foreground font-bold hover:shadow-2xl transition-all"
                     >
                       Contact Estate Concierge
                     </button>
                   </div>
 
                   {accommodation.facilities && (
-                    <div className="p-[var(--spacing-element-xl)] rounded-[var(--radius-lg)] bg-muted/30 border-2 border-border/50">
-                      <h4 className="text-fluid-xs font-bold uppercase tracking-widest text-foreground mb-[var(--spacing-element-sm)]">Estate Facilities</h4>
-                      <div className="grid grid-cols-2 gap-[var(--spacing-gap-md)]">
-                        {accommodation.facilities.slice(0, 6).map(id => {
-                          const Icon = facilityIcons[id.toLowerCase()] || Compass;
-                          return (
-                            <div key={id} className="flex items-center gap-[var(--spacing-element-sm)] text-fluid-xs font-bold text-muted-foreground">
-                              <Icon className="size-3 text-primary" /> {id}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
+                    <FacilityBadges
+                      facilityIds={accommodation.facilities}
+                      limit={8}
+                    />
                   )}
                 </div>
               </aside>
@@ -226,7 +213,7 @@ export function SingleAccommodationTemplate() {
       </div>
 
       <div className="organic-section-bottom">
-        <Container className="py-[var(--spacing-section-md)] border-t border-border/50">
+        <Container className="py-section-md border-t border-border/50">
           <RelatedAccommodationsBlock
             currentAccommodationId={accommodation.id}
             destinationId={accommodation.destinations?.[0]}

@@ -137,26 +137,25 @@ export function Button({
 }: ButtonProps) {
   // Base styles (always applied)
   const baseStyles = cn(
-    'inline-flex items-center justify-center flex-nowrap whitespace-nowrap gap-[var(--spacing-gap-sm)]',
-    'rounded-[var(--radius-lg)]',
+    'flex items-center justify-center gap-[5px]',
+    'rounded-[var(--radius-lg)] font-[family:var(--font-family-noto-sans)]',
     'transition-colors duration-200',
-    'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
+    'focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ring)] focus:ring-offset-2',
     'disabled:opacity-50 disabled:pointer-events-none',
-    'font-medium',
+    'font-[weight:var(--font-weight-medium)]',
     'cursor-pointer',
-    // Font family from design system
     'relative'
   );
 
   // Variant styles
   const variantStyles = {
-    default: 'bg-primary text-primary-foreground hover:bg-primary/90',
-    primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
-    secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-    outline: 'border-2 border-primary bg-background text-primary hover:bg-primary hover:text-primary-foreground',
-    ghost: 'bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground',
-    link: 'bg-transparent text-primary underline-offset-4 hover:underline p-0',
-    cta: 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm font-semibold',
+    default: 'bg-[color:var(--color-primary)] text-[color:var(--color-primary-foreground)] hover:bg-[color:var(--color-primary)]/90',
+    primary: 'bg-[color:var(--color-primary)] text-[color:var(--color-primary-foreground)] hover:bg-[color:var(--color-primary)]/90',
+    secondary: 'bg-[color:var(--color-secondary)] text-[color:var(--color-secondary-foreground)] hover:bg-[color:var(--color-secondary)]/80',
+    outline: 'border-2 border-[color:var(--color-primary)] bg-[color:var(--color-background)] text-[color:var(--color-primary)] hover:bg-[color:var(--color-primary)] hover:text-[color:var(--color-primary-foreground)]',
+    ghost: 'bg-transparent text-[color:var(--color-foreground)] hover:bg-[color:var(--color-accent)] hover:text-[color:var(--color-accent-foreground)]',
+    link: 'bg-transparent text-[color:var(--color-primary)] underline-offset-4 hover:underline p-0',
+    cta: 'bg-[color:var(--color-primary)] text-[color:var(--color-primary-foreground)] hover:bg-[color:var(--color-primary)]/90 shadow-[var(--elevation-sm)] font-[weight:var(--font-weight-semibold)]',
   };
 
   // Size styles (minimum touch targets for accessibility)
@@ -168,20 +167,17 @@ export function Button({
   };
 
   // Padding uses design system spacing variables via Tailwind
-  // sm: px-4 py-2 (16px horizontal, 8px vertical)
-  // default: px-6 py-3 (24px horizontal, 12px vertical)  
-  // lg: px-8 py-4 (32px horizontal, 16px vertical)
   const paddingStyles = {
-    sm: 'px-4 py-2',      // Maps to --spacing-element-xs to --spacing-element-sm range
-    default: 'px-6 py-3', // Maps to --spacing-element-md range
-    lg: 'px-8 py-4',      // Maps to --spacing-element-lg range
+    sm: 'px-element-sm py-element-xs',
+    default: 'px-element-lg py-element-sm', 
+    lg: 'px-element-xl py-element-md',
   };
 
   // Icon size based on button size
   const iconSizeClass = {
-    sm: 'h-4 w-4',
-    default: 'h-4 w-4',
-    lg: 'h-5 w-5',
+    sm: 'h-[var(--spacing-element-sm)] w-[var(--spacing-element-sm)]',
+    default: 'h-[var(--spacing-element-sm)] w-[var(--spacing-element-sm)]',
+    lg: 'h-[var(--spacing-element-md)] w-[var(--spacing-element-md)]',
   };
 
   // Combine all styles
@@ -212,11 +208,11 @@ export function Button({
   const content = (
     <>
       {icon && iconPosition === 'left' && (
-        <span className={cn(iconSizeClass[size], 'shrink-0')}>{icon}</span>
+        <span className={cn(iconSizeClass[size], 'shrink-0 flex items-center justify-center')}>{icon}</span>
       )}
-      {children && <span className="whitespace-nowrap">{children}</span>}
+      {children && <span className="flex items-center">{children}</span>}
       {icon && iconPosition === 'right' && (
-        <span className={cn(iconSizeClass[size], 'shrink-0')}>{icon}</span>
+        <span className={cn(iconSizeClass[size], 'shrink-0 flex items-center justify-center')}>{icon}</span>
       )}
     </>
   );

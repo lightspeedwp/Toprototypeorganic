@@ -132,15 +132,17 @@ export function PageNav({ pages, activePage, onPageChange }: PageNavProps) {
   return (
     <section className="wp-common-page-nav">
       <Container>
-        <div className="space-y-4">
+        <div className="flex flex-col gap-element-md">
           <div>
-            <h2 className="mb-2">Content-First Prototype Navigator</h2>
-            <p className="text-muted-foreground">
-              Select a page archetype to view its structural implementation
-            </p>
+            <div className="flex flex-col gap-element-sm">
+              <h2>Content-First Prototype Navigator</h2>
+              <p className="text-muted-foreground">
+                Select a page archetype to view its structural implementation
+              </p>
+            </div>
           </div>
           
-          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-fluid-sm md:grid-cols-2 lg:grid-cols-3">
             {pages.map((page) => (
               <button
                 key={page.id}

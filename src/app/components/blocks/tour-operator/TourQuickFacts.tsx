@@ -14,11 +14,11 @@
  */
 
 import './TourQuickFacts.css';
-import type { Icon as PhosphorIcon } from '@phosphor-icons/react';
+import { isValidElement, type ReactNode, type ComponentType } from 'react';
 
 /** A single fact entry. */
 export interface QuickFact {
-  icon: PhosphorIcon;
+  icon: ReactNode | ComponentType<any>;
   label: string;
   value: string;
 }
@@ -61,17 +61,29 @@ export function TourQuickFacts({
 
       {/* Facts List */}
       <div className="lsx-tour-quick-facts__list">
-        {facts.map((fact, index) => (
-          <div key={index} className="lsx-tour-quick-facts__item">
-            <div className="lsx-tour-quick-facts__item-icon">
-              <fact.icon size={18} aria-hidden="true" />
+        {facts.map((fact, index) => {
+          // Handle both JSX elements and component references
+          const renderIcon = () => {
+            if (isValidElement(fact.icon)) return fact.icon;
+            if (typeof fact.icon === 'function') {
+              const IconComponent = fact.icon as ComponentType<any>;
+              return <IconComponent size={18} aria-hidden="true" />;
+            }
+            return null;
+          };
+
+          return (
+            <div key={index} className="lsx-tour-quick-facts__item">
+              <div className="lsx-tour-quick-facts__item-icon">
+                {renderIcon()}
+              </div>
+              <div className="lsx-tour-quick-facts__item-content">
+                <div className="lsx-tour-quick-facts__item-label">{fact.label}</div>
+                <div className="lsx-tour-quick-facts__item-value">{fact.value}</div>
+              </div>
             </div>
-            <div className="lsx-tour-quick-facts__item-content">
-              <div className="lsx-tour-quick-facts__item-label">{fact.label}</div>
-              <div className="lsx-tour-quick-facts__item-value">{fact.value}</div>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* CTA Button */}

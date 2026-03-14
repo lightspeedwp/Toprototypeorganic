@@ -19,6 +19,7 @@ import { BlogCard } from "../../components/patterns/BlogCard";
 import { TeamCard } from "../../components/patterns/TeamCard";
 import { SpecialCard } from "../../components/patterns/SpecialCard";
 import { TOURS, DESTINATIONS, ACCOMMODATION, BLOG_POSTS, TEAM, SPECIALS } from "../../data/mock";
+import { SquaresFour } from "@phosphor-icons/react";
 
 type CardType = "tour" | "destination" | "accommodation" | "blog" | "team" | "special";
 
@@ -69,21 +70,26 @@ export default function CardInteractions() {
     <>
       <DevToolsBreadcrumbs currentPage="Card Interactions" />
 
-      <section className="py-section-sm bg-muted">
+      <section className="py-section-sm bg-muted border-b border-border">
         <Container>
-          <h1 className="mb-4">Card Interactions</h1>
-          <p className="text-muted-foreground max-w-3xl">
-            Interactive specimens of every card component used in the system.
-            Select a card type below to see live examples rendered with real mock data.
-            Hover and focus each card to test interaction states.
-          </p>
+          <div className="flex flex-col gap-element-sm">
+            <div className="wp-page-header__icon-container w-14 h-14 flex items-center justify-center rounded-[var(--radius-lg)] bg-primary/10 text-primary transition-colors hover:bg-primary/20">
+              <SquaresFour className="w-7 h-7" />
+            </div>
+            <h1>Card Interactions</h1>
+            <p className="text-muted-foreground max-w-3xl">
+              Interactive specimens of every card component used in the system.
+              Select a card type below to see live examples rendered with real mock data.
+              Hover and focus each card to test interaction states.
+            </p>
+          </div>
         </Container>
       </section>
 
       {/* Card type selector */}
       <section className="py-section-sm bg-background border-b border-border">
         <Container>
-          <h2 className="mb-6">Select Card Type</h2>
+          <h2 className="pb-6">Select Card Type</h2>
           <div className="flex flex-wrap gap-3">
             {CARD_TYPES.map((ct) => (
               <button
@@ -106,7 +112,7 @@ export default function CardInteractions() {
       {/* Card grid */}
       <section className="py-section-sm bg-background">
         <Container>
-          <h3 className="mb-6">
+          <h3 className="pb-6">
             {CARD_TYPES.find((c) => c.id === activeType)?.label} — Live Specimens
           </h3>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -118,13 +124,13 @@ export default function CardInteractions() {
       {/* Design tokens reference */}
       <section className="py-section-sm bg-muted">
         <Container>
-          <h2 className="mb-6">Card Design Tokens</h2>
-          <p className="text-muted-foreground mb-8">All cards share these common design system tokens.</p>
+          <h2 className="pb-6">Card Design Tokens</h2>
+          <p className="text-muted-foreground pb-8">All cards share these common design system tokens.</p>
 
           <div className="grid gap-6 md:grid-cols-2">
             <div className="border border-border rounded-lg bg-card p-6">
-              <h4 className="mb-4">Colours</h4>
-              <div className="space-y-3">
+              <h4 className="pb-4">Colours</h4>
+              <div className="flex flex-col gap-3">
                 {[
                   { label: "Background", variable: "--card", tw: "bg-card" },
                   { label: "Text", variable: "--card-foreground", tw: "text-card-foreground" },
@@ -147,8 +153,8 @@ export default function CardInteractions() {
             </div>
 
             <div className="border border-border rounded-lg bg-card p-6">
-              <h4 className="mb-4">Structure</h4>
-              <div className="space-y-3">
+              <h4 className="pb-4">Structure</h4>
+              <div className="flex flex-col gap-3">
                 {[
                   { label: "Border radius", value: "var(--radius-lg) → 6 px" },
                   { label: "Shadow (rest)", value: "var(--elevation-sm)" },
@@ -171,7 +177,7 @@ export default function CardInteractions() {
       {/* Responsive behaviour */}
       <section className="py-section-sm bg-background">
         <Container>
-          <h2 className="mb-6">Responsive Behaviour</h2>
+          <h2 className="pb-6">Responsive Behaviour</h2>
           <div className="border border-border rounded-lg bg-card overflow-hidden">
             <div className="grid grid-cols-3 gap-0 text-sm border-b border-border bg-muted px-6 py-3">
               <span className="text-muted-foreground">Breakpoint</span>

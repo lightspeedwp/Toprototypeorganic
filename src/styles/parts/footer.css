@@ -240,7 +240,7 @@
   font-weight: var(--font-weight-medium);
   color: var(--color-primary);
   background-color: color-mix(in srgb, var(--primary) 10%, transparent);
-  border-radius: 9999px;
+  border-radius: var(--radius-full);
 }
 
 /* ================================================================== */
@@ -407,7 +407,7 @@
   height: 2.25rem;
   color: var(--color-foreground);
   background-color: var(--color-muted);
-  border-radius: 9999px;
+  border-radius: var(--radius-full);
   transition: all var(--transition-base);
 }
 

@@ -28,9 +28,9 @@ export function DesignSystemShowcase() {
       {/* Hero Section */}
       <section className="wp-pattern-section wp-pattern-section--primary">
         <Container>
-          <div className="text-center py-16">
-            <h1 className="mb-4">Design System Showcase</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <div className="text-center py-16 flex flex-col items-center gap-4">
+            <h1>Design System Showcase</h1>
+            <p className="text-lg text-muted-foreground max-w-2xl">
               All components use CSS variables from your design system. 
               Customize the entire site by editing <code className="bg-muted px-2 py-1 rounded text-sm">theme-light.css</code> and <code className="bg-muted px-2 py-1 rounded text-sm">theme-dark.css</code>.
             </p>
@@ -39,7 +39,7 @@ export function DesignSystemShowcase() {
       </section>
 
       {/* Stats Section */}
-      <section className="relative -mt-6 z-10 pb-12">
+      <section className="relative translate-y-[-1.5rem] z-10 pb-12">
         <StatsDisplay
           stats={[
             { value: "120", label: "CSS Variables", description: "Design tokens", icon: "Sliders" },
@@ -55,8 +55,8 @@ export function DesignSystemShowcase() {
       {/* Color Palette Section */}
       <section className="py-16">
         <Container>
-          <div className="mb-12">
-            <div className="flex items-center gap-3 mb-4">
+          <div className="flex flex-col gap-4 pb-12">
+            <div className="flex items-center gap-3">
               <PhosphorIcons.Palette className="w-6 h-6 text-primary" />
               <h2>Color Palette</h2>
             </div>
@@ -66,9 +66,9 @@ export function DesignSystemShowcase() {
           </div>
 
           {/* Primary Colors */}
-          <div className="grid gap-8 mb-12">
-            <div>
-              <h3 className="mb-4">Primary Colors</h3>
+          <div className="grid gap-8 pb-12">
+            <div className="flex flex-col gap-4">
+              <h3>Primary Colors</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <ColorSwatch
                   name="Primary"
@@ -102,8 +102,8 @@ export function DesignSystemShowcase() {
             </div>
 
             {/* Semantic Colors */}
-            <div>
-              <h3 className="mb-4">Semantic Colors</h3>
+            <div className="flex flex-col gap-4">
+              <h3>Semantic Colors</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <ColorSwatch
                   name="Success"
@@ -137,8 +137,8 @@ export function DesignSystemShowcase() {
             </div>
 
             {/* Background Colors */}
-            <div>
-              <h3 className="mb-4">Background Colors</h3>
+            <div className="flex flex-col gap-4">
+              <h3>Background Colors</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <ColorSwatch
                   name="Background"
@@ -173,8 +173,8 @@ export function DesignSystemShowcase() {
       {/* Typography Section */}
       <section className="py-16 bg-muted/30">
         <Container>
-          <div className="mb-12">
-            <div className="flex items-center gap-3 mb-4">
+          <div className="flex flex-col gap-4 pb-12">
+            <div className="flex items-center gap-3">
               <PhosphorIcons.TextT className="w-6 h-6 text-primary" />
               <h2>Typography Scale</h2>
             </div>
@@ -184,44 +184,44 @@ export function DesignSystemShowcase() {
           </div>
 
           {/* Headings */}
-          <div className="space-y-8">
-            <div className="bg-card border border-border rounded-lg p-6">
-              <p className="text-sm text-muted-foreground mb-6">
+          <div className="flex flex-col gap-8">
+            <div className="bg-card border border-border rounded-lg p-6 flex flex-col gap-6">
+              <p className="text-sm text-muted-foreground">
                 Headings use <code className="bg-muted px-2 py-1 rounded">font-family: var(--font-family-lora)</code>
               </p>
-              <div className="space-y-4">
-                <div>
-                  <h1 className="mb-2">Heading 1</h1>
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-2">
+                  <h1>Heading One — Lora Bold (700)</h1>
                   <p className="text-xs text-muted-foreground font-mono">
                     var(--text-6xl) • var(--font-weight-bold) • Lora
                   </p>
                 </div>
-                <div>
-                  <h2 className="mb-2">Heading 2</h2>
+                <div className="flex flex-col gap-2">
+                  <h2>Heading Two — Lora Bold (700)</h2>
                   <p className="text-xs text-muted-foreground font-mono">
                     var(--text-4xl) • var(--font-weight-semibold) • Lora
                   </p>
                 </div>
-                <div>
-                  <h3 className="mb-2">Heading 3</h3>
+                <div className="flex flex-col gap-2">
+                  <h3>Heading Three — Lora Bold (700)</h3>
                   <p className="text-xs text-muted-foreground font-mono">
                     var(--text-3xl) • var(--font-weight-semibold) • Lora
                   </p>
                 </div>
-                <div>
-                  <h4 className="mb-2">Heading 4</h4>
+                <div className="flex flex-col gap-2">
+                  <h4>Heading Four — Lora Bold (700)</h4>
                   <p className="text-xs text-muted-foreground font-mono">
                     var(--text-2xl) • var(--font-weight-medium) • Lora
                   </p>
                 </div>
-                <div>
-                  <h5 className="mb-2">Heading 5</h5>
+                <div className="flex flex-col gap-2">
+                  <h5>Heading Five — Lora Bold (700)</h5>
                   <p className="text-xs text-muted-foreground font-mono">
                     var(--text-xl) • var(--font-weight-medium) • Lora
                   </p>
                 </div>
-                <div>
-                  <h6 className="mb-2">Heading 6</h6>
+                <div className="flex flex-col gap-2">
+                  <h6>Heading Six — Lora Bold (700)</h6>
                   <p className="text-xs text-muted-foreground font-mono">
                     var(--text-lg) • var(--font-weight-medium) • Lora
                   </p>
@@ -230,41 +230,36 @@ export function DesignSystemShowcase() {
             </div>
 
             {/* Body Text */}
-            <div className="bg-card border border-border rounded-lg p-6">
-              <p className="text-sm text-muted-foreground mb-6">
-                Body text uses <code className="bg-muted px-2 py-1 rounded">font-family: var(--font-family-noto-sans)</code>
-              </p>
-              <div className="space-y-4">
-                <div>
-                  <p className="text-base mb-2">
-                    Base text (16px) - This is the default body text size used throughout the site for paragraphs and content.
-                  </p>
-                  <p className="text-xs text-muted-foreground font-mono">
-                    var(--text-base) • var(--font-weight-normal) • Noto Sans
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm mb-2">
-                    Small text (14px) - Used for captions, labels, and secondary information.
-                  </p>
-                  <p className="text-xs text-muted-foreground font-mono">
-                    var(--text-sm) • var(--font-weight-normal) • Noto Sans
-                  </p>
-                </div>
-                <div>
-                  <p className="text-xs mb-2">
-                    Extra small text (12px) - Used for fine print and metadata.
-                  </p>
-                  <p className="text-xs text-muted-foreground font-mono">
-                    var(--text-xs) • var(--font-weight-normal) • Noto Sans
-                  </p>
-                </div>
+            <div className="flex flex-col gap-4">
+              <div className="bg-card border border-border rounded-lg p-6 flex flex-col gap-6">
+                <p className="text-sm text-muted-foreground">
+                  Base text (16px) - This is the default body text size used throughout the site for paragraphs and content.
+                </p>
+                <p className="text-xs text-muted-foreground font-mono">
+                  var(--text-base) • var(--font-weight-normal) • Noto Sans
+                </p>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-6 flex flex-col gap-6">
+                <p className="text-sm text-muted-foreground">
+                  Small text (14px) - Used for captions, labels, and secondary information.
+                </p>
+                <p className="text-xs text-muted-foreground font-mono">
+                  var(--text-sm) • var(--font-weight-normal) • Noto Sans
+                </p>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-6 flex flex-col gap-6">
+                <p className="text-sm text-muted-foreground">
+                  Extra small text (12px) - Used for fine print and metadata.
+                </p>
+                <p className="text-xs text-muted-foreground font-mono">
+                  var(--text-xs) • var(--font-weight-normal) • Noto Sans
+                </p>
               </div>
             </div>
 
             {/* Code */}
-            <div className="bg-card border border-border rounded-lg p-6">
-              <p className="text-sm text-muted-foreground mb-6">
+            <div className="bg-card border border-border rounded-lg p-6 flex flex-col gap-6">
+              <p className="text-sm text-muted-foreground">
                 Code uses <code className="bg-muted px-2 py-1 rounded">font-family: var(--font-family-mono)</code>
               </p>
               <pre className="bg-muted p-4 rounded-lg overflow-x-auto">
@@ -285,8 +280,8 @@ const theme = {
       {/* Spacing Section */}
       <section className="py-16">
         <Container>
-          <div className="mb-12">
-            <div className="flex items-center gap-3 mb-4">
+          <div className="flex flex-col gap-4 pb-12">
+            <div className="flex items-center gap-3">
               <PhosphorIcons.Ruler className="w-6 h-6 text-primary" />
               <h2>Spacing Scale</h2>
             </div>
@@ -297,9 +292,9 @@ const theme = {
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Section Spacing */}
-            <div className="bg-card border border-border rounded-lg p-6">
-              <h3 className="mb-4">Section Spacing</h3>
-              <div className="space-y-4">
+            <div className="bg-card border border-border rounded-lg p-6 flex flex-col gap-4">
+              <h3>Section Spacing</h3>
+              <div className="flex flex-col gap-4">
                 <SpacingDemo
                   label="Small"
                   variable="--spacing-section-sm"
@@ -319,9 +314,9 @@ const theme = {
             </div>
 
             {/* Gap Spacing */}
-            <div className="bg-card border border-border rounded-lg p-6">
-              <h3 className="mb-4">Gap Spacing</h3>
-              <div className="space-y-4">
+            <div className="bg-card border border-border rounded-lg p-6 flex flex-col gap-4">
+              <h3>Gap Spacing</h3>
+              <div className="flex flex-col gap-4">
                 <SpacingDemo
                   label="Small"
                   variable="--spacing-gap-sm"
@@ -346,8 +341,8 @@ const theme = {
       {/* Border Radius Section */}
       <section className="py-16 bg-muted/30">
         <Container>
-          <div className="mb-12">
-            <div className="flex items-center gap-3 mb-4">
+          <div className="flex flex-col gap-4 pb-12">
+            <div className="flex items-center gap-3">
               <PhosphorIcons.Circle className="w-6 h-6 text-primary" />
               <h2>Border Radius Scale</h2>
             </div>
@@ -368,8 +363,8 @@ const theme = {
       {/* Component Examples */}
       <section className="py-16">
         <Container>
-          <div className="mb-12">
-            <div className="flex items-center gap-3 mb-4">
+          <div className="flex flex-col gap-4 pb-12">
+            <div className="flex items-center gap-3">
               <PhosphorIcons.Check className="w-6 h-6 text-primary" />
               <h2>Component Examples</h2>
             </div>
@@ -380,8 +375,8 @@ const theme = {
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Buttons */}
-            <div className="bg-card border border-border rounded-lg p-6">
-              <h3 className="mb-4">Buttons</h3>
+            <div className="bg-card border border-border rounded-lg p-6 flex flex-col gap-4">
+              <h3>Buttons</h3>
               <div className="flex flex-wrap gap-3">
                 <button className="button button--primary">
                   Primary Button
@@ -396,14 +391,14 @@ const theme = {
                   Ghost Button
                 </button>
               </div>
-              <p className="text-xs text-muted-foreground mt-4">
+              <p className="text-xs text-muted-foreground pt-4">
                 Uses <code className="bg-muted px-1 rounded">var(--primary)</code>, <code className="bg-muted px-1 rounded">var(--secondary)</code>, etc.
               </p>
             </div>
 
             {/* Cards */}
-            <div className="bg-card border border-border rounded-lg p-6">
-              <h3 className="mb-4">Cards</h3>
+            <div className="bg-card border border-border rounded-lg p-6 flex flex-col gap-4">
+              <h3>Cards</h3>
               <div className="wp-block-card">
                 <div className="card__header">
                   <h4 className="card__title">Card Title</h4>
@@ -418,9 +413,9 @@ const theme = {
             </div>
 
             {/* Alerts */}
-            <div className="bg-card border border-border rounded-lg p-6">
-              <h3 className="mb-4">Semantic Alerts</h3>
-              <div className="space-y-3">
+            <div className="bg-card border border-border rounded-lg p-6 flex flex-col gap-4">
+              <h3>Semantic Alerts</h3>
+              <div className="flex flex-col gap-3">
                 <div className="bg-success/10 border border-success/20 rounded-lg p-4">
                   <div className="flex items-center gap-2">
                     <PhosphorIcons.Check className="w-4 h-4 text-success" />
@@ -449,9 +444,9 @@ const theme = {
             </div>
 
             {/* Form Elements */}
-            <div className="bg-card border border-border rounded-lg p-6">
-              <h3 className="mb-4">Form Elements</h3>
-              <div className="space-y-4">
+            <div className="bg-card border border-border rounded-lg p-6 flex flex-col gap-4">
+              <h3>Form Elements</h3>
+              <div className="flex flex-col gap-4">
                 <div>
                   <label className="form__label">Input Field</label>
                   <input
@@ -469,7 +464,7 @@ const theme = {
                   />
                 </div>
               </div>
-              <p className="text-xs text-muted-foreground mt-4">
+              <p className="text-xs text-muted-foreground pt-4">
                 Uses <code className="bg-muted px-1 rounded">var(--input-background)</code>, <code className="bg-muted px-1 rounded">var(--border)</code>, etc.
               </p>
             </div>
@@ -480,22 +475,22 @@ const theme = {
       {/* Customization Guide */}
       <section className="py-16 bg-primary/5">
         <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="mb-4">How to Customize</h2>
-            <p className="text-lg text-muted-foreground mb-8">
+          <div className="max-w-3xl text-center flex flex-col items-center gap-4">
+            <h2>How to Customize</h2>
+            <p className="text-lg text-muted-foreground">
               Edit these 3 CSS files to customize the entire site:
             </p>
-            <div className="grid md:grid-cols-3 gap-4">
-              <div className="bg-card border border-border rounded-lg p-6">
-                <p className="font-mono text-sm text-primary mb-2">theme-light.css</p>
+            <div className="grid md:grid-cols-3 gap-4 w-full pt-4">
+              <div className="bg-card border border-border rounded-lg p-6 flex flex-col gap-2">
+                <p className="font-mono text-sm text-primary">theme-light.css</p>
                 <p className="text-sm text-muted-foreground">Light mode colors</p>
               </div>
-              <div className="bg-card border border-border rounded-lg p-6">
-                <p className="font-mono text-sm text-primary mb-2">theme-dark.css</p>
+              <div className="bg-card border border-border rounded-lg p-6 flex flex-col gap-2">
+                <p className="font-mono text-sm text-primary">theme-dark.css</p>
                 <p className="text-sm text-muted-foreground">Dark mode colors</p>
               </div>
-              <div className="bg-card border border-border rounded-lg p-6">
-                <p className="font-mono text-sm text-primary mb-2">theme.css</p>
+              <div className="bg-card border border-border rounded-lg p-6 flex flex-col gap-2">
+                <p className="font-mono text-sm text-primary">theme.css</p>
                 <p className="text-sm text-muted-foreground">Typography & spacing</p>
               </div>
             </div>
@@ -520,12 +515,12 @@ interface ColorSwatchProps {
 
 function ColorSwatch({ name, variable, bgClass, textClass, description, border }: ColorSwatchProps) {
   return (
-    <div className="bg-card border border-border rounded-lg p-4">
-      <div className={`${bgClass} ${textClass} rounded-md h-20 flex items-center justify-center mb-3 ${border ? 'border border-border' : ''}`}>
+    <div className="bg-card border border-border rounded-lg p-4 flex flex-col gap-1">
+      <div className={`${bgClass} ${textClass} rounded-md h-20 flex items-center justify-center pb-2 ${border ? 'border border-border' : ''}`}>
         <span className="font-medium text-sm">{name}</span>
       </div>
-      <p className="text-sm font-medium mb-1">{name}</p>
-      <p className="text-xs text-muted-foreground mb-2">{description}</p>
+      <p className="text-sm font-medium">{name}</p>
+      <p className="text-xs text-muted-foreground">{description}</p>
       <code className="text-xs font-mono text-primary">{variable}</code>
     </div>
   );
@@ -542,8 +537,8 @@ interface SpacingDemoProps {
 
 function SpacingDemo({ label, variable, height }: SpacingDemoProps) {
   return (
-    <div>
-      <div className="flex items-center justify-between mb-2">
+    <div className="flex flex-col gap-2">
+      <div className="flex items-center justify-between">
         <span className="text-sm font-medium">{label}</span>
         <code className="text-xs font-mono text-muted-foreground">{variable}</code>
       </div>
@@ -563,9 +558,9 @@ interface RadiusDemoProps {
 
 function RadiusDemo({ label, variable, className }: RadiusDemoProps) {
   return (
-    <div className="bg-card border border-border rounded-lg p-4">
-      <div className={`${className} bg-primary h-20 mb-3`} />
-      <p className="text-sm font-medium mb-1">{label}</p>
+    <div className="bg-card border border-border rounded-lg p-4 flex flex-col gap-1">
+      <div className={`${className} bg-primary h-20 pb-2`} />
+      <p className="text-sm font-medium">{label}</p>
       <code className="text-xs font-mono text-muted-foreground">{variable}</code>
     </div>
   );

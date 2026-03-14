@@ -1,5 +1,7 @@
 import type { Preview } from "@storybook/react";
-import "../src/styles/index.css";
+import "../src/styles/fonts.css";
+import "../src/styles/theme.css";
+import "../src/styles/global.css";
 
 const preview: Preview = {
   parameters: {
@@ -15,44 +17,34 @@ const preview: Preview = {
       values: [
         {
           name: "light",
-          value: "#ffffff",
+          value: "#FFFFFF",
         },
         {
           name: "dark",
-          value: "#0a0a0a",
+          value: "#0A0A0A",
+        },
+        {
+          name: "muted",
+          value: "#F5F5F0",
         },
       ],
+    },
+    docs: {
+      toc: true,
     },
   },
   globalTypes: {
     theme: {
-      name: "Theme",
       description: "Global theme for components",
       defaultValue: "light",
       toolbar: {
+        title: "Theme",
         icon: "circlehollow",
         items: ["light", "dark"],
-        showName: true,
         dynamicTitle: true,
       },
     },
   },
-  decorators: [
-    (Story, context) => {
-      const theme = context.globals.theme || "light";
-      
-      // Apply theme to document element
-      if (typeof document !== "undefined") {
-        if (theme === "dark") {
-          document.documentElement.classList.add("dark");
-        } else {
-          document.documentElement.classList.remove("dark");
-        }
-      }
-
-      return <Story />;
-    },
-  ],
 };
 
 export default preview;

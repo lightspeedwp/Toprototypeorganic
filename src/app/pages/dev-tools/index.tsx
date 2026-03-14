@@ -203,18 +203,18 @@ export default function DevToolsHub() {
           <div className="py-section-md">
             <div className="flex items-start justify-between gap-6 flex-wrap">
               <div className="max-w-2xl">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 pb-6">
                   <Wrench className="w-4 h-4 text-primary" />
                   <span className="text-primary font-sans text-sm font-medium">Legacy Hub</span>
                 </div>
-                <h1 className="mb-4">Developer Tools</h1>
+                <h1 className="pb-4">Developer Tools</h1>
                 <p className="text-muted-foreground mb-0">
                   Comprehensive development utilities for building, testing, and deploying with confidence.
                 </p>
               </div>
 
               <div className="bg-card border border-border rounded-xl px-6 py-4 shadow-sm">
-                <p className="text-muted-foreground text-sm mb-1">Total Tools</p>
+                <p className="text-muted-foreground text-sm pb-1">Total Tools</p>
                 <p className="font-serif text-fluid-3xl text-primary mb-0">{DEV_TOOLS.length}</p>
               </div>
             </div>
@@ -228,7 +228,7 @@ export default function DevToolsHub() {
       <section className="py-section-sm bg-background">
         <Container>
           {/* Category Filter */}
-          <div className="flex flex-wrap gap-2 mb-8">
+          <div className="flex flex-wrap gap-2 pb-8">
             {CATEGORY_FILTERS.map((category) => {
               const Icon = category.icon;
               const isActive = selectedCategory === category.id;
@@ -273,7 +273,7 @@ export default function DevToolsHub() {
 
                   <div className="p-6 flex flex-col flex-1">
                     {/* Header */}
-                    <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-start justify-between pb-4">
                       <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
                         <Icon className="w-5 h-5 text-primary" />
                       </div>
@@ -282,16 +282,16 @@ export default function DevToolsHub() {
                       </span>
                     </div>
 
-                    <h5 className="mb-2 group-hover:text-primary transition-colors">{tool.name}</h5>
-                    <p className="text-muted-foreground text-sm mb-4 flex-1">
+                    <h5 className="pb-2 group-hover:text-primary transition-colors">{tool.name}</h5>
+                    <p className="text-muted-foreground text-sm pb-4 flex-1">
                       {tool.description}
                     </p>
 
                     {/* Features */}
-                    <div className="space-y-1.5 mb-4">
+                    <div className="flex flex-col gap-1.5 pb-4">
                       {tool.features.slice(0, 3).map((feature, idx) => (
                         <div key={idx} className="flex items-start gap-2 text-sm">
-                          <CircleCheck className="w-3.5 h-3.5 text-primary flex-shrink-0 mt-0.5" />
+                          <CircleCheck className="w-3.5 h-3.5 text-primary flex-shrink-0 translate-y-px" />
                           <span className="text-muted-foreground">{feature}</span>
                         </div>
                       ))}

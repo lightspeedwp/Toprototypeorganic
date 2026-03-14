@@ -11,16 +11,17 @@
 
 import { ALL_TOURS, ALL_TRAVEL_STYLES } from "../data/mockExpanded";
 import { getPageSectionFAQs } from "../data/mock";
-import { MagnifyingGlass as Search, SlidersHorizontal, X, TrendUp as TrendingUp, Clock, GridFour as LayoutGrid } from "@phosphor-icons/react";
+import { MagnifyingGlass as Search, SlidersHorizontal, TrendUp as TrendingUp, Clock, GridFour as LayoutGrid } from "@phosphor-icons/react";
 import { TourCollectionBlock } from "../components/blocks/TourCollectionBlock";
 import { PageShell } from "../components/parts/PageShell";
 import { CTA } from "../components/patterns/CTA";
 import { FAQ } from "../components/patterns/FAQ";
+import { CollapsibleFilterPanel } from "../components/patterns/CollapsibleFilterPanel";
+import { ActiveFilterSummary, searchFilterTag, multiFilterTags, buildFilterTags } from "../components/patterns/ActiveFilterSummary";
 import { Container } from "../components/common/Container";
 import { SectionHeader } from "../components/common/SectionHeader";
 import { useNavigation } from "../contexts/NavigationContext";
 import { useTourFilters, type SortOption } from "../hooks/useTourFilters";
-import { motion as Motion, AnimatePresence } from "motion/react";
 import "../../styles/templates/archive-tours.css";
 
 export function ArchiveTourTemplate() {
@@ -30,6 +31,7 @@ export function ArchiveTourTemplate() {
   const {
     searchQuery,
     setSearchQuery,
+    flushSearch,
     selectedStyles,
     setSelectedStyles,
     selectedDurations,
@@ -41,16 +43,17 @@ export function ArchiveTourTemplate() {
     filteredAndSortedTours,
     toggleFilter,
     resetFilters,
+    activeFilterCount,
     durationOptions
   } = useTourFilters(ALL_TOURS);
 
-  const filterCount = selectedStyles.length + selectedDurations.length;
+  const filterCount = activeFilterCount;
 
   return (
     <PageShell context="tours-archive" as="main" className="wp-template-archive-tours theme-organic">
-      <div className="organic-section-top">
+      <section className="organic-section-top texture-medium">
         {/* Advanced Control Bar */}
-        <section className="wp-template-archive-tours__filters py-section-sm">
+        <div className="wp-template-archive-tours__filters py-section-sm">
           <Container>
             <div className="wp-template-archive-tours__filter-bar">
             <div className="wp-template-archive-tours__filter-group">
@@ -74,6 +77,7 @@ export function ArchiveTourTemplate() {
                   placeholder="Find your adventure..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === 'Enter') flushSearch(); }}
                   className="wp-template-archive-tours__search-input"
                 />
               </div>
@@ -97,71 +101,57 @@ export function ArchiveTourTemplate() {
           </div>
 
           {/* Expandable Filters Panel */}
-          <AnimatePresence>
-            {showFilters && (
-              <Motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                className="wp-template-archive-tours__panel"
-              >
-                <div className="wp-template-archive-tours__panel-grid">
-                  {/* Style Filter */}
-                  <div className="wp-template-archive-tours__panel-column">
-                    <h4 className="wp-template-archive-tours__panel-title">
-                      <TrendingUp className="size-3" /> Travel Architecture
-                    </h4>
-                    <div className="wp-template-archive-tours__chip-group">
-                      {ALL_TRAVEL_STYLES.map(style => (
-                        <button
-                          key={style.id}
-                          onClick={() => toggleFilter(setSelectedStyles, style.name)}
-                          className={`wp-template-archive-tours__chip ${selectedStyles.includes(style.name) ? 'wp-template-archive-tours__chip--active' : ''}`}
-                        >
-                          {style.name}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Duration Filter */}
-                  <div className="wp-template-archive-tours__panel-column">
-                    <h4 className="wp-template-archive-tours__panel-title">
-                      <Clock className="size-3" /> Duration
-                    </h4>
-                    <div className="wp-template-archive-tours__chip-group">
-                      {durationOptions.map(opt => (
-                        <button
-                          key={opt.id}
-                          onClick={() => toggleFilter(setSelectedDurations, opt.id)}
-                          className={`wp-template-archive-tours__chip ${selectedDurations.includes(opt.id) ? 'wp-template-archive-tours__chip--active' : ''}`}
-                        >
-                          {opt.label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Quick Actions */}
-                  <div className="wp-template-archive-tours__panel-column flex flex-col justify-end">
-                    <button
-                      onClick={resetFilters}
-                      className="wp-template-archive-tours__reset-button"
-                    >
-                      <X className="size-3" /> Reset Selections
-                    </button>
-                  </div>
-                </div>
-              </Motion.div>
-            )}
-          </AnimatePresence>
+          <CollapsibleFilterPanel
+            isOpen={showFilters}
+            groups={[
+              {
+                id: "travel-style",
+                title: "Travel Architecture",
+                icon: <TrendingUp className="size-3" />,
+                items: ALL_TRAVEL_STYLES.map((s) => ({ id: s.name, label: s.name })),
+                selectedIds: selectedStyles,
+                onToggle: (name) => toggleFilter(setSelectedStyles, name),
+              },
+              {
+                id: "duration",
+                title: "Duration",
+                icon: <Clock className="size-3" />,
+                items: durationOptions.map((o) => ({ id: o.id, label: o.label })),
+                selectedIds: selectedDurations,
+                onToggle: (id) => toggleFilter(setSelectedDurations, id),
+              },
+            ]}
+            onReset={resetFilters}
+          />
         </Container>
-      </section>
       </div>
 
-      <div className="organic-section-middle">
+      {/* Active Filter Summary */}
+      <Container>
+        <ActiveFilterSummary
+          tags={buildFilterTags(
+            searchFilterTag(searchQuery, () => setSearchQuery("")),
+            multiFilterTags(
+              "style",
+              selectedStyles.map((s) => ({ id: s, label: s })),
+              (s) => toggleFilter(setSelectedStyles, s)
+            ),
+            multiFilterTags(
+              "dur",
+              selectedDurations
+                .map((id) => ({ id, label: durationOptions.find((o) => o.id === id)?.label || id })),
+              (id) => toggleFilter(setSelectedDurations, id)
+            ),
+          )}
+          onClearAll={resetFilters}
+        />
+      </Container>
+
+      </section>
+
+      <section className="organic-section-middle texture-subtle">
         {/* Main Results */}
-        <section className="wp-template-archive-tours__content py-section-lg">
+        <div className="wp-template-archive-tours__content py-section-lg">
           <Container className="flex flex-col gap-gap-lg">
             <SectionHeader
               section={{
@@ -177,10 +167,10 @@ export function ArchiveTourTemplate() {
               onSelect={(tour) => navigateToTour(tour.slug)}
             />
           </Container>
-        </section>
-      </div>
+        </div>
+      </section>
 
-      <div className="organic-section-bottom">
+      <section className="organic-section-bottom texture-subtle">
         <FAQ
           title="Expedition Guidance"
           subtitle="Insights and answers to prepare you for your legendary journey."
@@ -194,7 +184,7 @@ export function ArchiveTourTemplate() {
           primaryAction={{ label: "Request Bespoke Design", onClick: () => navigateTo("/contact") }}
           secondaryAction={{ label: "Speak to an Expert", onClick: () => navigateTo("/contact") }}
         />
-      </div>
+      </section>
     </PageShell>
   );
 }

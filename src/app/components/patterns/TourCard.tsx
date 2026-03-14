@@ -75,7 +75,7 @@ export function TourCard({ tour, onClick, layout = "card", animated = false }: T
               </div>
             )}
             {tour.difficulty && (
-              <div className="wp-card__badge wp-card__badge--category">
+              <div className="wp-card__badge wp-card__badge--category text-[color:var(--color-primary-foreground)]">
                 {tour.difficulty}
               </div>
             )}
@@ -84,45 +84,47 @@ export function TourCard({ tour, onClick, layout = "card", animated = false }: T
       </div>
       
       {/* Content Section */}
-      <div className="wp-card__content">
-        <div className="wp-card__header">
-          <div className="wp-card__category">
-            {tour.destination || 'Global Experience'}
-          </div>
-          <h3 className="wp-card__title">
-            <a href={`/tours/${tour.id}`} onClick={(e) => { e.preventDefault(); handleClick(); }}>
-              {tour.title}
-            </a>
-          </h3>
-        </div>
-        
-        <p className="wp-card__description">
-          {tour.excerpt}
-        </p>
-        
-        {/* Meta Grid */}
-        <div className="wp-card__meta">
-          <div className="wp-card__meta-item">
-            <Clock className="wp-card__meta-icon" />
-            <span className="wp-card__meta-label">Duration:</span>
-            <span>{tour.duration}</span>
+      <div className="wp-card__content flex flex-col flex-1">
+        <div className="flex-1">
+          <div className="wp-card__header">
+            <div className="wp-card__category">
+              {tour.destination || 'Global Experience'}
+            </div>
+            <h3 className="wp-card__title m-0">
+              <a className="block w-full text-[length:var(--text-xl)] font-[family:var(--font-family-lora)]" href={`/tours/${tour.id}`} onClick={(e) => { e.preventDefault(); handleClick(); }}>
+                {tour.title}
+              </a>
+            </h3>
           </div>
           
-          <div className="wp-card__meta-item">
-            <Users className="wp-card__meta-icon" />
-            <span className="wp-card__meta-label">Group:</span>
-            <span>{tour.groupSize}</span>
+          <p className="wp-card__description">
+            {tour.excerpt}
+          </p>
+          
+          {/* Meta Grid */}
+          <div className="wp-card__meta px-0 pt-element-md pb-fluid-sm">
+            <div className="wp-card__meta-item">
+              <Clock className="wp-card__meta-icon" />
+              <span className="wp-card__meta-label">Duration:</span>
+              <span>{tour.duration}</span>
+            </div>
+            
+            <div className="wp-card__meta-item">
+              <Users className="wp-card__meta-icon" />
+              <span className="wp-card__meta-label">Group:</span>
+              <span>{tour.groupSize}</span>
+            </div>
           </div>
         </div>
         
         {/* Footer */}
-        <div className="wp-card__footer">
-          <div className="wp-card__price">
-            <span className="wp-card__price-amount">{tour.price}</span>
-          </div>
+        <div className="flex flex-col gap-fluid-md pt-element-md border-t border-[color:var(--color-border)] w-full">
+          <span className="font-[family:var(--font-family-lora)] text-[length:var(--text-xl)] font-[weight:var(--font-weight-bold)] text-[color:var(--color-primary)] w-full block text-left">
+            {tour.price}
+          </span>
           
-          <div className="wp-card__action">
-            View Details <ArrowRight className="wp-card__action-icon" />
+          <div className="flex w-full items-center justify-center gap-fluid-sm bg-[color:var(--color-primary)] text-[color:var(--color-primary-foreground)] py-element-sm px-element-md rounded-[var(--radius-md)] font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] transition-colors hover:bg-[color:var(--color-primary)]/90">
+            View Details <ArrowRight className="w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)]" />
           </div>
         </div>
       </div>

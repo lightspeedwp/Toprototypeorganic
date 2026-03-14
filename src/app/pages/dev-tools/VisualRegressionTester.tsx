@@ -113,22 +113,22 @@ export default function VisualRegressionTester() {
       {/* Header */}
       <div className="bg-muted border-b border-border py-section-sm">
         <Container>
-          <div className="flex items-start justify-between gap-6">
-            <div>
-              <div className="flex items-center gap-3 mb-2">
-                <Camera className="w-8 h-8 text-primary" />
-                <h1>Visual Regression Tester</h1>
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-fluid-sm">
+            <div className="flex flex-col gap-element-sm">
+              <div className="wp-page-header__icon-container w-14 h-14 flex items-center justify-center rounded-[var(--radius-lg)] bg-primary/10 text-primary transition-colors hover:bg-primary/20">
+                <Camera className="w-7 h-7" />
               </div>
+              <h1>Visual Regression Tester</h1>
               <p className="text-muted-foreground">
                 Capture component snapshots and detect visual changes
               </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 w-full md:w-auto">
               <button
                 onClick={handleCapture}
                 disabled={isCapturing}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50"
+                className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50 w-full md:w-auto md:shrink-0"
               >
                 <Camera className="w-4 h-4" />
                 {isCapturing ? 'Capturing...' : 'Capture Snapshot'}
@@ -136,7 +136,7 @@ export default function VisualRegressionTester() {
 
               <button
                 onClick={handleClearAll}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-destructive text-destructive-foreground hover:bg-destructive/90 transition-colors"
+                className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-destructive text-destructive-foreground hover:bg-destructive/90 transition-colors w-full md:w-auto md:shrink-0"
               >
                 <Trash2 className="w-4 h-4" />
                 Clear All
@@ -149,12 +149,12 @@ export default function VisualRegressionTester() {
       <Container className="py-section-sm">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left: Capture Section */}
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <div className="bg-card p-6 rounded-lg border border-border">
-              <h2 className="mb-4">Capture Snapshot</h2>
+              <h2 className="pb-4">Capture Snapshot</h2>
 
-              <div className="mb-4">
-                <label htmlFor="componentName" className="block text-sm mb-2">
+              <div className="pb-4">
+                <label htmlFor="componentName" className="block text-sm pb-2">
                   Component Name
                 </label>
                 <input
@@ -168,15 +168,15 @@ export default function VisualRegressionTester() {
               </div>
 
               <div className="bg-muted p-6 rounded-lg border border-border min-h-[200px]" ref={previewRef}>
-                <h3 className="mb-4">Preview Component</h3>
-                <p className="text-muted-foreground mb-4">
+                <h3 className="pb-4">Preview Component</h3>
+                <p className="text-muted-foreground pb-4">
                   This is a sample component that will be captured.
                 </p>
                 
                 {/* Sample component for demonstration */}
                 <div className="bg-card p-4 rounded-lg border border-border">
                   <h4>Sample Card</h4>
-                  <p className="text-muted-foreground mt-2">
+                  <p className="text-muted-foreground pt-2">
                     This card demonstrates the visual regression testing capabilities.
                   </p>
                   <button className="px-4 py-2 rounded-lg bg-primary text-primary-foreground">
@@ -185,7 +185,7 @@ export default function VisualRegressionTester() {
                 </div>
               </div>
 
-              <div className="mt-4 p-3 bg-accent text-accent-foreground rounded text-sm">
+              <div className="pt-4 p-3 bg-accent text-accent-foreground rounded text-sm">
                 <strong>How it works:</strong> Snapshots capture all styles, layout, colors, 
                 and typography of a component. Compare snapshots to detect unintended visual changes.
               </div>
@@ -193,16 +193,16 @@ export default function VisualRegressionTester() {
 
             {/* Saved Snapshots */}
             <div className="bg-card p-6 rounded-lg border border-border">
-              <h2 className="mb-4">Saved Snapshots ({snapshots.length})</h2>
+              <h2 className="pb-4">Saved Snapshots ({snapshots.length})</h2>
 
               {snapshots.length === 0 ? (
-                <div className="text-center py-8 text-muted-foreground">
-                  <Camera className="w-8 h-8 mx-auto mb-2" />
+                <div className="text-center py-8 text-muted-foreground flex flex-col items-center">
+                  <Camera className="w-8 h-8 pb-2" />
                   <p>No snapshots yet</p>
                   <p className="text-sm">Create your first snapshot to get started</p>
                 </div>
               ) : (
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   {snapshots.map((snapshot, idx) => (
                     <div
                       key={idx}
@@ -232,12 +232,12 @@ export default function VisualRegressionTester() {
           {/* Right: Comparison Results */}
           <div>
             {comparison ? (
-              <div className="space-y-6">
+              <div className="flex flex-col gap-6">
                 {/* Summary */}
                 <div className={`p-6 rounded-lg border ${getSeverityBg(comparison.severity)}`}>
-                  <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-start justify-between pb-4">
                     <div>
-                      <h2 className="mb-1">{comparison.componentName}</h2>
+                      <h2 className="pb-1">{comparison.componentName}</h2>
                       <p className={`text-sm ${getSeverityColor(comparison.severity)}`}>
                         {comparison.summary}
                       </p>
@@ -251,17 +251,17 @@ export default function VisualRegressionTester() {
 
                   <div className="grid grid-cols-3 gap-4">
                     <div>
-                      <div className="text-sm text-muted-foreground mb-1">Changes</div>
+                      <div className="text-sm text-muted-foreground pb-1">Changes</div>
                       <div className="font-serif text-fluid-2xl">{comparison.changeCount}</div>
                     </div>
                     <div>
-                      <div className="text-sm text-muted-foreground mb-1">Severity</div>
+                      <div className="text-sm text-muted-foreground pb-1">Severity</div>
                       <div className={`font-serif text-fluid-2xl capitalize ${getSeverityColor(comparison.severity)}`}>
                         {comparison.severity}
                       </div>
                     </div>
                     <div>
-                      <div className="text-sm text-muted-foreground mb-1">Status</div>
+                      <div className="text-sm text-muted-foreground pb-1">Status</div>
                       <div className={`font-serif text-fluid-2xl ${comparison.hasChanges ? 'text-destructive' : 'text-primary'}`}>
                         {comparison.hasChanges ? 'Changed' : 'OK'}
                       </div>
@@ -272,15 +272,15 @@ export default function VisualRegressionTester() {
                 {/* Changes Detail */}
                 {comparison.changes.length > 0 && (
                   <div className="bg-card p-6 rounded-lg border border-border">
-                    <h3 className="mb-4">Detected Changes ({comparison.changes.length})</h3>
+                    <h3 className="pb-4">Detected Changes ({comparison.changes.length})</h3>
 
-                    <div className="space-y-4">
+                    <div className="flex flex-col gap-4">
                       {comparison.changes.map((change, idx) => (
                         <div
                           key={idx}
                           className="p-4 rounded-lg bg-muted border border-border"
                         >
-                          <div className="flex items-start justify-between mb-2">
+                          <div className="flex items-start justify-between pb-2">
                             <div>
                               <div className="font-medium capitalize">{change.category}</div>
                               <div className="text-sm text-muted-foreground">{change.property}</div>
@@ -294,15 +294,15 @@ export default function VisualRegressionTester() {
                             </span>
                           </div>
 
-                          <div className="grid grid-cols-2 gap-4 mb-3">
+                          <div className="grid grid-cols-2 gap-4 pb-3">
                             <div>
-                              <div className="text-xs text-muted-foreground mb-1">Old Value</div>
+                              <div className="text-xs text-muted-foreground pb-1">Old Value</div>
                               <code className="text-xs bg-background px-2 py-1 rounded">
                                 {String(change.oldValue)}
                               </code>
                             </div>
                             <div>
-                              <div className="text-xs text-muted-foreground mb-1">New Value</div>
+                              <div className="text-xs text-muted-foreground pb-1">New Value</div>
                               <code className="text-xs bg-background px-2 py-1 rounded">
                                 {String(change.newValue)}
                               </code>
@@ -320,8 +320,8 @@ export default function VisualRegressionTester() {
               </div>
             ) : (
               <div className="bg-muted p-12 rounded-lg text-center h-full flex flex-col items-center justify-center">
-                <GitCompare className="w-12 h-12 text-muted-foreground mb-4" />
-                <h3 className="mb-2">No Comparison Yet</h3>
+                <GitCompare className="w-12 h-12 text-muted-foreground pb-4" />
+                <h3 className="pb-2">No Comparison Yet</h3>
                 <p className="text-muted-foreground">
                   Create a snapshot, then click "Compare" to detect visual changes.
                 </p>
@@ -331,13 +331,13 @@ export default function VisualRegressionTester() {
         </div>
 
         {/* Info Section */}
-        <div className="bg-accent text-accent-foreground p-6 rounded-lg mt-8">
-          <h3 className="mb-4">About Visual Regression Testing</h3>
+        <div className="bg-accent text-accent-foreground p-6 rounded-lg pt-8">
+          <h3 className="pb-4">About Visual Regression Testing</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
             <div>
-              <h4 className="font-medium mb-2">What Gets Captured</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">What Gets Captured</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>Computed styles (colors, fonts, spacing)</li>
                 <li>Layout metrics (width, height, position)</li>
                 <li>Color palette (all colors used)</li>
@@ -347,8 +347,8 @@ export default function VisualRegressionTester() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">Change Detection</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Change Detection</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>Style changes (colors, fonts, borders)</li>
                 <li>Layout shifts (size, position)</li>
                 <li>Color variations</li>
@@ -358,8 +358,8 @@ export default function VisualRegressionTester() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">Severity Levels</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Severity Levels</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li><strong>Major:</strong> Significant visual changes</li>
                 <li><strong>Moderate:</strong> Noticeable changes</li>
                 <li><strong>Minor:</strong> Small variations</li>
@@ -367,8 +367,8 @@ export default function VisualRegressionTester() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">Best Practices</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Best Practices</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>Capture snapshots after each major change</li>
                 <li>Compare before deploying to production</li>
                 <li>Review all detected changes carefully</li>

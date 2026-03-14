@@ -12,13 +12,13 @@ function DestinationsArchiveTest() {
   return (
     <Container>
       <div className="py-12">
-        <h1 className="text-4xl font-bold mb-6">Destinations Import Test</h1>
+        <h1 className="text-[length:var(--text-4xl)] font-[var(--font-weight-bold)] pb-6">Destinations Import Test</h1>
         
-        <div className="space-y-4">
+        <div className="flex flex-col gap-4">
           <div>
-            <h2 className="text-2xl font-bold mb-2">Continents</h2>
+            <h2 className="text-[length:var(--text-2xl)] font-[var(--font-weight-bold)] pb-2">Continents</h2>
             <p className="text-muted-foreground">Found {CONTINENTS.length} continents</p>
-            <ul className="list-disc pl-6 mt-2">
+            <ul className="list-disc pl-6 pt-2">
               {CONTINENTS.map((continent) => (
                 <li key={continent.id}>{continent.name}</li>
               ))}
@@ -26,9 +26,9 @@ function DestinationsArchiveTest() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold mb-2">Destinations</h2>
+            <h2 className="text-2xl font-bold pb-2">Destinations</h2>
             <p className="text-muted-foreground">Found {DESTINATIONS.length} destinations</p>
-            <ul className="list-disc pl-6 mt-2">
+            <ul className="list-disc pl-6 pt-2">
               {DESTINATIONS.slice(0, 10).map((dest) => (
                 <li key={dest.id}>
                   {dest.title} ({dest.type}) - {dest.continentId}
@@ -36,7 +36,7 @@ function DestinationsArchiveTest() {
               ))}
             </ul>
             {DESTINATIONS.length > 10 && (
-              <p className="text-sm text-muted-foreground mt-2">
+              <p className="text-sm text-muted-foreground pt-2">
                 ... and {DESTINATIONS.length - 10} more
               </p>
             )}
@@ -44,7 +44,7 @@ function DestinationsArchiveTest() {
 
           <div className="p-4 bg-success/10 border border-success rounded">
             <p className="font-bold text-success">✓ All imports working correctly!</p>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="text-sm text-muted-foreground pt-1">
               If you can see this message, the data structure is valid.
             </p>
           </div>

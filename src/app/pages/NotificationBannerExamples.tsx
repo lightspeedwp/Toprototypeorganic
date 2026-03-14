@@ -25,8 +25,8 @@ export default function NotificationBannerExamples() {
     <div className="min-h-screen bg-background text-foreground">
       <Container className="py-section-lg">
         {/* Page Header */}
-        <div className="mb-12">
-          <h1 className="mb-4">Notification Banner Component</h1>
+        <div className="flex flex-col gap-4 pb-12">
+          <h1>Notification Banner Component</h1>
           <p className="text-muted-foreground">
             Design system compliant notification banners with automatic dark mode support.
             All styling uses CSS variables from the theme system.
@@ -34,10 +34,10 @@ export default function NotificationBannerExamples() {
         </div>
 
         {/* Examples */}
-        <div className="space-y-6">
+        <div className="flex flex-col gap-6">
           {/* Info Notification */}
-          <div>
-            <h2 className="mb-4">Info Notification</h2>
+          <div className="flex flex-col gap-4">
+            <h2>Info Notification</h2>
             {showInfo ? (
               <NotificationBanner
                 variant="info"
@@ -56,8 +56,8 @@ export default function NotificationBannerExamples() {
           </div>
 
           {/* Success Notification */}
-          <div>
-            <h2 className="mb-4">Success Notification</h2>
+          <div className="flex flex-col gap-4">
+            <h2>Success Notification</h2>
             {showSuccess ? (
               <NotificationBanner
                 variant="success"
@@ -76,8 +76,8 @@ export default function NotificationBannerExamples() {
           </div>
 
           {/* Warning Notification */}
-          <div>
-            <h2 className="mb-4">Warning Notification</h2>
+          <div className="flex flex-col gap-4">
+            <h2>Warning Notification</h2>
             {showWarning ? (
               <NotificationBanner
                 variant="warning"
@@ -96,8 +96,8 @@ export default function NotificationBannerExamples() {
           </div>
 
           {/* Error Notification */}
-          <div>
-            <h2 className="mb-4">Error Notification</h2>
+          <div className="flex flex-col gap-4">
+            <h2>Error Notification</h2>
             {showError ? (
               <NotificationBanner
                 variant="error"
@@ -116,8 +116,8 @@ export default function NotificationBannerExamples() {
           </div>
 
           {/* Non-dismissible Example */}
-          <div>
-            <h2 className="mb-4">Non-dismissible Notification</h2>
+          <div className="flex flex-col gap-4">
+            <h2>Non-dismissible Notification</h2>
             <NotificationBanner
               variant="info"
               title="System maintenance scheduled"
@@ -127,8 +127,8 @@ export default function NotificationBannerExamples() {
           </div>
 
           {/* Title Only Example */}
-          <div>
-            <h2 className="mb-4">Title Only</h2>
+          <div className="flex flex-col gap-4">
+            <h2>Title Only</h2>
             <NotificationBanner
               variant="success"
               title="Changes saved successfully"
@@ -138,9 +138,9 @@ export default function NotificationBannerExamples() {
         </div>
 
         {/* Design System Compliance Info */}
-        <div className="mt-16 p-6 bg-card border border-border rounded-lg">
-          <h2 className="mb-4">✅ Design System Compliance</h2>
-          <ul className="space-y-2 text-muted-foreground">
+        <div className="pt-16 p-6 bg-card border border-border rounded-lg flex flex-col gap-4">
+          <h2>✅ Design System Compliance</h2>
+          <ul className="flex flex-col gap-2 text-muted-foreground">
             <li>✅ All colors use CSS variables (--info, --success, --warning, --destructive)</li>
             <li>✅ All fonts use defined families (Lora for titles, Noto Sans for messages)</li>
             <li>✅ All spacing uses CSS variables (fluid responsive)</li>
@@ -152,12 +152,12 @@ export default function NotificationBannerExamples() {
             <li>✅ Automatic dark mode support</li>
           </ul>
 
-          <div className="mt-6">
-            <h3 className="mb-2 font-semibold">User Customization:</h3>
+          <div className="flex flex-col gap-2">
+            <h3 className="font-semibold">User Customization:</h3>
             <p className="text-sm text-muted-foreground">
               Users can customize all colors, fonts, spacing, and styling by editing:
             </p>
-            <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
+            <ul className="pt-2 flex flex-col gap-1 text-sm text-muted-foreground">
               <li>• <code className="bg-muted px-2 py-1 rounded">/src/styles/theme-light.css</code> - Light mode colors</li>
               <li>• <code className="bg-muted px-2 py-1 rounded">/src/styles/theme-dark.css</code> - Dark mode colors</li>
               <li>• <code className="bg-muted px-2 py-1 rounded">/src/styles/theme.css</code> - Typography & spacing</li>

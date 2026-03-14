@@ -14,11 +14,12 @@
  */
 
 import './TourTrustBadges.css';
-import { Shield, type Icon as PhosphorIcon } from '@phosphor-icons/react';
+import { Shield } from '@phosphor-icons/react';
+import { isValidElement, type ReactNode, type ComponentType } from 'react';
 
 /** A single trust badge entry. */
 export interface TrustBadge {
-  icon: PhosphorIcon;
+  icon: ReactNode | ComponentType<any>;
   text: string;
 }
 
@@ -51,12 +52,24 @@ export function TourTrustBadges({
         <h4 className="mb-0">{title}</h4>
       </div>
       <ul className="lsx-tour-trust-badges__list">
-        {badges.map((badge, index) => (
-          <li key={index} className="lsx-tour-trust-badges__item">
-            <badge.icon size={16} className="lsx-tour-trust-badges__item-icon" aria-hidden="true" />
-            <span>{badge.text}</span>
-          </li>
-        ))}
+        {badges.map((badge, index) => {
+          // Handle both JSX elements and component references
+          const renderIcon = () => {
+            if (isValidElement(badge.icon)) return badge.icon;
+            if (typeof badge.icon === 'function') {
+              const IconComponent = badge.icon as ComponentType<any>;
+              return <IconComponent size={16} className="lsx-tour-trust-badges__item-icon" aria-hidden="true" />;
+            }
+            return null;
+          };
+
+          return (
+            <li key={index} className="lsx-tour-trust-badges__item">
+              {renderIcon()}
+              <span>{badge.text}</span>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

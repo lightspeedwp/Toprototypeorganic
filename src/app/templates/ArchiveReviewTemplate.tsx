@@ -11,20 +11,19 @@
 import { useState } from "react";
 import { PageShell } from "../components/parts/PageShell";
 import { CTA } from "../components/patterns/CTA";
-import { Pagination } from "../components/patterns/Pagination";
 import { SearchFilterPattern } from "../components/patterns/SearchFilterPattern";
-import { EmptyStatePattern } from "../components/patterns/EmptyStatePattern";
 import { ReviewCard } from "../components/patterns/ReviewCard";
-import { ViewSwitcher, type ViewMode } from "../components/patterns/ViewSwitcher";
 import { StatisticsMetricsPattern } from "../components/patterns/StatisticsMetricsPattern";
 import { FAQ } from "../components/patterns/FAQ";
+import { ActiveFilterSummary, searchFilterTag, singleFilterTag, buildFilterTags } from "../components/patterns/ActiveFilterSummary";
 import { Container } from "../components/common/Container";
-import { SectionHeader } from "../components/common/SectionHeader";
+import { ArchiveResultsSection } from "../components/patterns/ArchiveResultsSection";
 import { ALL_REVIEWS } from "../data/mockExpanded";
 import { getPageSectionFAQs } from "../data/mock";
 import { useNavigation } from "../contexts/NavigationContext";
 import { useReviewFilters } from "../hooks/useReviewFilters";
 import { ChatCircle as MessageSquare, Star, ThumbsUp, Medal as Award } from "@phosphor-icons/react";
+import type { ViewMode } from "../components/patterns/ViewSwitcher";
 
 /**
  * ArchiveReviewTemplate Component.
@@ -36,8 +35,10 @@ export function ArchiveReviewTemplate() {
   const {
     currentPage,
     setCurrentPage,
+    resetPage,
     searchQuery,
     setSearchQuery,
+    flushSearch,
     selectedRating,
     setSelectedRating,
     selectedType,
@@ -66,7 +67,7 @@ export function ArchiveReviewTemplate() {
     setSearchQuery(filters.search || "");
     setSelectedRating(filters.rating || "");
     setSelectedType(filters.type || "");
-    setCurrentPage(1);
+    resetPage();
   };
 
   return (
@@ -126,62 +127,64 @@ export function ArchiveReviewTemplate() {
         onClearAll={resetFilters}
         collapsible={true}
       />
+
+      {/* Active Filter Summary */}
+      <Container>
+        <ActiveFilterSummary
+          tags={buildFilterTags(
+            searchFilterTag(searchQuery, () => { setSearchQuery(""); resetPage(); }),
+            singleFilterTag(
+              "rating",
+              selectedRating,
+              `${selectedRating} Star${selectedRating === "1" ? "" : "s"}`,
+              () => { setSelectedRating(""); resetPage(); }
+            ),
+            singleFilterTag(
+              "type",
+              selectedType,
+              selectedType === "tour" ? "Tours" : selectedType === "accommodation" ? "Accommodations" : "Destinations",
+              () => { setSelectedType(""); resetPage(); }
+            ),
+          )}
+          onClearAll={resetFilters}
+        />
+      </Container>
       </div>
 
       <div className="organic-section-middle">
         {/* Main Content */}
-        <section className="wp-template-archive__content py-section-lg">
-        <Container>
-          {/* Results Header */}
-          <div className="wp-template-archive__results-header">
-            <SectionHeader
-              section={{
-                eyebrow: "Voices from the Field",
-                title: "Community Feedback",
-                description: `Showing ${paginatedReviews.length} of ${filteredReviews.length} authentic traveler stories.`
-              }}
-              centered={false}
-              className="m-0"
-            />
-            <ViewSwitcher currentView={viewMode} onViewChange={setViewMode} />
-          </div>
-
-          {/* Grid or Empty State */}
-          {paginatedReviews.length > 0 ? (
-            <div className={viewMode === "list" ? "wp-template-archive__list" : "wp-template-archive__grid wp-template-archive__grid--cols-3"}>
-              {paginatedReviews.map((review) => (
-                <ReviewCard
-                  key={review.id}
-                  review={review}
-                  layout={viewMode === "list" ? "horizontal" : "card"}
-                  onClick={() => navigateToReview(review.slug)}
-                />
-              ))}
-            </div>
-          ) : (
-            <EmptyStatePattern
-              icon="search"
-              title="No reviews found"
-              message="We couldn't find any reviews matching your current filters."
-              primaryAction={{
-                label: "Clear All Filters",
-                onClick: resetFilters
-              }}
+        <ArchiveResultsSection
+          header={{
+            eyebrow: "Voices from the Field",
+            title: "Community Feedback",
+            description: `Showing ${paginatedReviews.length} of ${filteredReviews.length} authentic traveler stories.`,
+          }}
+          items={paginatedReviews}
+          totalFiltered={filteredReviews.length}
+          viewMode={viewMode}
+          onViewModeChange={setViewMode}
+          renderItem={(review, vm) => (
+            <ReviewCard
+              key={review.id}
+              review={review}
+              layout={vm === "list" ? "horizontal" : "card"}
+              onClick={() => navigateToReview(review.slug)}
             />
           )}
-
-          {/* Pagination */}
-          {filteredReviews.length > ITEMS_PER_PAGE && paginatedReviews.length > 0 && (
-            <div className="wp-template-archive__pagination mt-12">
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={setCurrentPage}
-              />
-            </div>
-          )}
-        </Container>
-      </section>
+          emptyState={{
+            icon: "search",
+            title: "No reviews found",
+            message: "We couldn't find any reviews matching your current filters.",
+            actionLabel: "Clear All Filters",
+            onAction: resetFilters,
+          }}
+          pagination={{
+            currentPage,
+            totalPages,
+            onPageChange: setCurrentPage,
+            itemsPerPage: ITEMS_PER_PAGE,
+          }}
+        />
       </div>
 
       <div className="organic-section-bottom">

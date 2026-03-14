@@ -729,8 +729,8 @@ export default function ComponentShowcase() {
               ]}
             />
             
-            <div className="py-8">
-              <h1 className="mb-2">Component Showcase</h1>
+            <div className="py-8 flex flex-col gap-2">
+              <h1>Component Showcase</h1>
               <p className="text-muted-foreground">
                 Interactive preview system for testing components with live prop editors
               </p>
@@ -741,13 +741,13 @@ export default function ComponentShowcase() {
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-gap-lg py-section-sm">
             {/* Sidebar - Component Selector */}
-            <aside className="space-y-6">
+            <aside className="flex flex-col gap-6">
               {/* Search and Filter */}
               <Card>
                 <CardHeader>
                   <CardTitle>Filter Components</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="flex flex-col gap-4">
                   {/* Search */}
                   <div className="relative">
                     <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -760,7 +760,7 @@ export default function ComponentShowcase() {
                   </div>
 
                   {/* Category Filter */}
-                  <div className="space-y-2">
+                  <div className="flex flex-col gap-2">
                     <Label htmlFor="category-filter">Category</Label>
                     <Select value={categoryFilter} onValueChange={setCategoryFilter}>
                       <SelectTrigger id="category-filter">
@@ -789,7 +789,7 @@ export default function ComponentShowcase() {
                   <CardTitle>Components</CardTitle>
                   <CardDescription>Select a component to preview</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-1 max-h-[600px] overflow-y-auto">
+                <CardContent className="flex flex-col gap-1 max-h-[600px] overflow-y-auto">
                   {categories.filter(cat => cat !== "all").map(category => {
                     const categoryComponents = filteredComponents.filter(c => c.category === category);
                     if (categoryComponents.length === 0) return null;
@@ -830,20 +830,20 @@ export default function ComponentShowcase() {
                   <CardHeader>
                     <CardTitle>Info</CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div>
+                  <CardContent className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-1">
                       <Label>Description</Label>
-                      <p className="mt-1 text-sm text-muted-foreground">{currentComponent.description}</p>
+                      <p className="text-sm text-muted-foreground">{currentComponent.description}</p>
                     </div>
                     {currentComponent.wpEquivalent && (
-                      <div>
+                      <div className="flex flex-col gap-1">
                         <Label>WordPress Equivalent</Label>
-                        <p className="mt-1 text-sm text-muted-foreground">{currentComponent.wpEquivalent}</p>
+                        <p className="text-sm text-muted-foreground">{currentComponent.wpEquivalent}</p>
                       </div>
                     )}
-                    <div>
+                    <div className="flex flex-col gap-1">
                       <Label>Category</Label>
-                      <div className="mt-1">
+                      <div>
                         <Badge variant="secondary">{currentComponent.category}</Badge>
                       </div>
                     </div>
@@ -853,7 +853,7 @@ export default function ComponentShowcase() {
             </aside>
 
             {/* Main Content - Preview & Controls */}
-            <div className="space-y-6">
+            <div className="flex flex-col gap-6">
               <Tabs defaultValue="preview" className="w-full">
                 <TabsList className="grid w-full grid-cols-3">
                   <TabsTrigger value="preview">Preview</TabsTrigger>
@@ -862,7 +862,7 @@ export default function ComponentShowcase() {
                 </TabsList>
 
                 {/* Preview Tab */}
-                <TabsContent value="preview" className="space-y-4">
+                <TabsContent value="preview" className="flex flex-col gap-4">
                   {/* Viewport Controls */}
                   <Card>
                     <CardHeader>
@@ -906,7 +906,7 @@ export default function ComponentShowcase() {
                 </TabsContent>
 
                 {/* Props Editor Tab */}
-                <TabsContent value="props" className="space-y-4">
+                <TabsContent value="props" className="flex flex-col gap-4">
                   <Card>
                     <CardHeader>
                       <CardTitle>Props Editor</CardTitle>
@@ -914,9 +914,9 @@ export default function ComponentShowcase() {
                         Modify component properties in real-time
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="space-y-4">
+                    <CardContent className="flex flex-col gap-4">
                       {currentComponent?.props.map(propConfig => (
-                        <div key={propConfig.name} className="space-y-2">
+                        <div key={propConfig.name} className="flex flex-col gap-2">
                           <Label htmlFor={propConfig.name}>{propConfig.label}</Label>
                           {propConfig.description && (
                             <p className="text-xs text-muted-foreground">{propConfig.description}</p>
@@ -955,7 +955,7 @@ export default function ComponentShowcase() {
 
                           {/* Boolean Switch */}
                           {propConfig.type === "boolean" && (
-                            <div className="flex items-center space-x-2">
+                            <div className="flex items-center gap-2">
                               <Switch
                                 id={propConfig.name}
                                 checked={props[propConfig.name] || false}
@@ -998,7 +998,7 @@ export default function ComponentShowcase() {
                 </TabsContent>
 
                 {/* Code Tab */}
-                <TabsContent value="code" className="space-y-4">
+                <TabsContent value="code" className="flex flex-col gap-4">
                   <Card>
                     <CardHeader>
                       <div className="flex items-center justify-between">
@@ -1037,14 +1037,14 @@ export default function ComponentShowcase() {
               </Tabs>
 
               {/* Footer - Quick Links */}
-              <Card className="mt-6">
+              <Card>
                 <CardContent className="p-6">
                   <div className="wp-pattern-card-grid__container wp-pattern-card-grid__container--cols-2">
-                    <div>
-                      <h3 className="mb-2">
+                    <div className="flex flex-col gap-2">
+                      <h3>
                         Component Stats
                       </h3>
-                      <div className="space-y-1 text-sm">
+                      <div className="flex flex-col gap-1 text-sm">
                         <p className="text-muted-foreground">
                           <span className="font-sans font-semibold">
                             {COMPONENTS.length}
@@ -1077,11 +1077,11 @@ export default function ComponentShowcase() {
                         </p>
                       </div>
                     </div>
-                    <div>
-                      <h3 className="mb-2">
+                    <div className="flex flex-col gap-2">
+                      <h3>
                         Quick Links
                       </h3>
-                      <div className="space-y-2">
+                      <div className="flex flex-col gap-2">
                         <button 
                           type="button"
                           onClick={() => {

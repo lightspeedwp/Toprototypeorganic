@@ -24,6 +24,7 @@ export * from "./team";
 export * from "./reviews";
 export * from "./generators";
 export * from "./mockExpanded";
+export * from "./recent";
 
 // Optional: Aggregated export if needed by specific components
 import { TOURS } from "./tours";

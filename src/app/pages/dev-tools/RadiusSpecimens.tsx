@@ -11,6 +11,7 @@
 
 import { Container } from "../../components/common/Container";
 import { DevToolsBreadcrumbs } from "../../components/common/DevToolsBreadcrumbs";
+import { BoundingBox } from "@phosphor-icons/react";
 
 interface RadiusToken {
   variable: string;
@@ -33,34 +34,39 @@ export default function RadiusSpecimens() {
     <>
       <DevToolsBreadcrumbs currentPage="Border Radius Specimens" />
 
-      <section className="py-section-sm bg-muted">
+      <section className="py-section-sm bg-muted border-b border-border">
         <Container>
-          <h1 className="mb-4">Border Radius Specimens</h1>
-          <p className="text-muted-foreground max-w-3xl">
-            The radius scale is defined in <code>theme-light.css</code> and mapped into
-            Tailwind's <code>rounded-*</code> utilities via <code>theme.css</code>.
-            Each specimen below shows a 120 &times; 80 px rectangle with the respective radius applied.
-          </p>
+          <div className="flex flex-col gap-element-sm">
+            <div className="wp-page-header__icon-container w-14 h-14 flex items-center justify-center rounded-[var(--radius-lg)] bg-primary/10 text-primary transition-colors hover:bg-primary/20">
+              <BoundingBox className="w-7 h-7" />
+            </div>
+            <h1>Border Radius Specimens</h1>
+            <p className="text-muted-foreground max-w-3xl">
+              The radius scale is defined in <code>theme-light.css</code> and mapped into
+              Tailwind's <code>rounded-*</code> utilities via <code>theme.css</code>.
+              Each specimen below shows a 120 &times; 80 px rectangle with the respective radius applied.
+            </p>
+          </div>
         </Container>
       </section>
 
       {/* Specimen grid */}
       <section className="py-section-sm bg-background">
         <Container>
-          <h2 className="mb-8">Radius Scale</h2>
+          <h2 className="pb-8">Radius Scale</h2>
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {RADIUS_TOKENS.map((t) => (
               <div key={t.variable} className="border border-border rounded-lg bg-card p-6 text-center">
                 {/* Visual specimen */}
-                <div className="flex items-center justify-center mb-4">
+                <div className="flex items-center justify-center pb-4">
                   <div
                     className="w-[120px] h-[80px] bg-primary/20 border-2 border-primary"
                     style={{ borderRadius: `var(${t.variable})` }}
                   />
                 </div>
                 {/* Token info */}
-                <span className="inline-block px-2 py-0.5 rounded-sm bg-primary/10 text-primary text-xs mb-2">{t.label}</span>
-                <p className="text-sm mb-1"><code className="text-xs">{t.variable}</code></p>
+                <span className="inline-block px-2 py-0.5 rounded-sm bg-primary/10 text-primary text-xs pb-2">{t.label}</span>
+                <p className="text-sm pb-1"><code className="text-xs">{t.variable}</code></p>
                 <p className="text-xs text-muted-foreground mb-0">{t.value}</p>
               </div>
             ))}
@@ -71,13 +77,13 @@ export default function RadiusSpecimens() {
       {/* Applied to UI elements */}
       <section className="py-section-sm bg-muted">
         <Container>
-          <h2 className="mb-8">Applied to UI Elements</h2>
-          <p className="text-muted-foreground mb-8">See how each radius looks on common UI elements.</p>
+          <h2 className="pb-8">Applied to UI Elements</h2>
+          <p className="text-muted-foreground pb-8">See how each radius looks on common UI elements.</p>
 
-          <div className="space-y-8">
+          <div className="flex flex-col gap-8">
             {/* Buttons */}
             <div>
-              <h3 className="mb-4">Buttons</h3>
+              <h3 className="pb-4">Buttons</h3>
               <div className="flex flex-wrap gap-4">
                 {RADIUS_TOKENS.map((t) => (
                   <button
@@ -93,7 +99,7 @@ export default function RadiusSpecimens() {
 
             {/* Cards */}
             <div>
-              <h3 className="mb-4">Cards</h3>
+              <h3 className="pb-4">Cards</h3>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {RADIUS_TOKENS.filter(t => !["sm", "full"].includes(t.label)).map((t) => (
                   <div
@@ -101,7 +107,7 @@ export default function RadiusSpecimens() {
                     className="bg-card border border-border p-4"
                     style={{ borderRadius: `var(${t.variable})` }}
                   >
-                    <h5 className="mb-1">radius-{t.label}</h5>
+                    <h5 className="pb-1">radius-{t.label}</h5>
                     <p className="text-sm text-muted-foreground mb-0">{t.value}</p>
                   </div>
                 ))}
@@ -110,11 +116,11 @@ export default function RadiusSpecimens() {
 
             {/* Inputs */}
             <div>
-              <h3 className="mb-4">Inputs</h3>
+              <h3 className="pb-4">Inputs</h3>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-3xl">
                 {RADIUS_TOKENS.filter(t => ["sm", "md", "lg", "xl", "full"].includes(t.label)).map((t) => (
                   <div key={t.variable}>
-                    <label className="text-sm mb-1 block">radius-{t.label}</label>
+                    <label className="text-sm pb-1 block">radius-{t.label}</label>
                     <input
                       type="text"
                       placeholder={t.value}
@@ -132,7 +138,7 @@ export default function RadiusSpecimens() {
       {/* Tailwind mapping */}
       <section className="py-section-sm bg-background">
         <Container>
-          <h2 className="mb-6">Tailwind Mapping</h2>
+          <h2 className="pb-6">Tailwind Mapping</h2>
           <div className="border border-border rounded-lg bg-card overflow-hidden">
             <div className="grid grid-cols-3 gap-0 text-sm border-b border-border bg-muted px-6 py-3">
               <span className="text-muted-foreground">Tailwind Class</span>

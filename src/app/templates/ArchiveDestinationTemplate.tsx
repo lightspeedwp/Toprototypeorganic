@@ -9,14 +9,14 @@
  * - Post Type: destination
  */
 
-import { useMemo } from "react";
-import { MagnifyingGlass as Search, Globe } from "@phosphor-icons/react";
+import { MagnifyingGlass as Search, Globe, X } from "@phosphor-icons/react";
 import { Container } from "../components/common/Container";
 import { SectionHeader } from "../components/common/SectionHeader";
 import { PageShell } from "../components/parts/PageShell";
 import { DestinationCollectionBlock } from "../components/blocks/DestinationCollectionBlock";
 import { CTA } from "../components/patterns/CTA";
 import { FAQ } from "../components/patterns/FAQ";
+import { ActiveFilterSummary, searchFilterTag, singleFilterTag, buildFilterTags } from "../components/patterns/ActiveFilterSummary";
 import { ALL_DESTINATIONS, ALL_CONTINENTS } from "../data/mockExpanded";
 import { getPageSectionFAQs } from "../data/mock";
 import { useNavigation } from "../contexts/NavigationContext";
@@ -30,9 +30,11 @@ export function ArchiveDestinationTemplate() {
   const {
     searchQuery,
     setSearchQuery,
+    flushSearch,
     selectedContinent,
     setSelectedContinent,
-    filteredDestinations
+    filteredDestinations,
+    resetFilters
   } = useDestinationFilters(ALL_DESTINATIONS);
 
   const archetypes = [
@@ -94,25 +96,50 @@ export function ArchiveDestinationTemplate() {
                   placeholder="Find a territory..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === 'Enter') flushSearch(); }}
                   className="wp-template-archive-destination__search-input"
                 />
+                {searchQuery && (
+                  <button
+                    className="wp-template-archive-destination__search-clear"
+                    onClick={() => resetFilters()}
+                  >
+                    <X className="size-3" />
+                  </button>
+                )}
               </div>
             </div>
           </Container>
         </section>
+
+        {/* Active Filter Summary */}
+        <Container>
+          <ActiveFilterSummary
+            tags={buildFilterTags(
+              searchFilterTag(searchQuery, () => setSearchQuery("")),
+              singleFilterTag(
+                "continent",
+                selectedContinent,
+                ALL_CONTINENTS.find((c) => c.id === selectedContinent)?.name || selectedContinent,
+                () => setSelectedContinent("all"),
+                "all"
+              ),
+            )}
+            onClearAll={resetFilters}
+          />
+        </Container>
       </div>
 
       <div className="organic-section-middle">
         {/* Results Grid */}
         <section className="py-section-lg">
-          <Container>
+          <Container className="flex flex-col gap-gap-xl">
             <SectionHeader
               section={{
                 title: "The Collection",
                 description: `Discover ${filteredDestinations.length} profound destinations across the globe.`
               }}
               centered={false}
-              className="mb-16"
             />
 
             <DestinationCollectionBlock 
@@ -127,7 +154,7 @@ export function ArchiveDestinationTemplate() {
       <div className="organic-section-middle-alt">
         {/* Inspiration Blocks */}
         <section className="wp-template-archive-destination__archetypes">
-          <Container>
+          <Container className="flex flex-col gap-gap-xl">
             <SectionHeader
               section={{
                 eyebrow: "Curation",
@@ -135,7 +162,6 @@ export function ArchiveDestinationTemplate() {
                 description: "Carefully categorized experiences to match your travel philosophy."
               }}
               centered={true}
-              className="mb-16"
             />
 
             <div className="wp-template-archive-destination__archetypes-grid">

@@ -190,19 +190,19 @@ export function Countdown({
 
   const sizeClasses = {
     sm: {
-      numberClass: "text-fluid-2xl",
-      labelClass: "text-fluid-xs",
-      gap: "gap-2",
+      numberClass: "text-[length:var(--text-2xl)]",
+      labelClass: "text-[length:var(--text-xs)]",
+      gap: "gap-fluid-sm",
     },
     md: {
-      numberClass: "text-fluid-4xl",
-      labelClass: "text-fluid-sm",
-      gap: "gap-4",
+      numberClass: "text-[length:var(--text-4xl)]",
+      labelClass: "text-[length:var(--text-sm)]",
+      gap: "gap-fluid-md",
     },
     lg: {
-      numberClass: "text-fluid-6xl",
-      labelClass: "text-fluid-base",
-      gap: "gap-6",
+      numberClass: "text-[length:var(--text-6xl)]",
+      labelClass: "text-[length:var(--text-base)]",
+      gap: "gap-fluid-lg",
     },
   };
 
@@ -211,9 +211,9 @@ export function Countdown({
   // Inline variant
   if (variant === "inline") {
     return (
-      <div className={cn("flex items-center gap-2", className)}>
+      <div className={cn("flex items-center gap-fluid-xs", className)}>
         <Clock size={20} className="text-primary" />
-        <span className="text-foreground font-semibold">
+        <span className="text-foreground font-[var(--font-weight-semibold)]">
           {timeRemaining.days}d {timeRemaining.hours}h {timeRemaining.minutes}m {timeRemaining.seconds}s
         </span>
       </div>
@@ -223,8 +223,8 @@ export function Countdown({
   // Minimal variant
   if (variant === "minimal") {
     return (
-      <div className={cn("flex items-center justify-center gap-1", className)}>
-        <span className={cn("text-foreground font-serif font-bold", currentSize.numberClass)}>
+      <div className={cn("flex items-center justify-center gap-fluid-xs", className)}>
+        <span className={cn("text-foreground font-[family-name:var(--font-family-lora)] font-[var(--font-weight-bold)]", currentSize.numberClass)}>
           {String(timeRemaining.days).padStart(2, "0")}:
           {String(timeRemaining.hours).padStart(2, "0")}:
           {String(timeRemaining.minutes).padStart(2, "0")}:
@@ -237,12 +237,12 @@ export function Countdown({
   // Compact variant
   if (variant === "compact") {
     return (
-      <div className={cn("inline-flex items-center gap-2 px-4 py-2 bg-muted rounded-lg", className)}>
+      <div className={cn("inline-flex items-center gap-fluid-xs px-element-md py-element-sm bg-muted rounded-[var(--radius-lg)]", className)}>
         {Object.entries(timeRemaining)
           .filter(([key]) => key !== "total")
           .map(([key, value], index, arr) => (
-            <div key={key} className="flex items-baseline gap-1">
-              <span className={cn("text-foreground font-serif font-bold", currentSize.numberClass)}>
+            <div key={key} className="flex items-baseline gap-fluid-xs">
+              <span className={cn("text-foreground font-[family-name:var(--font-family-lora)] font-[var(--font-weight-bold)]", currentSize.numberClass)}>
                 {String(value).padStart(2, "0")}
               </span>
               {showLabels && (
@@ -251,7 +251,7 @@ export function Countdown({
                 </span>
               )}
               {index < arr.length - 1 && (
-                <span className="text-muted-foreground mx-1">:</span>
+                <span className="text-muted-foreground px-1">:</span>
               )}
             </div>
           ))}
@@ -268,13 +268,13 @@ export function Countdown({
           .map(([key, value]) => (
             <div
               key={key}
-              className="flex flex-col items-center p-4 bg-card border border-border rounded-lg min-w-[80px]"
+              className="flex flex-col items-center p-element-md bg-card border border-border rounded-[var(--radius-lg)] min-w-[80px]"
             >
-              <span className={cn("text-foreground font-serif font-bold", currentSize.numberClass)}>
+              <span className={cn("text-foreground font-[family-name:var(--font-family-lora)] font-[var(--font-weight-bold)]", currentSize.numberClass)}>
                 {String(value).padStart(2, "0")}
               </span>
               {showLabels && (
-                <span className={cn("text-muted-foreground mt-1 uppercase", currentSize.labelClass)}>
+                <span className={cn("text-muted-foreground pt-element-xs uppercase", currentSize.labelClass)}>
                   {labels[key as keyof typeof labels]}
                 </span>
               )}
@@ -291,11 +291,11 @@ export function Countdown({
         .filter(([key]) => key !== "total")
         .map(([key, value]) => (
           <div key={key} className="flex flex-col items-center">
-            <span className={cn("text-foreground font-serif font-bold", currentSize.numberClass)}>
+            <span className={cn("text-foreground font-[family-name:var(--font-family-lora)] font-[var(--font-weight-bold)]", currentSize.numberClass)}>
               {String(value).padStart(2, "0")}
             </span>
             {showLabels && (
-              <span className={cn("text-muted-foreground mt-1 uppercase", currentSize.labelClass)}>
+              <span className={cn("text-muted-foreground pt-element-xs uppercase", currentSize.labelClass)}>
                 {labels[key as keyof typeof labels]}
               </span>
             )}
@@ -337,9 +337,9 @@ export function CountdownSection({
   className?: string;
 }) {
   return (
-    <div className={cn("text-center space-y-6", className)}>
-      <div>
-        <h2 className="text-foreground mb-2">
+    <div className={cn("text-center flex flex-col gap-6", className)}>
+      <div className="flex flex-col gap-element-sm">
+        <h2 className="text-foreground">
           {title}
         </h2>
         {description && (

@@ -80,12 +80,12 @@ export default function DeploymentReadiness() {
       {/* Header */}
       <div className="bg-muted border-b border-border py-section-sm">
         <Container>
-          <div className="flex items-start justify-between gap-6">
-            <div>
-              <div className="flex items-center gap-3 mb-2">
-                <Rocket className="w-8 h-8 text-primary" />
-                <h1>Deployment Readiness</h1>
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-fluid-sm">
+            <div className="flex flex-col gap-element-sm">
+              <div className="wp-page-header__icon-container w-14 h-14 flex items-center justify-center rounded-[var(--radius-lg)] bg-primary/10 text-primary transition-colors hover:bg-primary/20">
+                <Rocket className="w-7 h-7" />
               </div>
+              <h1>Deployment Readiness</h1>
               <p className="text-muted-foreground">
                 Comprehensive pre-deployment validation and checklist
               </p>
@@ -94,7 +94,7 @@ export default function DeploymentReadiness() {
             <button
               onClick={runChecks}
               disabled={isChecking}
-              className="px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50"
+              className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50 w-full md:w-auto md:shrink-0"
             >
               {isChecking ? 'Checking...' : 'Run Deployment Check'}
             </button>
@@ -104,14 +104,14 @@ export default function DeploymentReadiness() {
 
       <Container className="py-section-sm">
         {report && seoReport ? (
-          <div className="space-y-8">
+          <div className="flex flex-col gap-8">
             {/* Overall Status */}
             <div className={`p-8 rounded-lg border ${getStatusBg(report.deploymentStatus)}`}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   {getStatusIcon(report.deploymentStatus)}
                   <div>
-                    <h2 className="mb-1">
+                    <h2 className="pb-1">
                       {report.deploymentStatus === 'ready' ? 'Ready to Deploy' :
                        report.deploymentStatus === 'needs-attention' ? 'Needs Attention' :
                        'Not Ready to Deploy'}
@@ -136,12 +136,12 @@ export default function DeploymentReadiness() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {Object.entries(report.categories).map(([name, category]) => (
                 <div key={name} className="bg-card p-6 rounded-lg border border-border">
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between pb-4">
                     <h3 className="capitalize">{name.replace(/([A-Z])/g, ' $1').trim()}</h3>
                     {getCategoryIcon(category.score)}
                   </div>
 
-                  <div className="font-serif text-fluid-3xl mb-2">{category.score}/100</div>
+                  <div className="font-serif text-fluid-3xl pb-2">{category.score}/100</div>
 
                   <div className="flex items-center justify-between text-sm text-muted-foreground">
                     <span>{category.passed} passed</span>
@@ -154,7 +154,7 @@ export default function DeploymentReadiness() {
 
             {/* SEO Score */}
             <div className="bg-card p-6 rounded-lg border border-border">
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-between pb-4">
                 <h2>SEO Analysis</h2>
                 <span className={`font-serif text-fluid-3xl ${
                   seoReport.grade === 'A+' || seoReport.grade === 'A' ? 'text-primary' :
@@ -165,10 +165,10 @@ export default function DeploymentReadiness() {
                 </span>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-4">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4 pb-4">
                 {Object.entries(seoReport.categories).map(([name, category]) => (
                   <div key={name} className="text-center">
-                    <div className="font-serif text-fluid-2xl mb-1">{category.score}</div>
+                    <div className="font-serif text-fluid-2xl pb-1">{category.score}</div>
                     <div className="text-xs text-muted-foreground capitalize">
                       {name.replace(/([A-Z])/g, ' $1').trim()}
                     </div>
@@ -178,23 +178,23 @@ export default function DeploymentReadiness() {
 
               {/* Keyword Analysis */}
               <div className="bg-muted p-4 rounded">
-                <h4 className="font-medium mb-2">Keyword Analysis</h4>
+                <h4 className="font-medium pb-2">Keyword Analysis</h4>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
                   <div>
                     <span className="text-muted-foreground">Primary:</span>
-                    <span className="ml-2 font-semibold">
+                    <span className="pl-2 font-semibold">
                       {seoReport.keywordAnalysis.primaryKeyword || 'Not detected'}
                     </span>
                   </div>
                   <div>
                     <span className="text-muted-foreground">Density:</span>
-                    <span className="ml-2 font-semibold">
+                    <span className="pl-2 font-semibold">
                       {seoReport.keywordAnalysis.keywordDensity.toFixed(2)}%
                     </span>
                   </div>
                   <div>
                     <span className="text-muted-foreground">Word Count:</span>
-                    <span className="ml-2 font-semibold">
+                    <span className="pl-2 font-semibold">
                       {seoReport.competitiveness.wordCount}
                     </span>
                   </div>
@@ -205,15 +205,15 @@ export default function DeploymentReadiness() {
             {/* Blockers */}
             {report.blockers.length > 0 && (
               <div className="bg-destructive/10 border border-destructive/20 p-6 rounded-lg">
-                <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center gap-2 pb-4">
                   <CircleX className="w-5 h-5 text-destructive" />
                   <h3 className="text-destructive">Deployment Blockers ({report.blockers.length})</h3>
                 </div>
 
-                <ul className="space-y-2">
+                <ul className="flex flex-col gap-2">
                   {report.blockers.map((blocker, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <span className="text-destructive mt-1">•</span>
+                      <span className="text-destructive pt-1">•</span>
                       <span>{blocker}</span>
                     </li>
                   ))}
@@ -224,15 +224,15 @@ export default function DeploymentReadiness() {
             {/* Warnings */}
             {report.warnings.length > 0 && (
               <div className="bg-muted p-6 rounded-lg border border-border">
-                <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center gap-2 pb-4">
                   <AlertTriangle className="w-5 h-5 text-muted-foreground" />
                   <h3>Warnings ({report.warnings.length})</h3>
                 </div>
 
-                <ul className="space-y-2 text-sm">
+                <ul className="flex flex-col gap-2 text-sm">
                   {report.warnings.slice(0, 10).map((warning, idx) => (
                     <li key={idx} className="flex items-start gap-2 text-muted-foreground">
-                      <span className="mt-1">•</span>
+                      <span className="pt-1">•</span>
                       <span>{warning}</span>
                     </li>
                   ))}
@@ -248,12 +248,12 @@ export default function DeploymentReadiness() {
             {/* Recommendations */}
             {report.recommendations.length > 0 && (
               <div className="bg-accent text-accent-foreground p-6 rounded-lg">
-                <h3 className="mb-4">💡 Recommendations</h3>
+                <h3 className="pb-4">💡 Recommendations</h3>
 
-                <ul className="space-y-2">
+                <ul className="flex flex-col gap-2">
                   {report.recommendations.map((rec, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <span className="mt-1">•</span>
+                      <span className="pt-1">•</span>
                       <span>{rec}</span>
                     </li>
                   ))}
@@ -264,12 +264,12 @@ export default function DeploymentReadiness() {
             {/* SEO Opportunities */}
             {seoReport.opportunities.length > 0 && (
               <div className="bg-card p-6 rounded-lg border border-border">
-                <h3 className="mb-4">🚀 SEO Opportunities</h3>
+                <h3 className="pb-4">🚀 SEO Opportunities</h3>
 
-                <div className="space-y-4">
+                <div className="flex flex-col gap-4">
                   {seoReport.opportunities.map((opp, idx) => (
                     <div key={idx} className="bg-muted p-4 rounded">
-                      <div className="flex items-start justify-between mb-2">
+                      <div className="flex items-start justify-between pb-2">
                         <h4 className="font-medium">{opp.title}</h4>
                         <span className={`text-xs px-2 py-1 rounded ${
                           opp.potentialImpact === 'high' ? 'bg-primary/20 text-primary' :
@@ -279,7 +279,7 @@ export default function DeploymentReadiness() {
                           {opp.potentialImpact} impact
                         </span>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-2">{opp.description}</p>
+                      <p className="text-sm text-muted-foreground pb-2">{opp.description}</p>
                       <p className="text-sm">
                         <strong>Implementation:</strong> {opp.implementation}
                       </p>
@@ -290,10 +290,10 @@ export default function DeploymentReadiness() {
             )}
           </div>
         ) : (
-          <div className="bg-muted p-12 rounded-lg text-center">
-            <Rocket className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="mb-2">Ready to Check Deployment Readiness</h3>
-            <p className="text-muted-foreground mb-6">
+          <div className="bg-muted p-12 rounded-lg text-center flex flex-col items-center">
+            <Rocket className="w-12 h-12 text-muted-foreground pb-4" />
+            <h3 className="pb-2">Ready to Check Deployment Readiness</h3>
+            <p className="text-muted-foreground pb-6">
               Click "Run Deployment Check" to validate all aspects of your application before deployment.
             </p>
             <p className="text-sm text-muted-foreground">
@@ -303,13 +303,13 @@ export default function DeploymentReadiness() {
         )}
 
         {/* Info Section */}
-        <div className="bg-accent text-accent-foreground p-6 rounded-lg mt-8">
-          <h3 className="mb-4">About Deployment Readiness</h3>
+        <div className="bg-accent text-accent-foreground p-6 rounded-lg pt-8">
+          <h3 className="pb-4">About Deployment Readiness</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
             <div>
-              <h4 className="font-medium mb-2">What Gets Checked</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">What Gets Checked</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>Code quality (no debug statements)</li>
                 <li>Performance (bundle size, DOM nodes)</li>
                 <li>Accessibility (WCAG compliance)</li>
@@ -320,8 +320,8 @@ export default function DeploymentReadiness() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">Status Levels</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Status Levels</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li><strong>Ready:</strong> All checks passed, safe to deploy</li>
                 <li><strong>Needs Attention:</strong> Some warnings, review before deploy</li>
                 <li><strong>Not Ready:</strong> Critical blockers, must fix before deploy</li>
@@ -329,8 +329,8 @@ export default function DeploymentReadiness() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">Best Practices</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Best Practices</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>Run checks before every deployment</li>
                 <li>Fix all critical blockers</li>
                 <li>Review and address warnings</li>
@@ -340,8 +340,8 @@ export default function DeploymentReadiness() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">SEO Checklist</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">SEO Checklist</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>Title 50-60 characters</li>
                 <li>Description 150-160 characters</li>
                 <li>H1 on every page (only one)</li>

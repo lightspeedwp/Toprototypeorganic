@@ -11,7 +11,7 @@
  */
 
 import { StatisticsMetricsPattern } from "../StatisticsMetricsPattern";
-import type { Icon as PhosphorIcon } from "@phosphor-icons/react";
+import type { ReactNode, ComponentType } from "react";
 
 /**
  * Interface for a single statistic.
@@ -20,7 +20,7 @@ interface Statistic {
   value: string;
   suffix?: string;
   label: string;
-  icon: PhosphorIcon;
+  icon: ReactNode | ComponentType<any>;
 }
 
 /**

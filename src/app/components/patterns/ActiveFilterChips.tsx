@@ -166,10 +166,10 @@ export function ActiveFilterChips({
   }
 
   return (
-    <div className={cn("space-y-[var(--spacing-gap-md)]", className)}>
+    <div className={cn("flex flex-col gap-fluid-md", className)}>
       {/* Header */}
       <div className="flex items-center justify-between">
-        <p className="text-[length:var(--text-sm)] text-foreground font-[var(--font-weight-bold)] !mb-0">
+        <p className="text-[length:var(--text-sm)] text-[color:var(--color-foreground)] font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-bold)] !m-0">
           Active Filters ({chips.length})
         </p>
         {showClearAll && chips.length > 0 && (
@@ -177,7 +177,7 @@ export function ActiveFilterChips({
             variant="ghost"
             size="sm"
             onClick={onClearAll}
-            className="text-[length:var(--text-sm)] text-muted-foreground hover:text-foreground"
+            className="text-[length:var(--text-sm)] text-[color:var(--color-muted-foreground)] hover:text-[color:var(--color-foreground)]"
           >
             Clear all
           </Button>
@@ -185,7 +185,7 @@ export function ActiveFilterChips({
       </div>
 
       {/* Chips */}
-      <div className="flex flex-wrap gap-[var(--spacing-gap-sm)]">
+      <div className="flex flex-wrap gap-fluid-sm">
         {chips.map((chip, index) => (
           <FilterChip
             key={`${chip.key}-${chip.value || index}`}
@@ -211,7 +211,7 @@ function FilterChip({
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-[var(--spacing-gap-xs)] rounded-[var(--radius-full)] border border-primary wp-bg-primary-light wp-bg-primary-hover px-[var(--spacing-element-md)] py-[var(--spacing-element-xs)] text-[length:var(--text-sm)] text-foreground transition-colors"
+        "inline-flex items-center gap-fluid-xs rounded-[var(--radius-full)] border border-primary wp-bg-primary-light wp-bg-primary-hover px-element-md py-element-xs text-[length:var(--text-sm)] text-foreground transition-colors"
       )}
     >
       <span>{label}</span>

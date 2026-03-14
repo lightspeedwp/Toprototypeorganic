@@ -27,8 +27,8 @@ Only these five font stacks are permitted in this project:
 | `var(--font-family-lora)` | `'Lora', Georgia, 'Times New Roman', serif` | Headings (H1-H6), labels, blockquotes, editorial |
 | `var(--font-family-noto-sans)` | `'Noto Sans', Arial, Helvetica, sans-serif` | Body text, paragraphs, buttons, inputs, UI elements |
 | `var(--font-family-mono)` | `'Courier New', Courier, monospace` | Code blocks, technical values (booking IDs, reference codes) |
-| `var(--font-family-caveat)` | `'Caveat', cursive` | Hand-drawn accents, organic flourishes, decorative microcopy |
-| `var(--font-family-shadows)` | `'Shadows Into Light', cursive` | Alternative hand-drawn accent script |
+| `var(--font-family-caveat)` | `'Caveat', 'Brush Script MT', cursive` | Hand-drawn accents, organic flourishes, decorative microcopy |
+| `var(--font-family-shadows)` | `'Shadows Into Light', 'Comic Sans MS', cursive` | Alternative hand-drawn accent script |
 
 **NO OTHER FONTS ARE ALLOWED.**
 
@@ -85,6 +85,9 @@ These are the **exact values** from `/src/styles/theme-base.css`:
 
 /* Tiny text — Labels, fine print */
 --text-xs:   clamp(0.75rem, 0.2vw + 0.7rem, 1rem);      /* 12px -> 16px */
+
+/* Micro text — View counters, timestamps, fine detail */
+--text-2xs:  clamp(0.625rem, 0.15vw + 0.55rem, 0.75rem); /* 10px -> 12px */
 ```
 
 ### Responsive Behaviour Summary
@@ -101,6 +104,7 @@ These are the **exact values** from `/src/styles/theme-base.css`:
 | Body | `--text-base` | 16px | ~17px | ~19px | 20px |
 | Small | `--text-sm` | 14px | ~15px | ~17px | 18px |
 | Tiny | `--text-xs` | 12px | ~13px | ~15px | 16px |
+| Micro | `--text-2xs` | 10px | ~11px | ~11px | 12px |
 
 ---
 
@@ -360,6 +364,7 @@ From `theme.css @layer utilities`:
 .text-fluid-base { font-size: var(--text-base);}
 .text-fluid-sm   { font-size: var(--text-sm);  }
 .text-fluid-xs   { font-size: var(--text-xs);  }
+.text-fluid-2xs  { font-size: var(--text-2xs); }
 ```
 
 Use these when you need to explicitly set a fluid size on an element that doesn't receive it from semantic HTML defaults.
@@ -453,6 +458,7 @@ Only use Tailwind text classes when **intentionally deviating** from defaults:
 --text-base: clamp(1rem, 0.4vw + 0.9rem, 1.25rem);
 --text-sm:  clamp(0.875rem, 0.3vw + 0.8rem, 1.125rem);
 --text-xs:  clamp(0.75rem, 0.2vw + 0.7rem, 1rem);
+--text-2xs: clamp(0.625rem, 0.15vw + 0.55rem, 0.75rem);
 ```
 
 ---

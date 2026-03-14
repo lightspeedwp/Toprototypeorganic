@@ -89,8 +89,8 @@ export default function ThemeBlocksShowcase() {
       <section className="py-section-sm bg-muted border-b border-border">
         <Container>
           <Stack gap="4">
-            <h1 className="mb-0">Theme Blocks Showcase</h1>
-            <p className="text-muted-foreground text-lg mb-0">
+            <h1>Theme Blocks Showcase</h1>
+            <p className="text-muted-foreground text-lg">
               WordPress theme block components with design system compliance
             </p>
           </Stack>
@@ -103,16 +103,16 @@ export default function ThemeBlocksShowcase() {
           {/* Navigation Block */}
           <section>
             <Stack gap="8">
-              <div>
-                <h2 className="mb-2">Navigation Block</h2>
-                <p className="text-muted-foreground mb-0">
+              <div className="flex flex-col gap-2">
+                <h2>Navigation Block</h2>
+                <p className="text-muted-foreground">
                   Menu navigation with horizontal/vertical layouts and mobile support
                 </p>
               </div>
 
               {/* Horizontal Navigation */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">Horizontal (Desktop)</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">Horizontal (Desktop)</h3>
                 <div className="p-6 bg-card border border-border rounded-lg">
                   <Navigation 
                     menu={primaryMenu}
@@ -124,8 +124,8 @@ export default function ThemeBlocksShowcase() {
               </div>
 
               {/* Centered Navigation */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">Centered</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">Centered</h3>
                 <div className="p-6 bg-card border border-border rounded-lg">
                   <Navigation 
                     menu={primaryMenu}
@@ -137,8 +137,8 @@ export default function ThemeBlocksShowcase() {
               </div>
 
               {/* Vertical Navigation */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">Vertical (Sidebar)</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">Vertical (Sidebar)</h3>
                 <div className="p-6 bg-card border border-border rounded-lg max-w-xs">
                   <Navigation 
                     menu={primaryMenu}
@@ -154,16 +154,16 @@ export default function ThemeBlocksShowcase() {
           {/* Search Block */}
           <section>
             <Stack gap="8">
-              <div>
-                <h2 className="mb-2">Search Block</h2>
-                <p className="text-muted-foreground mb-0">
+              <div className="flex flex-col gap-2">
+                <h2>Search Block</h2>
+                <p className="text-muted-foreground">
                   Search form with button inside/outside and icon/text variations
                 </p>
               </div>
 
               {/* Button Outside */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">Button Outside (Default)</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">Button Outside (Default)</h3>
                 <div className="p-6 bg-card border border-border rounded-lg">
                   <Search 
                     placeholder="Search articles..."
@@ -175,8 +175,8 @@ export default function ThemeBlocksShowcase() {
               </div>
 
               {/* Button Inside */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">Button Inside (Compact)</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">Button Inside (Compact)</h3>
                 <div className="p-6 bg-card border border-border rounded-lg">
                   <Search 
                     placeholder="Search tours..."
@@ -187,8 +187,8 @@ export default function ThemeBlocksShowcase() {
               </div>
 
               {/* Icon Only */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">Icon Only</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">Icon Only</h3>
                 <div className="p-6 bg-card border border-border rounded-lg">
                   <Search 
                     placeholder="Search..."
@@ -201,8 +201,8 @@ export default function ThemeBlocksShowcase() {
               </div>
 
               {/* Centered */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">Centered</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">Centered</h3>
                 <div className="p-6 bg-card border border-border rounded-lg">
                   <Search 
                     placeholder="Search..."
@@ -215,7 +215,7 @@ export default function ThemeBlocksShowcase() {
 
               {searchQuery && (
                 <div className="p-4 bg-primary/10 border border-primary rounded-lg">
-                  <p className="mb-0">
+                  <p>
                     <strong>Search Query:</strong> {searchQuery}
                   </p>
                 </div>
@@ -226,16 +226,16 @@ export default function ThemeBlocksShowcase() {
           {/* Site Logo Block */}
           <section>
             <Stack gap="8">
-              <div>
-                <h2 className="mb-2">Site Logo Block</h2>
-                <p className="text-muted-foreground mb-0">
+              <div className="flex flex-col gap-2">
+                <h2>Site Logo Block</h2>
+                <p className="text-muted-foreground">
                   Site logo with automatic dark mode support
                 </p>
               </div>
 
               {/* Default Size */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">Default (150px)</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">Default (150px)</h3>
                 <div className="p-6 bg-card border border-border rounded-lg">
                   <SiteLogo 
                     alt="LightSpeed Tours Logo"
@@ -245,8 +245,8 @@ export default function ThemeBlocksShowcase() {
               </div>
 
               {/* Small Size */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">Small (100px)</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">Small (100px)</h3>
                 <div className="p-6 bg-card border border-border rounded-lg">
                   <SiteLogo 
                     alt="LightSpeed Tours Logo"
@@ -256,8 +256,8 @@ export default function ThemeBlocksShowcase() {
               </div>
 
               {/* Without Link */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">Without Link</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">Without Link</h3>
                 <div className="p-6 bg-card border border-border rounded-lg">
                   <SiteLogo 
                     alt="LightSpeed Tours Logo"
@@ -272,32 +272,34 @@ export default function ThemeBlocksShowcase() {
           {/* Site Title Block */}
           <section>
             <Stack gap="8">
-              <div>
-                <h2 className="mb-2">Site Title Block</h2>
-                <p className="text-muted-foreground mb-0">
+              <div className="flex flex-col gap-2">
+                <h2>Site Title Block</h2>
+                <p className="text-muted-foreground">
                   Site name with semantic heading hierarchy
                 </p>
               </div>
 
               {/* H1 (Homepage) */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">H1 (Homepage)</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">H1 (Homepage)</h3>
                 <div className="p-6 bg-card border border-border rounded-lg">
                   <SiteTitle tag="h1">LightSpeed Tours</SiteTitle>
                 </div>
               </div>
 
               {/* H2 (Subpages) */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">H2 (Subpages)</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">H2 (Subpages)</h3>
                 <div className="p-6 bg-card border border-border rounded-lg">
-                  <SiteTitle tag="h2">LightSpeed Tours</SiteTitle>
+                  <SiteTitle tag="h2">
+                    LightSpeed Tours
+                  </SiteTitle>
                 </div>
               </div>
 
               {/* Without Link */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">Without Link</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">Without Link</h3>
                 <div className="p-6 bg-card border border-border rounded-lg">
                   <SiteTitle tag="h1" enableLink={false}>
                     LightSpeed Tours
@@ -306,8 +308,8 @@ export default function ThemeBlocksShowcase() {
               </div>
 
               {/* Centered */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">Centered</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">Centered</h3>
                 <div className="p-6 bg-card border border-border rounded-lg">
                   <SiteTitle tag="h1" className="text-center">
                     LightSpeed Tours
@@ -320,24 +322,24 @@ export default function ThemeBlocksShowcase() {
           {/* Site Tagline Block */}
           <section>
             <Stack gap="8">
-              <div>
-                <h2 className="mb-2">Site Tagline Block</h2>
-                <p className="text-muted-foreground mb-0">
+              <div className="flex flex-col gap-2">
+                <h2>Site Tagline Block</h2>
+                <p className="text-muted-foreground">
                   Site description or slogan with muted styling
                 </p>
               </div>
 
               {/* Default */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">Default</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">Default</h3>
                 <div className="p-6 bg-card border border-border rounded-lg">
                   <SiteTagline>Unforgettable African Adventures</SiteTagline>
                 </div>
               </div>
 
               {/* Small Text */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">Small Text</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">Small Text</h3>
                 <div className="p-6 bg-card border border-border rounded-lg">
                   <SiteTagline className="text-sm">
                     Expert-guided safari experiences
@@ -346,8 +348,8 @@ export default function ThemeBlocksShowcase() {
               </div>
 
               {/* Centered */}
-              <div className="space-y-4">
-                <h3 className="text-xl mb-2">Centered</h3>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-xl">Centered</h3>
                 <div className="p-6 bg-card border border-border rounded-lg">
                   <SiteTagline className="text-center">
                     Discover the wild side of Africa
@@ -360,9 +362,9 @@ export default function ThemeBlocksShowcase() {
           {/* Integrated Header Example */}
           <section>
             <Stack gap="8">
-              <div>
-                <h2 className="mb-2">Integrated Header Example</h2>
-                <p className="text-muted-foreground mb-0">
+              <div className="flex flex-col gap-2">
+                <h2>Integrated Header Example</h2>
+                <p className="text-muted-foreground">
                   Complete header composition using all theme blocks
                 </p>
               </div>
@@ -375,7 +377,7 @@ export default function ThemeBlocksShowcase() {
                       <Row align="center" gap="4">
                         <SiteLogo width="40px" />
                         <Stack gap="1">
-                          <SiteTitle tag="h2" className="mb-0">
+                          <SiteTitle tag="h2">
                             LightSpeed Tours
                           </SiteTitle>
                           <SiteTagline className="text-sm hidden sm:block">
@@ -408,9 +410,9 @@ export default function ThemeBlocksShowcase() {
           {/* Integrated Footer Example */}
           <section>
             <Stack gap="8">
-              <div>
-                <h2 className="mb-2">Integrated Footer Example</h2>
-                <p className="text-muted-foreground mb-0">
+              <div className="flex flex-col gap-2">
+                <h2>Integrated Footer Example</h2>
+                <p className="text-muted-foreground">
                   Complete footer composition using theme blocks
                 </p>
               </div>
@@ -437,7 +439,7 @@ export default function ThemeBlocksShowcase() {
 
                       {/* Copyright */}
                       <div className="text-center pt-8 border-t border-border">
-                        <p className="text-muted-foreground text-sm mb-0">
+                        <p className="text-muted-foreground text-sm">
                           © 2024 LightSpeed Tours. All rights reserved.
                         </p>
                       </div>

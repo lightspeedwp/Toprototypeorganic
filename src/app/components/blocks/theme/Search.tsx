@@ -245,7 +245,7 @@ export function Search({
           >
             {showIcon && <SearchIcon className="h-4 w-4" />}
             {!showIcon && buttonLabel && (
-              <span className="text-sm font-medium">{buttonLabel}</span>
+              <span className="text-[length:var(--text-sm)] font-[var(--font-weight-medium)]">{buttonLabel}</span>
             )}
           </button>
         </div>

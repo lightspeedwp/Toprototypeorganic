@@ -78,7 +78,7 @@ export function RootLayout() {
                 <div className="section container flex flex--items-center flex--justify-center min-h-[50vh]">
                   <div className="text-center">
                     <div
-                      className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid has-primary-color border-r-transparent"
+                      className="inline-block h-8 w-8 animate-spin rounded-[var(--radius-full)] border-4 border-solid has-primary-color border-r-transparent"
                       role="status"
                     >
                       <span className="sr-only">Loading...</span>

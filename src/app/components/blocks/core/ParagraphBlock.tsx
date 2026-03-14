@@ -33,7 +33,7 @@ export function ParagraphBlock({
 }: ParagraphBlockProps) {
   return (
     <p 
-      className={cn("text-center m-[0px]", 
+      className={cn("text-center m-0", 
 // ONLY apply size classes if intentionally overriding defaults
 size === 'sm' && 'text-sm', size === 'lg' && 'text-lg', className)}
     >

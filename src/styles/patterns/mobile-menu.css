@@ -281,7 +281,7 @@
   padding-inline: 0.5rem;
   padding-block: 0.125rem;
   font-size: var(--text-xs);
-  border-radius: 9999px;
+  border-radius: var(--radius-full);
   background-color: rgba(var(--primary-rgb), 0.1);
   color: var(--primary);
 }
@@ -430,7 +430,7 @@
 
 .wp-block-lts-mobile-menu__nav::-webkit-scrollbar-thumb {
   background-color: var(--border);
-  border-radius: 4px;
+  border-radius: var(--radius-md);
 }
 
 .wp-block-lts-mobile-menu__nav::-webkit-scrollbar-thumb:hover {

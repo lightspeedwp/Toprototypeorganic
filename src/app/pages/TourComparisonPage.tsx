@@ -305,14 +305,14 @@ export function TourComparisonPage() {
               </div>
 
               {/* Unique Highlights Comparison */}
-              <HeadingBlock level={2} className="mt-12 mb-8">
+              <HeadingBlock level={2} className="pt-12 pb-8">
                 Distinctive Highlights
               </HeadingBlock>
               
               <div className="wp-comparison-highlights">
                 {selectedTours.map((tour) => (
                   <div key={tour.id} className="wp-comparison-highlights__card">
-                    <HeadingBlock level={4} className="mb-4">
+                    <HeadingBlock level={4} className="pb-4">
                       {tour.title}
                     </HeadingBlock>
                     <ul className="wp-comparison-highlights__list">
@@ -356,7 +356,7 @@ export function TourComparisonPage() {
         <section className="wp-comparison-tips">
           <Container>
             <div className="wp-comparison-tips__card">
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center gap-3 pb-6">
                 <Award className="size-6 text-primary" />
                 <HeadingBlock level={3} className="m-0">Expert Comparison Advice</HeadingBlock>
               </div>
@@ -368,7 +368,7 @@ export function TourComparisonPage() {
                   "Check the number of destinations covered per week to gauge the pace of the journey."
                 ].map((tip, i) => (
                   <li key={i} className="wp-comparison-highlights__item">
-                    <div className="size-5 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">
+                    <div className="size-5 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 translate-y-0.5 font-bold text-xs">
                       {i + 1}
                     </div>
                     <span>{tip}</span>

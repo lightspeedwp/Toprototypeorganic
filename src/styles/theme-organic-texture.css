@@ -10,6 +10,7 @@
   --texture-paper-rich: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.0' numOctaves='5' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E");
 }
 
+.dark .theme-organic,
 .dark.theme-organic {
   /* Reduce texture opacity in dark mode for better readability */
   --texture-grain-micro: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
@@ -17,4 +18,44 @@
   --texture-linen-light: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E");
   
   --texture-paper-rich: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.0' numOctaves='5' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.10'/%3E%3C/svg%3E");
+}
+
+/* Texture overlay utility classes */
+.texture-subtle, .texture-medium, .texture-rich {
+  position: relative;
+  z-index: 1;
+}
+
+.texture-subtle::before,
+.texture-medium::before,
+.texture-rich::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.texture-subtle::before {
+  background-image: var(--texture-grain-micro);
+  mix-blend-mode: multiply;
+}
+
+.texture-medium::before {
+  background-image: var(--texture-linen-light);
+  mix-blend-mode: multiply;
+}
+
+.texture-rich::before {
+  background-image: var(--texture-paper-rich);
+  mix-blend-mode: multiply;
+}
+
+.dark .theme-organic .texture-subtle::before,
+.dark .theme-organic .texture-medium::before,
+.dark .theme-organic .texture-rich::before,
+.dark.theme-organic .texture-subtle::before,
+.dark.theme-organic .texture-medium::before,
+.dark.theme-organic .texture-rich::before {
+  mix-blend-mode: color-dodge;
 }

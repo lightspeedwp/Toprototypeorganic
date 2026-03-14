@@ -70,25 +70,25 @@ export function RegionsList({
     <div className={`${className}`} aria-label="Regions list">
       {/* Title */}
       {title && (
-        <h3 className="mb-3">
+        <h3 className="pb-element-md">
           {title}
         </h3>
       )}
 
       {/* Inline Format */}
       {format === 'inline' && (
-        <p className="font-sans">
+        <p className="font-[family-name:var(--font-family-noto-sans)]">
           {regions.join(', ')}
         </p>
       )}
 
       {/* List Format */}
       {format === 'list' && (
-        <ul className="space-y-1" role="list">
+        <ul className="flex flex-col gap-1" role="list">
           {regions.map((region, index) => (
             <li
               key={index}
-              className="font-sans"
+              className="font-[family-name:var(--font-family-noto-sans)]"
             >
               {region}
             </li>

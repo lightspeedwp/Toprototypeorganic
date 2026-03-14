@@ -106,17 +106,17 @@ export function RelatedContent({ title, children, emptyMessage = "No related con
 
   return (
     <section className={cn("wp-pattern-related", className)}>
-      <Container>
-        <h2 className="wp-pattern-related__title">
+      <Container className="flex flex-col gap-element-xl">
+        <h2 className="wp-pattern-related__title m-0 font-[family:var(--font-family-lora)] text-[length:var(--text-3xl)] text-[color:var(--color-foreground)]">
           {title}
         </h2>
         
         {hasContent ? (
-          <div className="wp-pattern-related__grid">
+          <div className="wp-pattern-related__grid flex flex-wrap gap-fluid-lg md:grid md:grid-cols-2 lg:grid-cols-3">
             {children}
           </div>
         ) : (
-          <p className="wp-pattern-related__empty">
+          <p className="wp-pattern-related__empty m-0 text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)]">
             {emptyMessage}
           </p>
         )}

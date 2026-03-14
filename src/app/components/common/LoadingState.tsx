@@ -42,9 +42,9 @@ export function LoadingSpinner({ size = 'md', className, text }: LoadingSpinnerP
   };
 
   return (
-    <div className={cn('flex flex-col items-center justify-center gap-3', className)}>
+    <div className={cn('flex flex-col items-center justify-center gap-fluid-sm', className)}>
       <CircleNotch className={cn('animate-spin text-primary', sizes[size])} />
-      {text && <p className="text-sm text-muted-foreground">{text}</p>}
+      {text && <p className="text-[length:var(--text-sm)] text-muted-foreground">{text}</p>}
     </div>
   );
 }
@@ -137,18 +137,18 @@ export function CardSkeleton({ count = 1, className }: CardSkeletonProps) {
           <Skeleton width="100%" height="200px" rounded="none" />
           
           {/* Content */}
-          <div className="p-4 space-y-3">
+          <div className="p-element-md flex flex-col gap-element-sm">
             {/* Title */}
             <Skeleton width="80%" height="24px" />
             
             {/* Description */}
-            <div className="space-y-2">
+            <div className="flex flex-col gap-element-sm">
               <Skeleton width="100%" height="16px" />
               <Skeleton width="90%" height="16px" />
             </div>
             
             {/* Metadata */}
-            <div className="flex gap-3">
+            <div className="flex gap-fluid-sm">
               <Skeleton width="60px" height="20px" />
               <Skeleton width="80px" height="20px" />
             </div>
@@ -184,14 +184,14 @@ interface ListSkeletonProps {
  */
 export function ListSkeleton({ count = 3, className }: ListSkeletonProps) {
   return (
-    <div className={cn('space-y-3', className)}>
+    <div className={cn('flex flex-col gap-element-sm', className)}>
       {Array.from({ length: count }).map((_, i) => (
-        <div key={i} className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg">
+        <div key={i} className="flex items-center gap-fluid-md p-element-md bg-card border border-border rounded-[var(--radius-lg)]">
           {/* Icon/Image */}
-          <Skeleton width="48px" height="48px" rounded="lg" />
+          <Skeleton width="48px" height="48px" rounded="var(--radius-lg)" />
           
           {/* Content */}
-          <div className="flex-1 space-y-2">
+          <div className="flex-1 flex flex-col gap-element-xs">
             <Skeleton width="40%" height="20px" />
             <Skeleton width="60%" height="16px" />
           </div>
@@ -261,7 +261,7 @@ export function ProgressBar({
         />
       </div>
       {showValue && (
-        <p className="text-sm text-muted-foreground mt-2 text-center">
+        <p className="text-[length:var(--text-sm)] text-muted-foreground pt-element-sm text-center">
           {Math.round(clampedValue)}%
         </p>
       )}
@@ -326,9 +326,9 @@ interface InlineLoadingProps {
  */
 export function InlineLoading({ text, className, size = 'sm' }: InlineLoadingProps) {
   return (
-    <span className={cn('inline-flex items-center gap-2', className)}>
+    <span className={cn('inline-flex items-center gap-fluid-sm', className)}>
       <CircleNotch className={cn('animate-spin', size === 'sm' ? 'w-4 h-4' : 'w-5 h-5')} />
-      {text && <span className="text-sm">{text}</span>}
+      {text && <span className="text-[length:var(--text-sm)]">{text}</span>}
     </span>
   );
 }
@@ -378,23 +378,23 @@ export function EmptyState({
   className,
 }: EmptyStateProps) {
   return (
-    <div className={cn('text-center py-section-sm', className)}>
+    <div className={cn('flex flex-col items-center text-center py-section-sm', className)}>
       {Icon && (
-        <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
+        <div className="w-16 h-16 rounded-[var(--radius-full)] bg-[color:var(--color-muted)] flex items-center justify-center pb-element-md">
           <Icon className="w-8 h-8 text-muted-foreground" />
         </div>
       )}
       
-      <h3 className="mb-2">{title}</h3>
+      <h3 className="pb-element-sm">{title}</h3>
       
       {description && (
-        <p className="text-muted-foreground mb-6">{description}</p>
+        <p className="text-[color:var(--color-muted-foreground)] pb-element-lg">{description}</p>
       )}
       
       {action && (
         <button
           onClick={action.onClick}
-          className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+          className="px-element-md py-element-sm bg-primary text-primary-foreground rounded-[var(--radius-lg)] hover:bg-primary/90 transition-colors"
         >
           {action.label}
         </button>

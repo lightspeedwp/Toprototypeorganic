@@ -213,9 +213,9 @@ export function DevToolFilterControls({
   );
 
   return (
-    <div className={`mb-8 ${className}`}>
+    <div className={`pb-8 ${className}`}>
       {/* Mobile Filter Button */}
-      <div className="md:hidden mb-4">
+      <div className="md:hidden pb-4">
         <button
           onClick={() => setIsMobileFilterOpen(!isMobileFilterOpen)}
           className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-muted border border-border rounded-lg hover:bg-muted/80 transition-colors font-sans text-fluid-sm font-medium"
@@ -225,7 +225,7 @@ export function DevToolFilterControls({
           <Filter className="w-4 h-4" />
           <span>Filters</span>
           {hasActiveFilters && (
-            <span className="ml-1 px-2 py-0.5 bg-primary text-primary-foreground rounded-full text-xs">
+            <span className="pl-1 px-2 py-0.5 bg-primary text-primary-foreground rounded-full text-xs">
               Active
             </span>
           )}
@@ -235,9 +235,9 @@ export function DevToolFilterControls({
         {isMobileFilterOpen && (
           <div
             id="mobile-filters"
-            className="mt-4 p-4 bg-card border border-border rounded-lg shadow-lg space-y-4"
+            className="pt-4 bg-card border border-border rounded-lg shadow-lg flex flex-col gap-4 p-4"
           >
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between pb-4">
               <h3
                 className="font-serif text-fluid-lg font-semibold"
               >
@@ -252,7 +252,7 @@ export function DevToolFilterControls({
               </button>
             </div>
             
-            <div className="space-y-3">
+            <div className="flex flex-col gap-3">
               {renderFilters()}
             </div>
           </div>
@@ -266,7 +266,7 @@ export function DevToolFilterControls({
 
       {/* Results Count */}
       <div
-        className="mt-4 text-center md:text-right text-muted-foreground font-sans text-fluid-sm font-normal"
+        className="pt-4 text-center md:text-right text-muted-foreground font-sans text-fluid-sm font-normal"
         role="status"
         aria-live="polite"
       >

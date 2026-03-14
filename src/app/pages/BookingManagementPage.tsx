@@ -229,8 +229,8 @@ export default function BookingManagementPage({ onNavigate }: BookingManagementP
           ================================================================ */}
       <section className="py-section-sm md:py-section-md bg-muted">
         <Container>
-          <div className="max-w-3xl">
-            <h1 className="mb-4">My Bookings</h1>
+          <div className="max-w-3xl flex flex-col gap-4">
+            <h1>My Bookings</h1>
             <p className="text-lg text-muted-foreground">
               View and manage all your tour bookings in one place
             </p>
@@ -302,7 +302,7 @@ export default function BookingManagementPage({ onNavigate }: BookingManagementP
           </div>
 
           {/* Results count */}
-          <p className="text-sm text-muted-foreground mt-4">
+          <p className="text-sm text-muted-foreground pt-4">
             Showing {filteredBookings.length} of {bookings.length} booking
             {bookings.length !== 1 ? "s" : ""}
           </p>
@@ -315,7 +315,7 @@ export default function BookingManagementPage({ onNavigate }: BookingManagementP
       <section className="py-section-sm md:py-section-md bg-background">
         <Container>
           {filteredBookings.length > 0 ? (
-            <div className="space-y-6">
+            <div className="flex flex-col gap-6">
               {filteredBookings.map((booking) => {
                 const StatusBadge = getStatusBadge(booking.status);
                 const StatusIcon = StatusBadge.icon;
@@ -339,11 +339,11 @@ export default function BookingManagementPage({ onNavigate }: BookingManagementP
 
                       {/* Booking Details */}
                       <div className="flex-1 p-6">
-                        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 pb-4">
                           <div className="flex-1">
-                            <div className="flex items-start gap-3 mb-3">
+                            <div className="flex items-start gap-3 pb-3">
                               <div className="flex-1">
-                                <h3 className="mb-2">{booking.tourTitle}</h3>
+                                <h3 className="pb-2">{booking.tourTitle}</h3>
                                 <p className="text-sm text-muted-foreground font-mono">
                                   {booking.bookingRef}
                                 </p>
@@ -481,10 +481,10 @@ export default function BookingManagementPage({ onNavigate }: BookingManagementP
             </div>
           ) : (
             /* Empty State */
-            <div className="text-center py-section-sm">
-              <AlertCircle className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-              <h3 className="mb-2">No Bookings Found</h3>
-              <p className="text-muted-foreground mb-6">
+            <div className="text-center py-section-sm flex flex-col items-center gap-4">
+              <AlertCircle className="w-12 h-12 text-muted-foreground" />
+              <h3>No Bookings Found</h3>
+              <p className="text-muted-foreground">
                 {searchQuery || statusFilter !== "all"
                   ? "Try adjusting your filters"
                   : "You haven't made any bookings yet"}
@@ -511,9 +511,9 @@ export default function BookingManagementPage({ onNavigate }: BookingManagementP
       {filteredBookings.length > 0 && (
         <section className="py-section-sm md:py-section-md bg-muted">
           <Container>
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="mb-4">Ready for Your Next Adventure?</h2>
-              <p className="text-lg text-muted-foreground mb-6">
+            <div className="max-w-3xl text-center flex flex-col items-center gap-4">
+              <h2>Ready for Your Next Adventure?</h2>
+              <p className="text-lg text-muted-foreground">
                 Explore our collection of incredible tours around the world
               </p>
               <button

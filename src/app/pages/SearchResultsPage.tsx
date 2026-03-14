@@ -96,7 +96,7 @@ export function SearchResultsPage() {
       {/* Result Tabs */}
       <section className="bg-muted/30 border-b border-border/50">
         <Container>
-          <div className="flex items-center gap-2 overflow-x-auto py-4 scrollbar-hide">
+          <div className="flex items-center gap-fluid-sm overflow-x-auto py-element-lg scrollbar-hide">
             {[
               { id: "all", label: "All Results", count: totalResults },
               { id: "tours", label: "Tours", count: resultsByCategory.tours.length },
@@ -110,9 +110,9 @@ export function SearchResultsPage() {
                   setActiveTab(tab.id as any);
                   setCurrentPage(1);
                 }}
-                className={`px-4 py-2 rounded-full whitespace-nowrap text-sm transition-all ${
+                className={`px-element-lg py-element-sm rounded-[var(--radius-full)] whitespace-nowrap text-[length:var(--text-sm)] font-[family-name:var(--font-family-noto-sans)] transition-all ${
                   activeTab === tab.id
-                    ? "bg-primary text-primary-foreground shadow-sm"
+                    ? "bg-primary text-primary-foreground shadow-[var(--elevation-sm)]"
                     : "bg-background text-muted-foreground hover:text-foreground hover:bg-muted border border-border/50"
                 }`}
               >
@@ -127,13 +127,13 @@ export function SearchResultsPage() {
       <section className="py-section-md min-h-[400px]">
         <Container>
           {isLoading ? (
-            <div className="flex flex-col items-center justify-center py-20 gap-4">
-              <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
-              <p className="text-muted-foreground animate-pulse">Searching our archives...</p>
+            <div className="flex flex-col items-center justify-center py-section-lg gap-fluid-md">
+              <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-[var(--radius-full)] animate-spin" />
+              <p className="text-muted-foreground animate-pulse font-[family-name:var(--font-family-noto-sans)]">Searching our archives...</p>
             </div>
           ) : paginatedResults.length > 0 ? (
-            <>
-              <div className="mb-12 border-b border-border/50 pb-6">
+            <div className="flex flex-col gap-fluid-lg">
+              <div className="border-b border-border/50 pb-element-xl">
                 <h2>
                   {activeTab === 'all' ? 'All Matches' : activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
                 </h2>
@@ -151,15 +151,13 @@ export function SearchResultsPage() {
               </CardGrid>
 
               {totalPages > 1 && (
-                <div className="mt-16">
-                  <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={setCurrentPage}
-                  />
-                </div>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={setCurrentPage}
+                />
               )}
-            </>
+            </div>
           ) : (
             <EmptyStatePattern
               icon="search"

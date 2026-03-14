@@ -118,7 +118,7 @@ interface SiteTaglineProps {
  * 
  * @example
  * // With custom styling (muted)
- * <SiteTagline className="text-muted-foreground text-sm">
+ * <SiteTagline className="text-muted-foreground text-[length:var(--text-sm)]">
  *   Expert-guided safari experiences
  * </SiteTagline>
  * 

@@ -277,7 +277,7 @@ export function Navigation({
 
     return (
       <li key={item.id} className="relative">
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-fluid-xs">
           <a
             href={item.url}
             onClick={(e) => {
@@ -332,10 +332,10 @@ export function Navigation({
           <ul
             className={cn(
               "submenu",
-              "mt-2 space-y-2",
+              "pt-element-xs flex flex-col gap-element-xs",
               orientation === 'horizontal' && !isMobile
-                ? "absolute left-0 top-full bg-card border border-border rounded-[var(--radius-lg)] shadow-[var(--elevation-lg)] py-2 px-4 min-w-[200px] z-50"
-                : "ml-4 pl-4 border-l-2 border-border"
+                ? "absolute left-0 top-full bg-[color:var(--color-card)] border border-[color:var(--color-border)] rounded-[var(--radius-lg)] shadow-[var(--elevation-lg)] py-2 px-4 min-w-[200px] z-50"
+                : "pl-element-md border-l-2 border-[color:var(--color-border)] relative left-[var(--spacing-element-md)] w-[calc(100%-var(--spacing-element-md))]"
             )}
           >
             {item.children!.map((child) => renderNavItem(child, level + 1))}
@@ -428,7 +428,7 @@ export function Navigation({
             )}
           >
             {/* Close button */}
-            <div className="flex justify-end p-4 border-b border-border">
+            <div className="flex justify-end p-element-md border-b border-border">
               <button
                 onClick={closeMobileMenu}
                 aria-label="Close navigation"
@@ -444,7 +444,7 @@ export function Navigation({
             </div>
 
             {/* Menu items */}
-            <ul className="nav-menu flex flex-col gap-4 p-6 list-none">
+            <ul className="nav-menu flex flex-col gap-fluid-sm p-element-lg list-none">
               {menu.map((item) => renderNavItem(item))}
             </ul>
           </nav>

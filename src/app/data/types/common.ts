@@ -365,7 +365,7 @@ export interface FAQ {
   answer: string;
   excerpt: string;
   categories: string[];
-  relatedContentType?: "tour" | "destination" | "accommodation" | "booking" | "general" | "payment" | "travel" | "safety";
+  relatedContentType?: "tour" | "destination" | "accommodation" | "booking" | "general" | "payment" | "travel" | "safety" | "wildlife" | "asia" | "europe" | "sustainability" | "families" | "photography";
   relatedContentIds?: string[];
   order: number;
   featured: boolean;

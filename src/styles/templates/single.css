@@ -590,6 +590,11 @@
   border-bottom: 1px solid var(--border);
 }
 
+/* Climate card temperature emphasis */
+.wp-template-single__climate-temp {
+  font-weight: var(--font-weight-medium);
+}
+
 /* Tours Section - Related tours grid */
 .wp-template-single__tours {
   padding-block: var(--spacing-section-md);

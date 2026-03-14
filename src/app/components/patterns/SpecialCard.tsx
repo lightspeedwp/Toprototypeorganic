@@ -128,20 +128,22 @@ export function SpecialCard({ special, onClick, layout = "grid" }: SpecialCardPr
         </div>
       </div>
       
-      <div className="wp-card__content">
-        <div className="wp-card__header">
-          <h3 className="wp-card__title">
-            {special.title}
-          </h3>
+      <div className="wp-card__content flex flex-col flex-1 p-element-lg">
+        <div className="flex-1 flex flex-col gap-element-md">
+          <div className="wp-card__header flex flex-col gap-fluid-sm">
+            <h3 className="wp-card__title m-0 font-[family:var(--font-family-lora)] text-[length:var(--text-xl)] text-[color:var(--color-foreground)]">
+              {special.title}
+            </h3>
+          </div>
+          
+          <p className="wp-card__description m-0 pb-element-md font-[family:var(--font-family-noto-sans)] text-[length:var(--text-base)] text-[color:var(--color-muted-foreground)]">
+            {special.excerpt}
+          </p>
         </div>
         
-        <p className="wp-card__description">
-          {special.excerpt}
-        </p>
-        
-        <div className="wp-card__meta">
-          <div className="wp-card__meta-item">
-            <Calendar className="wp-card__meta-icon" aria-hidden="true" />
+        <div className="wp-card__meta flex items-center gap-fluid-md pt-element-md border-t border-[color:var(--color-border)] text-[length:var(--text-sm)] text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)]">
+          <div className="wp-card__meta-item flex items-center gap-fluid-xs">
+            <Calendar className="wp-card__meta-icon w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)]" aria-hidden="true" />
             <span>
               Valid: {new Date(special.validFrom).toLocaleDateString()} - {new Date(special.validTo).toLocaleDateString()}
             </span>

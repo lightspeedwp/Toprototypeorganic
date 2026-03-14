@@ -63,24 +63,24 @@ export function SpecialSingle() {
 
       <div className="organic-section-middle">
         {/* Urgency Strip */}
-      <section className="bg-accent py-8 text-accent-foreground shadow-2xl relative z-10 overflow-hidden">
+      <section className="bg-accent py-section-sm text-accent-foreground shadow-2xl relative z-10 overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 animate-pulse" />
         <Container>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-12 relative z-10">
-            <div className="flex items-center gap-[var(--spacing-gap-sm)]">
-              <div className="size-12 rounded-2xl bg-accent-foreground/10 backdrop-blur-md flex items-center justify-center shadow-lg border border-accent-foreground/20">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-fluid-2xl relative z-10">
+            <div className="flex items-center gap-fluid-sm">
+              <div className="size-12 rounded-[var(--radius-xl)] bg-accent-foreground/10 backdrop-blur-md flex items-center justify-center shadow-[var(--elevation-lg)] border border-accent-foreground/20">
                 <Clock className="size-6 text-accent-foreground animate-spin-slow" />
               </div>
-              <div className="text-accent-foreground flex flex-col gap-[var(--spacing-gap-xs)]">
-                <span className="text-xs font-bold uppercase tracking-widest opacity-70 block">Time is Essential</span>
-                <span className="font-serif font-bold text-2xl md:text-3xl italic leading-none">Offer Decays Shortly</span>
+              <div className="text-accent-foreground flex flex-col gap-fluid-xs">
+                <span className="text-[length:var(--text-xs)] font-[var(--font-weight-bold)] font-[family-name:var(--font-family-noto-sans)] uppercase tracking-widest opacity-70 block">Time is Essential</span>
+                <span className="font-[family-name:var(--font-family-lora)] font-[var(--font-weight-bold)] text-[length:var(--text-2xl)] md:text-[length:var(--text-3xl)] italic leading-none">Offer Decays Shortly</span>
               </div>
             </div>
             <div className="h-12 w-px bg-accent-foreground/20 hidden md:block" />
             <CountdownPattern 
               endDate={special.validTo} 
               variant="minimal" 
-              className="bg-accent-foreground/10 rounded-2xl px-10 py-4 backdrop-blur-md border border-accent-foreground/20 shadow-inner"
+              className="bg-accent-foreground/10 rounded-[var(--radius-xl)] px-element-3xl py-element-md backdrop-blur-md border border-accent-foreground/20 shadow-inner"
             />
           </div>
         </Container>
@@ -99,12 +99,12 @@ export function SpecialSingle() {
 
       <section className="py-section-lg bg-muted/10 border-y-2 border-border/50">
         <Container maxWidth="narrow">
-          <div className="text-center flex flex-col items-center gap-[var(--spacing-gap-sm)] pb-[var(--spacing-gap-lg)]">
-            <span className="text-xs font-bold uppercase tracking-widest text-primary block">Value Added</span>
-            <h2 className="text-4xl font-bold font-serif m-0">Inclusions & Advantages</h2>
+          <div className="text-center flex flex-col items-center gap-fluid-sm pb-fluid-lg">
+            <span className="text-[length:var(--text-xs)] font-[var(--font-weight-bold)] font-[family-name:var(--font-family-noto-sans)] uppercase tracking-widest text-primary block">Value Added</span>
+            <h2 className="text-[length:var(--text-4xl)] font-[var(--font-weight-bold)] font-[family-name:var(--font-family-lora)] m-0">Inclusions & Advantages</h2>
           </div>
           
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-fluid-lg">
             {[
               "Preferential Booking Protocols",
               "Exclusive Airport Concierge",
@@ -119,12 +119,12 @@ export function SpecialSingle() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="flex items-center gap-4 p-6 rounded-2xl bg-card border-2 border-border shadow-sm group hover:border-primary transition-all duration-500"
+                className="flex items-center gap-fluid-md p-element-xl rounded-[var(--radius-xl)] bg-card border-2 border-border shadow-[var(--elevation-sm)] group hover:border-primary transition-all duration-500"
               >
-                <div className="size-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                <div className="size-10 rounded-[var(--radius-lg)] bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                   <CircleCheck className="size-5" />
                 </div>
-                <span className="font-bold text-foreground text-sm">{benefit}</span>
+                <span className="font-[var(--font-weight-bold)] text-foreground text-[length:var(--text-sm)] font-[family-name:var(--font-family-noto-sans)]">{benefit}</span>
               </motion.div>
             ))}
           </div>
@@ -133,9 +133,9 @@ export function SpecialSingle() {
 
       <section className="py-section-lg">
         <Container>
-          <div className="flex flex-col md:flex-row justify-between items-end gap-[var(--spacing-gap-lg)] pb-[var(--spacing-gap-lg)]">
-            <div className="max-w-2xl flex flex-col gap-[var(--spacing-gap-xs)]">
-              <span className="text-xs font-bold uppercase tracking-widest text-primary block">Curation</span>
+          <div className="flex flex-col md:flex-row justify-between items-end gap-fluid-lg pb-fluid-lg">
+            <div className="max-w-2xl flex flex-col gap-fluid-xs">
+              <span className="text-[length:var(--text-xs)] font-[var(--font-weight-bold)] font-[family-name:var(--font-family-noto-sans)] uppercase tracking-widest text-primary block">Curation</span>
               <h2 className="text-4xl font-bold font-serif m-0">Applicable Expeditions</h2>
               <p className="text-muted-foreground text-lg m-0">This privilege is extended across our most coveted journeys.</p>
             </div>

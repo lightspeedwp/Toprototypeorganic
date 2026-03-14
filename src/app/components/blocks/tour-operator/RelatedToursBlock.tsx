@@ -132,13 +132,15 @@ export function RelatedToursBlock({
     <section className={`section-related-default ${className}`}>
       <Container>
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="text-center pb-element-xl flex flex-col items-center">
           <h2>{title}</h2>
-          <div className="mt-4 w-20 h-0.5 bg-border mx-auto" />
+          <div className="pt-element-lg flex justify-center w-full">
+            <div className="w-20 h-0.5 bg-[color:var(--color-border)]" />
+          </div>
         </div>
 
         {/* Tours Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-fluid-lg">
           {relatedTours.map((tour) => (
             <TourCard
               key={tour.id}

@@ -63,13 +63,13 @@ export function PackingGuidesPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {PACKING_LISTS.filter(list => list.featured).map((list) => (
-              <div key={list.id} className="group p-8 rounded-2xl bg-card border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col">
-                <div className="w-12 h-12 rounded-xl bg-primary/5 text-primary flex items-center justify-center mb-6">
+              <div key={list.id} className="group p-8 rounded-2xl bg-card border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col gap-3">
+                <div className="w-12 h-12 rounded-xl bg-primary/5 text-primary flex items-center justify-center">
                   <Package size={24} />
                 </div>
-                <h3 className="mb-3">{list.title}</h3>
-                <p className="text-sm text-muted-foreground mb-8 flex-1">{list.description}</p>
-                <div className="space-y-4">
+                <h3>{list.title}</h3>
+                <p className="text-sm text-muted-foreground flex-1">{list.description}</p>
+                <div className="flex flex-col gap-4">
                   <div className="flex items-center justify-between text-xs text-muted-foreground border-t border-border/50 pt-4">
                     <span className="text-foreground">{list.items.length} Points</span>
                     <span>{list.downloads.toLocaleString()} downloads</span>

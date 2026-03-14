@@ -14,6 +14,7 @@
 
 import { Container } from "../../components/common/Container";
 import { DevToolsBreadcrumbs } from "../../components/common/DevToolsBreadcrumbs";
+import { TextAa } from "@phosphor-icons/react";
 
 /** Token metadata shown beside each specimen. */
 interface Specimen {
@@ -47,8 +48,8 @@ function SpecimenRow({ spec }: { spec: Specimen }) {
   return (
     <div className="grid gap-4 md:grid-cols-[200px_1fr] items-start py-6 border-b border-border last:border-b-0">
       {/* Meta */}
-      <div className="space-y-1">
-        <span className="inline-block px-2 py-0.5 rounded-sm bg-primary/10 text-primary text-xs mb-1">{spec.label}</span>
+      <div className="flex flex-col gap-1">
+        <span className="inline-block px-2 py-0.5 rounded-sm bg-primary/10 text-primary text-xs pb-1">{spec.label}</span>
         <p className="text-xs text-muted-foreground mb-0"><code className="text-xs">{spec.variable}</code></p>
         <p className="text-xs text-muted-foreground mb-0">{spec.font}</p>
         <p className="text-xs text-muted-foreground mb-0">{spec.weight}</p>
@@ -67,22 +68,27 @@ export default function TypographySpecimens() {
     <>
       <DevToolsBreadcrumbs currentPage="Typography Specimens" />
 
-      <section className="py-section-sm bg-muted">
+      <section className="py-section-sm bg-muted border-b border-border">
         <Container>
-          <h1 className="mb-4">Typography Specimens</h1>
-          <p className="text-muted-foreground max-w-3xl">
-            Every heading level and body text size rendered using the project's fluid type scale.
-            All values come from CSS custom properties in <code>theme-light.css</code> and are mapped
-            through Tailwind's <code>@theme</code> integration in <code>theme.css</code>.
-          </p>
+          <div className="flex flex-col gap-element-sm">
+            <div className="wp-page-header__icon-container w-14 h-14 flex items-center justify-center rounded-[var(--radius-lg)] bg-primary/10 text-primary transition-colors hover:bg-primary/20">
+              <TextAa className="w-7 h-7" />
+            </div>
+            <h1>Typography Specimens</h1>
+            <p className="text-muted-foreground max-w-3xl">
+              Every heading level and body text size rendered using the project's fluid type scale.
+              All values come from CSS custom properties in <code>theme-light.css</code> and are mapped
+              through Tailwind's <code>@theme</code> integration in <code>theme.css</code>.
+            </p>
+          </div>
         </Container>
       </section>
 
       {/* Headings */}
       <section className="py-section-sm bg-background">
         <Container>
-          <h2 className="mb-2">Heading Scale</h2>
-          <p className="text-muted-foreground mb-8">Font family: <strong>Lora</strong> (serif) — applied via <code>font-serif</code></p>
+          <h2 className="pb-2">Heading Scale</h2>
+          <p className="text-muted-foreground pb-8">Font family: <strong>Lora</strong> (serif) — applied via <code>font-serif</code></p>
           <div className="divide-y divide-border border border-border rounded-lg bg-card p-6">
             {HEADING_SPECIMENS.map((s) => (
               <SpecimenRow key={s.label} spec={s} />
@@ -94,8 +100,8 @@ export default function TypographySpecimens() {
       {/* Body text */}
       <section className="py-section-sm bg-muted">
         <Container>
-          <h2 className="mb-2">Body Text Scale</h2>
-          <p className="text-muted-foreground mb-8">Font family: <strong>Noto Sans</strong> (sans-serif) — applied via <code>font-sans</code></p>
+          <h2 className="pb-2">Body Text Scale</h2>
+          <p className="text-muted-foreground pb-8">Font family: <strong>Noto Sans</strong> (sans-serif) — applied via <code>font-sans</code></p>
           <div className="divide-y divide-border border border-border rounded-lg bg-card p-6">
             {BODY_SPECIMENS.map((s) => (
               <SpecimenRow key={s.label} spec={s} />
@@ -107,26 +113,26 @@ export default function TypographySpecimens() {
       {/* Special elements */}
       <section className="py-section-sm bg-background">
         <Container>
-          <h2 className="mb-2">Special Elements</h2>
-          <p className="text-muted-foreground mb-8">Blockquotes, labels, buttons, code, and links — all styled via semantic HTML rules in <code>theme.css</code>.</p>
+          <h2 className="pb-2">Special Elements</h2>
+          <p className="text-muted-foreground pb-8">Blockquotes, labels, buttons, code, and links — all styled via semantic HTML rules in <code>theme.css</code>.</p>
 
           <div className="grid gap-6 md:grid-cols-2">
             {/* Blockquote */}
             <div className="border border-border rounded-lg bg-card p-6">
-              <h4 className="mb-4">Blockquote</h4>
+              <h4 className="pb-4">Blockquote</h4>
               <blockquote>
                 Travel is the only thing you buy that makes you richer. Every journey transforms you.
               </blockquote>
-              <p className="text-xs text-muted-foreground mt-2 mb-0"><code>font-serif</code> · italic · <code>--text-xl</code></p>
+              <p className="text-xs text-muted-foreground pt-2 mb-0"><code>font-serif</code> · italic · <code>--text-xl</code></p>
             </div>
 
             {/* Label */}
             <div className="border border-border rounded-lg bg-card p-6">
-              <h4 className="mb-4">Labels &amp; Buttons</h4>
-              <div className="space-y-4">
+              <h4 className="pb-4">Labels &amp; Buttons</h4>
+              <div className="flex flex-col gap-4">
                 <div>
                   <label htmlFor="demo-input">Form Label (Lora, medium)</label>
-                  <input id="demo-input" type="text" placeholder="Input field (Noto Sans)" className="w-full mt-1 px-3 py-2 border border-border rounded-md bg-input" />
+                  <input id="demo-input" type="text" placeholder="Input field (Noto Sans)" className="w-full pt-1 px-3 py-2 border border-border rounded-md bg-input" />
                 </div>
                 <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md">Button Text (Noto Sans, medium)</button>
               </div>
@@ -134,14 +140,14 @@ export default function TypographySpecimens() {
 
             {/* Code */}
             <div className="border border-border rounded-lg bg-card p-6">
-              <h4 className="mb-4">Inline &amp; Block Code</h4>
-              <p className="mb-4">Use <code>var(--primary)</code> for the brand colour.</p>
+              <h4 className="pb-4">Inline &amp; Block Code</h4>
+              <p className="pb-4">Use <code>var(--primary)</code> for the brand colour.</p>
               <pre><code>{`/* Example CSS */\n.card {\n  background: var(--card);\n  border: 1px solid var(--border);\n  border-radius: var(--radius);\n}`}</code></pre>
             </div>
 
             {/* Lists */}
             <div className="border border-border rounded-lg bg-card p-6">
-              <h4 className="mb-4">Lists</h4>
+              <h4 className="pb-4">Lists</h4>
               <ul>
                 <li>Unordered list item one</li>
                 <li>Unordered list item two</li>
@@ -160,8 +166,8 @@ export default function TypographySpecimens() {
       {/* Font weight scale */}
       <section className="py-section-sm bg-muted">
         <Container>
-          <h2 className="mb-2">Font Weight Scale</h2>
-          <p className="text-muted-foreground mb-8">Available weights mapped to CSS custom properties.</p>
+          <h2 className="pb-2">Font Weight Scale</h2>
+          <p className="text-muted-foreground pb-8">Available weights mapped to CSS custom properties.</p>
           <div className="border border-border rounded-lg bg-card overflow-hidden">
             {[
               { label: "Light (300)", variable: "--font-weight-light", cls: "font-light" },

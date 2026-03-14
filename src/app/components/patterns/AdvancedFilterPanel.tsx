@@ -197,13 +197,13 @@ export function AdvancedFilterPanel({
   return (
     <div
       className={cn(
-        "space-y-[var(--spacing-gap-md)] rounded-[var(--radius-lg)] border border-border bg-card p-[var(--spacing-element-lg)]",
+        "flex flex-col gap-fluid-md rounded-[var(--radius-lg)] border border-border bg-card p-element-lg",
         className
       )}
     >
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-[var(--spacing-gap-sm)]">
+        <div className="flex items-center gap-fluid-sm">
           <SlidersHorizontal size={20} className="text-primary" />
           <h3 className="text-foreground m-0">Filters</h3>
           {activeCount > 0 && (
@@ -226,7 +226,7 @@ export function AdvancedFilterPanel({
 
       {/* Result Count */}
       {resultCount !== undefined && (
-        <div className="rounded-[var(--radius-md)] wp-bg-muted-light p-[var(--spacing-element-md)] text-[length:var(--text-sm)] text-foreground">
+        <div className="rounded-[var(--radius-md)] wp-bg-muted-light p-element-md text-[length:var(--text-sm)] text-foreground">
           <strong>{resultCount}</strong> result{resultCount !== 1 ? 's' : ''} found
         </div>
       )}
@@ -352,20 +352,20 @@ function FilterSection({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border-b border-border pb-[var(--spacing-element-lg)]">
+    <div className="border-b border-[color:var(--color-border)] pb-element-lg">
       <button
         onClick={onToggle}
-        className="flex w-full items-center justify-between py-[var(--spacing-element-sm)] text-left focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+        className="flex w-full items-center justify-between py-element-sm text-left focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
         aria-expanded={isExpanded}
       >
-        <span className="font-[var(--font-weight-medium)] text-foreground">{title}</span>
+        <span className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">{title}</span>
         {isExpanded ? (
-          <ChevronUp size={16} className="text-muted-foreground" />
+          <ChevronUp size={16} className="text-[color:var(--color-muted-foreground)]" />
         ) : (
-          <ChevronDown size={16} className="text-muted-foreground" />
+          <ChevronDown size={16} className="text-[color:var(--color-muted-foreground)]" />
         )}
       </button>
-      {isExpanded && <div className="mt-[var(--spacing-gap-sm)]">{children}</div>}
+      {isExpanded && <div className="pt-fluid-sm">{children}</div>}
     </div>
   );
 }
@@ -405,7 +405,7 @@ function PriceRangeSlider({
   };
 
   return (
-    <div className="space-y-[var(--spacing-gap-sm)]">
+    <div className="flex flex-col gap-fluid-sm">
       <div className="flex items-center justify-between text-[length:var(--text-sm)]">
         <span className="text-muted-foreground">
           ${localValue[0].toLocaleString()}
@@ -414,7 +414,7 @@ function PriceRangeSlider({
           ${localValue[1].toLocaleString()}
         </span>
       </div>
-      <div className="space-y-[var(--spacing-gap-xs)]">
+      <div className="flex flex-col gap-fluid-xs">
         <input
           type="range"
           min={min}
@@ -473,7 +473,7 @@ function DurationSlider({
   };
 
   return (
-    <div className="space-y-[var(--spacing-gap-sm)]">
+    <div className="flex flex-col gap-fluid-sm">
       <div className="flex items-center justify-between text-[length:var(--text-sm)]">
         <span className="text-muted-foreground">
           {localValue[0]} day{localValue[0] !== 1 ? 's' : ''}
@@ -482,7 +482,7 @@ function DurationSlider({
           {localValue[1]} day{localValue[1] !== 1 ? 's' : ''}
         </span>
       </div>
-      <div className="space-y-[var(--spacing-gap-xs)]">
+      <div className="flex flex-col gap-fluid-xs">
         <input
           type="range"
           min={min}
@@ -519,11 +519,11 @@ function CheckboxGroup({
   onChange: (value: string) => void;
 }) {
   return (
-    <div className="space-y-[var(--spacing-gap-xs)]">
+    <div className="flex flex-col gap-fluid-sm">
       {options.map((option) => (
         <label
           key={option}
-          className="flex cursor-pointer items-center gap-[var(--spacing-gap-sm)] text-[length:var(--text-sm)]"
+          className="flex cursor-pointer items-center gap-fluid-sm text-[length:var(--text-sm)]"
         >
           <input
             type="checkbox"

@@ -126,12 +126,12 @@ export default function DocumentationGenerator() {
       {/* Header */}
       <div className="bg-muted border-b border-border py-section-sm">
         <Container>
-          <div className="flex items-start justify-between gap-6">
-            <div>
-              <div className="flex items-center gap-3 mb-2">
-                <FileText className="w-8 h-8 text-primary" />
-                <h1>Documentation Generator</h1>
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-fluid-sm">
+            <div className="flex flex-col gap-element-sm">
+              <div className="wp-page-header__icon-container w-14 h-14 flex items-center justify-center rounded-[var(--radius-lg)] bg-primary/10 text-primary transition-colors hover:bg-primary/20">
+                <FileText className="w-7 h-7" />
               </div>
+              <h1>Documentation Generator</h1>
               <p className="text-muted-foreground">
                 Automatically generate comprehensive documentation from component code
               </p>
@@ -140,7 +140,7 @@ export default function DocumentationGenerator() {
             <button
               onClick={generateDocs}
               disabled={isGenerating}
-              className="px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50"
+              className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50 w-full md:w-auto md:shrink-0"
             >
               {isGenerating ? 'Generating...' : 'Generate Docs'}
             </button>
@@ -151,14 +151,14 @@ export default function DocumentationGenerator() {
       <Container className="py-section-sm">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Input Section */}
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <div className="bg-card p-6 rounded-lg border border-border">
-              <h2 className="mb-4">Component Code</h2>
+              <h2 className="pb-4">Component Code</h2>
               
               {/* Configuration */}
-              <div className="grid grid-cols-2 gap-4 mb-4">
+              <div className="grid grid-cols-2 gap-4 pb-4">
                 <div>
-                  <label htmlFor="fileName" className="block text-sm mb-2">
+                  <label htmlFor="fileName" className="block text-sm pb-2">
                     File Name
                   </label>
                   <input
@@ -171,7 +171,7 @@ export default function DocumentationGenerator() {
                 </div>
 
                 <div>
-                  <label htmlFor="category" className="block text-sm mb-2">
+                  <label htmlFor="category" className="block text-sm pb-2">
                     Category
                   </label>
                   <select
@@ -197,8 +197,8 @@ export default function DocumentationGenerator() {
             </div>
 
             <div className="bg-accent text-accent-foreground p-4 rounded-lg text-sm">
-              <h4 className="font-medium mb-2">Tips for Best Results:</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Tips for Best Results:</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>Include JSDoc comments above component and props</li>
                 <li>Define props interface with descriptions</li>
                 <li>Use TypeScript for better type extraction</li>
@@ -211,13 +211,13 @@ export default function DocumentationGenerator() {
           {/* Output Section */}
           <div>
             {documentation ? (
-              <div className="space-y-6">
+              <div className="flex flex-col gap-6">
                 {/* Header */}
                 <div className="bg-card p-6 rounded-lg border border-border">
-                  <div className="flex items-start justify-between gap-4 mb-4">
+                  <div className="flex items-start justify-between gap-4 pb-4">
                     <div>
                       <h2>{documentation.componentName}</h2>
-                      <p className="text-sm text-muted-foreground mt-1">
+                      <p className="text-sm text-muted-foreground pt-1">
                         {documentation.category} component
                       </p>
                     </div>
@@ -253,7 +253,7 @@ export default function DocumentationGenerator() {
                 {/* Props Table */}
                 {documentation.props.length > 0 && (
                   <div className="bg-card p-6 rounded-lg border border-border">
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center justify-between pb-4">
                       <h3>Props</h3>
                       <button
                         onClick={() => {
@@ -312,12 +312,12 @@ export default function DocumentationGenerator() {
                 {/* Examples */}
                 {documentation.examples.length > 0 && (
                   <div className="bg-card p-6 rounded-lg border border-border">
-                    <h3 className="mb-4">Usage Examples</h3>
+                    <h3 className="pb-4">Usage Examples</h3>
                     
-                    <div className="space-y-4">
+                    <div className="flex flex-col gap-4">
                       {documentation.examples.map((example, idx) => (
                         <div key={idx} className="bg-muted p-4 rounded-lg">
-                          <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center justify-between pb-2">
                             <h4 className="text-sm font-medium">{example.title}</h4>
                             <button
                               onClick={() => copyToClipboard(example.code, `example-${idx}`)}
@@ -338,7 +338,7 @@ export default function DocumentationGenerator() {
                           </div>
                           
                           {example.description && (
-                            <p className="text-sm text-muted-foreground mb-3">
+                            <p className="text-sm text-muted-foreground pb-3">
                               {example.description}
                             </p>
                           )}
@@ -354,12 +354,12 @@ export default function DocumentationGenerator() {
 
                 {/* Accessibility */}
                 <div className="bg-card p-6 rounded-lg border border-border">
-                  <h3 className="mb-4">Accessibility</h3>
+                  <h3 className="pb-4">Accessibility</h3>
                   
-                  <div className="space-y-3 text-sm">
+                  <div className="flex flex-col gap-3 text-sm">
                     {documentation.accessibility.ariaAttributes.length > 0 && (
                       <div>
-                        <div className="font-medium mb-1">ARIA Attributes:</div>
+                        <div className="font-medium pb-1">ARIA Attributes:</div>
                         <div className="flex flex-wrap gap-2">
                           {documentation.accessibility.ariaAttributes.map((attr, idx) => (
                             <code
@@ -375,7 +375,7 @@ export default function DocumentationGenerator() {
 
                     {documentation.accessibility.keyboardSupport.length > 0 && (
                       <div>
-                        <div className="font-medium mb-1">Keyboard Support:</div>
+                        <div className="font-medium pb-1">Keyboard Support:</div>
                         <ul className="list-disc list-inside text-muted-foreground">
                           {documentation.accessibility.keyboardSupport.map((support, idx) => (
                             <li key={idx}>{support}</li>
@@ -385,7 +385,7 @@ export default function DocumentationGenerator() {
                     )}
 
                     <div>
-                      <div className="font-medium mb-1">Focus Management:</div>
+                      <div className="font-medium pb-1">Focus Management:</div>
                       <p className="text-muted-foreground">
                         {documentation.accessibility.focusManagement}
                       </p>
@@ -395,7 +395,7 @@ export default function DocumentationGenerator() {
 
                 {/* Full Markdown */}
                 <div className="bg-card p-6 rounded-lg border border-border">
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between pb-4">
                     <h3>Generated Markdown</h3>
                     <button
                       onClick={() => copyToClipboard(documentation.markdown, 'markdown')}
@@ -422,8 +422,8 @@ export default function DocumentationGenerator() {
               </div>
             ) : (
               <div className="bg-muted p-12 rounded-lg text-center h-full flex flex-col items-center justify-center">
-                <FileText className="w-12 h-12 text-muted-foreground mb-4" />
-                <h3 className="mb-2">Ready to Generate</h3>
+                <FileText className="w-12 h-12 text-muted-foreground pb-4" />
+                <h3 className="pb-2">Ready to Generate</h3>
                 <p className="text-muted-foreground">
                   Paste your component code on the left and click "Generate Docs" to create comprehensive documentation.
                 </p>

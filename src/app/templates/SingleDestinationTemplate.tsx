@@ -236,11 +236,11 @@ function SingleDestinationTemplate() {
 
       <div className="organic-section-middle">
         {/* Main Content Grid */}
-        <section className="py-[var(--spacing-section-sm)] md:py-[var(--spacing-section-md)]">
+        <section className="py-section-sm md:py-section-md">
           <Container>
             <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
               {/* Main Content - 2 columns */}
-              <div className="lg:col-span-2 space-y-12">
+              <div className="lg:col-span-2 flex flex-col gap-12">
               {/* Destination Overview */}
               <EditorialContent
                 title={`About ${destination.name}`}
@@ -257,8 +257,8 @@ function SingleDestinationTemplate() {
               />
 
               {/* Top Highlights */}
-              <div>
-                <div className="flex items-center gap-2 mb-6">
+              <div className="flex flex-col gap-fluid-md">
+                <div className="flex items-center gap-2">
                   <Award size={24} className="text-primary" />
                   <h2>Top Highlights & Attractions</h2>
                 </div>
@@ -278,8 +278,8 @@ function SingleDestinationTemplate() {
                             <MapPin size={16} className="text-primary" />
                           </div>
                         </div>
-                        <div>
-                          <h4 className="mb-2 text-fluid-lg">{highlight}</h4>
+                        <div className="flex flex-col gap-2">
+                          <h4 className="text-fluid-lg">{highlight}</h4>
                           <p className="text-fluid-sm text-muted-foreground">
                             A must-see attraction that showcases the best of what {destination.name} has to offer.
                           </p>
@@ -291,81 +291,45 @@ function SingleDestinationTemplate() {
               </div>
 
               {/* Climate & Best Time to Visit */}
-              <div>
-                <div className="flex items-center gap-2 mb-6">
+              <div className="flex flex-col gap-fluid-md">
+                <div className="flex items-center gap-2">
                   <Sun size={24} className="text-primary" />
                   <h2>Climate & Best Time to Visit</h2>
                 </div>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="p-6 rounded-[var(--radius-lg)] border border-border bg-card">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Sun size={20} className="text-accent" />
-                      <h4>Summer</h4>
-                    </div>
-                    <p className="text-fluid-sm text-muted-foreground mb-2">
-                      {climateInfo.summer.months}
-                    </p>
-                    <p className="text-fluid-sm font-medium mb-2">
-                      {climateInfo.summer.temp}
-                    </p>
-                    <p className="text-fluid-sm text-muted-foreground">
-                      {climateInfo.summer.description}
-                    </p>
-                  </div>
-
-                  <div className="p-6 rounded-[var(--radius-lg)] border border-border bg-card">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Calendar size={20} className="text-secondary" />
-                      <h4>Autumn</h4>
-                    </div>
-                    <p className="text-fluid-sm text-muted-foreground mb-2">
-                      {climateInfo.autumn.months}
-                    </p>
-                    <p className="text-fluid-sm font-medium mb-2">
-                      {climateInfo.autumn.temp}
-                    </p>
-                    <p className="text-fluid-sm text-muted-foreground">
-                      {climateInfo.autumn.description}
-                    </p>
-                  </div>
-
-                  <div className="p-6 rounded-[var(--radius-lg)] border border-border bg-card">
-                    <div className="flex items-center gap-2 mb-3">
-                      <CloudRain size={20} className="text-info" />
-                      <h4>Winter</h4>
-                    </div>
-                    <p className="text-fluid-sm text-muted-foreground mb-2">
-                      {climateInfo.winter.months}
-                    </p>
-                    <p className="text-fluid-sm font-medium mb-2">
-                      {climateInfo.winter.temp}
-                    </p>
-                    <p className="text-fluid-sm text-muted-foreground">
-                      {climateInfo.winter.description}
-                    </p>
-                  </div>
-
-                  <div className="p-6 rounded-[var(--radius-lg)] border border-border bg-card">
-                    <div className="flex items-center gap-2 mb-3">
-                      <TrendingUp size={20} className="text-success" />
-                      <h4>Spring</h4>
-                    </div>
-                    <p className="text-fluid-sm text-muted-foreground mb-2">
-                      {climateInfo.spring.months}
-                    </p>
-                    <p className="text-fluid-sm font-medium mb-2">
-                      {climateInfo.spring.temp}
-                    </p>
-                    <p className="text-fluid-sm text-muted-foreground">
-                      {climateInfo.spring.description}
-                    </p>
-                  </div>
+                  {([
+                    { key: "summer", icon: <Sun size={20} className="text-accent" />, label: "Summer" },
+                    { key: "autumn", icon: <Calendar size={20} className="text-secondary" />, label: "Autumn" },
+                    { key: "winter", icon: <CloudRain size={20} className="text-info" />, label: "Winter" },
+                    { key: "spring", icon: <TrendingUp size={20} className="text-success" />, label: "Spring" },
+                  ] as const).map(({ key, icon, label }) => {
+                    const info = climateInfo[key];
+                    return (
+                      <div key={key} className="p-6 rounded-[var(--radius-lg)] border border-border bg-card flex flex-col gap-3">
+                        <div className="flex items-center gap-2">
+                          {icon}
+                          <h4>{label}</h4>
+                        </div>
+                        <div className="flex flex-col gap-2">
+                          <p className="text-fluid-sm text-muted-foreground">
+                            {info.months}
+                          </p>
+                          <p className="text-fluid-sm wp-template-single__climate-temp">
+                            {info.temp}
+                          </p>
+                          <p className="text-fluid-sm text-muted-foreground">
+                            {info.description}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 
               {/* Gallery */}
-              <div>
-                <div className="flex items-center gap-2 mb-6">
+              <div className="flex flex-col gap-fluid-md">
+                <div className="flex items-center gap-2">
                   <Camera size={24} className="text-primary" />
                   <h2>Photo Gallery</h2>
                 </div>
@@ -374,8 +338,8 @@ function SingleDestinationTemplate() {
             </div>
 
             {/* Sidebar - 1 column */}
-            <div className="space-y-6">
-              <div className="sticky top-4 space-y-6">
+            <div className="flex flex-col gap-6">
+              <div className="sticky top-4 flex flex-col gap-6">
                 {/* Quick Facts */}
                 <FastFacts
                   facts={[
@@ -408,23 +372,23 @@ function SingleDestinationTemplate() {
                 />
 
                 {/* Quick Info Card */}
-                <div className="p-6 rounded-[var(--radius-lg)] border border-border bg-card">
-                  <h4 className="mb-4">Quick Travel Info</h4>
-                  <ul className="space-y-3 text-fluid-sm text-muted-foreground">
+                <div className="p-6 rounded-[var(--radius-lg)] border border-border bg-card flex flex-col gap-4">
+                  <h4>Quick Travel Info</h4>
+                  <ul className="flex flex-col gap-3 text-fluid-sm text-muted-foreground">
                     <li className="flex items-start gap-2">
-                      <MapPin size={16} className="text-primary mt-0.5 flex-shrink-0" />
+                      <MapPin size={16} className="text-primary translate-y-px flex-shrink-0" />
                       <span>Multiple regions to explore</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Users size={16} className="text-primary mt-0.5 flex-shrink-0" />
+                      <Users size={16} className="text-primary translate-y-px flex-shrink-0" />
                       <span>Suitable for all traveler types</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Award size={16} className="text-primary mt-0.5 flex-shrink-0" />
+                      <Award size={16} className="text-primary translate-y-px flex-shrink-0" />
                       <span>Award-winning destination</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Heart size={16} className="text-primary mt-0.5 flex-shrink-0" />
+                      <Heart size={16} className="text-primary translate-y-px flex-shrink-0" />
                       <span>Loved by our travelers</span>
                     </li>
                   </ul>

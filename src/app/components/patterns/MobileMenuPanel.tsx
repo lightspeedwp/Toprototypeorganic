@@ -35,6 +35,8 @@ import { CaretDown as ChevronDown, X, MagnifyingGlass as Search, Phone, Envelope
 import { cn } from "../../lib/utils";
 import { SiteLogo } from "../blocks/theme/SiteLogo";
 import { Button } from "../blocks/design/Button";
+import { SITE_CONFIG } from "../../data/site-config";
+import { CONTACT_INFO } from "../../data/content/navigation";
 
 /**
  * Menu item interface.
@@ -169,7 +171,7 @@ export function MobileMenuPanel({
 
     return (
       <li key={item.id}>
-        <div className="flex items-center justify-between gap-[var(--spacing-gap-sm)]">
+        <div className="flex items-center justify-between gap-fluid-sm">
           {/* Menu link */}
           <a
             href={item.url}
@@ -179,7 +181,7 @@ export function MobileMenuPanel({
               onNavigate?.(item.url);
             }}
             className={cn(
-              "flex-1 py-[var(--spacing-element-md)] px-[var(--spacing-element-lg)] rounded-[var(--radius-md)]",
+              "flex-1 py-element-md px-element-lg rounded-[var(--radius-md)]",
               "cursor-pointer",
               "transition-all duration-200",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
@@ -188,7 +190,7 @@ export function MobileMenuPanel({
                 ? "wp-bg-primary-light font-[var(--font-weight-medium)]" 
                 : "text-foreground hover:bg-muted",
               // Level-based size
-              level === 0 ? "text-[length:var(--text-lg)]" : "text-[length:var(--text-base)] ml-[var(--spacing-element-xl)]"
+              level === 0 ? "text-[length:var(--text-lg)]" : "text-[length:var(--text-base)] pl-element-xl"
             )}
             aria-current={item.isActive ? 'page' : undefined}
           >
@@ -203,7 +205,7 @@ export function MobileMenuPanel({
               aria-haspopup="true"
               aria-label={`Toggle ${item.title} submenu`}
               className={cn(
-                "p-[var(--spacing-element-sm)] rounded-[var(--radius-md)]",
+                "p-element-sm rounded-[var(--radius-md)]",
                 "hover:bg-muted",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 "transition-all duration-200"
@@ -221,7 +223,7 @@ export function MobileMenuPanel({
 
         {/* Submenu */}
         {hasSubMenu && isSubmenuOpen && (
-          <ul className="mt-[var(--spacing-gap-sm)] space-y-[var(--spacing-gap-xs)]">
+          <ul className="flex flex-col gap-fluid-xs m-0 p-0 pt-fluid-sm">
             {item.children!.map((child) => renderNavItem(child, level + 1))}
           </ul>
         )}
@@ -244,9 +246,9 @@ export function MobileMenuPanel({
       )}
     >
       {/* Header: Logo + Close Button */}
-      <header className="flex items-center justify-between p-[var(--spacing-element-xl)] border-b border-border">
+      <header className="flex items-center justify-between p-element-xl border-b border-border">
         {/* Logo */}
-        <div className="flex items-center gap-[var(--spacing-gap-md)]">
+        <div className="flex items-center gap-fluid-md">
           <SiteLogo width="180px" />
         </div>
 
@@ -255,7 +257,7 @@ export function MobileMenuPanel({
           onClick={handleClose}
           aria-label="Close menu"
           className={cn(
-            "p-[var(--spacing-element-sm)] rounded-[var(--radius-full)]",
+            "p-element-sm rounded-[var(--radius-full)]",
             "bg-muted hover:bg-muted/80",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
             "transition-all duration-200",
@@ -269,12 +271,12 @@ export function MobileMenuPanel({
       {/* Scrollable Content */}
       <div className="overflow-y-auto h-[calc(100vh-80px)]">
         {/* Search Bar */}
-        <div className="p-[var(--spacing-element-xl)] border-b border-border">
+        <div className="p-element-xl border-b border-border">
           {!isSearchOpen ? (
             <button
               onClick={() => setIsSearchOpen(true)}
               className={cn(
-                "w-full flex items-center gap-[var(--spacing-gap-md)] p-[var(--spacing-element-lg)] rounded-[var(--radius-lg)]",
+                "w-full flex items-center gap-fluid-md p-element-lg rounded-[var(--radius-lg)]",
                 "bg-muted hover:bg-muted/80",
                 "text-muted-foreground",
                 "transition-all duration-200",
@@ -294,7 +296,7 @@ export function MobileMenuPanel({
                 placeholder="Search tours, destinations..."
                 autoFocus
                 className={cn(
-                  "w-full pl-[var(--spacing-element-3xl)] pr-[var(--spacing-element-3xl)] py-[var(--spacing-element-lg)] rounded-[var(--radius-lg)]",
+                  "w-full pl-element-3xl pr-element-3xl py-element-lg rounded-[var(--radius-lg)]",
                   "bg-muted border-2 border-primary",
                   "text-foreground placeholder:text-muted-foreground",
                   "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
@@ -304,7 +306,7 @@ export function MobileMenuPanel({
               <button
                 type="button"
                 onClick={() => setIsSearchOpen(false)}
-                className="absolute right-[var(--spacing-element-lg)] top-1/2 -translate-y-1/2 p-[var(--spacing-element-xs)] hover:bg-background rounded-[var(--radius-md)]"
+                className="absolute right-[var(--spacing-element-lg)] top-1/2 -translate-y-1/2 p-element-xs hover:bg-background rounded-[var(--radius-md)]"
                 aria-label="Close search"
               >
                 <X className="h-5 w-5" />
@@ -314,11 +316,11 @@ export function MobileMenuPanel({
         </div>
 
         {/* Primary CTA */}
-        <div className="p-[var(--spacing-element-xl)] border-b border-border">
+        <div className="p-element-xl border-b border-border">
           <Button
             onClick={handleCTAClick}
             size="lg"
-            className="w-full text-[length:var(--text-lg)] py-[var(--spacing-element-xl)]"
+            className="w-full text-[length:var(--text-lg)] py-element-xl"
           >
             <Phone className="h-5 w-5" />
             Request a Quote
@@ -326,18 +328,18 @@ export function MobileMenuPanel({
         </div>
 
         {/* Theme Toggle */}
-        <div className="p-[var(--spacing-element-xl)] border-b border-border">
+        <div className="p-element-xl border-b border-border">
           <button
             onClick={onThemeToggle}
             className={cn(
-              "w-full flex items-center justify-between p-[var(--spacing-element-lg)] rounded-[var(--radius-lg)]",
+              "w-full flex items-center justify-between p-element-lg rounded-[var(--radius-lg)]",
               "bg-muted hover:bg-muted/80",
               "transition-all duration-200",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             )}
             aria-label="Toggle theme"
           >
-            <span className="flex items-center gap-[var(--spacing-gap-md)]">
+            <span className="flex items-center gap-fluid-md">
               {theme === 'light' ? (
                 <Sun className="h-5 w-5 text-accent" />
               ) : (
@@ -352,61 +354,61 @@ export function MobileMenuPanel({
         </div>
 
         {/* Navigation Menu */}
-        <nav className="p-[var(--spacing-element-xl)]" role="navigation" aria-label="Main navigation">
+        <nav className="p-element-xl" role="navigation" aria-label="Main navigation">
           <h2 className="sr-only">Main Menu</h2>
-          <ul className="space-y-[var(--spacing-gap-sm)] list-none">
+          <ul className="flex flex-col gap-fluid-sm list-none">
             {menu.map((item) => renderNavItem(item))}
           </ul>
         </nav>
 
         {/* Quick Contact Links */}
-        <div className="p-[var(--spacing-element-xl)] border-t border-border wp-bg-muted-ultralight">
-          <h3 className="font-[var(--font-weight-medium)] mb-[var(--spacing-element-md)] m-0">Get in Touch</h3>
-          <div className="space-y-[var(--spacing-gap-md)]">
+        <div className="p-element-xl border-t border-[color:var(--color-border)] bg-[color:var(--color-muted)]/30 flex flex-col gap-element-md">
+          <h3 className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)] m-0">Get in Touch</h3>
+          <div className="flex flex-col gap-fluid-md">
             {/* Phone */}
             <a
-              href="tel:+1234567890"
+              href={`tel:${CONTACT_INFO.phone}`}
               className={cn(
-                "flex items-center gap-[var(--spacing-gap-md)] p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)]",
+                "flex items-center gap-fluid-md p-element-sm rounded-[var(--radius-lg)]",
                 "hover:bg-background",
                 "transition-colors duration-200",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               )}
             >
               <Phone className="h-5 w-5 text-primary" />
-              <span>+1 (234) 567-890</span>
+              <span>{CONTACT_INFO.phone}</span>
             </a>
 
             {/* Email */}
             <a
-              href="mailto:info@example.com"
+              href={`mailto:${CONTACT_INFO.email}`}
               className={cn(
-                "flex items-center gap-[var(--spacing-gap-md)] p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)]",
+                "flex items-center gap-fluid-md p-element-sm rounded-[var(--radius-lg)]",
                 "hover:bg-background",
                 "transition-colors duration-200",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               )}
             >
               <Mail className="h-5 w-5 text-primary" />
-              <span>info@example.com</span>
+              <span>{CONTACT_INFO.email}</span>
             </a>
 
             {/* Address */}
             <div
               className={cn(
-                "flex items-center gap-[var(--spacing-gap-md)] p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)]",
+                "flex items-center gap-fluid-md p-element-sm rounded-[var(--radius-lg)]",
                 "text-foreground"
               )}
             >
               <MapPin className="h-5 w-5 text-primary" />
-              <span>123 Travel St, Adventure City</span>
+              <span>{CONTACT_INFO.address}</span>
             </div>
           </div>
         </div>
 
         {/* Footer Note */}
-        <div className="p-[var(--spacing-element-xl)] text-center text-[length:var(--text-sm)] text-muted-foreground">
-          <p className="m-0">© 2024 LightSpeed Tours. All rights reserved.</p>
+        <div className="p-element-xl text-center text-[length:var(--text-sm)] text-muted-foreground">
+          <p className="m-0">© {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.</p>
         </div>
       </div>
     </div>

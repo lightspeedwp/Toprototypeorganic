@@ -34,8 +34,8 @@ export function ActionBar({
 }: ActionBarProps) {
   const variantClasses = {
     default: '',
-    muted: 'bg-muted/50 p-[var(--spacing-element-md)] rounded-[var(--radius-xl)] border border-border/50',
-    bordered: 'border-b border-border pb-[var(--spacing-element-lg)]',
+    muted: 'bg-muted/50 p-element-md rounded-[var(--radius-xl)] border border-border/50',
+    bordered: 'border-b border-border pb-element-lg',
   };
 
   return (
@@ -62,7 +62,7 @@ export function ActionBar({
         
         {/* Right Column */}
         {rightContent && (
-          <div className="flex-shrink-0 flex items-center gap-[var(--spacing-gap-sm)]">
+          <div className="flex-shrink-0 flex items-center gap-fluid-sm">
             {rightContent}
           </div>
         )}

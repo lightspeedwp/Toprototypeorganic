@@ -46,10 +46,7 @@ export function HeadingBlock({
   return (
     <Tag 
       id={id} 
-      className={cn(
-        textAlign && `text-${textAlign}`,
-        className
-      )}
+      className={cn("text-[32px] text-[36px] text-[40px]", textAlign && `text-${textAlign}`, className)}
     >
       {children}
     </Tag>

@@ -147,7 +147,7 @@ interface ItineraryListPatternProps {
 export function ItineraryListPattern({ days }: ItineraryListPatternProps) {
   if (!days || days.length === 0) {
     return (
-      <div className="text-center py-section-sm px-[var(--spacing-element-lg)] wp-bg-muted-ultralight rounded-[var(--radius-lg)]">
+      <div className="text-center py-section-sm px-element-lg wp-bg-muted-ultralight rounded-[var(--radius-lg)]">
         <p className="text-muted-foreground m-0">
           Detailed itinerary coming soon
         </p>
@@ -156,43 +156,43 @@ export function ItineraryListPattern({ days }: ItineraryListPatternProps) {
   }
 
   return (
-    <div className="flex flex-col gap-[var(--spacing-gap-lg)]">
+    <div className="flex flex-col gap-fluid-lg">
       {days.map((day) => (
         <article
           key={day.day}
-          className="bg-card border border-border rounded-[var(--radius-lg)] p-[var(--spacing-element-xl)] md:p-[var(--spacing-element-2xl)]"
+          className="bg-[color:var(--color-card)] border border-[color:var(--color-border)] rounded-[var(--radius-lg)] p-element-xl md:p-element-2xl"
         >
           {/* Day Number & Title */}
-          <div className="flex items-start gap-[var(--spacing-gap-lg)] mb-[var(--spacing-element-lg)]">
+          <div className="flex items-start gap-fluid-lg pb-element-lg">
             <div className="wp-icon-container-primary rounded-[var(--radius-full)] flex-shrink-0">
               {/* Day number uses CSS variable for font-weight */}
               <span 
-                className="text-primary font-[var(--font-weight-semibold)]"
+                className="text-[color:var(--color-primary)] font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-semibold)]"
               >
                 {day.day}
               </span>
             </div>
-            <div className="flex-1">
+            <div className="flex-1 flex flex-col justify-center">
               {/* H3 uses system default font-weight-semibold */}
-              <h3 className="!mb-[var(--spacing-element-xs)]">
+              <h3 className="!m-0 font-[family:var(--font-family-lora)] text-[color:var(--color-foreground)]">
                 Day {day.day}: {day.title}
               </h3>
             </div>
           </div>
 
           {/* Description */}
-          <p className="text-muted-foreground mb-[var(--spacing-element-lg)]">
+          <p className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] pb-element-lg !m-0">
             {day.description}
           </p>
 
           {/* Activities */}
           {day.activities && day.activities.length > 0 && (
-            <div className="mb-[var(--spacing-element-lg)]">
-              <h4 className="mb-[var(--spacing-element-sm)] text-fluid-sm font-[var(--font-weight-medium)]">Activities</h4>
-              <ul className="space-y-[var(--spacing-gap-xs)] m-0 pl-0 list-none">
+            <div className="pb-element-lg flex flex-col gap-element-sm">
+              <h4 className="!m-0 text-fluid-sm font-[family:var(--font-family-lora)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">Activities</h4>
+              <ul className="flex flex-col gap-fluid-xs m-0 pl-0 list-none">
                 {day.activities.map((activity, idx) => (
-                  <li key={idx} className="text-muted-foreground flex items-start gap-[var(--spacing-gap-sm)] text-fluid-sm">
-                    <span className="text-primary mt-[var(--spacing-element-xs)]">•</span>
+                  <li key={idx} className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] flex items-start gap-fluid-sm text-fluid-sm">
+                    <span className="text-[color:var(--color-primary)] relative top-0.5">•</span>
                     <span>{activity}</span>
                   </li>
                 ))}
@@ -201,7 +201,7 @@ export function ItineraryListPattern({ days }: ItineraryListPatternProps) {
           )}
 
           {/* Meta Info */}
-          <div className="flex flex-wrap gap-[var(--spacing-gap-lg)] text-muted-foreground pt-[var(--spacing-element-lg)] border-t border-border text-fluid-sm">
+          <div className="flex flex-wrap gap-fluid-lg text-muted-foreground pt-element-lg border-t border-border text-fluid-sm">
             {day.meals && (
               <div>
                 {/* Bold labels use CSS variable */}

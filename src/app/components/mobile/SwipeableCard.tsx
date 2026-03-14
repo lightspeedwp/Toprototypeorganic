@@ -159,14 +159,14 @@ export function SwipeableCard({
     >
       {/* Left Actions (visible when swiped right) */}
       {leftActions.length > 0 && (
-        <div className="absolute inset-y-0 left-0 flex items-center gap-2 px-4">
+        <div className="absolute inset-y-0 left-0 flex items-center gap-fluid-sm px-element-md">
           {leftActions.map((action, index) => (
             <button
               key={index}
               onClick={() => handleAction(action)}
               className={cn(
-                "flex items-center gap-2 px-4 py-2 rounded-lg",
-                "text-white transition-all duration-200",
+                "flex items-center gap-fluid-sm px-element-md py-element-sm rounded-[var(--radius-lg)]",
+                "text-[color:var(--primary-foreground)] transition-all duration-200",
                 "hover:scale-105 active:scale-95",
                 action.color || "bg-primary"
               )}
@@ -176,7 +176,7 @@ export function SwipeableCard({
               }}
             >
               {action.icon}
-              <span className="text-sm font-medium">{action.label}</span>
+              <span className="text-[length:var(--text-sm)] font-[var(--font-weight-medium)]">{action.label}</span>
             </button>
           ))}
         </div>
@@ -184,14 +184,14 @@ export function SwipeableCard({
 
       {/* Right Actions (visible when swiped left) */}
       {rightActions.length > 0 && (
-        <div className="absolute inset-y-0 right-0 flex items-center gap-2 px-4">
+        <div className="absolute inset-y-0 right-0 flex items-center gap-fluid-sm px-element-md">
           {rightActions.map((action, index) => (
             <button
               key={index}
               onClick={() => handleAction(action)}
               className={cn(
-                "flex items-center gap-2 px-4 py-2 rounded-lg",
-                "text-white transition-all duration-200",
+                "flex items-center gap-fluid-sm px-element-md py-element-sm rounded-[var(--radius-lg)]",
+                "text-[color:var(--primary-foreground)] transition-all duration-200",
                 "hover:scale-105 active:scale-95",
                 action.color || "bg-primary"
               )}
@@ -201,7 +201,7 @@ export function SwipeableCard({
               }}
             >
               {action.icon}
-              <span className="text-sm font-medium">{action.label}</span>
+              <span className="text-[length:var(--text-sm)] font-[var(--font-weight-medium)]">{action.label}</span>
             </button>
           ))}
         </div>

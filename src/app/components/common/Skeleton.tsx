@@ -112,19 +112,19 @@ export function SkeletonCard({ className }: { className?: string }) {
       <Skeleton height="200px" radius="none" />
       
       {/* Content */}
-      <div className="space-y-3 p-4">
+      <div className="flex flex-col gap-element-sm p-element-md">
         {/* Title */}
         <Skeleton height="1.5rem" width="80%" />
         
         {/* Description lines */}
-        <div className="space-y-2">
+        <div className="flex flex-col gap-element-xs">
           <Skeleton height="0.875rem" width="100%" />
           <Skeleton height="0.875rem" width="90%" />
           <Skeleton height="0.875rem" width="95%" />
         </div>
         
         {/* Meta info */}
-        <div className="flex items-center gap-4 pt-2">
+        <div className="flex items-center gap-fluid-sm pt-element-xs">
           <Skeleton height="0.75rem" width="60px" />
           <Skeleton height="0.75rem" width="80px" />
         </div>
@@ -155,7 +155,7 @@ export function SkeletonText({
   className?: string;
 }) {
   return (
-    <div className={cn("space-y-2", className)} role="status" aria-busy="true">
+    <div className={cn("flex flex-col gap-2", className)} role="status" aria-busy="true">
       {Array.from({ length: lines }).map((_, i) => (
         <Skeleton
           key={i}
@@ -247,7 +247,7 @@ export function SkeletonImage({
  */
 export function SkeletonHeader({ className }: { className?: string }) {
   return (
-    <div className={cn("space-y-2", className)} role="status" aria-busy="true">
+    <div className={cn("flex flex-col gap-2", className)} role="status" aria-busy="true">
       <Skeleton height="2.5rem" width="60%" />
       <Skeleton height="1rem" width="40%" />
     </div>
@@ -275,11 +275,11 @@ export function SkeletonList({
   className?: string;
 }) {
   return (
-    <div className={cn("space-y-4", className)} role="status" aria-busy="true">
+    <div className={cn("flex flex-col gap-element-md", className)} role="status" aria-busy="true">
       {Array.from({ length: items }).map((_, i) => (
-        <div key={i} className="flex items-center gap-4">
+        <div key={i} className="flex items-center gap-fluid-sm">
           {showAvatar && <SkeletonAvatar size="md" />}
-          <div className="flex-1 space-y-2">
+          <div className="flex-1 flex flex-col gap-element-xs">
             <Skeleton height="1rem" width="70%" />
             <Skeleton height="0.875rem" width="50%" />
           </div>
@@ -311,12 +311,12 @@ export function SkeletonTable({
 }) {
   return (
     <div
-      className={cn("space-y-3", className)}
+      className={cn("flex flex-col gap-element-sm", className)}
       role="status"
       aria-busy="true"
     >
       {/* Header */}
-      <div className="flex gap-4">
+      <div className="flex gap-fluid-sm">
         {Array.from({ length: columns }).map((_, i) => (
           <Skeleton key={i} height="1rem" className="flex-1" />
         ))}
@@ -324,7 +324,7 @@ export function SkeletonTable({
       
       {/* Rows */}
       {Array.from({ length: rows }).map((_, rowIndex) => (
-        <div key={rowIndex} className="flex gap-4">
+        <div key={rowIndex} className="flex gap-fluid-sm">
           {Array.from({ length: columns }).map((_, colIndex) => (
             <Skeleton key={colIndex} height="2rem" className="flex-1" />
           ))}
@@ -392,9 +392,9 @@ export function SkeletonForm({
   className?: string;
 }) {
   return (
-    <div className={cn("space-y-6", className)} role="status" aria-busy="true">
+    <div className={cn("flex flex-col gap-6", className)} role="status" aria-busy="true">
       {Array.from({ length: fields }).map((_, i) => (
-        <div key={i} className="space-y-2">
+        <div key={i} className="flex flex-col gap-2">
           {/* Label */}
           <Skeleton height="1rem" width="30%" />
           {/* Input */}

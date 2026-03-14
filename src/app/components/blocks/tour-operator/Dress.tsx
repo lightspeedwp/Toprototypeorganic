@@ -70,7 +70,7 @@ export function Dress({
   return (
     <div className={`${className}`} aria-label="Dress recommendations">
       {/* Title */}
-      <div className="flex items-center gap-2 mb-3">
+      <div className="flex items-center gap-fluid-xs pb-element-md">
         {showIcon && (
           <TShirt className="w-5 h-5 text-muted-foreground flex-shrink-0" aria-hidden="true" />
         )}
@@ -81,7 +81,7 @@ export function Dress({
 
       {/* Content */}
       <div
-        className="prose prose-sm max-w-none text-muted-foreground font-sans"
+        className="prose prose-sm max-w-none text-muted-foreground font-[family-name:var(--font-family-noto-sans)]"
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </div>

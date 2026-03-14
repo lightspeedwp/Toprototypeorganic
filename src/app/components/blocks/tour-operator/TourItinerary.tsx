@@ -68,7 +68,7 @@ export function TourItinerary({ days, title = 'Day-by-Day Itinerary', className 
               {day.day}
             </div>
             <div className="lsx-tour-itinerary__day-title-group">
-              <h3 className="mb-1">Day {day.day}: {day.title}</h3>
+              <h3 className="pb-element-xs">Day {day.day}: {day.title}</h3>
             </div>
           </div>
 

@@ -14,11 +14,12 @@
  */
 
 import './TourSustainability.css';
-import { Shield, Compass, Users, Heart, Leaf, Globe, type Icon as PhosphorIcon } from '@phosphor-icons/react';
+import { Shield, Compass, Users, Heart, Leaf, Globe } from '@phosphor-icons/react';
 import { motion as Motion } from 'motion/react';
 import { cn } from '../../../lib/utils';
+import type { ComponentType } from 'react';
 
-const ICON_MAP: Record<string, PhosphorIcon> = {
+const ICON_MAP: Record<string, ComponentType<any>> = {
   Shield,
   Compass,
   Users,

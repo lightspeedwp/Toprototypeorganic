@@ -145,15 +145,15 @@ export function DestinationCard({ destination, onClick, layout = "card", animate
 
       {/* Hover Reveal Overlay (Brutalist Style) */}
       {layout === "card" && (
-        <div className="wp-card__hover-overlay">
-          <MapPin className="wp-card__hover-icon" />
-          <h3 className="wp-card__hover-title">
+        <div className="wp-card__hover-overlay bg-[color:var(--color-background)]/90 flex flex-col items-center justify-center gap-element-md text-center">
+          <MapPin className="wp-card__hover-icon w-[var(--spacing-element-lg)] h-[var(--spacing-element-lg)] text-[color:var(--color-primary)]" />
+          <h3 className="wp-card__hover-title font-[family:var(--font-family-lora)] text-[length:var(--text-2xl)] m-0">
             Journey to {destination.title}
           </h3>
-          <p className="wp-card__hover-description">
+          <p className="wp-card__hover-description font-[family:var(--font-family-noto-sans)] text-[length:var(--text-base)] m-0">
             {destination.excerpt}
           </p>
-          <div className="wp-card__hover-action">
+          <div className="wp-card__hover-action flex items-center gap-fluid-sm pt-element-sm font-[family:var(--font-family-noto-sans)] text-[color:var(--color-primary)] font-[weight:var(--font-weight-bold)]">
             <span>Begin Expedition</span>
             <ArrowRight className="wp-card__action-icon wp-block-lts-layout--flex-shrink-0" />
           </div>

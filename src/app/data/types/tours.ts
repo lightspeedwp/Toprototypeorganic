@@ -148,6 +148,13 @@ export interface Tour {
    * @example "Iceland"
    */
   destination?: string;
+
+  /**
+   * Traveller Type taxonomy term IDs.
+   * References TravellerType.id values.
+   * @example ["ttype-1", "ttype-2"]
+   */
+  travellerTypes?: string[];
 }
 
 /**

@@ -67,8 +67,8 @@ export function GroupSize({
       {showIcon && (
         <Users className="w-4 h-4 text-muted-foreground flex-shrink-0" aria-hidden="true" />
       )}
-      <p className="font-sans">
-        <strong className="font-sans font-semibold">
+      <p className="font-[family-name:var(--font-family-noto-sans)]">
+        <strong className="font-[family-name:var(--font-family-noto-sans)] font-[var(--font-weight-semibold)]">
           Group Size:
         </strong>{' '}
         {value} {typeof value === 'number' && value === 1 ? 'person' : 'people'} max

@@ -5,20 +5,17 @@
  * Strictly adheres to design system tokens and BEM naming.
  */
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { PageShell } from "../components/parts/PageShell";
 import { TaxonomyNav } from "../components/patterns/TaxonomyNav";
 import { BlogCard } from "../components/patterns/BlogCard";
-import { CardGrid } from "../components/patterns/CardGrid";
 import { CTA } from "../components/patterns/CTA";
-import { Pagination } from "../components/patterns/Pagination";
-import { ViewSwitcher, type ViewMode } from "../components/patterns/ViewSwitcher";
 import { SearchFilterPattern } from "../components/patterns/SearchFilterPattern";
-import { EmptyStatePattern } from "../components/patterns/EmptyStatePattern";
 import { FAQ } from "../components/patterns/FAQ";
+import { ActiveFilterSummary, searchFilterTag, singleFilterTag, buildFilterTags } from "../components/patterns/ActiveFilterSummary";
 import { Container } from "../components/common/Container";
-import { SectionHeader } from "../components/common/SectionHeader";
 import { NewsletterSignupPattern } from "../components/patterns/NewsletterSignupPattern";
+import { ArchiveResultsSection } from "../components/patterns/ArchiveResultsSection";
 import { 
   ALL_BLOG_POSTS, 
   ALL_BLOG_CATEGORIES 
@@ -27,6 +24,7 @@ import { getPageSectionFAQs } from "../data/mock";
 import { useNavigation } from "../contexts/NavigationContext";
 import { useBlogFilters } from "../hooks/useBlogFilters";
 import { Newspaper } from "@phosphor-icons/react";
+import type { ViewMode } from "../components/patterns/ViewSwitcher";
 
 export function ArchiveBlogTemplate() {
   const [viewMode, setViewMode] = useState<ViewMode>("grid-3");
@@ -35,10 +33,12 @@ export function ArchiveBlogTemplate() {
   const {
     currentPage,
     setCurrentPage,
+    resetPage,
     selectedCategory,
     setSelectedCategory,
     searchQuery,
     setSearchQuery,
+    flushSearch,
     filteredPosts,
     paginatedPosts,
     totalPages,
@@ -56,73 +56,74 @@ export function ArchiveBlogTemplate() {
           label="Subject"
           terms={ALL_BLOG_CATEGORIES}
           activeId={selectedCategory === "all" ? undefined : selectedCategory}
-          onTermClick={(id) => { setSelectedCategory(id || "all"); setCurrentPage(1); }}
+          onTermClick={(id) => { setSelectedCategory(id || "all"); resetPage(); }}
         />
 
         <SearchFilterPattern
           searchPlaceholder="Explore stories..."
-          onSearchChange={(q) => { setSearchQuery(q); setCurrentPage(1); }}
+          onSearchChange={(q) => { setSearchQuery(q); resetPage(); }}
+          onSearchSubmit={flushSearch}
           onClearAll={resetFilters}
           collapsible={true}
         />
+
+        {/* Active Filter Summary */}
+        <Container>
+          <ActiveFilterSummary
+            tags={buildFilterTags(
+              searchFilterTag(searchQuery, () => { setSearchQuery(""); resetPage(); }),
+              singleFilterTag(
+                "cat",
+                selectedCategory,
+                ALL_BLOG_CATEGORIES.find((c) => c.id === selectedCategory)?.name || selectedCategory,
+                () => { setSelectedCategory("all"); resetPage(); },
+                "all"
+              ),
+            )}
+            onClearAll={resetFilters}
+          />
+        </Container>
       </div>
 
       <div className="organic-section-middle">
-        <section className="wp-template-archive__content">
-          <Container>
-            <div className="wp-template-archive__results-header">
-              <SectionHeader
-                section={{
-                  eyebrow: "Latest Updates",
-                  title: "Editorial Collection",
-                  description: `Discover ${filteredPosts.length} expert insights and traveler stories.`
-                }}
-                centered={false}
-                className="m-0"
-              />
-              <ViewSwitcher currentView={viewMode} onViewChange={setViewMode} />
-            </div>
-
-            {paginatedPosts.length > 0 ? (
-              <div className={viewMode === "list" ? "wp-template-archive__list" : "wp-template-archive__grid wp-template-archive__grid--cols-3"}>
-                {paginatedPosts.map((post) => (
-                  <BlogCard
-                    key={post.id}
-                    post={post}
-                    layout={viewMode === "list" ? "horizontal" : "card"}
-                    onClick={() => navigateToBlogPost(post.slug)}
-                  />
-                ))}
-              </div>
-            ) : (
-              <EmptyStatePattern
-                icon="search"
-                title="No Stories Found"
-                message="We couldn't find any articles matching your search. Try different keywords or browse a different category."
-                primaryAction={{
-                  label: "Browse All Stories",
-                  onClick: resetFilters,
-                }}
-              />
-            )}
-
-            {filteredPosts.length > ITEMS_PER_PAGE && (
-              <div className="wp-template-archive__pagination">
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={setCurrentPage}
-                />
-              </div>
-            )}
-          </Container>
-        </section>
+        <ArchiveResultsSection
+          header={{
+            eyebrow: "Latest Updates",
+            title: "Editorial Collection",
+            description: `Discover ${filteredPosts.length} expert insights and traveler stories.`,
+          }}
+          items={paginatedPosts}
+          totalFiltered={filteredPosts.length}
+          viewMode={viewMode}
+          onViewModeChange={setViewMode}
+          renderItem={(post, vm) => (
+            <BlogCard
+              key={post.id}
+              post={post}
+              layout={vm === "list" ? "horizontal" : "card"}
+              onClick={() => navigateToBlogPost(post.slug)}
+            />
+          )}
+          emptyState={{
+            icon: "search",
+            title: "No Stories Found",
+            message: "We couldn't find any articles matching your search. Try different keywords or browse a different category.",
+            actionLabel: "Browse All Stories",
+            onAction: resetFilters,
+          }}
+          pagination={{
+            currentPage,
+            totalPages,
+            onPageChange: setCurrentPage,
+            itemsPerPage: ITEMS_PER_PAGE,
+          }}
+        />
       </div>
 
       <div className="organic-section-middle-alt">
-        <section className="py-[var(--spacing-section-md)] bg-muted/30 border-y border-border/50">
+        <section className="py-section-md bg-muted/30 border-y border-border/50">
           <Container maxWidth="narrow">
-            <div className="p-[var(--spacing-element-xl)] rounded-[var(--radius-lg)] bg-background border-2 border-border shadow-2xl relative overflow-hidden">
+            <div className="p-element-xl rounded-[var(--radius-lg)] bg-background border-2 border-border shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 p-8 opacity-5">
                 <Newspaper className="size-48" />
               </div>

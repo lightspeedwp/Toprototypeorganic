@@ -75,7 +75,7 @@ export function Facilities({
     <div className={`${className}`} aria-label="Facilities">
       {/* Title */}
       {title && (
-        <h3 className="mb-4">
+        <h3 className="pb-element-lg">
           {title}
         </h3>
       )}
@@ -83,16 +83,16 @@ export function Facilities({
       {/* Facilities List */}
       <ul
         className={`
-          ${layout === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 gap-2' : 'space-y-2'}
+          ${layout === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 gap-fluid-sm' : 'flex flex-col gap-fluid-sm'}
         `}
         role="list"
       >
         {facilities.map((facility, index) => (
-          <li key={index} className="flex items-start gap-2">
+          <li key={index} className="flex items-start gap-fluid-xs">
             {showIcon && (
-              <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
+              <Check className="w-4 h-4 text-primary flex-shrink-0 translate-y-px" aria-hidden="true" />
             )}
-            <span className="font-sans">
+            <span className="font-[family-name:var(--font-family-noto-sans)]">
               {facility}
             </span>
           </li>

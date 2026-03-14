@@ -166,25 +166,27 @@ export function AdvancedSearchResultsPage() {
       <div className="organic-section-top">
         {/* Hero Section */}
         <GroupBlock sectionStyle="section-hero-default">
-          <Container>
-            <div className="mx-auto max-w-3xl text-center">
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm text-primary">
+          <Container className="flex flex-col items-center">
+            <div className="max-w-3xl w-full text-center flex flex-col items-center gap-4">
+              <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm text-primary">
                 <Search size={16} />
                 Advanced Search
               </div>
 
-              <h1 className="mb-4 text-foreground">Find Your Perfect Tour</h1>
-              <p className="mb-8 text-lg text-muted-foreground">
+              <h1 className="text-foreground">Find Your Perfect Tour</h1>
+              <p className="text-lg text-muted-foreground">
                 Use our advanced filters to discover tours tailored to your preferences
               </p>
 
               {/* Search Bar */}
-              <SearchBar
-                value={searchQuery}
-                onChange={setSearchQuery}
-                placeholder="Search tours, destinations, activities..."
-                showSuggestions={false}
-              />
+              <div className="w-full">
+                <SearchBar
+                  value={searchQuery}
+                  onChange={setSearchQuery}
+                  placeholder="Search tours, destinations, activities..."
+                  showSuggestions={false}
+                />
+              </div>
             </div>
           </Container>
         </GroupBlock>
@@ -193,9 +195,9 @@ export function AdvancedSearchResultsPage() {
       <div className="organic-section-middle">
         {/* Filter & Results Section */}
         <GroupBlock sectionStyle="section-default">
-          <Container>
+          <Container className="flex flex-col items-center">
             {/* Filter Toggle (Mobile) */}
-            <div className="mb-6 flex items-center justify-between lg:hidden">
+            <div className="flex items-center justify-between pb-6 lg:hidden">
               <h2 className="text-foreground">Search Results</h2>
               <button
                 onClick={() => setShowFilters(!showFilters)}
@@ -227,9 +229,9 @@ export function AdvancedSearchResultsPage() {
             </aside>
 
             {/* Results */}
-            <div className="space-y-6">
+            <div className="flex flex-col gap-6">
               {/* Active Filters & Sort */}
-              <div className="space-y-4">
+              <div className="flex flex-col gap-4">
                 {/* Active Filter Chips */}
                 <ActiveFilterChips
                   filters={filters}
@@ -310,32 +312,32 @@ export function AdvancedSearchResultsPage() {
 
       {/* Search Tips Section */}
       <GroupBlock sectionStyle="section-muted-subtle">
-        <Container>
-          <div className="mx-auto max-w-3xl">
-            <h2 className="mb-6 text-center text-foreground">Search Tips</h2>
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div className="space-y-2">
+        <Container className="flex flex-col items-center">
+          <div className="max-w-3xl w-full">
+            <h2 className="text-center text-foreground pb-6">Search Tips</h2>
+            <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-2">
                 <h3 className="text-foreground">Filter by Price</h3>
                 <p className="text-sm text-muted-foreground">
                   Use the price range slider to find tours within your budget.
                   Adjust both handles for precise control.
                 </p>
               </div>
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <h3 className="text-foreground">Select Duration</h3>
                 <p className="text-sm text-muted-foreground">
                   Filter by trip length to match your available vacation time.
                   From quick getaways to extended adventures.
                 </p>
               </div>
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <h3 className="text-foreground">Choose Difficulty</h3>
                 <p className="text-sm text-muted-foreground">
                   Select your comfort level. Easy tours are family-friendly,
                   while challenging tours are for experienced travelers.
                 </p>
               </div>
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <h3 className="text-foreground">Travel Style</h3>
                 <p className="text-sm text-muted-foreground">
                   Pick your preferred travel style: adventure, cultural, wildlife,

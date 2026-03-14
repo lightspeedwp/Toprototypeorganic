@@ -79,8 +79,8 @@ export default function BookingPage({ tourId, onNavigate }: BookingPageProps) {
         {/* Hero Section */}
         <section className="py-section-sm md:py-section-md">
           <Container>
-            <div className="max-w-3xl">
-              <h1 className="mb-4">Book Your Adventure</h1>
+            <div className="max-w-3xl flex flex-col gap-4">
+              <h1>Book Your Adventure</h1>
               <p className="text-lg text-muted-foreground">
                 You're just a few steps away from an unforgettable journey. Complete the booking
                 process below to secure your spot on <span className="font-medium text-foreground">{tour.title}</span>.
@@ -150,13 +150,13 @@ export default function BookingPage({ tourId, onNavigate }: BookingPageProps) {
         {/* FAQ Section */}
       <section className="py-section-sm md:py-section-md bg-muted">
         <Container>
-          <div className="max-w-3xl mx-auto">
-            <h2 className="mb-2 text-center">Booking Questions?</h2>
-            <p className="text-muted-foreground text-center mb-8">
+          <div className="max-w-3xl flex flex-col gap-2 items-center">
+            <h2 className="text-center">Booking Questions?</h2>
+            <p className="text-muted-foreground text-center pb-6">
               Everything you need to know about the booking process
             </p>
 
-            <div className="space-y-4">
+            <div className="flex flex-col gap-4">
               {[
                 {
                   question: "What payment methods do you accept?",
@@ -200,7 +200,7 @@ export default function BookingPage({ tourId, onNavigate }: BookingPageProps) {
                       />
                     </svg>
                   </summary>
-                  <p className="mt-3 text-muted-foreground">{faq.answer}</p>
+                  <p className="pt-3 text-muted-foreground">{faq.answer}</p>
                 </details>
               ))}
             </div>
@@ -211,10 +211,10 @@ export default function BookingPage({ tourId, onNavigate }: BookingPageProps) {
       {/* Support CTA */}
       <section className="py-section-sm md:py-section-md bg-primary text-primary-foreground">
         <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <HeadphonesIcon className="w-12 h-12 mx-auto mb-4" />
-            <h2 className="mb-4">Need Assistance?</h2>
-            <p className="text-lg mb-6 text-primary-foreground/90">
+          <div className="max-w-3xl text-center flex flex-col items-center gap-4">
+            <HeadphonesIcon className="w-12 h-12" />
+            <h2>Need Assistance?</h2>
+            <p className="text-lg text-primary-foreground/90">
               Our travel experts are here to help you every step of the way
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">

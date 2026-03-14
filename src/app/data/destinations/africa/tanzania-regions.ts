@@ -106,4 +106,35 @@ export const TANZANIA_REGIONS: Destination[] = [
     relatedReviewIds: ["review-1"],
     dedicatedConsultantId: "team-2",
   },
+  {
+    id: "dest-22",
+    slug: "ngorongoro",
+    title: "Ngorongoro Crater",
+    excerpt:
+      "The world's largest unbroken volcanic caldera, a natural amphitheatre sheltering 25,000+ large animals in one of Earth's most spectacular wildlife arenas.",
+    content:
+      "The Ngorongoro Crater is one of the natural world's great wonders — a 260 square kilometre volcanic caldera that forms a self-contained ecosystem sheltering approximately 25,000 large animals. The crater floor, 600 metres below the rim, encompasses grassland, swamp, forest, and a soda lake, creating diverse habitats in a dramatic natural amphitheatre.\n\nThe crater supports the densest concentration of large predators in Africa, including one of the few places where black rhino can be reliably spotted. Lions, hyenas, cheetah, buffalo, wildebeest, and zebra share the crater floor, while flamingos colour Lake Magadi pink. The unique geography means animals rarely leave, creating remarkably reliable game viewing year-round.\n\nLodges perched on the crater rim offer breathtaking views — waking to sunrise over the caldera is one of Africa's most memorable experiences. The Ngorongoro Conservation Area also protects Olduvai Gorge, one of the world's most important paleoanthropological sites where some of humanity's earliest ancestors were discovered.",
+    featuredImage:
+      "https://images.unsplash.com/photo-1664270702748-9a4408b600ca?w=800",
+    parentId: "dest-4",
+    continentId: "continent-1",
+    type: "park",
+    tourIds: ["tour-5", "tour-16", "tour-27"],
+    accommodationIds: ["acc-5"],
+    travelStyles: ["wildlife", "luxury", "fly-in-safari"],
+    bestTime: "Year-round; June - October driest; December - March calving",
+    climate: "Cool highland; 10-25C on crater floor; cold on rim at night",
+    currency: "Tanzanian Shilling (TZS)",
+    language: "Swahili, English, Maa (Maasai)",
+    timezone: "East Africa Time (EAT, UTC+3)",
+    highlights: [
+      "25,000+ large animals in a volcanic amphitheatre",
+      "Black rhino sightings — one of the best locations",
+      "Dense predator populations — lions, hyena, cheetah",
+      "Flamingo-covered Lake Magadi",
+      "Olduvai Gorge — cradle of humanity",
+      "Crater rim sunrise — unforgettable views",
+    ],
+    coordinates: { lat: -3.1750, lng: 35.5878 },
+  },
 ];

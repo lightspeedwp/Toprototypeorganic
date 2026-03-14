@@ -47,7 +47,7 @@ import {
 } from "../data/mock";
 
 import { useNavigation } from "../contexts/NavigationContext";
-import type { Icon as PhosphorIcon } from "@phosphor-icons/react";
+import type { ComponentType } from "react";
 import {
   MapPin,
   Compass,
@@ -65,7 +65,7 @@ import {
 // Icon map — maps string keys stored in data to actual React icons.
 // This keeps the data layer free of React imports.
 // ----------------------------------------------------------------
-const ICON_MAP: Record<string, PhosphorIcon> = {
+const ICON_MAP: Record<string, ComponentType<any>> = {
   MapPin,
   Compass,
   Hotel,
@@ -79,7 +79,7 @@ const ICON_MAP: Record<string, PhosphorIcon> = {
 };
 
 /** Safely resolve an icon name to a phosphor-react component. */
-function resolveIcon(name: string): PhosphorIcon {
+function resolveIcon(name: string): ComponentType<any> {
   return ICON_MAP[name] ?? Compass;
 }
 
@@ -127,14 +127,14 @@ export function HomePage({ onNavigate }: HomePageProps) {
   const blogSection = sec("blog")!;
 
   return (
-    <main className="wp-template-home">
+    <main className="wp-template-home theme-organic">
       {/* Hero Section (Savanna Sunset) */}
-      <div className="organic-section-top">
+      <section className="organic-section-top texture-medium">
         <Hero context="home" />
-      </div>
+      </section>
 
       {/* Primary Content (Acacia & Clay) */}
-      <div className="organic-section-middle">
+      <section className="organic-section-middle texture-subtle">
         {/* Featured Tours */}
         <FeaturedToursSection
           tours={featuredTours}
@@ -148,10 +148,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
           section={destinationsSection}
           onNavigate={nav}
         />
-      </div>
+      </section>
 
       {/* Feature/Alternative Content (Acacia & Clay - Alt) */}
-      <div className="organic-section-middle-alt">
+      <section className="organic-section-middle-alt">
         {/* Why Choose Us */}
         <WhyChooseUsSection
           features={features.map((f) => ({
@@ -175,10 +175,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
           }))}
           section={statsSection}
         />
-      </div>
+      </section>
 
       {/* Secondary Content (Acacia & Clay) */}
-      <div className="organic-section-middle">
+      <section className="organic-section-middle">
         {/* Accommodation */}
         <AccommodationSection
           accommodation={featuredAccommodation}
@@ -199,10 +199,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
           section={testimonialsSection}
           onNavigate={nav}
         />
-      </div>
+      </section>
 
       {/* Minimal Earth for Bottom Sections */}
-      <div className="organic-section-bottom">
+      <section className="organic-section-bottom">
         {/* Blog */}
         <BlogSection
           posts={featuredBlogPosts}
@@ -218,10 +218,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
             intro={faqData.sectionDescription}
           />
         )}
-      </div>
+      </section>
 
       {/* Newsletter and CTA (Minimal Earth Alt) */}
-      <div className="organic-section-bottom-alt">
+      <section className="organic-section-bottom-alt">
         {/* Newsletter */}
         <NewsletterSection
           newsletter={newsletter}
@@ -237,7 +237,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           cta={cta}
           onNavigate={nav}
         />
-      </div>
+      </section>
     </main>
   );
 }

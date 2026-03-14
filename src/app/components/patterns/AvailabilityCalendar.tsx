@@ -174,33 +174,33 @@ export function AvailabilityCalendar({
     year: "numeric",
   });
 
-  const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const DAYS_OF_WEEK = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   return (
-    <div className={cn("bg-card border border-border rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)] md:p-[var(--spacing-element-xl)]", className)}>
+    <div className={cn("bg-[color:var(--color-card)] border border-[color:var(--color-border)] rounded-[var(--radius-lg)] p-element-lg md:p-element-xl flex flex-col gap-fluid-lg", className)}>
       {/* Header */}
-      <div className="flex items-center justify-between mb-[var(--spacing-gap-lg)]">
-        <div className="flex items-center gap-[var(--spacing-gap-sm)]">
-          <CalendarIcon className="w-5 h-5 text-primary" />
-          <h3 className="font-[var(--font-weight-medium)] m-0">Select Departure Date</h3>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-fluid-sm">
+          <CalendarIcon className="w-5 h-5 text-[color:var(--color-primary)] relative top-px" />
+          <h3 className="font-[family:var(--font-family-lora)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)] m-0">Select Departure Date</h3>
         </div>
-        <div className="flex items-center gap-[var(--spacing-gap-xs)]">
+        <div className="flex items-center gap-fluid-xs">
           <button
             onClick={goToPreviousMonth}
             className={cn(
-              "p-[var(--spacing-element-sm)] rounded-[var(--radius-md)] transition-colors",
-              "hover:bg-accent text-foreground",
-              "focus:outline-none focus:ring-2 focus:ring-ring"
+              "p-element-sm rounded-[var(--radius-md)] transition-colors",
+              "hover:bg-[color:var(--color-accent)] text-[color:var(--color-foreground)]",
+              "focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ring)]"
             )}
             aria-label="Previous month"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <span className="min-w-[150px] text-center font-[var(--font-weight-medium)]">{monthYear}</span>
+          <span className="min-w-[150px] text-center font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)]">{monthYear}</span>
           <button
             onClick={goToNextMonth}
             className={cn(
-              "p-[var(--spacing-element-sm)] rounded-[var(--radius-md)] transition-colors",
+              "p-element-sm rounded-[var(--radius-md)] transition-colors",
               "hover:bg-accent text-foreground",
               "focus:outline-none focus:ring-2 focus:ring-ring"
             )}
@@ -212,11 +212,11 @@ export function AvailabilityCalendar({
       </div>
 
       {/* Week day headers */}
-      <div className="grid grid-cols-7 gap-[var(--spacing-gap-xs)] mb-[var(--spacing-gap-xs)]">
-        {weekDays.map((day) => (
+      <div className="grid grid-cols-7 gap-fluid-xs">
+        {DAYS_OF_WEEK.map((day) => (
           <div
             key={day}
-            className="text-center text-[length:var(--text-sm)] font-[var(--font-weight-medium)] text-muted-foreground py-[var(--spacing-element-sm)]"
+            className="text-center text-[length:var(--text-sm)] font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-muted-foreground)] py-element-sm"
           >
             {day}
           </div>
@@ -224,7 +224,7 @@ export function AvailabilityCalendar({
       </div>
 
       {/* Calendar grid */}
-      <div className="grid grid-cols-7 gap-[var(--spacing-gap-xs)]">
+      <div className="grid grid-cols-7 gap-fluid-xs">
         {days.map((dayInfo, index) => {
           if (!dayInfo) {
             return <div key={`empty-${index}`} className="aspect-square" />;
@@ -243,7 +243,7 @@ export function AvailabilityCalendar({
               onClick={() => status !== "unavailable" && onDateSelect?.(date, dayInfo)}
               disabled={status === "unavailable"}
               className={cn(
-                "aspect-square p-[var(--spacing-element-xs)] rounded-[var(--radius-md)] transition-all text-center relative group",
+                "aspect-square p-element-xs rounded-[var(--radius-md)] transition-all text-center relative group",
                 "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1",
                 // Default state
                 status === "available" && "hover:bg-accent cursor-pointer",
@@ -258,15 +258,15 @@ export function AvailabilityCalendar({
               )}
               aria-label={`${date.toLocaleDateString()}, ${status}, ${price || "unavailable"}`}
             >
-              <div className="flex flex-col items-center justify-center h-full">
-                <span className={cn("text-[length:var(--text-sm)] font-[var(--font-weight-medium)]", isSelected && "text-primary-foreground")}>
+              <div className="flex flex-col items-center justify-center h-full gap-fluid-xs">
+                <span className={cn("text-[length:var(--text-sm)] font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)]", isSelected && "text-[color:var(--color-primary-foreground)]")}>
                   {date.getDate()}
                 </span>
                 {status !== "unavailable" && price && (
                   <span
                     className={cn(
-                      "text-[length:var(--text-xs)] mt-0.5",
-                      isSelected ? "text-primary-foreground/80" : "text-muted-foreground"
+                      "text-[length:var(--text-xs)] font-[family:var(--font-family-noto-sans)]",
+                      isSelected ? "text-[color:var(--color-primary-foreground)]/80" : "text-[color:var(--color-muted-foreground)]"
                     )}
                   >
                     {price}
@@ -283,17 +283,17 @@ export function AvailabilityCalendar({
               {status !== "unavailable" && (
                 <div
                   className={cn(
-                    "absolute bottom-full left-1/2 -translate-x-1/2 mb-[var(--spacing-element-sm)] px-[var(--spacing-element-sm)] py-[var(--spacing-element-xs)] rounded-[var(--radius-md)]",
-                    "bg-popover text-popover-foreground border border-border shadow-[var(--elevation-lg)]",
+                    "absolute bottom-full left-1/2 -translate-x-1/2 pb-element-sm px-element-sm py-element-xs rounded-[var(--radius-md)]",
+                    "bg-[color:var(--color-popover)] text-[color:var(--color-popover-foreground)] border border-[color:var(--color-border)] shadow-[var(--elevation-lg)]",
                     "text-[length:var(--text-xs)] whitespace-nowrap z-10",
                     "opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
                   )}
                 >
-                  <div className="space-y-[var(--spacing-gap-xs)]">
-                    <p className="font-[var(--font-weight-medium)] m-0">{date.toLocaleDateString()}</p>
-                    <p className="text-muted-foreground m-0">Price: {price}</p>
+                  <div className="flex flex-col gap-fluid-xs font-[family:var(--font-family-noto-sans)]">
+                    <p className="font-[weight:var(--font-weight-medium)] m-0">{date.toLocaleDateString()}</p>
+                    <p className="text-[color:var(--color-muted-foreground)] m-0">Price: {price}</p>
                     {spotsLeft && spotsLeft <= 5 && (
-                      <p className="text-accent m-0">Only {spotsLeft} spots left</p>
+                      <p className="text-[color:var(--color-accent)] m-0">Only {spotsLeft} spots left</p>
                     )}
                   </div>
                 </div>
@@ -304,33 +304,33 @@ export function AvailabilityCalendar({
       </div>
 
       {/* Legend */}
-      <div className="mt-[var(--spacing-gap-lg)] pt-[var(--spacing-element-lg)] border-t border-border">
-        <div className="flex flex-wrap items-center gap-[var(--spacing-gap-md)] text-[length:var(--text-sm)]">
-          <div className="flex items-center gap-[var(--spacing-gap-xs)]">
-            <div className="w-4 h-4 bg-primary rounded-[var(--radius-sm)]" />
-            <span className="text-muted-foreground">Selected</span>
+      <div className="pt-element-lg border-t border-[color:var(--color-border)]">
+        <div className="flex flex-wrap items-center gap-fluid-md text-[length:var(--text-sm)] font-[family:var(--font-family-noto-sans)]">
+          <div className="flex items-center gap-fluid-xs">
+            <div className="w-4 h-4 bg-[color:var(--color-primary)] rounded-[var(--radius-sm)]" />
+            <span className="text-[color:var(--color-muted-foreground)]">Selected</span>
           </div>
-          <div className="flex items-center gap-[var(--spacing-gap-xs)]">
-            <div className="w-4 h-4 bg-accent rounded-[var(--radius-sm)] relative">
-              <div className="absolute top-0.5 right-0.5 w-1 h-1 bg-accent rounded-[var(--radius-full)]" />
+          <div className="flex items-center gap-fluid-xs">
+            <div className="w-4 h-4 bg-[color:var(--color-accent)] rounded-[var(--radius-sm)] relative">
+              <div className="absolute top-0.5 right-0.5 w-1 h-1 bg-[color:var(--color-accent)] rounded-[var(--radius-full)]" />
             </div>
-            <span className="text-muted-foreground">Limited availability</span>
+            <span className="text-[color:var(--color-muted-foreground)]">Limited availability</span>
           </div>
-          <div className="flex items-center gap-[var(--spacing-gap-xs)]">
-            <div className="w-4 h-4 bg-muted rounded-[var(--radius-sm)] opacity-40" />
-            <span className="text-muted-foreground">Unavailable</span>
+          <div className="flex items-center gap-fluid-xs">
+            <div className="w-4 h-4 bg-[color:var(--color-muted)] rounded-[var(--radius-sm)] opacity-40" />
+            <span className="text-[color:var(--color-muted-foreground)]">Unavailable</span>
           </div>
         </div>
       </div>
 
       {/* Selected date info */}
       {selectedDate && (
-        <div className="wp-callout-accent mt-[var(--spacing-gap-md)]">
-          <div className="flex items-start gap-[var(--spacing-gap-sm)]">
-            <DollarSign className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-            <div className="flex-1">
-              <p className="font-[var(--font-weight-medium)] m-0">Selected Departure Date</p>
-              <p className="text-[length:var(--text-sm)] text-muted-foreground mt-[var(--spacing-element-xs)] m-0">
+        <div className="wp-callout-accent">
+          <div className="flex items-start gap-fluid-md">
+            <DollarSign className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)] text-[color:var(--color-primary)] flex-shrink-0" />
+            <div className="flex-1 flex flex-col gap-fluid-xs">
+              <p className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] m-0">Selected Departure Date</p>
+              <p className="text-[length:var(--text-sm)] text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] m-0">
                 {selectedDate.toLocaleDateString("en-US", {
                   weekday: "long",
                   year: "numeric",
@@ -341,7 +341,7 @@ export function AvailabilityCalendar({
               {(() => {
                 const info = getDateInfo(selectedDate);
                 return info.price ? (
-                  <p className="text-[length:var(--text-sm)] mt-[var(--spacing-element-sm)] m-0">
+                  <p className="text-[length:var(--text-sm)] pt-element-sm m-0">
                     <span className="text-muted-foreground">Price:</span>{" "}
                     <span className="font-[var(--font-weight-medium)] text-primary">{info.price}</span>
                     <span className="text-muted-foreground"> per person</span>
@@ -354,12 +354,12 @@ export function AvailabilityCalendar({
       )}
 
       {/* Pricing info */}
-      <div className="mt-[var(--spacing-gap-md)] wp-bg-muted-light rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)]">
-        <div className="flex items-start gap-[var(--spacing-gap-sm)]">
-          <AlertCircle className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-0.5" />
-          <div className="text-[length:var(--text-sm)] text-muted-foreground">
-            <p className="font-[var(--font-weight-medium)] text-foreground mb-[var(--spacing-element-xs)] m-0">Seasonal Pricing</p>
-            <ul className="space-y-[var(--spacing-gap-xs)] m-0 list-none pl-0">
+      <div className="pt-fluid-md bg-[color:var(--color-muted)]/50 rounded-[var(--radius-lg)] p-element-lg">
+        <div className="flex items-start gap-fluid-sm">
+          <AlertCircle className="w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)] text-[color:var(--color-muted-foreground)] flex-shrink-0" />
+          <div className="text-[length:var(--text-sm)] text-[color:var(--color-muted-foreground)] flex flex-col gap-fluid-xs">
+            <p className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)] m-0">Seasonal Pricing</p>
+            <ul className="flex flex-col gap-fluid-xs font-[family:var(--font-family-noto-sans)] m-0 list-none pl-0">
               <li>• High Season (Jun-Aug): Base price</li>
               <li>• Shoulder Season (Apr-May, Sep-Oct): Save $200</li>
               <li>• Low Season (Nov-Mar): Save $400</li>

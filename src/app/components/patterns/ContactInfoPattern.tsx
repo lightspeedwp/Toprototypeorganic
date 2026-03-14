@@ -8,9 +8,10 @@
 import { Container } from "../common/Container";
 import { HeadingBlock } from "../blocks/core/HeadingBlock";
 import { ParagraphBlock } from "../blocks/core/ParagraphBlock";
-import { Phone, EnvelopeSimple as Mail, MapPin, Clock, Icon as PhosphorIcon, Globe, Users } from "@phosphor-icons/react";
+import { Phone, EnvelopeSimple as Mail, MapPin, Clock, Globe, Users } from "@phosphor-icons/react";
 import { cn } from "../../lib/utils";
 import { motion as Motion } from "motion/react";
+import { isValidElement, type ReactNode, type ComponentType } from "react";
 
 /**
  * Contact method type definition.
@@ -28,7 +29,7 @@ export interface ContactInfoItem {
   /** Contact value/details (supports multiple lines) */
   value: string | string[];
   /** Optional custom icon (overrides default type icon) */
-  icon?: PhosphorIcon;
+  icon?: ReactNode | ComponentType<any>;
   /** Optional link (for phone/email/website) */
   href?: string;
 }
@@ -56,13 +57,13 @@ export interface ContactInfoPatternProps {
   address?: string;
 }
 
-const DEFAULT_ICONS: Record<ContactType, PhosphorIcon> = {
+const DEFAULT_ICONS: Record<ContactType, ComponentType<any>> = {
   phone: Phone,
   email: Mail,
   address: MapPin,
   hours: Clock,
   website: Globe,
-  social: Users // Fallback
+  social: Users
 };
 
 /**
@@ -96,82 +97,95 @@ export function ContactInfoPattern({
   return (
     <section className={cn("wp-pattern-lts-contact-info", `wp-pattern-lts-contact-info--${variant}`, className)}>
       <Container>
-        {/* Section Header */}
-        {(title || description) && (
-          <div className="text-center mb-[var(--spacing-gap-2xl)] md:mb-[var(--spacing-gap-3xl)] max-w-3xl mx-auto">
-            {title && (
-              <HeadingBlock level={2} textAlign="center" className="mb-[var(--spacing-element-md)]">
-                {title}
-              </HeadingBlock>
-            )}
-            {description && (
-              <ParagraphBlock className="text-muted-foreground" textAlign="center">
-                {description}
-              </ParagraphBlock>
-            )}
-          </div>
-        )}
-
-        {/* Contact Grid */}
-        <div className={cn("grid gap-[var(--spacing-gap-xl)] md:gap-[var(--spacing-gap-3xl)]", gridClasses)}>
-          {items.map((item, index) => {
-            const Icon = item.icon || DEFAULT_ICONS[item.type] || Globe;
-            const values = Array.isArray(item.value) ? item.value : [item.value];
-            
-            return (
-              <Motion.div 
-                key={index} 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
-                whileHover={variant === 'card' ? { 
-                  y: -8, 
-                  borderColor: "var(--primary)",
-                  boxShadow: "var(--elevation-md)"
-                } : undefined}
-                className={cn(
-                  "wp-pattern-lts-contact-info__item",
-                  variant === 'card' && "p-[var(--spacing-element-2xl)] bg-card border-2 border-border rounded-[var(--radius-2xl)] shadow-[var(--elevation-sm)] transition-all duration-300"
-                )}
-              >
-                {/* Icon Wrapper */}
-                <div className="flex justify-center mb-[var(--spacing-element-lg)]">
-                  <div className={cn(
-                    "w-[var(--spacing-element-4xl)] h-[var(--spacing-element-4xl)] rounded-[var(--radius-2xl)] flex items-center justify-center transition-all duration-300",
-                    variant === 'card' ? "bg-primary/10 text-primary" : "bg-muted text-primary"
-                  )}>
-                    <Icon className="w-[var(--spacing-element-xl)] h-[var(--spacing-element-xl)]" aria-hidden="true" />
-                  </div>
-                </div>
-
-                {/* Label */}
-                <HeadingBlock level={3} textAlign="center" className="mb-[var(--spacing-element-sm)]">
-                  {item.label}
+        <div className="flex flex-col items-center">
+          {/* Section Header */}
+          {(title || description) && (
+            <div className="flex flex-col items-center justify-center text-center pb-fluid-2xl md:pb-fluid-3xl max-w-3xl w-full">
+              {title && (
+                <HeadingBlock level={2} textAlign="center" className="pb-element-md !m-0 font-[family:var(--font-family-lora)] text-[color:var(--color-foreground)]">
+                  {title}
                 </HeadingBlock>
+              )}
+              {description && (
+                <ParagraphBlock className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] !m-0" textAlign="center">
+                  {description}
+                </ParagraphBlock>
+              )}
+            </div>
+          )}
 
-                {/* Values */}
-                <div className="space-y-[var(--spacing-gap-xs)] text-center">
-                  {values.map((val, idx) => (
-                    <div key={idx}>
-                      {item.href ? (
-                        <a 
-                          href={item.href}
-                          className="text-foreground font-[var(--font-weight-medium)] hover:text-primary transition-colors underline-offset-4 decoration-primary/30 hover:underline"
-                        >
-                          {val}
-                        </a>
-                      ) : (
-                        <p className="text-muted-foreground font-[var(--font-weight-medium)] m-0">
-                          {val}
-                        </p>
-                      )}
+          {/* Contact Grid */}
+          <div className={cn("grid gap-fluid-xl md:gap-fluid-3xl w-full", gridClasses)}>
+            {items.map((item, index) => {
+              const iconProp = item.icon || DEFAULT_ICONS[item.type] || Globe;
+              
+              // Handle both JSX elements and component references
+              const renderIcon = () => {
+                if (isValidElement(iconProp)) return iconProp;
+                if (typeof iconProp === 'function') {
+                  const IconComponent = iconProp as ComponentType<any>;
+                  return <IconComponent className="w-[var(--spacing-element-xl)] h-[var(--spacing-element-xl)]" aria-hidden="true" />;
+                }
+                return <Globe className="w-[var(--spacing-element-xl)] h-[var(--spacing-element-xl)]" aria-hidden="true" />;
+              };
+
+              const values = Array.isArray(item.value) ? item.value : [item.value];
+              
+              return (
+                <Motion.div 
+                  key={index} 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
+                  whileHover={variant === 'card' ? { 
+                    y: -8, 
+                    borderColor: "var(--color-primary)",
+                    boxShadow: "var(--elevation-md)"
+                  } : undefined}
+                  className={cn(
+                    "wp-pattern-lts-contact-info__item flex flex-col items-center",
+                    variant === 'card' && "p-element-2xl bg-[color:var(--color-card)] border-2 border-[color:var(--color-border)] rounded-[var(--radius-2xl)] shadow-[var(--elevation-sm)] transition-all duration-300"
+                  )}
+                >
+                  {/* Icon Wrapper */}
+                  <div className="flex justify-center pb-element-lg">
+                    <div className={cn(
+                      "w-[var(--spacing-element-4xl)] h-[var(--spacing-element-4xl)] rounded-[var(--radius-2xl)] flex items-center justify-center transition-all duration-300",
+                      variant === 'card' ? "bg-[color:var(--color-primary)]/10 text-[color:var(--color-primary)]" : "bg-[color:var(--color-muted)] text-[color:var(--color-primary)]"
+                    )}>
+                      {renderIcon()}
                     </div>
-                  ))}
-                </div>
-              </Motion.div>
-            );
-          })}
+                  </div>
+
+                  {/* Label */}
+                  <HeadingBlock level={3} textAlign="center" className="pb-element-sm !m-0 font-[family:var(--font-family-lora)] text-[color:var(--color-foreground)]">
+                    {item.label}
+                  </HeadingBlock>
+
+                  {/* Values */}
+                  <div className="flex flex-col gap-fluid-xs text-center font-[family:var(--font-family-noto-sans)]">
+                    {values.map((val, idx) => (
+                      <div key={idx}>
+                        {item.href ? (
+                          <a 
+                            href={item.href}
+                            className="text-[color:var(--color-foreground)] font-[weight:var(--font-weight-medium)] hover:text-[color:var(--color-primary)] transition-colors underline-offset-4 decoration-[color:var(--color-primary)]/30 hover:underline"
+                          >
+                            {val}
+                          </a>
+                        ) : (
+                          <p className="text-[color:var(--color-muted-foreground)] font-[weight:var(--font-weight-medium)] !m-0">
+                            {val}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </Motion.div>
+              );
+            })}
+          </div>
         </div>
       </Container>
     </section>

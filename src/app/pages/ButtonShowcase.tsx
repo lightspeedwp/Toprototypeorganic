@@ -59,20 +59,20 @@ export default function ButtonShowcase() {
           />
           
           {/* Page Header */}
-          <header className="mb-16 text-center mt-8">
-            <h1 className="mb-4">WordPress Button System</h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+          <header className="text-center py-8 flex flex-col gap-4 items-center">
+            <h1>WordPress Button System</h1>
+            <p className="text-muted-foreground max-w-2xl">
               Comprehensive showcase of all button variants, sizes, and configurations.
               All buttons use CSS variables from the design system and only Noto Sans font family.
             </p>
           </header>
 
           {/* Design System Compliance Badge */}
-          <div className="mb-12 p-6 rounded-lg bg-card border border-border">
-            <h2 className="mb-4">Design System Compliance</h2>
+          <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+            <h2>Design System Compliance</h2>
             <div className="wp-pattern-card-grid__container wp-pattern-card-grid__container--cols-2">
               <div className="flex items-start gap-3">
-                <Check className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                <Check className="h-5 w-5 text-primary translate-y-0.5 shrink-0" />
                 <div>
                   <h3>Typography</h3>
                   <p className="text-sm text-muted-foreground">
@@ -83,7 +83,7 @@ export default function ButtonShowcase() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Check className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                <Check className="h-5 w-5 text-primary translate-y-0.5 shrink-0" />
                 <div>
                   <h3>Colors</h3>
                   <p className="text-sm text-muted-foreground">
@@ -92,7 +92,7 @@ export default function ButtonShowcase() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Check className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                <Check className="h-5 w-5 text-primary translate-y-0.5 shrink-0" />
                 <div>
                   <h3>Spacing</h3>
                   <p className="text-sm text-muted-foreground">
@@ -102,7 +102,7 @@ export default function ButtonShowcase() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Check className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                <Check className="h-5 w-5 text-primary translate-y-0.5 shrink-0" />
                 <div>
                   <h3>Border & Shadows</h3>
                   <p className="text-sm text-muted-foreground">
@@ -115,23 +115,23 @@ export default function ButtonShowcase() {
           </div>
 
           {/* Section 1: Required Variants */}
-          <section className="mb-16">
-            <div className="mb-8">
-              <h2 className="mb-2">Required Button Variants ✅</h2>
+          <section className="flex flex-col gap-8">
+            <div className="flex flex-col gap-2">
+              <h2>Required Button Variants ✅</h2>
               <p className="text-muted-foreground">
                 The three core button styles: default, outline, and cta.
               </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="flex flex-col gap-8">
               {/* Default Variant */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <div className="mb-4">
-                  <h3 className="mb-1">Default Variant</h3>
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h3>Default Variant</h3>
                   <p className="text-sm text-muted-foreground">
                     Solid primary background, white text. Use for standard primary actions.
                   </p>
-                  <code className="text-xs text-muted-foreground block mt-2">
+                  <code className="text-xs text-muted-foreground block pt-2">
                     variant="default" → bg-primary text-primary-foreground
                   </code>
                 </div>
@@ -149,13 +149,13 @@ export default function ButtonShowcase() {
               </div>
 
               {/* Outline Variant */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <div className="mb-4">
-                  <h3 className="mb-1">Outline Variant</h3>
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h3>Outline Variant</h3>
                   <p className="text-sm text-muted-foreground">
                     Transparent with 2px border, fills background on hover. Use for secondary CTAs.
                   </p>
-                  <code className="text-xs text-muted-foreground block mt-2">
+                  <code className="text-xs text-muted-foreground block pt-2">
                     variant="outline" → border-2 border-primary bg-transparent
                   </code>
                 </div>
@@ -173,13 +173,13 @@ export default function ButtonShowcase() {
               </div>
 
               {/* CTA Variant */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <div className="mb-4">
-                  <h3 className="mb-1">CTA Variant (Call-to-Action)</h3>
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h3>CTA Variant (Call-to-Action)</h3>
                   <p className="text-sm text-muted-foreground">
                     High-impact style with shadow and semibold text. Use for hero CTAs and high-priority conversions.
                   </p>
-                  <code className="text-xs text-muted-foreground block mt-2">
+                  <code className="text-xs text-muted-foreground block pt-2">
                     variant="cta" → bg-primary shadow-sm font-semibold
                   </code>
                 </div>
@@ -199,9 +199,9 @@ export default function ButtonShowcase() {
           </section>
 
           {/* Section 2: Bonus Variants */}
-          <section className="mb-16">
-            <div className="mb-8">
-              <h2 className="mb-2">Bonus Button Variants</h2>
+          <section className="flex flex-col gap-8">
+            <div className="flex flex-col gap-2">
+              <h2>Bonus Button Variants</h2>
               <p className="text-muted-foreground">
                 Additional styles for various use cases: primary, secondary, ghost, and link.
               </p>
@@ -209,9 +209,9 @@ export default function ButtonShowcase() {
 
             <div className="wp-pattern-card-grid__container wp-pattern-card-grid__container--cols-2">
               {/* Primary Variant */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <div className="mb-4">
-                  <h3 className="mb-1">Primary Variant</h3>
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h3>Primary Variant</h3>
                   <p className="text-sm text-muted-foreground">
                     Alias for default variant. Same appearance.
                   </p>
@@ -224,9 +224,9 @@ export default function ButtonShowcase() {
               </div>
 
               {/* Secondary Variant */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <div className="mb-4">
-                  <h3 className="mb-1">Secondary Variant</h3>
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h3>Secondary Variant</h3>
                   <p className="text-sm text-muted-foreground">
                     Alternative color scheme using secondary color.
                   </p>
@@ -239,9 +239,9 @@ export default function ButtonShowcase() {
               </div>
 
               {/* Ghost Variant */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <div className="mb-4">
-                  <h3 className="mb-1">Ghost Variant</h3>
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h3>Ghost Variant</h3>
                   <p className="text-sm text-muted-foreground">
                     Transparent with subtle hover effect. For tertiary actions.
                   </p>
@@ -254,9 +254,9 @@ export default function ButtonShowcase() {
               </div>
 
               {/* Link Variant */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <div className="mb-4">
-                  <h3 className="mb-1">Link Variant</h3>
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h3>Link Variant</h3>
                   <p className="text-sm text-muted-foreground">
                     Text-only with underline on hover. For inline links.
                   </p>
@@ -271,9 +271,9 @@ export default function ButtonShowcase() {
           </section>
 
           {/* Section 3: Buttons with Icons */}
-          <section className="mb-16">
-            <div className="mb-8">
-              <h2 className="mb-2">Buttons with Icons</h2>
+          <section className="flex flex-col gap-8">
+            <div className="flex flex-col gap-2">
+              <h2>Buttons with Icons</h2>
               <p className="text-muted-foreground">
                 All variants support optional icons on left or right side.
               </p>
@@ -281,11 +281,11 @@ export default function ButtonShowcase() {
 
             <div className="wp-pattern-card-grid__container wp-pattern-card-grid__container--cols-2">
               {/* Icons Left */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <div className="mb-4">
-                  <h3 className="mb-1">Icon Position: Left</h3>
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h3>Icon Position: Left</h3>
                 </div>
-                <div className="space-y-3">
+                <div className="flex flex-col gap-3">
                   <Button variant="primary" icon={<Download />} iconPosition="left">
                     Download
                   </Button>
@@ -299,11 +299,11 @@ export default function ButtonShowcase() {
               </div>
 
               {/* Icons Right */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <div className="mb-4">
-                  <h3 className="mb-1">Icon Position: Right</h3>
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h3>Icon Position: Right</h3>
                 </div>
-                <div className="space-y-3">
+                <div className="flex flex-col gap-3">
                   <Button variant="primary" icon={<ArrowRight />} iconPosition="right">
                     Continue
                   </Button>
@@ -319,19 +319,19 @@ export default function ButtonShowcase() {
           </section>
 
           {/* Section 4: Real-World Examples */}
-          <section className="mb-16">
-            <div className="mb-8">
-              <h2 className="mb-2">Real-World Use Cases</h2>
+          <section className="flex flex-col gap-8">
+            <div className="flex flex-col gap-2">
+              <h2>Real-World Use Cases</h2>
               <p className="text-muted-foreground">
                 Common button combinations you'll encounter in the application.
               </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="flex flex-col gap-8">
               {/* Hero Section Example */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <div className="mb-4">
-                  <h3 className="mb-1">Hero Section CTAs</h3>
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h3>Hero Section CTAs</h3>
                   <p className="text-sm text-muted-foreground">
                     Primary CTA + Secondary outline, center aligned, stacks on mobile
                   </p>
@@ -347,9 +347,9 @@ export default function ButtonShowcase() {
               </div>
 
               {/* Form Actions Example */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <div className="mb-4">
-                  <h3 className="mb-1">Form Actions</h3>
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h3>Form Actions</h3>
                   <p className="text-sm text-muted-foreground">
                     Cancel (ghost) + Submit (primary), right aligned
                   </p>
@@ -365,9 +365,9 @@ export default function ButtonShowcase() {
               </div>
 
               {/* Filter Bar Example */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <div className="mb-4">
-                  <h3 className="mb-1">Filter Bar</h3>
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h3>Filter Bar</h3>
                   <p className="text-sm text-muted-foreground">
                     Small buttons, mixed states (active = primary, inactive = outline)
                   </p>
@@ -392,9 +392,9 @@ export default function ButtonShowcase() {
               </div>
 
               {/* Card Actions Example */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <div className="mb-4">
-                  <h3 className="mb-1">Card Actions</h3>
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h3>Card Actions</h3>
                   <p className="text-sm text-muted-foreground">
                     Vertical stack, full width on mobile
                   </p>
@@ -412,9 +412,9 @@ export default function ButtonShowcase() {
           </section>
 
           {/* Section 5: Button States */}
-          <section className="mb-16">
-            <div className="mb-8">
-              <h2 className="mb-2">Button States</h2>
+          <section className="flex flex-col gap-8">
+            <div className="flex flex-col gap-2">
+              <h2>Button States</h2>
               <p className="text-muted-foreground">
                 Disabled and loading states with proper accessibility.
               </p>
@@ -422,14 +422,14 @@ export default function ButtonShowcase() {
 
             <div className="wp-pattern-card-grid__container wp-pattern-card-grid__container--cols-2">
               {/* Disabled State */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <div className="mb-4">
-                  <h3 className="mb-1">Disabled State</h3>
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h3>Disabled State</h3>
                   <p className="text-sm text-muted-foreground">
                     Automatically has 50% opacity and pointer-events disabled
                   </p>
                 </div>
-                <div className="space-y-3">
+                <div className="flex flex-col gap-3">
                   <Button variant="primary" disabled>
                     Disabled Primary
                   </Button>
@@ -443,14 +443,14 @@ export default function ButtonShowcase() {
               </div>
 
               {/* With Links */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <div className="mb-4">
-                  <h3 className="mb-1">Buttons as Links</h3>
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <h3>Buttons as Links</h3>
                   <p className="text-sm text-muted-foreground">
                     Renders as anchor tag when href prop is provided
                   </p>
                 </div>
-                <div className="space-y-3">
+                <div className="flex flex-col gap-3">
                   <Button variant="primary" href="#section1">
                     Link Button
                   </Button>
@@ -463,17 +463,17 @@ export default function ButtonShowcase() {
           </section>
 
           {/* Section 6: Responsive Behavior */}
-          <section className="mb-16">
-            <div className="mb-8">
-              <h2 className="mb-2">Responsive Behavior</h2>
+          <section className="flex flex-col gap-8">
+            <div className="flex flex-col gap-2">
+              <h2>Responsive Behavior</h2>
               <p className="text-muted-foreground">
                 Buttons automatically stack on mobile when stackOnMobile prop is true.
               </p>
             </div>
 
-            <div className="p-6 rounded-lg bg-card border border-border">
-              <div className="mb-4">
-                <h3 className="mb-1">Stack on Mobile</h3>
+            <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+              <div className="flex flex-col gap-1">
+                <h3>Stack on Mobile</h3>
                 <p className="text-sm text-muted-foreground">
                   Horizontal on desktop, vertical on mobile (resize to see)
                 </p>
@@ -493,9 +493,9 @@ export default function ButtonShowcase() {
           </section>
 
           {/* Section 7: WCAG Compliance */}
-          <section className="mb-16">
-            <div className="mb-8">
-              <h2 className="mb-2">WCAG AA/AAA Compliance</h2>
+          <section className="flex flex-col gap-8">
+            <div className="flex flex-col gap-2">
+              <h2>WCAG AA/AAA Compliance</h2>
               <p className="text-muted-foreground">
                 All buttons meet accessibility standards for touch targets and contrast.
               </p>
@@ -503,57 +503,57 @@ export default function ButtonShowcase() {
 
             <div className="wp-pattern-card-grid__container wp-pattern-card-grid__container--cols-3">
               {/* Touch Targets */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <h3 className="mb-3">Touch Targets</h3>
-                <ul className="space-y-2 text-sm">
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-3">
+                <h3>Touch Targets</h3>
+                <ul className="flex flex-col gap-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                    <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                     <span>Small: 32px height</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                    <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                     <span>Default: 44px (WCAG AA)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                    <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                     <span>Large: 52px (WCAG AAA)</span>
                   </li>
                 </ul>
               </div>
 
               {/* Keyboard Navigation */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <h3 className="mb-3">Keyboard Nav</h3>
-                <ul className="space-y-2 text-sm">
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-3">
+                <h3>Keyboard Nav</h3>
+                <ul className="flex flex-col gap-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                    <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                     <span>Tab to focus</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                    <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                     <span>Enter/Space to activate</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                    <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                     <span>Visible focus ring</span>
                   </li>
                 </ul>
               </div>
 
               {/* Color Contrast */}
-              <div className="p-6 rounded-lg bg-card border border-border">
-                <h3 className="mb-3">Color Contrast</h3>
-                <ul className="space-y-2 text-sm">
+              <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-3">
+                <h3>Color Contrast</h3>
+                <ul className="flex flex-col gap-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                    <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                     <span>All variants meet 4.5:1</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                    <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                     <span>Light & dark modes</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                    <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                     <span>WCAG AA compliant</span>
                   </li>
                 </ul>
@@ -562,9 +562,9 @@ export default function ButtonShowcase() {
           </section>
 
           {/* Section 8: All Variants Matrix */}
-          <section className="mb-16">
-            <div className="mb-8">
-              <h2 className="mb-2">Complete Variants × Sizes Matrix</h2>
+          <section className="flex flex-col gap-8">
+            <div className="flex flex-col gap-2">
+              <h2>Complete Variants × Sizes Matrix</h2>
               <p className="text-muted-foreground">
                 All 7 variants across all 3 sizes for comprehensive testing.
               </p>
@@ -671,48 +671,48 @@ export default function ButtonShowcase() {
           </section>
 
           {/* Summary */}
-          <section className="mb-16">
-            <div className="p-8 rounded-lg bg-primary/5 border border-primary/20">
-              <h2 className="mb-4">Verification Summary ✅</h2>
+          <section>
+            <div className="p-8 rounded-lg bg-primary/5 border border-primary/20 flex flex-col gap-4">
+              <h2>Verification Summary ✅</h2>
               <div className="wp-pattern-card-grid__container wp-pattern-card-grid__container--cols-2">
-                <div>
-                  <h3 className="mb-3">Components Verified</h3>
-                  <ul className="space-y-2 text-sm">
+                <div className="flex flex-col gap-3">
+                  <h3>Components Verified</h3>
+                  <ul className="flex flex-col gap-2 text-sm">
                     <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                       <span>Button.tsx - 7 variants working</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                       <span>Buttons.tsx - Container working</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                       <span>ShadCN UI Button - Deleted ❌</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                       <span>Legacy Button - Verified non-existent</span>
                     </li>
                   </ul>
                 </div>
-                <div>
-                  <h3 className="mb-3">Design System Compliance</h3>
-                  <ul className="space-y-2 text-sm">
+                <div className="flex flex-col gap-3">
+                  <h3>Design System Compliance</h3>
+                  <ul className="flex flex-col gap-2 text-sm">
                     <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                       <span>100% CSS Variables Usage</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                       <span>Only Noto Sans Font Family</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                       <span>Semantic Color Tokens</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      <Check className="h-4 w-4 text-primary translate-y-0.5 shrink-0" />
                       <span>WCAG AA/AAA Compliant</span>
                     </li>
                   </ul>

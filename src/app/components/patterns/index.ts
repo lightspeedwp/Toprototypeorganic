@@ -21,6 +21,12 @@ export { SearchFilterPattern } from './SearchFilterPattern';
 export { EmptyStatePattern } from './EmptyStatePattern';
 export { BreadcrumbsPattern } from './BreadcrumbsPattern';
 
+// Archive Patterns
+export { ArchiveResultsSection } from './ArchiveResultsSection';
+export { ActiveFilterSummary, searchFilterTag, singleFilterTag, multiFilterTags, buildFilterTags } from './ActiveFilterSummary';
+export { CollapsibleFilterPanel } from './CollapsibleFilterPanel';
+export type { FilterChipGroup, FilterChipItem } from './CollapsibleFilterPanel';
+
 // Phase 2 Patterns - Tour/Accommodation
 export { PricingSectionPattern } from './PricingSectionPattern';
 export { InclusionsPattern } from './InclusionsPattern';

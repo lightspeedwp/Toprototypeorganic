@@ -123,7 +123,7 @@ export function MobileDashboard() {
             <div className="p-6 border-b border-border flex items-center justify-between">
               <div>
                 <h2 className="mb-0">Mobile Dashboard</h2>
-                <p className="text-sm text-muted-foreground mt-1">
+                <p className="text-sm text-muted-foreground pt-1">
                   Monitor mobile performance and test features
                 </p>
               </div>
@@ -205,8 +205,8 @@ export function MobileDashboard() {
             <div className="flex-1 overflow-y-auto p-6">
               {isLoading ? (
                 <div className="flex items-center justify-center py-section-sm">
-                  <div className="text-center">
-                    <RefreshCw size={48} className="mx-auto mb-4 animate-spin text-primary" />
+                  <div className="flex flex-col items-center text-center gap-element-md">
+                    <RefreshCw size={48} className="animate-spin text-primary" />
                     <p className="text-muted-foreground">Running mobile tests...</p>
                   </div>
                 </div>
@@ -214,12 +214,12 @@ export function MobileDashboard() {
                 <>
                   {/* Device Tab */}
                   {activeTab === "device" && (
-                    <div className="space-y-6">
+                    <div className="flex flex-col gap-6">
                       <div>
-                        <h3 className="text-lg font-semibold mb-4">Device Information</h3>
+                        <h3 className="text-lg font-semibold pb-4">Device Information</h3>
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                           <div className="p-4 rounded-lg border border-border bg-card">
-                            <div className="text-sm text-muted-foreground mb-1">Type</div>
+                            <div className="text-sm text-muted-foreground pb-1">Type</div>
                             <div className="font-bold">
                               {testResults.deviceInfo.isMobile
                                 ? "Mobile"
@@ -229,45 +229,45 @@ export function MobileDashboard() {
                             </div>
                           </div>
                           <div className="p-4 rounded-lg border border-border bg-card">
-                            <div className="text-sm text-muted-foreground mb-1">Touch</div>
+                            <div className="text-sm text-muted-foreground pb-1">Touch</div>
                             <div className="font-bold">
                               {testResults.deviceInfo.supportsTouch ? "Yes" : "No"}
                             </div>
                           </div>
                           <div className="p-4 rounded-lg border border-border bg-card">
-                            <div className="text-sm text-muted-foreground mb-1">Screen</div>
+                            <div className="text-sm text-muted-foreground pb-1">Screen</div>
                             <div className="font-bold">
                               {testResults.deviceInfo.screenWidth}x{testResults.deviceInfo.screenHeight}
                             </div>
                           </div>
                           <div className="p-4 rounded-lg border border-border bg-card">
-                            <div className="text-sm text-muted-foreground mb-1">DPR</div>
+                            <div className="text-sm text-muted-foreground pb-1">DPR</div>
                             <div className="font-bold">{testResults.deviceInfo.devicePixelRatio}x</div>
                           </div>
                           <div className="p-4 rounded-lg border border-border bg-card">
-                            <div className="text-sm text-muted-foreground mb-1">Orientation</div>
+                            <div className="text-sm text-muted-foreground pb-1">Orientation</div>
                             <div className="font-bold">{testResults.deviceInfo.orientation}</div>
                           </div>
                         </div>
                       </div>
 
                       <div>
-                        <h3 className="text-lg font-semibold mb-4">Network Information</h3>
+                        <h3 className="text-lg font-semibold pb-4">Network Information</h3>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                           <div className="p-4 rounded-lg border border-border bg-card">
-                            <div className="text-sm text-muted-foreground mb-1">Type</div>
+                            <div className="text-sm text-muted-foreground pb-1">Type</div>
                             <div className="font-bold">{testResults.networkInfo.effectiveType}</div>
                           </div>
                           <div className="p-4 rounded-lg border border-border bg-card">
-                            <div className="text-sm text-muted-foreground mb-1">Downlink</div>
+                            <div className="text-sm text-muted-foreground pb-1">Downlink</div>
                             <div className="font-bold">{testResults.networkInfo.downlink} Mbps</div>
                           </div>
                           <div className="p-4 rounded-lg border border-border bg-card">
-                            <div className="text-sm text-muted-foreground mb-1">RTT</div>
+                            <div className="text-sm text-muted-foreground pb-1">RTT</div>
                             <div className="font-bold">{testResults.networkInfo.rtt}ms</div>
                           </div>
                           <div className="p-4 rounded-lg border border-border bg-card">
-                            <div className="text-sm text-muted-foreground mb-1">Data Saver</div>
+                            <div className="text-sm text-muted-foreground pb-1">Data Saver</div>
                             <div className="font-bold">
                               {testResults.networkInfo.saveData ? "On" : "Off"}
                             </div>
@@ -279,64 +279,66 @@ export function MobileDashboard() {
 
                   {/* Performance Tab */}
                   {activeTab === "performance" && (
-                    <div className="space-y-6">
+                    <div className="flex flex-col gap-6">
                       <div>
-                        <h3 className="text-lg font-semibold mb-4">Touch Target Tests</h3>
+                        <h3 className="text-lg font-semibold pb-4">Touch Target Tests</h3>
                         {testResults.touchTargets.length === 0 ? (
                           <div className="text-center py-8 text-muted-foreground">
                             ✅ All touch targets meet minimum size requirement (44x44px)
                           </div>
                         ) : (
-                          <div className="space-y-2">
-                            <p className="text-sm text-muted-foreground mb-4">
+                          <div className="flex flex-col gap-2">
+                            <p className="text-sm text-muted-foreground pb-4">
                               {testResults.touchTargets.length} touch targets below 44x44px:
                             </p>
-                            {testResults.touchTargets.slice(0, 10).map((target: any, index: number) => (
-                              <div key={index} className="p-3 rounded-lg border border-border bg-card">
-                                <div className="flex items-center justify-between">
-                                  <div className="font-medium">{target.element}</div>
-                                  <div className="text-sm text-muted-foreground">
-                                    {target.width}x{target.height}px
+                            <div className="flex flex-col gap-2">
+                              {testResults.touchTargets.slice(0, 10).map((target: any, index: number) => (
+                                <div key={index} className="p-3 rounded-lg border border-border bg-card">
+                                  <div className="flex items-center justify-between">
+                                    <div className="font-medium">{target.element}</div>
+                                    <div className="text-sm text-muted-foreground">
+                                      {target.width}x{target.height}px
+                                    </div>
+                                  </div>
+                                  <div className="text-sm text-muted-foreground pt-1">
+                                    {target.recommendation}
                                   </div>
                                 </div>
-                                <div className="text-sm text-muted-foreground mt-1">
-                                  {target.recommendation}
-                                </div>
-                              </div>
-                            ))}
-                            {testResults.touchTargets.length > 10 && (
-                              <p className="text-sm text-muted-foreground text-center">
-                                + {testResults.touchTargets.length - 10} more issues
-                              </p>
-                            )}
+                              ))}
+                              {testResults.touchTargets.length > 10 && (
+                                <p className="text-sm text-muted-foreground text-center">
+                                  + {testResults.touchTargets.length - 10} more issues
+                                </p>
+                              )}
+                            </div>
                           </div>
                         )}
                       </div>
 
                       {testResults.scrollPerformance && (
                         <div>
-                          <h3 className="text-lg font-semibold mb-4">Scroll Performance</h3>
+                          <h3 className="text-lg font-semibold pb-4">Scroll Performance</h3>
                           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             <div className="p-4 rounded-lg border border-border bg-card">
-                              <div className="text-sm text-muted-foreground mb-1">Avg FPS</div>
+                              <div className="text-sm text-muted-foreground pb-1">Avg FPS</div>
                               <div className="font-serif text-fluid-2xl">
                                 {testResults.scrollPerformance.averageFPS}
                               </div>
                             </div>
                             <div className="p-4 rounded-lg border border-border bg-card">
-                              <div className="text-sm text-muted-foreground mb-1">Min FPS</div>
+                              <div className="text-sm text-muted-foreground pb-1">Min FPS</div>
                               <div className="font-serif text-fluid-2xl">
                                 {testResults.scrollPerformance.minFPS}
                               </div>
                             </div>
                             <div className="p-4 rounded-lg border border-border bg-card">
-                              <div className="text-sm text-muted-foreground mb-1">Max FPS</div>
+                              <div className="text-sm text-muted-foreground pb-1">Max FPS</div>
                               <div className="font-serif text-fluid-2xl">
                                 {testResults.scrollPerformance.maxFPS}
                               </div>
                             </div>
                             <div className="p-4 rounded-lg border border-border bg-card">
-                              <div className="text-sm text-muted-foreground mb-1">Frame Drops</div>
+                              <div className="text-sm text-muted-foreground pb-1">Frame Drops</div>
                               <div className="font-serif text-fluid-2xl">
                                 {testResults.scrollPerformance.frameDrops}
                               </div>
@@ -347,11 +349,11 @@ export function MobileDashboard() {
 
                       {testResults.recommendations.length > 0 && (
                         <div>
-                          <h3 className="text-lg font-semibold mb-4">Recommendations</h3>
-                          <ul className="space-y-2">
+                          <h3 className="text-lg font-semibold pb-4">Recommendations</h3>
+                          <ul className="flex flex-col gap-2">
                             {testResults.recommendations.map((rec: string, index: number) => (
                               <li key={index} className="flex items-start gap-2 text-sm">
-                                <span className="text-primary mt-1">•</span>
+                                <span className="text-primary pt-1">•</span>
                                 <span>{rec}</span>
                               </li>
                             ))}
@@ -363,26 +365,26 @@ export function MobileDashboard() {
 
                   {/* PWA Tab */}
                   {activeTab === "pwa" && (
-                    <div className="space-y-6">
+                    <div className="flex flex-col gap-6">
                       <div>
-                        <h3 className="text-lg font-semibold mb-4">PWA Status</h3>
+                        <h3 className="text-lg font-semibold pb-4">PWA Status</h3>
                         <div className="grid grid-cols-2 gap-4">
                           <div className="p-4 rounded-lg border border-border bg-card">
-                            <div className="text-sm text-muted-foreground mb-1">Running as PWA</div>
+                            <div className="text-sm text-muted-foreground pb-1">Running as PWA</div>
                             <div className="font-bold">{isPWA() ? "Yes" : "No"}</div>
                           </div>
                           <div className="p-4 rounded-lg border border-border bg-card">
-                            <div className="text-sm text-muted-foreground mb-1">Online Status</div>
+                            <div className="text-sm text-muted-foreground pb-1">Online Status</div>
                             <div className="font-bold">{online ? "Online" : "Offline"}</div>
                           </div>
                           <div className="p-4 rounded-lg border border-border bg-card">
-                            <div className="text-sm text-muted-foreground mb-1">Installable</div>
+                            <div className="text-sm text-muted-foreground pb-1">Installable</div>
                             <div className="font-bold">
                               {isInstallPromptAvailable() ? "Yes" : "No"}
                             </div>
                           </div>
                           <div className="p-4 rounded-lg border border-border bg-card">
-                            <div className="text-sm text-muted-foreground mb-1">Notifications</div>
+                            <div className="text-sm text-muted-foreground pb-1">Notifications</div>
                             <div className="font-bold">{Notification?.permission || "Not supported"}</div>
                           </div>
                         </div>

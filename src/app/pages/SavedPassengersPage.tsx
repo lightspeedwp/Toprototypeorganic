@@ -163,8 +163,8 @@ export default function SavedPassengersPage({ onNavigate }: SavedPassengersPageP
           ================================================================ */}
       <section className="py-section-sm md:py-section-md bg-muted">
         <Container>
-          <div className="max-w-4xl">
-            <div className="flex items-center gap-3 mb-4">
+          <div className="max-w-4xl flex flex-col gap-4">
+            <div className="flex items-center gap-3">
               <Users className="w-8 h-8 text-primary" />
               <h1>Saved Passengers</h1>
             </div>
@@ -181,10 +181,10 @@ export default function SavedPassengersPage({ onNavigate }: SavedPassengersPageP
           ================================================================ */}
       <section className="py-section-sm md:py-section-md bg-background">
         <Container>
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl">
             {/* Add Passenger Button */}
             {!showAddForm && (
-              <div className="mb-8">
+              <div className="pb-8">
                 <button
                   onClick={handleAddPassenger}
                   className={cn(
@@ -202,8 +202,8 @@ export default function SavedPassengersPage({ onNavigate }: SavedPassengersPageP
 
             {/* Add/Edit Form */}
             {showAddForm && (
-              <div className="mb-8 bg-card border border-border rounded-lg p-6 md:p-8">
-                <div className="flex items-center justify-between mb-6">
+              <div className="pb-8 bg-card border border-border rounded-lg p-6 md:p-8 flex flex-col gap-6">
+                <div className="flex items-center justify-between">
                   <h2>{editingId ? "Edit Passenger" : "Add New Passenger"}</h2>
                   <button
                     onClick={() => {
@@ -236,7 +236,7 @@ export default function SavedPassengersPage({ onNavigate }: SavedPassengersPageP
                   showPassportInfo={true}
                 />
 
-                <div className="mt-6 flex items-center gap-3">
+                <div className="flex items-center gap-3">
                   <button
                     onClick={() => {
                       toast.success(editingId ? "Passenger updated!" : "Passenger added!");
@@ -273,7 +273,7 @@ export default function SavedPassengersPage({ onNavigate }: SavedPassengersPageP
 
             {/* Passenger List */}
             {passengers.length > 0 ? (
-              <div className="space-y-4">
+              <div className="flex flex-col gap-4">
                 {passengers.map((passenger) => {
                   const TypeIcon = getPassengerTypeIcon(passenger.type);
                   const isPrimary = passenger.id === primaryPassengerId;
@@ -301,9 +301,9 @@ export default function SavedPassengersPage({ onNavigate }: SavedPassengersPageP
 
                         {/* Details */}
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-start justify-between gap-3 mb-3">
-                            <div>
-                              <div className="flex items-center gap-2 mb-1">
+                          <div className="flex items-start justify-between gap-3 pb-3">
+                            <div className="flex flex-col gap-1">
+                              <div className="flex items-center gap-2">
                                 <h3>
                                   {passenger.firstName} {passenger.lastName}
                                 </h3>
@@ -357,14 +357,14 @@ export default function SavedPassengersPage({ onNavigate }: SavedPassengersPageP
                           {/* Additional Info Grid */}
                           <div className="wp-page-saved-passengers__info-grid">
                             <div>
-                              <p className="text-xs text-muted-foreground mb-1">Date of Birth</p>
+                              <p className="text-xs text-muted-foreground pb-1">Date of Birth</p>
                               <p className="text-sm font-medium">
                                 {new Date(passenger.dateOfBirth).toLocaleDateString()}
                               </p>
                             </div>
 
                             <div>
-                              <p className="text-xs text-muted-foreground mb-1">Gender</p>
+                              <p className="text-xs text-muted-foreground pb-1">Gender</p>
                               <p className="text-sm font-medium capitalize">
                                 {passenger.gender}
                               </p>
@@ -372,7 +372,7 @@ export default function SavedPassengersPage({ onNavigate }: SavedPassengersPageP
 
                             {passenger.passportNumber && (
                               <div>
-                                <p className="text-xs text-muted-foreground mb-1">
+                                <p className="text-xs text-muted-foreground pb-1">
                                   Passport Number
                                 </p>
                                 <p className="text-sm font-medium font-mono">
@@ -383,7 +383,7 @@ export default function SavedPassengersPage({ onNavigate }: SavedPassengersPageP
 
                             {passenger.passportExpiry && (
                               <div>
-                                <p className="text-xs text-muted-foreground mb-1">
+                                <p className="text-xs text-muted-foreground pb-1">
                                   Passport Expiry
                                 </p>
                                 <p className="text-sm font-medium">
@@ -394,7 +394,7 @@ export default function SavedPassengersPage({ onNavigate }: SavedPassengersPageP
 
                             {passenger.dietaryRequirements && (
                               <div>
-                                <p className="text-xs text-muted-foreground mb-1">
+                                <p className="text-xs text-muted-foreground pb-1">
                                   Dietary Requirements
                                 </p>
                                 <p className="text-sm font-medium">
@@ -405,7 +405,7 @@ export default function SavedPassengersPage({ onNavigate }: SavedPassengersPageP
 
                             {passenger.specialNeeds && (
                               <div className="sm:col-span-2 md:col-span-3">
-                                <p className="text-xs text-muted-foreground mb-1">
+                                <p className="text-xs text-muted-foreground pb-1">
                                   Special Needs
                                 </p>
                                 <p className="text-sm font-medium">{passenger.specialNeeds}</p>
@@ -420,10 +420,10 @@ export default function SavedPassengersPage({ onNavigate }: SavedPassengersPageP
               </div>
             ) : (
               /* Empty State */
-              <div className="text-center py-section-sm bg-card border border-border rounded-lg">
-                <Users className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-                <h3 className="mb-2">No Saved Passengers</h3>
-                <p className="text-muted-foreground mb-6">
+              <div className="text-center py-section-sm bg-card border border-border rounded-lg flex flex-col items-center gap-4">
+                <Users className="w-16 h-16 text-muted-foreground" />
+                <h3>No Saved Passengers</h3>
+                <p className="text-muted-foreground">
                   Add passenger details to make future bookings faster and easier
                 </p>
                 <button
@@ -448,10 +448,10 @@ export default function SavedPassengersPage({ onNavigate }: SavedPassengersPageP
           BENEFITS - Why save passengers
           ================================================================ */}
       <section className="py-section-sm md:py-section-md bg-muted">
-        <Container>
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-8">
-              <h2 className="mb-4">Benefits of Saving Passengers</h2>
+        <Container className="flex flex-col items-center">
+          <div className="max-w-4xl w-full">
+            <div className="text-center flex flex-col gap-4 pb-8 items-center">
+              <h2>Benefits of Saving Passengers</h2>
               <p className="text-lg text-muted-foreground">
                 Speed up your booking process with pre-filled information
               </p>
@@ -496,8 +496,8 @@ export default function SavedPassengersPage({ onNavigate }: SavedPassengersPageP
                     key={index}
                     className="bg-card border border-border rounded-lg p-6"
                   >
-                    <Icon className="w-8 h-8 text-primary mb-3" />
-                    <h4 className="mb-2">{benefit.title}</h4>
+                    <Icon className="w-8 h-8 text-primary pb-3" />
+                    <h4 className="pb-2">{benefit.title}</h4>
                     <p className="text-sm text-muted-foreground">{benefit.description}</p>
                   </div>
                 );

@@ -169,13 +169,13 @@ export function PassengerDetailsForm({
   const totalPassengers = passengerCount.adults + passengerCount.children + passengerCount.infants;
 
   return (
-    <div className={cn("space-y-[var(--spacing-gap-lg)]", className)}>
+    <div className={cn("flex flex-col gap-fluid-lg", className)}>
       {/* Header */}
-      <div className="flex items-start gap-[var(--spacing-gap-sm)]">
-        <User className="w-[var(--spacing-element-lg)] h-[var(--spacing-element-lg)] text-primary flex-shrink-0 mt-[var(--spacing-element-xs)]" />
-        <div>
-          <h2 className="mb-[var(--spacing-element-sm)]">Passenger Information</h2>
-          <p className="text-muted-foreground !m-0">
+      <div className="flex items-start gap-fluid-md">
+        <User className="w-[var(--spacing-element-lg)] h-[var(--spacing-element-lg)] text-[color:var(--color-primary)] flex-shrink-0" />
+        <div className="flex flex-col gap-fluid-xs">
+          <h2 className="m-0 font-[family:var(--font-family-lora)] text-[length:var(--text-2xl)]">Passenger Information</h2>
+          <p className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] m-0">
             Please provide details for all {totalPassengers} passenger
             {totalPassengers !== 1 ? "s" : ""}
           </p>
@@ -183,7 +183,7 @@ export function PassengerDetailsForm({
       </div>
 
       {/* Passenger Forms */}
-      <div className="space-y-[var(--spacing-gap-md)]">
+      <div className="flex flex-col gap-fluid-md">
         {passengers.map((passenger, index) => {
           const isExpanded = expandedPassenger === passenger.id;
           const isComplete = isPassengerComplete(passenger);
@@ -200,12 +200,12 @@ export function PassengerDetailsForm({
               <button
                 onClick={() => togglePassenger(passenger.id)}
                 className={cn(
-                  "w-full px-[var(--spacing-element-lg)] md:px-[var(--spacing-element-xl)] py-[var(--spacing-element-md)] flex items-center justify-between",
+                  "w-full px-element-lg md:px-element-xl py-element-md flex items-center justify-between",
                   "hover:bg-accent transition-colors text-left",
                   "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-inset"
                 )}
               >
-                <div className="flex items-center gap-[var(--spacing-gap-sm)]">
+                <div className="flex items-center gap-fluid-sm">
                   <div
                     className={cn(
                       "w-[var(--spacing-element-xl)] h-[var(--spacing-element-xl)] rounded-[var(--radius-full)] flex items-center justify-center flex-shrink-0",
@@ -218,10 +218,10 @@ export function PassengerDetailsForm({
                       <span className="text-[length:var(--text-sm)] font-[var(--font-weight-medium)]">{index + 1}</span>
                     )}
                   </div>
-                  <div>
-                    <p className="font-[var(--font-weight-medium)] !m-0">{passengerLabel}</p>
+                  <div className="flex flex-col gap-fluid-xs">
+                    <p className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)] m-0">{passengerLabel}</p>
                     {passenger.firstName && passenger.lastName && (
-                      <p className="text-[length:var(--text-sm)] text-muted-foreground mt-[var(--spacing-element-xs)] !m-0">
+                      <p className="text-[length:var(--text-sm)] text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] m-0">
                         {passenger.firstName} {passenger.lastName}
                       </p>
                     )}
@@ -248,11 +248,11 @@ export function PassengerDetailsForm({
 
               {/* Passenger Form */}
               {isExpanded && (
-                <div className="px-[var(--spacing-element-lg)] md:px-[var(--spacing-element-xl)] pb-[var(--spacing-element-xl)] border-t border-border">
-                  <div className="pt-[var(--spacing-element-xl)] grid gap-[var(--spacing-gap-lg)] md:grid-cols-2">
+                <div className="px-element-lg md:px-element-xl pb-element-xl border-t border-border">
+                  <div className="pt-element-xl grid gap-fluid-lg md:grid-cols-2">
                     {/* First Name */}
-                    <div>
-                      <label htmlFor={`${passenger.id}-firstName`} className="mb-[var(--spacing-element-sm)] block">
+                    <div className="flex flex-col gap-fluid-xs">
+                      <label htmlFor={`${passenger.id}-firstName`} className="font-[family:var(--font-family-noto-sans)] text-[color:var(--color-foreground)] block">
                         First Name *
                       </label>
                       <input
@@ -265,17 +265,17 @@ export function PassengerDetailsForm({
                         }
                         placeholder="John"
                         className={cn(
-                          "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
-                          "bg-input-background border border-border",
-                          "text-foreground placeholder:text-muted-foreground",
-                          "focus:outline-none focus:ring-2 focus:ring-ring"
+                          "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
+                          "bg-[color:var(--color-input-background)] border border-[color:var(--color-border)]",
+                          "text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-muted-foreground)]",
+                          "focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ring)] font-[family:var(--font-family-noto-sans)]"
                         )}
                       />
                     </div>
 
                     {/* Last Name */}
-                    <div>
-                      <label htmlFor={`${passenger.id}-lastName`} className="mb-[var(--spacing-element-sm)] block">
+                    <div className="flex flex-col gap-fluid-xs">
+                      <label htmlFor={`${passenger.id}-lastName`} className="font-[family:var(--font-family-noto-sans)] text-[color:var(--color-foreground)] block">
                         Last Name *
                       </label>
                       <input
@@ -288,17 +288,17 @@ export function PassengerDetailsForm({
                         }
                         placeholder="Doe"
                         className={cn(
-                          "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
-                          "bg-input-background border border-border",
-                          "text-foreground placeholder:text-muted-foreground",
-                          "focus:outline-none focus:ring-2 focus:ring-ring"
+                          "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
+                          "bg-[color:var(--color-input-background)] border border-[color:var(--color-border)]",
+                          "text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-muted-foreground)]",
+                          "focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ring)] font-[family:var(--font-family-noto-sans)]"
                         )}
                       />
                     </div>
 
                     {/* Date of Birth */}
-                    <div>
-                      <label htmlFor={`${passenger.id}-dob`} className="mb-[var(--spacing-element-sm)] block">
+                    <div className="flex flex-col gap-fluid-xs">
+                      <label htmlFor={`${passenger.id}-dob`} className="font-[family:var(--font-family-noto-sans)] text-[color:var(--color-foreground)] block">
                         Date of Birth *
                       </label>
                       <input
@@ -311,17 +311,17 @@ export function PassengerDetailsForm({
                         }
                         max={new Date().toISOString().split("T")[0]}
                         className={cn(
-                          "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
-                          "bg-input-background border border-border",
-                          "text-foreground",
-                          "focus:outline-none focus:ring-2 focus:ring-ring"
+                          "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
+                          "bg-[color:var(--color-input-background)] border border-[color:var(--color-border)]",
+                          "text-[color:var(--color-foreground)]",
+                          "focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ring)] font-[family:var(--font-family-noto-sans)]"
                         )}
                       />
                     </div>
 
                     {/* Gender */}
-                    <div>
-                      <label htmlFor={`${passenger.id}-gender`} className="mb-[var(--spacing-element-sm)] block">
+                    <div className="flex flex-col gap-fluid-xs">
+                      <label htmlFor={`${passenger.id}-gender`} className="font-[family:var(--font-family-noto-sans)] text-[color:var(--color-foreground)] block">
                         Gender *
                       </label>
                       <select
@@ -336,10 +336,10 @@ export function PassengerDetailsForm({
                           )
                         }
                         className={cn(
-                          "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
-                          "bg-input-background border border-border",
-                          "text-foreground",
-                          "focus:outline-none focus:ring-2 focus:ring-ring"
+                          "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
+                          "bg-[color:var(--color-input-background)] border border-[color:var(--color-border)]",
+                          "text-[color:var(--color-foreground)]",
+                          "focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ring)] font-[family:var(--font-family-noto-sans)]"
                         )}
                       >
                         <option value="">Select gender</option>
@@ -350,8 +350,8 @@ export function PassengerDetailsForm({
                     </div>
 
                     {/* Nationality */}
-                    <div className="md:col-span-2">
-                      <label htmlFor={`${passenger.id}-nationality`} className="mb-[var(--spacing-element-sm)] block">
+                    <div className="md:col-span-2 flex flex-col gap-fluid-xs">
+                      <label htmlFor={`${passenger.id}-nationality`} className="font-[family:var(--font-family-noto-sans)] text-[color:var(--color-foreground)] block">
                         Nationality *
                       </label>
                       <input
@@ -364,10 +364,10 @@ export function PassengerDetailsForm({
                         }
                         placeholder="e.g., United States"
                         className={cn(
-                          "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
-                          "bg-input-background border border-border",
-                          "text-foreground placeholder:text-muted-foreground",
-                          "focus:outline-none focus:ring-2 focus:ring-ring"
+                          "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
+                          "bg-[color:var(--color-input-background)] border border-[color:var(--color-border)]",
+                          "text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-muted-foreground)]",
+                          "focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ring)] font-[family:var(--font-family-noto-sans)]"
                         )}
                       />
                     </div>
@@ -375,10 +375,10 @@ export function PassengerDetailsForm({
                     {/* Passport Information (only for adults) */}
                     {showPassportInfo && passenger.type === "adult" && (
                       <>
-                        <div>
+                        <div className="flex flex-col gap-fluid-xs">
                           <label
                             htmlFor={`${passenger.id}-passportNumber`}
-                            className="mb-[var(--spacing-element-sm)] block"
+                            className="font-[family:var(--font-family-noto-sans)] text-[color:var(--color-foreground)] block"
                           >
                             Passport Number
                           </label>
@@ -391,18 +391,18 @@ export function PassengerDetailsForm({
                             }
                             placeholder="AB123456"
                             className={cn(
-                              "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
-                              "bg-input-background border border-border",
-                              "text-foreground placeholder:text-muted-foreground",
-                              "focus:outline-none focus:ring-2 focus:ring-ring"
+                              "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
+                              "bg-[color:var(--color-input-background)] border border-[color:var(--color-border)]",
+                              "text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-muted-foreground)]",
+                              "focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ring)] font-[family:var(--font-family-noto-sans)]"
                             )}
                           />
                         </div>
 
-                        <div>
+                        <div className="flex flex-col gap-fluid-xs">
                           <label
                             htmlFor={`${passenger.id}-passportExpiry`}
-                            className="mb-[var(--spacing-element-sm)] block"
+                            className="font-[family:var(--font-family-noto-sans)] text-[color:var(--color-foreground)] block"
                           >
                             Passport Expiry Date
                           </label>
@@ -415,10 +415,10 @@ export function PassengerDetailsForm({
                             }
                             min={new Date().toISOString().split("T")[0]}
                             className={cn(
-                              "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
-                              "bg-input-background border border-border",
-                              "text-foreground",
-                              "focus:outline-none focus:ring-2 focus:ring-ring"
+                              "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
+                              "bg-[color:var(--color-input-background)] border border-[color:var(--color-border)]",
+                              "text-[color:var(--color-foreground)]",
+                              "focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ring)] font-[family:var(--font-family-noto-sans)]"
                             )}
                           />
                         </div>
@@ -426,10 +426,10 @@ export function PassengerDetailsForm({
                     )}
 
                     {/* Dietary Requirements */}
-                    <div className="md:col-span-2">
+                    <div className="md:col-span-2 flex flex-col gap-fluid-xs">
                       <label
                         htmlFor={`${passenger.id}-dietary`}
-                        className="mb-[var(--spacing-element-sm)] block"
+                        className="font-[family:var(--font-family-noto-sans)] text-[color:var(--color-foreground)] block"
                       >
                         Dietary Requirements (Optional)
                       </label>
@@ -442,17 +442,17 @@ export function PassengerDetailsForm({
                         }
                         placeholder="e.g., Vegetarian, Gluten-free, etc."
                         className={cn(
-                          "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)]",
-                          "bg-input-background border border-border",
-                          "text-foreground placeholder:text-muted-foreground",
-                          "focus:outline-none focus:ring-2 focus:ring-ring"
+                          "w-full px-element-lg py-element-md rounded-[var(--radius-md)]",
+                          "bg-[color:var(--color-input-background)] border border-[color:var(--color-border)]",
+                          "text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-muted-foreground)]",
+                          "focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ring)] font-[family:var(--font-family-noto-sans)]"
                         )}
                       />
                     </div>
 
                     {/* Special Needs */}
-                    <div className="md:col-span-2">
-                      <label htmlFor={`${passenger.id}-special`} className="mb-[var(--spacing-element-sm)] block">
+                    <div className="md:col-span-2 flex flex-col gap-fluid-xs">
+                      <label htmlFor={`${passenger.id}-special`} className="font-[family:var(--font-family-noto-sans)] text-[color:var(--color-foreground)] block">
                         Special Needs or Requests (Optional)
                       </label>
                       <textarea
@@ -464,10 +464,10 @@ export function PassengerDetailsForm({
                         }
                         placeholder="Any medical conditions, mobility issues, or special requests..."
                         className={cn(
-                          "w-full px-[var(--spacing-element-lg)] py-[var(--spacing-element-md)] rounded-[var(--radius-md)] resize-none",
-                          "bg-input-background border border-border",
-                          "text-foreground placeholder:text-muted-foreground",
-                          "focus:outline-none focus:ring-2 focus:ring-ring"
+                          "w-full px-element-lg py-element-md rounded-[var(--radius-md)] resize-none",
+                          "bg-[color:var(--color-input-background)] border border-[color:var(--color-border)]",
+                          "text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-muted-foreground)]",
+                          "focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ring)] font-[family:var(--font-family-noto-sans)]"
                         )}
                       />
                     </div>
@@ -480,15 +480,15 @@ export function PassengerDetailsForm({
       </div>
 
       {/* Completion Status */}
-      <div className="wp-bg-muted-light rounded-[var(--radius-lg)] p-[var(--spacing-element-lg)]">
-        <div className="flex items-start gap-[var(--spacing-gap-sm)]">
-          <AlertCircle className="w-[var(--spacing-element-lg)] h-[var(--spacing-element-lg)] text-muted-foreground flex-shrink-0 mt-[var(--spacing-element-xs)]" />
-          <div className="text-[length:var(--text-sm)]">
-            <p className="font-[var(--font-weight-medium)] text-foreground mb-[var(--spacing-element-xs)] !m-0">
+      <div className="bg-[color:var(--color-muted)]/50 rounded-[var(--radius-lg)] p-element-lg">
+        <div className="flex items-start gap-fluid-md">
+          <AlertCircle className="w-[var(--spacing-element-lg)] h-[var(--spacing-element-lg)] text-[color:var(--color-muted-foreground)] flex-shrink-0" />
+          <div className="text-[length:var(--text-sm)] flex flex-col gap-fluid-xs">
+            <p className="font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-foreground)] m-0">
               {passengers.filter(isPassengerComplete).length} of {totalPassengers} passenger
               {totalPassengers !== 1 ? "s" : ""} completed
             </p>
-            <p className="text-muted-foreground !m-0">
+            <p className="text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] m-0">
               Please ensure all required fields are filled for each passenger before continuing
             </p>
           </div>

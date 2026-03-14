@@ -128,11 +128,16 @@ const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     pageIds: [
       'tours-archive',
       'destinations-archive',
+      'destinations-archive-simple',
+      'destinations-archive-test',
+      'destinations-archive-enhanced',
+      'destinations-archive-old',
       'blog-archive',
       'accommodation-archive',
       'team-archive',
       'specials-archive',
       'reviews-archive',
+      'faqs-archive',
     ],
   },
   {
@@ -144,6 +149,9 @@ const TEMPLATE_CATEGORIES: TemplateCategory[] = [
       'accommodation-single',
       'blog-single',
       'special-single',
+      'review-single',
+      'team-single',
+      'tour-gallery-page',
     ],
   },
   {
@@ -151,6 +159,11 @@ const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     description: 'Taxonomy archives and editorial content',
     pageIds: [
       'taxonomy-archive',
+      'travel-styles-hub',
+      'traveller-types-hub',
+      'accommodation-types-hub',
+      'facilities-hub',
+      'brands-archive',
     ],
   },
   {
@@ -160,11 +173,11 @@ const TEMPLATE_CATEGORIES: TemplateCategory[] = [
       'about-page',
       'contact-page',
       'faq-page',
-      'privacy-policy-page',
-      'terms-conditions-page',
       'why-book-with-us-page',
+      'sustainability-page',
       'trip-planner-page',
       'search-results-page',
+      'advanced-search-results-page',
     ],
   },
   {
@@ -177,6 +190,50 @@ const TEMPLATE_CATEGORIES: TemplateCategory[] = [
       'travel-insurance-page',
       'newsletter-signup-page',
       'packing-guides-page',
+      'itinerary-builder-page',
+      'loyalty-rewards-page',
+    ],
+  },
+  {
+    name: '🛒 Booking & Account',
+    description: 'Booking flow and user account pages',
+    pageIds: [
+      'booking-page',
+      'booking-confirmation-page',
+      'booking-confirmation-enhanced-page',
+      'booking-management-page',
+      'payment-page',
+      'profile-page',
+      'account-settings-page',
+      'saved-passengers-page',
+      'wishlist-page',
+      'tour-comparison-page',
+    ],
+  },
+  {
+    name: '🔐 Authentication',
+    description: 'Login, registration, and access control',
+    pageIds: [
+      'login-page',
+      'register-page',
+    ],
+  },
+  {
+    name: '📜 Legal',
+    description: 'Legal and policy pages',
+    pageIds: [
+      'privacy-policy-page',
+      'terms-conditions-page',
+      'sitemap-page',
+    ],
+  },
+  {
+    name: '🌿 Organic Design System',
+    description: 'Organic design system demos and showcases',
+    pageIds: [
+      'organic-demo',
+      'organic-landing-page',
+      'day-and-dusk-page',
     ],
   },
   {
@@ -191,8 +248,10 @@ const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     name: '🛠️ Development Tools',
     description: 'Developer utilities and showcases',
     pageIds: [
+      'dev-tools-dashboard',
       'template-tester',
       'component-showcase',
+      'component-library',
       'component-api-reference',
       'block-documentation',
       'design-blocks-showcase',
@@ -200,6 +259,43 @@ const TEMPLATE_CATEGORIES: TemplateCategory[] = [
       'header-footer-comparison',
       'button-showcase',
       'section-styles-showcase',
+      'icon-library',
+      'live-preview',
+      'style-guide',
+      'notification-examples',
+      'diagnostic-page',
+    ],
+  },
+  {
+    name: '🎨 Design System Tools',
+    description: 'Design system showcases and verification',
+    pageIds: [
+      'design-system-showcase',
+      'design-system-example',
+      'design-system-verification',
+      'design-system-playground',
+      'design-tokens-reference',
+      'typography-specimens',
+      'spacing-scale',
+      'shadow-scale',
+      'radius-specimens',
+      'card-interactions',
+      'animations-showcase',
+    ],
+  },
+  {
+    name: '📊 QA & Monitoring',
+    description: 'Testing, auditing, and performance tools',
+    pageIds: [
+      'accessibility-audit',
+      'analytics-dashboard',
+      'code-quality-dashboard',
+      'deployment-readiness',
+      'integration-tester',
+      'performance-monitor',
+      'visual-regression-tester',
+      'snippet-generator',
+      'documentation-generator',
     ],
   },
 ];
@@ -337,10 +433,10 @@ export function TemplateBrowser({ pages, activePage, onPageChange }: TemplateBro
           />
 
           {/* Panel */}
-          <div className="absolute top-full mt-2 w-screen max-w-lg bg-card border border-border rounded-lg shadow-lg overflow-hidden">
+          <div className="absolute top-full w-screen max-w-lg bg-card border border-border rounded-[var(--radius-lg)] shadow-lg overflow-hidden">
             {/* Header */}
-            <div className="wp-common-template-browser__header">
-              <div className="flex items-center justify-between mb-3">
+            <div className="wp-common-template-browser__header flex flex-col gap-element-sm">
+              <div className="flex items-center justify-between">
                 <h2 
                   className="wp-common-template-browser__header-title"
                 >
@@ -348,7 +444,7 @@ export function TemplateBrowser({ pages, activePage, onPageChange }: TemplateBro
                 </h2>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-1 rounded-md hover:bg-muted transition-colors"
+                  className="p-element-xs rounded-[var(--radius-md)] hover:bg-muted transition-colors"
                   aria-label="Close template browser"
                 >
                   <X className="w-4 h-4" />
@@ -356,7 +452,7 @@ export function TemplateBrowser({ pages, activePage, onPageChange }: TemplateBro
               </div>
 
               {/* Search */}
-              <div className="relative mb-3">
+              <div className="relative">
                 <MagnifyingGlass className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
                    type="search"
@@ -368,7 +464,7 @@ export function TemplateBrowser({ pages, activePage, onPageChange }: TemplateBro
               </div>
 
               {/* Sort Options */}
-              <div className="flex gap-2">
+              <div className="flex gap-fluid-sm">
                 <button
                   onClick={() => setSortBy('category')}
                   className={`wp-common-template-browser__sort-button ${
@@ -444,9 +540,9 @@ export function TemplateBrowser({ pages, activePage, onPageChange }: TemplateBro
                           </p>
                         </div>
                         {expandedCategories.includes(category.name) ? (
-                          <CaretDown className="w-4 h-4 text-muted-foreground flex-shrink-0 ml-2" />
+                          <CaretDown className="w-4 h-4 text-muted-foreground flex-shrink-0 pl-2" />
                         ) : (
-                          <CaretRight className="w-4 h-4 text-muted-foreground flex-shrink-0 ml-2" />
+                          <CaretRight className="w-4 h-4 text-muted-foreground flex-shrink-0 pl-2" />
                         )}
                       </button>
 
@@ -467,7 +563,7 @@ export function TemplateBrowser({ pages, activePage, onPageChange }: TemplateBro
                                     : 'wp-common-template-browser__page-link--inactive'
                                 }`}
                               >
-                                <div className="flex items-start justify-between gap-3">
+                                <div className="flex items-start justify-between gap-fluid-md">
                                   <div className="flex-1 min-w-0">
                                     <p 
                                       className={`wp-common-template-browser__page-title ${
@@ -483,7 +579,7 @@ export function TemplateBrowser({ pages, activePage, onPageChange }: TemplateBro
                                     </p>
                                   </div>
                                   {pageId === activePage && (
-                                    <div className="flex-shrink-0 w-2 h-2 rounded-full bg-primary mt-1" />
+                                    <div className="flex-shrink-0 w-2 h-2 rounded-[var(--radius-full)] bg-primary" />
                                   )}
                                 </div>
                               </button>
@@ -495,8 +591,8 @@ export function TemplateBrowser({ pages, activePage, onPageChange }: TemplateBro
                   ))}
                 </div>
               ) : (
-                <div className="wp-common-template-browser__empty">
-                  <MagnifyingGlass className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
+                <div className="wp-common-template-browser__empty flex flex-col items-center">
+                  <MagnifyingGlass className="w-8 h-8 text-muted-foreground pb-2" />
                   <p 
                     className="wp-common-template-browser__empty-text"
                   >

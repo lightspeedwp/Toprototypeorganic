@@ -19,12 +19,12 @@
  */
 
 import { cn } from "../../lib/utils";
-import type { Icon as PhosphorIcon } from "@phosphor-icons/react";
+import { isValidElement, type ReactNode, type ComponentType } from "react";
 import { BotanicalCorner } from "../common/organic/OrganicAssets";
 
 interface FeatureCardProps {
-  /** Phosphor icon component to display */
-  icon: PhosphorIcon;
+  /** Icon component or JSX element to display */
+  icon: ReactNode | ComponentType<any>;
   
   /** Feature title */
   title: string;
@@ -55,12 +55,22 @@ interface FeatureCardProps {
  * ```
  */
 export function FeatureCard({
-  icon: Icon,
+  icon,
   title,
   description,
   variant = "default",
   className,
 }: FeatureCardProps) {
+  // Handle both JSX elements and component references
+  const renderIcon = () => {
+    if (isValidElement(icon)) return icon;
+    if (typeof icon === 'function') {
+      const IconComponent = icon as ComponentType<any>;
+      return <IconComponent className="wp-pattern-feature-card__icon" />;
+    }
+    return null;
+  };
+
   return (
     <div
       className={cn(
@@ -73,7 +83,7 @@ export function FeatureCard({
       <BotanicalCorner className="wp-part-botanical-ornament--bottom-right-small" />
 
       <div className="wp-pattern-feature-card__icon-wrapper relative z-10">
-        <Icon className="wp-pattern-feature-card__icon" />
+        {renderIcon()}
       </div>
       <h3 className="wp-pattern-feature-card__title relative z-10">{title}</h3>
       <p className="wp-pattern-feature-card__description relative z-10">{description}</p>

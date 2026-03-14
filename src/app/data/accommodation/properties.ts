@@ -270,6 +270,438 @@ export const ACCOMMODATION: Accommodation[] = [
     travelStyles: ["style-2", "style-3"],
     facilities: ["facility-1", "facility-3", "facility-4", "facility-5", "facility-6", "facility-7", "facility-10"],
   },
+  // ============================================
+  // LONDOLOZI PRIVATE GAME RESERVE (brand-7)
+  // ============================================
+  {
+    id: "acc-10",
+    slug: "londolozi-tree-camp",
+    title: "Londolozi Tree Camp",
+    excerpt:
+      "An elevated treehouse experience in the Sabi Sand, offering intimate luxury among ancient ebony trees with legendary leopard encounters.",
+    content:
+      "Londolozi Tree Camp is an architectural marvel built into the canopy of ancient leadwood and ebony trees on the banks of the Sand River. Each of the six suites features a private heated pool, indoor and outdoor shower, and expansive wooden deck offering treetop views of the surrounding bush. The camp represents the pinnacle of Londolozi's five-camp collection.\n\nLondolozi has been a family-owned reserve since 1926 and is widely regarded as the birthplace of ecotourism in South Africa. The reserve's leopards are among the most habituated in the world — Londolozi's leopard photography is globally celebrated, and multi-generational leopard families have been documented for over 40 years.\n\nThe Varty family's conservation philosophy — 'the good of the individual is bound up in the good of the community and the good of the land' — permeates every aspect of the experience. Game drives in open Land Rovers with world-class trackers reveal the Big Five, wild dogs, and extraordinary birdlife within the 14,000-hectare Sabi Sand Reserve.",
+    featuredImage:
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
+    types: ["type-8"],
+    destinations: ["dest-1", "dest-47"],
+    rating: 5,
+    amenities: [
+      "Elevated treehouse suites",
+      "Private heated pools",
+      "Indoor and outdoor showers",
+      "Personal butler",
+      "Fine dining",
+      "Wine cellar",
+      "Yoga deck",
+      "Photography hides",
+    ],
+    roomTypes: ["Treehouse Suites"],
+    location: "Sabi Sand Game Reserve, South Africa",
+    brands: ["brand-7"],
+    travelStyles: ["style-3", "style-4", "style-7"],
+    facilities: ["facility-1", "facility-2", "facility-3", "facility-4", "facility-5", "facility-10", "facility-12"],
+  },
+  {
+    id: "acc-11",
+    slug: "londolozi-granite-suites",
+    title: "Londolozi Granite Suites",
+    excerpt:
+      "Ultra-exclusive three-suite lodge with private pools, a private chef, and dedicated guide — the ultimate Sabi Sand experience.",
+    content:
+      "Londolozi Granite Suites represents the apex of South African safari luxury. With just three suites, each featuring a private heated pool, outdoor shower, and direct river views, this exclusive-use option offers complete privacy and personalised service. A dedicated guide, tracker, butler, and private chef ensure every detail is tailored to your preferences.\n\nThe contemporary African design integrates natural granite, rich fabrics, and curated art pieces that celebrate the region's cultural heritage. The communal areas include a wine studio, fire deck overlooking the Sand River, and an interactive kitchen where guests can join the chef in preparing meals with locally sourced ingredients.\n\nAs part of the Londolozi collection, Granite Suites guests access the full Sabi Sand Reserve — 14,000 hectares of prime Big Five territory with some of the highest predator densities in southern Africa. The reserve's leopard population is particularly special, with individual cats documented across generations.",
+    featuredImage:
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800",
+    types: ["type-2"],
+    destinations: ["dest-1", "dest-47"],
+    rating: 5,
+    amenities: [
+      "Private heated pools per suite",
+      "Dedicated private chef",
+      "Personal guide and tracker",
+      "Wine studio",
+      "Fire deck with river views",
+      "Interactive kitchen experience",
+      "Butler service",
+      "Photography equipment loan",
+    ],
+    roomTypes: ["Granite Suites (3 only)"],
+    location: "Sabi Sand Game Reserve, South Africa",
+    brands: ["brand-7"],
+    travelStyles: ["style-3", "style-4", "style-7"],
+    facilities: ["facility-1", "facility-2", "facility-3", "facility-4", "facility-5", "facility-10", "facility-12"],
+  },
+  {
+    id: "acc-12",
+    slug: "londolozi-pioneer-camp",
+    title: "Londolozi Pioneer Camp",
+    excerpt:
+      "Intimate tented camp honouring Londolozi's 1926 pioneering heritage, nestled on the banks of the Sand River.",
+    content:
+      "Londolozi Pioneer Camp pays homage to the reserve's 1926 origins with a classic tented camp aesthetic that evokes the golden age of safari. Three luxury tents, each with a private plunge pool and river-facing deck, are tucked into the riverine bush along the Sand River. The intimate size ensures a personalised experience with a dedicated guide.\n\nThe camp's design celebrates the pioneering spirit of the Varty family with vintage safari elements — leather, canvas, brass — complemented by modern comforts. The central area features a fire boma, open-air dining, and a viewing deck where elephants and other wildlife frequently visit the riverbank.\n\nPioneer Camp is ideal for families or small groups seeking exclusive use of a classic safari camp within one of the world's finest private game reserves.",
+    featuredImage:
+      "https://images.unsplash.com/photo-1741850826366-889f33a73327?w=800",
+    types: ["type-4"],
+    destinations: ["dest-1", "dest-47"],
+    rating: 5,
+    amenities: [
+      "Private plunge pools",
+      "River-facing decks",
+      "Dedicated guide",
+      "Fire boma dining",
+      "Classic safari aesthetic",
+      "Exclusive use available",
+    ],
+    roomTypes: ["Luxury Safari Tents (3 only)"],
+    location: "Sabi Sand Game Reserve, South Africa",
+    brands: ["brand-7"],
+    travelStyles: ["style-3", "style-4", "style-5"],
+    facilities: ["facility-1", "facility-3", "facility-4", "facility-5", "facility-10"],
+  },
+  {
+    id: "acc-13",
+    slug: "londolozi-founders-camp",
+    title: "Londolozi Founders Camp",
+    excerpt:
+      "Classic Londolozi lodge celebrating the reserve's rich history, with ten chalets overlooking the Sand River.",
+    content:
+      "Londolozi Founders Camp is the heart of the Londolozi experience, a classic lodge that honours the Varty family's century-long conservation journey. Ten spacious chalets, each with a private deck and plunge pool, line the banks of the Sand River. The camp's design blends traditional African materials with contemporary luxury.\n\nThe central areas include an art gallery showcasing works inspired by the Sabi Sand, a well-stocked library, a wine cellar, and multiple dining venues from the formal boma to casual riverside lunches. The camp's slightly larger size creates a sociable atmosphere while maintaining the intimacy that defines Londolozi.\n\nFounders Camp anchors the Londolozi collection and is the ideal choice for guests seeking the full Londolozi experience — world-class game drives, exceptional cuisine, and the warm hospitality that has earned Londolozi multiple 'Best Safari Lodge in the World' accolades.",
+    featuredImage:
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800",
+    types: ["type-2"],
+    destinations: ["dest-1", "dest-47"],
+    rating: 5,
+    amenities: [
+      "Private plunge pools",
+      "Art gallery",
+      "Wine cellar",
+      "Library",
+      "Multiple dining venues",
+      "Spa treatments",
+      "Photography hides",
+    ],
+    roomTypes: ["River-facing Chalets (10)"],
+    location: "Sabi Sand Game Reserve, South Africa",
+    brands: ["brand-7"],
+    travelStyles: ["style-3", "style-4"],
+    facilities: ["facility-1", "facility-2", "facility-3", "facility-4", "facility-5", "facility-10", "facility-12"],
+  },
+  {
+    id: "acc-14",
+    slug: "londolozi-varty-camp",
+    title: "Londolozi Varty Camp",
+    excerpt:
+      "The family-friendly Londolozi option with dedicated children's programmes and the iconic Londolozi Healing House spa.",
+    content:
+      "Londolozi Varty Camp is the collection's family-oriented lodge, named after the Varty family who have stewarded the reserve for four generations. Eight chalets with private plunge pools offer spacious family-friendly accommodation, while the renowned Londolozi Healing House spa provides wellness treatments inspired by local traditions.\n\nThe camp runs dedicated children's programmes — the Cubs Club — where young explorers learn tracking, bug identification, and conservation from Londolozi's expert team. Family-friendly game drives adjust pace and timing for younger guests, and the camp's relaxed atmosphere makes it the ideal introduction to safari for multi-generational groups.\n\nVarty Camp's central areas feature the original Londolozi boma where stories of the bush are shared around the fire, a gym, and relaxed lounge areas overlooking the Sand River.",
+    featuredImage:
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
+    types: ["type-2"],
+    destinations: ["dest-1", "dest-47"],
+    rating: 5,
+    amenities: [
+      "Private plunge pools",
+      "Healing House spa",
+      "Cubs Club children's programme",
+      "Gym and wellness centre",
+      "Family-friendly game drives",
+      "Boma fire dining",
+    ],
+    roomTypes: ["Family Chalets (8)"],
+    location: "Sabi Sand Game Reserve, South Africa",
+    brands: ["brand-7"],
+    travelStyles: ["style-3", "style-4", "style-5"],
+    facilities: ["facility-1", "facility-2", "facility-3", "facility-4", "facility-5", "facility-7", "facility-10", "facility-12"],
+  },
+  // ============================================
+  // andBEYOND COLLECTION (brand-4, expanded)
+  // ============================================
+  {
+    id: "acc-15",
+    slug: "andbeyond-phinda-vlei-lodge",
+    title: "andBeyond Phinda Vlei Lodge",
+    excerpt:
+      "Contemporary glass-and-steel lodge overlooking a vlei (wetland) in KwaZulu-Natal's Phinda Private Game Reserve.",
+    content:
+      "andBeyond Phinda Vlei Lodge sits on the edge of a seasonally flooded vlei within the 28,000-hectare Phinda Private Game Reserve in KwaZulu-Natal. Six suites feature floor-to-ceiling glass walls that retract to blur the boundary between interior and bush, each with a private plunge pool and outdoor shower.\n\nPhinda is one of southern Africa's most ecologically diverse reserves, encompassing seven distinct habitats from sand forest to mountain bushveld. The reserve is renowned for its cheetah conservation programme and offers some of the best black rhino tracking in the country. Being malaria-free, Phinda is an excellent family safari choice.\n\nandBeyond's 'Care of the Land, Wildlife, and People' philosophy is deeply embedded at Phinda, where community development programmes have transformed local villages. Activities extend beyond game drives to include ocean safaris in Sodwana Bay, Zulu cultural experiences, and conservation lessons.",
+    featuredImage:
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800",
+    types: ["type-2"],
+    destinations: ["dest-1", "dest-49"],
+    rating: 5,
+    amenities: [
+      "Floor-to-ceiling glass suites",
+      "Private plunge pools",
+      "Vlei-view decks",
+      "Spa treatments",
+      "Cheetah conservation experience",
+      "Ocean safari excursions",
+      "Zulu cultural visits",
+    ],
+    roomTypes: ["Glass Suites (6)"],
+    location: "Phinda Private Game Reserve, KwaZulu-Natal",
+    brands: ["brand-4"],
+    travelStyles: ["style-3", "style-4", "style-5", "style-6"],
+    facilities: ["facility-1", "facility-2", "facility-3", "facility-4", "facility-5", "facility-7", "facility-10"],
+  },
+  {
+    id: "acc-16",
+    slug: "andbeyond-sandibe",
+    title: "andBeyond Sandibe Okavango Safari Lodge",
+    excerpt:
+      "Award-winning organic architecture inspired by pangolin scales, set on a private concession in the Okavango Delta.",
+    content:
+      "andBeyond Sandibe is an architectural masterpiece in the Okavango Delta, its striking organic design inspired by the form of a pangolin — Africa's most elusive and endangered mammal. Twelve spacious suites are raised on stilts among ancient trees, their curved wooden exteriors blending seamlessly with the surrounding bush.\n\nThe lodge occupies a private 27,000-hectare concession on the Delta's southeastern edge, where permanent waterways meet dry land, creating year-round wildlife diversity. Activities include mokoro excursions, motorboat safaris, game drives, walking safaris, and catch-and-release fishing.\n\nSandibe has won multiple international design awards and represents andBeyond's commitment to sustainability — the lodge was rebuilt entirely using sustainable materials and operates with minimal environmental footprint. The combination of exceptional design, diverse activities, and prime Delta location makes Sandibe one of Botswana's finest safari experiences.",
+    featuredImage:
+      "https://images.unsplash.com/photo-1652778287834-d626affb8eff?w=800",
+    types: ["type-2"],
+    destinations: ["dest-27", "dest-28"],
+    rating: 5,
+    amenities: [
+      "Award-winning organic architecture",
+      "Raised stilted suites",
+      "Mokoro and motorboat safaris",
+      "Walking safaris",
+      "Catch-and-release fishing",
+      "Spa and wellness",
+      "Private concession exclusivity",
+    ],
+    roomTypes: ["Stilted Suites (12)"],
+    location: "Okavango Delta, Botswana",
+    brands: ["brand-4"],
+    travelStyles: ["style-3", "style-4", "style-10"],
+    facilities: ["facility-1", "facility-2", "facility-3", "facility-4", "facility-5", "facility-6", "facility-10"],
+  },
+  {
+    id: "acc-17",
+    slug: "andbeyond-sossusvlei-desert-lodge",
+    title: "andBeyond Sossusvlei Desert Lodge",
+    excerpt:
+      "A luxury desert retreat with star-gazing skylights and private observatory, set against the dramatic dunes of the Namib.",
+    content:
+      "andBeyond Sossusvlei Desert Lodge occupies a 12,500-hectare private nature reserve bordering the Namib-Naukluft National Park, offering exclusive access to some of Namibia's most dramatic desert landscapes. Ten stone-and-glass suites feature retractable skylights above the bed for falling asleep beneath the Milky Way.\n\nThe lodge's private observatory, equipped with a computerised telescope, takes full advantage of the Namib's exceptionally dark skies — these are some of the least light-polluted skies on Earth. Guided nature drives explore the reserve's desert-adapted wildlife including oryx, springbok, and the endemic Namib desert beetle.\n\nActivities focus on the unique desert environment: guided excursions to Sossusvlei and Deadvlei (entering the national park before the crowds), quad biking across desert plains, scenic hot-air balloon flights, and guided walks exploring the desert's fascinating ecology.",
+    featuredImage:
+      "https://images.unsplash.com/photo-1652439310454-a50203f01d8f?w=800",
+    types: ["type-2"],
+    destinations: ["dest-31", "dest-32"],
+    rating: 5,
+    amenities: [
+      "Retractable skylight suites",
+      "Private observatory and telescope",
+      "Star-gazing from bed",
+      "Hot-air balloon flights",
+      "Private Sossusvlei access",
+      "Quad biking",
+      "Spa and infinity pool",
+    ],
+    roomTypes: ["Desert Suites (10)"],
+    location: "NamibRand Nature Reserve, Namibia",
+    brands: ["brand-4"],
+    travelStyles: ["style-2", "style-4", "style-7"],
+    facilities: ["facility-1", "facility-2", "facility-3", "facility-4", "facility-5", "facility-10"],
+  },
+  {
+    id: "acc-18",
+    slug: "andbeyond-bateleur-camp",
+    title: "andBeyond Bateleur Camp",
+    excerpt:
+      "Glamorous 1930s-inspired tented camp on the edge of the Masai Mara, offering front-row seats to the Great Migration.",
+    content:
+      "andBeyond Bateleur Camp channels the golden age of safari with its 1930s-inspired tented suites perched on the edge of the Masai Mara ecosystem. Eighteen tents in two intimate camps are set along a forested hillside overlooking the plains, each with a deep copper bathtub, Victorian writing desk, and private veranda.\n\nThe camp's location on a private conservancy bordering the Masai Mara National Reserve provides exclusive game viewing with night drives, walking safaris, and off-road driving not permitted within the national reserve. During the Great Migration (July-October), the surrounding plains are alive with hundreds of thousands of wildebeest and zebra.\n\nBateleur's concession is managed in partnership with local Maasai communities, who benefit directly from conservation tourism. The camp offers hot-air balloon safaris, Maasai cultural visits, and bush dining experiences under the African sky.",
+    featuredImage:
+      "https://images.unsplash.com/photo-1741850826366-889f33a73327?w=800",
+    types: ["type-4"],
+    destinations: ["dest-3", "dest-7"],
+    rating: 5,
+    amenities: [
+      "1930s-inspired luxury tents",
+      "Copper bathtubs",
+      "Private conservancy access",
+      "Night drives and walking safaris",
+      "Hot-air balloon safaris",
+      "Maasai cultural visits",
+      "Bush dining experiences",
+    ],
+    roomTypes: ["Tented Suites (18, in two camps)"],
+    location: "Masai Mara, Kenya",
+    brands: ["brand-4"],
+    travelStyles: ["style-3", "style-4", "style-10"],
+    facilities: ["facility-1", "facility-3", "facility-4", "facility-5", "facility-6", "facility-10"],
+  },
+  {
+    id: "acc-19",
+    slug: "andbeyond-mnemba-island",
+    title: "andBeyond Mnemba Island",
+    excerpt:
+      "An exclusive private island off Zanzibar with just ten beach bandas, world-class snorkeling, and Robinson Crusoe barefoot luxury.",
+    content:
+      "andBeyond Mnemba Island is one of the Indian Ocean's most exclusive retreats — a private island just 1.5 kilometres off the northeast coast of Zanzibar, accessible only to its guests. Ten thatched beach bandas (cottages) are scattered along the pristine white-sand beach, each just steps from the crystal-clear water.\n\nThe surrounding Mnemba Atoll is a protected marine conservation area with some of the finest snorkeling and diving in East Africa. Green turtles nest on the beach, dolphins play in the channel, and seasonal whale sharks (October-March) provide extraordinary swimming encounters. The reef supports over 600 species of fish and pristine hard and soft coral formations.\n\nLife on Mnemba revolves around the rhythm of the ocean — snorkeling, kayaking, paddleboarding, fishing, and diving interspersed with fresh seafood meals served on the beach, massages in open-air pavilions, and star-gazing from the sand. This is barefoot luxury at its purest.",
+    featuredImage:
+      "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800",
+    types: ["type-10"],
+    destinations: ["dest-4", "dest-10"],
+    rating: 5,
+    amenities: [
+      "Private island exclusivity",
+      "Beach bandas (10 only)",
+      "Mnemba Atoll marine reserve",
+      "Snorkeling and diving",
+      "Green turtle nesting beach",
+      "Whale shark encounters (seasonal)",
+      "Beach spa treatments",
+      "Kayaking and paddleboarding",
+    ],
+    roomTypes: ["Beach Bandas (10)"],
+    location: "Mnemba Island, Zanzibar, Tanzania",
+    brands: ["brand-4"],
+    travelStyles: ["style-1", "style-4", "style-9"],
+    facilities: ["facility-1", "facility-2", "facility-3", "facility-4", "facility-5", "facility-10"],
+  },
+  // ============================================
+  // ADDITIONAL PROPERTIES
+  // ============================================
+  {
+    id: "acc-20",
+    slug: "bisate-lodge",
+    title: "Wilderness Bisate Lodge",
+    excerpt:
+      "A forest-pod lodge perched on an eroded volcanic cone overlooking Volcanoes National Park and three of the Virunga peaks.",
+    content:
+      "Wilderness Bisate Lodge is Rwanda's most architecturally striking property — six forest pods (villas) inspired by the royal palaces of Rwanda's former kings, set on an eroded volcanic cone with breathtaking views of the Virunga volcano chain. Each pod features a fireplace, copper bathtub, and floor-to-ceiling windows framing views of Mounts Karisimbi, Bisoke, and Mikeno.\n\nThe lodge serves as the ideal base for gorilla trekking in Volcanoes National Park — the park headquarters is just a 15-minute drive away. Beyond gorillas, Bisate offers golden monkey tracking, Dian Fossey tomb hikes, and community visits. The lodge's reforestation programme has planted over 70,000 indigenous trees, transforming degraded farmland back into habitat for wildlife.\n\nWilderness Safaris' commitment to conservation and community is central to the Bisate experience. The lodge employs 95% local staff and supports education, healthcare, and sustainable agriculture programmes in surrounding villages.",
+    featuredImage:
+      "https://images.unsplash.com/photo-1662612732223-1fe6ea43263e?w=800",
+    types: ["type-5"],
+    destinations: ["dest-15", "dest-16"],
+    rating: 5,
+    amenities: [
+      "Volcanic-view forest pods",
+      "Fireplaces and copper bathtubs",
+      "Gorilla trekking access",
+      "Golden monkey tracking",
+      "Reforestation programme tours",
+      "Community visits",
+      "Spa treatments",
+    ],
+    roomTypes: ["Forest Pod Villas (6)"],
+    location: "Volcanoes National Park, Rwanda",
+    brands: ["brand-6"],
+    travelStyles: ["style-3", "style-4", "style-2"],
+    facilities: ["facility-3", "facility-4", "facility-5", "facility-10"],
+  },
+  {
+    id: "acc-21",
+    slug: "gorilla-forest-camp",
+    title: "Sanctuary Gorilla Forest Camp",
+    excerpt:
+      "Intimate luxury tented camp within Bwindi Impenetrable Forest, the only camp inside the national park boundaries.",
+    content:
+      "Sanctuary Gorilla Forest Camp holds the unique distinction of being the only luxury accommodation located within Bwindi Impenetrable Forest National Park. Eight luxury tents are set within the forest itself, surrounded by ancient trees draped in moss and orchids. Gorilla families have been known to wander through camp.\n\nThe camp's location within the park means guests are already in prime gorilla territory — some treks start directly from the camp doorstep, reducing hiking distances significantly. Eight luxury tents each feature en-suite bathrooms, comfortable beds, and private decks overlooking the forest.\n\nBeyond gorilla trekking, the camp offers guided forest walks with expert birding guides (Bwindi hosts 23 Albertine Rift endemics), Batwa cultural experiences, and community visits to local schools supported by the camp's community trust.",
+    featuredImage:
+      "https://images.unsplash.com/photo-1557447636-028d8c59b13c?w=800",
+    types: ["type-4"],
+    destinations: ["dest-12", "dest-13"],
+    rating: 4,
+    amenities: [
+      "Within Bwindi National Park",
+      "Direct gorilla trek access",
+      "Forest-surrounded tents",
+      "Expert birding guides",
+      "Batwa cultural experience",
+      "Community school visits",
+      "Campfire evenings",
+    ],
+    roomTypes: ["Luxury Forest Tents (8)"],
+    location: "Bwindi Impenetrable Forest, Uganda",
+    brands: ["brand-3"],
+    travelStyles: ["style-3", "style-2"],
+    facilities: ["facility-3", "facility-4", "facility-5", "facility-10"],
+  },
+  {
+    id: "acc-22",
+    slug: "royal-malewane",
+    title: "Royal Malewane",
+    excerpt:
+      "Ultra-luxury Big Five lodge in the Greater Kruger with Africa's highest-qualified guiding team and a world-class spa.",
+    content:
+      "Royal Malewane is one of South Africa's most exclusive safari lodges, located in the Thornybush Nature Reserve within the Greater Kruger ecosystem. Six luxury suites and two exclusive-use Royal Suites each feature private heated pools, outdoor showers, and expansive decks overlooking the bush.\n\nThe lodge boasts Africa's most qualified guiding team — every guide holds the prestigious FGASA Level 3 (Master Trails Guide) qualification, the highest guiding standard on the continent. Game drives and walking safaris are exceptional, with the unfenced reserve allowing free movement of wildlife between Kruger and the private reserves.\n\nThe Africa House Spa draws on African botanical ingredients and traditional healing practices, offering treatments in open-air pavilions surrounded by bush. The lodge's wine cellar, cigar lounge, and gourmet cuisine complete an experience that blends world-class safari with five-star hotel luxury.",
+    featuredImage:
+      "https://images.unsplash.com/photo-1673044042167-a46533228f4e?w=800",
+    types: ["type-2"],
+    destinations: ["dest-1", "dest-47"],
+    rating: 5,
+    amenities: [
+      "Private heated pools per suite",
+      "Africa's top-qualified guides",
+      "Africa House Spa",
+      "Wine cellar and cigar lounge",
+      "Walking safaris",
+      "Exclusive-use Royal Suites",
+      "Gourmet cuisine",
+    ],
+    roomTypes: ["Luxury Suites (6)", "Royal Suites (2, exclusive use)"],
+    location: "Thornybush Nature Reserve, Greater Kruger",
+    brands: ["brand-3"],
+    travelStyles: ["style-3", "style-4"],
+    facilities: ["facility-1", "facility-2", "facility-3", "facility-4", "facility-5", "facility-6", "facility-10", "facility-12"],
+  },
+  {
+    id: "acc-23",
+    slug: "andbeyond-benguerra-island",
+    title: "andBeyond Benguerra Island",
+    excerpt:
+      "Private island paradise in Mozambique's Bazaruto Archipelago with casinhas on the beach and world-class marine encounters.",
+    content:
+      "andBeyond Benguerra Island is the quintessential Indian Ocean escape — a collection of 10 casinhas (cottages) and 3 cabanas scattered along a pristine beach on Benguerra Island in the Bazaruto Archipelago Marine National Park. Each casinha blends castaway charm with modern luxury, featuring private plunge pools, outdoor showers, and direct beach access.\n\nThe Bazaruto Archipelago's protected marine park supports extraordinary biodiversity: manta rays, whale sharks, humpback whales, dolphins, and dugongs all frequent these warm waters. The lodge operates its own dive centre and marine research programme, and guests can participate in turtle monitoring, reef surveys, and ocean safaris.\n\nBenguerra Island combines perfectly with a mainland African safari — just a short flight from Kruger National Park or the Serengeti. The lodge operates a castaway picnic on a deserted sandbar, sunset dhow cruises, and horse riding along empty beaches.",
+    featuredImage:
+      "https://images.unsplash.com/photo-1639309527384-02fec9eff92a?w=800",
+    types: ["type-10"],
+    destinations: ["dest-44", "dest-45"],
+    rating: 5,
+    amenities: [
+      "Beachfront casinhas with plunge pools",
+      "PADI dive centre",
+      "Marine research participation",
+      "Castaway sandbar picnics",
+      "Dhow sunset cruises",
+      "Horse riding on the beach",
+      "Spa treatments",
+      "Snorkeling and kayaking",
+    ],
+    roomTypes: ["Casinhas (10)", "Cabanas (3)"],
+    location: "Benguerra Island, Bazaruto Archipelago, Mozambique",
+    brands: ["brand-4"],
+    travelStyles: ["style-1", "style-4", "style-9"],
+    facilities: ["facility-1", "facility-2", "facility-3", "facility-4", "facility-5", "facility-10"],
+  },
+  {
+    id: "acc-24",
+    slug: "constance-lemuria",
+    title: "Constance Lemuria",
+    excerpt:
+      "Five-star resort on Praslin with the Seychelles' only 18-hole golf course, three beaches, and suites overlooking the Indian Ocean.",
+    content:
+      "Constance Lemuria occupies a stunning 100-hectare estate on Praslin's northwest coast, encompassing three pristine beaches — including the impossibly beautiful Anse Georgette — and the Seychelles' only 18-hole championship golf course. The resort offers 88 suites and 8 villas, each designed with natural materials and offering ocean or garden views.\n\nThe resort's three restaurants showcase international and Creole cuisine, with the hilltop Legend restaurant offering panoramic views across the Praslin channel. The spa draws on Seychellois botanical traditions, and the water sports centre provides kayaking, paddleboarding, snorkeling, and diving excursions to nearby reefs and islands.\n\nAnse Georgette, accessible only through the resort or by boat, is consistently ranked among the world's most beautiful beaches. The Vallee de Mai UNESCO World Heritage forest is just a 15-minute drive away, making Constance Lemuria the ideal base for exploring Praslin's natural treasures.",
+    featuredImage:
+      "https://images.unsplash.com/photo-1563464638093-4d6c0cffbf67?w=800",
+    types: ["type-3"],
+    destinations: ["dest-54", "dest-56"],
+    rating: 5,
+    amenities: [
+      "18-hole championship golf course",
+      "Three private beaches",
+      "Anse Georgette exclusive access",
+      "Three restaurants",
+      "Hilltop spa",
+      "Water sports centre",
+      "Kids club",
+      "Infinity pool",
+    ],
+    roomTypes: ["Junior Suites (88)", "Presidential Villas (8)"],
+    location: "Praslin, Seychelles",
+    brands: ["brand-3"],
+    travelStyles: ["style-1", "style-4", "style-9"],
+    facilities: ["facility-1", "facility-2", "facility-3", "facility-4", "facility-5", "facility-7", "facility-8", "facility-10", "facility-12"],
+  },
 ];
 
 /**

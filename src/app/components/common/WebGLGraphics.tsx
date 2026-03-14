@@ -1,17 +1,19 @@
 import React, { useEffect, useRef } from 'react';
 
 interface WebGLGraphicsProps {
-  variant: 'dunes' | 'waves' | 'particles';
+  variant: 'dunes' | 'waves' | 'particles' | 'sky-day' | 'sky-dusk';
   className?: string;
   colorVar1?: string;
   colorVar2?: string;
+  colorVar3?: string;
 }
 
 export const WebGLGraphics: React.FC<WebGLGraphicsProps> = ({ 
   variant, 
   className = '',
   colorVar1 = '--organic-sunset-bg-primary',
-  colorVar2 = '--organic-sunset-bg-secondary'
+  colorVar2 = '--organic-sunset-bg-secondary',
+  colorVar3
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
@@ -66,6 +68,7 @@ export const WebGLGraphics: React.FC<WebGLGraphicsProps> = ({
 
     const c1 = getRGBFromVar(colorVar1);
     const c2 = getRGBFromVar(colorVar2);
+    const c3 = colorVar3 ? getRGBFromVar(colorVar3) : [0.5, 0.5, 0.5];
 
     // Resize handling
     const resizeCanvas = () => {
@@ -167,7 +170,7 @@ export const WebGLGraphics: React.FC<WebGLGraphicsProps> = ({
           gl_FragColor = vec4(finalColor, mixVal * 0.8);
         }
       `;
-    } else {
+    } else if (variant === 'particles') {
       // Particles/Ambient effect
       fragmentShaderSource = `
         precision mediump float;
@@ -211,6 +214,129 @@ export const WebGLGraphics: React.FC<WebGLGraphicsProps> = ({
           vec3 finalColor = mix(u_color1, u_color2, st.y / 10.0) + (glow * u_color1 * 2.0);
           
           gl_FragColor = vec4(finalColor, 0.8);
+        }
+      `;
+    } else if (variant === 'sky-day') {
+      // Day sky — bright blue gradient with soft luminous clouds and sun haze
+      fragmentShaderSource = `
+        precision mediump float;
+        varying vec2 vUv;
+        uniform float u_time;
+        uniform vec2 u_resolution;
+        uniform vec3 u_color1;
+        uniform vec3 u_color2;
+        uniform vec3 u_color3;
+
+        vec3 mod289v3(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+        vec2 mod289v2(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+        vec3 permute(vec3 x) { return mod289v3(((x*34.0)+1.0)*x); }
+        float snoise(vec2 v) {
+          const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+          vec2 i = floor(v + dot(v, C.yy));
+          vec2 x0 = v - i + dot(i, C.xx);
+          vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+          vec4 x12 = x0.xyxy + C.xxzz; x12.xy -= i1;
+          i = mod289v2(i);
+          vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));
+          vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+          m = m*m; m = m*m;
+          vec3 x3 = 2.0 * fract(p * C.www) - 1.0;
+          vec3 h = abs(x3) - 0.5;
+          vec3 ox = floor(x3 + 0.5);
+          vec3 a0 = x3 - ox;
+          m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
+          vec3 g;
+          g.x = a0.x * x0.x + h.x * x0.y;
+          g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+          return 130.0 * dot(m, g);
+        }
+
+        void main() {
+          vec2 st = gl_FragCoord.xy / u_resolution.xy;
+
+          // Sky gradient: top=deep blue (color1) to horizon=warm white (color2)
+          float grad = pow(1.0 - st.y, 1.4);
+          vec3 sky = mix(u_color1, u_color2, grad);
+
+          // Soft clouds via layered noise
+          float n1 = snoise(vec2(st.x * 3.0 + u_time * 0.02, st.y * 1.5 + u_time * 0.01)) * 0.5 + 0.5;
+          float n2 = snoise(vec2(st.x * 6.0 - u_time * 0.015, st.y * 3.0)) * 0.5 + 0.5;
+          float cloud = smoothstep(0.45, 0.7, n1 * 0.7 + n2 * 0.3);
+          sky = mix(sky, u_color3, cloud * 0.25);
+
+          // Sun haze near horizon centre
+          vec2 sunPos = vec2(0.5, 0.15);
+          float sunDist = length((st - sunPos) * vec2(1.0, 1.8));
+          float haze = exp(-sunDist * 3.5) * 0.45;
+          sky += u_color3 * haze;
+
+          gl_FragColor = vec4(sky, 1.0);
+        }
+      `;
+    } else if (variant === 'sky-dusk') {
+      // Dusk sky — deep amber/crimson sunset gradient with glowing horizon
+      fragmentShaderSource = `
+        precision mediump float;
+        varying vec2 vUv;
+        uniform float u_time;
+        uniform vec2 u_resolution;
+        uniform vec3 u_color1;
+        uniform vec3 u_color2;
+        uniform vec3 u_color3;
+
+        vec3 mod289v3(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+        vec2 mod289v2(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+        vec3 permute(vec3 x) { return mod289v3(((x*34.0)+1.0)*x); }
+        float snoise(vec2 v) {
+          const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+          vec2 i = floor(v + dot(v, C.yy));
+          vec2 x0 = v - i + dot(i, C.xx);
+          vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+          vec4 x12 = x0.xyxy + C.xxzz; x12.xy -= i1;
+          i = mod289v2(i);
+          vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));
+          vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+          m = m*m; m = m*m;
+          vec3 x3 = 2.0 * fract(p * C.www) - 1.0;
+          vec3 h = abs(x3) - 0.5;
+          vec3 ox = floor(x3 + 0.5);
+          vec3 a0 = x3 - ox;
+          m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
+          vec3 g;
+          g.x = a0.x * x0.x + h.x * x0.y;
+          g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+          return 130.0 * dot(m, g);
+        }
+
+        void main() {
+          vec2 st = gl_FragCoord.xy / u_resolution.xy;
+
+          // Sky gradient: top=deep indigo (color1), mid=amber/crimson (color2), horizon=golden glow (color3)
+          float yFlip = 1.0 - st.y;
+          vec3 sky;
+          if (yFlip < 0.5) {
+            sky = mix(u_color1, u_color2, yFlip * 2.0);
+          } else {
+            sky = mix(u_color2, u_color3, (yFlip - 0.5) * 2.0);
+          }
+
+          // Slow-drifting cloud wisps
+          float n1 = snoise(vec2(st.x * 4.0 + u_time * 0.015, st.y * 2.0 - u_time * 0.008)) * 0.5 + 0.5;
+          float n2 = snoise(vec2(st.x * 8.0 - u_time * 0.01, st.y * 4.0 + u_time * 0.005)) * 0.5 + 0.5;
+          float wisp = smoothstep(0.5, 0.75, n1 * 0.6 + n2 * 0.4);
+          sky = mix(sky, u_color3, wisp * 0.2);
+
+          // Intense sun glow at horizon centre
+          vec2 sunPos = vec2(0.5, 0.12);
+          float sunDist = length((st - sunPos) * vec2(1.0, 2.2));
+          float glow = exp(-sunDist * 2.8) * 0.7;
+          sky += u_color3 * glow;
+
+          // Warm colour fringing
+          float fringe = exp(-sunDist * 5.0) * 0.3;
+          sky += vec3(fringe * 0.8, fringe * 0.3, 0.0);
+
+          gl_FragColor = vec4(sky, 1.0);
         }
       `;
     }
@@ -270,6 +396,7 @@ export const WebGLGraphics: React.FC<WebGLGraphicsProps> = ({
     const resLoc = gl.getUniformLocation(program, 'u_resolution');
     const col1Loc = gl.getUniformLocation(program, 'u_color1');
     const col2Loc = gl.getUniformLocation(program, 'u_color2');
+    const col3Loc = gl.getUniformLocation(program, 'u_color3');
 
     // Animation loop
     let animationFrameId: number;
@@ -289,6 +416,7 @@ export const WebGLGraphics: React.FC<WebGLGraphicsProps> = ({
       gl.uniform2f(resLoc, canvas.width, canvas.height);
       gl.uniform3f(col1Loc, c1[0], c1[1], c1[2]);
       gl.uniform3f(col2Loc, c2[0], c2[1], c2[2]);
+      gl.uniform3f(col3Loc, c3[0], c3[1], c3[2]);
 
       gl.drawArrays(gl.TRIANGLES, 0, 6);
 
@@ -302,7 +430,7 @@ export const WebGLGraphics: React.FC<WebGLGraphicsProps> = ({
       cancelAnimationFrame(animationFrameId);
       gl.deleteProgram(program);
     };
-  }, [variant, colorVar1, colorVar2]);
+  }, [variant, colorVar1, colorVar2, colorVar3]);
 
   return (
     <canvas 

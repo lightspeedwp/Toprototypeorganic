@@ -41,6 +41,8 @@ export interface SearchFilterPatternProps {
   className?: string;
   searchPlaceholder?: string;
   onSearchChange?: (query: string) => void;
+  /** Called when user presses Enter in the search input — use to flush debounced URL sync */
+  onSearchSubmit?: () => void;
   activeFiltersCount?: number;
   onClearFilters?: () => void;
   onClearAll?: () => void;
@@ -55,6 +57,7 @@ export function SearchFilterPattern({
   className,
   searchPlaceholder,
   onSearchChange,
+  onSearchSubmit,
   activeFiltersCount,
   onClearFilters,
   onClearAll,
@@ -90,17 +93,17 @@ export function SearchFilterPattern({
       )}
     >
       <Container>
-        <div className="py-[var(--spacing-element-xl)]">
+        <div className="py-element-xl">
           {/* Main Controls Row */}
-          <div className="flex flex-wrap items-center justify-between gap-[var(--spacing-gap-lg)]">
-            <div className="flex items-center gap-[var(--spacing-gap-md)]">
+          <div className="flex flex-wrap items-center justify-between gap-fluid-lg">
+            <div className="flex items-center gap-fluid-md">
               {collapsible && (
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => setIsExpanded(!isExpanded)}
                   className={cn(
-                    "rounded-[var(--radius-xl)] gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-lg)] transition-all duration-300 font-[var(--font-weight-bold)]",
+                    "rounded-[var(--radius-xl)] gap-fluid-sm px-element-lg transition-all duration-300 font-[var(--font-weight-bold)]",
                     isExpanded ? "bg-primary text-primary-foreground border-primary" : "bg-card"
                   )}
                 >
@@ -112,7 +115,7 @@ export function SearchFilterPattern({
               {hasActiveFilters && (
                 <button
                   onClick={handleClear}
-                  className="flex items-center gap-[var(--spacing-gap-sm)] px-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] text-[length:var(--text-xs)] uppercase tracking-widest text-destructive hover:bg-destructive/10 rounded-[var(--radius-lg)] transition-all font-[var(--font-weight-bold)]"
+                  className="flex items-center gap-fluid-sm px-element-md py-element-sm text-[length:var(--text-xs)] uppercase tracking-widest text-destructive hover:bg-destructive/10 rounded-[var(--radius-lg)] transition-all font-[var(--font-weight-bold)]"
                 >
                   <X className="size-3" /> Clear Active
                 </button>
@@ -130,8 +133,13 @@ export function SearchFilterPattern({
                     setInternalSearchQuery(e.target.value);
                     onSearchChange(e.target.value);
                   }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      onSearchSubmit?.();
+                    }
+                  }}
                   placeholder={searchPlaceholder || 'Search the collection...'}
-                  className="w-full pl-[var(--spacing-element-3xl)] pr-[var(--spacing-element-md)] py-[var(--spacing-element-md)] rounded-[var(--radius-2xl)] bg-muted/50 border-2 border-transparent focus:border-primary/20 focus:bg-background transition-all outline-none text-[length:var(--text-sm)] font-[var(--font-weight-bold)]"
+                  className="w-full pl-element-3xl pr-element-md py-element-md rounded-[var(--radius-2xl)] bg-muted/50 border-2 border-transparent focus:border-primary/20 focus:bg-background transition-all outline-none text-[length:var(--text-sm)] font-[var(--font-weight-bold)]"
                 />
               </div>
             )}
@@ -144,9 +152,9 @@ export function SearchFilterPattern({
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                className="overflow-hidden"
+                className="overflow-hidden pt-fluid-lg"
               >
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[var(--spacing-gap-xl)] pt-[var(--spacing-element-xl)] mt-[var(--spacing-gap-lg)] border-t border-border/50">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-fluid-xl pt-element-xl border-t border-[color:var(--color-border)]/50 relative">
                   {filters.map((filter) => {
                     const isControlled = filter.value !== undefined && filter.onChange !== undefined;
                     const filterValue = isControlled ? filter.value : (filterValues[filter.id] || '');
@@ -160,8 +168,8 @@ export function SearchFilterPattern({
                     };
 
                     return (
-                      <div key={filter.id} className="space-y-[var(--spacing-gap-sm)]">
-                        <Label htmlFor={filter.id} className="text-[length:var(--text-xs)] font-[var(--font-weight-bold)] uppercase tracking-widest text-muted-foreground ml-[var(--spacing-element-xs)]">
+                      <div key={filter.id} className="flex flex-col gap-fluid-sm">
+                        <Label htmlFor={filter.id} className="text-[length:var(--text-xs)] font-[var(--font-weight-bold)] uppercase tracking-widest text-[color:var(--color-muted-foreground)] pl-element-xs">
                           {filter.label}
                         </Label>
 
@@ -174,7 +182,7 @@ export function SearchFilterPattern({
                               value={filterValue}
                               onChange={(e) => handleChange(e.target.value)}
                               placeholder={filter.placeholder || 'Keywords...'}
-                              className="w-full pl-[var(--spacing-element-2xl)] pr-[var(--spacing-element-md)] py-[var(--spacing-element-sm)] rounded-[var(--radius-xl)] bg-card border-2 border-border focus:border-primary/30 outline-none text-[length:var(--text-sm)] transition-all"
+                              className="w-full pl-element-2xl pr-element-md py-element-sm rounded-[var(--radius-xl)] bg-card border-2 border-border focus:border-primary/30 outline-none text-[length:var(--text-sm)] transition-all"
                             />
                           </div>
                         )}

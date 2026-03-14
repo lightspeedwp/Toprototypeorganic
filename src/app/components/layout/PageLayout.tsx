@@ -94,7 +94,7 @@ interface PageLayoutProps {
  */
 export const PageLayout = memo(function PageLayout({ children, currentPage, onNavigate }: PageLayoutProps) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col theme-organic">
       {/* Skip Link - for keyboard navigation */}
       <SkipLink targetId="main-content">Skip to main content</SkipLink>
       

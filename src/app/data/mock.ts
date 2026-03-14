@@ -32,15 +32,17 @@ export * from "./cta";
 
 // Re-export specific items from enhanced modules with legacy aliases
 import { REVIEWS_DATA } from "./reviews/data";
+import { ALL_REVIEWS } from "./reviews/index";
 export { REVIEWS_DATA };
-export const REVIEWS = REVIEWS_DATA;
+export const REVIEWS = ALL_REVIEWS;
 // Also export review categories
 export { REVIEW_CATEGORIES } from "./reviews/categories";
 
 import { TEAM_MEMBERS } from "./team/members";
 export { TEAM_MEMBERS };
-export const TEAM_DATA = TEAM_MEMBERS;
-export const TEAM = TEAM_DATA;
+import { ALL_TEAM_MEMBERS } from "./team/index";
+export const TEAM_DATA = ALL_TEAM_MEMBERS;
+export const TEAM = ALL_TEAM_MEMBERS;
 // Also export TEAM_ROLES for backward compatibility
 export { TEAM_ROLES } from "./team/roles";
 

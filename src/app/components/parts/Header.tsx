@@ -1,7 +1,7 @@
 /**
  * Site Header — WordPress Template Part
  *
- * Premium navigation experience with theme control.
+ * Premium navigation experience with mega menu dropdowns and theme control.
  * Consumes navigation data from the centralized data file
  * (`/src/app/data/content/navigation.ts`) — no hardcoded links.
  *
@@ -13,19 +13,25 @@
  */
 
 import {
-  List, X, Sun, Moon, Compass, ShieldCheck, Envelope, ArrowRight, Globe
+  List, X, Sun, Moon, Compass, ShieldCheck, Envelope, ArrowRight, Globe, CaretDown
 } from "@phosphor-icons/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Logo } from "../common/Logo";
 import { Container } from "../common/Container";
 import { cn } from "../../lib/utils";
 import { motion as Motion, AnimatePresence } from "motion/react";
 import { useTheme } from "../../contexts/ThemeContext";
 import { PRIMARY_NAV, HEADER_CTA } from "../../data/content/navigation";
+import { MegaMenu } from "./MegaMenu";
+
+/* IDs of nav items that have mega menus */
+const MEGA_MENU_IDS = ["nav-tours", "nav-destinations", "nav-accommodation", "nav-blog", "nav-sustainability", "nav-about"];
 
 export function Header({ currentPage = "/", onNavigate }: { currentPage?: string; onNavigate?: (path: string) => void }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeMega, setActiveMega] = useState<string | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -37,7 +43,28 @@ export function Header({ currentPage = "/", onNavigate }: { currentPage?: string
   const handleNav = (path: string) => {
     onNavigate?.(path);
     setMobileMenuOpen(false);
+    setActiveMega(null);
   };
+
+  /* Mega menu hover handlers with debounce to prevent flicker */
+  const openMega = useCallback((id: string) => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    setActiveMega(id);
+  }, []);
+
+  const closeMega = useCallback(() => {
+    closeTimer.current = setTimeout(() => setActiveMega(null), 150);
+  }, []);
+
+  const cancelClose = useCallback(() => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }, []);
 
   return (
     <>
@@ -46,35 +73,62 @@ export function Header({ currentPage = "/", onNavigate }: { currentPage?: string
           <div className="wp-part-header__bar">
             {/* Brand Section */}
             <div className="wp-part-header__logo">
-              <Logo 
-                size="sm" 
+              <Logo
+                size="sm"
                 onClick={() => handleNav("/")}
-                className="cursor-pointer" 
+                className="cursor-pointer"
               />
             </div>
 
             {/* Desktop Navigation */}
             <nav className="wp-part-header__nav" aria-label="Primary Navigation">
               <ul className="wp-part-header__nav-list">
-                {PRIMARY_NAV.filter(link => link.id !== "nav-about").map(link => (
-                  <li key={link.id} className="wp-part-header__nav-item">
-                    <button
-                      onClick={() => handleNav(link.href)}
-                      className={cn(
-                        "wp-part-header__nav-link",
-                        currentPage === link.href && "wp-part-header__nav-link--active"
-                      )}
+                {PRIMARY_NAV.map(link => {
+                  const hasMega = MEGA_MENU_IDS.includes(link.id);
+                  return (
+                    <li
+                      key={link.id}
+                      className="wp-part-header__nav-item"
+                      onMouseEnter={hasMega ? () => openMega(link.id) : undefined}
+                      onMouseLeave={hasMega ? closeMega : undefined}
                     >
-                      {link.label}
-                    </button>
-                  </li>
-                ))}
+                      <button
+                        onClick={() => {
+                          if (hasMega) {
+                            setActiveMega(activeMega === link.id ? null : link.id);
+                          } else {
+                            handleNav(link.href);
+                          }
+                        }}
+                        className={cn(
+                          "wp-part-header__nav-link",
+                          currentPage === link.href && "wp-part-header__nav-link--active",
+                          activeMega === link.id && "wp-part-header__nav-link--active"
+                        )}
+                        aria-expanded={hasMega ? activeMega === link.id : undefined}
+                        aria-haspopup={hasMega ? "true" : undefined}
+                      >
+                        {link.label}
+                        {hasMega && (
+                          <CaretDown
+                            className={cn(
+                              "wp-part-mega-menu__link-icon",
+                              "transition-transform",
+                              activeMega === link.id && "rotate-180"
+                            )}
+                            weight="bold"
+                          />
+                        )}
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
             </nav>
 
             {/* Action Cluster */}
             <div className="wp-part-header__actions">
-              <button 
+              <button
                 onClick={toggleTheme}
                 className="wp-part-header__theme-toggle"
                 aria-label="Toggle Atmosphere"
@@ -82,14 +136,14 @@ export function Header({ currentPage = "/", onNavigate }: { currentPage?: string
                 {theme === "light" ? <Moon /> : <Sun />}
               </button>
 
-              <button 
+              <button
                 onClick={() => handleNav(HEADER_CTA.href)}
-                className="wp-part-header__search-button hidden md:flex"
+                className="wp-part-header__search-button hidden md:flex items-center gap-fluid-sm"
               >
-                <Compass className="size-4" /> {HEADER_CTA.label}
+                <Compass className="w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)]" /> {HEADER_CTA.label}
               </button>
 
-              <button 
+              <button
                 onClick={() => setMobileMenuOpen(true)}
                 className="wp-part-header__mobile-toggle"
                 aria-label="Open mobile menu"
@@ -99,11 +153,23 @@ export function Header({ currentPage = "/", onNavigate }: { currentPage?: string
             </div>
           </div>
         </div>
+
+        {/* Mega Menu Panels */}
+        <div
+          onMouseEnter={cancelClose}
+          onMouseLeave={closeMega}
+        >
+          <MegaMenu
+            activeMenu={activeMega}
+            onNavigate={handleNav}
+            onClose={() => setActiveMega(null)}
+          />
+        </div>
       </header>
 
       <AnimatePresence>
         {mobileMenuOpen && (
-          <Motion.div 
+          <Motion.div
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
@@ -114,7 +180,7 @@ export function Header({ currentPage = "/", onNavigate }: { currentPage?: string
               <div className="wp-part-header__mobile-overlay-header">
                 <Logo size="sm" bare className="h-8 cursor-pointer" onClick={() => handleNav("/")} />
                 <button onClick={() => setMobileMenuOpen(false)} className="wp-part-header__mobile-overlay-close">
-                  <X className="size-6" />
+                  <X className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)]" />
                 </button>
               </div>
 
@@ -135,7 +201,7 @@ export function Header({ currentPage = "/", onNavigate }: { currentPage?: string
               </nav>
 
               <div className="wp-part-header__mobile-overlay-footer">
-                <button 
+                <button
                   onClick={() => handleNav("/trip-planner")}
                   className="wp-part-header__mobile-overlay-cta"
                 >

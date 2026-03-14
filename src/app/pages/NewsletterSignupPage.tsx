@@ -100,15 +100,15 @@ export function NewsletterSignupPage() {
           title="Welcome to the Community!"
           intro="You're now subscribed to our safari newsletter. A world of adventure awaits in your inbox."
         />
-        <section className="py-section-md">
+        <section className="py-element-2xl">
           <Container maxWidth="narrow">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center h-20 w-20 rounded-full bg-success/10 text-success mb-8">
+            <div className="text-center flex flex-col items-center gap-element-lg">
+              <div className="inline-flex items-center justify-center h-[80px] w-[80px] rounded-[var(--radius-full)] bg-success/10 text-success">
                 <CircleCheck size={40} />
               </div>
-              <h2 className="mb-6">Check Your Inbox</h2>
-              <p className="text-muted-foreground mb-12">We've sent you a confirmation email with your free welcome gift: our 48-page African Safari Planning Guide.</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <h2>Check Your Inbox</h2>
+              <p className="text-muted-foreground">We've sent you a confirmation email with your free welcome gift: our 48-page African Safari Planning Guide.</p>
+              <div className="flex flex-col sm:flex-row gap-fluid-md justify-center">
                 <Button variant="primary" size="lg" onClick={() => navigateTo("/tours")}>Browse All Tours</Button>
                 <Button variant="outline" size="lg" onClick={() => navigateTo("/")}>Return Home</Button>
               </div>
@@ -137,25 +137,25 @@ export function NewsletterSignupPage() {
       />
 
       {/* Preview Section */}
-      <section className="py-section-md bg-muted/20 border-y border-border/50">
-        <Container>
+      <section className="py-element-2xl">
+        <Container maxWidth="narrow">
           <SectionHeaderPattern
             title="Recent Newsletter Examples"
             description="Take a look at the kind of stories and deals our community enjoys."
             centered
           />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-fluid-xl">
             {RECENT_NEWSLETTERS.map((item) => (
-              <div key={item.id} className="group rounded-xl overflow-hidden bg-card border border-border/50 shadow-sm transition-hover hover:shadow-lg">
+              <div key={item.id} className="group rounded-[var(--radius-xl)] overflow-hidden bg-card border border-border/50 shadow-sm transition-hover hover:shadow-lg">
                 <div className="aspect-[16/9] overflow-hidden">
                   <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
-                <div className="p-6">
-                  <span className="text-xs uppercase tracking-widest text-primary/60">{item.date}</span>
-                  <h4 className="mt-2 mb-4">{item.title}</h4>
-                  <div className="flex flex-wrap gap-2">
+                <div className="p-element-xl flex flex-col gap-element-sm">
+                  <span className="text-[length:var(--text-xs)] font-[var(--font-weight-bold)] uppercase tracking-widest text-primary/60">{item.date}</span>
+                  <h4>{item.title}</h4>
+                  <div className="flex flex-wrap gap-fluid-sm">
                     {item.topics.map(t => (
-                      <span key={t} className="px-2 py-0.5 rounded bg-muted text-xs">{t}</span>
+                      <span key={t} className="px-element-sm py-element-xs rounded-[var(--radius-sm)] bg-muted text-[length:var(--text-xs)] font-[family-name:var(--font-family-noto-sans)]">{t}</span>
                     ))}
                   </div>
                 </div>
@@ -168,24 +168,24 @@ export function NewsletterSignupPage() {
       {/* Form Section */}
       <section className="py-section-lg">
         <Container maxWidth="narrow">
-          <div className="p-10 md:p-16 rounded-3xl bg-card border border-border shadow-xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-8 opacity-5">
+          <div className="p-[var(--spacing-section-sm)] rounded-[var(--radius-3xl)] bg-card border border-border shadow-xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-element-2xl opacity-5">
               <Mail size={120} />
             </div>
             
-            <div className="relative z-10">
-              <h2 className="mb-4">Start Your Subscription</h2>
-              <p className="text-muted-foreground mb-8">Join thousands of travelers who get the best of Africa in their inbox. Free to join, easy to leave.</p>
+            <div className="relative z-10 flex flex-col gap-element-md">
+              <h2>Start Your Subscription</h2>
+              <p className="text-muted-foreground">Join thousands of travelers who get the best of Africa in their inbox. Free to join, easy to leave.</p>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
+              <form onSubmit={handleSubmit} className="flex flex-col gap-element-xl">
+                <div className="flex flex-col gap-element-sm">
                   <input
                     type="email"
                     required
                     placeholder="Enter your email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full h-14 rounded-xl border border-border bg-background px-6 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                    className="w-full h-[56px] rounded-[var(--radius-xl)] border border-border bg-background px-element-xl focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-[family-name:var(--font-family-noto-sans)]"
                   />
                 </div>
                 <Button
@@ -193,11 +193,11 @@ export function NewsletterSignupPage() {
                   variant="primary"
                   size="lg"
                   disabled={isSubmitting}
-                  className="w-full h-14 rounded-xl"
+                  className="w-full h-[56px] rounded-[var(--radius-xl)]"
                 >
                   {isSubmitting ? <LoaderCircle className="animate-spin" /> : "Subscribe for Free"}
                 </Button>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground justify-center">
+                <div className="flex items-center gap-fluid-sm text-[length:var(--text-xs)] text-muted-foreground justify-center font-[family-name:var(--font-family-noto-sans)]">
                   <Shield size={12} />
                   <span>We value your privacy. No spam, ever. Unsubscribe with one click.</span>
                 </div>

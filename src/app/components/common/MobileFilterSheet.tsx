@@ -160,21 +160,21 @@ export function MobileFilterSheet({
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed bottom-0 left-0 right-0 bg-background border-t rounded-t-2xl shadow-lg z-50 md:hidden max-h-[85vh] flex flex-col"
+            className="fixed bottom-0 left-0 right-0 bg-background border-t rounded-t-[var(--radius-xl)] shadow-lg z-50 md:hidden max-h-[85vh] flex flex-col"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b">
-              <div className="flex items-center gap-2">
+            <div className="flex items-center justify-between p-element-md border-b">
+              <div className="flex items-center gap-fluid-sm">
                 <Faders className="w-5 h-5 text-primary" />
                 <h2
-                  className="font-serif text-fluid-xl font-medium"
+                  className="font-[family-name:var(--font-family-lora)] text-[length:var(--text-xl)] font-[var(--font-weight-medium)]"
                 >
                   Filters
                 </h2>
               </div>
               <button
                 onClick={onClose}
-                className="p-2 hover:bg-muted rounded-md transition-colors"
+                className="p-element-xs hover:bg-muted rounded-[var(--radius-md)] transition-colors"
                 aria-label="Close filters"
               >
                 <X className="w-5 h-5" />
@@ -182,18 +182,18 @@ export function MobileFilterSheet({
             </div>
 
             {/* Filter Content - Scrollable */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-6">
+            <div className="flex-1 overflow-y-auto p-element-md flex flex-col gap-fluid-lg">
               {categories.map((category) => (
-                <div key={category.id}>
+                <div key={category.id} className="flex flex-col gap-element-sm">
                   {/* Category Label */}
                   <h3
-                    className="mb-3 font-sans text-fluid-base font-semibold"
+                    className="font-[family-name:var(--font-family-noto-sans)] text-[length:var(--text-base)] font-[var(--font-weight-semibold)]"
                   >
                     {category.label}
                   </h3>
 
                   {/* Filter Options */}
-                  <div className="space-y-2">
+                  <div className="flex flex-col gap-element-sm">
                     {category.options.map((option) => {
                       const isSelected = selectedFilters.includes(option.id);
                       
@@ -202,7 +202,7 @@ export function MobileFilterSheet({
                           key={option.id}
                           onClick={() => toggleFilter(option.id)}
                           className={cn(
-                            "w-full flex items-center justify-between p-3 rounded-lg border transition-colors",
+                            "w-full flex items-center justify-between p-element-md rounded-[var(--radius-md)] border transition-colors",
                             isSelected
                               ? "wp-bg-primary-light border-primary"
                               : "bg-card border-border hover:bg-muted"
@@ -210,13 +210,13 @@ export function MobileFilterSheet({
                         >
                           <span
                             className={cn(
-                              "font-sans text-fluid-base",
-                              isSelected ? "font-medium" : "font-normal"
+                              "font-[family-name:var(--font-family-noto-sans)] text-[length:var(--text-base)]",
+                              isSelected ? "font-[var(--font-weight-medium)]" : "font-[var(--font-weight-normal)]"
                             )}
                           >
                             {option.label}
                             {option.count !== undefined && (
-                              <span className="ml-2 text-muted-foreground">
+                              <span className="pl-element-xs text-muted-foreground">
                                 ({option.count})
                               </span>
                             )}
@@ -225,7 +225,7 @@ export function MobileFilterSheet({
                           {/* Checkbox */}
                           <div
                             className={cn(
-                              "w-5 h-5 rounded border-2 flex items-center justify-center transition-colors",
+                              "w-5 h-5 rounded-[var(--radius-sm)] border-2 flex items-center justify-center transition-colors",
                               isSelected
                                 ? "bg-primary border-primary"
                                 : "border-muted-foreground"
@@ -242,13 +242,13 @@ export function MobileFilterSheet({
             </div>
 
             {/* Footer Actions */}
-            <div className="p-4 border-t wp-bg-muted-ultralight flex gap-3">
+            <div className="p-element-md border-t wp-bg-muted-ultralight flex gap-fluid-md">
               {/* Clear All */}
               <button
                 onClick={clearAllFilters}
                 disabled={selectedFilters.length === 0}
                 className={cn(
-                  "flex-1 px-4 py-3 rounded-lg border transition-colors font-sans text-fluid-base font-medium",
+                  "flex-1 px-element-md py-element-sm rounded-[var(--radius-lg)] border transition-colors font-[family-name:var(--font-family-noto-sans)] text-[length:var(--text-base)] font-[var(--font-weight-medium)]",
                   selectedFilters.length === 0
                     ? "opacity-50 cursor-not-allowed"
                     : "hover:bg-muted"
@@ -260,11 +260,11 @@ export function MobileFilterSheet({
               {/* Apply */}
               <button
                 onClick={handleApply}
-                className="flex-1 px-4 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-sans text-fluid-base font-medium"
+                className="flex-1 px-element-md py-element-sm bg-primary text-primary-foreground rounded-[var(--radius-lg)] hover:bg-primary/90 transition-colors font-[family-name:var(--font-family-noto-sans)] text-[length:var(--text-base)] font-[var(--font-weight-medium)]"
               >
                 Apply Filters
                 {selectedFilters.length > 0 && (
-                  <span className="ml-2">({selectedFilters.length})</span>
+                  <span className="pl-element-sm">({selectedFilters.length})</span>
                 )}
               </button>
             </div>

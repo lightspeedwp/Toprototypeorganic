@@ -108,7 +108,7 @@ export function AccessibilityDashboard() {
             <div className="p-6 border-b border-border flex items-center justify-between">
               <div>
                 <h2 className="text-fluid-2xl mb-0">Accessibility Dashboard</h2>
-                <p className="text-sm text-muted-foreground mt-1 mb-0">
+                <p className="text-sm text-muted-foreground pt-1">
                   Comprehensive accessibility audit results
                 </p>
               </div>
@@ -152,7 +152,7 @@ export function AccessibilityDashboard() {
             <div className="p-6 border-b border-border wp-bg-muted-ultralight">
               <div className="flex items-center gap-6">
                 <div className="flex-1">
-                  <div className="text-sm text-muted-foreground mb-2">Overall Score</div>
+                  <div className="text-sm text-muted-foreground pb-2">Overall Score</div>
                   <div className="flex items-baseline gap-2">
                     <div className="font-serif text-fluid-5xl">{overallScore}</div>
                     <div className="font-serif text-fluid-2xl text-muted-foreground">/100</div>
@@ -204,33 +204,33 @@ export function AccessibilityDashboard() {
             <div className="flex-1 overflow-y-auto p-6">
               {/* Overview Tab */}
               {activeTab === "overview" && auditResults && (
-                <div className="space-y-6">
+                <div className="flex flex-col gap-6">
                   <div>
-                    <h3 className="text-fluid-lg mb-3">Summary</h3>
+                    <h3 className="text-fluid-lg pb-3">Summary</h3>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="p-4 rounded-lg border border-border bg-card">
-                        <div className="flex items-center gap-2 mb-2">
+                        <div className="flex items-center gap-2 pb-2">
                           <Check className="text-success" size={20} />
                           <span className="text-sm text-muted-foreground">Passed Checks</span>
                         </div>
                         <div className="font-serif text-fluid-2xl">{auditResults.stats.passedChecks}</div>
                       </div>
                       <div className="p-4 rounded-lg border border-border bg-card">
-                        <div className="flex items-center gap-2 mb-2">
+                        <div className="flex items-center gap-2 pb-2">
                           <AlertTriangle className="text-warning" size={20} />
                           <span className="text-sm text-muted-foreground">Total Issues</span>
                         </div>
                         <div className="font-serif text-fluid-2xl">{auditResults.stats.totalIssues}</div>
                       </div>
                       <div className="p-4 rounded-lg border border-border bg-card">
-                        <div className="flex items-center gap-2 mb-2">
+                        <div className="flex items-center gap-2 pb-2">
                           <CircleX className="text-destructive" size={20} />
                           <span className="text-sm text-muted-foreground">Critical Issues</span>
                         </div>
                         <div className="font-serif text-fluid-2xl">{auditResults.stats.criticalIssues}</div>
                       </div>
                       <div className="p-4 rounded-lg border border-border bg-card">
-                        <div className="flex items-center gap-2 mb-2">
+                        <div className="flex items-center gap-2 pb-2">
                           <AlertTriangle className="text-warning" size={20} />
                           <span className="text-sm text-muted-foreground">Warnings</span>
                         </div>
@@ -241,11 +241,11 @@ export function AccessibilityDashboard() {
 
                   {auditResults.recommendations.length > 0 && (
                     <div>
-                      <h3 className="text-fluid-lg mb-3">Top Recommendations</h3>
-                      <ul className="space-y-2">
+                      <h3 className="text-fluid-lg pb-3">Top Recommendations</h3>
+                      <ul className="flex flex-col gap-2">
                         {auditResults.recommendations.map((rec: string, index: number) => (
                           <li key={index} className="flex items-start gap-2">
-                            <span className="text-primary mt-1">•</span>
+                            <span className="text-primary pt-1">•</span>
                             <span>{rec}</span>
                           </li>
                         ))}
@@ -257,22 +257,22 @@ export function AccessibilityDashboard() {
 
               {/* Contrast Tab */}
               {activeTab === "contrast" && auditResults && (
-                <div className="space-y-4">
+                <div className="flex flex-col gap-4">
                   <div>
-                    <h3 className="text-fluid-lg mb-3">
+                    <h3 className="text-fluid-lg pb-3">
                       Color Contrast Issues ({auditResults.contrastIssues.length})
                     </h3>
                     {auditResults.contrastIssues.length > 0 ? (
-                      <div className="space-y-3">
+                      <div className="flex flex-col gap-3">
                         {auditResults.contrastIssues.map((issue: any, index: number) => (
                           <div key={index} className="p-4 rounded-lg border border-border bg-card">
-                            <div className="flex items-start justify-between mb-2">
+                            <div className="flex items-start justify-between pb-2">
                               <div className="font-medium">{issue.element}</div>
                               <div className="text-sm">
                                 Ratio: <span className="font-bold">{issue.ratio}:1</span>
                               </div>
                             </div>
-                            <div className="flex items-center gap-4 text-sm mb-2">
+                            <div className="flex items-center gap-4 text-sm pb-2">
                               <div>
                                 WCAG AA:{" "}
                                 <span className={issue.wcagAA ? "text-success" : "text-destructive"}>
@@ -291,8 +291,8 @@ export function AccessibilityDashboard() {
                         ))}
                       </div>
                     ) : (
-                      <div className="text-center py-8 text-muted-foreground">
-                        <Check className="mx-auto mb-2 text-success" size={48} />
+                      <div className="flex flex-col items-center text-center py-8 text-muted-foreground gap-element-sm">
+                        <Check className="text-success" size={48} />
                         <p>All color contrast ratios meet WCAG AA standards!</p>
                       </div>
                     )}
@@ -302,26 +302,26 @@ export function AccessibilityDashboard() {
 
               {/* Keyboard Tab */}
               {activeTab === "keyboard" && keyboardResults && (
-                <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="flex flex-col gap-4">
+                  <div className="grid grid-cols-2 gap-4 pb-6">
                     <div className="p-4 rounded-lg border border-border bg-card">
-                      <div className="text-sm text-muted-foreground mb-1">Total Focusable</div>
+                      <div className="text-sm text-muted-foreground pb-1">Total Focusable</div>
                       <div className="font-serif text-fluid-2xl">{keyboardResults.totalFocusableElements}</div>
                     </div>
                     <div className="p-4 rounded-lg border border-border bg-card">
-                      <div className="text-sm text-muted-foreground mb-1">Visible Focusable</div>
+                      <div className="text-sm text-muted-foreground pb-1">Visible Focusable</div>
                       <div className="font-serif text-fluid-2xl">{keyboardResults.visibleFocusableElements}</div>
                     </div>
                   </div>
 
                   {keyboardResults.tabOrderIssues.length > 0 && (
                     <div>
-                      <h3 className="text-fluid-lg mb-3">Tab Order Issues</h3>
-                      <div className="space-y-2">
+                      <h3 className="text-fluid-lg pb-3">Tab Order Issues</h3>
+                      <div className="flex flex-col gap-2">
                         {keyboardResults.tabOrderIssues.map((issue: any, index: number) => (
                           <div key={index} className="p-3 rounded-lg border border-border bg-card">
                             <div className="font-medium text-sm">{issue.element}: {issue.issue}</div>
-                            <div className="text-sm text-muted-foreground mt-1">{issue.recommendation}</div>
+                            <div className="text-sm text-muted-foreground pt-1">{issue.recommendation}</div>
                           </div>
                         ))}
                       </div>
@@ -330,7 +330,7 @@ export function AccessibilityDashboard() {
 
                   {keyboardResults.missingFocusIndicators.length > 0 && (
                     <div>
-                      <h3 className="text-fluid-lg mb-3">Missing Focus Indicators</h3>
+                      <h3 className="text-fluid-lg pb-3">Missing Focus Indicators</h3>
                       <div className="flex flex-wrap gap-2">
                         {Array.from(new Set(keyboardResults.missingFocusIndicators)).map(
                           (element: any, index: number) => (
@@ -348,11 +348,11 @@ export function AccessibilityDashboard() {
 
                   {keyboardResults.recommendations.length > 0 && (
                     <div>
-                      <h3 className="text-fluid-lg mb-3">Recommendations</h3>
-                      <ul className="space-y-2">
+                      <h3 className="text-fluid-lg pb-3">Recommendations</h3>
+                      <ul className="flex flex-col gap-2">
                         {keyboardResults.recommendations.map((rec: string, index: number) => (
                           <li key={index} className="flex items-start gap-2">
-                            <span className="text-primary mt-1">•</span>
+                            <span className="text-primary pt-1">•</span>
                             <span>{rec}</span>
                           </li>
                         ))}
@@ -364,15 +364,15 @@ export function AccessibilityDashboard() {
 
               {/* Screen Reader Tab */}
               {activeTab === "screen-reader" && screenReaderResults && (
-                <div className="space-y-4">
+                <div className="flex flex-col gap-4">
                   {screenReaderResults.landmarkIssues.length > 0 && (
                     <div>
-                      <h3 className="text-fluid-lg mb-3">Landmark Issues</h3>
-                      <div className="space-y-2">
+                      <h3 className="text-fluid-lg pb-3">Landmark Issues</h3>
+                      <div className="flex flex-col gap-2">
                         {screenReaderResults.landmarkIssues.map((issue: any, index: number) => (
                           <div key={index} className="p-3 rounded-lg border border-border bg-card">
                             <div className="font-medium text-sm">{issue.issue}</div>
-                            <div className="text-sm text-muted-foreground mt-1">{issue.recommendation}</div>
+                            <div className="text-sm text-muted-foreground pt-1">{issue.recommendation}</div>
                           </div>
                         ))}
                       </div>
@@ -381,12 +381,12 @@ export function AccessibilityDashboard() {
 
                   {screenReaderResults.ariaIssues.length > 0 && (
                     <div>
-                      <h3 className="text-fluid-lg mb-3">ARIA Issues</h3>
-                      <div className="space-y-2">
+                      <h3 className="text-fluid-lg pb-3">ARIA Issues</h3>
+                      <div className="flex flex-col gap-2">
                         {screenReaderResults.ariaIssues.map((issue: any, index: number) => (
                           <div key={index} className="p-3 rounded-lg border border-border bg-card">
                             <div className="font-medium text-sm">{issue.element}: {issue.issue}</div>
-                            <div className="text-sm text-muted-foreground mt-1">{issue.recommendation}</div>
+                            <div className="text-sm text-muted-foreground pt-1">{issue.recommendation}</div>
                           </div>
                         ))}
                       </div>
@@ -395,12 +395,12 @@ export function AccessibilityDashboard() {
 
                   {screenReaderResults.contentIssues.length > 0 && (
                     <div>
-                      <h3 className="text-fluid-lg mb-3">Content Issues</h3>
-                      <div className="space-y-2">
+                      <h3 className="text-fluid-lg pb-3">Content Issues</h3>
+                      <div className="flex flex-col gap-2">
                         {screenReaderResults.contentIssues.slice(0, 10).map((issue: any, index: number) => (
                           <div key={index} className="p-3 rounded-lg border border-border bg-card">
                             <div className="font-medium text-sm">{issue.element}: {issue.issue}</div>
-                            <div className="text-sm text-muted-foreground mt-1">{issue.recommendation}</div>
+                            <div className="text-sm text-muted-foreground pt-1">{issue.recommendation}</div>
                           </div>
                         ))}
                         {screenReaderResults.contentIssues.length > 10 && (
@@ -414,11 +414,11 @@ export function AccessibilityDashboard() {
 
                   {screenReaderResults.recommendations.length > 0 && (
                     <div>
-                      <h3 className="text-fluid-lg mb-3">Recommendations</h3>
-                      <ul className="space-y-2">
+                      <h3 className="text-fluid-lg pb-3">Recommendations</h3>
+                      <ul className="flex flex-col gap-2">
                         {screenReaderResults.recommendations.map((rec: string, index: number) => (
                           <li key={index} className="flex items-start gap-2">
-                            <span className="text-primary mt-1">•</span>
+                            <span className="text-primary pt-1">•</span>
                             <span>{rec}</span>
                           </li>
                         ))}

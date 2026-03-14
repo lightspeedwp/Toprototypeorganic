@@ -149,22 +149,26 @@ export function EditorialContent({
               viewport={{ once: true, margin: "-50px" }}
               variants={fadeInUp}
               transition={{ duration: 0.5 }}
-              className="wp-pattern-editorial__header"
+              className="wp-pattern-editorial__header flex flex-col items-center text-center gap-element-md pb-element-2xl"
             >
               {/* Reading Time */}
               {readingTime && (
-                <div className="wp-pattern-editorial__reading-time">
-                  <Clock className="wp-pattern-editorial__reading-time-icon" />
+                <div className="wp-pattern-editorial__reading-time flex items-center gap-fluid-xs text-[length:var(--text-sm)] text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] font-[weight:var(--font-weight-medium)] uppercase tracking-widest">
+                  <Clock className="wp-pattern-editorial__reading-time-icon w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)]" />
                   <span>{readingTime} min read</span>
                 </div>
               )}
 
               {/* Title */}
-              {title && <h2 className="wp-pattern-editorial__title">{title}</h2>}
+              {title && <h2 className="wp-pattern-editorial__title m-0 font-[family:var(--font-family-lora)] text-[length:var(--text-4xl)] md:text-[length:var(--text-5xl)] font-[weight:var(--font-weight-bold)] text-[color:var(--color-foreground)]">{title}</h2>}
 
               {/* Subtitle */}
               {subtitle && (
-                <p className="wp-pattern-editorial__subtitle">{subtitle}</p>
+                <div className="flex justify-center w-full">
+                  <p className="wp-pattern-editorial__subtitle m-0 font-[family:var(--font-family-noto-sans)] text-[length:var(--text-xl)] text-[color:var(--color-muted-foreground)] max-w-2xl">
+                    {subtitle}
+                  </p>
+                </div>
               )}
             </motion.div>
           )}

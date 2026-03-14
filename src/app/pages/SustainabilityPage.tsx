@@ -46,7 +46,7 @@ export default function SustainabilityPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.1 }}
-                    className="text-center flex flex-col items-center gap-[var(--spacing-gap-sm)]"
+                    className="text-center flex flex-col items-center gap-fluid-sm"
                   >
                     <div className="size-16 rounded-[var(--radius-lg)] bg-primary/10 text-primary flex items-center justify-center shadow-sm">
                       <Icon className="size-8" />
@@ -73,9 +73,9 @@ export default function SustainabilityPage() {
         {/* Narrative Section */}
         <section className="py-section-lg bg-card border-y-2 border-border/50">
           <Container maxWidth="narrow">
-            <div className="text-center flex flex-col gap-[var(--spacing-gap-lg)] pb-[var(--spacing-gap-lg)]">
+            <div className="text-center flex flex-col gap-fluid-lg pb-fluid-lg">
               <h2 className="wp-text--hand m-0">Traveling with Purpose</h2>
-            <div className="space-y-6 text-muted-foreground text-left">
+            <div className="flex flex-col gap-6 text-muted-foreground text-left">
               <p>
                 We believe that travel is more than just seeing new places; it's about connecting with 
                 humanity and the natural world in a way that creates a positive, lasting legacy. 
@@ -92,9 +92,9 @@ export default function SustainabilityPage() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="mt-16 p-12 rounded-5xl bg-background border-2 border-primary shadow-2xl relative overflow-hidden flex flex-col gap-[var(--spacing-gap-md)]"
+              className="pt-16 p-12 rounded-5xl bg-background border-2 border-primary shadow-2xl relative overflow-hidden flex flex-col gap-fluid-md"
             >
-              <div className="absolute top-0 right-0 p-8 opacity-10">
+              <div className="absolute top-0 right-0 p-element-xl opacity-10">
                 <Heart className="size-32 text-primary" />
               </div>
               <h3 className="m-0">Our Ethical Promise</h3>
@@ -102,9 +102,9 @@ export default function SustainabilityPage() {
                 "We promise to never disrupt wildlife for a better photo, to always respect local traditions, 
                 and to ensure your presence in Africa is a gift to the land and its people."
               </p>
-              <div className="flex items-center justify-center gap-4 pt-[var(--spacing-gap-sm)]">
+              <div className="flex items-center justify-center gap-4 pt-fluid-sm">
                 <div className="h-px w-12 bg-primary" />
-                <span className="text-xs uppercase tracking-widest text-primary">Signed, The Leadership Team</span>
+                <span className="text-[length:var(--text-xs)] uppercase tracking-widest text-primary font-[family-name:var(--font-family-noto-sans)]">Signed, The Leadership Team</span>
                 <div className="h-px w-12 bg-primary" />
               </div>
             </motion.div>

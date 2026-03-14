@@ -76,22 +76,22 @@ export function TableOfContentsPattern({
     const isActive = activeId === s.id;
     
     return (
-      <li key={s.id} className="list-none">
+      <li key={s.id} className="list-none flex flex-col gap-fluid-xs">
         <button
           onClick={() => scrollTo(s.id)}
           className={cn(
-            "w-full text-left py-[var(--spacing-element-sm)] px-[var(--spacing-element-md)] rounded-[var(--radius-xl)] text-[length:var(--text-sm)] transition-all duration-300 flex items-center gap-[var(--spacing-gap-sm)]",
+            "w-full text-left py-element-sm px-element-md rounded-[var(--radius-xl)] font-[family:var(--font-family-noto-sans)] text-[length:var(--text-sm)] transition-all duration-300 flex items-center gap-fluid-sm",
             isActive 
-              ? "bg-primary text-primary-foreground shadow-[var(--elevation-lg)] shadow-primary/20 translate-x-2 font-[var(--font-weight-bold)]" 
-              : "text-muted-foreground hover:bg-muted hover:text-foreground",
-            depth > 0 && "ml-[var(--spacing-element-xl)] opacity-80"
+              ? "bg-[color:var(--color-primary)] text-[color:var(--color-primary-foreground)] shadow-[var(--elevation-lg)] shadow-[color:var(--color-primary)]/20 translate-x-2 font-[weight:var(--font-weight-bold)]" 
+              : "text-[color:var(--color-muted-foreground)] hover:bg-[color:var(--color-muted)] hover:text-[color:var(--color-foreground)]",
+            depth > 0 && "pl-element-xl opacity-80"
           )}
         >
           <ChevronRight className={cn("w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)] shrink-0 transition-transform", isActive ? "rotate-90" : "opacity-30")} />
           <span>{s.label}</span>
         </button>
         {s.children && (
-          <ul className="mt-[var(--spacing-gap-xs)] space-y-[var(--spacing-gap-xs)]">
+          <ul className="flex flex-col gap-fluid-xs m-0 p-0">
             {s.children.map(c => renderItem(c, depth + 1))}
           </ul>
         )}
@@ -101,24 +101,24 @@ export function TableOfContentsPattern({
 
   return (
     <section className={cn(
-      "wp-pattern-lts-toc py-[var(--spacing-section-md)]",
+      "wp-pattern-lts-toc py-section-md",
       sticky && "sticky top-[var(--spacing-element-5xl)] self-start",
       className
     )}>
       <Container maxWidth="narrow">
         <div className={cn(
-          "wp-pattern-lts-toc__card p-[var(--spacing-element-xl)] rounded-[var(--radius-2xl)] border-2 border-border shadow-[var(--elevation-sm)]",
-          variant === 'minimal' ? "bg-transparent border-none p-0 shadow-none" : "bg-card"
+          "wp-pattern-lts-toc__card p-element-xl rounded-[var(--radius-2xl)] border-2 border-[color:var(--color-border)] shadow-[var(--elevation-sm)] flex flex-col gap-element-xl",
+          variant === 'minimal' ? "bg-transparent border-none p-0 shadow-none" : "bg-[color:var(--color-card)]"
         )}>
-          <div className="flex items-center gap-[var(--spacing-gap-md)] mb-[var(--spacing-element-xl)]">
-            <div className="p-[var(--spacing-element-sm)] rounded-[var(--radius-lg)] bg-primary/10 text-primary">
+          <div className="flex items-center gap-fluid-md">
+            <div className="p-element-sm rounded-[var(--radius-lg)] bg-[color:var(--color-primary)]/10 text-[color:var(--color-primary)]">
               <List className="w-[var(--spacing-element-md)] h-[var(--spacing-element-md)]" />
             </div>
-            <h2 className="text-[length:var(--text-xl)] mb-0">{title}</h2>
+            <h2 className="m-0 font-[family:var(--font-family-lora)] text-[length:var(--text-xl)]">{title}</h2>
           </div>
           
           <nav aria-label="Table of contents">
-            <ul className="space-y-[var(--spacing-gap-xs)] p-0 m-0">
+            <ul className="flex flex-col gap-fluid-xs p-0 m-0">
               {sections.map(s => renderItem(s))}
             </ul>
           </nav>

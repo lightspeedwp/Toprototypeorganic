@@ -63,15 +63,15 @@ export function ModalDestinationPart({
       />
 
       {/* Modal Content */}
-      <div className="relative bg-background border border-border rounded-lg shadow-lg max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+      <div className="relative bg-[color:var(--color-background)] border border-[color:var(--color-border)] rounded-[var(--radius-lg)] shadow-[var(--elevation-lg)] max-w-2xl w-[calc(100%-var(--spacing-element-xl))] max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 bg-background border-b border-border p-4 flex items-center justify-between">
+        <div className="sticky top-0 z-10 bg-background border-b border-border p-element-md flex items-center justify-between">
           <h2 id="modal-title">
             {title}
           </h2>
           <button
             onClick={onClose}
-            className="p-2 rounded-md hover:bg-muted transition-colors"
+            className="p-element-xs rounded-[var(--radius-md)] hover:bg-muted transition-colors"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" aria-hidden="true" />
@@ -79,7 +79,7 @@ export function ModalDestinationPart({
         </div>
 
         {/* Body */}
-        <div className="p-6">
+        <div className="p-element-lg">
           {children}
         </div>
       </div>

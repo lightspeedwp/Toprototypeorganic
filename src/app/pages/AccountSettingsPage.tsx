@@ -46,6 +46,7 @@ import {
   Warning as AlertTriangle,
   Key,
   User,
+  CreditCard,
 } from "@phosphor-icons/react";
 import { cn } from "../lib/utils";
 import { toast } from "sonner";
@@ -89,6 +90,7 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
     currency: "USD",
     timezone: "America/New_York",
   });
+  const [activeTab, setActiveTab] = useState("profile");
 
   /**
    * Handle save settings.
@@ -141,12 +143,12 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
           ================================================================ */}
       <section className="py-section-sm md:py-section-md bg-muted">
         <Container>
-          <div className="max-w-4xl">
-            <div className="flex items-center gap-3 mb-4">
+          <div className="max-w-4xl flex flex-col gap-element-md">
+            <div className="flex items-center gap-fluid-md">
               <Settings className="w-8 h-8 text-primary" />
               <h1>Account Settings</h1>
             </div>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-[length:var(--text-lg)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">
               Manage your account preferences, security settings, and privacy options
             </p>
           </div>
@@ -158,23 +160,23 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
           ================================================================ */}
       <section className="py-section-sm md:py-section-md bg-background">
         <Container>
-          <div className="max-w-4xl mx-auto space-y-8">
+          <div className="max-w-4xl flex flex-col gap-section-sm">
             {/* Security Settings */}
-            <div className="bg-card border border-border rounded-lg overflow-hidden">
-              <div className="p-6 border-b border-border">
-                <div className="flex items-center gap-3">
+            <div className="bg-card border border-border rounded-[var(--radius-lg)] overflow-hidden">
+              <div className="p-element-xl border-b border-border">
+                <div className="flex items-center gap-fluid-md">
                   <Shield className="w-6 h-6 text-primary" />
                   <h2>Security</h2>
                 </div>
               </div>
-              <div className="p-6 space-y-6">
+              <div className="p-element-xl flex flex-col gap-element-xl">
                 {/* Password */}
                 <div className="flex items-center justify-between">
-                  <div className="flex items-start gap-3">
-                    <Lock className="w-5 h-5 text-primary mt-0.5" />
-                    <div>
-                      <p className="font-medium mb-1">Password</p>
-                      <p className="text-sm text-muted-foreground">
+                  <div className="flex items-start gap-fluid-md">
+                    <Lock className="w-5 h-5 text-primary shrink-0" />
+                    <div className="flex flex-col gap-element-xs">
+                      <p className="font-[var(--font-weight-medium)] font-[family-name:var(--font-family-noto-sans)]">Password</p>
+                      <p className="text-[length:var(--text-sm)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">
                         Last changed 3 months ago
                       </p>
                     </div>
@@ -182,8 +184,8 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                   <button
                     onClick={handleChangePassword}
                     className={cn(
-                      "inline-flex items-center gap-2 px-4 py-2 rounded-md",
-                      "border border-border text-foreground",
+                      "inline-flex items-center gap-fluid-sm px-element-md py-element-sm rounded-[var(--radius-md)]",
+                      "border border-border text-foreground font-[family-name:var(--font-family-noto-sans)] text-[length:var(--text-sm)] font-[var(--font-weight-medium)]",
                       "hover:bg-accent transition-colors",
                       "focus:outline-none focus:ring-2 focus:ring-ring"
                     )}
@@ -194,15 +196,15 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                 </div>
 
                 {/* Two-Factor Authentication */}
-                <div className="flex items-center justify-between pt-6 border-t border-border">
-                  <div className="flex items-start gap-3 flex-1">
-                    <Smartphone className="w-5 h-5 text-primary mt-0.5" />
-                    <div>
-                      <p className="font-medium mb-1">Two-Factor Authentication</p>
-                      <p className="text-sm text-muted-foreground">
+                <div className="flex items-center justify-between pt-element-xl border-t border-border">
+                  <div className="flex items-start gap-fluid-md flex-1">
+                    <Smartphone className="w-5 h-5 text-primary shrink-0" />
+                    <div className="flex flex-col gap-element-xs">
+                      <p className="font-[var(--font-weight-medium)] font-[family-name:var(--font-family-noto-sans)]">Two-Factor Authentication</p>
+                      <p className="text-[length:var(--text-sm)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">
                         Add an extra layer of security to your account
                       </p>
-                      <p className="text-xs text-muted-foreground mt-2">
+                      <p className="text-[length:var(--text-xs)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">
                         Status:{" "}
                         <span
                           className={
@@ -217,7 +219,8 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                   <button
                     onClick={handleEnable2FA}
                     className={cn(
-                      "inline-flex items-center gap-2 px-4 py-2 rounded-md transition-colors",
+                      "inline-flex items-center gap-fluid-sm px-element-md py-element-sm rounded-[var(--radius-md)] transition-colors",
+                      "font-[family-name:var(--font-family-noto-sans)] text-[length:var(--text-sm)] font-[var(--font-weight-medium)]",
                       "focus:outline-none focus:ring-2 focus:ring-ring",
                       twoFactorEnabled
                         ? "border border-destructive text-destructive hover:bg-destructive/10"
@@ -229,12 +232,12 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                 </div>
 
                 {/* Active Sessions */}
-                <div className="flex items-center justify-between pt-6 border-t border-border">
-                  <div className="flex items-start gap-3">
-                    <Eye className="w-5 h-5 text-primary mt-0.5" />
-                    <div>
-                      <p className="font-medium mb-1">Active Sessions</p>
-                      <p className="text-sm text-muted-foreground">
+                <div className="flex items-center justify-between pt-element-xl border-t border-border">
+                  <div className="flex items-start gap-fluid-md">
+                    <Eye className="w-5 h-5 text-primary shrink-0" />
+                    <div className="flex flex-col gap-element-xs">
+                      <p className="font-[var(--font-weight-medium)] font-[family-name:var(--font-family-noto-sans)]">Active Sessions</p>
+                      <p className="text-[length:var(--text-sm)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">
                         Manage devices where you're logged in
                       </p>
                     </div>
@@ -242,8 +245,8 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                   <button
                     onClick={() => toast.info("View sessions - Coming soon")}
                     className={cn(
-                      "inline-flex items-center gap-2 px-4 py-2 rounded-md",
-                      "border border-border text-foreground",
+                      "inline-flex items-center gap-fluid-sm px-element-md py-element-sm rounded-[var(--radius-md)]",
+                      "border border-border text-foreground font-[family-name:var(--font-family-noto-sans)] text-[length:var(--text-sm)] font-[var(--font-weight-medium)]",
                       "hover:bg-accent transition-colors",
                       "focus:outline-none focus:ring-2 focus:ring-ring"
                     )}
@@ -255,14 +258,14 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
             </div>
 
             {/* Email Notifications */}
-            <div className="bg-card border border-border rounded-lg overflow-hidden">
-              <div className="p-6 border-b border-border">
-                <div className="flex items-center gap-3">
+            <div className="bg-card border border-border rounded-[var(--radius-lg)] overflow-hidden">
+              <div className="p-element-xl border-b border-border">
+                <div className="flex items-center gap-fluid-md">
                   <Mail className="w-6 h-6 text-primary" />
                   <h2>Email Notifications</h2>
                 </div>
               </div>
-              <div className="p-6 space-y-4">
+              <div className="p-element-xl flex flex-col gap-element-lg">
                 {[
                   {
                     key: "bookingConfirmations" as const,
@@ -287,13 +290,11 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                 ].map((item) => (
                   <div
                     key={item.key}
-                    className="flex items-center justify-between py-3 border-b border-border last:border-0"
+                    className="flex items-center justify-between py-element-md border-b border-border last:border-0"
                   >
-                    <div>
-                      <p className="font-medium mb-1">{item.label}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {item.description}
-                      </p>
+                    <div className="flex flex-col gap-element-xs">
+                      <p className="font-[var(--font-weight-medium)] font-[family-name:var(--font-family-noto-sans)]">{item.label}</p>
+                      <p className="text-[length:var(--text-xs)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">{item.description}</p>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input
@@ -307,10 +308,10 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                         }
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-muted rounded-full peer peer-checked:bg-primary transition-colors">
+                      <div className="w-11 h-6 bg-muted rounded-[var(--radius-full)] peer peer-checked:bg-primary transition-colors">
                         <div
                           className={cn(
-                            "absolute top-0.5 left-0.5 bg-background rounded-full h-5 w-5 transition-transform",
+                            "absolute top-0.5 left-0.5 bg-background rounded-[var(--radius-full)] h-5 w-5 transition-transform",
                             emailNotifications[item.key] && "translate-x-5"
                           )}
                         />
@@ -322,14 +323,14 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
             </div>
 
             {/* Push Notifications */}
-            <div className="bg-card border border-border rounded-lg overflow-hidden">
-              <div className="p-6 border-b border-border">
-                <div className="flex items-center gap-3">
+            <div className="bg-card border border-border rounded-[var(--radius-lg)] overflow-hidden">
+              <div className="p-element-xl border-b border-border">
+                <div className="flex items-center gap-fluid-md">
                   <Bell className="w-6 h-6 text-primary" />
-                  <h2>Push Notifications</h2>
+                  <h2>Notifications</h2>
                 </div>
               </div>
-              <div className="p-6 space-y-4">
+              <div className="p-element-xl flex flex-col gap-element-lg">
                 {[
                   {
                     key: "bookingUpdates" as const,
@@ -349,13 +350,11 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                 ].map((item) => (
                   <div
                     key={item.key}
-                    className="flex items-center justify-between py-3 border-b border-border last:border-0"
+                    className="flex items-center justify-between py-element-md border-b border-border last:border-0"
                   >
-                    <div>
-                      <p className="font-medium mb-1">{item.label}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {item.description}
-                      </p>
+                    <div className="flex flex-col gap-element-xs">
+                      <p className="font-[var(--font-weight-medium)] font-[family-name:var(--font-family-noto-sans)]">{item.label}</p>
+                      <p className="text-[length:var(--text-xs)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">{item.description}</p>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input
@@ -369,10 +368,10 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                         }
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-muted rounded-full peer peer-checked:bg-primary transition-colors">
+                      <div className="w-11 h-6 bg-muted rounded-[var(--radius-full)] peer peer-checked:bg-primary transition-colors">
                         <div
                           className={cn(
-                            "absolute top-0.5 left-0.5 bg-background rounded-full h-5 w-5 transition-transform",
+                            "absolute top-0.5 left-0.5 bg-background rounded-[var(--radius-full)] h-5 w-5 transition-transform",
                             pushNotifications[item.key] && "translate-x-5"
                           )}
                         />
@@ -384,14 +383,14 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
             </div>
 
             {/* Privacy Settings */}
-            <div className="bg-card border border-border rounded-lg overflow-hidden">
-              <div className="p-6 border-b border-border">
-                <div className="flex items-center gap-3">
+            <div className="bg-card border border-border rounded-[var(--radius-lg)] overflow-hidden">
+              <div className="p-element-xl border-b border-border">
+                <div className="flex items-center gap-fluid-md">
                   <Eye className="w-6 h-6 text-primary" />
                   <h2>Privacy</h2>
                 </div>
               </div>
-              <div className="p-6 space-y-4">
+              <div className="p-element-xl flex flex-col gap-element-lg">
                 {[
                   {
                     key: "showProfile" as const,
@@ -411,13 +410,11 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                 ].map((item) => (
                   <div
                     key={item.key}
-                    className="flex items-center justify-between py-3 border-b border-border last:border-0"
+                    className="flex items-center justify-between py-element-md border-b border-border last:border-0"
                   >
-                    <div>
-                      <p className="font-medium mb-1">{item.label}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {item.description}
-                      </p>
+                    <div className="flex flex-col gap-element-xs">
+                      <p className="font-[var(--font-weight-medium)] font-[family-name:var(--font-family-noto-sans)]">{item.label}</p>
+                      <p className="text-[length:var(--text-xs)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">{item.description}</p>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input
@@ -431,10 +428,10 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                         }
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-muted rounded-full peer peer-checked:bg-primary transition-colors">
+                      <div className="w-11 h-6 bg-muted rounded-[var(--radius-full)] peer peer-checked:bg-primary transition-colors">
                         <div
                           className={cn(
-                            "absolute top-0.5 left-0.5 bg-background rounded-full h-5 w-5 transition-transform",
+                            "absolute top-0.5 left-0.5 bg-background rounded-[var(--radius-full)] h-5 w-5 transition-transform",
                             privacy[item.key] && "translate-x-5"
                           )}
                         />
@@ -446,17 +443,17 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
             </div>
 
             {/* Preferences */}
-            <div className="bg-card border border-border rounded-lg overflow-hidden">
-              <div className="p-6 border-b border-border">
-                <div className="flex items-center gap-3">
+            <div className="bg-card border border-border rounded-[var(--radius-lg)] overflow-hidden">
+              <div className="p-element-xl border-b border-border">
+                <div className="flex items-center gap-fluid-md">
                   <Globe className="w-6 h-6 text-primary" />
                   <h2>Preferences</h2>
                 </div>
               </div>
-              <div className="p-6 space-y-6">
+              <div className="p-element-xl flex flex-col gap-element-lg">
                 {/* Language */}
-                <div>
-                  <label htmlFor="language" className="mb-2 block">
+                <div className="flex flex-col gap-element-sm">
+                  <label htmlFor="language" className="block font-[family-name:var(--font-family-noto-sans)] font-[var(--font-weight-medium)]">
                     Language
                   </label>
                   <select
@@ -466,8 +463,8 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                       setPreferences((prev) => ({ ...prev, language: e.target.value }))
                     }
                     className={cn(
-                      "w-full px-4 py-3 rounded-md",
-                      "bg-input-background border border-border",
+                      "w-full px-element-md py-element-md rounded-[var(--radius-md)]",
+                      "bg-input-background border border-border font-[family-name:var(--font-family-noto-sans)]",
                       "text-foreground",
                       "focus:outline-none focus:ring-2 focus:ring-ring"
                     )}
@@ -481,8 +478,8 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                 </div>
 
                 {/* Currency */}
-                <div>
-                  <label htmlFor="currency" className="mb-2 block">
+                <div className="flex flex-col gap-element-sm">
+                  <label htmlFor="currency" className="block font-[family-name:var(--font-family-noto-sans)] font-[var(--font-weight-medium)]">
                     Currency
                   </label>
                   <select
@@ -492,8 +489,8 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                       setPreferences((prev) => ({ ...prev, currency: e.target.value }))
                     }
                     className={cn(
-                      "w-full px-4 py-3 rounded-md",
-                      "bg-input-background border border-border",
+                      "w-full px-element-md py-element-md rounded-[var(--radius-md)]",
+                      "bg-input-background border border-border font-[family-name:var(--font-family-noto-sans)]",
                       "text-foreground",
                       "focus:outline-none focus:ring-2 focus:ring-ring"
                     )}
@@ -507,8 +504,8 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                 </div>
 
                 {/* Timezone */}
-                <div>
-                  <label htmlFor="timezone" className="mb-2 block">
+                <div className="flex flex-col gap-element-sm">
+                  <label htmlFor="timezone" className="block font-[family-name:var(--font-family-noto-sans)] font-[var(--font-weight-medium)]">
                     Timezone
                   </label>
                   <select
@@ -518,8 +515,8 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                       setPreferences((prev) => ({ ...prev, timezone: e.target.value }))
                     }
                     className={cn(
-                      "w-full px-4 py-3 rounded-md",
-                      "bg-input-background border border-border",
+                      "w-full px-element-md py-element-md rounded-[var(--radius-md)]",
+                      "bg-input-background border border-border font-[family-name:var(--font-family-noto-sans)]",
                       "text-foreground",
                       "focus:outline-none focus:ring-2 focus:ring-ring"
                     )}
@@ -535,13 +532,39 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
               </div>
             </div>
 
+            {/* Payment Methods */}
+            <div className="bg-card border border-border rounded-[var(--radius-lg)] overflow-hidden">
+              <div className="p-element-xl border-b border-border">
+                <div className="flex items-center gap-fluid-md">
+                  <CreditCard className="w-6 h-6 text-primary" />
+                  <h2>Payment Methods</h2>
+                </div>
+              </div>
+              <div className="p-element-xl flex flex-col gap-element-xl">
+                <p className="text-[length:var(--text-sm)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">
+                  Add or manage your payment methods for secure transactions.
+                </p>
+                <button
+                  onClick={() => toast.info("Manage payment methods - Coming soon")}
+                  className={cn(
+                    "inline-flex items-center gap-fluid-sm px-element-md py-element-sm rounded-[var(--radius-md)]",
+                    "border border-border text-foreground font-[family-name:var(--font-family-noto-sans)] text-[length:var(--text-sm)] font-[var(--font-weight-medium)]",
+                    "hover:bg-accent transition-colors",
+                    "focus:outline-none focus:ring-2 focus:ring-ring"
+                  )}
+                >
+                  Manage Payment Methods
+                </button>
+              </div>
+            </div>
+
             {/* Save Button */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-fluid-md">
               <button
                 onClick={handleSaveSettings}
                 className={cn(
-                  "inline-flex items-center gap-2 px-6 py-3 rounded-md",
-                  "bg-primary text-primary-foreground",
+                  "inline-flex items-center gap-fluid-sm px-element-xl py-element-md rounded-[var(--radius-md)]",
+                  "bg-primary text-primary-foreground font-[family-name:var(--font-family-noto-sans)] font-[var(--font-weight-medium)]",
                   "hover:bg-primary/90 transition-colors",
                   "focus:outline-none focus:ring-2 focus:ring-ring"
                 )}
@@ -552,8 +575,8 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
               <button
                 onClick={() => nav("/profile")}
                 className={cn(
-                  "inline-flex items-center gap-2 px-6 py-3 rounded-md",
-                  "border border-border text-foreground",
+                  "inline-flex items-center gap-fluid-sm px-element-xl py-element-md rounded-[var(--radius-md)]",
+                  "border border-border text-foreground font-[family-name:var(--font-family-noto-sans)] font-[var(--font-weight-medium)]",
                   "hover:bg-accent transition-colors",
                   "focus:outline-none focus:ring-2 focus:ring-ring"
                 )}
@@ -563,18 +586,18 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
             </div>
 
             {/* Danger Zone */}
-            <div className="bg-destructive/5 border-2 border-destructive/20 rounded-lg overflow-hidden">
-              <div className="p-6 border-b border-destructive/20">
-                <div className="flex items-center gap-3">
+            <div className="bg-destructive/5 border-2 border-destructive/20 rounded-[var(--radius-lg)] overflow-hidden">
+              <div className="p-element-xl border-b border-destructive/20">
+                <div className="flex items-center gap-fluid-md">
                   <AlertTriangle className="w-6 h-6 text-destructive" />
                   <h2>Danger Zone</h2>
                 </div>
               </div>
-              <div className="p-6">
+              <div className="p-element-xl">
                 <div className="flex items-start justify-between">
-                  <div>
-                    <p className="font-medium mb-2 text-destructive">Delete Account</p>
-                    <p className="text-sm text-muted-foreground">
+                  <div className="flex flex-col gap-element-sm">
+                    <p className="font-[var(--font-weight-medium)] text-destructive font-[family-name:var(--font-family-noto-sans)]">Delete Account</p>
+                    <p className="text-[length:var(--text-sm)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">
                       Permanently delete your account and all associated data. This action
                       cannot be undone.
                     </p>
@@ -582,8 +605,8 @@ export default function AccountSettingsPage({ onNavigate }: AccountSettingsPageP
                   <button
                     onClick={handleDeleteAccount}
                     className={cn(
-                      "inline-flex items-center gap-2 px-4 py-2 rounded-md",
-                      "bg-destructive text-destructive-foreground",
+                      "inline-flex items-center gap-fluid-sm px-element-md py-element-sm rounded-[var(--radius-md)]",
+                      "bg-destructive text-destructive-foreground font-[family-name:var(--font-family-noto-sans)] text-[length:var(--text-sm)] font-[var(--font-weight-medium)]",
                       "hover:bg-destructive/90 transition-colors",
                       "focus:outline-none focus:ring-2 focus:ring-ring"
                     )}

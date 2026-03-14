@@ -97,12 +97,12 @@ export default function SnippetGenerator() {
       {/* Header */}
       <div className="bg-muted border-b border-border py-section-sm">
         <Container>
-          <div className="flex items-start justify-between gap-6">
-            <div>
-              <div className="flex items-center gap-3 mb-2">
-                <Code2 className="w-8 h-8 text-primary" />
-                <h1>Snippet Generator</h1>
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-fluid-sm">
+            <div className="flex flex-col gap-element-sm">
+              <div className="wp-page-header__icon-container w-14 h-14 flex items-center justify-center rounded-[var(--radius-lg)] bg-primary/10 text-primary transition-colors hover:bg-primary/20">
+                <Code2 className="w-7 h-7" />
               </div>
+              <h1>Snippet Generator</h1>
               <p className="text-muted-foreground">
                 Generate production-ready code snippets with best practices
               </p>
@@ -119,7 +119,7 @@ export default function SnippetGenerator() {
       <Container className="py-section-sm">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left: Template Selection */}
-          <div className="lg:col-span-1 space-y-6">
+          <div className="lg:col-span-1 flex flex-col gap-6">
             {/* Search */}
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -146,7 +146,7 @@ export default function SnippetGenerator() {
                 >
                   {cat.name}
                   {cat.id !== 'all' && (
-                    <span className="ml-1 opacity-70">
+                    <span className="pl-1 opacity-70">
                       ({stats.byCategory[cat.id] || 0})
                     </span>
                   )}
@@ -169,8 +169,8 @@ export default function SnippetGenerator() {
                       selectedTemplate?.id === template.id ? 'bg-muted' : ''
                     }`}
                   >
-                    <div className="font-medium mb-1">{template.name}</div>
-                    <p className="text-sm text-muted-foreground mb-2">
+                    <div className="font-medium pb-1">{template.name}</div>
+                    <p className="text-sm text-muted-foreground pb-2">
                       {template.description}
                     </p>
                     <div className="flex items-center gap-2">
@@ -194,17 +194,17 @@ export default function SnippetGenerator() {
           </div>
 
           {/* Right: Configuration & Preview */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 flex flex-col gap-6">
             {selectedTemplate ? (
               <>
                 {/* Configuration */}
                 <div className="bg-card p-6 rounded-lg border border-border">
-                  <h2 className="mb-4">Configure Template</h2>
+                  <h2 className="pb-4">Configure Template</h2>
 
-                  <div className="space-y-4">
+                  <div className="flex flex-col gap-4">
                     {selectedTemplate.placeholders.map(placeholder => (
                       <div key={placeholder.key}>
-                        <label className="block text-sm font-medium mb-2">
+                        <label className="block text-sm font-medium pb-2">
                           {placeholder.label}
                         </label>
                         
@@ -241,8 +241,8 @@ export default function SnippetGenerator() {
 
                   {/* Dependencies & Imports */}
                   {(selectedTemplate.imports && selectedTemplate.imports.length > 0) && (
-                    <div className="mt-6 p-4 bg-muted rounded-lg">
-                      <h4 className="font-medium mb-2 text-sm">Required Imports</h4>
+                    <div className="pt-6 p-4 bg-muted rounded-lg">
+                      <h4 className="font-medium pb-2 text-sm">Required Imports</h4>
                       <div className="flex flex-wrap gap-2">
                         {selectedTemplate.imports.map(imp => (
                           <span key={imp} className="text-xs px-2 py-1 bg-background rounded">
@@ -254,8 +254,8 @@ export default function SnippetGenerator() {
                   )}
                   
                   {(selectedTemplate.dependencies && selectedTemplate.dependencies.length > 0) && (
-                    <div className="mt-4 p-4 bg-muted rounded-lg">
-                      <h4 className="font-medium mb-2 text-sm">Dependencies</h4>
+                    <div className="pt-4 p-4 bg-muted rounded-lg">
+                      <h4 className="font-medium pb-2 text-sm">Dependencies</h4>
                       <div className="flex flex-wrap gap-2">
                         {selectedTemplate.dependencies.map(dep => (
                           <span key={dep} className="text-xs px-2 py-1 bg-background rounded font-mono">
@@ -315,9 +315,9 @@ export default function SnippetGenerator() {
                 )}
               </>
             ) : (
-              <div className="bg-muted p-12 rounded-lg text-center">
-                <Code2 className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-                <h3 className="mb-2">Select a Template</h3>
+              <div className="bg-muted p-12 rounded-lg text-center flex flex-col items-center">
+                <Code2 className="w-12 h-12 text-muted-foreground pb-4" />
+                <h3 className="pb-2">Select a Template</h3>
                 <p className="text-muted-foreground">
                   Choose a template from the left to get started
                 </p>
@@ -327,13 +327,13 @@ export default function SnippetGenerator() {
         </div>
 
         {/* Info Section */}
-        <div className="bg-accent text-accent-foreground p-6 rounded-lg mt-8">
-          <h3 className="mb-4">About Snippet Generator</h3>
+        <div className="bg-accent text-accent-foreground p-6 rounded-lg pt-8">
+          <h3 className="pb-4">About Snippet Generator</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
             <div>
-              <h4 className="font-medium mb-2">Available Templates</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Available Templates</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>Functional Components</li>
                 <li>Pattern Components</li>
                 <li>Custom Hooks</li>
@@ -344,8 +344,8 @@ export default function SnippetGenerator() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">Features</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Features</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>TypeScript support</li>
                 <li>JSDoc documentation</li>
                 <li>Best practices included</li>
@@ -355,8 +355,8 @@ export default function SnippetGenerator() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">Benefits</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Benefits</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>10x faster development</li>
                 <li>Consistent code style</li>
                 <li>Reduced errors</li>

@@ -300,19 +300,19 @@ export default function IconLibrary() {
     <>
       <DevToolsBreadcrumbs currentPage="Icon Library" />
       <div className="min-h-screen bg-background py-section-sm">
-        <Container>
+        <Container className="flex flex-col gap-element-2xl">
           {/* Header */}
-          <div className="mb-8">
-            <h1 className="mb-4">Icon Library</h1>
-            <p className="text-muted-foreground">
+          <div className="flex flex-col gap-element-md">
+            <h1>Icon Library</h1>
+            <p className="text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">
               Reference for all {ICONS.length} Lucide React icons used in the prototype.
               Search by name or keyword, browse by category, and copy import code.
             </p>
           </div>
 
           {/* Filters */}
-          <div className="mb-8 space-y-4">
-            <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex flex-col gap-element-md">
+            <div className="flex flex-col md:flex-row gap-fluid-md">
               {/* Search */}
               <div className="flex-1">
                 <Input
@@ -325,7 +325,7 @@ export default function IconLibrary() {
               </div>
 
               {/* Category Filter */}
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-fluid-sm">
                 {categories.map(category => (
                   <Button
                     key={category}
@@ -340,7 +340,7 @@ export default function IconLibrary() {
             </div>
 
             {/* Results Count */}
-            <p className="text-sm text-muted-foreground">
+            <p className="text-[length:var(--text-sm)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">
               Showing {filteredIcons.length} of {ICONS.length} icons
             </p>
           </div>
@@ -353,12 +353,12 @@ export default function IconLibrary() {
                 <button
                   key={icon.name}
                   onClick={() => handleCopyImport(icon.name)}
-                  className="group relative p-6 border border-border rounded-lg bg-card hover:bg-accent transition-colors"
+                  className="group relative p-element-xl border border-border rounded-[var(--radius-lg)] bg-card hover:bg-accent transition-colors"
                 >
-                  <div className="flex flex-col items-center gap-3">
+                  <div className="flex flex-col items-center gap-fluid-md">
                     <IconComponent className="w-8 h-8 text-foreground" />
                     <span 
-                      className="text-center break-all font-sans text-xs font-medium"
+                      className="text-center break-all font-[family-name:var(--font-family-noto-sans)] text-[length:var(--text-xs)] font-[var(--font-weight-medium)]"
                     >
                       {icon.name}
                     </span>
@@ -366,9 +366,9 @@ export default function IconLibrary() {
                   
                   {/* Copy Feedback */}
                   {copiedIcon === icon.name && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-primary/10 rounded-lg">
-                      <span className="text-sm text-primary font-medium">
-                        <Check className="w-4 h-4 inline mr-1" />
+                    <div className="absolute inset-0 flex items-center justify-center bg-primary/10 rounded-[var(--radius-lg)]">
+                      <span className="text-[length:var(--text-sm)] text-primary font-[var(--font-weight-medium)] font-[family-name:var(--font-family-noto-sans)]">
+                        <Check className="w-4 h-4 inline mr-[var(--spacing-element-xs)]" />
                         Copied!
                       </span>
                     </div>
@@ -380,8 +380,8 @@ export default function IconLibrary() {
 
           {/* Empty State */}
           {filteredIcons.length === 0 && (
-            <div className="text-center py-section-md">
-              <p className="text-muted-foreground mb-4">
+            <div className="text-center py-element-2xl flex flex-col items-center gap-element-md">
+              <p className="text-muted-foreground font-[family-name:var(--font-family-noto-sans)]">
                 No icons found matching your search.
               </p>
               <Button onClick={() => { setSearchQuery(''); setSelectedCategory('all'); }}>
@@ -391,31 +391,31 @@ export default function IconLibrary() {
           )}
 
           {/* Usage Guide */}
-          <div className="mt-16 p-6 border border-border rounded-lg bg-muted">
-            <h2 className="mb-4">Usage Guide</h2>
-            <div className="space-y-4 text-sm">
-              <div>
-                <h3 className="mb-2">How to Use</h3>
-                <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
+          <div className="p-element-xl border border-border rounded-[var(--radius-lg)] bg-muted flex flex-col gap-element-md">
+            <h2 className="font-[family-name:var(--font-family-lora)]">Usage Guide</h2>
+            <div className="flex flex-col gap-element-md text-[length:var(--text-sm)] font-[family-name:var(--font-family-noto-sans)]">
+              <div className="flex flex-col gap-element-sm">
+                <h3 className="font-[family-name:var(--font-family-lora)]">How to Use</h3>
+                <ol className="list-decimal list-inside flex flex-col gap-fluid-sm text-muted-foreground">
                   <li>Search or browse to find the icon you need</li>
                   <li>Click the icon card to copy the import statement</li>
                   <li>Paste the import at the top of your component file</li>
                   <li>Use the icon component in your JSX</li>
                 </ol>
               </div>
-              <div>
-                <h3 className="mb-2">Example</h3>
-                <pre className="p-4 bg-background rounded border border-border overflow-x-auto">
-                  <code className="text-xs">
+              <div className="flex flex-col gap-element-sm">
+                <h3 className="font-[family-name:var(--font-family-lora)]">Example</h3>
+                <pre className="p-element-md bg-background rounded-[var(--radius-md)] border border-border overflow-x-auto">
+                  <code className="text-[length:var(--text-xs)] font-[family-name:var(--font-family-courier-new)]">
 {`import { MapPin } from '@phosphor-icons/react';
 
 <MapPin className="w-6 h-6 text-primary" />`}
                   </code>
                 </pre>
               </div>
-              <div>
-                <h3 className="mb-2">Important Notes</h3>
-                <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+              <div className="flex flex-col gap-element-sm">
+                <h3 className="font-[family-name:var(--font-family-lora)]">Important Notes</h3>
+                <ul className="list-disc list-inside flex flex-col gap-fluid-xs text-muted-foreground">
                   <li>Always verify icons exist in @phosphor-icons/react before importing</li>
                   <li>Use semantic icon names (e.g., MapPin not Mappin)</li>
                   <li>Check icon guidelines in /guidelines/icons/</li>

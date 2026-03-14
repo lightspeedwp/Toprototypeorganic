@@ -304,15 +304,15 @@ export function TemplateTester({ onNavigate, currentPage }: TemplateTesterProps)
           </svg>
         </div>
 
-        <Container>
-          <div className="relative py-section-md text-center max-w-3xl mx-auto">
-            <div className="wp-template-tester__badge mb-8">
+        <Container className="flex flex-col items-center">
+          <div className="relative py-section-md text-center max-w-3xl flex flex-col items-center gap-4">
+            <div className="wp-template-tester__badge">
               <Compass className="w-4 h-4 text-primary" />
               <span className="text-primary font-sans text-sm font-medium">Template Navigator</span>
             </div>
 
-            <h1 className="mb-4">Template Tester</h1>
-            <p className="text-muted-foreground mb-0 max-w-2xl mx-auto">
+            <h1>Template Tester</h1>
+            <p className="text-muted-foreground max-w-2xl">
               Navigate and test every WordPress template, archetype, and page type in the prototype — all in one place.
             </p>
           </div>
@@ -322,9 +322,9 @@ export function TemplateTester({ onNavigate, currentPage }: TemplateTesterProps)
       {/* ================================================================
           STATS — Floating cards
           ================================================================ */}
-      <section className="relative -mt-6 z-10 pb-section-sm">
-        <Container>
-          <div className="flex items-center justify-center gap-4 md:gap-6 flex-wrap max-w-3xl mx-auto">
+      <section className="relative translate-y-[-1.5rem] z-10 pb-section-sm">
+        <Container className="flex flex-col items-center">
+          <div className="flex items-center justify-center gap-4 md:gap-6 flex-wrap max-w-3xl">
             {[
               { value: totalTemplates, label: "Total", icon: <LayoutGrid className="w-4 h-4" /> },
               { value: activeTemplates, label: "Active", icon: <CircleCheck className="w-4 h-4" /> },
@@ -337,9 +337,9 @@ export function TemplateTester({ onNavigate, currentPage }: TemplateTesterProps)
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
                   {stat.icon}
                 </div>
-                <div>
-                  <p className="font-serif text-fluid-2xl text-primary mb-0 leading-none">{stat.value}</p>
-                  <p className="text-muted-foreground text-xs mb-0 mt-0.5">{stat.label}</p>
+                <div className="flex flex-col">
+                  <p className="font-serif text-fluid-2xl text-primary leading-none">{stat.value}</p>
+                  <p className="text-muted-foreground text-xs">{stat.label}</p>
                 </div>
               </div>
             ))}
@@ -423,13 +423,15 @@ export function TemplateTester({ onNavigate, currentPage }: TemplateTesterProps)
           {filteredCount === 0 ? (
             /* Empty state */
             <div className="text-center py-section-md">
-              <div className="w-16 h-16 rounded-2xl bg-muted flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 rounded-2xl bg-muted flex items-center justify-center">
                 <Search className="w-8 h-8 text-muted-foreground" />
               </div>
-              <h3 className="mb-3">No templates found</h3>
-              <p className="text-muted-foreground mb-6">
-                Try adjusting your filters or search query.
-              </p>
+              <div className="flex flex-col gap-3">
+                <h3>No templates found</h3>
+                <p className="text-muted-foreground">
+                  Try adjusting your filters or search query.
+                </p>
+              </div>
               <button
                 onClick={() => {
                   setSelectedStatus("all");
@@ -442,16 +444,16 @@ export function TemplateTester({ onNavigate, currentPage }: TemplateTesterProps)
               </button>
             </div>
           ) : (
-            <div className="space-y-12">
+            <div className="flex flex-col gap-12">
               {filteredCategories.map((category) => (
                 <div key={category.id}>
                   {/* Category Header */}
-                  <div className="flex items-center gap-3 mb-6">
+                  <div className="flex items-center gap-3 pb-6">
                     <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${category.accentClass}`}>
                       {category.icon}
                     </div>
                     <div className="flex items-baseline gap-3">
-                      <h2 className="mb-0">{category.title}</h2>
+                      <h2>{category.title}</h2>
                       <span className="text-muted-foreground text-sm font-sans">
                         {category.templates.length} template{category.templates.length !== 1 ? "s" : ""}
                       </span>
@@ -483,8 +485,8 @@ export function TemplateTester({ onNavigate, currentPage }: TemplateTesterProps)
 
                             <div className="p-5">
                               {/* Status badge row */}
-                              <div className="flex items-start justify-between mb-3">
-                                <h5 className={`mb-0 pr-2 group-hover:text-primary transition-colors ${isActive ? "text-primary" : ""}`}>
+                              <div className="flex items-start justify-between pb-3">
+                                <h5 className={`pr-2 group-hover:text-primary transition-colors ${isActive ? "text-primary" : ""}`}>
                                   {template.label}
                                 </h5>
                                 {(isActive || isLegacy || isComingSoon) && (
@@ -501,7 +503,7 @@ export function TemplateTester({ onNavigate, currentPage }: TemplateTesterProps)
                                 )}
                               </div>
 
-                              <p className="text-muted-foreground text-sm mb-3">
+                              <p className="text-muted-foreground text-sm pb-3">
                                 {template.description}
                               </p>
 
@@ -573,7 +575,7 @@ export function TemplateTester({ onNavigate, currentPage }: TemplateTesterProps)
                                   <span className="text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">Legacy</span>
                                 )}
                               </div>
-                              <p className="text-muted-foreground text-sm mb-0 truncate">{template.description}</p>
+                              <p className="text-muted-foreground text-sm truncate">{template.description}</p>
                             </div>
 
                             <code className="text-xs text-muted-foreground/60 hidden md:block">{template.route}</code>
@@ -618,27 +620,27 @@ export function TemplateTester({ onNavigate, currentPage }: TemplateTesterProps)
           PROJECT STATUS — Clean summary
           ================================================================ */}
       <section className="py-section-sm bg-muted/30 border-t border-border">
-        <Container>
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center gap-2 mb-4">
+        <Container className="flex flex-col items-center">
+          <div className="max-w-4xl w-full flex flex-col items-center">
+            <div className="text-center flex flex-col items-center gap-4 pb-8">
+              <div className="inline-flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-accent" />
-                <h3 className="mb-0">Project Status</h3>
+                <h3>Project Status</h3>
               </div>
-              <p className="text-muted-foreground max-w-2xl mx-auto mb-0">
+              <p className="text-muted-foreground max-w-2xl">
                 Track template completion and remaining work.
               </p>
             </div>
 
             {/* Progress cards */}
-            <div className="wp-pattern-card-grid__container wp-pattern-card-grid__container--cols-3 has-margin-bottom-8">
+            <div className="wp-pattern-card-grid__container wp-pattern-card-grid__container--cols-3 pb-8">
               {[
                 { label: "Overall Progress", value: "95%", width: "w-[95%]" },
                 { label: "Templates Complete", value: `${activeTemplates}/${totalTemplates}`, width: "w-[91%]" },
                 { label: "Patterns Created", value: "25+", width: "w-[85%]" },
               ].map((stat) => (
-                <div key={stat.label} className="bg-card border border-border rounded-xl p-5">
-                  <div className="flex items-center justify-between mb-3">
+                <div key={stat.label} className="bg-card border border-border rounded-xl p-5 flex flex-col gap-3">
+                  <div className="flex items-center justify-between">
                     <span className="text-muted-foreground text-sm font-sans">{stat.label}</span>
                     <span className="text-primary font-serif text-fluid-xl font-semibold">{stat.value}</span>
                   </div>
@@ -650,12 +652,12 @@ export function TemplateTester({ onNavigate, currentPage }: TemplateTesterProps)
             </div>
 
             {/* Completed milestones */}
-            <div className="bg-card border border-border rounded-xl p-6 md:p-8">
-              <div className="flex items-center gap-3 mb-6">
+            <div className="bg-card border border-border rounded-xl p-6 md:p-8 flex flex-col gap-6">
+              <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-success/10 flex items-center justify-center text-success">
                   <CircleCheck className="w-5 h-5" />
                 </div>
-                <h4 className="mb-0">Completed Milestones</h4>
+                <h4>Completed Milestones</h4>
               </div>
 
               <div className="wp-pattern-card-grid__container wp-pattern-card-grid__container--cols-4">
@@ -677,12 +679,12 @@ export function TemplateTester({ onNavigate, currentPage }: TemplateTesterProps)
                     items: ["Template Tester", "Performance monitoring", "Compliance auditing"],
                   },
                 ].map((section) => (
-                  <div key={section.title}>
-                    <h6 className="mb-3 text-foreground">{section.title}</h6>
-                    <ul className="space-y-2">
+                  <div key={section.title} className="flex flex-col gap-3">
+                    <h6 className="text-foreground">{section.title}</h6>
+                    <ul className="flex flex-col gap-2">
                       {section.items.map((item) => (
                         <li key={item} className="flex items-start gap-2 text-sm">
-                          <CircleCheck className="w-3.5 h-3.5 text-success flex-shrink-0 mt-0.5" />
+                          <CircleCheck className="w-3.5 h-3.5 text-success flex-shrink-0 translate-y-0.5" />
                           <span className="text-muted-foreground">{item}</span>
                         </li>
                       ))}
@@ -699,11 +701,11 @@ export function TemplateTester({ onNavigate, currentPage }: TemplateTesterProps)
           FOOTER NOTE
           ================================================================ */}
       <section className="py-section-sm bg-background border-t border-border">
-        <Container>
-          <div className="max-w-2xl mx-auto text-center">
+        <Container className="flex flex-col items-center">
+          <div className="max-w-2xl w-full text-center">
             <div className="flex items-start gap-3 p-5 bg-muted/50 border border-border rounded-xl text-left">
-              <Zap className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-muted-foreground mb-0">
+              <Zap className="w-5 h-5 text-primary flex-shrink-0 translate-y-0.5" />
+              <p className="text-sm text-muted-foreground">
                 <strong className="text-foreground">Development tool.</strong>{" "}
                 This Template Tester validates WordPress block theme patterns and page archetypes.
                 All templates map directly to WordPress templates, template parts, and block patterns.

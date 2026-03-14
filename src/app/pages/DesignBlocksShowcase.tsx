@@ -113,8 +113,8 @@ export default function DesignBlocksShowcase() {
       {/* Button Blocks */}
       <SectionWrapper variant="default" spacing="large" id="buttons">
         <Stack gap="8">
-          <div>
-            <h2 className="mb-2">
+          <div className="flex flex-col gap-2">
+            <h2>
               Button Blocks
             </h2>
             <p className="text-muted-foreground font-sans text-lg">
@@ -123,8 +123,8 @@ export default function DesignBlocksShowcase() {
           </div>
 
           {/* Button Variants */}
-          <div>
-            <h3 className="mb-4">Button Variants</h3>
+          <div className="flex flex-col gap-4">
+            <h3>Button Variants</h3>
             <Buttons gap="4" align="start">
               <Button variant="primary">Primary</Button>
               <Button variant="secondary">Secondary</Button>
@@ -135,8 +135,8 @@ export default function DesignBlocksShowcase() {
           </div>
 
           {/* Button Sizes */}
-          <div>
-            <h3 className="mb-4">Button Sizes</h3>
+          <div className="flex flex-col gap-4">
+            <h3>Button Sizes</h3>
             <Buttons gap="4" align="start">
               <Button variant="primary" size="sm">Small</Button>
               <Button variant="primary" size="default">Default</Button>
@@ -145,8 +145,8 @@ export default function DesignBlocksShowcase() {
           </div>
 
           {/* Buttons with Icons */}
-          <div>
-            <h3 className="mb-4">Buttons with Icons</h3>
+          <div className="flex flex-col gap-4">
+            <h3>Buttons with Icons</h3>
             <Buttons gap="4" align="start">
               <Button variant="primary" icon={<ArrowRight className="h-4 w-4" />} iconPosition="right">
                 Continue
@@ -161,8 +161,8 @@ export default function DesignBlocksShowcase() {
           </div>
 
           {/* Responsive Button Group */}
-          <div>
-            <h3 className="mb-4">Responsive Button Group (stacks on mobile)</h3>
+          <div className="flex flex-col gap-4">
+            <h3>Responsive Button Group (stacks on mobile)</h3>
             <Buttons stackOnMobile gap="4" align="center">
               <Button variant="primary" size="lg">Get Started</Button>
               <Button variant="outline" size="lg">Learn More</Button>
@@ -175,21 +175,21 @@ export default function DesignBlocksShowcase() {
       {/* Grid Block */}
       <SectionWrapper variant="muted" spacing="large" id="grid">
         <Stack gap="8">
-          <div>
-            <h2 className="mb-2">Grid Block</h2>
+          <div className="flex flex-col gap-2">
+            <h2>Grid Block</h2>
             <p className="text-muted-foreground">core/grid</p>
           </div>
 
           {/* Fixed 3-column grid */}
-          <div>
-            <h3 className="mb-4">Fixed 3-Column Grid</h3>
+          <div className="flex flex-col gap-4">
+            <h3>Fixed 3-Column Grid</h3>
             <Grid columns={3} gap="6">
               {mockCards.map((card) => (
                 <div
                   key={card.id}
-                  className="bg-card p-6 rounded-lg border border-border"
+                  className="bg-card p-6 rounded-lg border border-border flex flex-col gap-2"
                 >
-                  <h4 className="mb-2">{card.title}</h4>
+                  <h4>{card.title}</h4>
                   <p className="text-muted-foreground">{card.description}</p>
                 </div>
               ))}
@@ -197,15 +197,15 @@ export default function DesignBlocksShowcase() {
           </div>
 
           {/* Responsive grid */}
-          <div>
-            <h3 className="mb-4">Responsive Grid (1/2/3 columns)</h3>
+          <div className="flex flex-col gap-4">
+            <h3>Responsive Grid (1/2/3 columns)</h3>
             <Grid responsive={{ mobile: 1, tablet: 2, desktop: 3 }} gap="6">
               {mockCards.map((card) => (
                 <div
                   key={card.id}
-                  className="bg-background p-6 rounded-lg border border-border"
+                  className="bg-background p-6 rounded-lg border border-border flex flex-col gap-2"
                 >
-                  <h4 className="mb-2">{card.title}</h4>
+                  <h4>{card.title}</h4>
                   <p className="text-muted-foreground">{card.description}</p>
                 </div>
               ))}
@@ -217,20 +217,20 @@ export default function DesignBlocksShowcase() {
       {/* Stack Block */}
       <SectionWrapper variant="default" spacing="large" id="stack">
         <Stack gap="8">
-          <div>
-            <h2 className="mb-2">Stack Block</h2>
+          <div className="flex flex-col gap-2">
+            <h2>Stack Block</h2>
             <p className="text-muted-foreground">core/stack</p>
           </div>
 
-          <div>
-            <h3 className="mb-4">Vertical Stack with Cards</h3>
+          <div className="flex flex-col gap-4">
+            <h3>Vertical Stack with Cards</h3>
             <Stack gap="4" className="max-w-2xl">
               {mockCards.slice(0, 3).map((card) => (
                 <div
                   key={card.id}
-                  className="bg-card p-6 rounded-lg border border-border"
+                  className="bg-card p-6 rounded-lg border border-border flex flex-col gap-2"
                 >
-                  <h4 className="mb-2">{card.title}</h4>
+                  <h4>{card.title}</h4>
                   <p className="text-muted-foreground">{card.description}</p>
                 </div>
               ))}
@@ -242,14 +242,14 @@ export default function DesignBlocksShowcase() {
       {/* Row Block */}
       <SectionWrapper variant="muted" spacing="large" id="row">
         <Stack gap="8">
-          <div>
-            <h2 className="mb-2">Row Block</h2>
+          <div className="flex flex-col gap-2">
+            <h2>Row Block</h2>
             <p className="text-muted-foreground">core/row</p>
           </div>
 
           {/* Horizontal row with justify */}
-          <div>
-            <h3 className="mb-4">Row with Space Between</h3>
+          <div className="flex flex-col gap-4">
+            <h3>Row with Space Between</h3>
             <Row gap="0" justify="between" align="center" className="bg-card p-4 rounded-lg border">
               <div>
                 <h4>Title</h4>
@@ -263,8 +263,8 @@ export default function DesignBlocksShowcase() {
           </div>
 
           {/* Centered row */}
-          <div>
-            <h3 className="mb-4">Centered Row</h3>
+          <div className="flex flex-col gap-4">
+            <h3>Centered Row</h3>
             <Row gap="4" justify="center" align="center">
               <Button variant="primary">Action 1</Button>
               <Button variant="secondary">Action 2</Button>
@@ -277,26 +277,26 @@ export default function DesignBlocksShowcase() {
       {/* Columns Block */}
       <SectionWrapper variant="default" spacing="large" id="columns">
         <Stack gap="8">
-          <div>
-            <h2 className="mb-2">Columns Block</h2>
+          <div className="flex flex-col gap-2">
+            <h2>Columns Block</h2>
             <p className="text-muted-foreground">core/columns + core/column</p>
           </div>
 
           {/* Two equal columns */}
-          <div>
-            <h3 className="mb-4">Two Equal Columns</h3>
+          <div className="flex flex-col gap-4">
+            <h3>Two Equal Columns</h3>
             <Columns columns={2} gap="6">
               <Column>
-                <div className="bg-card p-6 rounded-lg border">
-                  <h4 className="mb-2">Left Column</h4>
+                <div className="bg-card p-6 rounded-lg border flex flex-col gap-2">
+                  <h4>Left Column</h4>
                   <p className="text-muted-foreground">
                     Equal width column with card styling and content.
                   </p>
                 </div>
               </Column>
               <Column>
-                <div className="bg-card p-6 rounded-lg border">
-                  <h4 className="mb-2">Right Column</h4>
+                <div className="bg-card p-6 rounded-lg border flex flex-col gap-2">
+                  <h4>Right Column</h4>
                   <p className="text-muted-foreground">
                     Equal width column with card styling and content.
                   </p>
@@ -306,24 +306,24 @@ export default function DesignBlocksShowcase() {
           </div>
 
           {/* Three columns */}
-          <div>
-            <h3 className="mb-4">Three Columns</h3>
+          <div className="flex flex-col gap-4">
+            <h3>Three Columns</h3>
             <Columns columns={3} gap="6">
               <Column>
-                <div className="bg-muted p-6 rounded-lg">
-                  <h4 className="mb-2">Column 1</h4>
+                <div className="bg-muted p-6 rounded-lg flex flex-col gap-2">
+                  <h4>Column 1</h4>
                   <p>Content...</p>
                 </div>
               </Column>
               <Column>
-                <div className="bg-muted p-6 rounded-lg">
-                  <h4 className="mb-2">Column 2</h4>
+                <div className="bg-muted p-6 rounded-lg flex flex-col gap-2">
+                  <h4>Column 2</h4>
                   <p>Content...</p>
                 </div>
               </Column>
               <Column>
-                <div className="bg-muted p-6 rounded-lg">
-                  <h4 className="mb-2">Column 3</h4>
+                <div className="bg-muted p-6 rounded-lg flex flex-col gap-2">
+                  <h4>Column 3</h4>
                   <p>Content...</p>
                 </div>
               </Column>
@@ -335,21 +335,21 @@ export default function DesignBlocksShowcase() {
       {/* Practical Patterns */}
       <SectionWrapper variant="accent" spacing="xlarge" id="patterns">
         <Stack gap="12">
-          <div>
-            <h2 className="mb-2">Practical Patterns</h2>
+          <div className="flex flex-col gap-2">
+            <h2>Practical Patterns</h2>
             <p>Real-world components built with design blocks</p>
           </div>
 
           {/* CardCollection Pattern */}
-          <div>
-            <h3 className="mb-6">CardCollection Pattern</h3>
+          <div className="flex flex-col gap-6">
+            <h3>CardCollection Pattern</h3>
             <CardCollection
               items={mockCards}
               columns={{ mobile: 1, tablet: 2, desktop: 3 }}
               gap="6"
               renderCard={(card) => (
-                <div className="bg-background p-6 rounded-lg border">
-                  <h4 className="mb-2">{card.title}</h4>
+                <div className="bg-background p-6 rounded-lg border flex flex-col gap-2">
+                  <h4>{card.title}</h4>
                   <p className="text-muted-foreground">{card.description}</p>
                 </div>
               )}
@@ -357,8 +357,8 @@ export default function DesignBlocksShowcase() {
           </div>
 
           {/* FeatureList Pattern */}
-          <div>
-            <h3 className="mb-6">FeatureList Pattern</h3>
+          <div className="flex flex-col gap-6">
+            <h3>FeatureList Pattern</h3>
             <FeatureList
               features={mockFeatures}
               gap="6"
@@ -368,8 +368,8 @@ export default function DesignBlocksShowcase() {
           </div>
 
           {/* ActionBar Pattern */}
-          <div>
-            <h3 className="mb-6">ActionBar Pattern</h3>
+          <div className="flex flex-col gap-6">
+            <h3>ActionBar Pattern</h3>
             <ActionBar
               leftContent={
                 <h4 className="font-serif">
@@ -391,8 +391,8 @@ export default function DesignBlocksShowcase() {
           </div>
 
           {/* ContentLayout Pattern */}
-          <div>
-            <h3 className="mb-6">ContentLayout Pattern (Sidebar Right)</h3>
+          <div className="flex flex-col gap-6">
+            <h3>ContentLayout Pattern (Sidebar Right)</h3>
             <ContentLayout
               layout="sidebar-right"
               main={
@@ -409,8 +409,8 @@ export default function DesignBlocksShowcase() {
                 </div>
               }
               sidebar={
-                <div className="bg-muted p-6 rounded-lg">
-                  <h4 className="mb-4">Sidebar</h4>
+                <div className="bg-muted p-6 rounded-lg flex flex-col gap-4">
+                  <h4>Sidebar</h4>
                   <Stack gap="3">
                     <div className="p-3 bg-background rounded">Widget 1</div>
                     <div className="p-3 bg-background rounded">Widget 2</div>
@@ -427,9 +427,9 @@ export default function DesignBlocksShowcase() {
       {/* Design System Compliance */}
       <SectionWrapper variant="default" spacing="large">
         <Stack gap="6" align="center">
-          <div className="text-center">
-            <h2 className="mb-4">Design System Compliance</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+          <div className="text-center flex flex-col gap-4 items-center">
+            <h2>Design System Compliance</h2>
+            <p className="text-muted-foreground max-w-2xl">
               All components use CSS variables from the design system, ensuring consistent
               styling and easy customization. Font faces (Lora for headings, Noto Sans for body),
               colors, spacing, and borders all reference design tokens.

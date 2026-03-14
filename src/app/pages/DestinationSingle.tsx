@@ -77,9 +77,9 @@ export function DestinationSingle() {
       </div>
 
       <div className="organic-section-middle">
-        <section className="py-[var(--spacing-section-md)] border-b border-border/50">
+        <section className="py-section-md border-b border-border/50">
           <Container>
-            <div className="grid lg:grid-cols-12 gap-[var(--spacing-gap-xl)]">
+            <div className="grid lg:grid-cols-12 gap-fluid-xl">
               <div className="lg:col-span-8">
                 <EditorialContent
                   title={`Portrait of ${destination.title}`}
@@ -88,7 +88,7 @@ export function DestinationSingle() {
                   className="p-0 border-0 bg-transparent"
                 />
                 
-                <div className="mt-[var(--spacing-section-sm)] pt-[var(--spacing-section-sm)] border-t border-border/50">
+                <div className="pt-[calc(var(--spacing-section-sm)*2)] border-t border-[color:var(--color-border)]/50">
                   <GallerySectionPattern 
                     images={galleryImages}
                     title="Territory Visuals"
@@ -98,22 +98,22 @@ export function DestinationSingle() {
               </div>
 
               <aside className="lg:col-span-4">
-                <div className="sticky top-32 space-y-[var(--spacing-element-lg)]">
+                <div className="sticky top-32 flex flex-col gap-element-lg">
                   {childDestinations.length > 0 && (
-                    <div className="p-[var(--spacing-element-xl)] rounded-[var(--radius-lg)] bg-card border-2 border-border shadow-xl flex flex-col gap-[var(--spacing-element-md)]">
-                      <div className="flex items-center gap-[var(--spacing-element-sm)]">
+                    <div className="p-element-xl rounded-[var(--radius-lg)] bg-card border-2 border-border shadow-xl flex flex-col gap-element-md">
+                      <div className="flex items-center gap-element-sm">
                         <Globe className="size-5 text-primary" />
-                        <span className="text-fluid-xs font-bold uppercase tracking-widest text-primary">Regional Subdivisions</span>
+                        <span className="text-[length:var(--text-xs)] font-[var(--font-weight-bold)] uppercase tracking-widest text-primary">Regional Subdivisions</span>
                       </div>
-                      <h3 className="text-fluid-2xl font-bold font-serif wp-text--hand">Explore Areas</h3>
-                      <div className="space-y-[var(--spacing-element-sm)]">
+                      <h3 className="text-fluid-2xl font-[var(--font-weight-bold)] font-[family-name:var(--font-family-lora)] wp-text--hand">Explore Areas</h3>
+                      <div className="flex flex-col gap-element-sm">
                         {childDestinations.map(child => (
                           <button
                             key={child.id}
                             onClick={() => navigateToDestination(child.slug)}
-                            className="w-full group text-left p-[var(--spacing-element-md)] rounded-[var(--radius-md)] hover:bg-primary/5 border border-transparent hover:border-primary/20 transition-all flex items-center justify-between"
+                            className="w-full group text-left p-element-md rounded-[var(--radius-md)] hover:bg-primary/5 border border-transparent hover:border-primary/20 transition-all flex items-center justify-between"
                           >
-                            <span className="font-bold text-foreground group-hover:text-primary transition-colors">{child.title}</span>
+                            <span className="font-[var(--font-weight-bold)] text-foreground group-hover:text-primary transition-colors">{child.title}</span>
                             <Compass className="size-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-all" />
                           </button>
                         ))}
@@ -121,12 +121,12 @@ export function DestinationSingle() {
                     </div>
                   )}
 
-                  <div className="p-[var(--spacing-element-xl)] rounded-[var(--radius-lg)] bg-muted/30 border-2 border-border/50 flex flex-col gap-[var(--spacing-element-sm)]">
-                    <h4 className="text-fluid-xs font-bold uppercase tracking-widest text-foreground">Must-Experience</h4>
-                    <ul className="space-y-[var(--spacing-element-sm)] m-0 p-0 list-none">
+                  <div className="p-element-xl rounded-[var(--radius-lg)] bg-muted/30 border-2 border-border/50 flex flex-col gap-element-sm">
+                    <h4 className="text-[length:var(--text-xs)] font-[var(--font-weight-bold)] uppercase tracking-widest text-foreground">Must-Experience</h4>
+                    <ul className="flex flex-col gap-element-sm m-0 p-0 list-none">
                       {destination.highlights.map((h, i) => (
-                        <li key={i} className="flex items-start gap-[var(--spacing-element-sm)] text-fluid-sm text-muted-foreground">
-                          <MapPin className="size-4 text-primary mt-0.5 shrink-0" /> {h}
+                        <li key={i} className="flex items-start gap-element-sm text-fluid-sm text-muted-foreground">
+                          <MapPin className="size-4 text-primary translate-y-0.5 shrink-0" /> {h}
                         </li>
                       ))}
                     </ul>
@@ -191,16 +191,16 @@ export function DestinationSingle() {
       </div>
 
       <div className="organic-section-bottom">
-        <section id="tours-section" className="py-[var(--spacing-section-md)] border-t border-border/50">
-          <Container className="flex flex-col gap-[var(--spacing-gap-xl)]">
-            <div className="flex flex-col md:flex-row justify-between items-end gap-[var(--spacing-gap-lg)]">
-              <div className="max-w-2xl flex flex-col gap-[var(--spacing-element-xs)]">
-                <span className="text-fluid-xs font-bold uppercase tracking-widest text-primary block">Curation</span>
-                <h2 className="text-fluid-4xl font-bold font-serif wp-text--hand">Expeditions in {destination.title}</h2>
+        <section id="tours-section" className="py-section-md border-t border-border/50">
+          <Container className="flex flex-col gap-fluid-xl">
+            <div className="flex flex-col md:flex-row justify-between items-end gap-fluid-lg">
+              <div className="max-w-2xl flex flex-col gap-element-xs">
+                <span className="text-[length:var(--text-xs)] font-[var(--font-weight-bold)] uppercase tracking-widest text-primary block">Curation</span>
+                <h2 className="text-fluid-4xl font-[var(--font-weight-bold)] font-[family-name:var(--font-family-lora)] wp-text--hand">Expeditions in {destination.title}</h2>
               </div>
               <button 
                 onClick={() => navigateTo("/tours")}
-                className="text-fluid-xs font-bold uppercase tracking-widest text-primary hover:underline underline-offset-8 transition-all"
+                className="text-[length:var(--text-xs)] font-[var(--font-weight-bold)] uppercase tracking-widest text-primary hover:underline underline-offset-8 transition-all"
               >
                 View All Tours →
               </button>

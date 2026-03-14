@@ -95,7 +95,7 @@ export function FAQPage() {
       <div className="organic-section-middle">
         <section className="wp-template-page__content">
           <Container>
-            <div className="flex flex-col gap-[var(--spacing-gap-2xl)]">
+            <div className="flex flex-col gap-fluid-2xl">
               {filteredSections.length > 0 ? (
                 filteredSections.map((sec) => (
                   <div key={sec.id} id={sec.id} className="scroll-mt-[var(--header-bar-height,100px)]">

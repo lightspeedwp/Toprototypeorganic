@@ -65,13 +65,13 @@ export function ReviewSingle() {
       <section className="py-section-md">
         <Container maxWidth="narrow">
           {/* Reviewer Meta */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 pb-8 border-b border-border/50">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-border/50">
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xl font-bold">
                 {review.author.charAt(0)}
               </div>
               <div>
-                <h2 className="text-xl mb-1">{review.author}</h2>
+                <h2 className="text-xl pb-1">{review.author}</h2>
                 <div className="flex items-center gap-3 text-sm text-muted-foreground">
                   <span className="flex items-center gap-1"><MapPin size={14} /> {review.authorLocation}</span>
                   <span className="flex items-center gap-1"><Calendar size={14} /> {new Date(review.date).toLocaleDateString()}</span>
@@ -109,11 +109,11 @@ export function ReviewSingle() {
 
           {/* Aspect Ratings */}
           {review.aspectRatings && (
-            <div className="mt-12 p-8 rounded-2xl bg-muted/30 border border-border/50">
-              <h3 className="text-lg font-semibold mb-6">Detailed Ratings</h3>
+            <div className="pt-12 p-8 rounded-2xl bg-muted/30 border border-border/50 flex flex-col gap-6">
+              <h3 className="text-lg font-semibold">Detailed Ratings</h3>
               <div className="grid gap-6">
                 {Object.entries(review.aspectRatings).map(([label, value]) => (
-                  <div key={label} className="space-y-2">
+                  <div key={label} className="flex flex-col gap-2">
                     <div className="flex justify-between text-sm">
                       <span className="capitalize font-medium">{label}</span>
                       <span className="text-primary font-bold">{value}/5</span>
@@ -132,7 +132,7 @@ export function ReviewSingle() {
 
           {/* Recommendation Badge */}
           {review.wouldRecommend && (
-            <div className="mt-12 flex items-center gap-4 p-6 rounded-xl bg-success/5 border border-success/20">
+            <div className="flex items-center gap-4 p-6 rounded-xl bg-success/5 border border-success/20">
               <div className="p-3 rounded-full bg-success/10 text-success">
                 <ThumbsUp size={24} />
               </div>

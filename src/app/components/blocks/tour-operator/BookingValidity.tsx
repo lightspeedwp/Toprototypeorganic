@@ -88,23 +88,23 @@ export function BookingValidity({
 
   return (
     <div
-      className={`flex flex-col gap-2 sm:flex-row sm:gap-6 ${className}`}
+      className={`flex flex-col gap-fluid-xs sm:flex-row sm:gap-fluid-md ${className}`}
       role="group"
       aria-label="Booking validity period"
     >
       {/* Valid From */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-fluid-xs">
         {showIcon && (
           <Calendar className="w-4 h-4 text-muted-foreground flex-shrink-0" aria-hidden="true" />
         )}
         <div>
           <span
-            className="text-muted-foreground font-sans"
+            className="text-muted-foreground font-[family-name:var(--font-family-noto-sans)]"
           >
             Valid from:{' '}
           </span>
           <span
-            className="font-sans font-semibold"
+            className="font-[family-name:var(--font-family-noto-sans)] font-[var(--font-weight-semibold)]"
           >
             {formatDate(startDate)}
           </span>
@@ -112,18 +112,18 @@ export function BookingValidity({
       </div>
 
       {/* Valid Until */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-fluid-xs">
         {showIcon && (
           <Calendar className="w-4 h-4 text-muted-foreground flex-shrink-0" aria-hidden="true" />
         )}
         <div>
           <span
-            className="text-muted-foreground font-sans"
+            className="text-muted-foreground font-[family-name:var(--font-family-noto-sans)]"
           >
             Valid until:{' '}
           </span>
           <span
-            className="font-sans font-semibold"
+            className="font-[family-name:var(--font-family-noto-sans)] font-[var(--font-weight-semibold)]"
           >
             {formatDate(endDate)}
           </span>

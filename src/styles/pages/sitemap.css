@@ -1,34 +1,247 @@
 /**
  * Sitemap Page - WordPress BEM CSS
  * 
- * Custom grid layouts for SitemapPage converted from Tailwind responsive classes
- * to WordPress BEM naming convention with CSS variable-based styling.
+ * Comprehensive sitemap layout with grouped sections, 
+ * responsive grid, and design-token styling.
  * 
- * All layouts use CSS Grid with mobile-first responsive breakpoints:
- * - Mobile: 1 column
- * - Tablet (md): 2 columns with custom gap
- * 
- * @since 2026-02-27
+ * @since 2026-03-12
  */
 
 /* ==========================================================================
-   Sitemap Grid - 1/2 column responsive grid with custom gaps
+   Main Grid - responsive column layout
    ========================================================================== */
 
-/**
- * Sitemap sections grid
- * Mobile: 1 column, Tablet+: 2 columns
- * Used for: Site sections (Tours, Destinations, Resources, etc.)
- * Custom gaps: 3rem horizontal, 4rem vertical for better content separation
- */
-.wp-pattern-sitemap__grid {
+.wp-sitemap__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-16, 4rem) var(--spacing-12, 3rem);
+  gap: var(--spacing-gap-xl);
 }
 
 @media (min-width: 768px) {
-  .wp-pattern-sitemap__grid {
+  .wp-sitemap__grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+@media (min-width: 1024px) {
+  .wp-sitemap__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ==========================================================================
+   Section Block
+   ========================================================================== */
+
+.wp-sitemap__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-md);
+}
+
+.wp-sitemap__section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-gap-sm);
+  padding-bottom: var(--spacing-element-sm);
+  border-bottom: 2px solid var(--border);
+}
+
+.wp-sitemap__section-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-md);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  flex-shrink: 0;
+}
+
+.wp-sitemap__section-icon svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.wp-sitemap__section-title {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Link Lists
+   ========================================================================== */
+
+.wp-sitemap__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-element-2xs);
+  list-style: none;
+  padding: 0;
+}
+
+.wp-sitemap__link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-element-2xs);
+  color: var(--foreground);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  padding: var(--spacing-element-2xs) 0;
+}
+
+.wp-sitemap__link:hover {
+  color: var(--primary);
+}
+
+.wp-sitemap__link-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.wp-sitemap__link:hover .wp-sitemap__link-icon {
+  color: var(--primary);
+  transform: translateX(2px);
+}
+
+/* Nested child links */
+.wp-sitemap__children {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  padding: 0 0 0 var(--spacing-element-md);
+  border-left: 2px solid var(--border);
+}
+
+.wp-sitemap__child-link {
+  display: block;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  padding: var(--spacing-element-3xs) 0;
+  transition: color 0.2s ease;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+}
+
+.wp-sitemap__child-link:hover {
+  color: var(--primary);
+}
+
+/* Grandchildren — regions within countries */
+.wp-sitemap__grandchildren {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  padding: 0 0 0 var(--spacing-element-sm);
+  border-left: 1px solid var(--border);
+}
+
+.wp-sitemap__grandchild-link {
+  display: block;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  padding: var(--spacing-element-3xs) 0;
+  transition: color 0.2s ease;
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+}
+
+.wp-sitemap__grandchild-link:hover {
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   Group Header (e.g., "Tours" parent with children below)
+   ========================================================================== */
+
+.wp-sitemap__group-label {
+  color: var(--muted-foreground);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-top: var(--spacing-element-xs);
+}
+
+/* ==========================================================================
+   Stats Bar (content type counts)
+   ========================================================================== */
+
+.wp-sitemap__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-gap-md);
+  padding: var(--spacing-element-md) var(--spacing-element-lg);
+  background-color: var(--muted);
+  border-radius: var(--radius-lg);
+}
+
+.wp-sitemap__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-element-3xs);
+}
+
+.wp-sitemap__stat-count {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  line-height: 1;
+}
+
+.wp-sitemap__stat-label {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   Discovery / CTA Section
+   ========================================================================== */
+
+.wp-sitemap__discovery {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-gap-sm);
+}
+
+.wp-sitemap__discovery-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.wp-sitemap__discovery-icon svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.wp-sitemap__discovery-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-element-2xs);
+  color: var(--primary);
+  text-decoration: none;
+  font-family: var(--font-family-noto-sans);
+}
+
+.wp-sitemap__discovery-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.5em;
 }

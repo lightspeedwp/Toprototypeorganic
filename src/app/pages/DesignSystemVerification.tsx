@@ -53,9 +53,9 @@ export default function DesignSystemVerification() {
         </div>
         
         {/* Page Header */}
-        <header className="mb-12 text-center py-section-sm">
-          <h1 className="mb-4">Design System Verification</h1>
-          <p className="text-muted-foreground max-w-3xl mx-auto mb-8">
+        <header className="pb-12 text-center py-section-sm flex flex-col items-center gap-4">
+          <h1>Design System Verification</h1>
+          <p className="text-muted-foreground max-w-3xl">
             Comprehensive showcase of all CSS variables from your team's design system.
             All values are sourced from <code className="text-sm bg-muted px-2 py-1 rounded">/src/styles/global.css</code> and theme files.
           </p>
@@ -81,12 +81,12 @@ export default function DesignSystemVerification() {
         </header>
 
         {/* Design System Compliance Badge */}
-        <section className="mb-16">
-          <div className="p-8 rounded-lg bg-card border-2 border-primary">
-            <div className="flex items-center gap-3 mb-6">
+        <section className="pb-16">
+          <div className="p-8 rounded-lg bg-card border-2 border-primary flex flex-col gap-6">
+            <div className="flex items-center gap-3">
               <Check className="h-8 w-8 text-primary shrink-0" />
-              <div>
-                <h2 className="mb-1">100% Design System Compliant</h2>
+              <div className="flex flex-col gap-1">
+                <h2>100% Design System Compliant</h2>
                 <p className="text-muted-foreground">
                   All UI components use CSS variables exclusively. No hardcoded values.
                 </p>
@@ -94,29 +94,29 @@ export default function DesignSystemVerification() {
             </div>
             
             <div className="wp-block-grid grid--cols-1 md:grid-cols-2 lg:grid-cols-4">
-              <div className="p-4 rounded bg-muted">
-                <h3 className="mb-2">Typography</h3>
+              <div className="p-4 rounded bg-muted flex flex-col gap-2">
+                <h3>Typography</h3>
                 <p className="text-sm text-muted-foreground">
                   3 font faces only:<br />
                   Lora, Noto Sans, Courier New
                 </p>
               </div>
-              <div className="p-4 rounded bg-muted">
-                <h3 className="mb-2">Colors</h3>
+              <div className="p-4 rounded bg-muted flex flex-col gap-2">
+                <h3>Colors</h3>
                 <p className="text-sm text-muted-foreground">
                   Semantic tokens<br />
                   Auto dark mode
                 </p>
               </div>
-              <div className="p-4 rounded bg-muted">
-                <h3 className="mb-2">Spacing</h3>
+              <div className="p-4 rounded bg-muted flex flex-col gap-2">
+                <h3>Spacing</h3>
                 <p className="text-sm text-muted-foreground">
                   Fluid responsive<br />
                   via clamp()
                 </p>
               </div>
-              <div className="p-4 rounded bg-muted">
-                <h3 className="mb-2">Customizable</h3>
+              <div className="p-4 rounded bg-muted flex flex-col gap-2">
+                <h3>Customizable</h3>
                 <p className="text-sm text-muted-foreground">
                   Edit 3 CSS files<br />
                   No React changes
@@ -127,11 +127,11 @@ export default function DesignSystemVerification() {
         </section>
 
         {/* Color Palette */}
-        <section className="mb-16">
-          <div className="mb-8 flex items-center gap-3">
+        <section className="pb-16 flex flex-col gap-8">
+          <div className="flex items-center gap-3">
             <Palette className="h-8 w-8 text-primary" />
-            <div>
-              <h2 className="mb-1">Color Palette</h2>
+            <div className="flex flex-col gap-1">
+              <h2>Color Palette</h2>
               <p className="text-muted-foreground">
                 Semantic color tokens that automatically adapt to light/dark mode
               </p>
@@ -140,9 +140,9 @@ export default function DesignSystemVerification() {
 
           <div className="wp-block-grid grid--cols-1 md:grid-cols-2 lg:grid-cols-3">
             {/* Background Colors */}
-            <div className="p-6 rounded-lg bg-card border border-border">
-              <h3 className="mb-4">Background Colors</h3>
-              <div className="space-y-3">
+            <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+              <h3>Background Colors</h3>
+              <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded bg-background border border-border"></div>
                   <div>
@@ -168,9 +168,9 @@ export default function DesignSystemVerification() {
             </div>
 
             {/* Brand Colors */}
-            <div className="p-6 rounded-lg bg-card border border-border">
-              <h3 className="mb-4">Brand Colors</h3>
-              <div className="space-y-3">
+            <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+              <h3>Brand Colors</h3>
+              <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded bg-primary border border-border"></div>
                   <div>
@@ -196,9 +196,9 @@ export default function DesignSystemVerification() {
             </div>
 
             {/* Semantic Colors */}
-            <div className="p-6 rounded-lg bg-card border border-border">
-              <h3 className="mb-4">Semantic Colors</h3>
-              <div className="space-y-3">
+            <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+              <h3>Semantic Colors</h3>
+              <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded bg-destructive border border-border"></div>
                   <div>
@@ -226,22 +226,22 @@ export default function DesignSystemVerification() {
         </section>
 
         {/* Typography Scale */}
-        <section className="mb-16">
-          <div className="mb-8 flex items-center gap-3">
+        <section className="pb-16 flex flex-col gap-8">
+          <div className="flex items-center gap-3">
             <Type className="h-8 w-8 text-primary" />
-            <div>
-              <h2 className="mb-1">Typography Scale</h2>
+            <div className="flex flex-col gap-1">
+              <h2>Typography Scale</h2>
               <p className="text-muted-foreground">
                 Three font families with fluid responsive sizing
               </p>
             </div>
           </div>
 
-          <div className="space-y-8">
+          <div className="flex flex-col gap-8">
             {/* Headings (Lora) */}
-            <div className="p-6 rounded-lg bg-card border border-border">
-              <h3 className="mb-4">Headings - Lora (Serif)</h3>
-              <div className="space-y-4">
+            <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+              <h3>Headings - Lora (Serif)</h3>
+              <div className="flex flex-col gap-4">
                 <div>
                   <h1>Heading 1 - The quick brown fox</h1>
                   <code className="text-xs text-muted-foreground">
@@ -282,9 +282,9 @@ export default function DesignSystemVerification() {
             </div>
 
             {/* Body Text (Noto Sans) */}
-            <div className="p-6 rounded-lg bg-card border border-border">
-              <h3 className="mb-4">Body Text - Noto Sans (Sans-Serif)</h3>
-              <div className="space-y-4">
+            <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+              <h3>Body Text - Noto Sans (Sans-Serif)</h3>
+              <div className="flex flex-col gap-4">
                 <div>
                   <p className="font-sans text-lg">
                     Large body text - The quick brown fox jumps over the lazy dog
@@ -313,14 +313,14 @@ export default function DesignSystemVerification() {
             </div>
 
             {/* Code (Courier New) */}
-            <div className="p-6 rounded-lg bg-card border border-border">
-              <h3 className="mb-4">Code - Courier New (Monospace)</h3>
+            <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+              <h3>Code - Courier New (Monospace)</h3>
               <div>
                 <code className="font-mono block p-4 bg-muted rounded">
                   const greeting = "Hello, World!";<br />
                   console.log(greeting);
                 </code>
-                <code className="text-xs text-muted-foreground mt-2 block">
+                <code className="text-xs text-muted-foreground pt-2 block">
                   font-mono | var(--font-family-mono)
                 </code>
               </div>
@@ -329,22 +329,22 @@ export default function DesignSystemVerification() {
         </section>
 
         {/* Spacing Scale */}
-        <section className="mb-16">
-          <div className="mb-8 flex items-center gap-3">
+        <section className="pb-16 flex flex-col gap-8">
+          <div className="flex items-center gap-3">
             <Ruler className="h-8 w-8 text-primary" />
-            <div>
-              <h2 className="mb-1">Spacing Scale</h2>
+            <div className="flex flex-col gap-1">
+              <h2>Spacing Scale</h2>
               <p className="text-muted-foreground">
                 Fluid responsive spacing tokens using clamp()
               </p>
             </div>
           </div>
 
-          <div className="p-6 rounded-lg bg-card border border-border">
-            <h3 className="mb-6">Section Spacing (Vertical)</h3>
-            <div className="space-y-6">
+          <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-6">
+            <h3>Section Spacing (Vertical)</h3>
+            <div className="flex flex-col gap-6">
               <div>
-                <div className="flex items-center gap-4 mb-2">
+                <div className="flex items-center gap-4 pb-2">
                   <div className="h-16 bg-primary rounded w-2"></div>
                   <div>
                     <p className="font-sans font-medium">Small Section</p>
@@ -355,7 +355,7 @@ export default function DesignSystemVerification() {
                 </div>
               </div>
               <div>
-                <div className="flex items-center gap-4 mb-2">
+                <div className="flex items-center gap-4 pb-2">
                   <div className="h-24 bg-primary rounded w-2"></div>
                   <div>
                     <p className="font-sans font-medium">Medium Section</p>
@@ -366,7 +366,7 @@ export default function DesignSystemVerification() {
                 </div>
               </div>
               <div>
-                <div className="flex items-center gap-4 mb-2">
+                <div className="flex items-center gap-4 pb-2">
                   <div className="h-32 bg-primary rounded w-2"></div>
                   <div>
                     <p className="font-sans font-medium">Large Section</p>
@@ -381,11 +381,11 @@ export default function DesignSystemVerification() {
         </section>
 
         {/* Border Radius */}
-        <section className="mb-16">
-          <div className="mb-8 flex items-center gap-3">
+        <section className="pb-16 flex flex-col gap-8">
+          <div className="flex items-center gap-3">
             <Square className="h-8 w-8 text-primary" />
-            <div>
-              <h2 className="mb-1">Border Radius & Shadows</h2>
+            <div className="flex flex-col gap-1">
+              <h2>Border Radius & Shadows</h2>
               <p className="text-muted-foreground">
                 Consistent corner rounding and elevation
               </p>
@@ -394,9 +394,9 @@ export default function DesignSystemVerification() {
 
           <div className="wp-block-grid grid--cols-1 md:grid-cols-2">
             {/* Border Radius */}
-            <div className="p-6 rounded-lg bg-card border border-border">
-              <h3 className="mb-4">Border Radius</h3>
-              <div className="space-y-4">
+            <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+              <h3>Border Radius</h3>
+              <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 bg-primary rounded-sm"></div>
                   <div>
@@ -429,23 +429,23 @@ export default function DesignSystemVerification() {
             </div>
 
             {/* Shadows */}
-            <div className="p-6 rounded-lg bg-card border border-border">
-              <h3 className="mb-4">Shadows (Elevation)</h3>
-              <div className="space-y-4">
-                <div className="p-4 bg-background rounded shadow-sm">
-                  <p className="font-sans font-medium mb-1">Small Shadow</p>
+            <div className="p-6 rounded-lg bg-card border border-border flex flex-col gap-4">
+              <h3>Shadows (Elevation)</h3>
+              <div className="flex flex-col gap-4">
+                <div className="p-4 bg-background rounded shadow-sm flex flex-col gap-1">
+                  <p className="font-sans font-medium">Small Shadow</p>
                   <code className="text-xs text-muted-foreground">
                     shadow-sm | var(--elevation-sm)
                   </code>
                 </div>
-                <div className="p-4 bg-background rounded shadow">
-                  <p className="font-sans font-medium mb-1">Default Shadow</p>
+                <div className="p-4 bg-background rounded shadow flex flex-col gap-1">
+                  <p className="font-sans font-medium">Default Shadow</p>
                   <code className="text-xs text-muted-foreground">
                     shadow | var(--elevation-md)
                   </code>
                 </div>
-                <div className="p-4 bg-background rounded shadow-lg">
-                  <p className="font-sans font-medium mb-1">Large Shadow</p>
+                <div className="p-4 bg-background rounded shadow-lg flex flex-col gap-1">
+                  <p className="font-sans font-medium">Large Shadow</p>
                   <code className="text-xs text-muted-foreground">
                     shadow-lg | var(--elevation-lg)
                   </code>
@@ -456,31 +456,31 @@ export default function DesignSystemVerification() {
         </section>
 
         {/* Customization Guide */}
-        <section className="mb-16">
-          <div className="p-8 rounded-lg bg-card border border-border">
-            <h2 className="mb-4">How to Customize</h2>
-            <p className="text-muted-foreground mb-6">
+        <section className="pb-16">
+          <div className="p-8 rounded-lg bg-card border border-border flex flex-col gap-4">
+            <h2>How to Customize</h2>
+            <p className="text-muted-foreground">
               Users can customize the entire site by editing just 3 CSS files. No React changes needed!
             </p>
             
             <div className="wp-block-grid grid--cols-1 lg:grid-cols-3">
-              <div className="p-4 rounded bg-muted">
-                <h3 className="mb-2">Light Mode</h3>
-                <code className="text-xs block mb-2">/src/styles/theme-light.css</code>
+              <div className="p-4 rounded bg-muted flex flex-col gap-2">
+                <h3>Light Mode</h3>
+                <code className="text-xs block">/src/styles/theme-light.css</code>
                 <p className="text-sm text-muted-foreground">
                   Edit color palette for light mode
                 </p>
               </div>
-              <div className="p-4 rounded bg-muted">
-                <h3 className="mb-2">Dark Mode</h3>
-                <code className="text-xs block mb-2">/src/styles/theme-dark.css</code>
+              <div className="p-4 rounded bg-muted flex flex-col gap-2">
+                <h3>Dark Mode</h3>
+                <code className="text-xs block">/src/styles/theme-dark.css</code>
                 <p className="text-sm text-muted-foreground">
                   Edit color palette for dark mode
                 </p>
               </div>
-              <div className="p-4 rounded bg-muted">
-                <h3 className="mb-2">Typography & Spacing</h3>
-                <code className="text-xs block mb-2">/src/styles/theme.css</code>
+              <div className="p-4 rounded bg-muted flex flex-col gap-2">
+                <h3>Typography & Spacing</h3>
+                <code className="text-xs block">/src/styles/theme.css</code>
                 <p className="text-sm text-muted-foreground">
                   Edit fonts, sizes, spacing tokens
                 </p>

@@ -178,12 +178,12 @@ export default function WishlistPage({ onNavigate }: WishlistPageProps) {
             ================================================================ */}
         <section className="py-section-sm md:py-section-md bg-muted">
           <Container>
-            <div className="max-w-4xl">
-              <div className="flex items-center gap-3 mb-4">
+            <div className="max-w-4xl flex flex-col gap-4">
+              <div className="flex items-center gap-3">
                 <Heart className="w-8 h-8 text-primary fill-current" />
                 <h1>My Wishlist</h1>
               </div>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-muted-foreground">
                 Save your favorite tours and get notified when prices drop
               </p>
 
@@ -217,11 +217,11 @@ export default function WishlistPage({ onNavigate }: WishlistPageProps) {
           MAIN CONTENT - Wishlist items
           ================================================================ */}
       <section className="py-section-sm md:py-section-md bg-background">
-        <Container>
+        <Container className="flex flex-col items-center">
           {hasItems ? (
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-6xl w-full">
               {/* Toolbar */}
-              <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+              <div className="flex flex-wrap items-center justify-between gap-4 pb-8">
                 {/* Sort */}
                 <div className="flex items-center gap-3">
                   <label htmlFor="sort" className="text-sm text-muted-foreground">
@@ -288,7 +288,7 @@ export default function WishlistPage({ onNavigate }: WishlistPageProps) {
 
               {/* Compare Bar */}
               {showCompare && selectedForCompare.size > 0 && (
-                <div className="mb-6 bg-primary/10 border border-primary/20 rounded-lg p-4">
+                <div className="pb-6 bg-primary/10 border border-primary/20 rounded-lg p-4">
                   <div className="flex items-center justify-between">
                     <p className="text-sm font-medium">
                       {selectedForCompare.size} tour{selectedForCompare.size !== 1 ? "s" : ""} selected for comparison
@@ -373,8 +373,8 @@ export default function WishlistPage({ onNavigate }: WishlistPageProps) {
                       </div>
 
                       {/* Content */}
-                      <div className="p-6">
-                        <h3 className="mb-3">
+                      <div className="p-6 flex flex-col gap-3">
+                        <h3>
                           <button
                             onClick={() => nav("/tours/" + item.tour.slug)}
                             className="hover:text-primary transition-colors"
@@ -384,7 +384,7 @@ export default function WishlistPage({ onNavigate }: WishlistPageProps) {
                         </h3>
 
                         {/* Details */}
-                        <div className="grid gap-2 mb-4">
+                        <div className="grid gap-2">
                           <div className="flex items-center gap-2 text-sm text-muted-foreground">
                             <MapPin className="w-4 h-4" />
                             <span>{item.tour.destination}</span>
@@ -400,10 +400,10 @@ export default function WishlistPage({ onNavigate }: WishlistPageProps) {
                         </div>
 
                         {/* Price */}
-                        <div className="mb-4 pt-4 border-t border-border">
+                        <div className="pt-4 border-t border-border flex flex-col gap-4">
                           {hasPriceDrop ? (
                             <div>
-                              <div className="flex items-baseline gap-2 mb-1">
+                              <div className="flex items-baseline gap-2 pb-1">
                                 <span className="text-sm text-muted-foreground line-through">
                                   ${item.priceAtSave.toLocaleString()}
                                 </span>
@@ -447,12 +447,12 @@ export default function WishlistPage({ onNavigate }: WishlistPageProps) {
             </div>
           ) : (
             /* Empty State */
-            <div className="max-w-2xl mx-auto text-center py-section-sm">
-              <div className="w-24 h-24 rounded-full bg-muted flex items-center justify-center mx-auto mb-6">
+            <div className="max-w-2xl text-center py-section-sm flex flex-col items-center gap-4">
+              <div className="w-24 h-24 rounded-full bg-muted flex items-center justify-center">
                 <Heart className="w-12 h-12 text-muted-foreground" />
               </div>
-              <h2 className="mb-4">Your Wishlist is Empty</h2>
-              <p className="text-lg text-muted-foreground mb-8">
+              <h2>Your Wishlist is Empty</h2>
+              <p className="text-lg text-muted-foreground">
                 Start saving tours you're interested in. We'll notify you when prices drop!
               </p>
               <button
@@ -477,10 +477,10 @@ export default function WishlistPage({ onNavigate }: WishlistPageProps) {
           ================================================================ */}
       {hasItems && (
         <section className="py-section-sm md:py-section-md bg-muted">
-          <Container>
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-8">
-                <h2 className="mb-4">Wishlist Benefits</h2>
+          <Container className="flex flex-col items-center">
+            <div className="max-w-4xl w-full flex flex-col gap-8">
+              <div className="text-center flex flex-col gap-4">
+                <h2>Wishlist Benefits</h2>
                 <p className="text-lg text-muted-foreground">
                   Make the most of your saved tours
                 </p>
@@ -509,8 +509,8 @@ export default function WishlistPage({ onNavigate }: WishlistPageProps) {
                       key={index}
                       className="bg-card border border-border rounded-lg p-6 text-center"
                     >
-                      <Icon className="w-10 h-10 text-primary mx-auto mb-3" />
-                      <h4 className="mb-2">{benefit.title}</h4>
+                      <Icon className="w-10 h-10 text-primary pb-3" />
+                      <h4 className="pb-2">{benefit.title}</h4>
                       <p className="text-sm text-muted-foreground">{benefit.description}</p>
                     </div>
                   );

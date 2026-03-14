@@ -230,7 +230,7 @@ export function DatePicker({
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="flex w-full items-center gap-2 rounded-md border border-border bg-background px-4 py-2 text-left text-foreground transition-colors hover:border-muted-foreground focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+          className="flex w-full items-center gap-fluid-sm rounded-[var(--radius-md)] border border-border bg-background px-element-md py-element-sm text-left text-foreground transition-colors hover:border-muted-foreground focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
         >
           <Calendar size={20} className="text-muted-foreground" />
           <span className={cn(!selectedDate && "text-muted-foreground")}>
@@ -260,12 +260,12 @@ export function DatePicker({
           {/* Calendar */}
           <div
             className={cn(
-              "z-50 rounded-lg border border-border bg-card p-4 shadow-lg",
-              showInput && "absolute left-0 right-0 top-full mt-2"
+              "z-50 rounded-[var(--radius-lg)] border border-border bg-card p-element-md shadow-lg flex flex-col gap-element-md",
+              showInput && "absolute left-0 right-0 top-full translate-y-2"
             )}
           >
             {/* Month Navigation */}
-            <div className="mb-4 flex items-center justify-between">
+            <div className="flex items-center justify-between">
               <button
                 type="button"
                 onClick={handlePrevMonth}
@@ -293,7 +293,7 @@ export function DatePicker({
             </div>
 
             {/* Week Days */}
-            <div className="mb-2 grid grid-cols-7 gap-1">
+            <div className="pb-element-sm grid grid-cols-7 gap-fluid-xs">
               {weekDays.map((day) => (
                 <div
                   key={day}
@@ -305,7 +305,7 @@ export function DatePicker({
             </div>
 
             {/* Calendar Days */}
-            <div className="grid grid-cols-7 gap-1">
+            <div className="grid grid-cols-7 gap-fluid-xs">
               {calendarDays.map((date, index) => {
                 if (!date) {
                   return <div key={`empty-${index}`} className="h-8" />;
@@ -323,12 +323,12 @@ export function DatePicker({
                     onClick={() => handleDateClick(date)}
                     disabled={disabled}
                     className={cn(
-                      "flex h-8 items-center justify-center rounded-md text-sm transition-colors",
+                      "flex h-8 items-center justify-center rounded-[var(--radius-md)] text-[length:var(--text-sm)] transition-colors",
                       disabled &&
                         "cursor-not-allowed text-muted-foreground/50 line-through",
                       !disabled && !selected && "text-foreground hover:bg-muted",
                       selected &&
-                        "bg-primary font-medium text-primary-foreground hover:bg-primary/90",
+                        "bg-primary font-[var(--font-weight-medium)] text-primary-foreground hover:bg-primary/90",
                       highlighted && !selected && "bg-accent text-accent-foreground",
                       today && !selected && "border border-primary"
                     )}
@@ -344,15 +344,15 @@ export function DatePicker({
 
             {/* Legend (Optional) */}
             {(highlightedDates.length > 0 || minDate || maxDate) && (
-              <div className="mt-4 space-y-2 border-t border-border pt-4">
+              <div className="flex flex-col gap-element-xs border-t border-border pt-element-md">
                 {highlightedDates.length > 0 && (
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <div className="h-4 w-4 rounded bg-accent" />
+                  <div className="flex items-center gap-fluid-sm text-[length:var(--text-xs)] text-muted-foreground">
+                    <div className="h-4 w-4 rounded-[var(--radius-sm)] bg-accent" />
                     <span>Available dates</span>
                   </div>
                 )}
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <div className="h-4 w-4 rounded border border-primary" />
+                <div className="flex items-center gap-fluid-sm text-[length:var(--text-xs)] text-muted-foreground">
+                  <div className="h-4 w-4 rounded-[var(--radius-sm)] border border-primary" />
                   <span>Today</span>
                 </div>
               </div>
@@ -375,11 +375,15 @@ export function DateRangePicker({
   endDate,
   onChange,
   className,
+  startLabel = "Start Date",
+  endLabel = "End Date",
 }: {
   startDate?: string;
   endDate?: string;
   onChange?: (start: string, end: string) => void;
   className?: string;
+  startLabel?: string;
+  endLabel?: string;
 }) {
   const [start, setStart] = useState<string | undefined>(startDate);
   const [end, setEnd] = useState<string | undefined>(endDate);
@@ -399,10 +403,10 @@ export function DateRangePicker({
   };
 
   return (
-    <div className={cn("flex gap-4", className)}>
+    <div className={cn("flex gap-fluid-md", className)}>
       <div className="flex-1">
-        <label className="mb-2 block text-sm font-medium text-foreground">
-          Start Date
+        <label className="pb-element-xs block text-[length:var(--text-sm)] font-[var(--font-weight-medium)] text-foreground">
+          {startLabel}
         </label>
         <DatePicker
           value={start}
@@ -412,8 +416,8 @@ export function DateRangePicker({
         />
       </div>
       <div className="flex-1">
-        <label className="mb-2 block text-sm font-medium text-foreground">
-          End Date
+        <label className="pb-element-xs block text-[length:var(--text-sm)] font-[var(--font-weight-medium)] text-foreground">
+          {endLabel}
         </label>
         <DatePicker
           value={end}

@@ -104,8 +104,8 @@ export function DestinationCountryPage() {
       {relatedTours.length > 0 && (
         <section className="py-section-md bg-muted/20 border-y border-border/50">
           <Container>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-serif font-semibold mb-4">Popular Tours in {destination.title}</h2>
+            <div className="text-center pb-12">
+              <h2 className="text-[length:var(--text-3xl)] font-[family-name:var(--font-family-lora)] font-[var(--font-weight-semibold)] pb-4">Popular Tours in {destination.title}</h2>
               <p className="text-muted-foreground">Expertly crafted journeys through this magnificent country.</p>
             </div>
             <CardGrid columns={3}>
@@ -113,7 +113,7 @@ export function DestinationCountryPage() {
                 <TourCard key={tour.id} tour={tour} onClick={() => navigateToTour(tour.slug)} />
               ))}
             </CardGrid>
-            <div className="mt-12 text-center">
+            <div className="pt-12 text-center">
               <button 
                 onClick={() => navigateTo("/tours")}
                 className="inline-flex items-center px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all"
@@ -129,14 +129,14 @@ export function DestinationCountryPage() {
       {destination.countryInfo && (
         <section className="py-section-md">
           <Container>
-            <div className="mb-12">
-              <h2 className="text-3xl font-serif font-semibold mb-4">Traveler Essentials</h2>
+            <div className="pb-12">
+              <h2 className="text-[length:var(--text-3xl)] font-[family-name:var(--font-family-lora)] font-[var(--font-weight-semibold)] pb-4">Traveler Essentials</h2>
               <p className="text-muted-foreground">Everything you need to know for a seamless journey.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {Object.entries(destination.countryInfo).map(([key, value]) => (
                 <div key={key} className="p-6 rounded-xl bg-card border border-border/50 shadow-sm hover:border-primary/50 transition-colors">
-                  <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center gap-3 pb-4">
                     <div className="p-2 rounded-lg bg-primary/5 text-primary">
                       {(() => {
                         const Icon = COUNTRY_INFO_ICONS[key] || FileText;
@@ -157,8 +157,8 @@ export function DestinationCountryPage() {
       {consultant && (
         <section className="py-section-md bg-muted/30 border-y border-border/50">
           <Container maxWidth="narrow">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl font-serif font-semibold mb-2">Speak to our {destination.title} Specialist</h2>
+            <div className="text-center pb-12">
+              <h2 className="text-[length:var(--text-2xl)] font-[family-name:var(--font-family-lora)] font-[var(--font-weight-semibold)] pb-2">Speak to our {destination.title} Specialist</h2>
               <p className="text-muted-foreground">Get personalized advice from someone who has explored every corner of this country.</p>
             </div>
             <TeamCard member={consultant} onClick={() => navigateToTeamMember(consultant.slug)} />
@@ -170,7 +170,7 @@ export function DestinationCountryPage() {
       {relatedReviews.length > 0 && (
         <section className="py-section-md">
           <Container>
-            <h2 className="text-3xl font-serif font-semibold mb-8 text-center">Traveler Stories from {destination.title}</h2>
+            <h2 className="text-[length:var(--text-3xl)] font-[family-name:var(--font-family-lora)] font-[var(--font-weight-semibold)] pb-8 text-center">Traveler Stories from {destination.title}</h2>
             <CardGrid columns={3}>
               {relatedReviews.map((review) => (
                 <ReviewCard key={review.id} review={review} />

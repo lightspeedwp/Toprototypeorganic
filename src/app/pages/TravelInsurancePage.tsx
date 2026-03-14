@@ -61,31 +61,37 @@ const WHY_INSURANCE_BENEFITS = [
  */
 const COVERAGE_HIGHLIGHTS = [
   {
+    id: "coverage-medical",
     icon: <Heart className="h-6 w-6" />,
     title: "Medical Emergencies",
     description: "Coverage for medical treatment, hospitalization, and emergency care while traveling"
   },
   {
+    id: "coverage-evacuation",
     icon: <Plane className="h-6 w-6" />,
     title: "Medical Evacuation",
     description: "Emergency medical evacuation to nearest adequate facility or home country"
   },
   {
+    id: "coverage-cancellation",
     icon: <CircleX className="h-6 w-6" />,
     title: "Trip Cancellation",
     description: "Reimbursement if you need to cancel your trip for covered reasons"
   },
   {
+    id: "coverage-interruption",
     icon: <AlertTriangle className="h-6 w-6" />,
     title: "Trip Interruption",
     description: "Coverage if you need to cut your trip short due to emergency"
   },
   {
+    id: "coverage-baggage",
     icon: <FileText className="h-6 w-6" />,
     title: "Baggage Loss/Delay",
     description: "Compensation for lost, stolen, or delayed luggage and personal items"
   },
   {
+    id: "coverage-adventure",
     icon: <MapPin className="h-6 w-6" />,
     title: "Adventure Activities",
     description: "Coverage for safari activities, wildlife viewing, and outdoor adventures"
@@ -95,7 +101,8 @@ const COVERAGE_HIGHLIGHTS = [
 /**
  * Real coverage examples (scenarios) — data-driven from insurance.ts
  */
-const SCENARIO_HIGHLIGHTS = INSURANCE_SCENARIOS.map(scenario => ({
+const SCENARIO_HIGHLIGHTS = INSURANCE_SCENARIOS.map((scenario, index) => ({
+  id: scenario.id || `scenario-${index}`,
   icon: scenario.covered ? (
     <CircleCheck className="h-6 w-6" />
   ) : (
@@ -163,21 +170,21 @@ const FAQ_REQUIREMENTS = INSURANCE_REQUIREMENTS.map(req => ({
 function InsuranceProviderCard({ provider }: { provider: typeof INSURANCE_PROVIDERS[0] }) {
   return (
     <article 
-      className={`bg-card border rounded-lg p-6 relative flex flex-col gap-[var(--spacing-gap-md)] ${
+      className={`bg-card border rounded-[var(--radius-lg)] p-element-xl relative flex flex-col gap-fluid-md ${
         provider.recommended ? 'ring-2 ring-primary' : ''
       }`}
     >
       {provider.recommended && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs">
+        <div className="absolute -top-[var(--spacing-element-sm)] left-1/2 -translate-x-1/2">
+          <span className="bg-primary text-primary-foreground px-element-sm py-element-xs rounded-[var(--radius-full)] text-[length:var(--text-xs)] font-[family-name:var(--font-family-noto-sans)]">
             Recommended
           </span>
         </div>
       )}
 
       <div className="flex items-start justify-between">
-        <div className="flex items-center gap-3">
-          <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+        <div className="flex items-center gap-fluid-md">
+          <div className="h-[48px] w-[48px] rounded-[var(--radius-full)] bg-primary/10 flex items-center justify-center text-primary">
             {provider.logo}
           </div>
           <div>
@@ -200,12 +207,12 @@ function InsuranceProviderCard({ provider }: { provider: typeof INSURANCE_PROVID
 
       <p className="m-0">
         From {provider.startingPrice}
-        <span className="text-sm text-muted-foreground"> / week</span>
+        <span className="text-[length:var(--text-sm)] text-muted-foreground font-[family-name:var(--font-family-noto-sans)]"> / week</span>
       </p>
 
-      <ul className="space-y-2 m-0">
+      <ul className="flex flex-col gap-element-sm m-0">
         {provider.features.map((feature, index) => (
-          <li key={index} className="flex items-start gap-2 text-sm">
+          <li key={index} className="flex items-start gap-fluid-sm text-[length:var(--text-sm)] font-[family-name:var(--font-family-noto-sans)]">
             <CircleCheck className="h-4 w-4 text-primary flex-shrink-0" />
             <span>{feature}</span>
           </li>
@@ -216,7 +223,7 @@ function InsuranceProviderCard({ provider }: { provider: typeof INSURANCE_PROVID
         href={provider.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full h-10 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
+        className="w-full h-10 rounded-[var(--radius-md)] bg-primary text-primary-foreground hover:bg-primary/90 transition-colors flex items-center justify-center gap-fluid-sm font-[family-name:var(--font-family-noto-sans)] font-[var(--font-weight-medium)] text-[length:var(--text-sm)]"
       >
         Get Quote
         <ExternalLink className="h-4 w-4" />
@@ -245,28 +252,28 @@ export function TravelInsurancePage() {
         description="Comprehensive protection for your safari adventure"
         highlights={COVERAGE_HIGHLIGHTS}
         columns={3}
-        variant="default"
+        variant="cards"
       />
 
       {/* Recommended Providers */}
       <section className="py-section-md bg-muted/30">
         <Container>
-          <div className="text-center flex flex-col gap-[var(--spacing-gap-sm)] pb-[var(--spacing-gap-lg)]">
+          <div className="text-center flex flex-col gap-fluid-sm pb-fluid-lg">
             <h2 className="m-0">How it works</h2>
             <p className="text-muted-foreground max-w-2xl m-0">
               We've partnered with trusted providers that specialize in adventure and safari travel coverage
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-fluid-lg">
             {INSURANCE_PROVIDERS.map((provider) => (
               <InsuranceProviderCard key={provider.id} provider={provider} />
             ))}
           </div>
 
-          <div className="pt-[var(--spacing-gap-lg)]">
-            <div className="wp-bg-accent-ultralight border wp-border-accent-soft rounded-lg p-6 text-center">
-              <p className="text-sm m-0">
+          <div className="pt-fluid-lg">
+            <div className="wp-bg-accent-ultralight border wp-border-accent-soft rounded-[var(--radius-lg)] p-element-xl text-center">
+              <p className="text-[length:var(--text-sm)] m-0 font-[family-name:var(--font-family-noto-sans)]">
                 <strong>Note:</strong> These are affiliate links. Purchasing through our partners 
                 helps support our service at no additional cost to you. We only recommend providers 
                 we trust and use ourselves.
@@ -298,7 +305,7 @@ export function TravelInsurancePage() {
         description="See how travel insurance protects you in real-world scenarios"
         highlights={SCENARIO_HIGHLIGHTS}
         columns={2}
-        variant="alternate"
+        variant="minimal"
       />
 
       {/* Insurance FAQs */}
@@ -311,9 +318,9 @@ export function TravelInsurancePage() {
       {/* Requirements by Destination */}
       <section className="py-section-md bg-muted/30">
         <Container>
-          <div className="text-center flex flex-col gap-[var(--spacing-gap-sm)]">
+          <div className="text-center flex flex-col gap-fluid-sm">
             <h2 className="m-0">Frequently asked questions</h2>
-            <p className="text-center text-muted-foreground m-0 pb-[var(--spacing-gap-xl)]">
+            <p className="text-center text-muted-foreground m-0 pb-fluid-xl">
               Understand insurance needs for different safari destinations
             </p>
             

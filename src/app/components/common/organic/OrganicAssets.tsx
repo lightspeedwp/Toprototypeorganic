@@ -1,10 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { cn } from '../../../lib/utils';
 
-// Import raw SVGs directly via Vite
-import SavannahLightRaw from '../../../../imports/Savannah-contour-frame-light.svg?raw';
-import SafariMedallionLightRaw from '../../../../imports/Safari-medallion-light.svg?raw';
-import BotanicalCornerLightRaw from '../../../../imports/Botanical-corner-light.svg?raw';
+// Import SVGs as URLs (default behavior in this environment)
+import savannahUrl from '../../../../imports/Savannah-contour-frame-light.svg';
+import safariMedallionUrl from '../../../../imports/Safari-medallion-light.svg';
+import botanicalCornerUrl from '../../../../imports/Botanical-corner-light.svg';
 
 // Map all extracted hex codes to the organic token palette
 const colorMap: Record<string, string> = {
@@ -85,7 +85,6 @@ function processOrganicSvg(rawSvg: string): string {
   
   // Replace colors
   for (const [hex, token] of Object.entries(colorMap)) {
-    // case-insensitive replace for the hex code
     const regex = new RegExp(`fill="${hex}"`, 'gi');
     processed = processed.replace(regex, `fill="${token}"`);
   }
@@ -97,10 +96,60 @@ function processOrganicSvg(rawSvg: string): string {
   return processed;
 }
 
-// Pre-process SVGs once at module level to avoid re-running regex on every render
-const processedSavannah = processOrganicSvg(SavannahLightRaw);
-const processedSafariMedallion = processOrganicSvg(SafariMedallionLightRaw);
-const processedBotanicalCorner = processOrganicSvg(BotanicalCornerLightRaw);
+/**
+ * Cache for fetched and processed SVG strings.
+ * Prevents re-fetching on every component mount.
+ */
+const svgCache = new Map<string, string>();
+
+/**
+ * Custom hook to fetch SVG content from a URL, process colors, and return the HTML string.
+ */
+function useProcessedSvg(url: string): string {
+  const [svgHtml, setSvgHtml] = useState<string>(() => svgCache.get(url) || '');
+
+  useEffect(() => {
+    // If already cached, skip fetch
+    if (svgCache.has(url)) {
+      setSvgHtml(svgCache.get(url)!);
+      return;
+    }
+
+    let cancelled = false;
+
+    // If the import resolved to a string (some environments do support ?raw-like behavior),
+    // process it directly without fetching.
+    if (typeof url === 'string' && url.trim().startsWith('<svg')) {
+      const processed = processOrganicSvg(url);
+      svgCache.set(url, processed);
+      setSvgHtml(processed);
+      return;
+    }
+
+    fetch(url)
+      .then((res) => {
+        if (!res.ok) throw new Error(`Failed to fetch SVG: ${res.status}`);
+        return res.text();
+      })
+      .then((rawSvg) => {
+        if (cancelled) return;
+        const processed = processOrganicSvg(rawSvg);
+        svgCache.set(url, processed);
+        setSvgHtml(processed);
+      })
+      .catch((err) => {
+        if (!cancelled) {
+          console.warn('[OrganicAssets] Could not load SVG:', err.message);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [url]);
+
+  return svgHtml;
+}
 
 interface OrganicAssetProps {
   className?: string;
@@ -113,11 +162,15 @@ interface OrganicAssetProps {
  * Behaviour: Sits strictly behind content (z-0), can be cropped.
  */
 export function SavannahContourFrame({ className }: OrganicAssetProps) {
+  const svgHtml = useProcessedSvg(savannahUrl);
+
+  if (!svgHtml) return null;
+
   return (
     <div 
       className={cn("wp-pattern-organic-frame", className)}
       aria-hidden="true"
-      dangerouslySetInnerHTML={{ __html: processedSavannah }}
+      dangerouslySetInnerHTML={{ __html: svgHtml }}
     />
   );
 }
@@ -129,11 +182,15 @@ export function SavannahContourFrame({ className }: OrganicAssetProps) {
  * Behaviour: Delicate framing, low visual weight.
  */
 export function BotanicalCorner({ className }: OrganicAssetProps) {
+  const svgHtml = useProcessedSvg(botanicalCornerUrl);
+
+  if (!svgHtml) return null;
+
   return (
     <div 
       className={cn("wp-part-botanical-ornament", className)}
       aria-hidden="true"
-      dangerouslySetInnerHTML={{ __html: processedBotanicalCorner }}
+      dangerouslySetInnerHTML={{ __html: svgHtml }}
     />
   );
 }
@@ -145,11 +202,15 @@ export function BotanicalCorner({ className }: OrganicAssetProps) {
  * Behaviour: Focal point, richer layers. Used sparingly.
  */
 export function SafariMedallion({ className }: OrganicAssetProps) {
+  const svgHtml = useProcessedSvg(safariMedallionUrl);
+
+  if (!svgHtml) return null;
+
   return (
     <div 
       className={cn("wp-block-safari-badge", className)}
       aria-hidden="true"
-      dangerouslySetInnerHTML={{ __html: processedSafariMedallion }}
+      dangerouslySetInnerHTML={{ __html: svgHtml }}
     />
   );
 }

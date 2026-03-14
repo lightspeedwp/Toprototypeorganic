@@ -155,7 +155,7 @@ export function SortDropdown({
           className="wp-pattern-lts-sort-dropdown__menu"
           role="listbox"
         >
-          <div className="p-[var(--spacing-element-xs)]">
+          <div className="p-element-xs">
             {options.map((option) => {
               const isSelected = option.value === value;
               return (

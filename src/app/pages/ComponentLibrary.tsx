@@ -33,22 +33,22 @@ export function ComponentLibrary() {
     <main className="min-h-screen py-12">
       <Container>
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="wp-badge mb-4">
+        <div className="text-center pb-16 flex flex-col items-center gap-4">
+          <div className="wp-badge">
             <Box className="w-4 h-4" />
             <span>Component Library</span>
           </div>
-          <h1 className="mb-4">Available Components</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <h1>Available Components</h1>
+          <p className="text-xl text-muted-foreground max-w-2xl">
             All components use CSS variables from the design system. 
             Fully customizable by editing theme files.
           </p>
         </div>
 
         {/* Buttons Section */}
-        <section className="mb-16">
-          <h2 className="mb-6">Buttons</h2>
-          <p className="text-muted-foreground mb-8">
+        <section className="pb-16 flex flex-col gap-6">
+          <h2>Buttons</h2>
+          <p className="text-muted-foreground">
             Location: <code className="wp-code">/src/styles/components/button.css</code>
           </p>
 
@@ -105,16 +105,16 @@ export function ComponentLibrary() {
         </section>
 
         {/* Form Elements Section */}
-        <section className="mb-16">
-          <h2 className="mb-6">Form Elements</h2>
-          <p className="text-muted-foreground mb-8">
+        <section className="pb-16 flex flex-col gap-6">
+          <h2>Form Elements</h2>
+          <p className="text-muted-foreground">
             Location: <code className="wp-code">/src/styles/components/form.css</code>
           </p>
 
           <div className="wp-component-showcase">
             <div className="wp-component-showcase__section">
               <h3 className="wp-component-showcase__label">Inputs</h3>
-              <div className="space-y-4 max-w-md">
+              <div className="flex flex-col gap-4 max-w-md">
                 <div>
                   <label className="wp-form-label">Email</label>
                   <input 
@@ -158,7 +158,7 @@ export function ComponentLibrary() {
 
             <div className="wp-component-showcase__section">
               <h3 className="wp-component-showcase__label">Textarea & Select</h3>
-              <div className="space-y-4 max-w-md">
+              <div className="flex flex-col gap-4 max-w-md">
                 <div>
                   <label className="wp-form-label">Message</label>
                   <textarea 
@@ -181,8 +181,8 @@ export function ComponentLibrary() {
 
             <div className="wp-component-showcase__section">
               <h3 className="wp-component-showcase__label">Checkboxes & Radio</h3>
-              <div className="space-y-4">
-                <div className="space-y-2">
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-2">
                   <label className="wp-form-checkbox">
                     <input type="checkbox" />
                     <span>Accept terms and conditions</span>
@@ -196,7 +196,7 @@ export function ComponentLibrary() {
                     <span>Disabled option</span>
                   </label>
                 </div>
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <label className="wp-form-radio">
                     <input type="radio" name="plan" />
                     <span>Free plan</span>
@@ -239,9 +239,9 @@ export function ComponentLibrary() {
         </section>
 
         {/* Cards Section */}
-        <section className="mb-16">
-          <h2 className="mb-6">Cards</h2>
-          <p className="text-muted-foreground mb-8">
+        <section className="pb-16 flex flex-col gap-6">
+          <h2>Cards</h2>
+          <p className="text-muted-foreground">
             Location: <code className="wp-code">/src/styles/components/card.css</code>
           </p>
 
@@ -294,9 +294,9 @@ export function ComponentLibrary() {
         </section>
 
         {/* Feature Cards Section */}
-        <section className="mb-16">
-          <h2 className="mb-6">Feature Cards</h2>
-          <p className="text-muted-foreground mb-8">
+        <section className="pb-16 flex flex-col gap-6">
+          <h2>Feature Cards</h2>
+          <p className="text-muted-foreground">
             Location: <code className="wp-code">/src/app/components/patterns/FeatureCard.tsx</code>
           </p>
 
@@ -336,15 +336,15 @@ export function ComponentLibrary() {
         </section>
 
         {/* Alerts Section */}
-        <section className="mb-16">
-          <h2 className="mb-6">Alerts</h2>
-          <p className="text-muted-foreground mb-8">
+        <section className="pb-16 flex flex-col gap-6">
+          <h2>Alerts</h2>
+          <p className="text-muted-foreground">
             Location: <code className="wp-code">/src/styles/components/alert.css</code>
           </p>
 
           <div className="wp-component-showcase">
             <div className="wp-component-showcase__section">
-              <div className="space-y-4">
+              <div className="flex flex-col gap-4">
                 <div className="wp-alert wp-alert--info">
                   <Info className="w-5 h-5" />
                   <div>
@@ -392,9 +392,9 @@ export function ComponentLibrary() {
         </section>
 
         {/* Badges Section */}
-        <section className="mb-16">
-          <h2 className="mb-6">Badges</h2>
-          <p className="text-muted-foreground mb-8">
+        <section className="pb-16 flex flex-col gap-6">
+          <h2>Badges</h2>
+          <p className="text-muted-foreground">
             Location: <code className="wp-code">/src/styles/components/badge.css</code>
           </p>
 
@@ -438,16 +438,16 @@ export function ComponentLibrary() {
         </section>
 
         {/* Typography Section */}
-        <section className="mb-16">
-          <h2 className="mb-6">Typography</h2>
-          <p className="text-muted-foreground mb-8">
+        <section className="pb-16 flex flex-col gap-6">
+          <h2>Typography</h2>
+          <p className="text-muted-foreground">
             All typography uses CSS variables. Only Lora (serif), Noto Sans (sans-serif), and Courier New (monospace) are allowed.
           </p>
 
           <div className="wp-component-showcase">
             <div className="wp-component-showcase__section">
               <h3 className="wp-component-showcase__label">Headings</h3>
-              <div className="space-y-4">
+              <div className="flex flex-col gap-4">
                 <h1>Heading 1 - Lora Bold 60px</h1>
                 <h2>Heading 2 - Lora Semibold 36px</h2>
                 <h3>Heading 3 - Lora Semibold 30px</h3>
@@ -459,7 +459,7 @@ export function ComponentLibrary() {
 
             <div className="wp-component-showcase__section">
               <h3 className="wp-component-showcase__label">Body Text</h3>
-              <div className="space-y-4 max-w-2xl">
+              <div className="flex flex-col gap-4 max-w-2xl">
                 <p className="text-lg">Large paragraph - Noto Sans 18px</p>
                 <p>Default paragraph - Noto Sans 16px. This is the standard body text size used throughout the application for optimal readability.</p>
                 <p className="text-sm">Small text - Noto Sans 14px</p>
@@ -469,7 +469,7 @@ export function ComponentLibrary() {
 
             <div className="wp-component-showcase__section">
               <h3 className="wp-component-showcase__label">Code</h3>
-              <div className="space-y-4">
+              <div className="flex flex-col gap-4">
                 <p>Inline code: <code className="wp-code">const example = "code";</code></p>
                 <pre className="wp-code-block"><code>{`function example() {
   return "Courier New monospace font";
@@ -480,9 +480,9 @@ export function ComponentLibrary() {
         </section>
 
         {/* Colors Section */}
-        <section className="mb-16">
-          <h2 className="mb-6">Colors</h2>
-          <p className="text-muted-foreground mb-8">
+        <section className="pb-16 flex flex-col gap-6">
+          <h2>Colors</h2>
+          <p className="text-muted-foreground">
             All colors are CSS variables that automatically switch for dark mode.
           </p>
 
@@ -530,8 +530,8 @@ export function ComponentLibrary() {
         </section>
 
         {/* Documentation Links */}
-        <section className="mt-16 p-8 bg-muted/50 rounded-lg">
-          <h2 className="mb-6 text-center">Learn More</h2>
+        <section className="pt-16 p-8 bg-muted/50 rounded-lg flex flex-col gap-6">
+          <h2 className="text-center">Learn More</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="wp-doc-link">
               <div className="wp-doc-link__icon">

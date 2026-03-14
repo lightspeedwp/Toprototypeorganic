@@ -15,7 +15,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Container } from "../../components/common/Container";
 import { DevToolsBreadcrumbs } from "../../components/common/DevToolsBreadcrumbs";
-import { ArrowsClockwise as RotateCw } from "@phosphor-icons/react";
+import { ArrowsClockwise as RotateCw, Sparkle } from "@phosphor-icons/react";
 
 /** A single animation demo block. */
 function AnimationCard({
@@ -63,21 +63,26 @@ export default function AnimationsShowcase() {
     <>
       <DevToolsBreadcrumbs currentPage="Animations" />
 
-      <section className="py-section-sm bg-muted">
+      <section className="py-section-sm bg-muted border-b border-border">
         <Container>
-          <h1 className="mb-4">Animations</h1>
-          <p className="text-muted-foreground max-w-3xl">
-            Animation specimens using the <strong>Motion</strong> library.
-            All transitions respect the design system tokens for colours and spacing.
-            Click the reset button on each card to replay the animation.
-          </p>
+          <div className="flex flex-col gap-element-sm">
+            <div className="wp-page-header__icon-container w-14 h-14 flex items-center justify-center rounded-[var(--radius-lg)] bg-primary/10 text-primary transition-colors hover:bg-primary/20">
+              <Sparkle className="w-7 h-7" />
+            </div>
+            <h1>Animations</h1>
+            <p className="text-muted-foreground max-w-3xl">
+              Animation specimens using the <strong>Motion</strong> library.
+              All transitions respect the design system tokens for colours and spacing.
+              Click the reset button on each card to replay the animation.
+            </p>
+          </div>
         </Container>
       </section>
 
       {/* Entrance animations */}
       <section className="py-section-sm bg-background">
         <Container>
-          <h2 className="mb-8">Entrance Animations</h2>
+          <h2 className="pb-8">Entrance Animations</h2>
           <div className="grid gap-6 md:grid-cols-2">
             {/* Fade in */}
             <AnimationCard
@@ -168,8 +173,8 @@ export default function AnimationsShowcase() {
       {/* Hover micro-interactions */}
       <section className="py-section-sm bg-muted">
         <Container>
-          <h2 className="mb-8">Hover Micro-interactions</h2>
-          <p className="text-muted-foreground mb-8">Hover or focus each element to trigger the interaction.</p>
+          <h2 className="pb-8">Hover Micro-interactions</h2>
+          <p className="text-muted-foreground pb-8">Hover or focus each element to trigger the interaction.</p>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {/* Lift */}
@@ -179,7 +184,7 @@ export default function AnimationsShowcase() {
               className="bg-card border border-border rounded-lg p-6 text-center cursor-pointer"
               style={{ boxShadow: "var(--elevation-sm)" }}
             >
-              <h5 className="mb-1">Lift</h5>
+              <h5 className="pb-1">Lift</h5>
               <p className="text-sm text-muted-foreground mb-0">translateY(-4px) + shadow</p>
             </motion.div>
 
@@ -189,7 +194,7 @@ export default function AnimationsShowcase() {
               transition={{ duration: 0.2 }}
               className="bg-card border border-border rounded-lg p-6 text-center cursor-pointer"
             >
-              <h5 className="mb-1">Scale</h5>
+              <h5 className="pb-1">Scale</h5>
               <p className="text-sm text-muted-foreground mb-0">scale(1.03)</p>
             </motion.div>
 
@@ -199,7 +204,7 @@ export default function AnimationsShowcase() {
               transition={{ duration: 0.3 }}
               className="bg-card border-2 border-border rounded-lg p-6 text-center cursor-pointer"
             >
-              <h5 className="mb-1">Border Glow</h5>
+              <h5 className="pb-1">Border Glow</h5>
               <p className="text-sm text-muted-foreground mb-0">border → primary</p>
             </motion.div>
 
@@ -209,7 +214,7 @@ export default function AnimationsShowcase() {
               transition={{ duration: 0.2 }}
               className="bg-card border border-border rounded-lg p-6 text-center cursor-pointer"
             >
-              <h5 className="mb-1">Background Tint</h5>
+              <h5 className="pb-1">Background Tint</h5>
               <p className="text-sm text-muted-foreground mb-0">bg → muted</p>
             </motion.div>
           </div>
@@ -219,8 +224,8 @@ export default function AnimationsShowcase() {
       {/* Loading skeletons */}
       <section className="py-section-sm bg-background">
         <Container>
-          <h2 className="mb-8">Loading Skeletons</h2>
-          <p className="text-muted-foreground mb-8">
+          <h2 className="pb-8">Loading Skeletons</h2>
+          <p className="text-muted-foreground pb-8">
             Pulse animation using Tailwind's <code>animate-pulse</code> for content placeholders.
           </p>
 
@@ -228,11 +233,11 @@ export default function AnimationsShowcase() {
             {/* Card skeleton */}
             <div className="border border-border rounded-lg bg-card overflow-hidden">
               <div className="h-48 bg-muted animate-pulse" />
-              <div className="p-4 space-y-3">
+              <div className="p-4 flex flex-col gap-3">
                 <div className="h-4 bg-muted rounded-sm animate-pulse w-3/4" />
                 <div className="h-3 bg-muted rounded-sm animate-pulse w-full" />
                 <div className="h-3 bg-muted rounded-sm animate-pulse w-5/6" />
-                <div className="flex gap-2 mt-4">
+                <div className="flex gap-2 pt-4">
                   <div className="h-6 bg-muted rounded-full animate-pulse w-16" />
                   <div className="h-6 bg-muted rounded-full animate-pulse w-20" />
                 </div>
@@ -240,11 +245,11 @@ export default function AnimationsShowcase() {
             </div>
 
             {/* List skeleton */}
-            <div className="border border-border rounded-lg bg-card p-6 space-y-4">
+            <div className="border border-border rounded-lg bg-card p-6 flex flex-col gap-4">
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-muted rounded-full animate-pulse shrink-0" />
-                  <div className="flex-1 space-y-2">
+                  <div className="flex-1 flex flex-col gap-2">
                     <div className="h-3 bg-muted rounded-sm animate-pulse w-3/4" />
                     <div className="h-2 bg-muted rounded-sm animate-pulse w-1/2" />
                   </div>
@@ -253,14 +258,14 @@ export default function AnimationsShowcase() {
             </div>
 
             {/* Text skeleton */}
-            <div className="border border-border rounded-lg bg-card p-6 space-y-3">
+            <div className="border border-border rounded-lg bg-card p-6 flex flex-col gap-3">
               <div className="h-6 bg-muted rounded-sm animate-pulse w-1/2" />
               <div className="h-3 bg-muted rounded-sm animate-pulse w-full" />
               <div className="h-3 bg-muted rounded-sm animate-pulse w-full" />
               <div className="h-3 bg-muted rounded-sm animate-pulse w-4/5" />
               <div className="h-3 bg-muted rounded-sm animate-pulse w-full" />
               <div className="h-3 bg-muted rounded-sm animate-pulse w-3/4" />
-              <div className="mt-4 h-10 bg-muted rounded-md animate-pulse w-32" />
+              <div className="pt-4 h-10 bg-muted rounded-md animate-pulse w-32" />
             </div>
           </div>
         </Container>
@@ -269,7 +274,7 @@ export default function AnimationsShowcase() {
       {/* Transition tokens */}
       <section className="py-section-sm bg-muted">
         <Container>
-          <h2 className="mb-6">Recommended Transition Durations</h2>
+          <h2 className="pb-6">Recommended Transition Durations</h2>
           <div className="border border-border rounded-lg bg-card overflow-hidden">
             <div className="grid grid-cols-3 gap-0 text-sm border-b border-border bg-muted px-6 py-3">
               <span className="text-muted-foreground">Context</span>

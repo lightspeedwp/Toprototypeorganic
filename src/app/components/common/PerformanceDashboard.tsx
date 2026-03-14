@@ -120,7 +120,7 @@ export function PerformanceDashboard() {
             <div className="p-6 border-b border-border flex items-center justify-between">
               <div>
                 <h2 className="text-fluid-2xl mb-0">Performance Dashboard</h2>
-                <p className="text-sm text-muted-foreground mt-1 mb-0">
+                <p className="text-sm text-muted-foreground pt-1">
                   Monitor performance metrics and optimize your site
                 </p>
               </div>
@@ -193,8 +193,8 @@ export function PerformanceDashboard() {
             <div className="flex-1 overflow-y-auto p-6">
               {isLoading ? (
                 <div className="flex items-center justify-center py-section-sm">
-                  <div className="text-center">
-                    <RefreshCw size={48} className="mx-auto mb-4 animate-spin text-primary" />
+                  <div className="flex flex-col items-center text-center gap-element-md">
+                    <RefreshCw size={48} className="animate-spin text-primary" />
                     <p className="text-muted-foreground">Running performance audits...</p>
                   </div>
                 </div>
@@ -202,18 +202,18 @@ export function PerformanceDashboard() {
                 <>
                   {/* Overview Tab */}
                   {activeTab === "overview" && (
-                    <div className="space-y-6">
+                    <div className="flex flex-col gap-6">
                       <div>
-                        <h3 className="text-fluid-lg mb-4">Quick Stats</h3>
+                        <h3 className="text-fluid-lg pb-4">Quick Stats</h3>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                           {bundleData && (
                             <>
                               <div className="p-4 rounded-lg border border-border bg-card">
-                                <div className="text-sm text-muted-foreground mb-1">Bundle Size</div>
+                                <div className="text-sm text-muted-foreground pb-1">Bundle Size</div>
                                 <div className="font-serif text-fluid-2xl">{formatBytes(bundleData.totalSize)}</div>
                               </div>
                               <div className="p-4 rounded-lg border border-border bg-card">
-                                <div className="text-sm text-muted-foreground mb-1">Scripts</div>
+                                <div className="text-sm text-muted-foreground pb-1">Scripts</div>
                                 <div className="font-serif text-fluid-2xl">{bundleData.scriptCount}</div>
                               </div>
                             </>
@@ -221,13 +221,13 @@ export function PerformanceDashboard() {
                           {lighthouseData && (
                             <>
                               <div className="p-4 rounded-lg border border-border bg-card">
-                                <div className="text-sm text-muted-foreground mb-1">Performance</div>
+                                <div className="text-sm text-muted-foreground pb-1">Performance</div>
                                 <div className={cn("font-serif text-fluid-2xl", getScoreColor(lighthouseData.performance.score))}>
                                   {lighthouseData.performance.score}
                                 </div>
                               </div>
                               <div className="p-4 rounded-lg border border-border bg-card">
-                                <div className="text-sm text-muted-foreground mb-1">Accessibility</div>
+                                <div className="text-sm text-muted-foreground pb-1">Accessibility</div>
                                 <div className={cn("font-serif text-fluid-2xl", getScoreColor(lighthouseData.accessibility.score))}>
                                   {lighthouseData.accessibility.score}
                                 </div>
@@ -239,8 +239,8 @@ export function PerformanceDashboard() {
 
                       {lighthouseData && (
                         <div>
-                          <h3 className="text-fluid-lg mb-4">Lighthouse Scores</h3>
-                          <div className="space-y-3">
+                          <h3 className="text-fluid-lg pb-4">Lighthouse Scores</h3>
+                          <div className="flex flex-col gap-3">
                             {[
                               { label: "Performance", data: lighthouseData.performance },
                               { label: "Accessibility", data: lighthouseData.accessibility },
@@ -248,7 +248,7 @@ export function PerformanceDashboard() {
                               { label: "SEO", data: lighthouseData.seo },
                             ].map((category) => (
                               <div key={category.label} className="p-4 rounded-lg border border-border bg-card">
-                                <div className="flex items-center justify-between mb-2">
+                                <div className="flex items-center justify-between pb-2">
                                   <span className="font-medium">{category.label}</span>
                                   <span className={cn("font-serif text-fluid-2xl", getScoreColor(category.data.score))}>
                                     {category.data.score}
@@ -267,24 +267,24 @@ export function PerformanceDashboard() {
 
                   {/* Bundle Tab */}
                   {activeTab === "bundle" && bundleData && (
-                    <div className="space-y-6">
+                    <div className="flex flex-col gap-6">
                       <div>
-                        <h3 className="text-fluid-lg mb-4">Bundle Analysis</h3>
-                        <div className="grid grid-cols-2 gap-4 mb-6">
+                        <h3 className="text-fluid-lg pb-4">Bundle Analysis</h3>
+                        <div className="grid grid-cols-2 gap-4 pb-6">
                           <div className="p-4 rounded-lg border border-border bg-card">
-                            <div className="text-sm text-muted-foreground mb-1">Total Size</div>
+                            <div className="text-sm text-muted-foreground pb-1">Total Size</div>
                             <div className="font-serif text-fluid-2xl">{formatBytes(bundleData.totalSize)}</div>
                           </div>
                           <div className="p-4 rounded-lg border border-border bg-card">
-                            <div className="text-sm text-muted-foreground mb-1">Script Count</div>
+                            <div className="text-sm text-muted-foreground pb-1">Script Count</div>
                             <div className="font-serif text-fluid-2xl">{bundleData.scriptCount}</div>
                           </div>
                         </div>
                       </div>
 
                       <div>
-                        <h3 className="text-fluid-lg mb-3">Largest Scripts</h3>
-                        <div className="space-y-2">
+                        <h3 className="text-fluid-lg pb-3">Largest Scripts</h3>
+                        <div className="flex flex-col gap-2">
                           {bundleData.scripts.slice(0, 10).map((script: any, index: number) => (
                             <div key={index} className="p-3 rounded-lg border border-border bg-card">
                               <div className="flex items-center justify-between">
@@ -296,7 +296,7 @@ export function PerformanceDashboard() {
                                     {script.url}
                                   </div>
                                 </div>
-                                <div className="ml-4 text-right">
+                                <div className="pl-4 text-right">
                                   <div className="font-bold">{formatBytes(script.size)}</div>
                                   <div className="text-xs text-muted-foreground">
                                     {script.async && "async "}
@@ -312,11 +312,11 @@ export function PerformanceDashboard() {
 
                       {bundleData.recommendations.length > 0 && (
                         <div>
-                          <h3 className="text-fluid-lg mb-3">Recommendations</h3>
-                          <ul className="space-y-2">
+                          <h3 className="text-fluid-lg pb-3">Recommendations</h3>
+                          <ul className="flex flex-col gap-2">
                             {bundleData.recommendations.map((rec: string, index: number) => (
                               <li key={index} className="flex items-start gap-2 text-sm">
-                                <span className="text-primary mt-1">•</span>
+                                <span className="text-primary pt-1">•</span>
                                 <span>{rec}</span>
                               </li>
                             ))}
@@ -328,7 +328,7 @@ export function PerformanceDashboard() {
 
                   {/* Lighthouse Tab */}
                   {activeTab === "lighthouse" && lighthouseData && (
-                    <div className="space-y-6">
+                    <div className="flex flex-col gap-6">
                       {[
                         { label: "Performance", data: lighthouseData.performance },
                         { label: "Accessibility", data: lighthouseData.accessibility },
@@ -337,19 +337,19 @@ export function PerformanceDashboard() {
                         { label: "PWA", data: lighthouseData.pwa },
                       ].map((category) => (
                         <div key={category.label}>
-                          <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center justify-between pb-3">
                             <h3 className="text-lg font-semibold">{category.label}</h3>
                             <span className={cn("font-serif text-fluid-3xl", getScoreColor(category.data.score))}>
                               {category.data.score}
                             </span>
                           </div>
                           
-                          <div className="mb-4 text-sm text-muted-foreground">
+                          <div className="pb-4 text-sm text-muted-foreground">
                             ✅ {category.data.passed} passed • ❌ {category.data.failed} failed
                           </div>
 
                           {category.data.issues.length > 0 && (
-                            <div className="space-y-2">
+                            <div className="flex flex-col gap-2">
                               <div className="font-medium text-sm">Issues:</div>
                               {category.data.issues.map((issue: string, index: number) => (
                                 <div key={index} className="p-3 rounded-lg border border-border bg-card text-sm">

@@ -565,6 +565,46 @@
   /* Inherits base card styles */
 }
 
+/* ── Accommodation Card: Compact Facility Icons ──── */
+
+.wp-card__facilities {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+  padding-block-end: var(--spacing-element-xs);
+}
+
+.wp-card__facility-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--muted);
+  color: var(--primary);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.wp-card:hover .wp-card__facility-icon {
+  background-color: var(--primary-muted);
+}
+
+.wp-card__facility-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.75rem;
+  padding-inline: 0.5rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--muted);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+}
+
 /* Blog Card */
 .wp-card--blog {
   /* Inherits base card styles */

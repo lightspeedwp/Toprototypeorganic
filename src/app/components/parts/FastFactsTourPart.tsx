@@ -48,24 +48,24 @@ export function FastFactsTourPart({ tour }: FastFactsTourPartProps) {
 
   return (
     <aside
-      className="bg-card border border-border rounded-lg p-5 md:p-6"
+      className="bg-card border border-border rounded-[var(--radius-lg)] p-element-lg md:p-element-xl"
       aria-label="Tour quick facts"
     >
-      <h2 className="mb-5">Quick Facts</h2>
+      <h2 className="pb-element-xl">Quick Facts</h2>
       
-      <div className="space-y-4">
+      <div className="flex flex-col gap-element-md">
         {facts.map((fact) => {
           const Icon = fact.icon;
           return (
-            <div key={fact.label} className="flex items-start gap-3">
-              <div className="wp-icon-container-primary rounded-md">
+            <div key={fact.label} className="flex items-start gap-fluid-sm">
+              <div className="wp-icon-container-primary rounded-[var(--radius-md)]">
                 <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-muted-foreground mb-0.5 font-sans text-sm font-medium">
+                <div className="text-muted-foreground pb-element-xs font-[family-name:var(--font-family-noto-sans)] text-[length:var(--text-sm)] font-[var(--font-weight-medium)]">
                   {fact.label}
                 </div>
-                <div className="font-sans text-sm font-semibold">
+                <div className="font-[family-name:var(--font-family-noto-sans)] text-[length:var(--text-sm)] font-[var(--font-weight-semibold)]">
                   {fact.value}
                 </div>
               </div>

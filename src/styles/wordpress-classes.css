@@ -410,7 +410,7 @@
 .has-border-radius-md { border-radius: var(--radius-md); }
 .has-border-radius-lg { border-radius: var(--radius-lg); }
 .has-border-radius-xl { border-radius: var(--radius-xl); }
-.has-border-radius-full { border-radius: 9999px; }
+.has-border-radius-full { border-radius: var(--radius-full); }
 
 /* ============================================
    SHADOW UTILITIES

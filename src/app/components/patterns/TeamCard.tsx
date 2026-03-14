@@ -62,46 +62,46 @@ export function TeamCard({ member, onClick, layout = "card" }: TeamCardProps) {
       </div>
       
       {/* Content Section */}
-      <div className="wp-card__content">
-        <div className="wp-card__header">
-          <h3 className="wp-card__title">
+      <div className="wp-card__content flex flex-col items-center text-center gap-element-md flex-grow p-element-lg">
+        <div className="wp-card__header flex flex-col gap-fluid-xs">
+          <h3 className="wp-card__title m-0 font-[family:var(--font-family-lora)] text-[length:var(--text-xl)] text-[color:var(--color-foreground)]">
             {member.name}
           </h3>
-          <p className="wp-card__role">
+          <p className="wp-card__role m-0 font-[family:var(--font-family-noto-sans)] text-[length:var(--text-sm)] font-[weight:var(--font-weight-medium)] text-[color:var(--color-primary)]">
             {member.role}
           </p>
         </div>
         
-        <p className="wp-card__description">
+        <p className="wp-card__description m-0 font-[family:var(--font-family-noto-sans)] text-[length:var(--text-base)] text-[color:var(--color-muted-foreground)]">
           {member.excerpt}
         </p>
         
         {/* Specialties/Tags */}
         {member.specialties && member.specialties.length > 0 && (
-          <div className="wp-card__tags">
+          <div className="wp-card__tags flex flex-wrap justify-center gap-fluid-sm pt-element-sm">
             {member.specialties.slice(0, 3).map((tag, i) => (
-              <span key={i} className="wp-card__tag">
+              <span key={i} className="wp-card__tag inline-flex px-element-sm py-fluid-xs rounded-[var(--radius-full)] bg-[color:var(--color-muted)] text-[color:var(--color-muted-foreground)] font-[family:var(--font-family-noto-sans)] text-[length:var(--text-xs)]">
                 {tag}
               </span>
             ))}
           </div>
         )}
+      </div>
         
-        {/* Contact Strip */}
-        <div className="wp-card__footer">
-          <div className="wp-card__contact-item">
-            <div className="wp-card__contact-icon-wrapper">
-              <Envelope className="wp-card__contact-icon" />
-            </div>
-            <span className="wp-card__contact-label">{member.email}</span>
+      {/* Contact Strip */}
+      <div className="wp-card__footer flex flex-col gap-fluid-sm w-full pt-element-md border-t border-[color:var(--color-border)]">
+        <div className="wp-card__contact-item flex items-center gap-fluid-sm font-[family:var(--font-family-noto-sans)] text-[length:var(--text-sm)] text-[color:var(--color-foreground)]">
+          <div className="wp-card__contact-icon-wrapper flex-shrink-0 text-[color:var(--color-primary)]">
+            <Envelope className="wp-card__contact-icon w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)]" />
           </div>
-          
-          <div className="wp-card__contact-item">
-            <div className="wp-card__contact-icon-wrapper">
-              <Phone className="wp-card__contact-icon" />
-            </div>
-            <span className="wp-card__contact-label">{member.phone}</span>
+          <span className="wp-card__contact-label truncate">{member.email}</span>
+        </div>
+        
+        <div className="wp-card__contact-item flex items-center gap-fluid-sm font-[family:var(--font-family-noto-sans)] text-[length:var(--text-sm)] text-[color:var(--color-foreground)]">
+          <div className="wp-card__contact-icon-wrapper flex-shrink-0 text-[color:var(--color-primary)]">
+            <Phone className="wp-card__contact-icon w-[var(--spacing-element-sm)] h-[var(--spacing-element-sm)]" />
           </div>
+          <span className="wp-card__contact-label truncate">{member.phone}</span>
         </div>
       </div>
     </article>

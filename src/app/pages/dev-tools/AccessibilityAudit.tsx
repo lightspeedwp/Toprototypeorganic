@@ -77,12 +77,12 @@ export default function AccessibilityAudit() {
       {/* Header */}
       <div className="bg-muted border-b border-border py-section-sm">
         <Container>
-          <div className="flex items-start justify-between gap-6">
-            <div>
-              <div className="flex items-center gap-3 mb-2">
-                <Shield className="w-8 h-8 text-primary" />
-                <h1>Accessibility Audit</h1>
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-fluid-sm">
+            <div className="flex flex-col gap-element-sm">
+              <div className="wp-page-header__icon-container w-14 h-14 flex items-center justify-center rounded-[var(--radius-lg)] bg-primary/10 text-primary transition-colors hover:bg-primary/20">
+                <Shield className="w-7 h-7" />
               </div>
+              <h1>Accessibility Audit</h1>
               <p className="text-muted-foreground">
                 WCAG 2.1 Level AA/AAA compliance validation and recommendations
               </p>
@@ -91,7 +91,7 @@ export default function AccessibilityAudit() {
             <button
               onClick={runAudit}
               disabled={isAuditing}
-              className="flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50"
+              className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50 w-full md:w-auto md:shrink-0"
             >
               <RefreshCw className={`w-4 h-4 ${isAuditing ? 'animate-spin' : ''}`} />
               {isAuditing ? 'Auditing...' : 'Run Audit'}
@@ -100,10 +100,10 @@ export default function AccessibilityAudit() {
         </Container>
       </div>
 
-      <Container className="py-section-sm">
+      <Container className="py-section-sm flex flex-col gap-fluid-lg">
         {/* Audit Options */}
-        <div className="bg-card p-6 rounded-lg border border-border mb-8">
-          <h2 className="mb-4">Audit Options</h2>
+        <div className="bg-card p-6 rounded-lg border border-border pb-8">
+          <h2 className="pb-4">Audit Options</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {Object.entries(options).map(([key, value]) => (
               <label key={key} className="flex items-center gap-2 cursor-pointer">
@@ -125,22 +125,22 @@ export default function AccessibilityAudit() {
         {result ? (
           <>
             {/* Score Card */}
-            <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-8 rounded-lg border border-border mb-8">
+            <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-8 rounded-lg border border-border pb-8">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="mb-2">Accessibility Score</h2>
+                  <h2 className="pb-2">Accessibility Score</h2>
                   <p className={`font-serif text-fluid-6xl ${getScoreColor(result.score)}`}>
                     {result.score}
                     <span className="font-serif text-fluid-3xl text-muted-foreground">/100</span>
                   </p>
-                  <p className="text-muted-foreground mt-2">{result.summary}</p>
+                  <p className="text-muted-foreground pt-2">{result.summary}</p>
                 </div>
 
                 <div className="text-right">
                   <div className="grid grid-cols-1 gap-4">
                     <div className="bg-card p-4 rounded-lg border border-border min-w-[200px]">
-                      <div className="text-sm text-muted-foreground mb-2">WCAG Compliance</div>
-                      <div className="space-y-2">
+                      <div className="text-sm text-muted-foreground pb-2">WCAG Compliance</div>
+                      <div className="flex flex-col gap-2">
                         <div className="flex items-center justify-between">
                           <span className="text-sm">Level A</span>
                           {result.wcagCompliance.levelA ? (
@@ -169,7 +169,7 @@ export default function AccessibilityAudit() {
                     </div>
 
                     <div className="bg-card p-4 rounded-lg border border-border">
-                      <div className="text-sm text-muted-foreground mb-1">Checks</div>
+                      <div className="text-sm text-muted-foreground pb-1">Checks</div>
                       <div className="font-serif text-fluid-2xl">
                         {result.passedChecks}/{result.totalChecks}
                       </div>
@@ -182,8 +182,8 @@ export default function AccessibilityAudit() {
 
             {/* Violations */}
             {result.violations.length > 0 ? (
-              <div className="space-y-4">
-                <h2 className="mb-6">
+              <div className="flex flex-col gap-4">
+                <h2 className="pb-6">
                   Violations Found ({result.violations.length})
                 </h2>
 
@@ -193,7 +193,7 @@ export default function AccessibilityAudit() {
                   if (violations.length === 0) return null;
 
                   return (
-                    <div key={severity} className="space-y-3">
+                    <div key={severity} className="flex flex-col gap-3">
                       <h3 className="flex items-center gap-2 capitalize">
                         {getSeverityIcon(severity)}
                         {severity} ({violations.length})
@@ -207,9 +207,9 @@ export default function AccessibilityAudit() {
                           <div className="flex items-start gap-4">
                             {getSeverityIcon(violation.severity)}
                             <div className="flex-1">
-                              <div className="flex items-start justify-between gap-4 mb-3">
+                              <div className="flex items-start justify-between gap-4 pb-3">
                                 <div>
-                                  <h4 className="mb-1">{violation.message}</h4>
+                                  <h4 className="pb-1">{violation.message}</h4>
                                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                     <span className="px-2 py-1 rounded bg-background/50">
                                       {violation.criterion}
@@ -221,32 +221,32 @@ export default function AccessibilityAudit() {
                                 </div>
                               </div>
 
-                              <div className="bg-background/50 p-3 rounded mb-3">
-                                <div className="text-sm font-medium mb-1">Impact:</div>
+                              <div className="bg-background/50 p-3 rounded pb-3">
+                                <div className="text-sm font-medium pb-1">Impact:</div>
                                 <p className="text-sm text-muted-foreground">{violation.impact}</p>
                               </div>
 
                               <div className="bg-primary/10 p-3 rounded">
-                                <div className="text-sm font-medium mb-1 text-primary">
+                                <div className="text-sm font-medium pb-1 text-primary">
                                   How to Fix:
                                 </div>
                                 <p className="text-sm">{violation.suggestion}</p>
                               </div>
 
                               {/* Element preview */}
-                              <details className="mt-3">
+                              <details className="pt-3">
                                 <summary className="text-sm text-muted-foreground cursor-pointer hover:text-foreground">
                                   View element details
                                 </summary>
-                                <div className="mt-2 p-3 bg-background/50 rounded text-xs">
-                                  <div className="mb-1">
+                                <div className="pt-2 p-3 bg-background/50 rounded text-xs">
+                                  <div className="pb-1">
                                     <span className="text-muted-foreground">Element: </span>
                                     <code className="text-primary">
                                       {violation.element.tagName.toLowerCase()}
                                     </code>
                                   </div>
                                   {violation.element.className && (
-                                    <div className="mb-1">
+                                    <div className="pb-1">
                                       <span className="text-muted-foreground">Classes: </span>
                                       <code className="text-muted-foreground">
                                         {violation.element.className}
@@ -270,9 +270,9 @@ export default function AccessibilityAudit() {
                 })}
               </div>
             ) : (
-              <div className="bg-primary/10 border border-primary/20 p-12 rounded-lg text-center">
-                <CircleCheck className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="mb-2">Perfect! No Violations Found</h3>
+              <div className="bg-primary/10 border border-primary/20 p-12 rounded-lg text-center flex flex-col items-center">
+                <CircleCheck className="w-12 h-12 text-primary pb-4" />
+                <h3 className="pb-2">Perfect! No Violations Found</h3>
                 <p className="text-muted-foreground">
                   Your page meets all checked accessibility standards.
                 </p>
@@ -280,10 +280,10 @@ export default function AccessibilityAudit() {
             )}
           </>
         ) : (
-          <div className="bg-muted p-12 rounded-lg text-center">
-            <Shield className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="mb-2">Ready to Audit</h3>
-            <p className="text-muted-foreground mb-6">
+          <div className="bg-muted p-12 rounded-lg text-center flex flex-col items-center">
+            <Shield className="w-12 h-12 text-muted-foreground pb-4" />
+            <h3 className="pb-2">Ready to Audit</h3>
+            <p className="text-muted-foreground pb-6">
               Click "Run Audit" to check the current page for accessibility issues.
             </p>
             <button
@@ -296,12 +296,12 @@ export default function AccessibilityAudit() {
         )}
 
         {/* Info Section */}
-        <div className="bg-accent text-accent-foreground p-6 rounded-lg mt-8">
-          <h3 className="mb-4">About WCAG Compliance</h3>
-          <div className="space-y-4 text-sm">
+        <div className="bg-accent text-accent-foreground p-6 rounded-lg pt-8">
+          <h3 className="pb-4">About WCAG Compliance</h3>
+          <div className="flex flex-col gap-4 text-sm">
             <div>
-              <h4 className="font-medium mb-2">WCAG Levels:</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">WCAG Levels:</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li><strong>Level A:</strong> Basic accessibility features (minimum)</li>
                 <li><strong>Level AA:</strong> Recommended level for most websites (standard)</li>
                 <li><strong>Level AAA:</strong> Enhanced accessibility features (ideal)</li>
@@ -309,8 +309,8 @@ export default function AccessibilityAudit() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">What This Audit Checks:</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">What This Audit Checks:</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>Color contrast ratios (WCAG 1.4.3)</li>
                 <li>Keyboard accessibility (WCAG 2.1.1)</li>
                 <li>Focus indicators (WCAG 2.4.7)</li>
@@ -324,8 +324,8 @@ export default function AccessibilityAudit() {
             </div>
 
             <div>
-              <h4 className="font-medium mb-2">Best Practices:</h4>
-              <ul className="list-disc list-inside space-y-1">
+              <h4 className="font-medium pb-2">Best Practices:</h4>
+              <ul className="list-disc list-inside flex flex-col gap-1">
                 <li>Use semantic HTML elements</li>
                 <li>Provide descriptive alt text for images</li>
                 <li>Ensure all interactive elements are keyboard accessible</li>

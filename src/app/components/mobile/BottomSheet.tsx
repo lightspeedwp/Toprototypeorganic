@@ -217,19 +217,19 @@ export function BottomSheet({
         {showHandle && (
           <div
             {...panHandlers}
-            className="flex justify-center py-3 cursor-grab active:cursor-grabbing"
+            className="flex justify-center py-element-sm cursor-grab active:cursor-grabbing"
           >
-            <div className="w-12 h-1 rounded-full bg-muted" />
+            <div className="w-12 h-1 rounded-[var(--radius-full)] bg-muted" />
           </div>
         )}
 
         {/* Header */}
         {title && (
-          <div className="flex items-center justify-between px-6 py-4 border-b border-border">
-            <h2 className="text-xl font-semibold">{title}</h2>
+          <div className="flex items-center justify-between px-element-xl py-element-md border-b border-border">
+            <h2 className="text-[length:var(--text-xl)] font-[var(--font-weight-semibold)] font-[family-name:var(--font-family-lora)]">{title}</h2>
             <button
               onClick={onClose}
-              className="p-2 rounded-lg hover:bg-accent transition-colors"
+              className="p-element-xs rounded-[var(--radius-lg)] hover:bg-accent transition-colors"
               aria-label="Close"
             >
               <X size={20} />

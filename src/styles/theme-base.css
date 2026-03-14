@@ -74,6 +74,7 @@
        body/p      → --text-base
        small/meta  → --text-sm
        labels/tiny → --text-xs
+       micro       → --text-2xs
      ============================================================ */
 
   /* Heading scale */
@@ -89,6 +90,7 @@
   --text-base: clamp(1rem, 0.4vw + 0.9rem, 1.25rem);      /* body: 16px → 20px */
   --text-sm:   clamp(0.875rem, 0.3vw + 0.8rem, 1.125rem);  /* small: 14px → 18px */
   --text-xs:   clamp(0.75rem, 0.2vw + 0.7rem, 1rem);       /* tiny:  12px → 16px */
+  --text-2xs:  clamp(0.625rem, 0.15vw + 0.55rem, 0.75rem);  /* micro: 10px → 12px */
 
   /* ============================================================
      TYPOGRAPHY — Font Weights
@@ -142,12 +144,17 @@
   --spacing-element-md: clamp(1rem, 2vw + 0.5rem, 2rem);         /* 16px → 32px */
   --spacing-element-lg: clamp(1.5rem, 3vw + 0.5rem, 3rem);       /* 24px → 48px */
   --spacing-element-xl: clamp(2rem, 4vw + 1rem, 4.5rem);         /* 32px → 72px */
+  --spacing-element-2xl: clamp(2.5rem, 5vw + 1.25rem, 5.5rem);  /* 40px → 88px */
+  --spacing-element-3xl: clamp(3rem, 6vw + 1.5rem, 7rem);       /* 48px → 112px */
 
   /* Gap spacing — grid and flexbox gaps */
   --spacing-gap-xs: clamp(0.5rem, 1vw + 0.25rem, 1.25rem);      /* 8px → 20px  */
   --spacing-gap-sm: clamp(0.75rem, 1.5vw + 0.25rem, 2rem);      /* 12px → 32px */
   --spacing-gap-md: clamp(1rem, 2vw + 0.5rem, 3rem);            /* 16px → 48px */
   --spacing-gap-lg: clamp(1.5rem, 3vw + 0.5rem, 4.5rem);        /* 24px → 72px */
+  --spacing-gap-xl: clamp(2rem, 4vw + 1rem, 6rem);               /* 32px → 96px */
+  --spacing-gap-2xl: clamp(2.5rem, 5vw + 1rem, 8rem);            /* 40px → 128px */
+  --spacing-gap-3xl: clamp(3rem, 6vw + 1.5rem, 10rem);           /* 48px → 160px */
 
   /* WordPress Zero Margin / blockGap variable */
   --spacing-block-gap: var(--spacing-gap-md);

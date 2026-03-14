@@ -1,35 +1,69 @@
 /**
  * Custom hook for managing review archive filters.
- * 
- * Extracts filtering logic from the ReviewsArchive.
- * 
+ *
+ * Composes useArchiveFilters for shared search/URL/pagination plumbing
+ * and adds review-specific rating and type filters.
+ *
  * @module useReviewFilters
  * @category hooks
  */
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import type { Review } from "../data/types";
+import { useArchiveFilters } from "./useArchiveFilters";
+import { useResultsAnnouncement } from "./useResultsAnnouncement";
 
 /**
  * useReviewFilters hook.
- * 
+ *
  * @param {Review[]} reviews - The full list of reviews to filter.
  * @param {number} itemsPerPage - Number of items to display per page.
  */
 export function useReviewFilters(reviews: Review[], itemsPerPage: number = 12) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedRating, setSelectedRating] = useState("");
-  const [selectedType, setSelectedType] = useState("");
+  const base = useArchiveFilters({ itemsPerPage });
 
+  const [selectedRating, setSelectedRating] = useState(
+    () => base.searchParams.get("rating") || ""
+  );
+  const [selectedType, setSelectedType] = useState(() => {
+    const raw = base.searchParams.get("type");
+    return raw && ["tour", "accommodation", "destination"].includes(raw)
+      ? raw
+      : "";
+  });
+
+  // ── Sync all filters → URL query params (single effect) ───────────
+  useEffect(() => {
+    base.setSearchParams((prev) => {
+      const next = new URLSearchParams(prev);
+      base.applyBaseParams(next);
+
+      if (selectedRating) {
+        next.set("rating", selectedRating);
+      } else {
+        next.delete("rating");
+      }
+
+      if (selectedType) {
+        next.set("type", selectedType);
+      } else {
+        next.delete("type");
+      }
+
+      return next;
+    }, { replace: true });
+  }, [base.debouncedSearchQuery, selectedRating, selectedType, base.currentPage, base.setSearchParams, base.applyBaseParams]);
+
+  // ── Filtering ─────────────────────────────────────────────────────
   const filteredReviews = useMemo(() => {
     return reviews.filter((review) => {
       const matchesSearch =
-        !searchQuery ||
-        review.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        review.author.toLowerCase().includes(searchQuery.toLowerCase());
+        !base.searchQuery ||
+        review.content.toLowerCase().includes(base.searchQuery.toLowerCase()) ||
+        review.author.toLowerCase().includes(base.searchQuery.toLowerCase());
 
-      const matchesRating = !selectedRating || review.rating === parseInt(selectedRating);
+      const matchesRating =
+        !selectedRating || review.rating === parseInt(selectedRating);
 
       const matchesType =
         !selectedType ||
@@ -39,27 +73,33 @@ export function useReviewFilters(reviews: Review[], itemsPerPage: number = 12) {
 
       return matchesSearch && matchesRating && matchesType;
     });
-  }, [reviews, searchQuery, selectedRating, selectedType]);
+  }, [reviews, base.searchQuery, selectedRating, selectedType]);
 
-  const totalPages = Math.ceil(filteredReviews.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedReviews = filteredReviews.slice(startIndex, startIndex + itemsPerPage);
+  const { paginatedItems: paginatedReviews, totalPages } =
+    base.paginate(filteredReviews);
 
-  const resetFilters = () => {
-    setSearchQuery("");
+  // ── Screen-reader announcement after filtering settles ────────────
+  useResultsAnnouncement(filteredReviews.length, reviews.length, "reviews");
+
+  const resetFilters = useCallback(() => {
+    base.setSearchQuery("");
     setSelectedRating("");
     setSelectedType("");
-    setCurrentPage(1);
-  };
+    base.resetPage();
+  }, [base.setSearchQuery, base.resetPage]);
 
-  const activeFilterCount = 
-    (searchQuery ? 1 : 0) + (selectedRating ? 1 : 0) + (selectedType ? 1 : 0);
+  const activeFilterCount =
+    (base.searchQuery ? 1 : 0) +
+    (selectedRating ? 1 : 0) +
+    (selectedType ? 1 : 0);
 
   return {
-    currentPage,
-    setCurrentPage,
-    searchQuery,
-    setSearchQuery,
+    currentPage: base.currentPage,
+    setCurrentPage: base.setCurrentPage,
+    resetPage: base.resetPage,
+    searchQuery: base.searchQuery,
+    setSearchQuery: base.setSearchQuery,
+    flushSearch: base.flushSearch,
     selectedRating,
     setSelectedRating,
     selectedType,

@@ -13,11 +13,11 @@
 import { Container } from "../common/Container";
 import { HeadingBlock } from "../blocks/core/HeadingBlock";
 import { ParagraphBlock } from "../blocks/core/ParagraphBlock";
-import type { Icon as PhosphorIcon } from "@phosphor-icons/react";
 import { cn } from "../../lib/utils";
+import { isValidElement, type ReactNode, type ComponentType } from "react";
 
 export interface FeatureItem {
-  icon?: PhosphorIcon;
+  icon?: ReactNode | ComponentType<any>;
   title: string;
   description: string;
 }
@@ -26,21 +26,24 @@ export interface WhyChooseUsPatternProps {
   title?: string;
   description?: string;
   features?: FeatureItem[];
+  benefits?: FeatureItem[];
   reasons?: Array<{ id?: string; title: string; description: string; icon?: string }>;
   columns?: 2 | 3 | 4;
   className?: string;
+  variant?: string;
 }
 
 export function WhyChooseUsPattern({
   title = "Why Choose Us",
   description,
   features: featuresProp,
+  benefits,
   reasons,
   columns = 3,
   className,
 }: WhyChooseUsPatternProps) {
-  // Convert legacy reasons if needed
-  const features = featuresProp || (reasons || []).map(reason => ({
+  // Support features, benefits, or legacy reasons
+  const features = featuresProp || benefits || (reasons || []).map(reason => ({
     icon: undefined as any,
     title: reason.title,
     description: reason.description,
@@ -66,15 +69,26 @@ export function WhyChooseUsPattern({
         {/* Features Grid */}
         <div className={cn("wp-pattern-why-choose-us__grid", gridModifier)}>
           {features.map((feature, index) => {
-            const Icon = feature.icon;
+            // Handle both JSX elements and component references
+            const renderIcon = () => {
+              if (!feature.icon) return null;
+              if (isValidElement(feature.icon)) return feature.icon;
+              if (typeof feature.icon === 'function') {
+                const IconComponent = feature.icon as ComponentType<any>;
+                return <IconComponent size={40} weight="light" />;
+              }
+              return null;
+            };
+
+            const iconElement = renderIcon();
 
             return (
               <div key={index} className="wp-pattern-why-choose-us__feature">
                 {/* Icon Circle */}
-                {Icon && (
+                {iconElement && (
                   <div className="wp-pattern-why-choose-us__icon-wrapper">
                     <div className="wp-pattern-why-choose-us__icon">
-                      <Icon size={40} weight="light" />
+                      {iconElement}
                     </div>
                     {/* Decorative element */}
                     <div className="wp-pattern-why-choose-us__icon-decoration" />

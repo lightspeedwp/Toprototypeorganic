@@ -12,6 +12,7 @@
 
 import { Container } from "../../components/common/Container";
 import { DevToolsBreadcrumbs } from "../../components/common/DevToolsBreadcrumbs";
+import { ArrowsOutLineVertical } from "@phosphor-icons/react";
 
 interface SpacingToken {
   variable: string;
@@ -48,12 +49,12 @@ const GAP_TOKENS: SpacingToken[] = [
 
 function SpacingGroup({ title, tokens }: { title: string; tokens: SpacingToken[] }) {
   return (
-    <div className="mb-12 last:mb-0">
-      <h3 className="mb-6">{title}</h3>
-      <div className="space-y-4">
+    <div className="pb-12 last:pb-0">
+      <h3 className="pb-6">{title}</h3>
+      <div className="flex flex-col gap-4">
         {tokens.map((t) => (
           <div key={t.variable} className="border border-border rounded-lg bg-card p-4">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-3">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 pb-3">
               <code className="text-xs text-primary bg-primary/10 px-2 py-0.5 rounded-sm shrink-0">{t.variable}</code>
               <span className="text-sm text-muted-foreground">{t.clamp}</span>
             </div>
@@ -79,14 +80,19 @@ export default function SpacingScale() {
     <>
       <DevToolsBreadcrumbs currentPage="Spacing Scale" />
 
-      <section className="py-section-sm bg-muted">
+      <section className="py-section-sm bg-muted border-b border-border">
         <Container>
-          <h1 className="mb-4">Spacing Scale</h1>
-          <p className="text-muted-foreground max-w-3xl">
-            All spacing tokens use <code>clamp()</code> for fluid, viewport-responsive spacing.
-            The bars below render at the actual token value so you can see how they scale
-            as the browser width changes. Resize the window to see fluid scaling in action.
-          </p>
+          <div className="flex flex-col gap-4">
+            <div className="wp-page-header__icon-container w-14 h-14 flex items-center justify-center rounded-[var(--radius-lg)] bg-primary/10 text-primary transition-colors hover:bg-primary/20">
+              <ArrowsOutLineVertical className="w-7 h-7" />
+            </div>
+            <h1>Spacing Scale</h1>
+            <p className="text-muted-foreground max-w-3xl">
+              All spacing tokens use <code>clamp()</code> for fluid, viewport-responsive spacing.
+              The bars below render at the actual token value so you can see how they scale
+              as the browser width changes. Resize the window to see fluid scaling in action.
+            </p>
+          </div>
         </Container>
       </section>
 
@@ -102,8 +108,8 @@ export default function SpacingScale() {
       {/* Tailwind fixed scale reference */}
       <section className="py-section-sm bg-muted">
         <Container>
-          <h2 className="mb-2">Tailwind Fixed Scale (Reference)</h2>
-          <p className="text-muted-foreground mb-8">Common Tailwind spacing values used alongside fluid tokens.</p>
+          <h2 className="pb-2">Tailwind Fixed Scale (Reference)</h2>
+          <p className="text-muted-foreground pb-8">Common Tailwind spacing values used alongside fluid tokens.</p>
           <div className="border border-border rounded-lg bg-card overflow-hidden">
             {[
               { cls: "p-1", px: "4 px" },
