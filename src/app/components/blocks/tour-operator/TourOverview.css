@@ -28,7 +28,7 @@
 }
 
 .lsx-tour-overview__content p {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-element-sm);
 }
 
 .lsx-tour-overview__content p:last-child {

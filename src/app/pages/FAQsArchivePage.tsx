@@ -12,7 +12,7 @@ import { FAQ } from "../components/patterns/FAQ";
 import { SearchFilterPattern } from "../components/patterns/SearchFilterPattern";
 import { EmptyStatePattern } from "../components/patterns/EmptyStatePattern";
 import { PageShell } from "../components/parts/PageShell";
-import { FAQS, FAQ_CATEGORIES, searchFAQs } from "../data/faqs";
+import { ALL_FAQS, FAQ_CATEGORIES, searchAllFAQs } from "../data/faqs";
 import { useNavigation } from "../contexts/NavigationContext";
 
 /**
@@ -25,10 +25,10 @@ export function FAQsArchivePage() {
 
   // Filter FAQs based on search and category
   const filteredFAQs = useMemo(() => {
-    let results = FAQS;
+    let results = ALL_FAQS;
 
     if (searchQuery.trim()) {
-      results = searchFAQs(searchQuery);
+      results = searchAllFAQs(searchQuery);
     }
 
     if (activeCategory) {
@@ -40,7 +40,7 @@ export function FAQsArchivePage() {
 
   // Group filtered FAQs by category for display
   const groupedFAQs = useMemo(() => {
-    const groups: Record<string, typeof FAQS> = {};
+    const groups: Record<string, typeof ALL_FAQS> = {};
     filteredFAQs.forEach(faq => {
       const catId = faq.categories[0] || "general";
       if (!groups[catId]) groups[catId] = [];

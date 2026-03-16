@@ -1,9 +1,9 @@
 /**
  * Archive Tour Template Component.
- * 
+ *
  * Complete tours archive with filtering, sorting, and search.
  * Strictly adheres to design system tokens and BEM naming.
- * 
+ *
  * WordPress Mapping:
  * - Template: archive-tour.html
  * - Post Type: tour

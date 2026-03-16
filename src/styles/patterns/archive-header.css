@@ -45,7 +45,7 @@
    ============================================ */
 
 .wp-pattern-archive-header__breadcrumbs {
-  margin-block-end: 1rem;
+  margin-block-end: var(--spacing-element-sm);
 }
 
 /* ============================================
@@ -54,7 +54,7 @@
    ============================================ */
 
 .wp-pattern-archive-header__title {
-  margin-block-end: 1rem;
+  margin-block-end: var(--spacing-element-sm);
   font-family: var(--font-family-lora);
   font-size: var(--text-3xl);
   font-weight: var(--font-weight-bold);
@@ -116,7 +116,7 @@
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-block-start: 1rem;
+  margin-block-start: var(--spacing-element-sm);
 }
 
 .wp-pattern-archive-header__meta-item {

@@ -13,7 +13,7 @@ import { BreadcrumbsPattern } from "../components/patterns/BreadcrumbsPattern";
 import { Container } from "../components/common/Container";
 import { EditorialContent } from "../components/patterns/EditorialContent";
 import { ALL_REVIEWS } from "../data/mockExpanded";
-import { getPageSectionFAQs, TOURS } from "../data/mock";
+import { getPageSectionFAQs } from "../data/mock";
 import { useNavigation } from "../contexts/NavigationContext";
 import { Star, MapPin, Calendar, Clock, Users, ThumbsUp, ShieldCheck, Quotes as Quote } from "@phosphor-icons/react";
 

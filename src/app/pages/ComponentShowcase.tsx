@@ -59,7 +59,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Button } from "../components/blocks/design/Button";
 import { Badge } from "../components/blocks/ui/badge";
 import { Monitor, DeviceTablet as Tablet, DeviceMobile as Smartphone, Copy, Check, MagnifyingGlass as Search } from "@phosphor-icons/react";
-import { TOURS, DESTINATIONS, BLOG_POSTS, TRAVEL_STYLES, FAQ_GENERAL, ACCOMMODATION, SPECIALS, TEAM } from "../data/mock";
+import { ALL_TOURS as TOURS, ALL_DESTINATIONS as DESTINATIONS, ALL_BLOG_POSTS as BLOG_POSTS, ALL_ACCOMMODATION as ACCOMMODATION, ALL_SPECIALS as SPECIALS, ALL_TEAM as TEAM } from "../data/mockExpanded";
+import { TRAVEL_STYLES } from "../data/taxonomies/travel-styles";
+import { FAQ_GENERAL } from "../data/faqs";
 
 /**
  * Component metadata for showcase

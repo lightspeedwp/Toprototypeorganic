@@ -34,7 +34,7 @@ import { TourCard } from "../components/patterns/TourCard";
 import { Pagination } from "../components/patterns/Pagination";
 import { EmptyStatePattern } from "../components/patterns/EmptyStatePattern";
 import { useFilterPersistence, useSortPersistence } from "../hooks/useFilterPersistence";
-import { TOURS } from "../data/mock";
+import { ALL_TOURS as TOURS } from "../data/mockExpanded";
 import { SlidersHorizontal, X, MagnifyingGlass as Search } from "@phosphor-icons/react";
 import { cn } from "../lib/utils";
 

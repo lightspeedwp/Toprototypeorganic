@@ -491,7 +491,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-element-xs);
-  min-height: 44px;
+  min-height: var(--touch-target-min);
 }
 
 .wp-template-archive__empty-button:hover {

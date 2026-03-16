@@ -86,6 +86,10 @@
 @import './pages/design-system-example.css';
 @import './pages/component-library.css';
 @import './pages/taxonomy-hub.css';
+@import './pages/gallery.css';
+@import './pages/testimonials.css';
+@import './pages/partners.css';
+@import './pages/careers.css';
 
 /* ── 11. Block pattern styles ────────────────────────────────────── */
 @import './patterns/mobile-menu.css';

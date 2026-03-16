@@ -40,7 +40,7 @@
   font-weight: var(--font-weight-bold);
   line-height: var(--leading-tight);
   color: var(--foreground);
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-element-sm);
 }
 
 @media (min-width: 768px) {
@@ -56,7 +56,7 @@
   color: var(--muted-foreground);
   max-width: 42rem;
   margin-inline: auto;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-element-md);
 }
 
 @media (min-width: 768px) {
@@ -159,7 +159,7 @@
   cursor: pointer;
   transition: all 150ms;
   white-space: nowrap;
-  min-height: 44px;
+  min-height: var(--touch-target-min);
 }
 
 .wp-template-page-faq__category-button:hover {
@@ -218,7 +218,7 @@
   font-size: var(--text-lg);
   font-weight: var(--font-weight-semibold);
   color: var(--foreground);
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-element-sm);
 }
 
 .wp-template-page-faq__sidebar-list {
@@ -267,7 +267,7 @@
 }
 
 .wp-template-page-faq__section {
-  margin-bottom: 3rem;
+  margin-bottom: var(--spacing-element-lg);
 }
 
 .wp-template-page-faq__section-title {
@@ -275,8 +275,8 @@
   font-size: var(--text-2xl);
   font-weight: var(--font-weight-semibold);
   color: var(--foreground);
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
+  margin-bottom: var(--spacing-element-md);
+  padding-bottom: var(--spacing-element-sm);
   border-bottom: 2px solid var(--border);
 }
 
@@ -290,7 +290,7 @@
   font-family: var(--font-family-noto-sans);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-element-md);
 }
 
 /* Accordion items */
@@ -378,7 +378,7 @@
   width: 4rem;
   height: 4rem;
   margin-inline: auto;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-element-md);
   color: var(--muted-foreground);
 }
 
@@ -387,14 +387,14 @@
   font-size: var(--text-2xl);
   font-weight: var(--font-weight-semibold);
   color: var(--foreground);
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-element-sm);
 }
 
 .wp-template-page-faq__empty-description {
   font-family: var(--font-family-noto-sans);
   font-size: var(--text-base);
   color: var(--muted-foreground);
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-element-md);
 }
 
 .wp-template-page-faq__empty-button {
@@ -410,7 +410,7 @@
   cursor: pointer;
   transition: all 200ms;
   display: inline-block;
-  min-height: 48px;
+  min-height: var(--touch-target-min);
 }
 
 .wp-template-page-faq__empty-button:hover {
@@ -434,7 +434,7 @@
   font-size: var(--text-3xl);
   font-weight: var(--font-weight-semibold);
   color: var(--foreground);
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-element-sm);
 }
 
 .wp-template-page-faq__cta-description {
@@ -443,7 +443,7 @@
   color: var(--muted-foreground);
   max-width: 42rem;
   margin-inline: auto;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-element-md);
 }
 
 .wp-template-page-faq__cta-button {
@@ -463,7 +463,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  min-height: 48px;
+  min-height: var(--touch-target-min);
 }
 
 .wp-template-page-faq__cta-button:hover {
@@ -487,7 +487,7 @@
   font-weight: var(--font-weight-semibold);
   color: var(--foreground);
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-element-md);
 }
 
 .wp-template-page-faq__popular-grid {

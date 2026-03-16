@@ -29,10 +29,6 @@ const TourGalleryPage = lazy(() => import("./pages/TourGalleryPage"));
 
 // Destinations
 const DestinationsArchive = lazy(() => import("./pages/DestinationsArchive"));
-const DestinationSingle = lazy(() => import("./pages/DestinationSingle"));
-const DestinationsArchiveEnhanced = lazy(() => import("./pages/DestinationsArchiveEnhanced"));
-const DestinationsArchiveTest = lazy(() => import("./pages/DestinationsArchiveTest"));
-const DestinationsArchiveSimple = lazy(() => import("./pages/DestinationsArchiveSimple"));
 const ArchiveDestinationTemplate = lazy(() => import("./templates/ArchiveDestinationTemplate"));
 const DestinationRouter = lazy(() => import("./pages/DestinationRouter"));
 
@@ -85,6 +81,12 @@ const NewsletterSignupPage = lazy(() => import("./pages/NewsletterSignupPage"));
 const PackingGuidesPage = lazy(() => import("./pages/PackingGuidesPage"));
 const SustainabilityPage = lazy(() => import("./pages/SustainabilityPage"));
 
+// New Pages
+const GalleryPage = lazy(() => import("./pages/GalleryPage"));
+const TestimonialsPage = lazy(() => import("./pages/TestimonialsPage"));
+const PartnersPage = lazy(() => import("./pages/PartnersPage"));
+const CareersPage = lazy(() => import("./pages/CareersPage"));
+
 // Booking & Account
 const BookingPage = lazy(() => import("./pages/BookingPage"));
 const BookingConfirmationPage = lazy(() => import("./pages/BookingConfirmationPage"));
@@ -99,12 +101,8 @@ const AccountSettingsPage = lazy(() => import("./pages/AccountSettingsPage"));
 const WishlistPage = lazy(() => import("./pages/WishlistPage"));
 const TourComparisonPage = lazy(() => import("./pages/TourComparisonPage"));
 const TripPlannerPage = lazy(() => import("./pages/TripPlannerPage"));
-
-// Itinerary & Loyalty
 const ItineraryBuilderPage = lazy(() => import("./pages/ItineraryBuilderPage"));
 const LoyaltyRewardsPage = lazy(() => import("./pages/LoyaltyRewardsPage"));
-
-// Search
 const SearchResultsPage = lazy(() => import("./pages/SearchResultsPage"));
 const AdvancedSearchResultsPage = lazy(() => import("./pages/AdvancedSearchResultsPage"));
 
@@ -173,9 +171,6 @@ const routes: RouteObject[] = [
         path: "destinations",
         children: [
           { index: true, Component: DestinationsArchive },
-          { path: "simple", Component: DestinationsArchiveSimple },
-          { path: "test", Component: DestinationsArchiveTest },
-          { path: "enhanced", Component: DestinationsArchiveEnhanced },
           { path: "old", Component: ArchiveDestinationTemplate },
           { path: ":slug", Component: DestinationRouter },
         ],
@@ -243,21 +238,46 @@ const routes: RouteObject[] = [
       { path: "newsletter", Component: NewsletterSignupPage },
       { path: "packing-guides", Component: PackingGuidesPage },
       { path: "sustainability", Component: SustainabilityPage },
+
+      // New content pages
+      { path: "gallery", Component: GalleryPage },
+      { path: "testimonials", Component: TestimonialsPage },
+      { path: "partners", Component: PartnersPage },
+      { path: "careers", Component: CareersPage },
+
+      // Booking flow (not nested under account — these are transactional)
       { path: "booking/:tourId", Component: BookingPage },
       { path: "booking-confirmation", Component: BookingConfirmationPage },
       { path: "booking-confirmation-enhanced", Component: BookingConfirmationPageEnhanced },
-      { path: "booking-management", Component: BookingManagementPage },
       { path: "payment", Component: PaymentPage },
       { path: "login", Component: LoginPage },
       { path: "register", Component: RegisterPage },
+
+      // Account section — all user account pages nested under /account/*
+      {
+        path: "account",
+        children: [
+          { index: true, Component: ProfilePage },
+          { path: "profile", Component: ProfilePage },
+          { path: "settings", Component: AccountSettingsPage },
+          { path: "saved-passengers", Component: SavedPassengersPage },
+          { path: "wishlist", Component: WishlistPage },
+          { path: "bookings", Component: BookingManagementPage },
+          { path: "loyalty-rewards", Component: LoyaltyRewardsPage },
+        ],
+      },
+
+      // Legacy account routes — redirect-compatible flat paths
       { path: "profile", Component: ProfilePage },
       { path: "saved-passengers", Component: SavedPassengersPage },
       { path: "account-settings", Component: AccountSettingsPage },
       { path: "wishlist", Component: WishlistPage },
+      { path: "booking-management", Component: BookingManagementPage },
+      { path: "loyalty-rewards", Component: LoyaltyRewardsPage },
+
       { path: "tour-comparison", Component: TourComparisonPage },
       { path: "trip-planner", Component: TripPlannerPage },
       { path: "itinerary-builder", Component: ItineraryBuilderPage },
-      { path: "loyalty-rewards", Component: LoyaltyRewardsPage },
       { path: "search", Component: SearchResultsPage },
       { path: "advanced-search", Component: AdvancedSearchResultsPage },
       {

@@ -1,0 +1,278 @@
+/**
+ * Gallery Archive Page Styles
+ * WordPress template: page-gallery.html
+ *
+ * Component: /src/app/pages/GalleryPage.tsx
+ * BEM: .wp-page-gallery__*
+ *
+ * @version 1.0.0
+ */
+
+/* ============================================
+   GALLERY FILTER BAR
+   Category filter chips
+   ============================================ */
+
+.wp-page-gallery__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-gap-xs);
+  justify-content: center;
+  padding-block: var(--spacing-element-md);
+}
+
+.wp-page-gallery__filter-chip {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-element-xs) var(--spacing-element-md);
+  border-radius: var(--radius-full);
+  border: var(--border-width) solid var(--border);
+  background-color: var(--background);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: var(--touch-target-min);
+  display: inline-flex;
+  align-items: center;
+}
+
+.wp-page-gallery__filter-chip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.wp-page-gallery__filter-chip:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.wp-page-gallery__filter-chip--active {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+.wp-page-gallery__filter-chip--active:hover {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  opacity: 0.9;
+}
+
+/* ============================================
+   ALBUMS GRID
+   Album cards in masonry-like grid
+   ============================================ */
+
+.wp-page-gallery__albums-section {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--background);
+}
+
+.wp-page-gallery__albums-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-gap-md);
+}
+
+@media (min-width: 640px) {
+  .wp-page-gallery__albums-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-page-gallery__albums-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   ALBUM CARD
+   Individual album card with cover image
+   ============================================ */
+
+.wp-page-gallery__album-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--card);
+  border: var(--border-width) solid var(--border);
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+  cursor: pointer;
+}
+
+.wp-page-gallery__album-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--elevation-md);
+}
+
+.wp-page-gallery__album-card:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.wp-page-gallery__album-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slower);
+}
+
+.wp-page-gallery__album-card:hover .wp-page-gallery__album-image {
+  transform: scale(1.05);
+}
+
+.wp-page-gallery__album-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--spacing-element-md);
+}
+
+.wp-page-gallery__album-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--overlay-text);
+  line-height: var(--leading-tight);
+}
+
+.wp-page-gallery__album-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-gap-xs);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--overlay-text-muted);
+}
+
+.wp-page-gallery__album-badge {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  padding: 0.125rem var(--spacing-element-xs);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius-full);
+  text-transform: capitalize;
+}
+
+/* ============================================
+   PHOTO GRID
+   Masonry-style photo grid
+   ============================================ */
+
+.wp-page-gallery__photos-section {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--muted);
+}
+
+.wp-page-gallery__photos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-gap-sm);
+}
+
+@media (min-width: 768px) {
+  .wp-page-gallery__photos-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-page-gallery__photos-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.wp-page-gallery__photo-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.wp-page-gallery__photo-card:hover {
+  transform: scale(1.02);
+}
+
+.wp-page-gallery__photo-card:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.wp-page-gallery__photo-card--featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.wp-page-gallery__photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 1;
+}
+
+.wp-page-gallery__photo-card--featured .wp-page-gallery__photo-img {
+  aspect-ratio: 1;
+}
+
+.wp-page-gallery__photo-info {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--spacing-element-sm);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.wp-page-gallery__photo-card:hover .wp-page-gallery__photo-info {
+  opacity: 1;
+}
+
+.wp-page-gallery__photo-caption {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--overlay-text);
+}
+
+.wp-page-gallery__photo-location {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  color: var(--overlay-text-muted);
+}
+
+/* ============================================
+   SECTION HEADERS
+   ============================================ */
+
+.wp-page-gallery__section-header {
+  text-align: center;
+  padding-bottom: var(--spacing-element-lg);
+}
+
+.wp-page-gallery__section-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  line-height: var(--leading-tight);
+}
+
+.wp-page-gallery__section-subtitle {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--leading-normal);
+}

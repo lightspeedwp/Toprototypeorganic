@@ -52,7 +52,7 @@
   color: var(--primary);
   text-decoration: none;
   transition: opacity 0.2s ease;
-  min-height: 44px;
+  min-height: var(--touch-target-min);
   padding: 0.25rem 0;
 }
 
@@ -102,7 +102,7 @@
   font-weight: var(--font-weight-medium);
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
-  min-height: 44px;
+  min-height: var(--touch-target-min);
 }
 
 .lsx-tour-contact-cta__button:hover {

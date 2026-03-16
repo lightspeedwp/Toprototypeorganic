@@ -18,7 +18,7 @@ import { AccommodationCard } from "../../components/patterns/AccommodationCard";
 import { BlogCard } from "../../components/patterns/BlogCard";
 import { TeamCard } from "../../components/patterns/TeamCard";
 import { SpecialCard } from "../../components/patterns/SpecialCard";
-import { TOURS, DESTINATIONS, ACCOMMODATION, BLOG_POSTS, TEAM, SPECIALS } from "../../data/mock";
+import { ALL_TOURS as TOURS, ALL_DESTINATIONS as DESTINATIONS, ALL_ACCOMMODATION as ACCOMMODATION, ALL_BLOG_POSTS as BLOG_POSTS, ALL_TEAM as TEAM, ALL_SPECIALS as SPECIALS } from "../../data/mockExpanded";
 import { SquaresFour } from "@phosphor-icons/react";
 
 type CardType = "tour" | "destination" | "accommodation" | "blog" | "team" | "special";

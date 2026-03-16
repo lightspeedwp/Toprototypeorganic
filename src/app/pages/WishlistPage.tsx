@@ -36,7 +36,7 @@ import { Container } from "../components/common/Container";
 import { Heart, ShareNetwork as Share2, X, Calendar, CurrencyDollar as DollarSign, MapPin, Users, TrendDown as TrendingDown, CheckCircle as CircleCheck, ArrowRight } from "@phosphor-icons/react";
 import { cn } from "../lib/utils";
 import { toast } from "sonner";
-import { TOURS } from "../data/mock";
+import { ALL_TOURS as TOURS } from "../data/mockExpanded";
 import type { Tour } from "../data/types";
 import { useNavigation } from "../contexts/NavigationContext";
 

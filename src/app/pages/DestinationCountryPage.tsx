@@ -18,7 +18,7 @@ import { ReviewCard } from "../components/patterns/ReviewCard";
 import { TeamCard } from "../components/patterns/TeamCard";
 import { BreadcrumbsPattern } from "../components/patterns/BreadcrumbsPattern";
 import { CTA } from "../components/patterns/CTA";
-import { DESTINATIONS, TOURS, BLOG_POSTS, REVIEWS, TEAM_MEMBERS } from "../data/mock";
+import { ALL_DESTINATIONS as DESTINATIONS, ALL_TOURS as TOURS, ALL_BLOG_POSTS as BLOG_POSTS, ALL_REVIEWS as REVIEWS, ALL_TEAM as TEAM_MEMBERS } from "../data/mockExpanded";
 import { useNavigation } from "../contexts/NavigationContext";
 
 const COUNTRY_INFO_ICONS: Record<string, any> = {

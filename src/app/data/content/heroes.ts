@@ -600,6 +600,82 @@ export const HERO_CONTENT: HeroContent[] = [
     height: "small",
     overlay: "medium",
   },
+
+  /* ============================================================
+     GALLERY
+     ============================================================ */
+  {
+    id: "hero-gallery",
+    context: "gallery",
+    badge: { icon: "Camera", label: "Photo Gallery" },
+    title: "Captured moments from extraordinary journeys",
+    description:
+      "Browse our curated collection of photographs from safaris, cultural encounters, and breathtaking landscapes across three continents.",
+    image:
+      "https://images.unsplash.com/photo-1738701243287-df5b46011c2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    primaryCTALabel: "Browse gallery",
+    primaryCTAHref: "/gallery",
+    height: "medium",
+    overlay: "medium",
+    showScrollIndicator: true,
+  },
+
+  /* ============================================================
+     TESTIMONIALS
+     ============================================================ */
+  {
+    id: "hero-testimonials",
+    context: "testimonials",
+    badge: { icon: "Star", label: "Traveller Stories" },
+    title: "Stories from those who journeyed with us",
+    description:
+      "Real experiences from real travellers. Discover why thousands of adventurers trust us with their most important journeys.",
+    image:
+      "https://images.unsplash.com/photo-1766717698967-8effd1f9631b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    primaryCTALabel: "Read stories",
+    primaryCTAHref: "/testimonials",
+    height: "medium",
+    overlay: "medium",
+    showScrollIndicator: true,
+  },
+
+  /* ============================================================
+     PARTNERS
+     ============================================================ */
+  {
+    id: "hero-partners",
+    context: "partners",
+    badge: { icon: "Handshake", label: "Our Network" },
+    title: "The partners who make it possible",
+    description:
+      "From conservation organisations to luxury lodges, our carefully chosen partners share our commitment to responsible, transformative travel.",
+    image:
+      "https://images.unsplash.com/photo-1727762423147-fdb6d59748c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    primaryCTALabel: "Meet our partners",
+    primaryCTAHref: "/partners",
+    height: "medium",
+    overlay: "medium",
+    showScrollIndicator: true,
+  },
+
+  /* ============================================================
+     CAREERS
+     ============================================================ */
+  {
+    id: "hero-careers",
+    context: "careers",
+    badge: { icon: "Briefcase", label: "Join Our Team" },
+    title: "Build a career that matters",
+    description:
+      "Join a passionate team of guides, conservationists, and travel experts who are changing the way the world experiences nature.",
+    image:
+      "https://images.unsplash.com/photo-1707819235986-df585047b0c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    primaryCTALabel: "View openings",
+    primaryCTAHref: "/careers",
+    height: "medium",
+    overlay: "medium",
+    showScrollIndicator: true,
+  },
 ];
 
 /**

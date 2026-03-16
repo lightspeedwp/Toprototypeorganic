@@ -333,7 +333,7 @@
   cursor: pointer;
   transition: all var(--transition-base);
   text-decoration: none;
-  min-height: 44px; /* Touch target */
+  min-height: var(--touch-target-min); /* Touch target */
 }
 
 .wp-template-home__view-all-button:hover {
@@ -418,7 +418,7 @@
   cursor: pointer;
   transition: all var(--transition-base);
   text-decoration: none;
-  min-height: 48px; /* Touch target */
+  min-height: var(--touch-target-min); /* Touch target */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -443,7 +443,7 @@
   cursor: pointer;
   transition: all var(--transition-base);
   text-decoration: none;
-  min-height: 48px; /* Touch target */
+  min-height: var(--touch-target-min); /* Touch target */
   display: inline-flex;
   align-items: center;
   justify-content: center;

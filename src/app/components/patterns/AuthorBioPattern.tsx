@@ -74,6 +74,7 @@ export function AuthorBioPattern({
                     "rounded-[var(--radius-full)] object-cover border-2 border-primary/10",
                     isCompact ? "w-16 h-16" : "w-24 h-24 md:w-32 md:h-32"
                   )}
+                  loading="lazy"
                 />
               </div>
             )}

@@ -20,8 +20,8 @@ import { TRAVELLER_TYPES } from "../../data/taxonomies/traveller-types";
 import { ACCOMMODATION_TYPES } from "../../data/taxonomies/accommodation-types";
 import { BRANDS } from "../../data/taxonomies/brands";
 import { BLOG_CATEGORIES } from "../../data/blog/categories";
-import { TOURS } from "../../data/tours/data";
-import { ACCOMMODATION } from "../../data/accommodation/properties";
+import { ALL_TOURS as TOURS } from "../../data/tours";
+import { ALL_ACCOMMODATION as ACCOMMODATION } from "../../data/accommodation";
 import {
   EAST_AFRICA,
   SOUTHERN_AFRICA,
@@ -125,6 +125,7 @@ export function MegaMenu({ activeMenu, onNavigate, onClose }: MegaMenuProps) {
                     src={TOURS[0].featuredImage}
                     alt={TOURS[0].title}
                     className="wp-part-mega-menu__featured-image"
+                    loading="lazy"
                   />
                   <span className="wp-part-mega-menu__featured-title">
                     {TOURS[0].title}
@@ -261,6 +262,7 @@ export function MegaMenu({ activeMenu, onNavigate, onClose }: MegaMenuProps) {
                 src="https://images.unsplash.com/photo-1652778287834-d626affb8eff?w=400"
                 alt="Okavango Delta Botswana"
                 className="wp-part-mega-menu__featured-image"
+                loading="lazy"
               />
               <span className="wp-part-mega-menu__featured-title">
                 Okavango Delta
@@ -365,6 +367,7 @@ export function MegaMenu({ activeMenu, onNavigate, onClose }: MegaMenuProps) {
                     src={ACCOMMODATION[0].featuredImage}
                     alt={ACCOMMODATION[0].title}
                     className="wp-part-mega-menu__featured-image"
+                    loading="lazy"
                   />
                   <span className="wp-part-mega-menu__featured-title">
                     {ACCOMMODATION[0].title}
@@ -552,6 +555,7 @@ export function MegaMenu({ activeMenu, onNavigate, onClose }: MegaMenuProps) {
                 src="https://images.unsplash.com/photo-1772290950495-63d4a55f3aec?w=400"
                 alt="Rhino conservation Africa"
                 className="wp-part-mega-menu__featured-image"
+                loading="lazy"
               />
               <span className="wp-part-mega-menu__featured-title">
                 Protecting Africa's Heritage
@@ -661,6 +665,7 @@ export function MegaMenu({ activeMenu, onNavigate, onClose }: MegaMenuProps) {
                 src="https://images.unsplash.com/photo-1709403229285-35ed7d88a79b?w=400"
                 alt="Safari guides team"
                 className="wp-part-mega-menu__featured-image"
+                loading="lazy"
               />
               <span className="wp-part-mega-menu__featured-title">
                 Expert Safari Designers

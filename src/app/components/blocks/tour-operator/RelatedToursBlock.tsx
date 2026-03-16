@@ -20,7 +20,7 @@
 
 import { Container } from "../../common/Container";
 import { TourCard } from "../../patterns/TourCard";
-import { TOURS } from "../../../data/mock";
+import { ALL_TOURS as TOURS } from "../../../data/mockExpanded";
 import type { Tour } from "../../../data/types";
 
 /**

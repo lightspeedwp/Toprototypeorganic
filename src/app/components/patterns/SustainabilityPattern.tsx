@@ -93,6 +93,7 @@ export function SustainabilityPattern({
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
                 />
               </div>
               <div className="p-element-2xl flex-1 flex flex-col">

@@ -85,9 +85,9 @@
   bottom: 0;
   left: 0;
   right: 0;
-  /* bg-black/60 and text-white are documented exceptions for media overlays */
+  /* Overlay text on dark media background */
   background-color: rgba(0, 0, 0, 0.6);
-  color: #fff;
+  color: var(--overlay-text);
   padding: 0.5rem 0.75rem;
   font-family: var(--font-family-noto-sans);
   font-size: var(--text-sm);

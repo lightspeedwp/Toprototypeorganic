@@ -129,7 +129,7 @@
    ============================================ */
 
 .wp-pattern-cta__description {
-  margin-block-end: 2rem;
+  margin-block-end: var(--spacing-element-md);
   font-family: var(--font-family-noto-sans);
   font-size: var(--text-base);
   color: var(--muted-foreground);

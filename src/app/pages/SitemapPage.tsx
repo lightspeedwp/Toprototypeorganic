@@ -39,12 +39,16 @@ import {
 /* ------------------------------------------------------------------ */
 /*  Data imports                                                       */
 /* ------------------------------------------------------------------ */
-import { TOURS } from "../data/tours";
+import { ALL_TOURS } from "../data/tours";
 import { DESTINATIONS, COUNTRIES, CONTINENTS } from "../data/destinations";
-import { ACCOMMODATION } from "../data/accommodation";
-import { BLOG_POSTS, BLOG_CATEGORIES } from "../data/blog";
-import { REVIEWS_DATA } from "../data/reviews/data";
-import { TEAM_MEMBERS } from "../data/team/members";
+import {
+  ASIA_DESTINATIONS,
+  EUROPE_DESTINATIONS,
+} from "../data/destinations";
+import { ALL_ACCOMMODATION } from "../data/accommodation";
+import { ALL_BLOG_POSTS, BLOG_CATEGORIES } from "../data/blog";
+import { ALL_REVIEWS } from "../data/reviews";
+import { ALL_TEAM_MEMBERS } from "../data/team";
 import { SPECIALS_DATA } from "../data/specials/data";
 import { TRAVEL_STYLES } from "../data/taxonomies/travel-styles";
 import { ACCOMMODATION_TYPES } from "../data/taxonomies/accommodation-types";
@@ -57,6 +61,7 @@ import {
   SOUTHERN_AFRICA,
   INDIAN_OCEAN_DESTINATIONS,
 } from "../data/destinations";
+import { ALL_FAQS, FAQ_CATEGORIES } from "../data/faqs";
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -84,12 +89,12 @@ const SITEMAP_SECTIONS: SitemapSection[] = [
   {
     title: "Tours",
     icon: Compass,
-    description: `${TOURS.length} safari & adventure packages`,
+    description: `${ALL_TOURS.length} safari & adventure packages`,
     links: [
       {
         label: "All Tours",
         href: "/tours",
-        children: TOURS.map((t) => ({
+        children: ALL_TOURS.map((t) => ({
           label: t.title,
           href: `/tours/${t.slug}`,
         })),
@@ -109,7 +114,7 @@ const SITEMAP_SECTIONS: SitemapSection[] = [
   {
     title: "Destinations",
     icon: MapPin,
-    description: `${COUNTRIES.length} countries, ${DESTINATIONS.length} total destinations across 3 African regions`,
+    description: `${COUNTRIES.length} countries, ${DESTINATIONS.length} total destinations across ${CONTINENTS.length} continents`,
     links: [
       {
         label: `East Africa (${EAST_AFRICA.filter(d => d.type === "country").length} countries)`,
@@ -148,6 +153,30 @@ const SITEMAP_SECTIONS: SitemapSection[] = [
         })),
       },
       {
+        label: `Asia (${ASIA_DESTINATIONS.filter(d => d.type === "country").length} countries)`,
+        href: "/destinations",
+        children: ASIA_DESTINATIONS.filter(d => d.type === "country").map((c) => ({
+          label: c.title,
+          href: `/destinations/${c.slug}`,
+          children: ASIA_DESTINATIONS.filter(d => d.parentId === c.id).map((r) => ({
+            label: r.title,
+            href: `/destinations/${r.slug}`,
+          })),
+        })),
+      },
+      {
+        label: `Europe (${EUROPE_DESTINATIONS.filter(d => d.type === "country").length} countries)`,
+        href: "/destinations",
+        children: EUROPE_DESTINATIONS.filter(d => d.type === "country").map((c) => ({
+          label: c.title,
+          href: `/destinations/${c.slug}`,
+          children: EUROPE_DESTINATIONS.filter(d => d.parentId === c.id).map((r) => ({
+            label: r.title,
+            href: `/destinations/${r.slug}`,
+          })),
+        })),
+      },
+      {
         label: "All Destinations",
         href: "/destinations",
       },
@@ -158,12 +187,12 @@ const SITEMAP_SECTIONS: SitemapSection[] = [
   {
     title: "Accommodation",
     icon: Hotel,
-    description: `${ACCOMMODATION.length} lodges & properties`,
+    description: `${ALL_ACCOMMODATION.length} lodges & properties`,
     links: [
       {
         label: "All Accommodation",
         href: "/accommodation",
-        children: ACCOMMODATION.map((a) => ({
+        children: ALL_ACCOMMODATION.map((a) => ({
           label: a.title,
           href: `/accommodation/${a.slug}`,
         })),
@@ -175,12 +204,12 @@ const SITEMAP_SECTIONS: SitemapSection[] = [
   {
     title: "Blog",
     icon: BookOpen,
-    description: `${BLOG_POSTS.length} articles across ${BLOG_CATEGORIES.length} categories`,
+    description: `${ALL_BLOG_POSTS.length} articles across ${BLOG_CATEGORIES.length} categories`,
     links: [
       {
         label: "All Blog Posts",
         href: "/blog",
-        children: BLOG_POSTS.map((p) => ({
+        children: ALL_BLOG_POSTS.map((p) => ({
           label: p.title,
           href: `/blog/${p.slug}`,
         })),
@@ -192,7 +221,7 @@ const SITEMAP_SECTIONS: SitemapSection[] = [
   {
     title: "Reviews",
     icon: Star,
-    description: `${REVIEWS_DATA.length} traveller reviews`,
+    description: `${ALL_REVIEWS.length} traveller reviews`,
     links: [
       {
         label: "All Reviews",
@@ -202,7 +231,7 @@ const SITEMAP_SECTIONS: SitemapSection[] = [
         label: "Reviews Hub",
         href: "/reviews/hub",
       },
-      ...REVIEWS_DATA.map((r) => ({
+      ...ALL_REVIEWS.map((r) => ({
         label: r.title,
         href: `/reviews/${r.slug}`,
       })),
@@ -213,12 +242,12 @@ const SITEMAP_SECTIONS: SitemapSection[] = [
   {
     title: "Team",
     icon: Users,
-    description: `${TEAM_MEMBERS.length} team members`,
+    description: `${ALL_TEAM_MEMBERS.length} team members`,
     links: [
       {
         label: "Meet the Team",
         href: "/team",
-        children: TEAM_MEMBERS.map((m) => ({
+        children: ALL_TEAM_MEMBERS.map((m) => ({
           label: m.name,
           href: `/team/${m.slug}`,
         })),
@@ -547,7 +576,7 @@ const SITEMAP_SECTIONS: SitemapSection[] = [
       {
         label: "Tour Single Variants",
         href: "/tours",
-        children: TOURS.slice(0, 3).map((t) => ({
+        children: ALL_TOURS.slice(0, 3).map((t) => ({
           label: `${t.title} (New)`,
           href: `/tours/${t.slug}/new`,
         })),
@@ -555,7 +584,7 @@ const SITEMAP_SECTIONS: SitemapSection[] = [
       {
         label: "Tour Gallery Pages",
         href: "/tours",
-        children: TOURS.slice(0, 3).map((t) => ({
+        children: ALL_TOURS.slice(0, 3).map((t) => ({
           label: `${t.title} Gallery`,
           href: `/tours/${t.slug}/gallery`,
         })),
@@ -579,19 +608,21 @@ const SITEMAP_SECTIONS: SitemapSection[] = [
 /* ------------------------------------------------------------------ */
 
 const STATS = [
-  { count: TOURS.length, label: "Tours" },
+  { count: ALL_TOURS.length, label: "Tours" },
   { count: COUNTRIES.length, label: "Countries" },
   { count: DESTINATIONS.length, label: "Destinations" },
-  { count: ACCOMMODATION.length, label: "Properties" },
+  { count: ALL_ACCOMMODATION.length, label: "Properties" },
   { count: TRAVEL_STYLES.length, label: "Travel Styles" },
   { count: TRAVELLER_TYPES.length, label: "Traveller Types" },
   { count: ACCOMMODATION_TYPES.length, label: "Property Types" },
   { count: BRANDS.length, label: "Brands" },
   { count: FACILITIES.length, label: "Facilities" },
-  { count: BLOG_POSTS.length, label: "Articles" },
-  { count: REVIEWS_DATA.length, label: "Reviews" },
-  { count: TEAM_MEMBERS.length, label: "Team" },
+  { count: ALL_BLOG_POSTS.length, label: "Articles" },
+  { count: ALL_REVIEWS.length, label: "Reviews" },
+  { count: ALL_TEAM_MEMBERS.length, label: "Team" },
   { count: SPECIALS_DATA.length, label: "Specials" },
+  { count: ALL_FAQS.length, label: "FAQs" },
+  { count: FAQ_CATEGORIES.length, label: "FAQ Categories" },
 ];
 
 /* ------------------------------------------------------------------ */

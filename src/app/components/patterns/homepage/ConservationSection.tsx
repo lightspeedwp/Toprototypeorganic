@@ -101,6 +101,7 @@ export function ConservationSection({ onNavigate }: ConservationSectionProps) {
                 src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1000"
                 alt="Conservation in Africa"
                 className="wp-pattern-conservation__image"
+                loading="lazy"
               />
               <div className="wp-pattern-conservation__image-gradient" />
               <div className="wp-pattern-conservation__quote">

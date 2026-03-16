@@ -96,6 +96,7 @@ export function RoomTypesPattern({
                       src={room.image}
                       alt={room.name}
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                      loading="lazy"
                     />
                     {room.price && (
                       <div className="absolute bottom-[var(--spacing-element-lg)] left-[var(--spacing-element-lg)] bg-[color:var(--color-background)]/90 backdrop-blur-md px-element-lg py-element-sm rounded-[var(--radius-xl)] shadow-[var(--elevation-lg)] border border-[color:var(--color-border)]/50 flex items-baseline gap-element-sm">

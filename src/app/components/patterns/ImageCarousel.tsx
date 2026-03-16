@@ -203,6 +203,7 @@ export function ImageCarousel({
               enableLightbox && "cursor-pointer"
             )}
             onClick={handleImageClick}
+            loading="lazy"
           />
 
           {/* Overlay Gradient (for caption visibility) */}
@@ -340,6 +341,7 @@ export function ThumbnailCarousel({
               "h-full w-full object-cover",
               enableLightbox && "cursor-pointer"
             )}
+            loading="lazy"
           />
           {showCaptions && currentImage.caption && (
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-element-lg">
@@ -367,6 +369,7 @@ export function ThumbnailCarousel({
                 src={image.src}
                 alt={image.alt}
                 className="h-full w-full object-cover"
+                loading="lazy"
               />
             </button>
           ))}

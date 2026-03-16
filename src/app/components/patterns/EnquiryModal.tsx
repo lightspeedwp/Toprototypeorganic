@@ -67,6 +67,7 @@ export function EnquiryModal({
               src="https://images.unsplash.com/photo-1516426122078-c23e76319801" 
               alt="Wilderness" 
               className="wp-pattern-enquiry__image"
+              loading="lazy"
             />
             <div className="wp-pattern-enquiry__overlay" />
             

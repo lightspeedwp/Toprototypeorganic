@@ -20,7 +20,7 @@ import { BlogCard } from "../components/patterns/BlogCard";
 import { CardGrid } from "../components/patterns/CardGrid";
 import { useNavigation } from "../contexts/NavigationContext";
 import { 
-  ALL_BLOG_POSTS, ALL_BLOG_CATEGORIES, TEAM_MEMBERS 
+  ALL_BLOG_POSTS, ALL_BLOG_CATEGORIES, ALL_TEAM as TEAM_MEMBERS 
 } from "../data/mockExpanded";
 import { cn } from "../lib/utils";
 import { motion } from "motion/react";

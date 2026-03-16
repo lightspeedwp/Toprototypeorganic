@@ -1,0 +1,261 @@
+/**
+ * Testimonials Page Styles
+ * WordPress template: page-testimonials.html
+ *
+ * Component: /src/app/pages/TestimonialsPage.tsx
+ * BEM: .wp-page-testimonials__*
+ *
+ * @version 1.0.0
+ */
+
+/* ============================================
+   STATS ROW
+   Social proof statistics
+   ============================================ */
+
+.wp-page-testimonials__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-gap-md);
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--muted);
+}
+
+@media (min-width: 768px) {
+  .wp-page-testimonials__stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.wp-page-testimonials__stat {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-xs);
+}
+
+.wp-page-testimonials__stat-value {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  line-height: var(--leading-tight);
+}
+
+.wp-page-testimonials__stat-label {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.wp-page-testimonials__stat-desc {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   FEATURED TESTIMONIALS
+   Large highlighted testimonials
+   ============================================ */
+
+.wp-page-testimonials__featured {
+  padding-block: var(--spacing-section-md);
+  background-color: var(--background);
+}
+
+.wp-page-testimonials__featured-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-gap-lg);
+}
+
+@media (min-width: 768px) {
+  .wp-page-testimonials__featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   TESTIMONIAL CARD
+   Individual testimonial card
+   ============================================ */
+
+.wp-page-testimonials__card {
+  background-color: var(--card);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-element-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-md);
+  transition: box-shadow var(--transition-slow);
+}
+
+.wp-page-testimonials__card:hover {
+  box-shadow: var(--elevation-sm);
+}
+
+.wp-page-testimonials__card--featured {
+  border-color: var(--primary);
+  border-width: var(--border-width-md);
+}
+
+.wp-page-testimonials__card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-gap-sm);
+}
+
+.wp-page-testimonials__avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: var(--border-width-md) solid var(--primary);
+  flex-shrink: 0;
+}
+
+.wp-page-testimonials__card-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.wp-page-testimonials__card-name {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  line-height: var(--leading-tight);
+}
+
+.wp-page-testimonials__card-location {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+.wp-page-testimonials__stars {
+  display: flex;
+  gap: 0.125rem;
+  color: var(--accent);
+}
+
+.wp-page-testimonials__quote {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-base);
+  color: var(--foreground);
+  line-height: var(--leading-relaxed);
+  font-style: italic;
+}
+
+.wp-page-testimonials__quote::before {
+  content: "\201C";
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  color: var(--primary);
+  line-height: 0;
+  vertical-align: -0.4em;
+}
+
+.wp-page-testimonials__highlight {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-gap-xs);
+  padding: var(--spacing-element-xs) var(--spacing-element-sm);
+  background-color: var(--muted);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.wp-page-testimonials__card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-gap-xs);
+}
+
+.wp-page-testimonials__tour-name {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-sm);
+  color: var(--primary);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.wp-page-testimonials__tour-name:hover {
+  text-decoration: underline;
+}
+
+.wp-page-testimonials__tour-name:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.wp-page-testimonials__date {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   ALL TESTIMONIALS GRID
+   Full listing below featured
+   ============================================ */
+
+.wp-page-testimonials__all {
+  padding-block: var(--spacing-section-sm);
+  background-color: var(--muted);
+}
+
+.wp-page-testimonials__all-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-gap-md);
+}
+
+@media (min-width: 640px) {
+  .wp-page-testimonials__all-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-page-testimonials__all-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   SECTION HEADERS
+   ============================================ */
+
+.wp-page-testimonials__section-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-xs);
+  padding-bottom: var(--spacing-element-lg);
+}
+
+.wp-page-testimonials__section-title {
+  font-family: var(--font-family-lora);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  line-height: var(--leading-tight);
+}
+
+.wp-page-testimonials__section-subtitle {
+  font-family: var(--font-family-noto-sans);
+  font-size: var(--text-lg);
+  color: var(--muted-foreground);
+  line-height: var(--leading-normal);
+}

@@ -133,7 +133,7 @@
   font-weight: var(--font-weight-medium);
   cursor: pointer;
   transition: opacity 0.2s ease, box-shadow 0.2s ease;
-  min-height: 44px;
+  min-height: var(--touch-target-min);
 }
 
 .lsx-tour-quick-facts__cta-button:hover {

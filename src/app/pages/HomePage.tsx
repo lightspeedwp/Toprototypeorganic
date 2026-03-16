@@ -35,12 +35,14 @@ import {
 } from "../components/patterns/homepage";
 
 import {
-  TOURS,
-  DESTINATIONS,
-  ACCOMMODATION,
-  BLOG_POSTS,
-  TEAM,
-  REVIEWS,
+  ALL_TOURS,
+  ALL_DESTINATIONS,
+  ALL_ACCOMMODATION,
+  ALL_BLOG_POSTS,
+  ALL_TEAM,
+  ALL_REVIEWS,
+} from "../data/mockExpanded";
+import {
   getPageSectionFAQs,
   HOMEPAGE_CONTENT,
   getHomepageSection,
@@ -102,12 +104,14 @@ export function HomePage({ onNavigate }: HomePageProps) {
   };
 
   // ----- Data queries (WordPress WP_Query equivalents) -----
-  const featuredTours = TOURS.slice(0, 3);
-  const featuredDestinations = DESTINATIONS.slice(0, 4);
-  const featuredAccommodation = ACCOMMODATION.slice(0, 3);
-  const featuredBlogPosts = BLOG_POSTS.slice(0, 3);
-  const featuredTeam = TEAM.slice(0, 3);
-  const featuredTestimonials = REVIEWS.slice(0, 3);
+  const featuredTours = ALL_TOURS.slice(0, 3);
+  const featuredDestinations = ALL_DESTINATIONS
+    .filter((d) => d.type === "country")
+    .slice(0, 4);
+  const featuredAccommodation = ALL_ACCOMMODATION.slice(0, 3);
+  const featuredBlogPosts = ALL_BLOG_POSTS.slice(0, 3);
+  const featuredTeam = ALL_TEAM.slice(0, 3);
+  const featuredTestimonials = ALL_REVIEWS.slice(0, 3);
 
   // ----- Centralized content -----
   const faqData = getPageSectionFAQs("home");

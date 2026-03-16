@@ -171,7 +171,7 @@
   font-family: var(--font-family-lora);
   font-size: var(--text-3xl);
   font-weight: var(--font-weight-bold);
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-element-sm);
 }
 
 .wp-block-lts-destination-collection__empty-text {

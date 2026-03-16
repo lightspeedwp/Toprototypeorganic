@@ -233,7 +233,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-element-xs);
-  min-height: 48px;
+  min-height: var(--touch-target-min);
 }
 
 .wp-template-single-tour__booking-button:hover {

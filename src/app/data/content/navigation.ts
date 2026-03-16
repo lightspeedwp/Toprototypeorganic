@@ -142,6 +142,10 @@ export const BREADCRUMB_TRAILS: BreadcrumbTrail[] = [
   { context: "packing-guides",     items: [{ label: "Home", href: "/" }, { label: "Packing Guides" }] },
   { context: "sitemap",            items: [{ label: "Home", href: "/" }, { label: "Sitemap" }] },
   { context: "search",             items: [{ label: "Home", href: "/" }, { label: "Search Results" }] },
+  { context: "gallery",            items: [{ label: "Home", href: "/" }, { label: "Gallery" }] },
+  { context: "testimonials",       items: [{ label: "Home", href: "/" }, { label: "Testimonials" }] },
+  { context: "partners",           items: [{ label: "Home", href: "/" }, { label: "Partners" }] },
+  { context: "careers",            items: [{ label: "Home", href: "/" }, { label: "Careers" }] },
 
   /* ── Archives ──────────────────────────────────────────────── */
   { context: "tours-archive",         items: [{ label: "Home", href: "/" }, { label: "Tours" }] },
@@ -160,8 +164,12 @@ export const BREADCRUMB_TRAILS: BreadcrumbTrail[] = [
 
   /* ── User account & utility ────────────────────────────────── */
   { context: "trip-planner",          items: [{ label: "Home", href: "/" }, { label: "Trip Planner" }] },
-  { context: "wishlist",              items: [{ label: "Home", href: "/" }, { label: "Wishlist" }] },
-  { context: "profile",              items: [{ label: "Home", href: "/" }, { label: "My Profile" }] },
+  { context: "profile",              items: [{ label: "Home", href: "/" }, { label: "Account", href: "/account" }, { label: "My Profile" }] },
+  { context: "account-settings",     items: [{ label: "Home", href: "/" }, { label: "Account", href: "/account" }, { label: "Settings" }] },
+  { context: "saved-passengers",     items: [{ label: "Home", href: "/" }, { label: "Account", href: "/account" }, { label: "Saved Passengers" }] },
+  { context: "wishlist",             items: [{ label: "Home", href: "/" }, { label: "Account", href: "/account" }, { label: "Wishlist" }] },
+  { context: "booking-management",   items: [{ label: "Home", href: "/" }, { label: "Account", href: "/account" }, { label: "My Bookings" }] },
+  { context: "loyalty-rewards",      items: [{ label: "Home", href: "/" }, { label: "Account", href: "/account" }, { label: "Loyalty Rewards" }] },
   { context: "booking",              items: [{ label: "Home", href: "/" }, { label: "Booking" }] },
   { context: "booking-confirmation",  items: [{ label: "Home", href: "/" }, { label: "Booking", href: "/booking" }, { label: "Confirmation" }] },
   { context: "travel-styles",        items: [{ label: "Home", href: "/" }, { label: "Travel Styles" }] },

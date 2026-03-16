@@ -18,7 +18,7 @@ import { Hero } from "../components/patterns/Hero";
 import { CTA } from "../components/patterns/CTA";
 import { BreadcrumbsPattern } from "../components/patterns/BreadcrumbsPattern";
 import { Container } from "../components/common/Container";
-import { DESTINATIONS, TOURS, ACCOMMODATION } from "../data/mock";
+import { ALL_DESTINATIONS as DESTINATIONS, ALL_TOURS as TOURS, ALL_ACCOMMODATION as ACCOMMODATION } from "../data/mockExpanded";
 import { useNavigation } from "../contexts/NavigationContext";
 
 interface Activity {

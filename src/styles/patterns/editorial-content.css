@@ -64,7 +64,7 @@
    ============================================ */
 
 .wp-pattern-editorial__header {
-  margin-block-end: 2rem;
+  margin-block-end: var(--spacing-element-md);
 }
 
 .wp-pattern-editorial__title {
@@ -76,7 +76,7 @@
 }
 
 .wp-pattern-editorial__subtitle {
-  margin-block-end: 1rem;
+  margin-block-end: var(--spacing-element-sm);
   font-family: var(--font-family-noto-sans);
   font-size: var(--text-lg);
   color: var(--muted-foreground);
@@ -117,8 +117,8 @@
 
 /* Headings within prose */
 .wp-pattern-editorial__prose h2 {
-  margin-block-start: 2rem;
-  margin-block-end: 1rem;
+  margin-block-start: var(--spacing-element-md);
+  margin-block-end: var(--spacing-element-sm);
   font-family: var(--font-family-lora);
   font-size: var(--text-xl);
   font-weight: var(--font-weight-semibold);
@@ -286,7 +286,7 @@
 
 /* Horizontal rule */
 .wp-pattern-editorial__prose hr {
-  margin-block: 2rem;
+  margin-block: var(--spacing-element-md);
   border: none;
   border-block-start: 1px solid var(--border);
 }
@@ -307,8 +307,8 @@
    ============================================ */
 
 .wp-pattern-editorial__pullquote {
-  margin-block: 2rem;
-  padding: 2rem;
+  margin-block: var(--spacing-element-md);
+  padding: var(--spacing-element-md);
   background-color: var(--muted);
   border-inline-start: 4px solid var(--primary);
   border-radius: var(--radius-md);
@@ -330,7 +330,7 @@
 
 .wp-pattern-editorial__pullquote-cite {
   display: block;
-  margin-block-start: 1rem;
+  margin-block-start: var(--spacing-element-sm);
   font-family: var(--font-family-noto-sans);
   font-size: var(--text-base);
   color: var(--muted-foreground);

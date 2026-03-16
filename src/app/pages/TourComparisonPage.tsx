@@ -34,7 +34,7 @@ import {
   Medal as Award,
 } from "@phosphor-icons/react";
 import { toast } from "sonner";
-import { TOURS } from "../data/mock";
+import { ALL_TOURS as TOURS } from "../data/mockExpanded";
 import type { Tour } from "../data/types";
 import { useNavigation } from "../contexts/NavigationContext";
 import { motion as Motion, AnimatePresence } from "motion/react";

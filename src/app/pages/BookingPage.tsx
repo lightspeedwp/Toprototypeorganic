@@ -32,7 +32,7 @@ import { BookingWizard, type BookingData } from "../components/patterns/BookingW
 import { Container } from "../components/common/Container";
 import { Shield, LockKey as Lock, Medal as Award, Headphones as HeadphonesIcon } from "@phosphor-icons/react";
 import { cn } from "../lib/utils";
-import { TOURS } from "../data/mock";
+import { ALL_TOURS as TOURS } from "../data/mockExpanded";
 import type { Tour } from "../data/types";
 
 /**

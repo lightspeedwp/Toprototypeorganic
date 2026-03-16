@@ -63,7 +63,8 @@ import { BreadcrumbsPattern } from "../components/patterns/BreadcrumbsPattern";
 import { useNavigation } from "../contexts/NavigationContext";
 
 // Data
-import { DESTINATIONS, TOURS, ACCOMMODATION } from "../data/mockExpanded";
+import { ALL_DESTINATIONS as DESTINATIONS, ALL_TOURS as TOURS, ALL_ACCOMMODATION as ACCOMMODATION } from "../data/mockExpanded";
+import { getAllFAQsByCategory, FAQ_DESTINATIONS } from "../data/faqs";
 import { cn } from "../lib/utils";
 
 /**
@@ -142,32 +143,31 @@ function SingleDestinationTemplate() {
     },
   ];
 
-  // FAQ data
+  // FAQ data — merge destination-specific dynamic FAQ with continent-relevant FAQs from data layer
+  const CONTINENT_FAQ_MAP: Record<string, string> = {
+    "continent-2": "asia",
+    "continent-3": "europe",
+  };
+  const continentFaqCategory = CONTINENT_FAQ_MAP[destination.continentId];
+  const continentFaqs = continentFaqCategory
+    ? getAllFAQsByCategory(continentFaqCategory).slice(0, 4)
+    : [];
+  const generalDestFaqs = FAQ_DESTINATIONS.slice(0, 3);
   const destinationFAQs = [
     {
+      id: `faq-dest-${destination.slug}-best-time`,
+      slug: `best-time-${destination.slug}`,
       question: `What is the best time to visit ${destination.name}?`,
       answer: `The best time to visit ${destination.name} is ${destination.bestTime}. The climate is ${destination.climate}, which makes this period ideal for outdoor activities, wildlife viewing, and comfortable exploration. However, ${destination.name} offers unique experiences year-round depending on your interests.`,
+      excerpt: `Best travel season for ${destination.name}.`,
+      categories: ["destinations"],
+      featured: false,
+      order: 0,
+      helpfulCount: 0,
+      viewCount: 0,
     },
-    {
-      question: "Do I need a visa to visit?",
-      answer:
-        "Visa requirements vary by nationality. Most visitors from the US, UK, EU, and Commonwealth countries can enter visa-free for tourism purposes (up to 90 days). We recommend checking with your local embassy or consulate at least 3 months before travel. We can provide detailed visa guidance specific to your nationality upon request.",
-    },
-    {
-      question: "What vaccinations do I need?",
-      answer:
-        "Routine vaccinations (MMR, DPT, Flu) should be up to date. Depending on your itinerary, Hepatitis A and Typhoid may be recommended. Yellow fever vaccination is required if traveling from an endemic country. Malaria prophylaxis may be advised for certain regions. Consult your doctor or a travel health clinic 4-6 weeks before departure.",
-    },
-    {
-      question: "What currency is used and can I use credit cards?",
-      answer:
-        "The local currency is widely accepted, and credit cards (Visa, Mastercard) are accepted at most hotels, restaurants, and tourist attractions. However, it's advisable to carry some cash for small purchases, tips, and rural areas. ATMs are readily available in major cities and towns.",
-    },
-    {
-      question: "Is it safe to travel to this destination?",
-      answer:
-        "Yes, this destination is generally safe for tourists. Like any travel destination, it's important to take standard precautions: avoid isolated areas at night, keep valuables secure, use registered taxis or ride-sharing services, and stay aware of your surroundings. Our local guides know the areas well and will ensure your safety throughout your tour.",
-    },
+    ...continentFaqs,
+    ...generalDestFaqs,
   ];
 
   // Climate data
@@ -426,7 +426,7 @@ function SingleDestinationTemplate() {
         <FAQ
           title="Planning Your Trip"
           subtitle="Everything you need to know before you go"
-          faqs={destinationFAQs}
+          items={destinationFAQs}
         />
 
         {/* CTA Section */}

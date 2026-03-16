@@ -83,7 +83,7 @@
   padding: 0.625rem 0.75rem;
   /* bg-black/60 and text-white are documented exceptions for media overlays */
   background-color: rgba(0, 0, 0, 0.6);
-  color: #fff;
+  color: var(--overlay-text);
   font-family: var(--font-family-noto-sans);
   font-size: var(--text-xs);
   font-weight: var(--font-weight-normal);

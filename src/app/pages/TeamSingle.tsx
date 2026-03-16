@@ -16,9 +16,9 @@ import { StatisticsMetricsPattern } from "../components/patterns/StatisticsMetri
 import { RelatedContent } from "../components/patterns/RelatedContent";
 import { TourCard } from "../components/patterns/TourCard";
 import { Container } from "../components/common/Container";
-import { TOURS, FAQ_GENERAL } from "../data/mock";
-import { ALL_TEAM } from "../data/mockExpanded";
+import { ALL_TEAM, ALL_TOURS } from "../data/mockExpanded";
 import { getPageSectionFAQs } from "../data/mock";
+import { FAQ_GENERAL } from "../data/faqs";
 import { useNavigation } from "../contexts/NavigationContext";
 import { EnvelopeSimple as Mail, Phone, Medal as Award, Globe, Calendar, Users, Star } from "@phosphor-icons/react";
 
@@ -33,7 +33,7 @@ export function TeamSingle() {
   const teamMember = ALL_TEAM.find(m => m.slug === slug) || ALL_TEAM[0];
 
   // Get tours related to this team member's specialties
-  const relatedTours = TOURS.slice(0, 3);
+  const relatedTours = ALL_TOURS.slice(0, 3);
 
   // Fast facts for team member
   const fastFacts = [

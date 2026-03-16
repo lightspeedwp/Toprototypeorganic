@@ -13,13 +13,10 @@ import { PageShell } from "../components/parts/PageShell";
 import { Container } from "../components/common/Container";
 import { useState, useMemo } from "react";
 import { 
-  FAQ_GENERAL, 
-  FAQ_TOUR_SPECIFIC, 
-  FAQ_DESTINATION, 
-  FAQ_ACCOMMODATION,
-  FAQ_BOOKING,
-  FAQ_TRAVEL_LOGISTICS,
-} from "../data/mock";
+  ALL_FAQS,
+  FAQ_CATEGORIES,
+  getAllFAQsByCategory,
+} from "../data/faqs";
 import { useNavigation } from "../contexts/NavigationContext";
 
 export function FAQPage() {
@@ -27,14 +24,13 @@ export function FAQPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
 
-  const categories = useMemo(() => [
-    { id: "general", title: "General Enquiries", items: FAQ_GENERAL },
-    { id: "tours", title: "Safari Activities", items: FAQ_TOUR_SPECIFIC },
-    { id: "destinations", title: "Destinations", items: FAQ_DESTINATION },
-    { id: "accommodation", title: "Lodges & Camps", items: FAQ_ACCOMMODATION },
-    { id: "booking", title: "Booking & Payments", items: FAQ_BOOKING },
-    { id: "logistics", title: "Travel Logistics", items: FAQ_TRAVEL_LOGISTICS },
-  ], []);
+  const categories = useMemo(() => 
+    FAQ_CATEGORIES.map(cat => ({
+      id: cat.id,
+      title: cat.name,
+      items: getAllFAQsByCategory(cat.slug),
+    })).filter(cat => cat.items.length > 0),
+  []);
 
   const filteredSections = useMemo(() => {
     return categories

@@ -5,7 +5,7 @@
  * users plan their perfect trip while collecting detailed preferences.
  */
 
-import { useState } from "react";
+import * as React from "react";
 import { Container } from "../components/common/Container";
 import { Button } from "../components/blocks/design/Button";
 import { HeadingBlock } from "../components/blocks/core/HeadingBlock";
@@ -24,6 +24,7 @@ import {
   CheckCircle as CircleCheck
 } from "@phosphor-icons/react";
 import { cn } from "../lib/utils";
+import "../../styles/pages/trip-planner.css";
 
 interface TripPlannerData {
   destinations: string[];
@@ -41,14 +42,14 @@ interface TripPlannerData {
 }
 
 export default function TripPlannerPage() {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState<Partial<TripPlannerData>>({
+  const [currentStep, setCurrentStep] = React.useState(1);
+  const [formData, setFormData] = React.useState<Partial<TripPlannerData>>({
     destinations: [],
     travelers: { adults: 2, children: 0 },
     travelStyle: [],
     interests: []
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
 
   const totalSteps = 7;
 
@@ -279,20 +280,19 @@ export default function TripPlannerPage() {
                 </div>
                 <h2 className="text-fluid-3xl m-0">Dream Destinations</h2>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-fluid-sm">
+              <div className="wp-page-trip-planner__destinations-grid">
                 {destinations.map((dest) => (
                   <button
                     key={dest.id}
                     onClick={() => toggleDestination(dest.id)}
                     className={cn(
-                      "p-element-md border-2 rounded-[var(--radius-md)] text-left transition-all duration-300",
-                      formData.destinations?.includes(dest.id)
-                        ? "border-primary bg-primary/5 ring-4 ring-primary/10"
-                        : "border-border hover:border-primary/50"
+                      "wp-page-trip-planner__destination-card",
+                      formData.destinations?.includes(dest.id) &&
+                        "wp-page-trip-planner__destination-card--selected"
                     )}
                   >
-                    <p className="text-fluid-sm m-0">{dest.name}</p>
-                    <p className="text-fluid-xs uppercase tracking-wider text-muted-foreground m-0">{dest.region}</p>
+                    <p className="wp-page-trip-planner__destination-card__name">{dest.name}</p>
+                    <p className="wp-page-trip-planner__destination-card__region">{dest.region}</p>
                   </button>
                 ))}
               </div>
@@ -308,19 +308,18 @@ export default function TripPlannerPage() {
                 </div>
                 <h2 className="text-fluid-3xl m-0">Travel Window</h2>
               </div>
-              <div className="grid grid-cols-3 sm:grid-cols-4 gap-fluid-sm">
+              <div className="wp-page-trip-planner__months-grid">
                 {months.map((month) => (
                   <button
                     key={month}
                     onClick={() => setFormData({ ...formData, travelMonth: month })}
                     className={cn(
-                      "p-element-sm border-2 rounded-[var(--radius-md)] text-center transition-all duration-300",
-                      formData.travelMonth === month
-                        ? "border-primary bg-primary/5 ring-4 ring-primary/10"
-                        : "border-border hover:border-primary/50"
+                      "wp-page-trip-planner__month-card",
+                      formData.travelMonth === month &&
+                        "wp-page-trip-planner__month-card--selected"
                     )}
                   >
-                    <p className="text-fluid-sm m-0">{month}</p>
+                    <p className="wp-page-trip-planner__month-card__label">{month}</p>
                   </button>
                 ))}
               </div>
@@ -416,7 +415,7 @@ export default function TripPlannerPage() {
                 </div>
                 <h2 className="text-fluid-3xl m-0">Safari Style</h2>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-fluid-sm">
+              <div className="wp-page-trip-planner__styles-grid">
                 {travelStyles.map((style) => {
                   const Icon = style.icon;
                   return (
@@ -424,14 +423,13 @@ export default function TripPlannerPage() {
                       key={style.id}
                       onClick={() => toggleTravelStyle(style.id)}
                       className={cn(
-                        "p-element-lg border-2 rounded-[var(--radius-lg)] text-center transition-all duration-300",
-                        formData.travelStyle?.includes(style.id)
-                          ? "border-primary bg-primary/5 ring-4 ring-primary/10"
-                          : "border-border hover:border-primary/50"
+                        "wp-page-trip-planner__style-card",
+                        formData.travelStyle?.includes(style.id) &&
+                          "wp-page-trip-planner__style-card--selected"
                       )}
                     >
-                      <Icon className="size-8 m-0 pb-element-md text-primary" />
-                      <p className="text-fluid-sm m-0">{style.label}</p>
+                      <Icon className="wp-page-trip-planner__style-card__icon" />
+                      <p className="wp-page-trip-planner__style-card__label">{style.label}</p>
                     </button>
                   );
                 })}

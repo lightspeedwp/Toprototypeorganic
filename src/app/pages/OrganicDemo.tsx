@@ -17,7 +17,7 @@
 import { Container } from "../components/common/Container";
 import { Hero } from "../components/patterns/Hero";
 import { FAQ } from "../components/patterns/FAQ";
-import { TOURS } from "../data/mock";
+import { ALL_TOURS as TOURS } from "../data/mockExpanded";
 import { WebGLGraphics } from "../components/common/WebGLGraphics";
 import { useNavigation } from "../contexts/NavigationContext";
 

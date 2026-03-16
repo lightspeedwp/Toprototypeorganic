@@ -34,7 +34,7 @@
    ============================================ */
 
 .wp-pattern-related__header {
-  margin-block-end: 2rem;
+  margin-block-end: var(--spacing-element-md);
   text-align: center;
 }
 
@@ -112,7 +112,7 @@
 }
 
 .wp-pattern-related__empty-icon {
-  margin-block-end: 1rem;
+  margin-block-end: var(--spacing-element-sm);
   color: var(--muted-foreground);
 }
 
@@ -138,7 +138,7 @@
 .wp-pattern-related__view-all {
   display: flex;
   justify-content: center;
-  margin-block-start: 2rem;
+  margin-block-start: var(--spacing-element-md);
 }
 
 .wp-pattern-related__view-all-link {

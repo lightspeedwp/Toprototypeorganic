@@ -46,8 +46,8 @@
 .lsx-banner-cover__overlay {
   position: absolute;
   inset: 0;
-  /* bg-black is a documented exception for media overlays */
-  background-color: #000;
+  /* Dark overlay for media — uses foreground color at reduced opacity */
+  background-color: var(--foreground);
   opacity: var(--banner-dim, 0.5);
 }
 
@@ -75,8 +75,8 @@
   width: 100%;
   max-width: 56rem;
   text-align: center;
-  /* text-white is a documented exception for media overlays */
-  color: #fff;
+  /* Overlay text uses theme-agnostic overlay-text token */
+  color: var(--overlay-text);
 }
 
 /* Override heading colours inside the banner */
@@ -114,7 +114,7 @@
   font-weight: var(--font-weight-medium);
   cursor: pointer;
   transition: opacity 0.2s ease, box-shadow 0.2s ease;
-  min-height: 44px;
+  min-height: var(--touch-target-min);
   text-decoration: none;
 }
 
@@ -132,23 +132,23 @@
   gap: 0.5rem;
   padding: 0.75rem 1.75rem;
   background-color: transparent;
-  /* white text/border for media overlay context */
-  color: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.7);
+  /* Overlay text for media context */
+  color: var(--overlay-text);
+  border: 2px solid var(--glass-border);
   border-radius: var(--radius-md);
   font-family: var(--font-family-noto-sans);
   font-size: var(--text-base);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease;
-  min-height: 44px;
+  min-height: var(--touch-target-min);
   text-decoration: none;
 }
 
 .lsx-banner-cover__cta-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  border-color: #fff;
-  color: #fff;
+  background-color: var(--glass-bg-hover);
+  border-color: var(--overlay-text);
+  color: var(--overlay-text);
   text-decoration: none;
 }
 

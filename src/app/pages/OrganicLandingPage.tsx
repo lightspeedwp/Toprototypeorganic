@@ -18,7 +18,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, useInView } from "motion/react";
 import { Container } from "../components/common/Container";
 import { WebGLGraphics } from "../components/common/WebGLGraphics";
-import { TOURS } from "../data/tours";
+import { ALL_TOURS as TOURS } from "../data/tours";
 import { DESTINATIONS } from "../data/destinations";
 import { ACCOMMODATION } from "../data/accommodation";
 import { REVIEWS } from "../data/reviews";
@@ -435,7 +435,7 @@ export default function OrganicLandingPage() {
 
       {/* ═══════════════════════════════════════════
           WAVE DIVIDER
-          ═══════════════════════════════════════════ */}
+          ══���════════════════════════════════════════ */}
       <WaveDivider fill="var(--organic-sunset-bg-primary)" flip />
 
       {/* ═══════════════════════════════════════════

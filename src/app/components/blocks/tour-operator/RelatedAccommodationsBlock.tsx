@@ -20,7 +20,7 @@
 
 import { Container } from "../../common/Container";
 import { AccommodationCard } from "../../patterns/AccommodationCard";
-import { ACCOMMODATION } from "../../../data/mock";
+import { ALL_ACCOMMODATION as ACCOMMODATION } from "../../../data/mockExpanded";
 import type { Accommodation } from "../../../data/types";
 
 /**

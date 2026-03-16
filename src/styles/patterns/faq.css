@@ -39,12 +39,12 @@
    ============================================ */
 
 .wp-pattern-faq__header {
-  margin-block-end: 2rem;
+  margin-block-end: var(--spacing-element-md);
   text-align: center;
 }
 
 .wp-pattern-faq__title {
-  margin-block-end: 1rem;
+  margin-block-end: var(--spacing-element-sm);
   font-family: var(--font-family-lora);
   font-size: var(--text-2xl);
   font-weight: var(--font-weight-semibold);
@@ -216,12 +216,12 @@
 }
 
 .wp-pattern-faq__empty-icon {
-  margin-block-end: 1rem;
+  margin-block-end: var(--spacing-element-sm);
   color: var(--muted-foreground);
 }
 
 .wp-pattern-faq__empty-title {
-  margin-block-end: 0.5rem;
+  margin-block-end: var(--spacing-element-xs);
   font-family: var(--font-family-lora);
   font-size: var(--text-2xl);
   font-weight: var(--font-weight-semibold);
@@ -241,10 +241,10 @@
 
 .wp-pattern-faq__categories {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--spacing-element-xs);
   flex-wrap: wrap;
   justify-content: center;
-  margin-block-end: 2rem;
+  margin-block-end: var(--spacing-element-md);
 }
 
 .wp-pattern-faq__category-chip {

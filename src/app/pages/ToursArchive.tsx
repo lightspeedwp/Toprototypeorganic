@@ -1,5 +1,7 @@
 /**
- * Tours Archive Page - Wrapper for ArchiveTourTemplate.
+ * Tours Archive Page — Wrapper for ArchiveTourTemplate.
+ *
+ * WordPress Mapping: page-tours-archive
  */
 
 import { ArchiveTourTemplate } from "../templates/ArchiveTourTemplate";

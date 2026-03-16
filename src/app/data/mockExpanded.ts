@@ -1,26 +1,35 @@
 /**
  * Expanded Mock Data
  * 
- * Aggregates base mock data and programmatically generated data to provide
- * large datasets (36+ items) for testing pagination, filtering, and search.
+ * Aggregates ALL hand-crafted mock data from domain modules.
+ * No more auto-generated filler data — every item is hand-crafted
+ * with real content across 3 continents + Indian Ocean.
+ * 
+ * Totals:
+ *   - Tours: 61 (35 Africa + 13 Asia + 13 Europe)
+ *   - Destinations: 87 (across 6 continents)
+ *   - Accommodation: 50 (24 Africa + 8 Asia + 8 Europe + 10 expansion)
+ *   - Blog Posts: 44 (24 Africa + 10 Asia + 10 Europe)
+ *   - Reviews: 41 (15 Africa + 13 Asia + 13 Europe)
+ *   - Team Members: 18 (5 original + 13 expanded)
+ *   - Specials: from specials/data
+ *   - FAQs: 91 (across 14 categories)
  * 
  * @module mockExpanded
  * @category data
  */
 
-import { TOURS } from "./tours/data";
+import { ALL_TOURS as TOURS_ALL } from "./tours/index";
 import { DESTINATIONS } from "./destinations/index";
 import { CONTINENTS } from "./destinations/continents";
-import { ACCOMMODATION } from "./accommodation/properties";
+import { ALL_ACCOMMODATION as ACCOMMODATION_ALL } from "./accommodation/index";
 import { ACCOMMODATION_TYPES } from "./taxonomies/accommodation-types";
-import { BLOG_POSTS } from "./blog/posts";
-import { BLOG_POSTS_ASIA } from "./blog/posts-asia";
-import { BLOG_POSTS_EUROPE } from "./blog/posts-europe";
+import { ALL_BLOG_POSTS as BLOG_ALL } from "./blog/index";
 import { BLOG_CATEGORIES } from "./blog/categories";
 import { BLOG_TAGS } from "./blog/tags";
 import { ALL_REVIEWS as REVIEWS_ALL } from "./reviews/index";
-import { REVIEWS_DATA as REVIEWS } from "./reviews/data";
-export { REVIEWS };
+import { REVIEWS_DATA } from "./reviews/data";
+export { REVIEWS_DATA as REVIEWS };
 import { SPECIALS } from "./specials/data";
 import { ALL_TEAM_MEMBERS } from "./team/index";
 import { TEAM_MEMBERS } from "./team/members";
@@ -28,46 +37,48 @@ export { TEAM_MEMBERS }; // Re-export for centralized access
 import { TRAVEL_STYLES } from "./taxonomies/travel-styles";
 import { BRANDS } from "./taxonomies/brands";
 import { FACILITIES } from "./taxonomies/facilities";
-
-import { 
-  generateAdditionalTours, 
-  generateAdditionalDestinations, 
-  generateAdditionalAccommodation, 
-  generateAdditionalBlogPosts, 
-  generateAdditionalReviews, 
-  generateAdditionalSpecials, 
-  generateAdditionalTeamMembers,
-  EXPANDED_CONTINENTS,
-  EXPANDED_TRAVEL_STYLES,
-  EXPANDED_ACCOMMODATION_TYPES,
-  EXPANDED_BRANDS,
-  EXPANDED_FACILITIES,
-  EXPANDED_BLOG_CATEGORIES,
-  EXPANDED_BLOG_TAGS
-} from "./generators";
+import { ALL_FAQS } from "./faqs/index";
 
 import type { 
   Tour, Destination, Accommodation, BlogPost, Review, Special, TeamMember,
   Continent, TravelStyle, AccommodationType, Brand, Facility, BlogCategory, BlogTag 
 } from "./types";
 
-// Combine base data with generated data
-export const ALL_TOURS: Tour[] = [...TOURS, ...generateAdditionalTours(100)];
-export const ALL_DESTINATIONS: Destination[] = [...DESTINATIONS, ...generateAdditionalDestinations(100)];
-export const ALL_ACCOMMODATION: Accommodation[] = [...ACCOMMODATION, ...generateAdditionalAccommodation(100)];
-export const ALL_BLOG_POSTS: BlogPost[] = [...BLOG_POSTS, ...BLOG_POSTS_ASIA, ...BLOG_POSTS_EUROPE];
+// ── Hand-crafted data aggregations (no generators) ──────────────────────
+
+/** All 61 hand-crafted tours */
+export const ALL_TOURS: Tour[] = [...TOURS_ALL];
+
+/** All 87 hand-crafted destinations */
+export const ALL_DESTINATIONS: Destination[] = [...DESTINATIONS];
+
+/** All 50 hand-crafted accommodation properties */
+export const ALL_ACCOMMODATION: Accommodation[] = [...ACCOMMODATION_ALL];
+
+/** All 44 hand-crafted blog posts */
+export const ALL_BLOG_POSTS: BlogPost[] = [...BLOG_ALL];
+
+/** All 41 hand-crafted reviews */
 export const ALL_REVIEWS: Review[] = [...REVIEWS_ALL];
-export const ALL_SPECIALS: Special[] = [...SPECIALS, ...generateAdditionalSpecials(5)];
+
+/** All specials */
+export const ALL_SPECIALS: Special[] = [...SPECIALS];
+
+/** All 18 hand-crafted team members */
 export const ALL_TEAM: TeamMember[] = [...ALL_TEAM_MEMBERS];
 
-// Export expanded taxonomies
-export const ALL_CONTINENTS: Continent[] = [...CONTINENTS, ...EXPANDED_CONTINENTS.filter(c => !CONTINENTS.some(existing => existing.id === c.id))];
-export const ALL_TRAVEL_STYLES: TravelStyle[] = [...TRAVEL_STYLES, ...EXPANDED_TRAVEL_STYLES.filter(s => !TRAVEL_STYLES.some(existing => existing.id === s.id))];
-export const ALL_ACCOMMODATION_TYPES: AccommodationType[] = [...ACCOMMODATION_TYPES, ...EXPANDED_ACCOMMODATION_TYPES.filter(t => !ACCOMMODATION_TYPES.some(existing => existing.id === t.id))];
-export const ALL_BRANDS: Brand[] = [...BRANDS, ...EXPANDED_BRANDS.filter(b => !BRANDS.some(existing => existing.id === b.id))];
-export const ALL_FACILITIES: Facility[] = [...FACILITIES, ...EXPANDED_FACILITIES.filter(f => !FACILITIES.some(existing => existing.id === f.id))];
-export const ALL_BLOG_CATEGORIES: BlogCategory[] = [...BLOG_CATEGORIES, ...EXPANDED_BLOG_CATEGORIES.filter(c => !BLOG_CATEGORIES.some(existing => existing.id === c.id))];
-export const ALL_BLOG_TAGS: BlogTag[] = [...BLOG_TAGS, ...EXPANDED_BLOG_TAGS.filter(t => !BLOG_TAGS.some(existing => existing.id === t.id))];
+/** All 91 hand-crafted FAQs */
+export { ALL_FAQS };
+
+// ── Taxonomy aggregations (no generators) ───────────────────────────────
+
+export const ALL_CONTINENTS: Continent[] = [...CONTINENTS];
+export const ALL_TRAVEL_STYLES: TravelStyle[] = [...TRAVEL_STYLES];
+export const ALL_ACCOMMODATION_TYPES: AccommodationType[] = [...ACCOMMODATION_TYPES];
+export const ALL_BRANDS: Brand[] = [...BRANDS];
+export const ALL_FACILITIES: Facility[] = [...FACILITIES];
+export const ALL_BLOG_CATEGORIES: BlogCategory[] = [...BLOG_CATEGORIES];
+export const ALL_BLOG_TAGS: BlogTag[] = [...BLOG_TAGS];
 
 // Helper Functions
 
