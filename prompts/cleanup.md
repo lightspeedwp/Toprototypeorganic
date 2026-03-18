@@ -1,11 +1,13 @@
-# Cleanup Prompt
+# Codebase Cleanup & Status Sync
 
-**Version:** 2.0.0
-**Date:** March 13, 2026
-**Type:** Single-session comprehensive cleanup
-**Trigger:** User says **"cleanup"** (see `/guidelines/Guidelines.md` trigger words)
-**Frequency:** After every major work session, weekly, or before milestones
-**Duration:** ~30-45 minutes, ONE session, no follow-ups
+**Type:** Audit + Cleanup + Status Update  
+**Version:** 4.0.0  
+**Created:** 2026-03-18  
+**Status:** Active  
+**Trigger Word:** `cleanup`  
+**Repeatable:** Yes — run weekly or after each major work session  
+**Estimated Duration:** 1 session (20-40 minutes)  
+**Followed by:** Type `continue` after this completes to resume the next open task.
 
 ---
 
@@ -15,234 +17,189 @@ You are working inside **Figma Make** — a sandboxed web IDE. There is no termi
 
 ---
 
-## Execution Order
+## Guideline References (Read-Only)
 
-Run all 6 phases **sequentially in this single session**, then close with a summary. Do NOT split across multiple sessions.
+- `/guidelines/rules/design-system-rules.md` — Styling compliance
+- `/guidelines/rules/file-organization.md` — File placement rules
+- `/guidelines/overview-components.md` — Component architecture
+
+---
+
+## Design System Rules (apply to ALL generated/modified UI)
+
+- ALL styling via CSS variables from `/src/styles/theme-base.css`, `/src/styles/theme-light.css`, `/src/styles/theme-dark.css`
+- Typography: ONLY 5 approved font faces via variables:
+  - `var(--font-family-lora)` — Headings, editorial
+  - `var(--font-family-noto-sans)` — Body, UI
+  - `var(--font-family-caveat)` — Accent (sparingly)
+  - `var(--font-family-shadows)` — Decorative (very sparingly)
+  - `var(--font-family-mono)` — Code, technical
+- Icons: `@phosphor-icons/react` (default) — `lucide-react` is legacy
+- Router: `react-router` only — never `react-router-dom`
+- Zero Margin Policy: flex/grid gaps only for layout spacing
+- NEVER delete service template files or protected files
+
+---
+
+## Instructions
+
+When triggered, execute ALL steps below IN ORDER within a single session. Do not create sub-prompts, orchestrators, or defer work to future sessions.
+
+---
+
+## Step 1 — Root Directory Cleanup
+
+**Goal:** Root (`/`) contains ONLY config files + `README.md` + `CHANGELOG.md` + `ATTRIBUTIONS.md`.
+
+1. List all files in `/` (root level only)
+2. Any `.md` files that are NOT `README.md`, `CHANGELOG.md`, or `ATTRIBUTIONS.md` -> **move** to correct location per `/guidelines/Guidelines.md` folder structure
+3. Any reports/tasks/prompts/guidelines in root -> **move** to their correct folder
+4. Delete empty or temp files (but NEVER protected files)
+
+**Output:** List what was moved/deleted, or confirm "Root is clean."
+
+---
+
+## Step 2 — Broken Import Audit
+
+**Goal:** Zero broken imports across CSS and TypeScript files.
+
+### 2a. CSS Imports
+1. Read `/src/styles/index.css` — verify every `@import` path resolves to an actual file
+2. Read `/src/styles/global.css` — verify its unique imports resolve
+3. Spot-check 5-10 CSS files for broken `@import` references
+4. **Fix** broken paths
+
+### 2b. TypeScript/TSX Imports
+1. Search for `from 'react-router-dom'` or `from "react-router-dom"` — must be zero
+2. Search for imports referencing deleted directories
+3. Check route file (`/src/app/routes.ts`) — verify component imports resolve
+4. Flag any `lucide-react` imports — these are migration targets (do not fix here, just count)
+5. **Fix** any broken imports found
+
+**Output:** "[N] broken imports found and fixed, [N] lucide-react files remaining" or "Zero broken imports."
+
+---
+
+## Step 3 — Route Completeness Check
+
+**Goal:** Every page has a route; no routes point to missing pages.
+
+1. List all page `.tsx` files in `/src/app/pages/` (including subdirectories)
+2. Read `/src/app/routes.ts` to build the registered route list
+3. **Missing routes:** Pages with no route -> add to routes with correct path
+4. **Dead routes:** Routes pointing to pages that don't exist -> remove them
+5. Do NOT remove any existing valid routes
+
+**Output:** "[N] routes added, [N] dead routes removed" or "All routes complete."
+
+---
+
+## Step 4 — Orphaned File Scan
+
+**Goal:** Flag files with zero importers.
+
+1. Check for CSS files not imported by `index.css` or `global.css` AND not imported by any component
+2. Check for data files in `/src/app/data/` not imported anywhere
+3. Check for utility files not imported anywhere
+4. For confirmed orphans: **delete** (but NEVER protected files)
+5. For uncertain files: **list them** in output but leave them
+
+**Output:** "[N] orphaned files deleted, [N] flagged for review" or "No orphans found."
+
+---
+
+## Step 5 — Task List Maintenance
+
+**Goal:** Task trackers are current and tidy.
+
+### 5a. Archive Completed Task Files
+1. Read each `.md` in `/tasks/` (not subdirectories, not `task-list.md`)
+2. If ALL tasks are `[x]` -> move to `/tasks/archive/`
+3. NEVER delete or move `task-list.md`
+
+### 5b. Update task-list.md
+1. Update `Last Updated` date to today
+2. Mark tasks `[x]` if work is confirmed complete
+3. Remove duplicate entries
+
+**Output:** "[N] files archived, task-list.md updated."
+
+---
+
+## Step 6 — Reports Cleanup
+
+**Goal:** Reports folder is organized.
+
+1. Check for reports in wrong locations (root, `/docs/`, `/src/`) -> move to `/reports/`
+2. Reports older than 30 days with no active references -> flag (do NOT auto-delete)
+3. Verify report filenames follow `YYYY-MM-DD-description.md` or categorical format
+
+**Output:** "[N] reports moved, [N] flagged for archival" or "Reports clean."
+
+---
+
+## Step 7 — CHANGELOG Update
+
+**Goal:** Changelog reflects all work since last update.
+
+1. Read `/CHANGELOG.md`
+2. Under `[Unreleased]`, add concise entries for any recent work not yet documented
+3. Keep entries to 1-2 sentences each
+4. Follow [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format
+5. NEVER delete existing entries
+
+**Output:** "[N] changelog entries added" or "Changelog already current."
+
+---
+
+## Step 8 — DevTools Sync
+
+**Goal:** DevTools hub and pages reflect current codebase state.
+
+1. Verify DevTools hub at `/dev-tools` lists all 12 dev-tools pages
+2. Check Route Map page reflects current routes from `/src/app/routes.ts`
+3. Check Mock Data Explorer references current data files
+4. All dev-tools styling must use CSS variables — no hardcoded values
+
+**Output:** "[N] DevTools pages updated" or "DevTools are current."
+
+---
+
+## Step 9 — Guidelines Quick-Check
+
+**Goal:** Key guideline files are accurate.
+
+1. Verify `/guidelines/Guidelines.md` version and date are current
+2. Verify trigger words table is complete (count prompts in `/prompts/` vs table entries)
+3. Spot-check 3-5 cross-reference links — fix any broken ones
+
+**Output:** "[N] guideline issues fixed" or "Guidelines are current."
+
+---
+
+## Step 10 — Session Summary
+
+Provide a final summary:
 
 ```
-Phase 1: Filesystem Cleanup        (~8 min)
-Phase 2: Import & Route Integrity  (~8 min)
-Phase 3: Task & Report Maintenance (~5 min)
-Phase 4: Status Updates            (~5 min)
-Phase 5: Dynamic Page Sync         (~5 min)
-Phase 6: Summary & Close           (~4 min)
+## Cleanup Session — [Today's Date]
+
+| Action | Count |
+|--------|-------|
+| Files moved/deleted | [N] |
+| Imports fixed | [N] |
+| Routes added/removed | [N] |
+| Task files archived | [N] |
+| Changelog entries | [N] |
+| DevTools changes | [N] |
+| Guideline fixes | [N] |
+| lucide-react files remaining | [N] |
+
+### Issues Requiring Manual Review
+- [list anything unresolved, or "None"]
 ```
 
----
+Add any discovered follow-up items to `/tasks/task-list.md`.
 
-## Phase 1: Filesystem Cleanup
-
-### 1a. Root Directory Audit
-
-**ONLY these files are allowed in `/` (root):**
-
-| Allowed | File |
-|---------|------|
-| Required | `index.html`, `package.json`, `vite.config.ts`, `tsconfig.json`, `tsconfig.node.json`, `pnpm-lock.yaml`, `postcss.config.mjs` |
-| Optional | `README.md`, `CHANGELOG.md`, `ATTRIBUTIONS.md`, `.gitignore` |
-| Protected | `Guidelines.md` (at `/guidelines/Guidelines.md` — NOT root) |
-
-**DELETE everything else in root**, including but not limited to:
-- `fix_*.js`, `check_*.cjs`, `test_sync.txt`, `snippets.code-snippets`
-- Any `.sh` scripts (move to `/scripts/` if useful, otherwise delete)
-- Any `.md` files other than the allowed list
-- Any orphaned config files (`.eslintrc`, `.prettierrc`, etc. without matching dependency)
-
-### 1b. Source Cleanup
-
-**DELETE orphaned scripts in `/src/`:**
-- `src/fix_*.js`, `src/check_*.js`, `src/test_*.js`, `src/contrast.js`
-- Any file in `/src/` that is NOT `.tsx`, `.ts`, `.css`, `.svg`, `.md` (in imports/pasted_text only)
-
-**DELETE `/tmp/` folder** and all contents if it exists.
-
-### 1c. Docs Folder Audit
-
-Scan `/docs/` for:
-- Duplicate files (multiple "FINAL", "CONFIRMED", "ABSOLUTE" docs saying the same thing)
-- Files not referenced anywhere in the codebase or guidelines
-- Consolidate or delete. When in doubt, flag in summary — don't auto-delete.
-
----
-
-## Phase 2: Import & Route Integrity
-
-### 2a. CSS Import Chain
-
-1. Read `/src/styles/index.css`
-2. For every `@import` line, verify the target file exists
-3. Check all CSS files that `@import` other CSS files (recursive)
-4. **Report** any broken imports. **Fix** by either creating a stub file or removing the import.
-
-### 2b. Route ↔ Page File Sync
-
-1. Read `/src/app/routes.ts` — extract all lazy-imported page paths
-2. List all `.tsx` files in `/src/app/pages/` and `/src/app/pages/dev-tools/`
-3. Cross-reference to find:
-   - **Missing routes:** Page files that exist but have no route → flag (don't auto-add)
-   - **Broken routes:** Routes pointing to files that don't exist → **fix or remove**
-   - **Orphaned imports:** `lazy()` imports at top of routes.ts that aren't used in any route → remove
-
-### 2c. Component Import Spot-Check
-
-Spot-check 5-10 recently modified components for broken relative imports. Focus on:
-- Pages importing from `../components/patterns/`
-- Templates importing from `../components/parts/`
-- Any file importing from `../data/` or `../hooks/`
-
----
-
-## Phase 3: Task & Report Maintenance
-
-### 3a. Clean `/tasks/` Folder
-
-1. Read `/tasks/task-list.md` (MASTER — **never delete**)
-2. Scan `/tasks/` for other `.md` files
-3. **DELETE** task files where ALL items are checked `[x]` — they're done
-4. **KEEP** task files with unchecked items `[ ]` — they're active
-5. **MOVE** partially-complete files older than 30 days to `/tasks/archive/`
-6. Update `task-list.md` to remove references to deleted task files
-
-### 3b. Clean `/reports/` Folder
-
-1. Scan `/reports/` (not `/reports/archive/`)
-2. Reports older than 30 days (by filename date) → move to `/reports/archive/`
-3. If multiple reports cover the same topic, keep the most recent, archive the rest
-4. Do NOT delete reports — always archive
-
-### 3c. Clean `/prompts/` Folder
-
-Prompts are **reusable and should NOT be deleted**. Only:
-- Flag prompts that reference files/paths that no longer exist
-- Note any prompts that are superseded by newer versions
-
----
-
-## Phase 4: Status Updates
-
-### 4a. Update `/tasks/task-list.md`
-
-- Check the `**Status:**` line at the top — does it reflect current reality?
-- Mark any newly completed tasks as `[x]`
-- Update the "Next Actions" section
-- Verify all referenced prompt/report/task files still exist
-- Update `**Last Updated:**` date to today
-
-### 4b. Update `/CHANGELOG.md`
-
-Add a new entry under the latest version/unreleased section:
-
-```markdown
-### Cleanup — [TODAY'S DATE]
-
-#### Changed
-- [list updated files]
-
-#### Removed  
-- [list deleted files with brief reason]
-
-#### Fixed
-- [list broken imports/routes fixed]
-```
-
-### 4c. Spot-Check `/guidelines/Guidelines.md`
-
-- Open the "Guidelines File Structure" tree near the bottom
-- Compare against actual `/guidelines/` folder contents
-- **Only fix the tree section** if files were added/removed — do NOT rewrite the whole document
-
----
-
-## Phase 5: Dynamic Page Sync
-
-### 5a. SitemapPage (`/src/app/pages/SitemapPage.tsx`)
-
-- Cross-reference sitemap links against `routes.ts`
-- Add any missing public routes
-- Remove any routes that no longer exist
-- Update stats/counts if computed from data arrays
-
-### 5b. DevToolsPage (`/src/app/pages/DevToolsPage.tsx`)
-
-- Verify all dev tool links match routes under `dev-tools/*` in `routes.ts`
-- Add links for any new dev tool pages
-- Remove links to deleted dev tool pages
-
-### 5c. dev-tools/index.tsx (`/src/app/pages/dev-tools/index.tsx`)
-
-- Same checks as DevToolsPage — keep the dev tools hub in sync
-
----
-
-## Phase 6: Summary & Close
-
-Print a structured summary, then update `task-list.md` with the cleanup date.
-
-### Summary Template
-
-```
-## Cleanup Summary — [DATE]
-
-### Phase 1: Filesystem
-- Files deleted: X
-- [list each deleted file with 1-line reason]
-
-### Phase 2: Imports & Routes
-- Broken CSS imports fixed: X
-- Missing routes flagged: X  
-- Broken routes fixed: X
-- Orphaned imports removed: X
-
-### Phase 3: Tasks & Reports
-- Task files archived/deleted: X
-- Reports archived: X
-- Prompts flagged: X
-
-### Phase 4: Status Updates
-- task-list.md: Updated ✅/No change
-- CHANGELOG.md: Updated ✅/No change
-- Guidelines.md: Updated ✅/No change
-
-### Phase 5: Dynamic Pages
-- SitemapPage: Updated ✅/No change
-- DevToolsPage: Updated ✅/No change
-- dev-tools/index: Updated ✅/No change
-
-### Items Requiring Human Decision:
-- [list anything you weren't sure about]
-```
-
----
-
-## Protected Files (NEVER delete or modify)
-
-These files must NEVER be deleted or overwritten during cleanup:
-
-| File | Reason |
-|------|--------|
-| `/src/app/components/figma/ImageWithFallback.tsx` | Figma Make system file |
-| `/pnpm-lock.yaml` | Package lock (auto-generated) |
-| `/tasks/task-list.md` | Master task list (update only, never delete) |
-| `/guidelines/Guidelines.md` | Master guidelines (update tree section only) |
-| `/CHANGELOG.md` | Version history (append only, never delete) |
-| `/src/app/App.tsx` | Application entry point |
-| `/src/app/routes.ts` | Route config (fix, never delete) |
-| `/src/styles/index.css` | CSS entry point (fix imports, never delete) |
-| `/src/styles/theme.css` | Theme orchestrator |
-| `/src/styles/theme-base.css` | Base design tokens |
-| `/src/styles/theme-light.css` | Light mode tokens |
-| `/src/styles/theme-dark.css` | Dark mode tokens |
-| All files in `/src/app/data/` | Mock data (never delete without explicit request) |
-
----
-
-## Rules
-
-1. **DO NOT create new documentation files** — cleanup only
-2. **DO NOT refactor code logic** — only fix broken imports/routes
-3. **DO NOT change design tokens or styling** — out of scope
-4. **DO delete confidently** — orphaned scripts, tmp files, stale fix scripts
-5. **DO update statuses** — task lists, changelogs, dynamic pages must reflect reality
-6. **DO archive, don't delete** reports — always move to `/reports/archive/`
-7. **ASK before deleting** any component, page, or data file — flag in summary instead
-8. **NEVER suggest** refreshing browser, clearing cache, or restarting dev server — this is Figma Make
+**This cleanup phase is complete.** If triggered by `cleanup then continue`, proceed with the `continue` trigger word.

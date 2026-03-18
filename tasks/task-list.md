@@ -1,7 +1,7 @@
 # Task List - Master Checklist
 
-**Last Updated:** March 15, 2026  
-**Status:** Phase 5.3 Performance Review — Complete ✅
+**Last Updated:** March 18, 2026  
+**Status:** Phase 6.1 Icon Migration — In Progress
 
 ---
 
@@ -72,12 +72,12 @@ Migrated 21 files from Africa-only subsets to expanded data:
 
 - [x] **5.1** Design system compliance audit — scan all components for hardcoded colors, non-variable spacing, non-approved fonts
 - [x] **5.2** Accessibility audit — heading hierarchy, ARIA labels, focus indicators, touch targets
-  - **Report:** `/reports/5.2-accessibility-audit.md`
+  - **Report:** `/reports/2026-03/2026-03-15-accessibility-audit.md`
   - **Fixed:** 19 hardcoded touch targets → `var(--touch-target-min)`, ~55 hardcoded margins → spacing variables across 13 CSS files
   - **Passing:** Heading hierarchy, ARIA labels (19+ instances), focus-visible (30+ rules), alt text, sr-only (19 instances), skip links
   - **Remaining:** `page-utility.css` has ~26 editorial prose margins (low priority)
 - [x] **5.3** Performance review — lazy loading, code splitting, image optimization
-  - **Report:** `/reports/5.3-performance-review.md`
+  - **Report:** `/reports/2026-03/2026-03-15-performance-review.md`
   - **Fixed:** 13 images missing `loading="lazy"` across 9 component files (CTA, RoomTypes, HighlightsGrid, AuthorBio, ImageCarousel ×3, ConservationSection, SustainabilityPattern, EnquiryModal, MegaMenu ×5)
   - **Cleaned:** Removed 3 duplicate destination archive routes, 1 unused import
   - **Added:** 4 new pages (Gallery, Testimonials, Partners, Careers) with lazy-loaded routes, mock data, BEM CSS, hero content, and breadcrumbs
@@ -85,3 +85,36 @@ Migrated 21 files from Africa-only subsets to expanded data:
   - **Confirmed:** All 80+ page routes use `React.lazy()` code splitting; Hero image correctly eager (LCP)
 - [ ] **5.4** Mobile responsiveness audit — verify all templates at mobile/tablet breakpoints
 - [ ] **5.5** Cross-template navigation verification — ensure all inter-page links resolve correctly
+
+---
+
+## Phase 6: Full Audit Findings (2026-03-18)
+
+**Report:** `/reports/2026-03/2026-03-18-full-audit.md`
+
+### 6.1 Icon Library Migration — Phosphor Icons (lucide-react → @phosphor-icons/react)
+
+**Direction:** Make `@phosphor-icons/react` the default icon library. Migrate remaining `lucide-react` imports to Phosphor equivalents. Both packages coexist during migration.
+
+**Trigger Words:** `audit phosphor` (scan) → `migrate phosphor` (execute batch)
+
+**Status:** Not started — run `audit phosphor` first to generate the migration plan and batch files.
+
+- [ ] **6.1.0** Run `audit phosphor` to scan codebase and generate migration report + batch assignments
+- [ ] **6.1.1** Execute Batch 1 — Quick wins (simple 1:1 icon swaps)
+- [ ] **6.1.2** Execute Batch 2 — Standard migrations (multiple icons per file)
+- [ ] **6.1.3** Execute Batch 3 — Complex components (dynamic icon resolution, prop passing)
+- [ ] **6.1.4** Execute Batch 4 — shadcn/ui primitives (migrate last, may need type wrappers)
+- [ ] **6.1.5** Final cleanup — remove `lucide-react` from package.json, update all guideline references
+
+### 6.2 Orphaned Page Cleanup — P1
+
+- [ ] **6.2.1** Verify DestinationRouter.tsx imports DestinationCountryPage, DestinationRegionPage, DestinationSingle
+- [ ] **6.2.2** Archive or delete DestinationsArchiveEnhanced.tsx (superseded)
+- [ ] **6.2.3** Archive or delete DestinationsArchiveSimple.tsx (superseded)
+- [ ] **6.2.4** Archive or delete DestinationsArchiveTest.tsx (test file)
+
+### 6.3 Image Lazy Loading — P2
+
+- [ ] **6.3.1** Audit all `<img>` tags for missing `loading="lazy"` on below-the-fold images
+- [ ] **6.3.2** Add lazy loading to card components (TourCard, DestinationCard, AccommodationCard, etc.)

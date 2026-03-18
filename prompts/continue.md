@@ -1,64 +1,111 @@
-# Continue Prompt
+# Continue — Resume Next Task
 
-**Version:** 2.0.0
-**Date:** March 13, 2026
-**Type:** Resume next logical task
-**Trigger:** User says **"continue"** (see `/guidelines/Guidelines.md` trigger words)
+**Type:** Utility  
+**Version:** 4.0.0  
+**Created:** 2026-03-18  
+**Status:** Active  
+**Trigger Word:** `continue`  
+**Repeatable:** Yes — paste into any new session to resume work
 
 ---
 
 ## Environment Reminder
 
-You are working inside **Figma Make** — a sandboxed web IDE. There is no terminal, no browser refresh, no cache to clear. Do NOT suggest the user "refresh their browser," "clear cache," "run npm install," or "restart the dev server." All file changes are live immediately. Use only the tools available: `read`, `write_tool`, `fast_apply_tool`, `edit_tool`, `delete_tool`, `file_search`, and `bash` (node_modules only).
+You are working inside **Figma Make** — a sandboxed web IDE. There is no terminal, no browser refresh, no cache to clear. Do NOT suggest the user "refresh their browser," "clear cache," "run npm install," or "restart the dev server." All file changes are live immediately.
 
 ---
 
-## Instructions
+## Guideline References (Read-Only)
 
-1. Read `/tasks/task-list.md`
-2. Find the **first unchecked task** (`- [ ]`)
-3. If that task references a prompt file → read the prompt file too
-4. If that task references a report or task file → read those for context
-5. **Execute the task** — write code, run audits, create reports as needed
-6. When done:
-   - Mark the task `[x]` in `task-list.md`
-   - Add results/findings under the task entry
-   - Update the `**Status:**` line at the top
-   - Update `**Last Updated:**` date
-   - Add a CHANGELOG entry if meaningful work was done
-7. **Stop** after completing the task. Do not continue to the next task unless the user says "continue" again.
+- `/guidelines/Guidelines.md` — Project entry point, trigger words, architecture overview
+- `/guidelines/rules/design-system-rules.md` — Styling compliance
+- `/guidelines/overview-components.md` — Component architecture
+- `/guidelines/overview-icons.md` — Icon system
 
 ---
 
-## Design System Compliance
+## Design System Compliance (Non-Negotiable)
 
-**All UI code generated during task execution MUST follow these rules:**
-
-- Use CSS variables from `/src/styles/theme-base.css`, `theme-light.css`, `theme-dark.css`
-- Use ONLY the 5 approved fonts: Lora, Noto Sans, Courier New, Caveat, Shadows Into Light
-- Use BEM class naming: `.wp-pattern-*`, `.wp-part-*`, `.wp-block-*`
-- Create external CSS files for styling — no inline `style={{}}` attributes
-- No `dark:` Tailwind classes — CSS variables handle dark mode automatically
-- No hardcoded colors, fonts, spacing, borders, radius, or shadows
-- Follow Zero Margin Policy: use flex/grid gaps and padding, not margins
-
----
-
-## If No Unchecked Tasks Exist
-
-If `task-list.md` has no unchecked tasks:
-
-1. Tell the user: "All tasks in task-list.md are complete."
-2. Suggest running **"cleanup"** to verify project health
-3. Ask the user what they'd like to work on next
+All generated/modified UI must follow:
+- **Typography:** ONLY 5 approved font variables:
+  - `var(--font-family-lora)` — Headings, editorial
+  - `var(--font-family-noto-sans)` — Body, UI
+  - `var(--font-family-caveat)` — Accent (sparingly)
+  - `var(--font-family-shadows)` — Decorative (very sparingly)
+  - `var(--font-family-mono)` — Code, technical
+- **Font sizes:** `var(--text-6xl)` through `var(--text-2xs)` fluid scale
+- **Colors:** Semantic CSS variables only — zero hardcoded hex values
+- **Spacing:** `var(--spacing-*)` tokens only — zero hardcoded `px` or `rem`
+- **Border radius:** `var(--radius-*)` tokens
+- **Icons:** `@phosphor-icons/react` (default) — `lucide-react` is legacy, being phased out
+- **Router:** `react-router` only — never `react-router-dom`
+- **Classes:** BEM naming + `.wp-*` utilities — zero Tailwind classes
+- **Layout:** Zero Margin Policy — flex/grid gaps only
+- NEVER delete protected files
 
 ---
 
-## If the Task Is Too Large for One Session
+## Step 1 — Read Context
 
-If the task would take more than ~30 minutes:
+1. Read `/guidelines/Guidelines.md` — project rules and design system
+2. Read `/tasks/task-list.md` — find open tasks (`[ ]`)
+3. If no open tasks there, check for other task files in `/tasks/`
 
-1. Complete as much as reasonably possible
-2. Add a `**Progress:**` note under the task in `task-list.md` with what was completed
-3. Leave the task unchecked `[ ]` so the next "continue" picks it up
-4. Tell the user what was done and what remains
+---
+
+## Step 2 — Pick Next Task
+
+Select the **first unchecked task** using this priority order:
+
+1. **Build blockers** — anything breaking the build or deployment
+2. **In-progress work** — tasks with partial completion noted
+3. **High Priority items** — under "High Priority" headings
+4. **Next sequential step** — next item in current workflow
+5. **Strategy tasks** — phased improvement work
+
+If the task references a specific guideline, **read it first** before starting. Relevant guideline files:
+- Component tasks → `/guidelines/components/[ComponentName].md`
+- Pattern tasks → `/guidelines/patterns/[pattern-name].md`
+- Icon tasks → `/guidelines/icons/travel.md` or `/guidelines/icons/interface.md`
+- Design token tasks → `/guidelines/design-tokens/[token-name].md`
+
+---
+
+## Step 3 — Execute
+
+1. **Announce:** "Executing: [task name] from [source file]"
+2. **Do the work** — follow the task description completely
+3. **On completion:**
+   - Mark the task `[x]` in its source file with today's date and a brief note
+   - Add a concise CHANGELOG entry under `[Unreleased]` if notable
+   - Add any follow-up tasks to `/tasks/task-list.md`
+
+---
+
+## Step 4 — Loop or Stop
+
+- **Session has capacity?** -> Go back to Step 2, pick next task
+- **Session getting long or next task is unrelated?** -> Stop and provide summary:
+
+```
+## Session Summary — [Today's Date]
+
+### Completed
+- [task name] — [brief result]
+
+### Updated Files
+- [list of key files modified]
+
+### Next Up
+- [what the next open task would be]
+```
+
+---
+
+## Rules
+
+- **One task at a time** — finish before starting the next
+- **Fix, don't just report** — if you find an issue, fix it inline
+- **No hardcoded values** — 100% CSS variable compliance
+- **No new fonts/colors/tokens** — use only what's defined in the CSS
+- **Figma Make environment** — never suggest browser refresh, cache clear, or terminal commands

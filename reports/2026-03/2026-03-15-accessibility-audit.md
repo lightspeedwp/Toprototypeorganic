@@ -46,15 +46,6 @@
 | 3 | `templates/page-faq.css` | 11 | Fixed |
 | 4 | `templates/archive-destinations.css` | 2 | Fixed |
 
-**Mapping used:**
-- `0.5rem` → `var(--spacing-element-xs)`
-- `1rem` → `var(--spacing-element-sm)`
-- `1.5rem` → `var(--spacing-element-md)`
-- `2rem` → `var(--spacing-element-md)`
-- `3rem` → `var(--spacing-element-lg)`
-- `0.125rem` (micro icon alignment) → exempted
-- `0.25rem` → `var(--spacing-element-2xs)`
-
 ---
 
 ## Findings — Passing (No Action Needed)

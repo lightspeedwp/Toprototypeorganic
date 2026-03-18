@@ -90,6 +90,7 @@
 @import './pages/testimonials.css';
 @import './pages/partners.css';
 @import './pages/careers.css';
+@import './pages/dev-tools-new.css';
 
 /* ── 11. Block pattern styles ────────────────────────────────────── */
 @import './patterns/mobile-menu.css';

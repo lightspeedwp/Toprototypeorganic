@@ -66,6 +66,8 @@ const CATEGORIES: ToolCategory[] = [
       { title: "Button Variants", description: "All button sizes, variants, states, and icon combinations from the design system.", href: "/dev-tools/button-showcase", icon: <PhosphorIcons.Mouse className="w-5 h-5" /> },
       { title: "Design Tokens Reference", description: "Single-page reference of all CSS custom properties — colours, typography, spacing, shadows, radii.", href: "/dev-tools/design-tokens-reference", icon: <PhosphorIcons.Sliders className="w-5 h-5" /> },
       { title: "Design System Playground", description: "Interactive page to experiment with tokens — change colours, preview combinations live.", href: "/dev-tools/design-system-playground", icon: <PhosphorIcons.PaintBrush className="w-5 h-5" /> },
+      { title: "Colour Palette Viewer", description: "Interactive swatches of all semantic colour tokens with live computed values and copy-to-clipboard.", href: "/dev-tools/color-palette", icon: <PhosphorIcons.SwatchBook className="w-5 h-5" /> },
+      { title: "Grid & Layout Overlay", description: "Toggle column grids, baseline rhythm, and container bounds over sample layouts for visual debugging.", href: "/dev-tools/grid-overlay", icon: <PhosphorIcons.GridFour className="w-5 h-5" /> },
     ],
   },
   {
@@ -116,6 +118,8 @@ const CATEGORIES: ToolCategory[] = [
       { title: "Icon Library", description: "Searchable grid of all Lucide icons used across the site with copy-to-clipboard.", href: "/dev-tools/icon-library", icon: <PhosphorIcons.MagnifyingGlass className="w-5 h-5" /> },
       { title: "Block Documentation", description: "WordPress block equivalents — tour operator blocks, design blocks, and theme blocks.", href: "/dev-tools/block-documentation", icon: <PhosphorIcons.Cube className="w-5 h-5" /> },
       { title: "Header & Footer", description: "Side-by-side comparison of template parts — Header and Footer in all responsive states.", href: "/dev-tools/header-footer-comparison", icon: <PhosphorIcons.GridFour className="w-5 h-5" /> },
+      { title: "Route Map", description: "Visual map of all application routes organized by section with navigation links and component names.", href: "/dev-tools/route-map", icon: <PhosphorIcons.TreeStructure className="w-5 h-5" /> },
+      { title: "Mock Data Explorer", description: "Browse all mock data collections with record counts, field schemas, and sample data previews.", href: "/dev-tools/mock-data-explorer", icon: <PhosphorIcons.Database className="w-5 h-5" /> },
     ],
   },
   {
@@ -128,6 +132,7 @@ const CATEGORIES: ToolCategory[] = [
       { title: "Deployment Readiness", description: "Pre-deploy checklist — Lighthouse scores, a11y, broken links, bundle size.", href: "/dev-tools/deployment-readiness", icon: <PhosphorIcons.Rocket className="w-5 h-5" /> },
       { title: "Performance Monitor", description: "Component render times, Core Web Vitals, memory usage, and threshold alerts.", href: "/dev-tools/performance-monitor", icon: <PhosphorIcons.Gauge className="w-5 h-5" /> },
       { title: "Analytics Dashboard", description: "Real-time insights into user behaviour, performance snapshots, and system health.", href: "/dev-tools/analytics-dashboard", icon: <PhosphorIcons.Monitor className="w-5 h-5" /> },
+      { title: "Breakpoint Debugger", description: "Live viewport metrics, current breakpoint indicator, device pixel ratio, and common device size reference.", href: "/dev-tools/breakpoint-debugger", icon: <PhosphorIcons.DevicesMobile className="w-5 h-5" /> },
     ],
   },
 ];

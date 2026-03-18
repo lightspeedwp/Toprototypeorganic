@@ -98,7 +98,7 @@ export function BackToTopButton() {
       className={cn("wp-back-to-top", { "wp-back-to-top--visible": isVisible })}
       aria-label="Back to top"
     >
-      <CaretUp size={20} weight="bold" />
+      <CaretUp size={20} />
     </button>
   );
 }

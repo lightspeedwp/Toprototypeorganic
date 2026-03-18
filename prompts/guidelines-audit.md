@@ -1,196 +1,109 @@
-# Guidelines File Audit Prompt
+# Guidelines Audit — Systematic Review
 
-**Version:** 1.0
-**Category:** Audit
-**Estimated Time:** 60–90 minutes
-**Prerequisites:** Read `/guidelines/_templates.md` and all template files in `/guidelines/_templates/`
+**Type:** Audit  
+**Version:** 2.0.0  
+**Created:** 2026-03-18  
+**Status:** Active  
+**Trigger Word:** `guidelines audit`  
+**Estimated Duration:** 2-3 hours
 
 ---
 
 ## Environment Reminder
 
-You are working inside **Figma Make** — a sandboxed web IDE. All file changes are live immediately. Use only the available tools. NEVER suggest terminal commands, browser refresh, cache clearing, or npm install.
+You are working inside **Figma Make** — a sandboxed web IDE. There is no terminal, no browser refresh, no cache to clear. Do NOT suggest the user "refresh their browser," "clear cache," "run npm install," or "restart the dev server." All file changes are live immediately.
 
 ---
 
-## Objective
+## Prompt Purpose
 
-Systematically audit every guideline file in `/guidelines/` and its subfolders. For each file, verify it is accurate, not duplicated, follows the correct template, references the correct source CSS files, and contains no stale or incorrect information.
+**Objective:** Systematically review every guideline file in `/guidelines/` to verify accuracy against the codebase, ensure template compliance, fix broken references, remove outdated content, and consolidate redundant files.
 
----
-
-## Scope
-
-**In Scope:**
-- Every `.md` file in `/guidelines/` and all subfolders
-- Cross-references between guideline files
-- Accuracy against actual CSS source files in `/src/styles/`
-- Template compliance (does each file follow the appropriate template?)
-- Duplication detection (are two files covering the same topic?)
-
-**Out of Scope:**
-- Source code changes (this is a documentation audit only)
-- Creating new components or patterns
-- Report processing (see `/prompts/report-processor-orchestrator.md`)
+**Success Criteria:**
+- Every guideline file follows its designated template from `/guidelines/_templates/`
+- Every CSS variable, token, and font reference matches the actual CSS files
+- Zero broken cross-reference links
+- Zero duplicate/redundant files
+- Every file has correct version header
+- Guidelines.md is under 400 lines
 
 ---
 
-## Phase 1: Inventory All Guidelines Files
+## CSS Source Files (Ground Truth)
 
-1. **Read every subfolder** in `/guidelines/`
-2. **Create a complete inventory** with this structure:
+These are the **source of truth** for all design token documentation:
 
-```markdown
-| # | File Path | Category | Template Type | Status |
-|---|-----------|----------|---------------|--------|
-| 1 | /guidelines/Guidelines.md | Entry Point | general | [Audit pending] |
-```
-
-**Categories:** Entry Point, Architecture, Design Token, Component, Pattern, Block, Icon, Mobile, Style, Template, Testing, Prompt, Workflow, Index
-
----
-
-## Phase 2: Check Each File Against Its Template
-
-For each file, verify:
-
-1. **Correct template type** — Does it use the right template from `/guidelines/_templates/`?
-2. **Required sections present:**
-   - Design tokens → Source of Truth, Token Reference, Do/Don't, Quick Reference
-   - Components → Purpose, WordPress Mapping, Props, Usage, Styling, Accessibility
-   - Patterns → Purpose, Composition, Variants, Section Styles, Usage in Templates
-   - General → Purpose, Rules, Examples, Related Guidelines
-3. **Source of Truth accuracy** — Does the referenced CSS file actually contain these tokens?
-4. **Token values match** — Do documented values match the actual CSS?
+| CSS File | Contains |
+|---|---|
+| `/src/styles/theme-base.css` | Typography (5 font families, fluid type scale, weights), spacing, radius, layout constants, animations |
+| `/src/styles/theme-light.css` | Light mode colors, shadows |
+| `/src/styles/theme-dark.css` | Dark mode colors, shadows |
+| `/src/styles/theme-organic.css` | Organic design tokens |
+| `/src/styles/global.css` | WordPress-aligned utility classes |
+| `/src/styles/fonts.css` | Font face imports |
 
 ---
 
-## Phase 3: Verify Against Source CSS
+## Execution Steps
 
-For each design token guideline:
+### Phase 1: File Inventory (15 min)
 
-1. **Read the referenced CSS file** (e.g., `theme-base.css`)
-2. **Compare every documented token** against the actual CSS
-3. **Flag discrepancies:**
-   - Token exists in CSS but not in docs → **MISSING from docs**
-   - Token exists in docs but not in CSS → **STALE in docs**
-   - Token value differs → **DRIFT**
-4. **Record findings** in the audit report
+List every file in `/guidelines/` recursively. Flag any file that:
+- Missing version header
+- Has no version number
+- Has `Last Updated` older than 30 days without review
 
-### CSS Source Files to Cross-Reference
+### Phase 2: Template Compliance (30 min)
 
-| CSS File | Guideline Files That Reference It |
-|----------|----------------------------------|
-| `/src/styles/theme-base.css` | typography, spacing, borders, radii, animations, responsive, touch-targets, forms |
-| `/src/styles/theme-light.css` | colors, dark-light-mode, shadows, buttons, navigation |
-| `/src/styles/theme-dark.css` | colors, dark-light-mode, shadows |
-| `/src/styles/theme-variables.css` | colors (WordPress presets) |
-| `/src/styles/global.css` | typography (WordPress block classes) |
+**Design Token files** (`/guidelines/design-tokens/*.md`):
+- Must have: Overview, CSS Variables table, Usage Examples, Related Guidelines
 
----
+**Component files** (`/guidelines/components/*.md`):
+- Must have: Overview, Props/API Reference, CSS Classes, Usage Examples
 
-## Phase 4: Detect Duplications
+### Phase 3: CSS Variable Accuracy (60 min)
 
-Check for files that cover the same topic:
+For EACH design token file, verify EVERY documented CSS variable exists in the actual CSS:
 
-### Known Potential Duplications
-- `typography.md` vs `MODERN-TYPOGRAPHY.md` — Which is canonical?
-- `spacing.md` vs `MODERN-SPACING.md` — Which is canonical?
-- `breakpoints.md` vs `responsive.md` — Overlap?
-- `/guidelines/mobile/touch-targets.md` vs `/guidelines/design-tokens/touch-targets.md`
-- `/guidelines/mobile/forms.md` vs `/guidelines/design-tokens/forms.md`
-- `/guidelines/styles/section-styles.md` vs `/guidelines/patterns/section-styles.md`
-- `/guidelines/blocks/overview-patterns.md` vs `/guidelines/overview-patterns.md`
+1. Extract all `var(--something)` references from the guideline
+2. Search for each in `theme-base.css`, `theme-light.css`, `theme-dark.css`
+3. Flag documented variables that don't exist in CSS
+4. Flag CSS variables that aren't documented
 
-### Resolution Options
-1. **Merge** — Combine into one canonical file, delete the other
-2. **Redirect** — Keep one as primary, make the other a 1-line redirect
-3. **Differentiate** — If they serve different purposes, add clear scope headers
-4. **Delete** — If fully superseded, remove the old version
+**Critical check:** Verify font documentation references only the 5 approved fonts:
+- `var(--font-family-lora)` — Lora
+- `var(--font-family-noto-sans)` — Noto Sans
+- `var(--font-family-caveat)` — Caveat
+- `var(--font-family-shadows)` — Shadows Into Light
+- `var(--font-family-mono)` — Courier New
 
----
+### Phase 4: Cross-Reference Links (30 min)
 
-## Phase 5: Check Cross-References
+For EVERY guideline file:
+1. Find all markdown links
+2. Verify each linked file exists
+3. Fix or remove broken links
 
-For each file that links to other guidelines:
+### Phase 5: Duplicate & Redundancy Check (30 min)
 
-1. **Verify the referenced file exists** at the specified path
-2. **Verify the link text is accurate** (file hasn't been renamed)
-3. **Flag broken references** as HIGH priority fixes
+Check for files with overlapping content. For each potential duplicate:
+1. Read both files
+2. Identify unique content in each
+3. Decide: merge into one file, or keep both with clear scope distinction
 
----
+### Phase 6: Write Report & Tasks (15 min)
 
-## Phase 6: Content Quality Checks
-
-For each file, verify:
-
-1. **No hardcoded values** in examples (must use CSS variables)
-2. **Examples use approved fonts only** (Lora, Noto Sans, Courier New, Caveat, Shadows Into Light)
-3. **Examples use BEM naming** (`.wp-pattern-*`, `.wp-part-*`, `.wp-block-*`)
-4. **No inline style examples** shown as correct (only as "Don't" examples)
-5. **Consistent terminology** (e.g., "design tokens" not "design variables")
+1. **Report:** Save to `/reports/YYYY-MM/guidelines-audit.md`
+2. **Tasks:** Add fixes to `/tasks/task-list.md`
+3. **CHANGELOG:** Add entry
 
 ---
 
-## Output
+## Guard Rails
 
-### Report
-Save to: `/reports/[YYYY-MM-DD]-guidelines-audit-report.md`
-
-Structure:
-```markdown
-# Guidelines Audit Report
-
-## Executive Summary
-- Total files audited: [N]
-- Template compliant: [N]
-- Source-verified: [N]
-- Duplications found: [N]
-- Broken references: [N]
-- Stale content: [N]
-
-## Findings by Severity
-### Critical (blocks generation)
-### High (causes inconsistency)
-### Medium (incomplete docs)
-### Low (style/formatting)
-
-## File-by-File Results
-[Table with every file and its status]
-
-## Recommended Actions
-[Prioritised list of fixes]
-```
-
-### Task List
-Save to: `/tasks/guidelines-audit-tasks.md`
-Update: `/tasks/task-list.md` with new section
-
----
-
-## Acceptance Criteria
-
-- [ ] Every `.md` file in `/guidelines/` has been read and assessed
-- [ ] All design token files verified against source CSS
-- [ ] All duplications identified with resolution recommendations
-- [ ] All broken cross-references flagged
-- [ ] Report saved to `/reports/`
-- [ ] Task list created in `/tasks/`
-- [ ] Master task list updated
-
----
-
-## Relevant Guidelines
-
-| Guideline | Why It's Relevant |
-|-----------|-------------------|
-| `/guidelines/_templates.md` | Template system reference |
-| `/guidelines/_templates/design-token.md` | Design token file template |
-| `/guidelines/_templates/component.md` | Component file template |
-| `/guidelines/_templates/pattern.md` | Pattern file template |
-| `/guidelines/_templates/general.md` | General guideline template |
-| `/guidelines/design-tokens/colors.md` | Example of a well-structured token file |
-| `/guidelines/design-tokens/MODERN-TYPOGRAPHY.md` | Example of detailed token documentation |
-| `/src/styles/theme-base.css` | Primary CSS source of truth |
-| `/src/styles/theme-light.css` | Light mode color source |
-| `/src/styles/theme-dark.css` | Dark mode color source |
+- **NEVER delete a guideline file without merging its content first**
+- **NEVER modify Guidelines.md to exceed 400 lines**
+- **NEVER add CSS variables that don't exist in the actual CSS files**
+- **NEVER remove documentation for CSS variables that DO exist**
+- **Always increment version numbers when editing files**
+- **Always update "Last Updated" date when editing files**

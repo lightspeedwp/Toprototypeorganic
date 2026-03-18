@@ -25,6 +25,13 @@ All notable changes to the LightSpeed Tour Operator prototype are documented in 
 - **Guidelines.md v4.0 Restructured** — Reduced from ~1300 lines to ~350 lines by extracting duplicated content into modular rule files. Created `/guidelines/rules/` (3 files: design-system-rules, file-organization, workflow). Created `/guidelines/_templates/` (7 templates: design-token, component, pattern, general, report, prompt, task-list) with meta-guide `_templates.md`. Created 8 new design token guideline files (animations, buttons, dark-light-mode, iconography, responsive, forms, touch-targets, navigation). Total design token files: **17**. Created `/prompts/report-processor-orchestrator.md` for automated report-to-task processing. Created `/prompts/guidelines-audit.md` for systematic guideline file auditing.
 - **Reports Cleanup** — Archived 2 fully resolved reports (inline-styles-audit: 100% compliant, light-dark-mode-audit: all findings fixed). Verified 3 active reports are within 7-day window with open findings.
 
+### Changed
+- **Full Audit (17 sub-triggers) — 2026-03-18:** Ran all audit sub-triggers. Overall grade: A- (15/17 audits pass). Created comprehensive report `/reports/2026-03/2026-03-18-full-audit.md`. Added 54 new tasks to Phase 6 in task list.
+- **Icon Strategy — 2026-03-18:** `@phosphor-icons/react` is now the approved default icon library. `lucide-react` is legacy, being phased out. Both packages coexist during migration. Updated Guidelines.md, cleanup.md, continue.md, and task list.
+- **Prompt System Expansion — 2026-03-18:** Added 5 new trigger words across 2 new categories: `audit phosphor` v2.0, `migrate phosphor`, `audit header`, `audit footer`, `audit hero`. Updated `audit` orchestrator from 17 to 22 sub-audits (added `audit phosphor`, `audit header`, `audit footer`, `audit hero`, `audit routes`). Eliminated all circular references across prompts — enforced strict one-way reference hierarchy (prompts → guidelines, orchestrators → sub-prompts). Added `Guideline References (Read-Only)` sections to all new prompts. Updated `cleanup.md` v4.0 and `continue.md` v4.0 with guideline refs and Phosphor icon awareness. Total trigger words: **40** (39 unique + 1 combo).
+- **Report Processing — 2026-03-18:** Organized `/reports/` directory. Renamed and moved 5 stray reports. Archived 2 fully resolved reports. Active reports: 3.
+- **Root Cleanup — 2026-03-18:** Deleted orphaned Storybook config files (`main.ts`, `preview.ts`) from root directory.
+
 ### Fixed
 - **Mega-menu desktop-first query** - Refactored `mega-menu.css` from `@media (max-width: 1024px) { display: none }` to mobile-first pattern: base `display: none` + `@media (min-width: 1025px) { display: block }`. Resolves Contract D violation.
 - **MODERN-TYPOGRAPHY.md doc drift** - Added missing `--text-2xs` token (micro: 10px→12px) to body scale, responsive table, fluid utility classes, and migration section. Fixed Caveat/Shadows Into Light font fallback stacks to match `theme-base.css` exactly.
@@ -35,13 +42,6 @@ All notable changes to the LightSpeed Tour Operator prototype are documented in 
 - **Source orphaned scripts** — Deleted 13 files from `/src/`: `check-icons.ts`, `check_contrast.js`, `contrast.js`, `fix_button_script.js`, `fix_buttons.js`, `fix_margins.js`, `fix_margins2.js`, `fix_quote.js`, `fix_special_single.js`, `fix_text_10px.js`, `fix_text_length.js`, `test-icons.js`, `test_border.js`
 - **Temp sandbox** — Deleted `/tmp/sandbox/` folder (4 files)
 - **Superseded reports** — Deleted 4 reports superseded by newer versions: `2026-03-01-file-optimization-audit.md`, `2026-03-10-organic-redesign-audit-report.md`, `2026-03-11-organic-redesign-audit.md`, `2026-03-11-design-system-contract-audit-organic.md`
-
-### Changed
-- **BreadcrumbsPattern nav padding** - Added `pt-2 pb-0` (8px top, 0px bottom) to breadcrumb nav element
-- **Tour card price position** - Moved "From $X" price element to directly below the title (instead of bottom of card body) in both `DayAndDuskPage.tsx` and `OrganicLandingPage.tsx` for better visual hierarchy
-- **Task list cleanup** - Archived 2 completed task files, removed 12 superseded reports (Feb 25 and Mar 3 batches), updated master task list with current project status
-- **SitemapPage unused imports** - Removed unused lucide-react icons (Settings, Wrench) and unused data imports (FACILITIES, REVIEW_CATEGORIES, SPECIAL_CATEGORIES)
-- **Task list updated** - Marked header dark mode fix as applied, added SitemapPage rebuild entry, updated status
 
 ### Cleanup — March 14, 2026
 

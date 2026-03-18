@@ -160,7 +160,7 @@ export function ScrollDownArrow({
       className={cn("wp-scroll-down-arrow", className, { "wp-scroll-down-arrow--hidden": isHidden })}
       aria-label={label}
     >
-      <CaretDown size={24} weight="bold" className="wp-scroll-down-arrow__icon" />
+      <CaretDown size={24} className="wp-scroll-down-arrow__icon" />
       {showLabel && <span className="wp-scroll-down-arrow__label">{label}</span>}
     </button>
   );

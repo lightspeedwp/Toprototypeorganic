@@ -150,6 +150,13 @@ const RadiusSpecimens = lazy(() => import("./pages/dev-tools/RadiusSpecimens"));
 const CardInteractions = lazy(() => import("./pages/dev-tools/CardInteractions"));
 const AnimationsShowcase = lazy(() => import("./pages/dev-tools/AnimationsShowcase"));
 
+// New Dev Tools Sub-pages
+const RouteMap = lazy(() => import("./pages/dev-tools/RouteMap"));
+const ColorPalette = lazy(() => import("./pages/dev-tools/ColorPalette"));
+const BreakpointDebugger = lazy(() => import("./pages/dev-tools/BreakpointDebugger"));
+const MockDataExplorer = lazy(() => import("./pages/dev-tools/MockDataExplorer"));
+const GridOverlay = lazy(() => import("./pages/dev-tools/GridOverlay"));
+
 const routes: RouteObject[] = [
   {
     path: "/",
@@ -320,6 +327,11 @@ const routes: RouteObject[] = [
           { path: "radius-specimens", Component: RadiusSpecimens },
           { path: "card-interactions", Component: CardInteractions },
           { path: "animations-showcase", Component: AnimationsShowcase },
+          { path: "route-map", Component: RouteMap },
+          { path: "color-palette", Component: ColorPalette },
+          { path: "breakpoint-debugger", Component: BreakpointDebugger },
+          { path: "mock-data-explorer", Component: MockDataExplorer },
+          { path: "grid-overlay", Component: GridOverlay },
         ],
       },
       { path: "diagnostic", Component: Diagnostic },

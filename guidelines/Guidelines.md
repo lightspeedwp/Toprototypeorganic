@@ -1,7 +1,7 @@
 # Figma Make Prototype Guidelines
 
-**Version:** V4.0 — Modular Architecture
-**Last Updated:** March 13, 2026
+**Version:** V4.1 — Modular Architecture
+**Last Updated:** March 18, 2026
 
 ---
 
@@ -12,6 +12,44 @@
 | **cleanup** | Run full project hygiene | `/prompts/cleanup.md` |
 | **continue** | Resume next unchecked task | `/prompts/continue.md` |
 | **cleanup then continue** | Run cleanup, then next task | Both in sequence |
+| **changelog** | Update CHANGELOG.md | `/prompts/changelog.md` |
+| **cleanup guidelines** | Guideline file maintenance | `/prompts/cleanup-guidelines.md` |
+| **process reports** | Organize and archive reports | `/prompts/process-reports.md` |
+| **release** | Version bump and release workflow | `/prompts/release.md` |
+| **new block** | Scaffold an atomic block component | `/prompts/new-block.md` |
+| **new pattern** | Scaffold a section-level pattern | `/prompts/new-pattern.md` |
+| **new template** | Scaffold a page template | `/prompts/new-template.md` |
+| **apply bem** | BEM class compliance audit & fix | `/prompts/apply-bem.md` |
+| **audit** | Run ALL audit sub-triggers | `/prompts/audit.md` |
+| **audit tokens** | Design token compliance | `/prompts/audit-tokens.md` |
+| **audit css** | CSS architecture audit | `/prompts/audit-css.md` |
+| **audit styles** | Comprehensive styling audit | `/prompts/audit-styles.md` |
+| **audit style** | Organic design language compliance | `/prompts/audit-style.md` |
+| **audit theme** | Light/dark mode token compliance | `/prompts/audit-theme.md` |
+| **audit data** | Data file architecture audit | `/prompts/audit-data.md` |
+| **audit images** | Broken image & asset compliance | `/prompts/audit-images.md` |
+| **audit a11y** | Quick WCAG 2.1 AA accessibility audit | `/prompts/audit-a11y.md` |
+| **audit accessibility** | Comprehensive WCAG 2.1 AA deep-dive | `/prompts/audit-accessibility.md` |
+| **audit layout** | Visual integrity & responsive layout | `/prompts/audit-layout.md` |
+| **audit responsive** | Responsive design audit | `/prompts/audit-responsive.md` |
+| **audit routing** | Route integrity & navigation | `/prompts/audit-routing.md` |
+| **audit functionality** | UI state & interaction compliance | `/prompts/audit-functionality.md` |
+| **audit memory** | Codebase memory reduction audit | `/prompts/audit-memory.md` |
+| **optimize memory** | Execute memory optimization | `/prompts/optimize-memory.md` |
+| **audit webgl** | Canvas & WebGL usage inventory | `/prompts/audit-webgl.md` |
+| **audit guidelines** | Guideline file standards audit | `/prompts/audit-guidelines.md` |
+| **guidelines audit** | Deep systematic guideline review | `/prompts/guidelines-audit.md` |
+| **audit phosphor** | Icon system compliance & lucide→Phosphor migration | `/prompts/audit-phosphor.md` |
+| **migrate phosphor** | Execute icon migration batch | `/prompts/migrate-phosphor.md` |
+| **audit header** | Header template part & pattern compliance | `/prompts/audit-header.md` |
+| **audit footer** | Footer template part & pattern compliance | `/prompts/audit-footer.md` |
+| **audit hero** | Hero template part, pattern & data consistency | `/prompts/audit-hero.md` |
+| **update guidelines** | Sync guideline files with codebase | `/prompts/update-guidelines.md` |
+| **audit routes** | Route integrity, links, navigation data | `/prompts/audit-routes.md` |
+| **sitemap** | Sync sitemap page with actual routes | `/prompts/sitemap.md` |
+| **status** | Project health dashboard (read-only) | `/prompts/status.md` |
+| **update triggers** | Sync trigger words, prompts & guideline tables | `/prompts/update-triggers.md` |
+| **process reports deep** | Deep report processing with verification | `/prompts/process-reports-orchestrator.md` |
 
 Read the referenced prompt file and execute ALL instructions in a single session.
 
@@ -53,6 +91,7 @@ All file changes are **live immediately**. Use only the available tools.
 - ✅ External `.css` files with BEM naming (`.wp-part-*`, `.wp-pattern-*`, `.wp-block-*`)
 - ✅ Semantic HTML (`<h2>`, `<nav>`, `<article>`)
 - ✅ Organic section wrappers for page layout sections
+- ✅ Icons from `@phosphor-icons/react` (default) — `lucide-react` is legacy, being phased out
 
 ---
 
@@ -131,9 +170,9 @@ Read all files in [`design-tokens/`](design-tokens/):
 - [`icons/travel.md`](icons/travel.md) — Travel-related icons
 - [`icons/interface.md`](icons/interface.md) — UI control icons
 
-**Always verify icons exist in lucide-react:**
+**Always verify icons exist in @phosphor-icons/react:**
 ```bash
-grep "IconName" node_modules/lucide-react/dist/esm/icons/index.js
+grep "IconName" node_modules/@phosphor-icons/react/dist/index.es.js
 ```
 
 ### Step 5: Pattern Guidelines
@@ -282,7 +321,7 @@ Before writing any code:
 - [ ] Read overview files (components, patterns, icons, blocks)
 - [ ] Read design token files for tokens you'll use
 - [ ] Read component guidelines for components you'll use
-- [ ] Verify all icons exist in `lucide-react`
+- [ ] Verify all icons exist in `@phosphor-icons/react`
 - [ ] Use relative imports
 - [ ] Use semantic HTML elements
 - [ ] Use CSS variable tokens (not hardcoded values)
