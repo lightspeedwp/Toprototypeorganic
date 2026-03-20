@@ -1,0 +1,100 @@
+audit hero and process reports then continue implementing shared hero part with patterns tasks
+
+THEN Apply bem to all hero patterns and parts
+
+Document these guidelines:
+
+I am working with Figma make, I am creating website prototypes. The AI needs very clear guidelines to build the way you want, I want the AI to build the prototype in a similar way to WordPress themes work. 
+
+The prototype should have components folders for the following:
+
+- /components/blocks/
+- /components/patterns/
+- /components/parts/
+- /components/templates/
+- /components/pages/
+
+In wordpress block themes there are template parts, which are sections on a page that are possible shared with many pages or templates, examples are:
+
+- Header
+- Breadcrumbs
+- Footer
+- Mobile menu
+- Sidebar
+
+Each of these global shared elements are used sitewide in many instances. Patterns are registered to work with specific templates in WP block themes, which means you can use a consistent header, but on a checkout page you may want a distraction free header for example, so all you do is import the relevant distraction free header pattern into the global header template part. 
+
+# Template parts 
+
+- Header
+- Breadcrumbs
+- Footer
+- Mobile menu
+- Sidebar
+- Post meta
+- Social sharing
+- Hero
+
+
+
+# Patterns
+
+All values within the pattern
+
+## Heroes:
+
+- Legal pages - icon, title, subheading
+- Dev tools pages - icon, title, subheading + button(s) + stats bar
+- Blog index archive
+- Blog category archive
+- Blog tag archive
+- Blog author archive
+- Blog single post
+
+## Cards:
+
+- Feature - icon, title, subheading, button(s) with a suitable button style like a text link button style instead of an outline or fill button. 
+- Blog - featured image, title, subheading
+
+
+Further pattern component ideas
+Polls
+Ad slots
+SocialSharing
+CategoryBadge
+Button
+AnnouncementBanner
+StatsCounter
+TestimonialCard
+PricingTable
+Timeline.tsx - 6 instances
+FeatureCard
+NewsletterSignup
+FilterChips
+Filter elements
+
+If these components do not exist create new components in these folders:
+
+/components/blocks/
+/components/patterns/
+/components/parts/
+/components/templates/
+/components/pages/
+
+Make sure all styles are created in /styles/ and possibly sub folders. Block specific styles to be created in block specific folders, same goes for patterns, parts, templates and pages:
+
+/styles/blocks/
+/styles/patterns/
+/styles/parts/
+/styles/templates/
+/styles/pages/
+
+
+I need you to make sure there are trigger commands for :
+
+`expand blocks`
+`expand patterns`
+`expand parts`
+`expand templates`
+`expand pages`
+`expand styles`

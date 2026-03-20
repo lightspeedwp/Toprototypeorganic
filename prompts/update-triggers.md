@@ -105,6 +105,7 @@ All three must agree. This prompt detects drift and fixes it.
 - **Icons & Icon Migration** — audit phosphor, migrate phosphor
 - **Template Parts** — audit header, audit footer, audit hero
 - **Infrastructure** — audit webgl, audit memory, optimize memory, sitemap, status
+- **Archive & Housekeeping** — archive prompts, archive reports, archive tasks, archive guidelines
 - **Prompt Maintenance** — update triggers
 
 ### Step 4: Verify Frontmatter Consistency

@@ -202,4 +202,22 @@ Provide a final summary:
 
 Add any discovered follow-up items to `/tasks/task-list.md`.
 
-**This cleanup phase is complete.** If triggered by `cleanup then continue`, proceed with the `continue` trigger word.
+**This cleanup phase is complete.**
+
+**Recommended follow-up triggers:**
+- `archive` — Run full archive sweep (prompts, reports, tasks, guidelines). **Strongly recommended** after cleanup to ensure archived items are properly filed.
+- `continue` — Resume next open task from `task-list.md`
+- `cleanup then continue` — If triggered by this combo, proceed to run `archive` first, then `continue`.
+
+---
+
+## Step 11 — Archive Invocation (Auto)
+
+After cleanup completes, **automatically invoke** the `archive` trigger by reading and executing `/prompts/archive.md`. This ensures:
+
+1. Completed prompts without trigger words are repurposed or archived
+2. Resolved reports are archived or promoted
+3. Completed task files are archived
+4. Outdated guidelines are merged, updated, or archived
+
+If the user explicitly says "skip archive" or "cleanup only", skip this step.

@@ -103,17 +103,67 @@ Trigger words are single-word or short-phrase commands that tell the AI to execu
 | **audit footer** | `/prompts/audit-footer.md` | Footer template part — main site vs dev tools pattern, data sources |
 | **audit hero** | `/prompts/audit-hero.md` | Hero template part — data coverage, pattern variants, dev tools consistency |
 
+### Archive & Housekeeping
+
+| Trigger | Prompt File | What It Does |
+|---------|-------------|--------------|
+| **archive prompts** | `/prompts/archive-prompts.md` | Review non-trigger prompts — repurpose general ones, archive specific/completed ones |
+| **archive reports** | `/prompts/archive-reports.md` | Review reports — promote reusable methodology, archive resolved/superseded results |
+| **archive tasks** | `/prompts/archive-tasks.md` | Review task files — extract reusable workflows, archive completed, consolidate active |
+| **archive guidelines** | `/prompts/archive-guidelines.md` | Review guidelines — merge duplicates, update outdated, archive superseded files |
+
 ### Prompt Maintenance
 
 | Trigger | Prompt File | What It Does |
 |---------|-------------|--------------|
 | **update triggers** | `/prompts/update-triggers.md` | Sync trigger words, prompt files & guideline tables — detect drift, fix counts |
 
+### Update (Sync with Codebase)
+
+| Trigger | Prompt File | What It Does |
+|---------|-------------|--------------|
+| **update data** | `/prompts/update-data.md` | Audit codebase for hardcoded content, migrate ALL values to data files |
+| **update routes** | `/prompts/update-routes.md` | Sync routes.ts, navigation data & internal links with page files |
+| **update sitemap** | `/prompts/update-sitemap.md` | Sync sitemap page with current route configuration |
+| **update guidelines** | `/prompts/update-guidelines.md` | Sync guideline files with current codebase state |
+| **update prompts** | `/prompts/update-prompts.md` | Update prompt file references, frontmatter & design system reminders |
+| **update reports** | `/prompts/update-reports.md` | Re-evaluate active reports, mark resolved issues, flag for archival |
+| **update tasks** | `/prompts/update-tasks.md` | Sync task-list.md with project state, mark completed, remove stale |
+| **update status** | `/prompts/update-status.md` | Generate fresh project health snapshot with all metrics |
+| **update triggers** | `/prompts/update-triggers.md` | Sync trigger words, prompt files & guideline tables — detect drift, fix counts |
+
+### Expand (Codebase & Chat History Analysis)
+
+| Trigger | Prompt File | What It Does |
+|---------|-------------|--------------|
+| **expand prompts** | `/prompts/expand-prompts.md` | Scan chat history for recurring patterns, recommend new or enhanced prompts |
+| **expand guidelines** | `/prompts/expand-guidelines.md` | Scan chat history for undocumented decisions, recommend guideline updates |
+| **expand functionality** | `/prompts/expand-functionality.md` | Audit interactive features, propose new UI behaviours and accessibility enhancements |
+| **expand patterns** | `/prompts/expand-patterns.md` | Analyse pattern coverage gaps, propose new block patterns → `continue` chains to `new pattern` |
+| **expand pages** | `/prompts/expand-pages.md` | Identify missing standalone pages (legal, marketing, utility) → `continue` chains to `new template` |
+| **expand templates** | `/prompts/expand-templates.md` | Analyse content type coverage, propose archive/detail templates → `continue` chains to `new template` |
+| **expand data** | `/prompts/expand-data.md` | Scan templates for content patterns needing shared data structures & typed interfaces |
+| **expand components** | `/prompts/expand-components.md` | Identify duplicated component logic, propose shared atomic block components → `continue` chains to `new block` |
+| **expand webgl** | `/prompts/expand-webgl.md` | Review pages for Canvas/WebGL integration opportunities based on content context |
+| **expand triggers** | `/prompts/expand-triggers.md` | Meta-analyse trigger registry for gaps, overlaps, naming inconsistencies & missing orchestrators |
+| **expand blocks** | `/prompts/expand-blocks.md` | Discover missing atomic block components (PriceTag, StarRating, etc.) mapped to WordPress blocks |
+| **expand parts** | `/prompts/expand-parts.md` | Discover missing template parts (Breadcrumbs, SocialSharing, etc.) with pattern variants |
+| **expand contexts** | `/prompts/expand-contexts.md` | Discover missing React contexts (Wishlist, Compare, RecentlyViewed, Notification, etc.) |
+| **expand hooks** | `/prompts/expand-hooks.md` | Identify duplicated stateful logic, propose shared custom hooks (useLocalStorage, useMediaQuery, etc.) |
+| **expand a11y** | `/prompts/expand-a11y.md` | Propose accessibility enhancements: keyboard navigation, screen reader, focus management, skip links |
+| **expand routes** | `/prompts/expand-routes.md` | Analyse navigation flows for orphaned pages, missing breadcrumbs & UX dead-ends |
+| **expand seo** | `/prompts/expand-seo.md` | Scan for missing meta descriptions, Open Graph tags, schema markup & internal linking |
+| **expand animations** | `/prompts/expand-animations.md` | Discover scroll-triggered animations, micro-interactions & CSS transitions aligned with design tokens |
+| **expand styles** | `/prompts/expand-styles.md` | Audit CSS file architecture, BEM compliance, unused tokens & dark mode coverage |
+
 ### Orchestrators
 
 | Trigger | Prompt File | What It Does |
 |---------|-------------|--------------|
 | **audit** | `/prompts/audit.md` | Master orchestrator — runs ALL 22 audit sub-triggers sequentially |
+| **archive** | `/prompts/archive.md` | Master orchestrator — runs ALL archive sub-triggers sequentially |
+| **update** | `/prompts/update.md` | Master orchestrator — runs ALL update sub-triggers sequentially |
+| **expand** | `/prompts/expand.md` | Master orchestrator — runs ALL expand sub-triggers, generates combined backlog |
 
 ---
 
